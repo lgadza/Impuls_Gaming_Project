@@ -1,0 +1,28 @@
+.join-member {
+  background-color: red;
+  border-radius: 20px;
+  color: white;
+}
+.join-member:hover {
+  color: rgb(167, 167, 167);
+}
+.jumbotron {
+  position: relative;
+  z-index: -1;
+  width: 100vw;
+  height: 80vh;
+}
+#video-background {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+  z-index: -100;
+  object-fit: fill;
+}
+.into {
+  background-color: rgba(0, 0, 0, 0.4);
+  color: white;
+}
