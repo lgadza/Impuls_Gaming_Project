@@ -101,23 +101,19 @@ h1 {
   border-radius: 20px;
 }
 .textColor {
-  color: rgba(25, 0, 76, 255);
-  color: rgba(244, 92, 93, 255);
+  color: rgba(244, 92, 93, 255) !important;
 }
 textarea:focus {
-  color: rgba(25, 0, 76, 255) !important;
   color: rgba(244, 92, 93, 255) !important;
 }
 input:focus {
-  color: rgba(25, 0, 76, 255) !important;
   color: rgba(244, 92, 93, 255) !important;
 }
 input {
-  color: rgba(25, 0, 76, 255) !important;
   color: rgba(244, 92, 93, 255) !important;
 }
 textarea {
-  color: rgba(25, 0, 76, 255) !important;
+  /* color: rgba(25, 0, 76, 255) !important; */
   color: rgba(244, 92, 93, 255) !important;
 }
 .checkout-btn {
@@ -156,4 +152,57 @@ textarea {
 }
 a {
   color: #0cc4f2;
+}
+.gift-container {
+  border: 1px solid rgba(244, 92, 93, 0.2);
+  border-radius: 10px;
+  background-color: rgb(255, 255, 255);
+}
+.main-container {
+  background-color: rgba(244, 92, 93, 0.08);
+}
+svg {
+  margin: 0 10px;
+}
+
+.profile-pic {
+  height: 30px;
+  border-radius: 50%;
+  width: 30px;
+  object-fit: cover;
+}
+.background {
+  background-color: white;
+}
+.logo {
+  width: 100px;
+}
+.avatar-small {
+  height: 24px;
+  margin-right: 10px;
+}
+.avatar {
+  height: 36px;
+}
+.dropdown-menu a {
+  font-size: 12px;
+}
+.dropdown-menu {
+  margin-left: -100px;
+  background-color: var(--home-bg-color);
+}
+.dropdown-menu-dark {
+  background-color: black !important;
+  transform: translateX(-50%);
+}
+.pushme-right {
+  margin-left: 40%;
+}
+.dropdown-item {
+  background-color: none;
+  color: white;
+}
+.card-body {
+  color: black;
+  font-size: 1em;
 }

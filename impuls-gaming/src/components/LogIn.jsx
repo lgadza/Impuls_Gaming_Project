@@ -36,7 +36,7 @@ const SignIn = () => {
     check: check,
   };
   return (
-    <Container fluid className="login-page">
+    <Container fluid className="login-page ">
       <Row className="giftcard-preview-nav py-2 ">
         <Col className="d-flex flex-column ml-5">
           <Link className="mr-auto" to={"/"}>

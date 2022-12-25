@@ -84,7 +84,7 @@ const GiftCard = () => {
   };
 
   return (
-    <Container fluid>
+    <Container className="main-container" fluid>
       <Row className="giftcard-preview-nav py-2 ">
         <Col className="d-flex flex-column ml-5">
           <Link className="mr-auto" to={"/"}>
@@ -93,9 +93,9 @@ const GiftCard = () => {
           <span className="mr-auto textColor">LIVE EXPIRIENCE</span>
         </Col>
       </Row>
-      <Container className="mt-5 textColor">
+      <Container className="  textColor">
         <Row>
-          <Col className="input-section">
+          <Col className="input-section gift-container mt-5 mr-3 mt-5 ">
             <Form onSubmit={handleSubmit}>
               <h1 className="mt-2">Give a Gift</h1>
               <h6>Choose amount</h6>
@@ -223,7 +223,7 @@ const GiftCard = () => {
                   />
                 </div>
               </Form.Group>
-              <div className="d-flex justify-content-flex-end mt-4">
+              <div className="d-flex justify-content-flex-end mt-4 mb-3">
                 <button
                   className="checkout-btn py-1 px-4 ml-auto w-100"
                   type="submit"
@@ -233,11 +233,11 @@ const GiftCard = () => {
               </div>
             </Form>
           </Col>
-          <Col>
+          <Col className="gift-container mt-5 ml-3">
             <h3 className="mt-5">Card Preview</h3>
-            <div className="d-flex giftcard-section ml-3 py-0 pr-5 mt-5 mb-5">
+            <div className="d-flex giftcard-section mx-1 py-0 pr-5 mt-5 mb-5">
               <div className="mr-2 giftcard-preview py-3 px-2">
-                <img className="logo-img mb-5" src={logo} alt="impuls logo" />
+                <img className="logo-img mb-3" src={logo} alt="impuls logo" />
                 <div>
                   <div className=" mb-2">
                     <Icon.Phone size={20} />
