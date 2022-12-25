@@ -6,11 +6,11 @@ import { format, compareAsc } from "date-fns";
 const Footer = () => {
   const date = new Date();
   return (
-    <div className="background container-fluid mt-5 textColor">
+    <div className="background container-fluid mt-5 mb-3 textColor">
       <Container className="pt-4">
         <Row>
           <Col md={3}>
-            <ListGroup className="navbar-nav">
+            <ListGroup variant="flush" className="navbar-nav">
               <ListGroup.Item>
                 <Link>
                   <Icon.Facebook color="#4267B2" size={25} />
@@ -26,84 +26,61 @@ const Footer = () => {
                 </Link>
               </ListGroup.Item>
               <ListGroup.Item>
-                <Link className=" textColor" href="#">
-                  Media Center
-                </Link>
+                <Link className=" textColor">Media Center</Link>
+              </ListGroup.Item>
+
+              <ListGroup.Item>
+                <Link className=" textColor">Contact Us</Link>
+              </ListGroup.Item>
+            </ListGroup>
+          </Col>
+          <Col md={3}>
+            <ListGroup variant="flush" className="navbar-nav">
+              <ListGroup.Item>
+                <Link className=" textColor">Investor Relations</Link>
               </ListGroup.Item>
               <ListGroup.Item>
-                <Link className=" textColor" href="#">
-                  Privacy
-                </Link>
-              </ListGroup.Item>
-              <ListGroup.Item>
-                <Link className=" textColor" href="#">
-                  Contact Us
-                </Link>
+                <Link className=" textColor">Legal Notices</Link>
               </ListGroup.Item>
               <ListGroup.Item className=" mt-2">
                 <Link className="textColor">Service Code</Link>
               </ListGroup.Item>
-              <ListGroup.Item className=" mt-2">
-                <Link className=" textColor" href="#">
-                  © 2022-{date.getFullYear()} Impuls Gaming
-                </Link>
+            </ListGroup>
+          </Col>
+          <Col md={3}>
+            <ListGroup variant="flush" className="navbar-nav">
+              <ListGroup.Item>
+                <Link className=" textColor">Help Center</Link>
+              </ListGroup.Item>
+              <ListGroup.Item>
+                <Link className=" textColor">Jobs</Link>
               </ListGroup.Item>
             </ListGroup>
           </Col>
           <Col md={3}>
             <ListGroup variant="flush" className="navbar-nav">
               <ListGroup.Item>
-                <Link className=" textColor" href="#">
-                  Investor Relations
-                </Link>
-              </ListGroup.Item>
-              <ListGroup.Item>
-                <Link className=" textColor" href="#">
-                  Legal Notices
-                </Link>
-              </ListGroup.Item>
-            </ListGroup>
-          </Col>
-          <Col md={3}>
-            <ListGroup variant="flush" className="navbar-nav">
-              <ListGroup.Item>
-                <Link className=" textColor" href="#">
-                  Help Center
-                </Link>
-              </ListGroup.Item>
-              <ListGroup.Item>
-                <Link className=" textColor" href="#">
-                  Jobs
-                </Link>
-              </ListGroup.Item>
-              <ListGroup.Item>
-                <Link className=" textColor" href="#">
-                  Cookie Preferences
-                </Link>
-              </ListGroup.Item>
-            </ListGroup>
-          </Col>
-          <Col md={3}>
-            <ListGroup variant="flush" className="navbar-nav">
-              <ListGroup.Item>
-                <Link to={"/giftcard"} className=" textColor" href="#">
+                <Link to={"/giftcard"} className=" textColor">
                   Gift Cards
                 </Link>
               </ListGroup.Item>
               <ListGroup.Item>
-                <Link className=" textColor" href="#">
-                  Terms Of Use
-                </Link>
+                <Link className=" textColor">Terms Of Use</Link>
               </ListGroup.Item>
               <ListGroup.Item>
-                <Link className=" textColor" href="#">
-                  Corporate Information
-                </Link>
+                <Link className=" textColor">Privacy</Link>
+              </ListGroup.Item>
+              <ListGroup.Item>
+                <Link className=" textColor">Corporate Information</Link>
               </ListGroup.Item>
             </ListGroup>
           </Col>
         </Row>
       </Container>
+      <hr />
+      <Link className=" textColor ">
+        @{date.getFullYear()} Impuls Gaming. All rights reserved
+      </Link>
     </div>
   );
 };

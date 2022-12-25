@@ -8,6 +8,7 @@ import logo from "../img/Blue_Futuristic_Gaming_Logo-removebg-preview.png";
 import * as Icon from "react-bootstrap-icons";
 import { format, compareAsc } from "date-fns";
 import { Link } from "react-router-dom";
+import Footer from "./Footer.jsx";
 
 const GiftCard = () => {
   const [formData, updateFormData] = useState("");
@@ -311,6 +312,7 @@ const GiftCard = () => {
           </Col>
         </Row>
       </Container>
+      <Footer />
     </Container>
   );
 };

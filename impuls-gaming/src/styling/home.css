@@ -166,44 +166,6 @@ svg {
   margin: 0 10px;
 }
 
-.profile-pic {
-  height: 30px;
-  border-radius: 50%;
-  width: 30px;
-  object-fit: cover;
-}
 .background {
   background-color: white;
-}
-.logo {
-  width: 100px;
-}
-.avatar-small {
-  height: 24px;
-  margin-right: 10px;
-}
-.avatar {
-  height: 36px;
-}
-.dropdown-menu a {
-  font-size: 12px;
-}
-.dropdown-menu {
-  margin-left: -100px;
-  background-color: var(--home-bg-color);
-}
-.dropdown-menu-dark {
-  background-color: black !important;
-  transform: translateX(-50%);
-}
-.pushme-right {
-  margin-left: 40%;
-}
-.dropdown-item {
-  background-color: none;
-  color: white;
-}
-.card-body {
-  color: black;
-  font-size: 1em;
 }
