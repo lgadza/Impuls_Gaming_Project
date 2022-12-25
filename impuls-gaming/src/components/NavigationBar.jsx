@@ -15,7 +15,7 @@ const NavigationBar = () => {
             Features
           </Link>
           <Link to="/giftcard" className="mr-4">
-            Pricing
+            Gift
           </Link>
           <Link to={"/giftcard"} className="join-member px-5 py-1">
             JOIN

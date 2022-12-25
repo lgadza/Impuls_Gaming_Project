@@ -215,6 +215,7 @@ const GiftCard = () => {
                 <Form.Label>Delivery Date *</Form.Label>
                 <div className="ml-auto">
                   <DatePicker
+                    className="datepicker py-2 px-4"
                     selected={sendDate}
                     onChange={(date) => setSendDate(date)}
                     showTimeSelect
@@ -233,6 +234,7 @@ const GiftCard = () => {
             </Col>
           </Form>
           <Col>
+            <h3 className="mt-5">Card Preview</h3>
             <div className="d-flex giftcard-section ml-3 py-0 pr-5 mt-5">
               <div className="mr-2 giftcard-preview py-3 px-2">
                 <img className="logo-img mb-5" src={logo} alt="impuls logo" />
@@ -254,7 +256,7 @@ const GiftCard = () => {
                   </div>
                 </div>
               </div>
-              <div className=" ml-5 d-flex flex-column justify-content-center">
+              <div className=" preview-content ml-5 d-flex flex-column justify-content-center">
                 <div>
                   <h3 className="mb-5 pb-2">Impuls Gift Card</h3>
                   <h6

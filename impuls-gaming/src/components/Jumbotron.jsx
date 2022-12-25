@@ -11,8 +11,8 @@ const Jumbotron = () => {
 
       <div className="into  ">
         <div className="into-content py-2">
-          <h1>THE PREMIER GAMING LOUNGE</h1>
-          <h6 className="h6-border">
+          <h1 className="h1">THE PREMIER GAMING LOUNGE</h1>
+          <h6 className="h6-border ">
             Play, eat, enjoy in our upscale game lounge
           </h6>
         </div>

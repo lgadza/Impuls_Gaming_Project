@@ -1,9 +1,10 @@
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import giftcard from "../img/playstation_store.jpg";
 
 const HomeUpdates = () => {
   return (
-    <Container>
+    <Container className="textColor">
       <h2>WHAT'S NEW</h2>
       <Row>
         <Col className="md-4">
@@ -14,7 +15,10 @@ const HomeUpdates = () => {
               <Card.Text>
                 Gift Cards now available to order for your loved ones
               </Card.Text>
-              <Button variant="danger">Buy Gift Card</Button>
+              <Link to={"/giftcard"}>
+                {" "}
+                <Button variant="danger">Buy Gift Card</Button>
+              </Link>
             </Card.Body>
           </Card>
         </Col>
