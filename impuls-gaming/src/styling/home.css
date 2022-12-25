@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Just+Another+Hand&display=swap");
 /* .home {
   background-color: rgba(0, 0, 0, 0.4);
 } */
@@ -48,4 +49,73 @@ h1 {
 .h6-border {
   border-bottom: 0.2em solid goldenrod;
   display: inline-block;
+}
+.logo-img {
+  width: 6rem;
+  height: 7rem;
+  object-fit: cover;
+}
+.navBackground {
+  background-color: rgba(25, 0, 76, 255);
+  /* font-size: 1.2em; */
+  font-weight: bold;
+  color: #12bae3;
+}
+.navbarBrand {
+}
+.giftcard-preview {
+  background-color: rgba(25, 0, 76, 255);
+  color: #12bae3;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  font-size: 0.75em;
+}
+.giftcard-preview-nav {
+  background-color: rgba(25, 0, 76, 255);
+  color: #12bae3;
+}
+.card-preview-info {
+  border-bottom: 1px solid rgba(25, 0, 76, 255);
+}
+.recipient-info {
+  font-family: "Just Another Hand", cursive;
+  font-size: 1.5em;
+  line-height: 1em;
+  color: #12bae3;
+}
+.text-danger {
+  font-weight: bold;
+}
+.message {
+  display: inline-block;
+  max-width: 220px !important;
+  overflow-wrap: break-word;
+}
+.giftcard-section {
+  border-bottom: 2px solid rgba(25, 0, 76, 255);
+  border-top: 2px solid rgba(25, 0, 76, 255);
+  border-right: 2px solid rgba(25, 0, 76, 255);
+  border-radius: 20px;
+}
+.textColor {
+  color: rgba(25, 0, 76, 255);
+}
+textarea:focus {
+  color: rgba(25, 0, 76, 255) !important;
+}
+input:focus {
+  color: rgba(25, 0, 76, 255) !important;
+}
+input {
+  color: rgba(25, 0, 76, 255) !important;
+}
+textarea {
+  color: rgba(25, 0, 76, 255) !important;
+}
+.checkout-btn {
+  border-radius: 20px;
+  border: solid red;
+  background-color: red;
+  color: white;
+  font-weight: bold;
 }

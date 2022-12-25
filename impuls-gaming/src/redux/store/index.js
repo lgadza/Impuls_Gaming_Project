@@ -3,7 +3,7 @@ import {
   combineReducers,
   getDefaultMiddleware,
 } from "@reduxjs/toolkit";
-// import profileReducer from "../reducers/profileReducer";
+import giftData from "../reducers/giftCard";
 import localStorage from "redux-persist/lib/storage";
 import { persistReducer, persistStore } from "redux-persist";
 import { encryptTransform } from "redux-persist-transform-encrypt";
@@ -19,7 +19,7 @@ const persistConfig = {
 };
 
 const bigReducer = combineReducers({
-  //   profile: profileReducer,
+  giftData: giftData,
 });
 
 const persistedReducer = persistReducer(persistConfig, bigReducer);
