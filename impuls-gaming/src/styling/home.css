@@ -119,3 +119,10 @@ textarea {
   color: white;
   font-weight: bold;
 }
+/* .input-section {
+  border: 2px solid rgba(25, 0, 76, 255);
+  border-radius: 20px;
+} */
+.react-datepicker-wrapper {
+  border-radius: 3px !important;
+}

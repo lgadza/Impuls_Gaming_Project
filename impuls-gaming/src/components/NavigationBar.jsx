@@ -4,7 +4,7 @@ import "../styling/home.css";
 import logo from "../img/Blue_Futuristic_Gaming_Logo-removebg-preview.png";
 const NavigationBar = () => {
   return (
-    <Navbar variant="dark" className="my-0 py-0 px-5 navBackground">
+    <Navbar variant="dark" className="my-0 py-2 px-5 navBackground">
       <Container fluid className="my-0 py-0">
         <Navbar.Brand className="navbarBrand my-0 py-0">
           <img className="logo-img" src={logo} alt="" />
@@ -14,10 +14,10 @@ const NavigationBar = () => {
           <Link to="#features" className="mx-4">
             Features
           </Link>
-          <Link to="#pricing" className="mr-4">
+          <Link to="/giftcard" className="mr-4">
             Pricing
           </Link>
-          <Link to={``} className="join-member px-5 py-1">
+          <Link to={"/giftcard"} className="join-member px-5 py-1">
             JOIN
           </Link>
         </Nav>

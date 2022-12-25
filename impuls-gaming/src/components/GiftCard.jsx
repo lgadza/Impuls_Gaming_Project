@@ -7,6 +7,7 @@ import { useSelector, useDispatch } from "react-redux";
 import logo from "../img/Blue_Futuristic_Gaming_Logo-removebg-preview.png";
 import * as Icon from "react-bootstrap-icons";
 import { format, compareAsc } from "date-fns";
+import { Link } from "react-router-dom";
 
 const GiftCard = () => {
   const [formData, updateFormData] = useState("");
@@ -86,15 +87,17 @@ const GiftCard = () => {
     <Container fluid>
       <Row className="giftcard-preview-nav py-2 ">
         <Col className="d-flex flex-column ml-5">
-          <img className="logo-img " src={logo} alt="" />
-          <span className="mr-auto">www.impulsgaming.com</span>
+          <Link className="mr-auto" to={"/"}>
+            <img className="logo-img " src={logo} alt="" />
+          </Link>
+          <span className="mr-auto">LIVE EXPIRIENCE</span>
         </Col>
       </Row>
       <Container className="mt-5 textColor">
         <Row>
           <Form onSubmit={handleSubmit}>
-            <Col>
-              <h2>Give a Gift</h2>
+            <Col className="input-section">
+              <h1 className="mt-2">Give a Gift</h1>
               <h6>Choose amount</h6>
               <hr />
               <Form.Group
@@ -117,7 +120,8 @@ const GiftCard = () => {
                 </Col>
               </Form.Group>
               <h6>Personalise</h6>
-              <Form.Group>
+              <hr />
+              <Form.Group className="d-flex">
                 <Form.Label column sm={2}>
                   To*
                 </Form.Label>
@@ -141,7 +145,7 @@ const GiftCard = () => {
                   </Col>
                 </Row>
               </Form.Group>
-              <Form.Group>
+              <Form.Group className="d-flex">
                 <Form.Label column sm={2}>
                   From*
                 </Form.Label>
@@ -165,8 +169,8 @@ const GiftCard = () => {
                   </Col>
                 </Row>
               </Form.Group>
-              <Form.Group className="mb-3">
-                <Form.Label>Message</Form.Label>
+              <Form.Group className="mb-3 d-flex align-items-center">
+                <Form.Label className="mr-4">Message</Form.Label>
                 <Form.Control
                   as="textarea"
                   rows={3}
@@ -176,14 +180,15 @@ const GiftCard = () => {
                 />
               </Form.Group>
               <h6>Schedule Delivery</h6>
+              <hr />
 
-              <Form.Group>
-                <Form.Label>Send To*</Form.Label>
+              <Form.Group className="d-flex  align-items-center">
+                <Form.Label className="mr-4">Send To*</Form.Label>
 
                 <Row>
                   <Col>
                     <Form.Group className="mb-3">
-                      <Form.Label>Email </Form.Label>
+                      {/* <Form.Label>Email </Form.Label> */}
                       <Form.Control
                         type="email"
                         placeholder="Recipient Email"
@@ -194,7 +199,7 @@ const GiftCard = () => {
                   </Col>
                   <Col>
                     <Form.Group className="mb-3">
-                      <Form.Label>WhatsApp Number</Form.Label>
+                      {/* <Form.Label>WhatsApp Number</Form.Label> */}
                       <Form.Control
                         type="tel"
                         placeholder="Recipient WhatsApp Number"
@@ -206,22 +211,29 @@ const GiftCard = () => {
                   </Col>
                 </Row>
               </Form.Group>
-              <Form.Group className="mb-3">
+              <Form.Group className="mb-3 d-flex">
                 <Form.Label>Delivery Date *</Form.Label>
-                <DatePicker
-                  selected={sendDate}
-                  onChange={(date) => setSendDate(date)}
-                  showTimeSelect
-                  dateFormat="Pp"
-                />
+                <div className="ml-auto">
+                  <DatePicker
+                    selected={sendDate}
+                    onChange={(date) => setSendDate(date)}
+                    showTimeSelect
+                    dateFormat="Pp"
+                  />
+                </div>
               </Form.Group>
-              <button className="checkout-btn px-3 px-4 mr-auto" type="submit">
-                CheckOut
-              </button>
+              <div className="d-flex justify-content-flex-end mt-4">
+                <button
+                  className="checkout-btn py-1 px-4 ml-auto "
+                  type="submit"
+                >
+                  CheckOut
+                </button>
+              </div>
             </Col>
           </Form>
           <Col>
-            <div className="d-flex giftcard-section ml-3 py-0 pr-5">
+            <div className="d-flex giftcard-section ml-3 py-0 pr-5 mt-5">
               <div className="mr-2 giftcard-preview py-3 px-2">
                 <img className="logo-img mb-5" src={logo} alt="impuls logo" />
                 <div>
