@@ -12,10 +12,18 @@ const Footer = () => {
           <Col md={3}>
             <ListGroup className="navbar-nav">
               <ListGroup.Item>
-                <Icon.Facebook size={25} />
-                <Icon.Instagram size={25} />
-                <Icon.Twitter size={25} />
-                <Icon.Youtube size={25} />
+                <Link>
+                  <Icon.Facebook color="#4267B2" size={25} />
+                </Link>
+                <Link>
+                  <Icon.Instagram color="#cd486b" size={25} />
+                </Link>
+                <Link>
+                  <Icon.Twitter color="#1DA1F2" size={25} />
+                </Link>
+                <Link>
+                  <Icon.Youtube color="red" size={25} />
+                </Link>
               </ListGroup.Item>
               <ListGroup.Item>
                 <Link className=" textColor" href="#">

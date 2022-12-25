@@ -9,15 +9,17 @@ const NavigationBar = () => {
         <Navbar.Brand className="navbarBrand my-0 py-0">
           <img className="logo-img" src={logo} alt="" />
         </Navbar.Brand>
-        <Nav className="me-auto">
-          <Link to="#home">Home</Link>
-          <Link to="#features" className="mx-4">
+        <Nav className="me-auto ">
+          <Link to="#home" className="textColor">
+            Home
+          </Link>
+          <Link to="#features" className="mx-4 textColor">
             Features
           </Link>
-          <Link to="/giftcard" className="mr-4">
+          <Link to="/giftcard" className="mr-4 textColor">
             Gift
           </Link>
-          <Link to={"/sign-up"} className="join-member px-5 py-1">
+          <Link to={"/sign-up"} className="join-member px-5 py-1 ">
             JOIN
           </Link>
         </Nav>
