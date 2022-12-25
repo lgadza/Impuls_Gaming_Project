@@ -5,27 +5,16 @@ import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import { logInData } from "../redux/actions";
 
-const LogInPage = () => {
+const SignIn = () => {
   const [formData, updateFormData] = useState("");
 
   const dispatch = useDispatch();
-  const [name, setName] = useState("");
-  const [surname, setSurname] = useState("");
+
   const [check, setCheck] = useState(false);
   const [password, setPassword] = useState("");
   const isLoading = useSelector((state) => state.giftData.isLoading);
   const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState(undefined);
 
-  const handleName = (e) => {
-    setName(e.target.value);
-    dispatch(logInData(loginFormData));
-  };
-
-  const handleSurname = (e) => {
-    setSurname(e.target.value);
-    dispatch(logInData(loginFormData));
-  };
   const handlePassword = (e) => {
     setPassword(e.target.value);
     dispatch(logInData(loginFormData));
@@ -34,20 +23,14 @@ const LogInPage = () => {
     setEmail(e.target.value);
     dispatch(logInData(loginFormData));
   };
-  const handlePhone = (e) => {
-    setPhone(e.target.value);
-    dispatch(logInData(loginFormData));
-  };
+
   const handleCheck = (e) => {
     setCheck(e.target.value);
     dispatch(logInData(loginFormData));
   };
 
   const loginFormData = {
-    name: name,
-    surname: surname,
     email: email,
-    phone: phone,
     password: password,
     check: check,
   };
@@ -63,27 +46,10 @@ const LogInPage = () => {
       </Row>
       <Row className="d-flex justify-content-center mt-4 textColor">
         <Col md={4} className=" login-content">
-          <h1>Sign Up</h1>
-          <span>Please fill in the form to create an account</span>
+          <h1>Sign In</h1>
+          <Link>or create an account</Link>
           <hr />
-          <Form.Group className="d-flex mb-4">
-            <Col>
-              <Form.Control
-                placeholder="First name"
-                required
-                // onChange={handleChange}
-                onChange={handleName}
-              />
-            </Col>
-            <Col>
-              <Form.Control
-                placeholder="Last name"
-                required
-                // onChange={handleChange}
-                onChange={handleSurname}
-              />
-            </Col>
-          </Form.Group>
+
           <Form.Group className="mb-4">
             <Col>
               {" "}
@@ -103,15 +69,7 @@ const LogInPage = () => {
               />
             </Col>
           </Form.Group>
-          <Form.Group className="mb-4">
-            <Col>
-              <Form.Control
-                type="password"
-                placeholder=" Confirm Password"
-                onChange={handlePassword}
-              />
-            </Col>
-          </Form.Group>
+
           <Form.Group className="mb-3">
             <Col>
               <div className="d-flex align-items-center">
@@ -120,20 +78,18 @@ const LogInPage = () => {
                   type="checkbox"
                   onClick={handleCheck}
                 />
-                <span>I accept the</span>
-                <Link className="mx-1"> Teams of Use</Link> &{" "}
-                <Link className="ml-1">Privacy Policy</Link>
+                <span>Remember me</span>
               </div>
             </Col>
           </Form.Group>
           <div className=" d-flex mb-3">
             <Button className="px-4 sign-up-btn" variant="primary">
-              Sign Up
+              Sign in
             </Button>
           </div>
           <div className="mb-3">
             <span>
-              I already have an account? <Link>Sign in</Link>
+              <Link>Forgotten your password</Link>
             </span>
           </div>
         </Col>
@@ -141,4 +97,4 @@ const LogInPage = () => {
     </Container>
   );
 };
-export default LogInPage;
+export default SignIn;

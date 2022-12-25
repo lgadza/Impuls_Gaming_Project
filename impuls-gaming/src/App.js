@@ -5,6 +5,7 @@ import NavigationBar from "./components/NavigationBar";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./components/home";
 import GiftCard from "./components/GiftCard";
+import LogInPage from "./components/LogInPage";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Routes>
           <Route element={<Home />} path="/" />
           <Route element={<GiftCard />} path="/giftcard" />
+          <Route element={<LogInPage />} path="/sign-up" />
         </Routes>
       </BrowserRouter>
     </div>

@@ -17,7 +17,7 @@ const NavigationBar = () => {
           <Link to="/giftcard" className="mr-4">
             Gift
           </Link>
-          <Link to={"/giftcard"} className="join-member px-5 py-1">
+          <Link to={"/sign-up"} className="join-member px-5 py-1">
             JOIN
           </Link>
         </Nav>

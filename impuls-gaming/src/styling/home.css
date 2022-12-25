@@ -143,3 +143,14 @@ textarea {
   color: rgba(244, 92, 93, 255) !important;
   opacity: 0.5 !important ;
 }
+.login-page {
+  background-color: #12bae3;
+  min-height: 100vh;
+}
+.login-content {
+  background-color: white;
+  width: fit-content;
+}
+.sign-up-btn {
+  font-weight: bold;
+}

@@ -7,6 +7,7 @@ import giftData from "../reducers/giftCard";
 import localStorage from "redux-persist/lib/storage";
 import { persistReducer, persistStore } from "redux-persist";
 import { encryptTransform } from "redux-persist-transform-encrypt";
+import loginData from "../reducers/login";
 
 const persistConfig = {
   key: "root",
@@ -20,6 +21,7 @@ const persistConfig = {
 
 const bigReducer = combineReducers({
   giftData: giftData,
+  log: loginData,
 });
 
 const persistedReducer = persistReducer(persistConfig, bigReducer);
