@@ -4,6 +4,7 @@ import logo from "../img/Blue_Futuristic_Gaming_Logo-removebg-preview.png";
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import { logInData } from "../redux/actions";
+import * as Icon from "react-bootstrap-icons";
 
 const LogInPage = () => {
   const [formData, updateFormData] = useState("");
@@ -58,13 +59,20 @@ const LogInPage = () => {
           <Link className="mr-auto" to={"/"}>
             <img className="logo-img " src={logo} alt="" />
           </Link>
-          <span className="mr-auto">LIVE EXPIRIENCE</span>
+          <span className="mr-auto textColor">LIVE EXPIRIENCE</span>
         </Col>
       </Row>
       <Row className="d-flex justify-content-center mt-4 textColor">
         <Col md={4} className=" login-content">
-          <h1>Sign Up</h1>
-          <span>Please fill in the form to create an account</span>
+          <div className=" ml-3 d-flex justify-content-between align-items-center">
+            <h1>Sign Up</h1>
+            <Link to={"/"}>
+              <Icon.XLg size={20} />
+            </Link>{" "}
+          </div>
+          <span className="d-flex ml-3 ">
+            Please fill in the form to create an account
+          </span>
           <hr />
           <Form.Group className="d-flex mb-4">
             <Col>
@@ -126,14 +134,14 @@ const LogInPage = () => {
               </div>
             </Col>
           </Form.Group>
-          <div className=" d-flex mb-3">
-            <Button className="px-4 sign-up-btn" variant="primary">
+          <Col className=" d-flex mb-3">
+            <Button className="px-4 sign-up-btn w-100" variant="primary">
               Sign Up
             </Button>
-          </div>
+          </Col>
           <div className="mb-3">
             <span>
-              I already have an account? <Link>Sign in</Link>
+              I already have an account? <Link to={"/sign-in"}>Sign in</Link>
             </span>
           </div>
         </Col>

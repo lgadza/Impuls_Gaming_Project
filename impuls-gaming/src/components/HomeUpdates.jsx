@@ -5,7 +5,7 @@ import giftcard from "../img/playstation_store.jpg";
 const HomeUpdates = () => {
   return (
     <Container className="textColor">
-      <h2>WHAT'S NEW</h2>
+      <h2 className="mb-5">WHAT'S NEW</h2>
       <Row>
         <Col className="md-4">
           <Card>

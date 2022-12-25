@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Container, Row, Col, Form } from "react-bootstrap";
+import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { giftCardInf } from "../redux/actions/index.js";
@@ -90,13 +90,13 @@ const GiftCard = () => {
           <Link className="mr-auto" to={"/"}>
             <img className="logo-img " src={logo} alt="" />
           </Link>
-          <span className="mr-auto">LIVE EXPIRIENCE</span>
+          <span className="mr-auto textColor">LIVE EXPIRIENCE</span>
         </Col>
       </Row>
       <Container className="mt-5 textColor">
         <Row>
-          <Form onSubmit={handleSubmit}>
-            <Col className="input-section">
+          <Col className="input-section">
+            <Form onSubmit={handleSubmit}>
               <h1 className="mt-2">Give a Gift</h1>
               <h6>Choose amount</h6>
               <hr />
@@ -225,17 +225,17 @@ const GiftCard = () => {
               </Form.Group>
               <div className="d-flex justify-content-flex-end mt-4">
                 <button
-                  className="checkout-btn py-1 px-4 ml-auto "
+                  className="checkout-btn py-1 px-4 ml-auto w-100"
                   type="submit"
                 >
                   CheckOut
                 </button>
               </div>
-            </Col>
-          </Form>
+            </Form>
+          </Col>
           <Col>
             <h3 className="mt-5">Card Preview</h3>
-            <div className="d-flex giftcard-section ml-3 py-0 pr-5 mt-5">
+            <div className="d-flex giftcard-section ml-3 py-0 pr-5 mt-5 mb-5">
               <div className="mr-2 giftcard-preview py-3 px-2">
                 <img className="logo-img mb-5" src={logo} alt="impuls logo" />
                 <div>
@@ -303,6 +303,11 @@ const GiftCard = () => {
                 )}
               </div>
             </div>
+            <Link to={"/"} className="d-flex pt-3  justify-content-end">
+              <Button className="mt-5 px-5 " variant="primary">
+                Back
+              </Button>
+            </Link>
           </Col>
         </Row>
       </Container>

@@ -4,6 +4,7 @@ import logo from "../img/Blue_Futuristic_Gaming_Logo-removebg-preview.png";
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import { logInData } from "../redux/actions";
+import * as Icon from "react-bootstrap-icons";
 
 const SignIn = () => {
   const [formData, updateFormData] = useState("");
@@ -41,13 +42,20 @@ const SignIn = () => {
           <Link className="mr-auto" to={"/"}>
             <img className="logo-img " src={logo} alt="" />
           </Link>
-          <span className="mr-auto">LIVE EXPIRIENCE</span>
+          <span className="mr-auto textColor">LIVE EXPIRIENCE</span>
         </Col>
       </Row>
       <Row className="d-flex justify-content-center mt-4 textColor">
         <Col md={4} className=" login-content">
-          <h1>Sign In</h1>
-          <Link>or create an account</Link>
+          <div className=" ml-3 d-flex justify-content-between align-items-center">
+            <h1>Sign In</h1>
+            <Link to={"/"}>
+              <Icon.XLg size={20} />
+            </Link>{" "}
+          </div>
+          <Link className="d-flex ml-3 " to={"/sign-up"}>
+            or create an account
+          </Link>
           <hr />
 
           <Form.Group className="mb-4">
@@ -66,6 +74,7 @@ const SignIn = () => {
                 type="password"
                 placeholder=" Password"
                 onChange={handlePassword}
+                minLength={5}
               />
             </Col>
           </Form.Group>
@@ -82,11 +91,11 @@ const SignIn = () => {
               </div>
             </Col>
           </Form.Group>
-          <div className=" d-flex mb-3">
-            <Button className="px-4 sign-up-btn" variant="primary">
+          <Col className=" d-flex mb-3 ">
+            <Button className="px-4 sign-up-btn w-100" variant="primary">
               Sign in
             </Button>
-          </div>
+          </Col>
           <div className="mb-3">
             <span>
               <Link>Forgotten your password</Link>

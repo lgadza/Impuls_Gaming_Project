@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./components/home";
 import GiftCard from "./components/GiftCard";
 import LogInPage from "./components/LogInPage";
+import SignIn from "./components/LogIn";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route element={<Home />} path="/" />
           <Route element={<GiftCard />} path="/giftcard" />
           <Route element={<LogInPage />} path="/sign-up" />
+          <Route element={<SignIn />} path="/sign-in" />
         </Routes>
       </BrowserRouter>
     </div>
