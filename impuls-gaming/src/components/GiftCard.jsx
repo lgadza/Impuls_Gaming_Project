@@ -98,7 +98,7 @@ const GiftCard = () => {
         <Row>
           <Col className="input-section gift-container mt-5 mr-3 mt-5 ">
             <Form onSubmit={handleSubmit}>
-              <h1 className="mt-2">Give a Gift</h1>
+              <h3 className="mt-2">Give a Gift</h3>
               <h6>Choose amount</h6>
               <hr />
               <Form.Group

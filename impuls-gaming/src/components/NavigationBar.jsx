@@ -13,7 +13,7 @@ const NavigationBar = () => {
           <Link to="#home" className="textColor">
             Home
           </Link>
-          <Link to="#features" className="mx-4 textColor">
+          <Link to="/user-page" className="mx-4 textColor">
             Features
           </Link>
           <Link to="/giftcard" className="mr-4 textColor">

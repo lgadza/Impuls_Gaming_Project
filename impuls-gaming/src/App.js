@@ -7,6 +7,8 @@ import Home from "./components/home";
 import GiftCard from "./components/GiftCard";
 import LogInPage from "./components/LogInPage";
 import SignIn from "./components/LogIn";
+import UserPage from "./components/UserPage";
+import "react-circular-progressbar/dist/styles.css";
 
 function App() {
   return (
@@ -18,6 +20,7 @@ function App() {
           <Route element={<GiftCard />} path="/giftcard" />
           <Route element={<LogInPage />} path="/sign-up" />
           <Route element={<SignIn />} path="/sign-in" />
+          <Route element={<UserPage />} path="/user-page" />
         </Routes>
       </BrowserRouter>
     </div>

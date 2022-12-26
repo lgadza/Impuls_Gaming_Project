@@ -169,3 +169,36 @@ svg {
 .background {
   background-color: white;
 }
+.profile-img {
+  width: 8rem;
+  height: 8rem;
+  border-radius: 50%;
+}
+.check-tick {
+  border: 1px solid;
+  border-radius: 50%;
+}
+.user-page {
+  min-height: 100vh;
+}
+.profile-info {
+  min-height: 85vh;
+}
+.small-profile-img {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+}
+.CircularProgressbar-path {
+  stroke: rgba(25, 0, 76, 255) !important;
+}
+.CircularProgressbar-text {
+  fill: rgba(25, 0, 76, 255) !important;
+}
+/*
+.CircularProgressbar-trail {
+  stroke: gray;
+}
+.CircularProgressbar-background {
+  fill: green;
+} */
