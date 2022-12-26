@@ -92,9 +92,11 @@ const SignIn = () => {
             </Col>
           </Form.Group>
           <Col className=" d-flex mb-3 ">
-            <Button className="px-4 sign-up-btn w-100" variant="primary">
-              Sign in
-            </Button>
+            <Link to="/user-page" className="w-100">
+              <Button className="px-4 sign-up-btn w-100" variant="primary">
+                Sign in
+              </Button>
+            </Link>
           </Col>
           <div className="mb-3">
             <span>

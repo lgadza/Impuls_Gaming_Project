@@ -7,17 +7,20 @@ import { logInData } from "../redux/actions";
 import * as Icon from "react-bootstrap-icons";
 
 const LogInPage = () => {
+  const signInData = useSelector((state) => state.log.data);
+  console.log(signInData);
   const [formData, updateFormData] = useState("");
 
   const dispatch = useDispatch();
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
-  const [check, setCheck] = useState(false);
+  const [check, setCheck] = useState(true);
   const [password, setPassword] = useState("");
+  const [confrmPassword, setConfirmPassword] = useState("");
   const isLoading = useSelector((state) => state.giftData.isLoading);
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState(undefined);
-
+  console.log(check);
   const handleName = (e) => {
     setName(e.target.value);
     dispatch(logInData(loginFormData));
@@ -35,14 +38,24 @@ const LogInPage = () => {
     setEmail(e.target.value);
     dispatch(logInData(loginFormData));
   };
-  const handlePhone = (e) => {
-    setPhone(e.target.value);
+  const handleConfirmPassword = (e) => {
+    setConfirmPassword(e.target.value);
     dispatch(logInData(loginFormData));
   };
+  console.log(password.length);
   const handleCheck = (e) => {
-    setCheck(e.target.value);
+    // check ? setCheck(false) : setCheck(true);
+    name &&
+    surname &&
+    email &&
+    password === confrmPassword &&
+    password.length >= 5 &&
+    check
+      ? setCheck(false)
+      : setCheck(true);
     dispatch(logInData(loginFormData));
   };
+  console.log(name);
 
   const loginFormData = {
     name: name,
@@ -50,8 +63,10 @@ const LogInPage = () => {
     email: email,
     phone: phone,
     password: password,
+    confrmPassword: confrmPassword,
     check: check,
   };
+  console.log(check);
   return (
     <Container fluid className="login-page">
       <Row className="giftcard-preview-nav py-2 ">
@@ -79,16 +94,16 @@ const LogInPage = () => {
               <Form.Control
                 placeholder="First name"
                 required
-                // onChange={handleChange}
-                onChange={handleName}
+                // onInput={handleChange}
+                onInput={handleName}
               />
             </Col>
             <Col>
               <Form.Control
                 placeholder="Last name"
                 required
-                // onChange={handleChange}
-                onChange={handleSurname}
+                // onInput={handleChange}
+                onInput={handleSurname}
               />
             </Col>
           </Form.Group>
@@ -98,7 +113,7 @@ const LogInPage = () => {
               <Form.Control
                 type="email"
                 placeholder=" Email"
-                onChange={handleEmail}
+                onInput={handleEmail}
               />
             </Col>
           </Form.Group>
@@ -107,7 +122,7 @@ const LogInPage = () => {
               <Form.Control
                 type="password"
                 placeholder=" Password"
-                onChange={handlePassword}
+                onInput={handlePassword}
               />
             </Col>
           </Form.Group>
@@ -116,17 +131,22 @@ const LogInPage = () => {
               <Form.Control
                 type="password"
                 placeholder=" Confirm Password"
-                onChange={handlePassword}
+                onInput={handleConfirmPassword}
               />
             </Col>
           </Form.Group>
+          {password !== confrmPassword && (
+            <span className="blink_me d-flex ml-3 mb-2">
+              Password do not match*
+            </span>
+          )}
           <Form.Group className="mb-3">
             <Col>
               <div className="d-flex align-items-center">
                 <Form.Check
                   className="mr-2"
                   type="checkbox"
-                  onClick={handleCheck}
+                  onChange={handleCheck}
                 />
                 <span>I accept the</span>
                 <Link className="mx-1"> Teams of Use</Link> &{" "}
@@ -135,9 +155,15 @@ const LogInPage = () => {
             </Col>
           </Form.Group>
           <Col className=" d-flex mb-3">
-            <Button className="px-4 sign-up-btn w-100" variant="primary">
-              Sign Up
-            </Button>
+            <Link to="/user-page" className="w-100">
+              <Button
+                disabled={check}
+                className="px-4 sign-up-btn w-100"
+                variant="primary"
+              >
+                Sign Up
+              </Button>
+            </Link>
           </Col>
           <div className="mb-3">
             <span>

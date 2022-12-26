@@ -202,3 +202,12 @@ svg {
 .CircularProgressbar-background {
   fill: green;
 } */
+.blink_me {
+  animation: blinker 4s linear infinite;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
