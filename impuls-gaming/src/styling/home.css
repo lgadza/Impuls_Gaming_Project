@@ -43,7 +43,7 @@
   color: #12bae3;
 }
 .into-content {
-  margin-top: 12%;
+  margin-top: 8%;
   background-color: rgba(0, 0, 0, 0.6);
 }
 h1 {
@@ -210,4 +210,45 @@ svg {
   50% {
     opacity: 0;
   }
+}
+.bg-dark {
+  border-radius: 10px;
+}
+.league-provider-img {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  object-fit: fit;
+}
+a:hover {
+  color: rgba(244, 92, 93, 255);
+}
+.featured-games {
+  border: 3px solid;
+}
+.bg-secondary.text-white {
+  border-radius: 3px;
+}
+.join-call {
+  z-index: 3 !important;
+}
+.h1-join-call {
+  font-size: 8rem;
+  color: #0cc4f2;
+  font-weight: bold;
+  transform: rotate(-4deg);
+}
+.h2-join-call {
+  font-size: 2rem;
+  color: rgba(244, 92, 93, 255);
+  transform: rotate(-4deg);
+  font-weight: bold;
+
+  /* background-color: white; */
+}
+.dollar-prize {
+  color: goldenrod;
+  font-weight: bold;
+  font-size: 1.5rem;
+  background-color: rgba(25, 0, 76, 255);
 }

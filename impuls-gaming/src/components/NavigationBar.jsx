@@ -10,10 +10,16 @@ const NavigationBar = () => {
           <img className="logo-img" src={logo} alt="" />
         </Navbar.Brand>
         <Nav className="me-auto ">
-          <Link to="#home" className="textColor">
+          <Link to="/" className="textColor mr-4 ">
             Home
           </Link>
-          <Link to="/user-page" className="mx-4 textColor">
+          <Link to="" className="textColor mr-4 ">
+            Tournaments
+          </Link>
+          <Link to="#" className="textColor">
+            League
+          </Link>
+          <Link to="" className="mx-4 textColor">
             Features
           </Link>
           <Link to="/giftcard" className="mr-4 textColor">

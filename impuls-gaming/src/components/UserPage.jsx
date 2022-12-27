@@ -3,6 +3,7 @@ import * as Icon from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
 import profilePic from "../img/Louis profile .JPG";
 import { CircularProgressbar } from "react-circular-progressbar";
+import Table from "./Table";
 
 const UserPage = () => {
   const percentage = 80;
@@ -44,14 +45,15 @@ const UserPage = () => {
                 </Row>
                 <hr />
                 <Row>
-                  <div className="d-flex justify-content-between">
+                  <div className="d-flex justify-content-between bg-secondary text-white px-2 py-2">
                     <span className="mr-3">Joined</span>
                     <span>Dec 11, 2022</span>
                   </div>
                 </Row>
               </div>
-              <div className="ml-5">
+              <div className="ml-5 ">
                 <h5 className="d-flex ml-2 ">Louis Gadza</h5>
+                <hr />
                 <span className="d-flex ml-2 mb-4">
                   Favorite platforms
                 </span>{" "}
@@ -91,6 +93,7 @@ const UserPage = () => {
                     <Icon.Star className="mx-0 px-0" size={15} />
                   </Col>
                 </Row>
+                <hr />
                 <Row>
                   <Col>
                     <span className="d-flex mt-2 ml-2 ">
@@ -109,6 +112,7 @@ const UserPage = () => {
                     </div>
                   </Col>
                 </Row>
+                <hr />
                 <Row>
                   <Col className="d-flex mt-2 ml-2 ">
                     <span>Trophies</span>
@@ -166,10 +170,10 @@ const UserPage = () => {
               </div>
             </Row>
           </Col>
-          <Col>
+          <Col className="ml-4">
             <Row>
               <Link className="textColor mx-2">Overview</Link>
-              <Link className="textColor mx-2">Position</Link>
+              <Link className="textColor mx-2">Table</Link>
               <Link className="textColor mx-2">Fixture</Link>
               <Link className="textColor mx-2">Tournaments</Link>
               <Link className="textColor mx-2">Next League</Link>
@@ -177,6 +181,9 @@ const UserPage = () => {
               <Link to="/sign-in" className="textColor mx-2">
                 Log out
               </Link>
+            </Row>
+            <Row>
+              <Table />
             </Row>
           </Col>
         </Row>

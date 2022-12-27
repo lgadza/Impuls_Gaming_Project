@@ -10,11 +10,16 @@ const Jumbotron = () => {
       </video>
 
       <div className="into  ">
-        <div className="into-content py-2">
-          <h1 className="h1">THE PREMIER GAMING LOUNGE</h1>
+        <div className="into-content pb-5">
+          {/* <h1 className="h1">THE PREMIER GAMING LOUNGE</h1>
           <h6 className="h6-border ">
             Play, eat, enjoy in our upscale game lounge
-          </h6>
+          </h6> */}
+          <h1 className="h1-join-call ">JOIN NOW</h1>
+          <h2 className="h2-join-call">
+            AND STAND A CHANCE TO WIN CASH PRIZE{" "}
+          </h2>
+          <span className="dollar-prize px-3">$$$</span>
         </div>
       </div>
     </Container>
