@@ -54,8 +54,8 @@ const UserPage = () => {
   };
   const handleLikes = () => {};
   return (
-    <Container fluid className="textColor user-page main-container">
-      <Row className="mb-3 px-5 w-100 pt-4 d-flex align-items-center justify-content-between position-fixed giftcard-preview-nav">
+    <Container fluid className="textColor user-page main-container ">
+      <Row className="mb-3 px-5 w-100 py-3 d-flex align-items-center justify-content-between position-fixed giftcard-preview-nav">
         <div>
           <Link to="/" className="textColor">
             Homepage
@@ -281,7 +281,7 @@ const UserPage = () => {
                     </div>
                   </Col>
                 </Row>
-                <Row>
+                {/* <Row>
                   <Col className="my-3 ml-2 flex-column justify-content-center">
                     <div className="d-flex">
                       <strong>Winning rate</strong>
@@ -294,7 +294,7 @@ const UserPage = () => {
                       />
                     </div>
                   </Col>
-                </Row>
+                </Row> */}
               </div>
             </Row>
           </Col>
@@ -316,7 +316,7 @@ const UserPage = () => {
               </Link>
               {/* </div> */}
             </Row>
-            <Row className="mt-5">
+            <Row className="mt-5   pt-4 pl-3">
               {showTable && <Table />}
               {showChat && <Chat />}
             </Row>

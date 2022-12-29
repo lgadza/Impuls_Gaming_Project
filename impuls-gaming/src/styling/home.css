@@ -182,9 +182,9 @@ svg {
   min-height: 100vh;
 }
 .profile-info {
-  height: 95vh;
+  height: 84vh;
   position: sticky;
-  top: 15% !important;
+  top: 15.8% !important;
 }
 .small-profile-img {
   width: 3rem;
@@ -282,4 +282,48 @@ button-star {
 }
 .off {
   color: #ccc;
+}
+.search-icon {
+  position: absolute;
+  left: 10px;
+}
+
+.search-field {
+  padding-right: 40px;
+  border-radius: 3px;
+  border: 1px solid rgba(244, 92, 93, 255);
+}
+.search-field:focus {
+  outline: 1px solid rgba(244, 92, 93, 255) !important;
+}
+.inputContainer {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.small-profile-img2 {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+}
+.user-profiles {
+  max-height: 70vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  position: static;
+  top: 20% !important;
+}
+.user-time-reply {
+  font-size: 0.75rem;
+  opacity: 0.7;
+}
+.user-fullname {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 90px;
+}
+.chat-section {
+  position: static;
+  top: 20% !important;
 }
