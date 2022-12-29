@@ -4,11 +4,8 @@ import * as Icon from "react-bootstrap-icons";
 const Table = () => {
   const API_KEY = "043889e9ea73af9c34129e6f7d0dd4c8";
 
-  let players = [
-    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
-  ];
   return (
-    <Col>
+    <Col className="scoll-table">
       <Row>
         <div className="d-flex align-items-center textColor2 mx-2">
           <div>Season</div>
@@ -38,9 +35,9 @@ const Table = () => {
         </Col>
       </Row>
       <hr />
-      {players.map((player, index) => (
+      {[...Array(20)].map((player, index) => (
         <div>
-          <Row className="w-100 pr-0 mr-0 textColor2 ">
+          <Row className="w-100 pr-0 mr-0 textColor2 container">
             <Col className="d-flex justify-content-between pl-3 pr-0">
               <div>
                 <span className="mr-2">{index + 1}</span>

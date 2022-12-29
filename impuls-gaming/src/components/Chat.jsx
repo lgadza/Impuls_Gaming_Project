@@ -11,7 +11,7 @@ const Chat = () => {
   const handleShow = () => setShow(true);
 
   return (
-    <Row className="w-100 gift-container chat-section">
+    <Row className=" gift-container chat-section">
       <Col md={8}>
         <div className="user-chats user-profiles ">
           <Row>
@@ -96,7 +96,7 @@ const Chat = () => {
       <Col md={4} className=" user-profiles mt-4  ">
         {[...Array(15)].map((user) => (
           <Row>
-            <Col className="d-flex justify-content-between my-1">
+            <Col className="d-flex justify-content-between pl-2 my-1">
               <img
                 src={profilePic}
                 alt=""

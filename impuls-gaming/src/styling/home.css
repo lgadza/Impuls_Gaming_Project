@@ -260,8 +260,7 @@ a:hover {
   /* width: 70%; */
 }
 .position-fixed-2 {
-  position: fixed;
-  /* position: absolute; */
+  /* position: fixed; */
   border-radius: 2px;
   z-index: 1;
 }
@@ -354,4 +353,12 @@ button-star {
 }
 .text-background {
   background-color: #ddd4d4d4;
+}
+.scoll-table {
+  max-height: 72vh !important;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.user-position {
+  border-bottom: 1px solid rgba(244, 92, 93, 255);
 }
