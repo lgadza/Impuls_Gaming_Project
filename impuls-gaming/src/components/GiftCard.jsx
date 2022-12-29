@@ -132,21 +132,20 @@ const GiftCard = () => {
                     <Form.Control
                       placeholder="First name"
                       required
-                      // onChange={handleChange}
                       onChange={handleName}
+                      className="mb-3"
                     />
                   </Col>
                   <Col>
                     <Form.Control
                       placeholder="Last name"
                       required
-                      // onChange={handleChange}
                       onChange={handleSurname}
                     />
                   </Col>
                 </Row>
               </Form.Group>
-              <Form.Group className="d-flex">
+              <Form.Group className="d-flex mb-3">
                 <Form.Label column sm={2}>
                   From*
                 </Form.Label>
@@ -164,7 +163,6 @@ const GiftCard = () => {
                     <Form.Control
                       placeholder="Last name"
                       required
-                      // onChange={handleChange}
                       onChange={handleSenderSurname}
                     />
                   </Col>
@@ -175,7 +173,6 @@ const GiftCard = () => {
                 <Form.Control
                   as="textarea"
                   rows={3}
-                  // onChange={handleChange}
                   onChange={handleMessage}
                   maxLength={100}
                 />
@@ -184,7 +181,7 @@ const GiftCard = () => {
               <hr />
 
               <Form.Group className="d-flex  align-items-center">
-                <Form.Label className="mr-4">Send To*</Form.Label>
+                <Form.Label className="mr-4 text-nowrap">Send To*</Form.Label>
 
                 <Row>
                   <Col>
