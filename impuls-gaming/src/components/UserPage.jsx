@@ -281,7 +281,7 @@ const UserPage = () => {
                     </div>
                   </Col>
                 </Row>
-                {/* <Row>
+                <Row>
                   <Col className="my-3 ml-2 flex-column justify-content-center">
                     <div className="d-flex">
                       <strong>Winning rate</strong>
@@ -294,7 +294,7 @@ const UserPage = () => {
                       />
                     </div>
                   </Col>
-                </Row> */}
+                </Row>
               </div>
             </Row>
           </Col>
@@ -316,7 +316,7 @@ const UserPage = () => {
               </Link>
               {/* </div> */}
             </Row>
-            <Row className="mt-5   pt-4 pl-3">
+            <Row className="mt-5   pt-4pl-3">
               {showTable && <Table />}
               {showChat && <Chat />}
             </Row>
