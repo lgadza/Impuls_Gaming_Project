@@ -182,7 +182,9 @@ svg {
   min-height: 100vh;
 }
 .profile-info {
-  min-height: 85vh;
+  height: 95vh;
+  position: sticky;
+  top: 15% !important;
 }
 .small-profile-img {
   width: 3rem;
@@ -251,4 +253,33 @@ a:hover {
   font-weight: bold;
   font-size: 1.5rem;
   background-color: rgba(25, 0, 76, 255);
+}
+.position-fixed {
+  position: fixed;
+  z-index: 1;
+  /* width: 70%; */
+}
+.position-fixed-2 {
+  position: fixed;
+  /* position: absolute; */
+  border-radius: 2px;
+  z-index: 1;
+}
+.side-bar {
+  margin-top: 7rem !important;
+}
+.textColor2 {
+  color: rgba(25, 0, 76, 255);
+}
+button-star {
+  background-color: transparent;
+  border: none !important;
+  outline: none;
+  cursor: pointer;
+}
+.on {
+  color: rgba(244, 92, 93, 255);
+}
+.off {
+  color: #ccc;
 }
