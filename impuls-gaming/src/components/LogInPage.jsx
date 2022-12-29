@@ -78,7 +78,7 @@ const LogInPage = () => {
         </Col>
       </Row>
       <Row className="d-flex justify-content-center mt-4 textColor">
-        <Col md={4} className=" login-content">
+        <Col lg={4} className=" login-content">
           <div className=" ml-3 d-flex justify-content-between align-items-center">
             <h1>Sign Up</h1>
             <Link to={"/"}>

@@ -5,7 +5,7 @@ import NavigationBar from "./NavigationBar";
 
 const Home = () => {
   return (
-    <div className="home main-container">
+    <div className="home  main-container">
       <NavigationBar />
       <Jumbotron />
       <HomeUpdates />

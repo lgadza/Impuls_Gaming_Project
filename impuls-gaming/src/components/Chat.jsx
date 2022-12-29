@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { userChat } from "../redux/actions";
 import ScrollToBottom from "react-scroll-to-bottom";
+import Moment from "react-moment";
 
 const Chat = () => {
   const message = useSelector((state) => state.userChat.data);
@@ -16,6 +17,7 @@ const Chat = () => {
   const handleShow = () => setShow(true);
   const [userMessage, setUserMessage] = useState(undefined);
   const dispatch = useDispatch();
+  const date = new Date();
 
   const handleMessage = (e) => {
     setUserMessage(e.target.value);
@@ -33,20 +35,19 @@ const Chat = () => {
   };
   return (
     <Row className=" gift-container chat-section">
+      <Row className="w-100 d-flex mx-auto giftcard-preview-nav py-2 ">
+        <Col className="inputContainer  w-100">
+          <Icon.Search className="search-icon textColor" size={20} />
+          <input
+            type="search"
+            placeholder="search user by name"
+            className="w-100 pr-1 pl-5 py-2 mx-3 search-field"
+          />
+        </Col>
+      </Row>
       <Col md={8}>
         <ScrollToBottom>
           <div className="user-chats user-profiles ">
-            <Row>
-              <Col className="inputContainer mt-3 w-100">
-                <Icon.Search className="search-icon" size={20} />
-                <input
-                  type="search"
-                  placeholder="search user by name"
-                  className="w-100 pr-1 pl-5 py-2 mr-3 search-field"
-                />
-              </Col>
-            </Row>
-
             {[...Array(5)].map((user) => (
               <Row>
                 <Col className="d-flex justify-content-between mt-4">
@@ -75,15 +76,17 @@ const Chat = () => {
             {message &&
               message.map((message) => (
                 <Row>
-                  <Col className="d-flex justify-content-between mt-4 w-100">
+                  <Col className="d-flex justify-content-between mt-3 w-100">
                     <div className="d-flex w-100  flex-column text-left mr-auto">
                       <span className="text-chat w-100 main-container px-2 py-1">
                         {message}
                       </span>
                       <span className="d-flex justify-content-end align-items-center">
-                        <strong>Louis Gadza</strong>
-                        <Icon.Dot />
-                        <span>12 min</span>
+                        <span className="date ml-0 px-0">
+                          <Moment format="D MMM, HH:mm">{date}</Moment>
+                        </span>
+                        <Icon.Dot className="mx-0 px-0" />
+                        <strong className="mr-0 pr-0">Louis Gadza</strong>
                       </span>
                     </div>
                     <img
@@ -99,7 +102,7 @@ const Chat = () => {
         <hr />
         <div>
           <Form onSubmit={handleSubmit}>
-            <Form.Group className="mb-3 d-flex align-items-center main-container ">
+            <Form.Group className="mb-2 d-flex align-items-center main-container ">
               <Form.Control
                 className="main-container"
                 placeholder="Write a message..."
@@ -113,7 +116,7 @@ const Chat = () => {
               <Icon.Image size={20} />
               {userMessage && (
                 <button
-                  className="textColor px-3 send-btn main-container"
+                  className="textColor px-3 mb-1 send-btn main-container"
                   type="submit"
                   onClick={handleSend}
                 >
@@ -125,7 +128,7 @@ const Chat = () => {
         </div>
       </Col>
 
-      <Col md={4} className=" user-profiles mt-4  ">
+      <Col md={4} className=" user-profiles   ">
         {[...Array(15)].map((user) => (
           <Row>
             <Col className="d-flex justify-content-between pl-2 my-1">

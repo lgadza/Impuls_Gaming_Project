@@ -316,7 +316,7 @@ const UserPage = () => {
               </Link>
               {/* </div> */}
             </Row>
-            <Row className=" px-3  pt-4 ">
+            <Row className=" px-3  pt-2 ">
               {showTable && <Table />}
               {showChat && <Chat />}
             </Row>
