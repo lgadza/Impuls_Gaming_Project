@@ -4,8 +4,31 @@ import * as Icon from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import fifa23 from "../img/fifa23.jpg";
+import { useSelector, useDispatch } from "react-redux";
 
 const CreateTournament = ({ visible, onhide }) => {
+  const dispatch = useDispatch();
+  const handleData = () => {
+    onhide();
+  };
+  const [tournament, setTournament] = useState("");
+  const [platformChecked, setPlatformCheck] = useState("");
+  const [size, setSize] = useState(undefined);
+  const formValues = {
+    tournament_name: tournament,
+    discipline: "FIFA 23",
+    platform: platformChecked,
+    size: size,
+  };
+
+  const handleTournament = (e) => {
+    setTournament(e.target.value);
+  };
+  const handleSize = (e) => {
+    setSize(e.target.value);
+  };
+
+  console.log(formValues);
   return (
     <Modal
       scrollable
@@ -22,8 +45,13 @@ const CreateTournament = ({ visible, onhide }) => {
           <Row className="mx-auto w-100  mb-5">
             <Form className="w-100">
               <Form.Group className="mb-3 w-100">
-                <Form.Label>Tournament name</Form.Label>
-                <Form.Control className="w-100" type="text" />
+                <Form.Label>Tournament name*</Form.Label>
+                <Form.Control
+                  className="w-100"
+                  type="text"
+                  required
+                  onChange={handleTournament}
+                />
               </Form.Group>
             </Form>
           </Row>
@@ -51,19 +79,31 @@ const CreateTournament = ({ visible, onhide }) => {
           <div className="my-2">Platform</div>
           <Row>
             <Col>
-              <Button className="primary-btn textColor" size="lg">
+              <Button
+                className="primary-btn textColor"
+                size="lg"
+                onClick={() => setPlatformCheck("Playstation 5")}
+              >
                 Playstation 5
               </Button>
             </Col>
             <Col>
               {" "}
-              <Button className="primary-btn textColor" size="lg">
+              <Button
+                className="primary-btn textColor"
+                size="lg"
+                onClick={() => setPlatformCheck("Playstation 4")}
+              >
                 Playstation 4
               </Button>
             </Col>
             <Col>
               {" "}
-              <Button className="primary-btn textColor" size="lg">
+              <Button
+                className="primary-btn textColor"
+                size="lg"
+                onClick={() => setPlatformCheck("XBox")}
+              >
                 XBox
               </Button>
             </Col>
@@ -72,8 +112,14 @@ const CreateTournament = ({ visible, onhide }) => {
             <Col>
               <Form className="w-100">
                 <Form.Group className="my-3 w-100">
-                  <Form.Label>Size</Form.Label>
-                  <Form.Control className="w-100" type="number" min={0} />
+                  <Form.Label>Size*</Form.Label>
+                  <Form.Control
+                    className="w-100"
+                    type="number"
+                    min={0}
+                    required
+                    onChange={handleSize}
+                  />
                 </Form.Group>
               </Form>
             </Col>
@@ -84,10 +130,16 @@ const CreateTournament = ({ visible, onhide }) => {
               <Button onClick={onhide} variant="outline-primary">
                 Cancel
               </Button>
-              <Button className="primary-btn ml-3 textColor">
-                <Icon.Plus size={30} />
-                Create
-              </Button>
+              <Link to="/projects/overview">
+                <Button
+                  type="submit"
+                  onClick={handleData}
+                  className="primary-btn ml-3 textColor"
+                >
+                  <Icon.Plus size={30} />
+                  Create
+                </Button>
+              </Link>
             </div>
           </Row>
         </Container>

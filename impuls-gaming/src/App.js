@@ -10,6 +10,8 @@ import SignIn from "./components/LogIn";
 import UserPage from "./components/UserPage";
 import "react-circular-progressbar/dist/styles.css";
 import Organizer from "./components/Organizer";
+import TournamentOverview from "./components/TournamentOverview";
+import BackOffice from "./components/BackOffice";
 
 function App() {
   return (
@@ -22,7 +24,8 @@ function App() {
           <Route element={<LogInPage />} path="/sign-up" />
           <Route element={<SignIn />} path="/sign-in" />
           <Route element={<UserPage />} path="/user-page" />
-          <Route element={<Organizer />} path="/projects" />
+          <Route element={<BackOffice />} path="//backoffice-projects" />
+          <Route element={<TournamentOverview />} path="/projects/overview" />
         </Routes>
       </BrowserRouter>
     </div>

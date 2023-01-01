@@ -409,3 +409,9 @@ button-star {
   height: 1px;
   background-color: #0cc4f2;
 }
+/* .modal-lg {
+  max-width: 80% !important;
+} */
+.overview-border {
+  border-bottom: 3px solid #0cc4f2;
+}
