@@ -3,6 +3,7 @@ import logo from "../img/Blue_Futuristic_Gaming_Logo-removebg-preview.png";
 import * as Icon from "react-bootstrap-icons";
 import { useState, useEffect } from "react";
 import CreateTournament from "./CreateTournament";
+import fifa from "../img/fifa23.jpg";
 
 const Organizer = () => {
   const [show, setShow] = useState(false);
@@ -18,16 +19,26 @@ const Organizer = () => {
           className=" my-projects giftcard-preview-nav d-flex flex-column"
         >
           <img className=" mt-4 logo-img" src={logo} alt="" />
-          <hr />
+          <hr className="hr" />
           <h3 className="d-flex">My Projects</h3>
           <div>
-            <h6>Tournament</h6>
-            <div>
-              <img src="" alt="" />
-              <div>
-                <span>Name Of Tournament</span> <span>FIFA 23</span>{" "}
+            <h6 className="d-flex my-3">Tournament</h6>
+            <div className="d-flex  ">
+              <img className="tournament-name-img" src={fifa} alt="" />
+              <div className="d-flex flex-column">
+                <span className="d-flex ml-2">Name Of Tournament</span>{" "}
+                <span className="d-flex ml-2">FIFA 23</span>{" "}
               </div>
             </div>
+          </div>
+          <hr className="hr" />
+          <div className="d-flex flex-column align-items-start">
+            <div>Overview</div>
+            <div className="my-2">Settings</div>
+            <div>Participants</div>
+            <div className="my-2">Matches</div>
+            <div>Final standing</div>
+            <div className="my-2">Share</div>
           </div>
         </Col>
         <Col lg={9} className="">

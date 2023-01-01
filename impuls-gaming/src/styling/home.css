@@ -400,3 +400,12 @@ button-star {
   outline: none !important;
   box-shadow: none !important;
 }
+.tournament-name-img {
+  width: 4rem;
+  height: 3rem;
+}
+.hr {
+  width: 100%;
+  height: 1px;
+  background-color: #0cc4f2;
+}
