@@ -367,3 +367,36 @@ button-star {
   font-size: 12px;
   opacity: 0.6;
 }
+.plus-project {
+  /* background-color: white; */
+  /* display: inline-block !important; */
+  width: 20rem;
+  height: 15rem;
+  box-shadow: 1px 3px 5px rgba(25, 0, 76, 255);
+  border-radius: 5px;
+}
+.my-projects {
+  min-height: 100vh;
+}
+.plus-project:hover {
+  border: 2px solid rgba(244, 92, 93, 255);
+}
+.discipline-img {
+  width: 10rem;
+  height: 10rem;
+  object-fit: cover;
+}
+.primary-btn {
+  width: 10rem;
+  background-color: rgba(25, 0, 76, 255);
+}
+.primary-btn:hover {
+  color: white !important;
+  background-color: rgba(25, 0, 76, 255);
+}
+.primary-btn:focus {
+  background-color: rgba(244, 92, 93, 255);
+  color: rgba(25, 0, 76, 255) !important;
+  outline: none !important;
+  box-shadow: none !important;
+}

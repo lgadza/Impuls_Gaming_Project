@@ -9,6 +9,7 @@ import LogInPage from "./components/LogInPage";
 import SignIn from "./components/LogIn";
 import UserPage from "./components/UserPage";
 import "react-circular-progressbar/dist/styles.css";
+import Organizer from "./components/Organizer";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route element={<LogInPage />} path="/sign-up" />
           <Route element={<SignIn />} path="/sign-in" />
           <Route element={<UserPage />} path="/user-page" />
+          <Route element={<Organizer />} path="/projects" />
         </Routes>
       </BrowserRouter>
     </div>

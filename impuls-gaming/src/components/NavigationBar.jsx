@@ -13,7 +13,7 @@ const NavigationBar = () => {
           <Link to="/" className="textColor mr-4 ">
             Home
           </Link>
-          <Link to="" className="textColor mr-4 ">
+          <Link to="/projects" className="textColor mr-4 ">
             Tournaments
           </Link>
           <Link to="#" className="textColor">
