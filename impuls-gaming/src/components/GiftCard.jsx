@@ -186,23 +186,19 @@ const GiftCard = () => {
                 <Row>
                   <Col>
                     <Form.Group className="mb-3">
-                      {/* <Form.Label>Email </Form.Label> */}
                       <Form.Control
                         type="email"
                         placeholder="Recipient Email"
-                        // onChange={handleChange}
                         onChange={handleEmail}
                       />
                     </Form.Group>
                   </Col>
                   <Col>
                     <Form.Group className="mb-3">
-                      {/* <Form.Label>WhatsApp Number</Form.Label> */}
                       <Form.Control
                         type="tel"
                         placeholder="Recipient WhatsApp Number"
                         required
-                        // onChange={handleChange}
                         onChange={handlePhone}
                       />
                     </Form.Group>

@@ -12,6 +12,7 @@ import "react-circular-progressbar/dist/styles.css";
 import Organizer from "./components/Organizer";
 import TournamentOverview from "./components/TournamentOverview";
 import BackOffice from "./components/BackOffice";
+import ActivateRegistration from "./components/ActivateRegistration";
 
 function App() {
   return (
@@ -24,10 +25,14 @@ function App() {
           <Route element={<LogInPage />} path="/sign-up" />
           <Route element={<SignIn />} path="/sign-in" />
           <Route element={<UserPage />} path="/user-page" />
-          <Route element={<BackOffice />} path="/backoffice-projects" />
+          <Route element={<BackOffice />} path="/backoffice" />
           <Route
             element={<TournamentOverview />}
-            path="/backoffice-projects/projects/overview/:tournamentId"
+            path="/backoffice/projects/overview/:tournamentId"
+          />
+          <Route
+            element={<ActivateRegistration />}
+            path="/backoffice/projects/overview/:tournament/registration/settings"
           />
         </Routes>
       </BrowserRouter>

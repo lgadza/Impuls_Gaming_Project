@@ -159,7 +159,7 @@ const CreateTournament = ({ visible, onhide }) => {
               <Button onClick={onhide} variant="outline-primary">
                 Cancel
               </Button>
-              <Link to={`/backoffice-projects/projects/overview/${tournament}`}>
+              <Link to={`/backoffice/projects/overview/${tournament}`}>
                 <Button
                   disabled={notUnique}
                   type="submit"

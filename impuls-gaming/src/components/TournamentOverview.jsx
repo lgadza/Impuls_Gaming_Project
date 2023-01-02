@@ -131,7 +131,7 @@ const TournamentOverview = () => {
                     platform offers: check-in, matches list, results report ...
                   </Card.Text>
                   <Link
-                    to={`/backoffice-projects/projects/overview/${tournament.tournament_name}/registration/settings`}
+                    to={`/backoffice/projects/overview/${tournament.tournament_name}/registration/settings`}
                   >
                     <Icon.Gear size={30} />
                     <span>Enable registration</span>

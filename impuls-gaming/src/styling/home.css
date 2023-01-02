@@ -474,3 +474,6 @@ button[disabled].primary-btn {
   background-color: #cccccc;
   color: #666666 !important;
 }
+.registration-card {
+  width: 80% !important;
+}
