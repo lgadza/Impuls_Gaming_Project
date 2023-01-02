@@ -9,6 +9,7 @@ import { persistReducer, persistStore } from "redux-persist";
 import { encryptTransform } from "redux-persist-transform-encrypt";
 import loginData from "../reducers/login";
 import userChat from "../reducers/userChat";
+import newTournament from "../reducers/newTournament";
 
 const persistConfig = {
   key: "root",
@@ -24,6 +25,7 @@ const bigReducer = combineReducers({
   giftData: giftData,
   log: loginData,
   userChat: userChat,
+  tournament: newTournament,
 });
 
 const persistedReducer = persistReducer(persistConfig, bigReducer);

@@ -3,7 +3,7 @@ import fifa from "../img/fifa23.jpg";
 import * as Icon from "react-bootstrap-icons";
 import logo from "../img/Blue_Futuristic_Gaming_Logo-removebg-preview.png";
 
-const BackOfficeNav = () => {
+const BackOfficeNav = ({ data }) => {
   return (
     <Col className=" my-projects giftcard-preview-nav d-flex flex-column">
       <img className=" mt-4 logo-img" src={logo} alt="" />
@@ -14,8 +14,12 @@ const BackOfficeNav = () => {
         <div className="d-flex  ">
           <img className="tournament-name-img" src={fifa} alt="" />
           <div className="d-flex flex-column">
-            <span className="d-flex ml-2">Name Of Tournament</span>{" "}
-            <span className="d-flex ml-2">FIFA 23</span>{" "}
+            <span className="d-flex ml-2">
+              {data[data.length - 1].tournament_name}
+            </span>{" "}
+            <span className="d-flex ml-2">
+              {data[data.length - 1].discipline}
+            </span>{" "}
           </div>
         </div>
       </div>

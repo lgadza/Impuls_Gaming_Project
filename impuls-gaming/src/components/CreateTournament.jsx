@@ -5,10 +5,12 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import fifa23 from "../img/fifa23.jpg";
 import { useSelector, useDispatch } from "react-redux";
+import { createTournament } from "../redux/actions";
 
 const CreateTournament = ({ visible, onhide }) => {
   const dispatch = useDispatch();
   const handleData = () => {
+    dispatch(createTournament(formValues));
     onhide();
   };
   const [tournament, setTournament] = useState("");
@@ -71,6 +73,7 @@ const CreateTournament = ({ visible, onhide }) => {
                     className="w-100"
                     type="text"
                     placeholder="Chosen game"
+                    value="FIFA 23"
                   />
                 </Form.Group>
               </Form>

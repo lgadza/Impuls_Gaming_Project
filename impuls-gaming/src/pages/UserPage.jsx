@@ -3,9 +3,9 @@ import * as Icon from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
 import profilePic from "../img/Louis profile .JPG";
 import { CircularProgressbar } from "react-circular-progressbar";
-import Table from "./Table";
+import Table from "../components/Table";
 import { useState } from "react";
-import Chat from "./Chat";
+import Chat from "../components/Chat";
 
 const UserPage = () => {
   const percentage = 80;

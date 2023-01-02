@@ -13,12 +13,16 @@ import fifa from "../img/fifa23.jpg";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import BackOfficeNav from "./BackOfficeNav";
-const TournamentOverview = ({ visible, onhide }) => {
+import { useSelector, useDispatch } from "react-redux";
+const TournamentOverview = () => {
+  const dispatch = useDispatch();
+  const tournamentData = useSelector((state) => state.tournament.data);
+  console.log(tournamentData.length - 1);
   return (
     <Container fluid className="main-container textColor">
       <Row>
         <Col lg={3} className="px-0">
-          <BackOfficeNav />
+          <BackOfficeNav data={tournamentData} />
         </Col>
         <Col lg={9} className="my-5 px-5">
           <h3 className="d-flex mb-5">Overview</h3>
@@ -36,9 +40,18 @@ const TournamentOverview = ({ visible, onhide }) => {
                         />
                         <div className="d-flex flex-column">
                           <span className="d-flex ml-2">
-                            Name Of Tournament
+                            {
+                              tournamentData[tournamentData.length - 1]
+                                .tournament_name
+                            }
                           </span>{" "}
-                          <span className="d-flex ml-2">FIFA 23</span>{" "}
+                          <span className="d-flex ml-2">
+                            {" "}
+                            {
+                              tournamentData[tournamentData.length - 1]
+                                .discipline
+                            }
+                          </span>{" "}
                         </div>
                       </div>
                     </Col>
