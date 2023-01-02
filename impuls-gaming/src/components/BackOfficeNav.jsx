@@ -14,12 +14,8 @@ const BackOfficeNav = ({ data }) => {
         <div className="d-flex  ">
           <img className="tournament-name-img" src={fifa} alt="" />
           <div className="d-flex flex-column">
-            <span className="d-flex ml-2">
-              {data[data.length - 1].tournament_name}
-            </span>{" "}
-            <span className="d-flex ml-2">
-              {data[data.length - 1].discipline}
-            </span>{" "}
+            <span className="d-flex ml-2">{data.tournament_name}</span>{" "}
+            <span className="d-flex ml-2">{data.discipline}</span>{" "}
           </div>
         </div>
       </div>

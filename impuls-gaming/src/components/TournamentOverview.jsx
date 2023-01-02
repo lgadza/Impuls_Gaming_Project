@@ -14,17 +14,25 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import BackOfficeNav from "./BackOfficeNav";
 import { useSelector, useDispatch } from "react-redux";
+import { useNavigate, useParams } from "react-router-dom";
+
 const TournamentOverview = () => {
+  const params = useParams();
+  console.log(params.tournamentId);
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const tournamentData = useSelector((state) => state.tournament.data);
-  console.log(tournamentData.length - 1);
+  const tournament = tournamentData.find(
+    (name) => name.tournament_name === params.tournamentId
+  );
+  console.log(tournament);
   return (
     <Container fluid className="main-container textColor">
       <Row>
-        <Col lg={3} className="px-0">
-          <BackOfficeNav data={tournamentData} />
+        <Col lg={2} className="px-0">
+          <BackOfficeNav data={tournament} />
         </Col>
-        <Col lg={9} className="my-5 px-5">
+        <Col lg={10} className="my-5 px-5">
           <h3 className="d-flex mb-5">Overview</h3>
           <Row className=" mb-5">
             <Col>
@@ -40,17 +48,11 @@ const TournamentOverview = () => {
                         />
                         <div className="d-flex flex-column">
                           <span className="d-flex ml-2">
-                            {
-                              tournamentData[tournamentData.length - 1]
-                                .tournament_name
-                            }
+                            {tournament.tournament_name}
                           </span>{" "}
                           <span className="d-flex ml-2">
                             {" "}
-                            {
-                              tournamentData[tournamentData.length - 1]
-                                .discipline
-                            }
+                            {tournament.discipline}
                           </span>{" "}
                         </div>
                       </div>
@@ -128,7 +130,9 @@ const TournamentOverview = () => {
                     tournament. They will enjoy all the participant features the
                     platform offers: check-in, matches list, results report ...
                   </Card.Text>
-                  <Link>
+                  <Link
+                    to={`/backoffice-projects/projects/overview/${tournament.tournament_name}/registration/settings`}
+                  >
                     <Icon.Gear size={30} />
                     <span>Enable registration</span>
                   </Link>

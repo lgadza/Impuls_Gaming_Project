@@ -205,7 +205,7 @@ svg {
   fill: green;
 } */
 .blink_me {
-  animation: blinker 4s linear infinite;
+  animation: blinker 0.5s linear infinite;
 }
 
 @keyframes blinker {
@@ -400,6 +400,15 @@ button-star {
   outline: none !important;
   box-shadow: none !important;
 }
+.create-btn {
+  background-color: rgba(25, 0, 76, 255);
+  width: 80%;
+}
+.create-btn:focus {
+  background-color: rgba(25, 0, 76, 255);
+  outline: none !important;
+  box-shadow: none !important;
+}
 .tournament-name-img {
   width: 4rem;
   height: 3rem;
@@ -414,6 +423,9 @@ button-star {
 } */
 .overview-border {
   border-bottom: 3px solid #0cc4f2;
+}
+#create-btn {
+  display: none;
 }
 @media screen and (max-width: 1413px) {
   .plus-project {
@@ -437,6 +449,9 @@ button-star {
     box-shadow: 1px 3px 5px rgba(25, 0, 76, 255);
     border-radius: 5px;
   }
+  .d-sm-none.my-projects.giftcard-preview-nav {
+    display: none !important ;
+  }
 }
 @media screen and (max-width: 576px) {
   .plus-project {
@@ -446,4 +461,16 @@ button-star {
     box-shadow: 1px 3px 5px rgba(25, 0, 76, 255);
     border-radius: 5px;
   }
+}
+@media screen and (max-width: 992px) {
+  #create-btn {
+    display: block;
+    margin-right: 5rem;
+  }
+}
+.button:disabled,
+button[disabled].primary-btn {
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666 !important;
 }

@@ -16,13 +16,27 @@ const CreateTournament = ({ visible, onhide }) => {
   const [tournament, setTournament] = useState("");
   const [platformChecked, setPlatformCheck] = useState("");
   const [size, setSize] = useState(undefined);
+  const [disable, setDisable] = useState(true);
+
+  const tournamentData = useSelector((state) => state.tournament.data);
+  const notUnique = tournamentData.find(
+    (name) => name.tournament_name === tournament
+  );
+  console.log(notUnique);
+  console.log("Disable", disable);
+  console.log(tournament);
+  console.log(notUnique === undefined);
+  console.log(size);
+  console.log(disable);
+  // const handleProvidedData = (e) => {
+  //   tournament && size && !notUnique ? setDisable(false) : setDisable(true);
+  // };
   const formValues = {
     tournament_name: tournament,
     discipline: "FIFA 23",
     platform: platformChecked,
     size: size,
   };
-
   const handleTournament = (e) => {
     setTournament(e.target.value);
   };
@@ -54,6 +68,11 @@ const CreateTournament = ({ visible, onhide }) => {
                   required
                   onChange={handleTournament}
                 />
+                {notUnique && (
+                  <span className=" blink_me ml-2 mt-2 textColor">
+                    Tournament name already exist
+                  </span>
+                )}
               </Form.Group>
             </Form>
           </Row>
@@ -72,8 +91,9 @@ const CreateTournament = ({ visible, onhide }) => {
                   <Form.Control
                     className="w-100"
                     type="text"
-                    placeholder="Chosen game"
+                    placeholder="chosen game"
                     value="FIFA 23"
+                    onChange={handleSize}
                   />
                 </Form.Group>
               </Form>
@@ -85,7 +105,9 @@ const CreateTournament = ({ visible, onhide }) => {
               <Button
                 className="primary-btn textColor"
                 size="lg"
-                onClick={() => setPlatformCheck("Playstation 5")}
+                onClick={() => {
+                  setPlatformCheck("Playstation 5");
+                }}
               >
                 Playstation 5
               </Button>
@@ -95,7 +117,9 @@ const CreateTournament = ({ visible, onhide }) => {
               <Button
                 className="primary-btn textColor"
                 size="lg"
-                onClick={() => setPlatformCheck("Playstation 4")}
+                onClick={() => {
+                  setPlatformCheck("Playstation 4");
+                }}
               >
                 Playstation 4
               </Button>
@@ -105,7 +129,9 @@ const CreateTournament = ({ visible, onhide }) => {
               <Button
                 className="primary-btn textColor"
                 size="lg"
-                onClick={() => setPlatformCheck("XBox")}
+                onClick={() => {
+                  setPlatformCheck("XBox");
+                }}
               >
                 XBox
               </Button>
@@ -133,8 +159,9 @@ const CreateTournament = ({ visible, onhide }) => {
               <Button onClick={onhide} variant="outline-primary">
                 Cancel
               </Button>
-              <Link to="/projects/overview">
+              <Link to={`/backoffice-projects/projects/overview/${tournament}`}>
                 <Button
+                  disabled={notUnique}
                   type="submit"
                   onClick={handleData}
                   className="primary-btn ml-3 textColor"

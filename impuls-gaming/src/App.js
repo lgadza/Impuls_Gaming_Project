@@ -24,8 +24,11 @@ function App() {
           <Route element={<LogInPage />} path="/sign-up" />
           <Route element={<SignIn />} path="/sign-in" />
           <Route element={<UserPage />} path="/user-page" />
-          <Route element={<BackOffice />} path="//backoffice-projects" />
-          <Route element={<TournamentOverview />} path="/projects/overview" />
+          <Route element={<BackOffice />} path="/backoffice-projects" />
+          <Route
+            element={<TournamentOverview />}
+            path="/backoffice-projects/projects/overview/:tournamentId"
+          />
         </Routes>
       </BrowserRouter>
     </div>
