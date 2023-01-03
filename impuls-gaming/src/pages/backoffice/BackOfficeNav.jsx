@@ -45,7 +45,10 @@ const BackOfficeNav = ({ data, page }) => {
               Settings
             </span>
           </Link>
-          <Link className="d-flex">
+          <Link
+            to={`/backoffice/projects/participants/${data.tournament_name}`}
+            className="d-flex"
+          >
             <span
               className={
                 page === "participants" ? "current textColor" : undefined
@@ -54,14 +57,20 @@ const BackOfficeNav = ({ data, page }) => {
               Participants
             </span>
           </Link>
-          <Link className="my-2 d-flex">
+          <Link
+            to={`/backoffice/projects/settings/${data.tournament_name}`}
+            className="my-2 d-flex"
+          >
             <span
               className={page === "matches" ? "current textColor" : undefined}
             >
               Matches
             </span>
           </Link>
-          <Link className="d-flex">
+          <Link
+            to={`/backoffice/projects/settings/${data.tournament_name}`}
+            className="d-flex"
+          >
             <span
               className={
                 page === "final-standing" ? "current textColor" : undefined

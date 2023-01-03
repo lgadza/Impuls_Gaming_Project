@@ -16,6 +16,7 @@ import ActivateRegistration from "./pages/backoffice/ActivateRegistration";
 import ParticipantCheckin from "./pages/backoffice/ParticipantCheckin";
 import Settings from "./pages/backoffice/Settings";
 import Match from "./pages/backoffice/Match";
+import Participants from "./pages/backoffice/Participants";
 
 function App() {
   return (
@@ -36,6 +37,10 @@ function App() {
           <Route
             element={<Settings />}
             path="/backoffice/projects/settings/:tournamentId"
+          />
+          <Route
+            element={<Participants />}
+            path="/backoffice/projects/participants/:tournamentId"
           />
           <Route
             element={<ActivateRegistration />}

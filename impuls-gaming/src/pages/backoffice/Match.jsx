@@ -7,6 +7,7 @@ import {
   Button,
   OverlayTrigger,
   Tooltip,
+  Alert,
 } from "react-bootstrap";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
@@ -25,8 +26,10 @@ const Match = () => {
   const tournament = tournamentData.find(
     (name) => name.tournament_name === params.tournament
   );
-  console.log(tournament);
-
+  const [update, setUpdate] = useState(false);
+  const handleUpdate = () => {
+    setUpdate(true);
+  };
   //   const [key, setKey] = useState("activation");
 
   return (
@@ -36,10 +39,19 @@ const Match = () => {
           <BackOfficeNav data={tournament} page={"settings"} />
         </Col>
         <Col lg={10} className="my-5 px-5">
+          {update && (
+            <div className="registration-card mx-auto">
+              <Alert key={"success"} variant={"success"}>
+                <Icon.CheckCircle size={15} />
+                <span>Settings have been successfully updated.</span>
+              </Alert>
+            </div>
+          )}
           <Card className="registration-card mx-auto">
             <Card.Header>
               <h3 className="d-flex my-4">Match Settings</h3>
             </Card.Header>
+
             <Card.Body>
               <Tabs
                 activeKey="match"
@@ -48,7 +60,8 @@ const Match = () => {
                 className="mb-3 mx-auto d-flex justify-content-center mx-5 px-5"
               >
                 <Tab eventKey="match" title="Match">
-                  <span className=" d-flex align-items-center mt-5">
+                  <h5 className="d-flex">Participant reporting</h5>
+                  <span className=" d-flex align-items-center ">
                     Enable Participants Reporting?
                     <OverlayTrigger
                       placement="top"
@@ -75,6 +88,7 @@ const Match = () => {
                           type="radio"
                           name="register"
                           label="Yes"
+                          checked
                           className="mr-3"
                         />
 
@@ -82,23 +96,28 @@ const Match = () => {
                       </div>
                     </Form>
                   </div>
-                  <Form.Select aria-label="Default select example">
+                  <Form.Select
+                    aria-label="Default select example"
+                    className="datepicker py-2 px-4 w-100 textColor"
+                  >
                     <option>Open this select menu</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                    <option value="1">Single game</option>
+                    <option value="2">Home and away</option>
+                    <option value="3">Best of 3</option>
+                    <option value="3">Best of 5</option>
+                    <option value="3">Fixed games</option>
                   </Form.Select>
                   <Link
                     // to={`/backoffice/projects/overview/${tournament}`}
-                    className="d-flex justify-content-end mt-4"
+                    className="d-flex justify-content-end mt-4 link-none-deco"
                   >
                     <Button
                       type="submit"
-                      //   onClick={handleData}
+                      onClick={handleUpdate}
                       className="primary-btn textColor"
                     >
                       <Icon.Pencil size={20} />
-                      Create
+                      Update
                     </Button>
                   </Link>
                 </Tab>

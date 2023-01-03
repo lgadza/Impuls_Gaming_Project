@@ -7,6 +7,7 @@ import {
   Button,
   OverlayTrigger,
   Tooltip,
+  Alert,
 } from "react-bootstrap";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
@@ -29,6 +30,10 @@ const ParticipantCheckin = () => {
   const [registrationOpens, setRegistrationOpens] = useState("");
   const [registrationCloses, setRegistrationCloses] = useState("");
   const [key, setKey] = useState("activation");
+  const [update, setUpdate] = useState(false);
+  const handleUpdate = () => {
+    setUpdate(true);
+  };
 
   return (
     <Container fluid className="main-container textColor">
@@ -37,6 +42,14 @@ const ParticipantCheckin = () => {
           <BackOfficeNav data={tournament} page={"settings"} />
         </Col>
         <Col lg={10} className="my-5 px-5">
+          {update && (
+            <div className="registration-card mx-auto">
+              <Alert key={"success"} variant={"success"}>
+                <Icon.CheckCircle size={15} />
+                <span>Settings have been successfully updated.</span>
+              </Alert>
+            </div>
+          )}
           <Card className="registration-card mx-auto">
             <Card.Header>
               <h3 className="d-flex my-4">Participant Settings</h3>
@@ -121,7 +134,7 @@ const ParticipantCheckin = () => {
                   >
                     <Button
                       type="submit"
-                      //   onClick={handleData}
+                      onClick={handleUpdate}
                       className="primary-btn textColor"
                     >
                       <Icon.Pencil size={20} />

@@ -7,6 +7,7 @@ import {
   Button,
   OverlayTrigger,
   Tooltip,
+  Alert,
 } from "react-bootstrap";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
@@ -29,6 +30,10 @@ const ActivateRegistration = () => {
   const [registrationOpens, setRegistrationOpens] = useState("");
   const [registrationCloses, setRegistrationCloses] = useState("");
   const [key, setKey] = useState("activation");
+  const [update, setUpdate] = useState(false);
+  const handleUpdate = () => {
+    setUpdate(true);
+  };
 
   return (
     <Container fluid className="main-container textColor">
@@ -37,6 +42,14 @@ const ActivateRegistration = () => {
           <BackOfficeNav data={tournament} page={"settings"} />
         </Col>
         <Col lg={10} className="my-5 px-5">
+          {update && (
+            <div className="registration-card mx-auto">
+              <Alert key={"success"} variant={"success"}>
+                <Icon.CheckCircle size={15} />
+                <span>Settings have been successfully updated.</span>
+              </Alert>
+            </div>
+          )}
           <Card className="registration-card mx-auto">
             <Card.Header>
               <h3 className="d-flex my-4">Registration Settings</h3>
@@ -94,13 +107,10 @@ const ActivateRegistration = () => {
                       />
                     </Form.Group>
                   </Form.Group>
-                  <Link
-                    to={`/backoffice/projects/overview/${tournament}`}
-                    className="d-flex justify-content-end mt-4"
-                  >
+                  <Link className="d-flex justify-content-end mt-4">
                     <Button
                       type="submit"
-                      //   onClick={handleData}
+                      onClick={handleUpdate}
                       className="primary-btn textColor"
                     >
                       <Icon.Pencil size={20} />
@@ -176,13 +186,10 @@ const ActivateRegistration = () => {
                       </div>
                     </Form>
                   </div>
-                  <Link
-                    to={`/backoffice/projects/overview/${tournament}`}
-                    className="d-flex justify-content-end mt-4"
-                  >
+                  <Link className="d-flex justify-content-end mt-4">
                     <Button
                       type="submit"
-                      //   onClick={handleData}
+                      onClick={handleUpdate}
                       className="primary-btn textColor"
                     >
                       <Icon.Pencil size={20} />
@@ -247,13 +254,10 @@ const ActivateRegistration = () => {
                       //   onChange={handleMessage}
                     />
                   </Form.Group>
-                  <Link
-                    to={`/backoffice/projects/overview/${tournament}`}
-                    className="d-flex justify-content-end mt-4"
-                  >
+                  <Link className="d-flex justify-content-end mt-4">
                     <Button
                       type="submit"
-                      //   onClick={handleData}
+                      onClick={handleUpdate}
                       className="primary-btn textColor"
                     >
                       <Icon.Pencil size={20} />

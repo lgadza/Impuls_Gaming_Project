@@ -487,3 +487,6 @@ button[disabled].primary-btn {
 .link-none-deco {
   text-decoration: none !important;
 }
+.border-right {
+  border-right: 1px solid;
+}
