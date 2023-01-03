@@ -8,6 +8,7 @@ import {
   OverlayTrigger,
   Tooltip,
   Alert,
+  Carousel,
 } from "react-bootstrap";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
@@ -35,6 +36,14 @@ const Participants = () => {
   const [search, setSearch] = useState(false);
   const handleSearch = () => {
     search === false ? setSearch(true) : setSearch(false);
+  };
+  const slides = [1, 2, 3];
+  const customIndicators = (props) => {
+    return (
+      <div className="indicator">
+        <span>{slides[props.index]}</span>
+      </div>
+    );
   };
   return (
     <Container fluid className="main-container textColor">
@@ -146,36 +155,60 @@ const Participants = () => {
                   </div>
                 </div>
                 <hr />
-                <div className="d-flex justify-content-between">
+                <div className="d-flex mb-3  justify-content-between">
                   <span>Name</span>
                   <span>Email</span>
                   <span>Created at</span>
                 </div>
-                <hr />
-                <div className="d-flex ">
+
+                {/* <div className="d-flex ">
                   <ul className="pl-0 w-100">
-                    {[...Array(10)].map((participant, index) => (
-                      <li className="w-100" key={index}>
-                        <div className="d-flex justify-content-between">
-                          <div>
-                            <input className="mr-1" type="checkbox" />
-                            <span>Louis Gadza</span>
-                          </div>
-                          <div className="">
-                            <span>date</span>
-                            <Icon.ThreeDotsVertical />
-                          </div>
-                        </div>
-                      </li>
-                    ))}
+                    <Carousel
+                      interval={9999999}
+                      indicatorLabels={customIndicators}
+                    >
+                      <Carousel.Item>
+                        {[...Array(20)].map((participant, index) => (
+                          <li className="w-100 participant-list" key={index}>
+                            <div className="d-flex justify-content-between my-3 pl-2">
+                              <div>
+                                <input className="mr-1" type="checkbox" />
+                                <span className="mr-1">{index + 1}</span>
+                                <span>Louis Gadza</span>
+                              </div>
+                              <div className="">
+                                <span>date</span>
+                                <Icon.ThreeDotsVertical />
+                              </div>
+                            </div>
+                          </li>
+                        ))}
+                      </Carousel.Item>
+                      <Carousel.Item>
+                        {[...Array(10)].map((participant, index) => (
+                          <li className="w-100 participant-list" key={index}>
+                            <div className="d-flex justify-content-between pl-2 my-3">
+                              <div>
+                                <input className="mr-1" type="checkbox" />
+                                <span>Louis Gadza</span>
+                              </div>
+                              <div className="">
+                                <span>date</span>
+                                <Icon.ThreeDotsVertical />
+                              </div>
+                            </div>
+                          </li>
+                        ))}
+                      </Carousel.Item>
+                    </Carousel>
                   </ul>
-                </div>
-                {/* <hr />
+                </div> */}
+                <hr />
                 <div className="d-flex justify-content-between">
                   <span className="mx-auto my-4">
                     <strong>No participants found</strong>
                   </span>
-                </div> */}
+                </div>
                 <hr />
                 <div className="d-flex">
                   <div className="my-auto">

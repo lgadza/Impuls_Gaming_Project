@@ -14,7 +14,7 @@ const NavigationBar = () => {
           <Link to="/" className="textColor mr-4 ">
             Home
           </Link>
-          <Link to="/backoffice" className="textColor mr-4 ">
+          <Link to="/" className="textColor mr-4 ">
             Tournaments
           </Link>
           <Link to="#" className="textColor">
@@ -25,6 +25,9 @@ const NavigationBar = () => {
           </Link>
           <Link to="/giftcard" className="mr-4 textColor">
             Gift
+          </Link>
+          <Link to="/backoffice" className="link-none-deco mr-4 ">
+            Backoffice
           </Link>
           <Link to={"/sign-up"} className="join-member px-5 py-1 ">
             JOIN

@@ -5,18 +5,20 @@ const Table = () => {
   const API_KEY = "043889e9ea73af9c34129e6f7d0dd4c8";
 
   return (
-    <Col className="scoll-table">
-      <Row>
-        <div className="d-flex align-items-center textColor2 mx-2">
-          <div>Season</div>
-          <div>
-            <NavDropdown title="March/20-27 " menuVariant="dark">
-              <Dropdown.Item href="#/action-1">April/01-07</Dropdown.Item>
-              <Dropdown.Item href="#/action-2">April/01-07</Dropdown.Item>
-              <Dropdown.Item href="#/action-3">April/01-07</Dropdown.Item>
-            </NavDropdown>
+    <Col className="scoll-table gift-container chat-section">
+      <Row className="w-100 d-flex mx-auto   ">
+        <Col>
+          <div className="d-flex align-items-center textColor2 mx-2">
+            <div>Season</div>
+            <div>
+              <NavDropdown title="March/20-27 " menuVariant="dark">
+                <Dropdown.Item href="#/action-1">April/01-07</Dropdown.Item>
+                <Dropdown.Item href="#/action-2">April/01-07</Dropdown.Item>
+                <Dropdown.Item href="#/action-3">April/01-07</Dropdown.Item>
+              </NavDropdown>
+            </div>
           </div>
-        </div>
+        </Col>
       </Row>
       <hr />
       <Row className="w-100 pr-0 mr-0 textColor2">
@@ -41,7 +43,7 @@ const Table = () => {
             <Col className="d-flex justify-content-between pl-3 pr-0">
               <div>
                 <span className="mr-2">{index + 1}</span>
-                <span>Louis Gadza</span>
+                <span className="text-nowrap">Louis Gadza</span>
               </div>
               <div className="d-flex justify-content-end mr-0">
                 <span className="mx-3">MP</span>
@@ -49,7 +51,7 @@ const Table = () => {
                 <span className="mx-3">D</span>
                 <span className="mx-3">L</span>
                 <span className="mx-3">Pts</span>
-                <span className="ml-3">
+                <span className="ml-3 text-nowrap">
                   <Icon.CheckCircleFill
                     className="mx-0"
                     size={13}

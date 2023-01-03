@@ -6,6 +6,8 @@ import { CircularProgressbar } from "react-circular-progressbar";
 import Table from "../components/Table";
 import { useState } from "react";
 import Chat from "../components/Chat";
+import Tab from "react-bootstrap/Tab";
+import Tabs from "react-bootstrap/Tabs";
 
 const UserPage = () => {
   const percentage = 80;
@@ -19,6 +21,7 @@ const UserPage = () => {
   const [hoverPS, setHoverPS] = useState(0);
   const [showTable, setShowTable] = useState(false);
   const [showChat, setShowChat] = useState(false);
+  const [key, setKey] = useState("activation");
 
   const [isLeagueChecked, setIsLeagueChecked] = useState(false);
   const [isTournamentChecked, setIsTournamentChecked] = useState(false);
@@ -299,9 +302,9 @@ const UserPage = () => {
             </Row>
           </Col>
           <Col className="ml-4 mt-5 side-bar">
-            <Row className="position-fixed-2 giftcard-preview-nav py-3 px-3">
+            <Row className="position-fixed-2  py-3 ">
               {/* <div className="position-fixed-2 bg-white"> */}
-              <Link className="textColor mx-2">Overview</Link>
+              {/* <Link className="textColor mx-2">Overview</Link>
               <Link onClick={handleShowTable} className="textColor mx-2">
                 Table
               </Link>
@@ -313,13 +316,36 @@ const UserPage = () => {
               </Link>
               <Link to="/sign-in" className="textColor mx-2">
                 Log out
-              </Link>
+              </Link> */}
+              <Tabs
+                activeKey={key}
+                defaultActiveKey="profile"
+                onSelect={(k) => setKey(k)}
+                className="mb-3  d-flex justify-content-center  textColor"
+              >
+                <Tab
+                  className="textColor2"
+                  eventKey="overview"
+                  title="Overview"
+                ></Tab>
+                <Tab eventKey="table" title="Table">
+                  <Table />
+                </Tab>
+                <Tab eventKey="fixture" title="Fixture"></Tab>
+                <Tab eventKey="tournaments" title="Tournaments"></Tab>
+                <Tab eventKey="friends" title="Friends">
+                  <Chat />
+                </Tab>
+                <Tab eventKey=" log-out" title=" Log out">
+                  <Chat />
+                </Tab>
+              </Tabs>
               {/* </div> */}
             </Row>
-            <Row className=" px-3  pt-2 ">
+            {/* <Row className=" px-3  pt-2 ">
               {showTable && <Table />}
               {showChat && <Chat />}
-            </Row>
+            </Row> */}
           </Col>
         </Row>
       </Container>

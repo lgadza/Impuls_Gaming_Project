@@ -10,7 +10,11 @@ const BackOfficeNav = ({ data, page }) => {
     <Col className=" my-projects giftcard-preview-nav d-flex flex-column">
       <img className=" mt-4 logo-img" src={logo} alt="" />
       <hr className="hr" />
-      <h3 className="d-flex">My Projects</h3>
+      <Link className="link-none-deco" to="/backoffice">
+        <h3 className="d-flex">My Projects</h3>
+      </Link>
+      <hr className="hr" />
+
       <div>
         <h6 className="d-flex my-3">Tournament</h6>
         <div className="d-flex  ">
