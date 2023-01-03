@@ -9,6 +9,7 @@ const NavigationBar = () => {
         <Navbar.Brand className="navbarBrand my-0 py-0">
           <img className="logo-img" src={logo} alt="" />
         </Navbar.Brand>
+
         <Nav className="me-auto ">
           <Link to="/" className="textColor mr-4 ">
             Home

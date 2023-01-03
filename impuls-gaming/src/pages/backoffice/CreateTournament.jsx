@@ -3,9 +3,9 @@ import * as Icon from "react-bootstrap-icons";
 
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import fifa23 from "../img/fifa23.jpg";
+import fifa23 from "../../img/fifa23.jpg";
 import { useSelector, useDispatch } from "react-redux";
-import { createTournament } from "../redux/actions";
+import { createTournament } from "../../redux/actions";
 
 const CreateTournament = ({ visible, onhide }) => {
   const dispatch = useDispatch();

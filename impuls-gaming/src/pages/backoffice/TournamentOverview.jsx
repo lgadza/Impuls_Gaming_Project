@@ -8,7 +8,7 @@ import {
   Card,
 } from "react-bootstrap";
 import * as Icon from "react-bootstrap-icons";
-import fifa from "../img/fifa23.jpg";
+import fifa from "../../img/fifa23.jpg";
 
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
@@ -30,7 +30,7 @@ const TournamentOverview = () => {
     <Container fluid className="main-container textColor">
       <Row>
         <Col lg={2} className="px-0">
-          <BackOfficeNav data={tournament} />
+          <BackOfficeNav data={tournament} page={"overview"} />
         </Col>
         <Col lg={10} className="my-5 px-5">
           <h3 className="d-flex mb-5">Overview</h3>
@@ -90,7 +90,9 @@ const TournamentOverview = () => {
                     not use the registration. You may configure the check-in
                     either way.
                   </Card.Text>
-                  <Link>
+                  <Link
+                    to={`/backoffice/projects/settings/${tournament.tournament_name}/participants`}
+                  >
                     <Icon.Gear size={30} />
                     <span>Configure check-in</span>
                   </Link>
@@ -131,7 +133,7 @@ const TournamentOverview = () => {
                     platform offers: check-in, matches list, results report ...
                   </Card.Text>
                   <Link
-                    to={`/backoffice/projects/overview/${tournament.tournament_name}/registration/settings`}
+                    to={`/backoffice/projects/settings/${tournament.tournament_name}/registration/`}
                   >
                     <Icon.Gear size={30} />
                     <span>Enable registration</span>

@@ -1,9 +1,9 @@
 import { Col, Container, Row, Form, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import logo from "../img/Blue_Futuristic_Gaming_Logo-removebg-preview.png";
+import logo from "../../img/Blue_Futuristic_Gaming_Logo-removebg-preview.png";
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
-import { logInData } from "../redux/actions";
+import { logInData } from "../../redux/actions";
 import * as Icon from "react-bootstrap-icons";
 
 const SignIn = () => {

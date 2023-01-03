@@ -381,6 +381,10 @@ button-star {
 .plus-project:hover {
   border: 2px solid rgba(244, 92, 93, 255);
 }
+.settings-card:hover {
+  box-shadow: 1px 3px 5px rgba(25, 0, 76, 255);
+}
+
 .discipline-img {
   width: 10rem;
   height: 10rem;
@@ -476,4 +480,10 @@ button[disabled].primary-btn {
 }
 .registration-card {
   width: 80% !important;
+}
+/* .current {
+  color: rgba(244, 92, 93, 255) !important;
+} */
+.link-none-deco {
+  text-decoration: none !important;
 }

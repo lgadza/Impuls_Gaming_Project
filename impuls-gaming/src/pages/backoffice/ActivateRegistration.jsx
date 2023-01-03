@@ -34,7 +34,7 @@ const ActivateRegistration = () => {
     <Container fluid className="main-container textColor">
       <Row>
         <Col lg={2} className="px-0">
-          <BackOfficeNav data={tournament} />
+          <BackOfficeNav data={tournament} page={"settings"} />
         </Col>
         <Col lg={10} className="my-5 px-5">
           <Card className="registration-card mx-auto">
@@ -257,7 +257,7 @@ const ActivateRegistration = () => {
                       className="primary-btn textColor"
                     >
                       <Icon.Pencil size={20} />
-                      Create
+                      Update
                     </Button>
                   </Link>
                 </Tab>

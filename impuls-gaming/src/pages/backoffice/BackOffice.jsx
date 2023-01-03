@@ -4,13 +4,12 @@ import {
   Row,
   Form,
   Button,
-  Offcanvas,
   Nav,
   Navbar,
 } from "react-bootstrap";
-import fifa from "../img/fifa23.jpg";
+import fifa from "../../img/fifa23.jpg";
 import * as Icon from "react-bootstrap-icons";
-import logo from "../img/Blue_Futuristic_Gaming_Logo-removebg-preview.png";
+import logo from "../../img/Blue_Futuristic_Gaming_Logo-removebg-preview.png";
 import Organizer from "./Organizer";
 
 const BackOffice = () => {

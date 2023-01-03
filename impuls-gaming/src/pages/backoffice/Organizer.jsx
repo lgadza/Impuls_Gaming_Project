@@ -1,9 +1,9 @@
 import { Col, Container, Row, Button } from "react-bootstrap";
-import logo from "../img/Blue_Futuristic_Gaming_Logo-removebg-preview.png";
+import logo from "../../img/Blue_Futuristic_Gaming_Logo-removebg-preview.png";
 import * as Icon from "react-bootstrap-icons";
 import { useState, useEffect } from "react";
 import CreateTournament from "./CreateTournament";
-import fifa from "../img/fifa23.jpg";
+import fifa from "../../img/fifa23.jpg";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 const Organizer = () => {
