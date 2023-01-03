@@ -490,3 +490,9 @@ button[disabled].primary-btn {
 .border-right {
   border-right: 1px solid;
 }
+.text-mute {
+  opacity: 0.6;
+}
+ul li {
+  list-style: none;
+}

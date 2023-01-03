@@ -125,16 +125,79 @@ const Participants = () => {
             </Card.Header>
 
             <Card.Body>
-              <div className="d-flex ">
-                <Col className="d-flex flex-column border-right">
-                  <h1>0</h1>
-                  <span>participants</span>
-                </Col>
-                <Col className="d-flex flex-column ml-auto">
-                  <h1>36</h1>
-                  <span>Tournament size</span>
-                </Col>
-              </div>
+              <Card.Text>
+                <div className=" d-flex justify-content-between">
+                  <div className="my-auto">
+                    <span>
+                      <strong>0 participants </strong>
+                      <span className="text-mute">out of 36</span>
+                    </span>
+                  </div>
+                  <div className="ml-auto">
+                    <Button
+                      disabled={true}
+                      type="submit"
+                      //   onClick={handleUpdate}
+                      className="primary-btn textColor"
+                    >
+                      <Icon.Trash3Fill size={20} />
+                      Delete All
+                    </Button>
+                  </div>
+                </div>
+                <hr />
+                <div className="d-flex justify-content-between">
+                  <span>Name</span>
+                  <span>Email</span>
+                  <span>Created at</span>
+                </div>
+                <hr />
+                <div className="d-flex ">
+                  <ul className="pl-0 w-100">
+                    {[...Array(10)].map((participant, index) => (
+                      <li className="w-100" key={index}>
+                        <div className="d-flex justify-content-between">
+                          <div>
+                            <input className="mr-1" type="checkbox" />
+                            <span>Louis Gadza</span>
+                          </div>
+                          <div className="">
+                            <span>date</span>
+                            <Icon.ThreeDotsVertical />
+                          </div>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                {/* <hr />
+                <div className="d-flex justify-content-between">
+                  <span className="mx-auto my-4">
+                    <strong>No participants found</strong>
+                  </span>
+                </div> */}
+                <hr />
+                <div className="d-flex">
+                  <div className="my-auto">
+                    <span>
+                      <strong>0 participants </strong>
+                      <span className="text-mute">out of 0</span>
+                    </span>
+                  </div>
+
+                  <div className="ml-auto">
+                    <Button
+                      disabled={true}
+                      type="submit"
+                      //   onClick={handleUpdate}
+                      className="primary-btn textColor"
+                    >
+                      <Icon.Trash3Fill size={20} />
+                      Delete All
+                    </Button>
+                  </div>
+                </div>
+              </Card.Text>
             </Card.Body>
           </Card>
         </Col>
