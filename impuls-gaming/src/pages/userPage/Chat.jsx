@@ -112,7 +112,7 @@ const Chat = () => {
                   value={userMessage}
                 />
               </Form.Group>
-              <div className="d-flex justify-content-between">
+              <div className="d-flex py-3 justify-content-between">
                 <Icon.Image size={20} />
                 {userMessage && (
                   <button

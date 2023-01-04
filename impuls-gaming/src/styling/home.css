@@ -178,12 +178,12 @@ svg {
   border: 1px solid;
   border-radius: 50%;
 }
-.user-page {
-  min-height: 100vh;
+.user-page-profile {
+  /* max-height: 104vh !important; */
 }
 .profile-info {
-  height: 84vh;
-  position: sticky;
+  /* height: 84vh; */
+  position: sticky !important;
   top: 15.8% !important;
 }
 .small-profile-img {
@@ -355,15 +355,15 @@ button-star {
 .text-background {
   background-color: #ddd4d4d4;
 }
-.scoll-table {
+/* .scoll-table {
   max-height: 75vh !important;
   overflow-y: scroll;
   overflow-x: hidden;
   background-color: white;
   width: 100% !important;
   position: relative;
-  /* width: 300px !important; */
-}
+  width: 300px !important;
+} */
 .user-position {
   border-bottom: 1px solid rgba(244, 92, 93, 255);
 }
@@ -571,4 +571,13 @@ ul li {
   top: 0rem;
   background-color: rgb(25, 0, 76);
   z-index: 2;
+}
+.tournament-preview-img {
+  width: 6rem;
+}
+.tournament-list :hover {
+  background-color: rgb(254, 242, 242);
+}
+.span {
+  font-size: 0.9em;
 }

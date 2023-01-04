@@ -85,12 +85,16 @@ const UserPage = () => {
       </Row>
       <Container className="">
         <Row>
-          <Col className="gift-container profile-info d-flex justify-content-center mt-5 side-bar">
-            <Row className="d-flex mt-4">
+          <Col
+            md={4}
+            className="gift-container user-page-profile profile-info d-flex flex-column  mt-5 side-bar"
+          >
+            <Row className="d-flex flex-column align-items-center  mt-4">
               <div>
                 <img className="profile-img" src={profilePic} alt="" />
+                <h5 className="d-flex mt-2  ml-3 ">Louis Gadza</h5>
                 <Row>
-                  <div className="d-flex flex-column mt-2">
+                  <div className="d-flex align-items-center ml-3 flex-column mt-2">
                     <span>
                       <strong>100</strong>
                     </span>
@@ -105,14 +109,13 @@ const UserPage = () => {
                 </Row>
                 <hr />
                 <Row>
-                  <div className="d-flex justify-content-between bg-secondary text-white px-2 py-2">
+                  <div className="d-flex  bg-secondary text-white px-2 py-2">
                     <span className="mr-3">Joined</span>
                     <span>Dec 11, 2022</span>
                   </div>
                 </Row>
               </div>
-              <div className="ml-5 ">
-                <h5 className="d-flex ml-2 ">Louis Gadza</h5>
+              <div>
                 <hr />
                 <span className="d-flex ml-2 mb-4">
                   Favorite platforms
@@ -312,7 +315,7 @@ const UserPage = () => {
               </div>
             </Row>
           </Col>
-          <Col className="ml-4 mt-5 side-bar">
+          <Col md={8} className=" mt-5 side-bar">
             <Tabs
               activeKey={key}
               defaultActiveKey="profile"

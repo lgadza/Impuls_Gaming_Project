@@ -17,6 +17,7 @@ import ParticipantCheckin from "./pages/backoffice/ParticipantCheckin";
 import Settings from "./pages/backoffice/Settings";
 import Match from "./pages/backoffice/Match";
 import Participants from "./pages/backoffice/Participants";
+import TournamentDetails from "./components/TournamentDetails";
 
 function App() {
   return (
@@ -53,6 +54,10 @@ function App() {
           <Route
             element={<ParticipantCheckin />}
             path="/backoffice/projects/settings/:tournament/participants"
+          />
+          <Route
+            element={<TournamentDetails />}
+            path="/tournaments/:tournamentId"
           />
         </Routes>
       </BrowserRouter>
