@@ -327,7 +327,7 @@ button-star {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  width: 90px;
+  width: 100px;
 }
 .chat-section {
   position: static;
@@ -356,7 +356,7 @@ button-star {
   background-color: #ddd4d4d4;
 }
 .scoll-table {
-  max-height: 72vh !important;
+  max-height: 75vh !important;
   overflow-y: scroll;
   overflow-x: hidden;
   background-color: white;
@@ -558,4 +558,10 @@ ul li {
 .participant-list {
   border-top: 1px solid;
   border-bottom: 1px solid;
+}
+.friends-list {
+  border-bottom: 1px solid rgb(206, 197, 197);
+}
+.user-friends:hover {
+  background-color: #bbbaba;
 }

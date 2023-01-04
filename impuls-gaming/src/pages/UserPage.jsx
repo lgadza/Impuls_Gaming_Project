@@ -4,10 +4,12 @@ import { Link } from "react-router-dom";
 import profilePic from "../img/Louis profile .JPG";
 import { CircularProgressbar } from "react-circular-progressbar";
 import Table from "../components/Table";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Chat from "../components/Chat";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
+import { useSelector, useDispatch } from "react-redux";
+import { userPreference } from "../redux/actions";
 
 const UserPage = () => {
   const percentage = 80;
@@ -22,7 +24,9 @@ const UserPage = () => {
   const [showTable, setShowTable] = useState(false);
   const [showChat, setShowChat] = useState(false);
   const [key, setKey] = useState("activation");
-
+  const dispatch = useDispatch();
+  const userPreferenceData = useSelector((state) => state.preference.data);
+  console.log(userPreferenceData);
   const [isLeagueChecked, setIsLeagueChecked] = useState(false);
   const [isTournamentChecked, setIsTournamentChecked] = useState(false);
   const handleShowTable = () => {
@@ -53,8 +57,11 @@ const UserPage = () => {
     PC: rating,
     XB: rateXB,
     ES: rateEN,
-    likes: { like: like },
+    like: like,
   };
+  useEffect(() => {
+    dispatch(userPreference(allRating));
+  }, [like]);
   const handleLikes = () => {};
   return (
     <Container fluid className="textColor user-page main-container ">
@@ -68,8 +75,11 @@ const UserPage = () => {
           <Icon.CaretRightFill size={10} />
           <Link className="textColor">Louis Gadza</Link>
         </div>
-        <div>
+        <div className="d-flex">
           <img src={profilePic} className="small-profile-img" alt="" />
+          <Link to="/sign-in" className="textColor mx-2">
+            Log out
+          </Link>
         </div>
       </Row>
       <Container className="">
@@ -117,7 +127,10 @@ const UserPage = () => {
                           className={`${
                             index <= (hover || rating) ? "on" : "off"
                           } button-star px-0`}
-                          onClick={() => setRating(index)}
+                          onClick={() => {
+                            setRating(index);
+                            // dispatch(userPreference(allRating));
+                          }}
                           onMouseEnter={() => setHover(index)}
                           onMouseLeave={() => setHover(rating)}
                         >
@@ -135,12 +148,14 @@ const UserPage = () => {
                       index++;
                       return (
                         <Link
-                          // type="button"
                           key={index}
                           className={`${
                             index <= (hoverPS || ratePS) ? "on" : "off"
-                          } button-star px-0`}
-                          onClick={() => setRatePS(index)}
+                          }  button-star px-0`}
+                          onClick={() => {
+                            setRatePS(index);
+                            // dispatch(userPreference(allRating));
+                          }}
                           onMouseEnter={() => setHoverPS(index)}
                           onMouseLeave={() => setHoverPS(ratePS)}
                         >
@@ -164,7 +179,10 @@ const UserPage = () => {
                           className={`${
                             index <= (hoverXB || rateXB) ? "on" : "off"
                           } button-star px-0`}
-                          onClick={() => setRateXB(index)}
+                          onClick={() => {
+                            setRateXB(index);
+                            // dispatch(userPreference(allRating));
+                          }}
                           onMouseEnter={() => setHoverXB(index)}
                           onMouseLeave={() => setHoverXB(rateXB)}
                         >
@@ -186,7 +204,10 @@ const UserPage = () => {
                           className={`${
                             index <= (hoverEN || rateEN) ? "on" : "off"
                           } button-star px-0`}
-                          onClick={() => setRateEN(index)}
+                          onClick={() => {
+                            setRateEN(index);
+                            // dispatch(userPreference(allRating));
+                          }}
                           onMouseEnter={() => setHoverEN(index)}
                           onMouseLeave={() => setHoverEN(rateEN)}
                         >
@@ -218,12 +239,6 @@ const UserPage = () => {
                         onChange={handleTournamentCheck}
                       />
 
-                      {/* <Icon.CheckAll
-                        onClick={() => setLikes("like-tournaments")}
-                        className="check-tick"
-                        size={20}
-                      /> */}
-
                       <span className="ml-3">
                         <strong>Leagues</strong>
                       </span>
@@ -235,11 +250,6 @@ const UserPage = () => {
                         checked={isLeagueChecked}
                         onChange={handleLeagueCheck}
                       />
-                      {/* <Icon.CheckAll
-                        onClick={() => setLikes("like-leagues")}
-                        className="check-tick"
-                        size={20}
-                      /> */}
                     </div>
                   </Col>
                 </Row>
@@ -302,50 +312,26 @@ const UserPage = () => {
             </Row>
           </Col>
           <Col className="ml-4 mt-5 side-bar">
-            <Row className="position-fixed-2  py-3 ">
-              {/* <div className="position-fixed-2 bg-white"> */}
-              {/* <Link className="textColor mx-2">Overview</Link>
-              <Link onClick={handleShowTable} className="textColor mx-2">
-                Table
-              </Link>
-              <Link className="textColor mx-2">Fixture</Link>
-              <Link className="textColor mx-2">Tournaments</Link>
-              <Link className="textColor mx-2">League</Link>
-              <Link onClick={handleShowChat} className="textColor mx-2">
-                Friends
-              </Link>
-              <Link to="/sign-in" className="textColor mx-2">
-                Log out
-              </Link> */}
-              <Tabs
-                activeKey={key}
-                defaultActiveKey="profile"
-                onSelect={(k) => setKey(k)}
-                className="mb-3  d-flex justify-content-center  textColor"
-              >
-                <Tab
-                  className="textColor2"
-                  eventKey="overview"
-                  title="Overview"
-                ></Tab>
-                <Tab eventKey="table" title="Table">
-                  <Table />
-                </Tab>
-                <Tab eventKey="fixture" title="Fixture"></Tab>
-                <Tab eventKey="tournaments" title="Tournaments"></Tab>
-                <Tab eventKey="friends" title="Friends">
-                  <Chat />
-                </Tab>
-                <Tab eventKey=" log-out" title=" Log out">
-                  <Chat />
-                </Tab>
-              </Tabs>
-              {/* </div> */}
-            </Row>
-            {/* <Row className=" px-3  pt-2 ">
-              {showTable && <Table />}
-              {showChat && <Chat />}
-            </Row> */}
+            <Tabs
+              activeKey={key}
+              defaultActiveKey="profile"
+              onSelect={(k) => setKey(k)}
+              className="mb-3  d-flex justify-content-center  textColor w-100"
+            >
+              <Tab
+                className="textColor2"
+                eventKey="overview"
+                title="Overview"
+              ></Tab>
+              <Tab className="w-100" eventKey="table" title="Table">
+                <Table />
+              </Tab>
+              <Tab eventKey="fixture" title="Fixture"></Tab>
+              <Tab eventKey="tournaments" title="Tournaments"></Tab>
+              <Tab eventKey="friends" title="Friends">
+                <Chat />
+              </Tab>
+            </Tabs>
           </Col>
         </Row>
       </Container>

@@ -33,8 +33,8 @@ const Chat = () => {
     setUserMessage("");
   };
   return (
-    <Col className=" gift-container chat-section">
-      <Row className="w-100 d-flex mx-auto  py-2 ">
+    <Col className=" gift-container chat-section ">
+      <Row className="w-100 d-flex mx-auto  py-2 mb-3 ">
         <Col className="inputContainer px-0   w-100">
           <Icon.Search className="search-icon textColor" size={20} />
           <input
@@ -45,7 +45,7 @@ const Chat = () => {
         </Col>
       </Row>
       <Row>
-        <Col md={8}>
+        <Col md={8} className="pr-0">
           <ScrollToBottom>
             <div className="user-chats user-profiles ">
               {[...Array(5)].map((user) => (
@@ -128,16 +128,16 @@ const Chat = () => {
           </div>
         </Col>
 
-        <Col md={4} className=" user-profiles   ">
+        <Col md={4} className=" user-profiles pr-0  ">
           {[...Array(15)].map((user) => (
-            <Row>
-              <Col className="d-flex justify-content-between pl-2 my-1">
+            <Row className="user-friends">
+              <Col className=" d-flex  pl-2  ">
                 <img
                   src={profilePic}
                   alt=""
-                  className="small-profile-img2 mr-3"
+                  className="small-profile-img2 mr-3 my-auto"
                 />
-                <div className="d-flex flex-column text-left ">
+                <div className="py-1 friends-list d-flex flex-column text-left  ">
                   <span className="text-nowrap user-fullname">
                     Louis Gadzewewea
                   </span>

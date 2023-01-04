@@ -5,10 +5,10 @@ const Table = () => {
   const API_KEY = "043889e9ea73af9c34129e6f7d0dd4c8";
 
   return (
-    <Col className="scoll-table gift-container chat-section">
-      <Row className="w-100 d-flex mx-auto   ">
-        <Col>
-          <div className="d-flex align-items-center textColor2 mx-2">
+    <Col className="scoll-table gift-container pb-2 pr-0">
+      <Row className="w-100 d-flex mt-2 ">
+        <Col className="d-flex justify-content-between pl-3 pr-0">
+          <div className="d-flex align-items-center textColor2 ">
             <div>Season</div>
             <div>
               <NavDropdown title="March/20-27 " menuVariant="dark">
@@ -26,7 +26,7 @@ const Table = () => {
           <div>
             <span>Player</span>
           </div>
-          <div className="d-flex justify-content-end mr-0">
+          <div className="d-flex justify-content-end mr-2">
             <span className="mx-3">MP</span>
             <span className="mx-3">W</span>
             <span className="mx-3">D</span>
@@ -39,8 +39,8 @@ const Table = () => {
       <hr />
       {[...Array(20)].map((player, index) => (
         <div>
-          <Row className="w-100 pr-0 mr-0 textColor2 container">
-            <Col className="d-flex justify-content-between pl-3 pr-0">
+          <Row className="w-100 pr-0  mr-0 textColor2 container">
+            <Col className="participant-list pb-2 py-2 d-flex justify-content-between  mr-0 px-0">
               <div>
                 <span className="mr-2">{index + 1}</span>
                 <span className="text-nowrap">Louis Gadza</span>
@@ -67,7 +67,6 @@ const Table = () => {
               </div>
             </Col>
           </Row>
-          <hr />
         </div>
       ))}
     </Col>
