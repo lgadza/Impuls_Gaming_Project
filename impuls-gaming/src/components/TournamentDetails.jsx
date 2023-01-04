@@ -37,10 +37,46 @@ const TournamentDetails = () => {
   };
 
   return (
-    <Container fluid className="main-container textColor px-0">
+    <Container fluid className="main-container textColor  px-0">
       <NavigationBar />
-      <div>
-        <img className="w-100 tournament-img-cover" src={fifa} alt="fifa" />
+      <div className="tournament-img-cover-container">
+        <Card className="bg-dark text-white  ">
+          <Card.Img src={fifa} alt="fifa" className=" tournament-img-cover" />
+          <Card.ImgOverlay className="tournament-info">
+            <Container>
+              <Card.Text>
+                <div className="d-flex align-items-center justify-content-between  textColor ">
+                  <div>
+                    <div className="d-flex">
+                      <span className="mr-3">XBox</span>
+                      <Link>Fifa 23</Link>
+                    </div>
+                    <h1 className="d-flex">Tounament NAme</h1>
+                    <span className="d-flex">
+                      9 January 2023 - 9 February 2023
+                    </span>
+                  </div>
+                  <div className="    ">
+                    <div className="d-flex giftcard-preview-nav register-card-top  justify-content-between py-1 px-4">
+                      <div className="d-flex flex-column justify-content-center reg-border-right mr-4 pr-3">
+                        <span className="d-flex">Registration open</span>
+                        <span className="d-flex">until 6 Jan 2023,13:00</span>
+                      </div>
+                      <div>
+                        <h3>15</h3>
+                        <h3>16</h3>
+                        <span>Players</span>
+                      </div>
+                    </div>
+                    <div className="bg-success px-3 text-white py-2">
+                      Register to the tournament
+                    </div>
+                  </div>
+                </div>
+              </Card.Text>
+            </Container>
+          </Card.ImgOverlay>
+        </Card>
       </div>
       <Row>
         <Col className="my-5 px-5">

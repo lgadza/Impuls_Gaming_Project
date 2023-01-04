@@ -581,3 +581,33 @@ ul li {
 .span {
   font-size: 0.9em;
 }
+.tournament-img-cover {
+  height: 45vh;
+  object-fit: cover;
+}
+.tournament-img-cover-container {
+  position: relative;
+}
+.tournament-img-cover-container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  height: 45vh;
+
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: black;
+  opacity: 0.6;
+  /* z-index: 1; */
+}
+.tournament-info {
+  z-index: 3 !important;
+}
+.register-card-top {
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
+.reg-border-right {
+  border-right: 1px dotted;
+}
