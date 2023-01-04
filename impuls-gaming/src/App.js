@@ -7,7 +7,7 @@ import Home from "./pages/home";
 import GiftCard from "./components/GiftCard";
 import LogInPage from "./pages/registration/LogInPage";
 import SignIn from "./pages/registration/LogIn";
-import UserPage from "./pages/UserPage";
+import UserPage from "./pages/userPage/UserPage";
 import "react-circular-progressbar/dist/styles.css";
 import Organizer from "./pages/backoffice/Organizer";
 import TournamentOverview from "./pages/backoffice/TournamentOverview";

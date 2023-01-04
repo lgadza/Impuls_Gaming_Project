@@ -20,9 +20,8 @@ const Table = () => {
           </div>
         </Col>
       </Row>
-      <hr />
-      <Row className="w-100 pr-0 mr-0 textColor2">
-        <Col className="d-flex justify-content-between pl-3 pr-0">
+      <Row className="w-100 playerNav py-3 pr-0 mr-0 textColor ">
+        <Col className="d-flex  justify-content-between pl-3 pr-0">
           <div>
             <span>Player</span>
           </div>
@@ -36,7 +35,7 @@ const Table = () => {
           </div>
         </Col>
       </Row>
-      <hr />
+
       {[...Array(20)].map((player, index) => (
         <div>
           <Row className="w-100 pr-0  mr-0 textColor2 container">

@@ -361,6 +361,7 @@ button-star {
   overflow-x: hidden;
   background-color: white;
   width: 100% !important;
+  position: relative;
   /* width: 300px !important; */
 }
 .user-position {
@@ -564,4 +565,10 @@ ul li {
 }
 .user-friends:hover {
   background-color: #bbbaba;
+}
+.playerNav {
+  position: sticky;
+  top: 0rem;
+  background-color: rgb(25, 0, 76);
+  z-index: 2;
 }

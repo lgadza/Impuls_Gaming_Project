@@ -1,10 +1,10 @@
 import { Col, Form, Row } from "react-bootstrap";
 import * as Icon from "react-bootstrap-icons";
-import profilePic from "../img/Louis profile .JPG";
+import profilePic from "../../img/Louis profile .JPG";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { userChat } from "../redux/actions";
+import { userChat } from "../../redux/actions";
 import ScrollToBottom from "react-scroll-to-bottom";
 import Moment from "react-moment";
 

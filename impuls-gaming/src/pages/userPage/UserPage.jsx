@@ -1,15 +1,16 @@
 import { Col, Container, Row } from "react-bootstrap";
 import * as Icon from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
-import profilePic from "../img/Louis profile .JPG";
+import profilePic from "../../img/Louis profile .JPG";
 import { CircularProgressbar } from "react-circular-progressbar";
-import Table from "../components/Table";
+import Table from "./Table";
 import { useEffect, useState } from "react";
-import Chat from "../components/Chat";
+import Chat from "./Chat";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
 import { useSelector, useDispatch } from "react-redux";
-import { userPreference } from "../redux/actions";
+import { userPreference } from "../../redux/actions";
+import Tournaments from "./Tournaments";
 
 const UserPage = () => {
   const percentage = 80;
@@ -61,7 +62,7 @@ const UserPage = () => {
   };
   useEffect(() => {
     dispatch(userPreference(allRating));
-  }, [like]);
+  }, []);
   const handleLikes = () => {};
   return (
     <Container fluid className="textColor user-page main-container ">
@@ -327,7 +328,9 @@ const UserPage = () => {
                 <Table />
               </Tab>
               <Tab eventKey="fixture" title="Fixture"></Tab>
-              <Tab eventKey="tournaments" title="Tournaments"></Tab>
+              <Tab eventKey="tournaments" title="Tournaments">
+                <Tournaments />
+              </Tab>
               <Tab eventKey="friends" title="Friends">
                 <Chat />
               </Tab>
