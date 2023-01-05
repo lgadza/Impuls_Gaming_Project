@@ -11,7 +11,7 @@ import loginData from "../reducers/login";
 import userChat from "../reducers/userChat";
 import newTournament from "../reducers/newTournament";
 import userPreference from "../reducers/userPreference";
-
+import userData from "../reducers/userData";
 const persistConfig = {
   key: "root",
   storage: localStorage,
@@ -28,6 +28,7 @@ const bigReducer = combineReducers({
   userChat: userChat,
   tournament: newTournament,
   preference: userPreference,
+  userData: userData,
 });
 
 const persistedReducer = persistReducer(persistConfig, bigReducer);

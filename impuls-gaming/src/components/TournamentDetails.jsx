@@ -20,22 +20,63 @@ import DatePicker from "react-datepicker";
 import { useState, useEffect } from "react";
 import NavigationBar from "./NavigationBar";
 import fifa from "../../src/img/fifa23.jpg";
+import Footer from "./Footer";
+import GroupStructure from "../pages/userPage/GroupStructure";
 
 const TournamentDetails = () => {
   const params = useParams();
   const tournamentData = useSelector((state) => state.tournament.data);
   const tournament = tournamentData.find(
-    (name) => name.tournament_name === params.tournament
+    (name) => name.tournament_name === params.tournamentId
   );
-  console.log(params);
+  console.log(tournament);
+  const [key, setKey] = useState("activation");
   const [registrationOpens, setRegistrationOpens] = useState("");
   const [registrationCloses, setRegistrationCloses] = useState("");
-  const [key, setKey] = useState("activation");
   const [update, setUpdate] = useState(false);
   const handleUpdate = () => {
     setUpdate(true);
   };
+  const dispatch = useDispatch();
+  const [nickName, setNickName] = useState(undefined);
+  const [name, setName] = useState("");
+  const [surname, setSurname] = useState("");
+  const isLoading = useSelector((state) => state.giftData.isLoading);
+  const [email, setEmail] = useState("");
+  const [termsCheck, setTermsCheck] = useState(undefined);
+  const handleNickname = (e) => {
+    setNickName(e.target.value);
+    // dispatch(giftCardInf(userData));
+  };
+  const handleName = (e) => {
+    setName(e.target.value);
+    // dispatch(giftCardInf(userData));
+  };
 
+  const handleSurname = (e) => {
+    setSurname(e.target.value);
+    // dispatch(giftCardInf(userData));
+  };
+
+  const handleEmail = (e) => {
+    setEmail(e.target.value);
+    // dispatch(giftCardInf(userData));
+  };
+  const handleTerms = (e) => {
+    setTermsCheck(e.target.value);
+    // dispatch(giftCardInf(userData));
+  };
+
+  const userData = {
+    nickName: nickName,
+    name: name,
+    surname: surname,
+    email: email,
+    terms: termsCheck,
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
   return (
     <Container fluid className="main-container textColor  px-0">
       <NavigationBar />
@@ -45,13 +86,15 @@ const TournamentDetails = () => {
           <Card.ImgOverlay className="tournament-info">
             <Container>
               <Card.Text>
-                <div className="d-flex align-items-center justify-content-between  textColor ">
+                <div className="d-flex align-items-center justify-content-between  text-white ">
                   <div>
                     <div className="d-flex">
-                      <span className="mr-3">XBox</span>
+                      <span className="mr-3 bg-secondary rounded text-white px-3 py-1">
+                        XBox
+                      </span>
                       <Link>Fifa 23</Link>
                     </div>
-                    <h1 className="d-flex">Tounament NAme</h1>
+                    <h1 className="d-flex">{tournament.tournament_name}</h1>
                     <span className="d-flex">
                       9 January 2023 - 9 February 2023
                     </span>
@@ -63,8 +106,8 @@ const TournamentDetails = () => {
                         <span className="d-flex">until 6 Jan 2023,13:00</span>
                       </div>
                       <div>
-                        <h3>15</h3>
-                        <h3>16</h3>
+                        <h3 className="border-bottom pb-2">15</h3>
+                        <h3 className="mt-0">16</h3>
                         <span>Players</span>
                       </div>
                     </div>
@@ -78,113 +121,182 @@ const TournamentDetails = () => {
           </Card.ImgOverlay>
         </Card>
       </div>
-      <Row>
-        <Col className="my-5 px-5">
-          {update && (
-            <div className="registration-card mx-auto">
-              <Alert key={"success"} variant={"success"}>
-                <Icon.CheckCircle size={15} />
-                <span>Settings have been successfully updated.</span>
-              </Alert>
-            </div>
-          )}
-          <Card className="registration-card mx-auto">
-            <Card.Header>
-              <h3 className="d-flex my-4">Participant Settings</h3>
-            </Card.Header>
-            <Card.Body>
-              <Tabs
-                activeKey="general"
-                defaultActiveKey="general"
-                onSelect={(k) => setKey(k)}
-                className="mb-3 mx-auto d-flex justify-content-center mx-5 px-5"
-              >
-                <Tab eventKey="general" title="General">
-                  <span className=" d-flex align-items-center mt-5">
-                    Enable tournament check-in?
-                    <OverlayTrigger
-                      placement="top"
-                      overlay={
-                        <Tooltip id="tooltip-disabled">
-                          Enable this feature to have your participants certify
-                          their presence for your tournament by checking in. It
-                          will ensure you create a structure of the right size,
-                          and avoid falling behind schedule at the tournament
-                          launch.
-                        </Tooltip>
-                      }
-                    >
-                      <span
-                        variant="light"
-                        className="d-inline-flex align-items-center"
-                      >
-                        <Icon.QuestionCircleFill />
-                      </span>
-                    </OverlayTrigger>
-                  </span>
-                  <div>
-                    <Form>
-                      <div className="my-3 d-flex">
-                        <Form.Check
-                          type="radio"
-                          name="register"
-                          label="Yes"
-                          className="mr-3"
-                        />
 
-                        <Form.Check type="radio" name="register" label="No" />
+      <Container>
+        <Row>
+          <Col className="mb-5 ">
+            <Tabs
+              activeKey={key}
+              defaultActiveKey="information"
+              onSelect={(k) => setKey(k)}
+              className="mb-3 ml-auto d-flex   "
+            >
+              <Tab eventKey="information" title="Information">
+                <Row>
+                  <Col>
+                    <div className="d-flex  flex-column my-3">
+                      <h4 className="d-flex">Description</h4>
+                      <span className="d-flex mb-3">
+                        FIFA tournaments between players! progress in the month
+                        of January
+                      </span>
+                    </div>
+                    <h5 className="d-flex my-3">Structure</h5>
+                    <Card className="my-3 tournament-structure-card">
+                      <Card.Header>
+                        <strong>1.Groups</strong>
+                      </Card.Header>
+                      <Card.Body>
+                        <span className="border-right pr-1">16 Players</span>
+                        <span className="pl-1">4 Groups</span>
+                      </Card.Body>
+                    </Card>
+                    <Card className="mb-3 tournament-structure-card">
+                      <Card.Header>
+                        <strong>2.PlayOffs</strong>
+                      </Card.Header>
+                      <Card.Body>
+                        <h6>Single Elimination</h6>
+                        <span>8 Players</span>
+                      </Card.Body>
+                    </Card>
+                  </Col>
+                  <Col>
+                    <div className="d-flex  flex-column my-3">
+                      <h4 className="d-flex">Prize</h4>
+                      <span className="d-flex">Cash prize</span>
+                    </div>
+                  </Col>
+                </Row>
+              </Tab>
+              <Tab eventKey="matches" title="Matches">
+                <GroupStructure />
+              </Tab>
+              <Tab eventKey="participants" title="Participants">
+                <Row>
+                  <Col>
+                    <div className="d-flex  flex-column my-3">
+                      <h4 className="d-flex">Participants</h4>
+                    </div>
+                  </Col>
+                  <Col>
+                    <Form className="d-flex">
+                      <Form.Control
+                        type="search"
+                        placeholder="Search a participant"
+                        className="mr-3"
+                        aria-label="Search"
+                      />
+                      <Button variant="secondary">
+                        <Icon.Search size={20} />
+                      </Button>
+                    </Form>
+                  </Col>
+                </Row>
+                <Row>
+                  {[...Array(19)].map((player, index) => {
+                    return (
+                      <Col lg={3}>
+                        <Link className="link-none-deco">
+                          <div className="border round textColor  d-flex px-2 participant-names py-3 my-2">
+                            Louis Gadza
+                          </div>
+                        </Link>
+                      </Col>
+                    );
+                  })}
+                </Row>
+              </Tab>
+              <Tab eventKey="rules" title="Rules">
+                <Row>
+                  <Col>
+                    <div className="d-flex  flex-column my-3">
+                      <h4 className="d-flex">Rules</h4>
+                      <span className="d-flex">Ruleset not available.</span>
+                    </div>
+                  </Col>
+                  <Col></Col>
+                </Row>
+              </Tab>
+              <Tab eventKey="registration" title="Registration">
+                <Row>
+                  <Col>
+                    <div className="d-flex  flex-column my-3">
+                      <h4 className="d-flex">Tournament registration</h4>
+                    </div>
+                    <Form onSubmit={handleSubmit}>
+                      <Form.Group className="mb-3">
+                        <Form.Label className="d-flex">
+                          Player nickname
+                        </Form.Label>
+                        <Form.Control
+                          type="text"
+                          placeholder="Enter nickname"
+                          onChange={handleNickname}
+                        />
+                        <span className="d-flex my-3">
+                          <strong>Information</strong>
+                        </span>
+                      </Form.Group>
+                      <Form.Group className="mb-3">
+                        <Form.Label className="d-flex">Player email</Form.Label>
+                        <Form.Control
+                          type="email"
+                          placeholder="email"
+                          onChange={handleEmail}
+                        />
+                      </Form.Group>
+                      <Form.Group className="mb-3">
+                        <Form.Label className="d-flex">First name</Form.Label>
+                        <Form.Control
+                          type="text"
+                          placeholder="John"
+                          onChange={handleName}
+                        />
+                      </Form.Group>
+                      <Form.Group className="mb-3">
+                        <Form.Label className="d-flex">Last name</Form.Label>
+                        <Form.Control
+                          type="text"
+                          placeholder="Doe"
+                          onChange={handleSurname}
+                        />
+                      </Form.Group>
+                      <Form.Group className="mb-3 d-flex" id="formGridCheckbox">
+                        <Form.Check
+                          onClick={handleTerms}
+                          type="checkbox"
+                          label="I agree to the
+Toornament's terms of use."
+                        />
+                      </Form.Group>
+                      <div className="d-flex">
+                        <Button
+                          // disabled={true}
+                          type="submit"
+                          onClick={handleUpdate}
+                          className="primary-btn w-25   textColor"
+                        >
+                          Submit registration
+                        </Button>
                       </div>
                     </Form>
-                  </div>
-                  <Form.Group className="mb-3 d-flex flex-column justify-content-start">
-                    <Form.Label className="d-flex">
-                      Participant check-in opening
-                    </Form.Label>
-                    <Form.Group className="">
-                      <DatePicker
-                        className="datepicker py-2 px-4 w-100"
-                        selected={registrationOpens}
-                        placeholderText={new Date()}
-                        onChange={(date) => setRegistrationOpens(date)}
-                        showTimeSelect
-                        dateFormat="Pp"
-                      />
-                    </Form.Group>
-                  </Form.Group>
-                  <Form.Group className="mb-3 d-flex flex-column justify-content-start">
-                    <Form.Label className="d-flex">
-                      Participant check-in closing
-                    </Form.Label>
-                    <Form.Group className="">
-                      <DatePicker
-                        className="datepicker py-2 px-4 w-100"
-                        selected={registrationCloses}
-                        placeholderText={new Date()}
-                        onChange={(date) => setRegistrationCloses(date)}
-                        showTimeSelect
-                        dateFormat="Pp"
-                      />
-                    </Form.Group>
-                  </Form.Group>
-                  <Link
-                    // to={`/backoffice/projects/overview/${tournament}`}
-                    className="d-flex justify-content-end mt-4"
-                  >
-                    <Button
-                      type="submit"
-                      onClick={handleUpdate}
-                      className="primary-btn textColor"
-                    >
-                      <Icon.Pencil size={20} />
-                      Update
-                    </Button>
-                  </Link>
-                </Tab>
-              </Tabs>
-            </Card.Body>
-          </Card>
-        </Col>
-      </Row>
+                  </Col>
+                </Row>
+              </Tab>
+            </Tabs>
+            {update && (
+              <div className="registration-card mx-auto mt-5">
+                <Alert key={"success"} variant={"success"}>
+                  <Icon.CheckCircle size={15} />
+                  <span>Registration sent to the organizer</span>
+                </Alert>
+              </div>
+            )}
+          </Col>
+        </Row>
+      </Container>
+      <Footer />
     </Container>
   );
 };

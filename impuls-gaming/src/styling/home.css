@@ -64,6 +64,9 @@ h1 {
   /* font-size: 1.2em; */
   font-weight: bold;
   color: #12bae3;
+  position: sticky;
+  top: 0;
+  z-index: 5;
 }
 
 .giftcard-preview {
@@ -603,6 +606,8 @@ ul li {
 }
 .tournament-info {
   z-index: 3 !important;
+
+  background-image: linear-gradient(to left, rgba(0, 0, 0, 0), rgb(21, 19, 19));
 }
 .register-card-top {
   border-top-right-radius: 10px;
@@ -610,4 +615,104 @@ ul li {
 }
 .reg-border-right {
   border-right: 1px dotted;
+}
+tab[title] {
+  color: #0cc4f2 !important;
+}
+.border-right {
+  border-right: 2px solid !important;
+}
+.tournament-structure-card:hover {
+  box-shadow: 0.4px 0.6px 3px black;
+}
+.participant-names:hover {
+  background-color: white;
+}
+/* .border-bottom {
+  border-bottom: 1px solid !important ;
+  width: 100% !important;
+} */
+.player-round-1 {
+  position: relative;
+  border: 1px solid gray !important;
+  border-radius: 5px;
+}
+.player-round-2 {
+  position: relative;
+  border: 1px solid gray !important;
+  border-radius: 5px;
+}
+.player-round-3 {
+  position: relative;
+  border: 1px solid gray !important;
+  border-radius: 5px;
+}
+.player-round-4 {
+  position: relative;
+  border: 1px solid gray !important;
+  border-radius: 5px;
+}
+.player-round-1::after {
+  content: "";
+  width: 2rem;
+  height: 1.5px;
+  background-color: gray;
+  position: absolute;
+  right: -2rem;
+  top: 50%;
+}
+.player-round-1::before {
+  content: "";
+  width: 1.2px;
+  height: 3.5rem;
+  background-color: gray;
+  position: absolute;
+  right: -2rem;
+  top: 50%;
+}
+.player-round-2::after {
+  content: "";
+  width: 2rem;
+  height: 1.5px;
+  background-color: gray;
+  position: absolute;
+  right: -2rem;
+  top: 50%;
+}
+
+.player-round-2::before {
+  content: "";
+  width: 1.2px;
+  height: 3.5rem;
+  background-color: gray;
+  position: absolute;
+  right: -2rem;
+  bottom: 50%;
+}
+.player-round-3::after {
+  content: "";
+  width: 2rem;
+  height: 1.5px;
+  background-color: gray;
+  position: absolute;
+  right: -2rem;
+  top: 50%;
+}
+.player-round-3::before {
+  content: "";
+  width: 1.2px;
+  height: 8.5rem;
+  background-color: gray;
+  position: absolute;
+  right: -2rem;
+  bottom: 50%;
+}
+.player-round-4::after {
+  content: "";
+  width: 4rem;
+  height: 1.5px;
+  background-color: gray;
+  position: absolute;
+  left: -4rem;
+  top: 50%;
 }

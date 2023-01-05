@@ -318,7 +318,7 @@ const UserPage = () => {
           <Col md={8} className=" mt-5 side-bar">
             <Tabs
               activeKey={key}
-              defaultActiveKey="profile"
+              defaultActiveKey="overview"
               onSelect={(k) => setKey(k)}
               className="mb-3  d-flex justify-content-center  textColor w-100"
             >
