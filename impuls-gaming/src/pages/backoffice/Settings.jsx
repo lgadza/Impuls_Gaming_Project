@@ -38,7 +38,10 @@ const Settings = () => {
           <Row className=" mb-5">
             <Col>
               <Card>
-                <Link className="textColor settings-card link-none-deco">
+                <Link
+                  to={`/backoffice/projects/settings/${tournament.tournament_name}/edit`}
+                  className="textColor settings-card link-none-deco"
+                >
                   <Card.Header>
                     <Icon.Gear size={20} />
                     General

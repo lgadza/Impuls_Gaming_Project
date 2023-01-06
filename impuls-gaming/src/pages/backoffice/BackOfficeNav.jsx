@@ -17,10 +17,12 @@ const BackOfficeNav = ({ data, page }) => {
 
       <div>
         <h6 className="d-flex my-3">Tournament</h6>
-        <div className="d-flex  ">
+        <div className="d-flex w-100 ">
           <img className="tournament-name-img" src={fifa} alt="" />
-          <div className="d-flex flex-column">
-            <span className="d-flex ml-2">{data.tournament_name}</span>{" "}
+          <div className="d-flex flex-column w-75">
+            <span className="d-flex ml-2 tournament-name w-75">
+              {data.tournament_name}
+            </span>{" "}
             <span className="d-flex ml-2">{data.discipline}</span>{" "}
           </div>
         </div>

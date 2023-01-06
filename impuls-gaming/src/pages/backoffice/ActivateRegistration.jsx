@@ -22,6 +22,12 @@ import { useState, useEffect } from "react";
 
 const ActivateRegistration = () => {
   const params = useParams();
+  const [isRegistration, setIsRegistration] = useState(false);
+  const [isAutoRegistration, setIsAutoRegistration] = useState(false);
+  const [isEmailNotification, setIsEmailNotification] = useState(false);
+  const [validationMessage, setValidationMessage] = useState("");
+  const [refusalMessage, setRefusalMessage] = useState("");
+
   const tournamentData = useSelector((state) => state.tournament.data);
   const tournament = tournamentData.find(
     (name) => name.tournament_name === params.tournament
@@ -34,7 +40,37 @@ const ActivateRegistration = () => {
   const handleUpdate = () => {
     setUpdate(true);
   };
-
+  const handleIsRegistration = () => {
+    isRegistration === false
+      ? setIsRegistration(true)
+      : setIsRegistration(false);
+  };
+  const handleValidationMessage = (e) => {
+    setValidationMessage(e.target.value);
+  };
+  const handleRefusalMessage = (e) => {
+    setRefusalMessage(e.target.value);
+  };
+  const handleIsEmailNotification = () => {
+    isEmailNotification === false
+      ? setIsEmailNotification(true)
+      : setIsEmailNotification(false);
+  };
+  const handleIsAutoRegistration = () => {
+    isAutoRegistration === false
+      ? setIsAutoRegistration(true)
+      : setIsAutoRegistration(false);
+  };
+  const registrationSettings = {
+    isRegistration: isRegistration,
+    registrationOpens: registrationOpens,
+    registrationCloses: registrationCloses,
+    isEmailNotification: isEmailNotification,
+    isAutoRegistration: isAutoRegistration,
+    validationMessage: validationMessage,
+    refusalMessage: refusalMessage,
+  };
+  console.log(registrationSettings);
   return (
     <Container fluid className="main-container textColor">
       <Row>
@@ -70,10 +106,15 @@ const ActivateRegistration = () => {
                           type="radio"
                           name="register"
                           label="Yes"
+                          onClick={handleIsRegistration}
                           className="mr-3"
                         />
-
-                        <Form.Check type="radio" name="register" label="No" />
+                        <Form.Check
+                          type="radio"
+                          onClick={handleIsRegistration}
+                          name="register"
+                          label="No"
+                        />
                       </div>
                     </Form>
                   </div>
@@ -114,7 +155,7 @@ const ActivateRegistration = () => {
                       className="primary-btn textColor"
                     >
                       <Icon.Pencil size={20} />
-                      Create
+                      Update
                     </Button>
                   </Link>
                 </Tab>
@@ -145,10 +186,16 @@ const ActivateRegistration = () => {
                           type="radio"
                           name="register"
                           label="Yes"
+                          onClick={handleIsAutoRegistration}
                           className="mr-3"
                         />
 
-                        <Form.Check type="radio" name="register" label="No" />
+                        <Form.Check
+                          type="radio"
+                          onClick={handleIsAutoRegistration}
+                          name="register"
+                          label="No"
+                        />
                       </div>
                     </Form>
                   </div>
@@ -179,10 +226,16 @@ const ActivateRegistration = () => {
                           type="radio"
                           name="register"
                           label="Yes"
+                          onClick={handleIsEmailNotification}
                           className="mr-3"
                         />
 
-                        <Form.Check type="radio" name="register" label="No" />
+                        <Form.Check
+                          type="radio"
+                          onClick={handleIsEmailNotification}
+                          name="register"
+                          label="No"
+                        />
                       </div>
                     </Form>
                   </div>
@@ -193,7 +246,7 @@ const ActivateRegistration = () => {
                       className="primary-btn textColor"
                     >
                       <Icon.Pencil size={20} />
-                      Create
+                      Update
                     </Button>
                   </Link>
                 </Tab>
@@ -223,7 +276,7 @@ const ActivateRegistration = () => {
                     <Form.Control
                       as="textarea"
                       rows={3}
-                      //   onChange={handleMessage}
+                      onChange={handleValidationMessage}
                     />
                   </Form.Group>
                   <Form.Group className="mb-3 d-flex flex-column ">
@@ -251,7 +304,7 @@ const ActivateRegistration = () => {
                     <Form.Control
                       as="textarea"
                       rows={3}
-                      //   onChange={handleMessage}
+                      onChange={handleRefusalMessage}
                     />
                   </Form.Group>
                   <Link className="d-flex justify-content-end mt-4">

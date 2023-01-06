@@ -22,12 +22,7 @@ const CreateTournament = ({ visible, onhide }) => {
   const notUnique = tournamentData.find(
     (name) => name.tournament_name === tournament
   );
-  console.log(notUnique);
-  console.log("Disable", disable);
-  console.log(tournament);
-  console.log(notUnique === undefined);
-  console.log(size);
-  console.log(disable);
+
   // const handleProvidedData = (e) => {
   //   tournament && size && !notUnique ? setDisable(false) : setDisable(true);
   // };

@@ -32,12 +32,7 @@ const GroupStructure = () => {
   return (
     <Row className="mt-5">
       <Col className="mb-5 ">
-        <Tabs
-          activeKey={key}
-          defaultActiveKey="groups"
-          onSelect={(k) => setKey(k)}
-          className="mb-3 ml-auto d-flex   "
-        >
+        <Tabs defaultActiveKey="groups" className="mb-3">
           <Tab eventKey="groups" title="Groups">
             <h4 className="d-flex my-3">Groups</h4>
             <Row>

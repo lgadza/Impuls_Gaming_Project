@@ -716,3 +716,22 @@ tab[title] {
   left: -4rem;
   top: 50%;
 }
+.tournament-name {
+  /* width: 75px !important; */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.edit-tournament {
+  position: absolute;
+  top: 5%;
+  right: 0%;
+  border: none;
+  background-color: transparent;
+  /* border-radius: 50%; */
+  /* width: 3rem;
+  height: 3rem; */
+}
+.tournament-card-edit {
+  position: relative;
+}

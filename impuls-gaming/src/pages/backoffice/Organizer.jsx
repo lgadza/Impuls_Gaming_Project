@@ -6,17 +6,32 @@ import CreateTournament from "./CreateTournament";
 import fifa from "../../img/fifa23.jpg";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import DeleteConfirm from "../../components/DeleteConfirm";
 const Organizer = () => {
   const [show, setShow] = useState(false);
+  const [deleteItem, setDeleteItem] = useState(false);
+  const [projectId, setProjectId] = useState("");
+  const [showDelete, setShowDelete] = useState(false);
   const handleClose = () => setShow(false);
+  const handleCloseDelete = () => setShowDelete(false);
   const handleShow = () => {
     setShow(true);
   };
+  const handleDeleteItem = () => {
+    deleteItem === false ? setDeleteItem(true) : setDeleteItem(false);
+  };
+  console.log(projectId);
   const projects = useSelector((state) => state.tournament.data);
   return (
     <>
       <>
-        <h1 className="d-flex ml-5 mt-4 ">My Projects</h1>
+        <div className="d-flex justify-content-between align-items-center">
+          {" "}
+          <h1 className="d-flex ml-5 mt-4 ">My Projects</h1>
+          <Link onClick={handleDeleteItem}>
+            <Icon.Trash size={30} />
+          </Link>
+        </div>
         <Row id="create-btn" className="w-100">
           <div className="d-grid gap-2 mx-5 mt-4 d-flex justify-content-center">
             <Button
@@ -48,12 +63,30 @@ const Organizer = () => {
             </span>
           </Col>
           {projects.map((project, index) => (
-            <Col lg={6} md={6} xl={4} sm={6} xs={12} key={index}>
-              {/* TODO change the key Id */}
+            <Col
+              className="tournament-card-edit"
+              lg={6}
+              md={6}
+              xl={4}
+              sm={6}
+              xs={12}
+              key={index}
+            >
+              {deleteItem && (
+                <button
+                  onClick={() => {
+                    setShowDelete(true);
+                    setProjectId(project);
+                  }}
+                  className="edit-tournament mx-auto "
+                >
+                  <Icon.Trash size={20} color="red" />
+                </button>
+              )}
+
               <Link to={`projects/overview/${project.tournament_name}`}>
                 <span className="d-flex mt-5 align-items-center justify-content-center flex-column main-container plus-project  mx-4 mr-4">
                   <img src={fifa} className="w-100" alt="fifa" />
-                  {/* <hr className="hr" /> */}
                   <span className="d-flex justify-content-center mx-4 align-items-center py-3">
                     <strong>{project.tournament_name}</strong>
                   </span>
@@ -64,6 +97,11 @@ const Organizer = () => {
         </Row>
       </>
       <CreateTournament visible={show} onhide={handleClose} />
+      <DeleteConfirm
+        visible={showDelete}
+        onhide={handleCloseDelete}
+        tournamentId={projectId.tournament_name}
+      />
     </>
   );
 };

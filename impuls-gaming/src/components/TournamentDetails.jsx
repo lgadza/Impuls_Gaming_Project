@@ -125,12 +125,7 @@ const TournamentDetails = () => {
       <Container>
         <Row>
           <Col className="mb-5 ">
-            <Tabs
-              activeKey={key}
-              defaultActiveKey="information"
-              onSelect={(k) => setKey(k)}
-              className="mb-3 ml-auto d-flex   "
-            >
+            <Tabs defaultActiveKey="information" className="mb-3" justify>
               <Tab eventKey="information" title="Information">
                 <Row>
                   <Col>
