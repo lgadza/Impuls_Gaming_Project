@@ -1,0 +1,6 @@
+@media screen and (max-width: 727px) {
+  .nav-logo.navbarBrand.d-block {
+    display: none !important;
+    background-color: black !important;
+  }
+}

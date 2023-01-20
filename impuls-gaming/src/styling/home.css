@@ -735,3 +735,41 @@ tab[title] {
 .tournament-card-edit {
   position: relative;
 }
+@media screen and (max-width: 824px) {
+  .text-size-md {
+    font-size: 0.9em !important;
+    position: absolute;
+    right: 10px;
+  }
+  .position-relative {
+    position: relative;
+  }
+  .logo-img {
+    width: 4.2rem;
+    height: 5rem;
+    object-fit: cover;
+  }
+}
+@media screen and (max-width: 768px) {
+  /* .text-size-md {
+    font-size: 0.9em !important;
+    position: absolute;
+    right: 10px;
+  }
+  .position-relative {
+    position: relative;
+  }
+  .logo-img {
+    width: 4.2rem;
+    height: 5rem;
+    object-fit: cover;
+  } */
+  .myNav {
+    /* position: fixed; */
+    height: 5rem;
+  }
+  .me-auto.text-size-md {
+    display: flex;
+    flex-direction: row;
+  }
+}

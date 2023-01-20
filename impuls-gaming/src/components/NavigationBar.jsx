@@ -2,6 +2,7 @@ import { Container, Navbar, Nav } from "react-bootstrap";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import { Link } from "react-router-dom";
 import "../styling/home.css";
+import "..";
 import logo from "../img/Blue_Futuristic_Gaming_Logo-removebg-preview.png";
 const NavigationBar = () => {
   return (
@@ -9,20 +10,14 @@ const NavigationBar = () => {
       key="md"
       expand="md"
       variant="dark"
-      className="my-0 py-2 px-5 navBackground"
+      className="my-0 py-2 px-5 navBackground myNav"
     >
-      <Container fluid className="my-0 py-0">
-        <Navbar.Brand className="navbarBrand my-0 py-0">
+      <Container fluid className="my-0 py-0 position-relative">
+        <Navbar.Brand className="navbarBrand  d-none d-md-block  my-0 py-0">
           <img className="logo-img" src={logo} alt="" />
         </Navbar.Brand>
-        {/* <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-md`} />
-        <Navbar.Offcanvas
-          id={`offcanvasNavbar-expand-md`}
-          aria-labelledby={`offcanvasNavbarLabel-expand-md`}
-          placement="end"
-        >
-          <Offcanvas.Body> */}
-        <Nav className="me-auto ">
+
+        <Nav className="me-auto text-size-md">
           <Link to="/" className="textColor mr-4 ">
             Home
           </Link>
@@ -45,8 +40,6 @@ const NavigationBar = () => {
             JOIN
           </Link>
         </Nav>
-        {/* </Offcanvas.Body>
-        </Navbar.Offcanvas> */}
       </Container>
     </Navbar>
   );
