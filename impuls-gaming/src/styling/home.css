@@ -157,6 +157,9 @@ textarea {
 a {
   color: #0cc4f2;
 }
+.textColor3 {
+  color: #0cc4f2;
+}
 .gift-container {
   border: 1px solid rgba(244, 92, 93, 0.2);
   border-radius: 10px;
@@ -737,7 +740,7 @@ tab[title] {
 }
 @media screen and (max-width: 824px) {
   .text-size-md {
-    font-size: 0.9em !important;
+    font-size: 0.8em !important;
     position: absolute;
     right: 10px;
   }
@@ -747,7 +750,20 @@ tab[title] {
   .logo-img {
     width: 4.2rem;
     height: 5rem;
+    display: none !important;
     object-fit: cover;
+  }
+  .navbarBrandName {
+    display: block !important;
+  }
+  .myNav {
+    /* height: 10rem; */
+    position: relative;
+    /* overflow: hidden; */
+  }
+  .me-auto.text-size-md {
+    position: absolute;
+    top: 0;
   }
 }
 @media screen and (max-width: 768px) {
@@ -769,7 +785,19 @@ tab[title] {
     height: 5rem;
   }
   .me-auto.text-size-md {
+    position: absolute;
+    top: 0;
+    text-overflow: ellipsis;
+    flex-direction: column;
+    align-items: flex-start;
     display: flex;
-    flex-direction: row;
+    padding: 10px;
+    background-image: linear-gradient(
+      360deg,
+      transparent,
+      black,
+      transparent,
+      transparent
+    );
   }
 }

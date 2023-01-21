@@ -12,7 +12,7 @@ const HomeUpdates = () => {
     <Container className="textColor">
       <h1 className="d-flex mb-5">Featured Leagues and Tournaments</h1>
       <Row>
-        <Col md={4} className="">
+        <Col md={6} lg={4} className="mb-4">
           <Card className="featured-games">
             <Card.Img variant="top" src={fifa23} />
             <Card.Body>
@@ -38,7 +38,7 @@ const HomeUpdates = () => {
             </Card.Body>
           </Card>
         </Col>
-        <Col md={4} className="">
+        <Col md={6} lg={4} className="mb-4">
           <Card className="featured-games">
             <Card.Img variant="top" src={tournament} />
             <Card.Body>
@@ -64,7 +64,7 @@ const HomeUpdates = () => {
             </Card.Body>
           </Card>
         </Col>
-        <Col md={4} className="">
+        <Col md={6} lg={4} className="mb-4">
           <Card className="featured-games">
             <Card.Img variant="top" src={mk} />
             <Card.Body>
@@ -98,7 +98,7 @@ const HomeUpdates = () => {
       </Row>
       <h2 className="my-5 d-flex">WHAT'S NEW</h2>
       <Row>
-        <Col className="md-4">
+        <Col lg={4} md={6} className="mb-4 ">
           <Card>
             <Card.Img variant="top" src={giftcard} />
             <Card.Body>
@@ -113,7 +113,7 @@ const HomeUpdates = () => {
             </Card.Body>
           </Card>
         </Col>
-        <Col className="md-4">
+        <Col lg={4} md={6} className="mb-4">
           <Card>
             <Card.Img variant="top" src={giftcard} />
             <Card.Body>
@@ -128,7 +128,7 @@ const HomeUpdates = () => {
             </Card.Body>
           </Card>
         </Col>
-        <Col className="md-4">
+        <Col lg={4} md={6} className="mb-4">
           <Card>
             <Card.Img variant="top" src={giftcard} />
             <Card.Body>
@@ -143,7 +143,7 @@ const HomeUpdates = () => {
             </Card.Body>
           </Card>
         </Col>
-        <Col className="md-4">
+        <Col lg={4} md={6} className="mb-4">
           <Card>
             <Card.Img variant="top" src={giftcard} />
             <Card.Body>
