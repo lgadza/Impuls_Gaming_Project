@@ -747,7 +747,7 @@ tab[title] {
     font-size: 1.5em !important;
   }
 }
-@media screen and (max-width: 768pxpx) {
+@media screen and (max-width: 768px) {
   .featured-leagues {
     font-size: 1.5em !important;
   }
@@ -759,5 +759,12 @@ tab[title] {
     width: 2.5rem;
     height: 2.5rem;
     object-fit: cover;
+  }
+  .jumbotron {
+    position: relative;
+    z-index: -1;
+    width: 100%;
+    height: 60vh !important;
+    overflow: hidden;
   }
 }
