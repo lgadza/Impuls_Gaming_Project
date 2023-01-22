@@ -29,9 +29,6 @@ const NavigationBar = () => {
                 className="d-md-none ml-auto"
                 size={20}
               />
-              <Link to={"/sign-up"} className="d-lg-none  ">
-                <Icon.PersonCircle size={30} />
-              </Link>
             </div>
             <Nav className=" ">
               <Link to="/" className="textColor mr-4 ">
@@ -107,6 +104,12 @@ const NavigationBar = () => {
             </div>
           </div>
         </Container>
+        <Link
+          to={"/sign-up"}
+          className={`d-lg-none ml-4 login-closed ${isOpen ? "open " : ""}`}
+        >
+          <Icon.PersonCircle size={30} />
+        </Link>
       </Navbar>
     </>
   );
