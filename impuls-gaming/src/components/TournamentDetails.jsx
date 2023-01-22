@@ -99,8 +99,8 @@ const TournamentDetails = () => {
                       9 January 2023 - 9 February 2023
                     </span>
                   </div>
-                  <div className="    ">
-                    <div className="d-flex giftcard-preview-nav register-card-top  justify-content-between py-1 px-4">
+                  <div className=" d-none d-lg-block     ">
+                    <div className="d-flex giftcard-preview-nav register-card-top  justify-content-between py-1 px-4 ">
                       <div className="d-flex flex-column justify-content-center reg-border-right mr-4 pr-3">
                         <span className="d-flex">Registration open</span>
                         <span className="d-flex">until 6 Jan 2023,13:00</span>
@@ -128,7 +128,7 @@ const TournamentDetails = () => {
             <Tabs defaultActiveKey="information" className="mb-3" justify>
               <Tab eventKey="information" title="Information">
                 <Row>
-                  <Col>
+                  <Col sm={12}>
                     <div className="d-flex  flex-column my-3">
                       <h4 className="d-flex">Description</h4>
                       <span className="d-flex mb-3">
@@ -156,7 +156,7 @@ const TournamentDetails = () => {
                       </Card.Body>
                     </Card>
                   </Col>
-                  <Col>
+                  <Col sm={12}>
                     <div className="d-flex  flex-column my-3">
                       <h4 className="d-flex">Prize</h4>
                       <span className="d-flex">Cash prize</span>
@@ -272,7 +272,7 @@ Toornament's terms of use."
                           onClick={handleUpdate}
                           className="primary-btn w-25   textColor"
                         >
-                          Submit registration
+                          Register
                         </Button>
                       </div>
                     </Form>

@@ -106,7 +106,7 @@ const NavigationBar = () => {
         </Container>
         <Link
           to={"/sign-up"}
-          className={`d-lg-none ml-4 login-closed ${isOpen ? "open " : ""}`}
+          className={`d-lg-none ml-2 login-closed ${isOpen ? "open " : ""}`}
         >
           <Icon.PersonCircle size={30} />
         </Link>
