@@ -65,7 +65,8 @@ const NavigationBar = () => {
       <Navbar className="d-lg-none my-0 py-2  px-5 navBackground myNav">
         <Container fluid className="my-0 py-0 position-relative ">
           <Navbar.Brand className="navbarBrand  d-md-block  my-0 py-0">
-            <img className="logo-img" src={logo} alt="" />
+            {/* <img className="logo-img" src={logo} alt="" /> */}
+            <h3 className="impuls">Impuls Gaming</h3>
           </Navbar.Brand>
           <div>
             <div className="d-flex justify-content-end">

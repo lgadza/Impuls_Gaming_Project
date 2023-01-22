@@ -9,9 +9,6 @@ const Jumbotron = () => {
       <video id="video-background" preload autoPlay loop muted>
         <source src={video} type="video/mp4" />
       </video>
-      <div className="video-background d-md-none">
-        <img className="fifa-cover" src={coverImg} alt="fifa-cover" />
-      </div>
 
       <div className="into  ">
         <div className="into-content d-none d-lg-block pb-5">

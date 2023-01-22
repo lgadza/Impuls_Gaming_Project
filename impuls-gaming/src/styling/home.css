@@ -61,7 +61,7 @@
   color: #12bae3;
 }
 .into-content {
-  margin-top: 8%;
+  margin-top: 10%;
   background-color: rgba(0, 0, 0, 0.6);
   color: #12bae3;
 }
@@ -80,17 +80,15 @@ h1 {
 }
 .navBackground {
   background-color: rgba(25, 0, 76, 255);
-  /* font-size: 1.2em; */
   font-weight: bold;
   color: #12bae3;
   position: fixed;
-  /* position: sticky; */
   top: 0;
   width: 100%;
   z-index: 5;
 }
-.footer {
-  /* background-color: rgba(25, 0, 76, 255) !important; */
+.impuls {
+  color: #12bae3;
 }
 
 .giftcard-preview {
@@ -110,7 +108,6 @@ h1 {
 .recipient-info {
   font-family: "Just Another Hand", cursive;
   font-size: 1.3em;
-  /* font-weight: lighter; */
   line-height: 1em;
   color: #12bae3;
 }
@@ -141,7 +138,6 @@ input {
   color: rgba(244, 92, 93, 255) !important;
 }
 textarea {
-  /* color: rgba(25, 0, 76, 255) !important; */
   color: rgba(244, 92, 93, 255) !important;
 }
 .checkout-btn {
@@ -151,10 +147,7 @@ textarea {
   color: white;
   font-weight: bold;
 }
-/* .input-section {
-  border: 2px solid rgba(25, 0, 76, 255);
-  border-radius: 20px;
-} */
+
 .datepicker {
   border: 1px solid rgb(207, 207, 207) !important;
   border-radius: 3px !important;
@@ -163,7 +156,6 @@ textarea {
   color: rgba(244, 92, 93, 255);
 }
 ::placeholder {
-  /* color: #12bae3 !important; */
   color: rgba(244, 92, 93, 255) !important;
   opacity: 0.5 !important ;
 }
@@ -208,11 +200,8 @@ svg {
   border: 1px solid;
   border-radius: 50%;
 }
-.user-page-profile {
-  /* max-height: 104vh !important; */
-}
+
 .profile-info {
-  /* height: 84vh; */
   position: sticky !important;
   top: 15.8% !important;
 }
@@ -227,13 +216,7 @@ svg {
 .CircularProgressbar-text {
   fill: rgba(25, 0, 76, 255) !important;
 }
-/*
-.CircularProgressbar-trail {
-  stroke: gray;
-}
-.CircularProgressbar-background {
-  fill: green;
-} */
+
 .blink_me {
   animation: blinker 0.5s linear infinite;
 }
@@ -288,10 +271,8 @@ a:hover {
 .position-fixed {
   position: fixed;
   z-index: 1;
-  /* width: 70%; */
 }
 .position-fixed-2 {
-  /* position: fixed; */
   border-radius: 2px;
   z-index: 1;
 }
@@ -656,10 +637,7 @@ tab[title] {
 .participant-names:hover {
   background-color: white;
 }
-/* .border-bottom {
-  border-bottom: 1px solid !important ;
-  width: 100% !important;
-} */
+
 .player-round-1 {
   position: relative;
   border: 1px solid gray !important;
@@ -773,7 +751,13 @@ tab[title] {
   .featured-leagues {
     font-size: 1.5em !important;
   }
+
   .featured-league {
     font-size: 1.1em !important;
+  }
+  .position-relative .logo-img {
+    width: 2.5rem;
+    height: 2.5rem;
+    object-fit: cover;
   }
 }

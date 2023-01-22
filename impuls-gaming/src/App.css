@@ -106,15 +106,9 @@
   }
   .navBackground {
     position: relative;
-    min-height: 8em;
+    min-height: 5em;
     background-color: rgba(25, 0, 76, 0.7) !important;
     position: fixed !important;
     width: 100%;
-  }
-
-  .logo-img {
-    position: absolute;
-    top: 0;
-    bottom: 5px !important;
   }
 }
