@@ -96,7 +96,11 @@ const GiftCard = () => {
       </Row>
       <Container className="  textColor">
         <Row>
-          <Col className="input-section gift-container mt-5 mx-3 mt-5 ">
+          <Col
+            md={12}
+            lg={5}
+            className="input-section gift-container mt-5  mt-5 "
+          >
             <Form onSubmit={handleSubmit}>
               <h3 className="mt-2">Give a Gift</h3>
               <h6>Choose amount</h6>
@@ -233,7 +237,7 @@ const GiftCard = () => {
               </div>
             </Form>
           </Col>
-          <Col className="d-none d-sm-block gift-container mt-5 mx-3">
+          <Col md={12} lg={6} className="d-none d-sm-block mt-5 mx-3">
             <h3 className="mt-5">Card Preview</h3>
             <div className="d-flex giftcard-section mx-1 py-0  mt-5 mb-5">
               <div column md={3} className="mr-2  giftcard-preview py-3 px-2">
@@ -307,9 +311,9 @@ const GiftCard = () => {
                 )}
               </div>
             </div>
-            <Link to={"/"} className="d-flex pt-3 mb-4  justify-content-end">
+            <Link to={"/"} className="d-flex  mb-4  justify-content-end">
               <Button
-                className="mt-5 text-center px-5 primary-btn w-25   textColor "
+                className=" text-center px-5 primary-btn w-25   textColor "
                 variant="primary"
               >
                 Back
