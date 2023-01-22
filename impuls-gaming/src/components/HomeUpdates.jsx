@@ -10,7 +10,7 @@ import mk from "../img/mk.avif";
 const HomeUpdates = () => {
   return (
     <Container className="textColor">
-      <h1 className="d-flex mb-5">Featured Leagues and Tournaments</h1>
+      <h1 className="d-flex mb-5 featured-leagues">Featured Tournaments</h1>
       <Row>
         <Col md={6} lg={4} className="mb-4">
           <Card className="featured-games">
@@ -96,7 +96,7 @@ const HomeUpdates = () => {
           </Card>
         </Col>
       </Row>
-      <h2 className="my-5 d-flex">WHAT'S NEW</h2>
+      <h2 className="my-5 d-flex featured-league">WHAT'S NEW</h2>
       <Row>
         <Col lg={4} md={6} className="mb-4 ">
           <Card>

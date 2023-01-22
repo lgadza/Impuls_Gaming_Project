@@ -6,10 +6,10 @@ import { format, compareAsc } from "date-fns";
 const Footer = () => {
   const date = new Date();
   return (
-    <div className="background container-fluid mt-5 mb-3 textColor">
+    <div className="background footer container-fluid mt-5 mb-3 textColor">
       <Container className="pt-4">
         <Row>
-          <Col md={3}>
+          <Col sm={6} md={4} lg={3}>
             <ListGroup variant="flush" className="navbar-nav">
               <ListGroup.Item>
                 <Link>
@@ -34,7 +34,7 @@ const Footer = () => {
               </ListGroup.Item>
             </ListGroup>
           </Col>
-          <Col md={3}>
+          <Col sm={6} md={4} lg={3}>
             <ListGroup variant="flush" className="navbar-nav">
               <ListGroup.Item>
                 <Link className=" textColor">Investor Relations</Link>
@@ -47,7 +47,7 @@ const Footer = () => {
               </ListGroup.Item>
             </ListGroup>
           </Col>
-          <Col md={3}>
+          <Col sm={6} md={4} lg={3}>
             <ListGroup variant="flush" className="navbar-nav">
               <ListGroup.Item>
                 <Link className=" textColor">Help Center</Link>
@@ -57,7 +57,7 @@ const Footer = () => {
               </ListGroup.Item>
             </ListGroup>
           </Col>
-          <Col md={3}>
+          <Col sm={6} md={4} lg={3}>
             <ListGroup variant="flush" className="navbar-nav">
               <ListGroup.Item>
                 <Link to={"/giftcard"} className=" textColor">

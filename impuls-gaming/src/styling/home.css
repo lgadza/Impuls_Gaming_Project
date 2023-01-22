@@ -15,6 +15,7 @@
   z-index: -1;
   width: 100%;
   height: 80vh;
+  overflow: hidden;
 }
 #video-background {
   position: absolute;
@@ -27,6 +28,23 @@
   height: 100%;
   z-index: -100;
   object-fit: fill;
+}
+.video-background {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  height: 100%;
+  z-index: -100;
+  object-fit: fill;
+}
+.fifa-cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 .into {
   position: absolute;
@@ -45,6 +63,7 @@
 .into-content {
   margin-top: 8%;
   background-color: rgba(0, 0, 0, 0.6);
+  color: #12bae3;
 }
 h1 {
   font-size: 3em;
@@ -55,8 +74,8 @@ h1 {
   color: #12bae3;
 }
 .logo-img {
-  width: 6rem;
-  height: 7rem;
+  width: 5rem;
+  height: 5rem;
   object-fit: cover;
 }
 .navBackground {
@@ -64,9 +83,14 @@ h1 {
   /* font-size: 1.2em; */
   font-weight: bold;
   color: #12bae3;
-  position: sticky;
+  position: fixed;
+  /* position: sticky; */
   top: 0;
+  width: 100%;
   z-index: 5;
+}
+.footer {
+  /* background-color: rgba(25, 0, 76, 255) !important; */
 }
 
 .giftcard-preview {
@@ -241,13 +265,14 @@ a:hover {
   z-index: 3 !important;
 }
 .h1-join-call {
-  font-size: 8rem;
+  font-size: 8em;
   color: #0cc4f2;
   font-weight: bold;
   transform: rotate(-4deg);
+  z-index: 3;
 }
 .h2-join-call {
-  font-size: 2rem;
+  font-size: 2em;
   color: rgba(244, 92, 93, 255);
   transform: rotate(-4deg);
   font-weight: bold;
@@ -731,73 +756,24 @@ tab[title] {
   right: 0%;
   border: none;
   background-color: transparent;
-  /* border-radius: 50%; */
-  /* width: 3rem;
-  height: 3rem; */
 }
 .tournament-card-edit {
   position: relative;
 }
-@media screen and (max-width: 824px) {
-  .text-size-md {
-    font-size: 0.8em !important;
-    position: absolute;
-    right: 10px;
+
+@media screen and (max-width: 992px) {
+  .featured-leagues {
+    font-size: 2em !important;
   }
-  .position-relative {
-    position: relative;
-  }
-  .logo-img {
-    width: 4.2rem;
-    height: 5rem;
-    display: none !important;
-    object-fit: cover;
-  }
-  .navbarBrandName {
-    display: block !important;
-  }
-  .myNav {
-    /* height: 10rem; */
-    position: relative;
-    /* overflow: hidden; */
-  }
-  .me-auto.text-size-md {
-    position: absolute;
-    top: 0;
+  .featured-league {
+    font-size: 1.5em !important;
   }
 }
-@media screen and (max-width: 768px) {
-  /* .text-size-md {
-    font-size: 0.9em !important;
-    position: absolute;
-    right: 10px;
+@media screen and (max-width: 768pxpx) {
+  .featured-leagues {
+    font-size: 1.5em !important;
   }
-  .position-relative {
-    position: relative;
-  }
-  .logo-img {
-    width: 4.2rem;
-    height: 5rem;
-    object-fit: cover;
-  } */
-  .myNav {
-    /* position: fixed; */
-    height: 5rem;
-  }
-  .me-auto.text-size-md {
-    position: absolute;
-    top: 0;
-    text-overflow: ellipsis;
-    flex-direction: column;
-    align-items: flex-start;
-    display: flex;
-    padding: 10px;
-    background-image: linear-gradient(
-      360deg,
-      transparent,
-      black,
-      transparent,
-      transparent
-    );
+  .featured-league {
+    font-size: 1.1em !important;
   }
 }

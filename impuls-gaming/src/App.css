@@ -39,3 +39,82 @@
 #tooltip-disabled {
   width: 15rem;
 }
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  height: 70px;
+}
+
+.nav-menu a {
+  color: #fff;
+  text-decoration: none;
+  padding: 0 20px;
+  font-size: 16px;
+  transition: all 0.2s ease-in-out;
+}
+
+.nav-menu.open {
+  display: flex;
+}
+
+.nav-toggle {
+  display: none;
+  cursor: pointer;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 30px;
+  height: 4px;
+  background-color: #61dafb;
+  margin: 6px 0;
+  transition: all 0.2s ease-in-out;
+}
+
+.nav-toggle.open span:nth-child(1) {
+  transform: rotate(45deg);
+  position: relative;
+  top: 12px;
+}
+
+.nav-toggle.open span:nth-child(2) {
+  opacity: 0;
+}
+.nav-toggle span {
+  font-size: 0;
+}
+.nav-toggle.open span {
+  font-size: 0.5em;
+  background-color: transparent;
+}
+.nav-toggle.open span:nth-child(3) {
+  transform: rotate(-45deg);
+  position: relative;
+  top: -9px;
+}
+
+@media (max-width: 992px) {
+  .nav-menu {
+    display: none;
+  }
+
+  .nav-toggle {
+    display: block;
+  }
+  .navBackground {
+    position: relative;
+    min-height: 8em;
+    background-color: rgba(25, 0, 76, 0.7) !important;
+    position: fixed !important;
+    width: 100%;
+  }
+
+  .logo-img {
+    position: absolute;
+    top: 0;
+    bottom: 5px !important;
+  }
+}

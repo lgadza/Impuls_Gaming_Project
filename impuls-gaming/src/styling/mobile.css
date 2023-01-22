@@ -1,6 +1,5 @@
-@media screen and (max-width: 727px) {
-  .nav-logo.navbarBrand.d-block {
-    display: none !important;
-    background-color: black !important;
+@media screen and (max-width: 992px) {
+  .featured-leagues {
+    font-size: 1em !important;
   }
 }
