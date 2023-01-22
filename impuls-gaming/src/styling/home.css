@@ -594,7 +594,7 @@ ul li {
   font-size: 0.9em;
 }
 .tournament-img-cover {
-  height: 45vh;
+  height: 55vh;
   object-fit: cover;
 }
 .tournament-img-cover-container {
@@ -604,7 +604,7 @@ ul li {
   content: "";
   position: absolute;
   top: 0;
-  height: 45vh;
+  height: 55vh;
 
   bottom: 0;
   right: 0;
@@ -755,6 +755,13 @@ tab[title] {
   }
   .featured-league {
     font-size: 1.5em !important;
+  }
+  .swords {
+    font-size: 10px;
+    transform: scale(0.4);
+    padding: 0;
+    height: 20px;
+    transform: translateY(-10px);
   }
 }
 @media screen and (max-width: 768px) {

@@ -22,6 +22,11 @@ import NavigationBar from "./NavigationBar";
 import fifa from "../../src/img/fifa23.jpg";
 import Footer from "./Footer";
 import GroupStructure from "../pages/userPage/GroupStructure";
+import RegistrationForm from "./RegistrationForm";
+import TournamentInfo from "./TournamentInfo";
+import Rules from "./Rules";
+import PlayerList from "./PlayerList";
+import { ReactComponent as Swords } from "../img/swords.svg";
 
 const TournamentDetails = () => {
   const params = useParams();
@@ -78,15 +83,15 @@ const TournamentDetails = () => {
     e.preventDefault();
   };
   return (
-    <Container fluid className="main-container textColor  px-0">
+    <Container fluid className="main-container textColor  px-0 ">
       <NavigationBar />
-      <div className="tournament-img-cover-container">
-        <Card className="bg-dark text-white  ">
+      <div className="tournament-img-cover-container ">
+        <Card className="bg-dark text-white   ">
           <Card.Img src={fifa} alt="fifa" className=" tournament-img-cover" />
           <Card.ImgOverlay className="tournament-info">
             <Container>
               <Card.Text>
-                <div className="d-flex align-items-center justify-content-between  text-white ">
+                <div className="d-flex mt-5 pt-5 align-items-center justify-content-between  text-white ">
                   <div>
                     <div className="d-flex">
                       <span className="mr-3 bg-secondary rounded text-white px-3 py-1">
@@ -122,164 +127,58 @@ const TournamentDetails = () => {
         </Card>
       </div>
 
-      <Container>
+      <Container className=" ">
         <Row>
-          <Col className="mb-5 ">
-            <Tabs defaultActiveKey="information" className="mb-3" justify>
+          <Col className="mb-5 d-none d-lg-block ">
+            <Tabs defaultActiveKey="information" className="mb-3  " justify>
               <Tab eventKey="information" title="Information">
-                <Row>
-                  <Col sm={12}>
-                    <div className="d-flex  flex-column my-3">
-                      <h4 className="d-flex">Description</h4>
-                      <span className="d-flex mb-3">
-                        FIFA tournaments between players! progress in the month
-                        of January
-                      </span>
-                    </div>
-                    <h5 className="d-flex my-3">Structure</h5>
-                    <Card className="my-3 tournament-structure-card">
-                      <Card.Header>
-                        <strong>1.Groups</strong>
-                      </Card.Header>
-                      <Card.Body>
-                        <span className="border-right pr-1">16 Players</span>
-                        <span className="pl-1">4 Groups</span>
-                      </Card.Body>
-                    </Card>
-                    <Card className="mb-3 tournament-structure-card">
-                      <Card.Header>
-                        <strong>2.PlayOffs</strong>
-                      </Card.Header>
-                      <Card.Body>
-                        <h6>Single Elimination</h6>
-                        <span>8 Players</span>
-                      </Card.Body>
-                    </Card>
-                  </Col>
-                  <Col sm={12}>
-                    <div className="d-flex  flex-column my-3">
-                      <h4 className="d-flex">Prize</h4>
-                      <span className="d-flex">Cash prize</span>
-                    </div>
-                  </Col>
-                </Row>
+                <TournamentInfo />
               </Tab>
               <Tab eventKey="matches" title="Matches">
                 <GroupStructure />
               </Tab>
               <Tab eventKey="participants" title="Participants">
-                <Row>
-                  <Col>
-                    <div className="d-flex  flex-column my-3">
-                      <h4 className="d-flex">Participants</h4>
-                    </div>
-                  </Col>
-                  <Col>
-                    <Form className="d-flex">
-                      <Form.Control
-                        type="search"
-                        placeholder="Search a participant"
-                        className="mr-3"
-                        aria-label="Search"
-                      />
-                      <Button variant="secondary">
-                        <Icon.Search size={20} />
-                      </Button>
-                    </Form>
-                  </Col>
-                </Row>
-                <Row>
-                  {[...Array(19)].map((player, index) => {
-                    return (
-                      <Col lg={3}>
-                        <Link className="link-none-deco">
-                          <div className="border round textColor  d-flex px-2 participant-names py-3 my-2">
-                            Louis Gadza
-                          </div>
-                        </Link>
-                      </Col>
-                    );
-                  })}
-                </Row>
+                <PlayerList />
               </Tab>
               <Tab eventKey="rules" title="Rules">
-                <Row>
-                  <Col>
-                    <div className="d-flex  flex-column my-3">
-                      <h4 className="d-flex">Rules</h4>
-                      <span className="d-flex">Ruleset not available.</span>
-                    </div>
-                  </Col>
-                  <Col></Col>
-                </Row>
+                <Rules />
               </Tab>
               <Tab eventKey="registration" title="Registration">
-                <Row>
-                  <Col>
-                    <div className="d-flex  flex-column my-3">
-                      <h4 className="d-flex">Tournament registration</h4>
-                    </div>
-                    <Form onSubmit={handleSubmit}>
-                      <Form.Group className="mb-3">
-                        <Form.Label className="d-flex">
-                          Player nickname
-                        </Form.Label>
-                        <Form.Control
-                          type="text"
-                          placeholder="Enter nickname"
-                          onChange={handleNickname}
-                        />
-                        <span className="d-flex my-3">
-                          <strong>Information</strong>
-                        </span>
-                      </Form.Group>
-                      <Form.Group className="mb-3">
-                        <Form.Label className="d-flex">Player email</Form.Label>
-                        <Form.Control
-                          type="email"
-                          placeholder="email"
-                          onChange={handleEmail}
-                        />
-                      </Form.Group>
-                      <Form.Group className="mb-3">
-                        <Form.Label className="d-flex">First name</Form.Label>
-                        <Form.Control
-                          type="text"
-                          placeholder="John"
-                          onChange={handleName}
-                        />
-                      </Form.Group>
-                      <Form.Group className="mb-3">
-                        <Form.Label className="d-flex">Last name</Form.Label>
-                        <Form.Control
-                          type="text"
-                          placeholder="Doe"
-                          onChange={handleSurname}
-                        />
-                      </Form.Group>
-                      <Form.Group className="mb-3 d-flex" id="formGridCheckbox">
-                        <Form.Check
-                          onClick={handleTerms}
-                          type="checkbox"
-                          label="I agree to the
-Toornament's terms of use."
-                        />
-                      </Form.Group>
-                      <div className="d-flex">
-                        <Button
-                          // disabled={true}
-                          type="submit"
-                          onClick={handleUpdate}
-                          className="primary-btn w-25   textColor"
-                        >
-                          Register
-                        </Button>
-                      </div>
-                    </Form>
-                  </Col>
-                </Row>
+                <RegistrationForm />
               </Tab>
             </Tabs>
+            {/* {<Icon.InfoCircle size={20} />} */}
+            {update && (
+              <div className="registration-card mx-auto mt-5">
+                <Alert key={"success"} variant={"success"}>
+                  <Icon.CheckCircle size={15} />
+                  <span>Registration sent to the organizer</span>
+                </Alert>
+              </div>
+            )}
+          </Col>
+          <Col className="mb-5  d-lg-none ">
+            <Tabs defaultActiveKey="information" className="mb-3  " justify>
+              <Tab eventKey="information" title={<Icon.InfoCircle size={20} />}>
+                <TournamentInfo />
+              </Tab>
+              <Tab eventKey="matches" title={<Icon.Tools size={20} />}>
+                <GroupStructure />
+              </Tab>
+              <Tab
+                eventKey="participants"
+                title={<Icon.PeopleFill size={20} />}
+              >
+                <PlayerList />
+              </Tab>
+              <Tab eventKey="rules" title={<Icon.FileEarmarkText size={20} />}>
+                <Rules />
+              </Tab>
+              <Tab eventKey="registration" title={<Icon.RCircle size={20} />}>
+                <RegistrationForm />
+              </Tab>
+            </Tabs>
+
             {update && (
               <div className="registration-card mx-auto mt-5">
                 <Alert key={"success"} variant={"success"}>

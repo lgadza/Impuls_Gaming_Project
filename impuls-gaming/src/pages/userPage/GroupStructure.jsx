@@ -140,7 +140,7 @@ const GroupStructure = () => {
               <Col></Col>
             </Row>
           </Tab>
-          <Tab eventKey="latest-results" title="Latest results">
+          <Tab eventKey="latest-results" title="Results">
             <Row>
               <Col>
                 <div className="d-flex  flex-column my-3">
