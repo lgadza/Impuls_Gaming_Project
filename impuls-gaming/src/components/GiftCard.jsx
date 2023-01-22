@@ -96,7 +96,7 @@ const GiftCard = () => {
       </Row>
       <Container className="  textColor">
         <Row>
-          <Col className="input-section gift-container mt-5 mr-3 mt-5 ">
+          <Col className="input-section gift-container mt-5 mx-3 mt-5 ">
             <Form onSubmit={handleSubmit}>
               <h3 className="mt-2">Give a Gift</h3>
               <h6>Choose amount</h6>
@@ -109,7 +109,7 @@ const GiftCard = () => {
                 <Form.Label column sm={2}>
                   Amount*
                 </Form.Label>
-                <Col sm={4}>
+                <Col md={9}>
                   <Form.Control
                     type="number"
                     placeholder="10"
@@ -122,13 +122,13 @@ const GiftCard = () => {
               </Form.Group>
               <h6>Personalise</h6>
               <hr />
-              <Form.Group className="d-flex">
+              <Form.Group className="d-flex flex-cart ">
                 <Form.Label column sm={2}>
                   To*
                 </Form.Label>
 
                 <Row>
-                  <Col>
+                  <Col md={12}>
                     <Form.Control
                       placeholder="First name"
                       required
@@ -136,30 +136,32 @@ const GiftCard = () => {
                       className="mb-3"
                     />
                   </Col>
-                  <Col>
+                  <Col md={12}>
                     <Form.Control
                       placeholder="Last name"
                       required
                       onChange={handleSurname}
+                      className="mb-3"
                     />
                   </Col>
                 </Row>
               </Form.Group>
-              <Form.Group className="d-flex mb-3">
+              <Form.Group className="d-flex flex-cart mb-3">
                 <Form.Label column sm={2}>
                   From*
                 </Form.Label>
 
                 <Row>
-                  <Col>
+                  <Col md={12}>
                     <Form.Control
                       placeholder="First name"
                       required
                       // onChange={handleChange}
                       onChange={handleSenderName}
+                      className="mb-3"
                     />
                   </Col>
-                  <Col>
+                  <Col md={12}>
                     <Form.Control
                       placeholder="Last name"
                       required
@@ -168,7 +170,7 @@ const GiftCard = () => {
                   </Col>
                 </Row>
               </Form.Group>
-              <Form.Group className="mb-3 d-flex align-items-center">
+              <Form.Group className="mb-3 d-flex flex-cart align-items-center">
                 <Form.Label className="mr-4">Message</Form.Label>
                 <Form.Control
                   as="textarea"
@@ -180,11 +182,11 @@ const GiftCard = () => {
               <h6>Schedule Delivery</h6>
               <hr />
 
-              <Form.Group className="d-flex  align-items-center">
+              <Form.Group className="d-flex flex-cart  align-items-center">
                 <Form.Label className="mr-4 text-nowrap">Send To*</Form.Label>
 
                 <Row>
-                  <Col>
+                  <Col md={12}>
                     <Form.Group className="mb-3">
                       <Form.Control
                         type="email"
@@ -193,7 +195,7 @@ const GiftCard = () => {
                       />
                     </Form.Group>
                   </Col>
-                  <Col>
+                  <Col md={12}>
                     <Form.Group className="mb-3">
                       <Form.Control
                         type="tel"
@@ -205,17 +207,21 @@ const GiftCard = () => {
                   </Col>
                 </Row>
               </Form.Group>
-              <Form.Group className="mb-3 d-flex">
-                <Form.Label>Delivery Date *</Form.Label>
-                <div className="ml-auto">
-                  <DatePicker
-                    className="datepicker py-2 px-4"
-                    selected={sendDate}
-                    onChange={(date) => setSendDate(date)}
-                    showTimeSelect
-                    dateFormat="Pp"
-                  />
-                </div>
+              <Form.Group className="mb-3 d-flex flex-cart">
+                <Form.Label column md={3} className="px-0">
+                  Delivery Date *
+                </Form.Label>
+                <Col md={12} className="px-0 mx-0">
+                  <div className="px-0">
+                    <DatePicker
+                      className="datepicker py-2 px-4"
+                      selected={sendDate}
+                      onChange={(date) => setSendDate(date)}
+                      showTimeSelect
+                      dateFormat="Pp"
+                    />
+                  </div>
+                </Col>
               </Form.Group>
               <div className="d-flex justify-content-flex-end mt-4 mb-3">
                 <button
@@ -227,12 +233,12 @@ const GiftCard = () => {
               </div>
             </Form>
           </Col>
-          <Col className="gift-container mt-5 ml-3">
+          <Col className="d-none d-sm-block gift-container mt-5 mx-3">
             <h3 className="mt-5">Card Preview</h3>
-            <div className="d-flex giftcard-section mx-1 py-0 pr-5 mt-5 mb-5">
-              <div className="mr-2 giftcard-preview py-3 px-2">
+            <div className="d-flex giftcard-section mx-1 py-0  mt-5 mb-5">
+              <div column md={3} className="mr-2  giftcard-preview py-3 px-2">
                 <img className="logo-img mb-3" src={logo} alt="impuls logo" />
-                <div>
+                <div className="card-preview">
                   <div className=" mb-2">
                     <Icon.Phone size={20} />
                     <h6 className="py-0 my-0">Phone</h6>
@@ -250,7 +256,11 @@ const GiftCard = () => {
                   </div>
                 </div>
               </div>
-              <div className=" preview-content ml-5 d-flex flex-column justify-content-center">
+              <div
+                column
+                md={9}
+                className="  preview-content ml-3 d-flex flex-column justify-content-center"
+              >
                 <div>
                   <h3 className="mb-5 pb-2">Impuls Gift Card</h3>
                   <h6
@@ -297,8 +307,11 @@ const GiftCard = () => {
                 )}
               </div>
             </div>
-            <Link to={"/"} className="d-flex pt-3  justify-content-end">
-              <Button className="mt-5 px-5 " variant="primary">
+            <Link to={"/"} className="d-flex pt-3 mb-4  justify-content-end">
+              <Button
+                className="mt-5 text-center px-5 primary-btn w-25   textColor "
+                variant="primary"
+              >
                 Back
               </Button>
             </Link>

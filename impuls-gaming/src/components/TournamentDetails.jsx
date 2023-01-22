@@ -147,15 +147,6 @@ const TournamentDetails = () => {
                 <RegistrationForm />
               </Tab>
             </Tabs>
-            {/* {<Icon.InfoCircle size={20} />} */}
-            {update && (
-              <div className="registration-card mx-auto mt-5">
-                <Alert key={"success"} variant={"success"}>
-                  <Icon.CheckCircle size={15} />
-                  <span>Registration sent to the organizer</span>
-                </Alert>
-              </div>
-            )}
           </Col>
           <Col className="mb-5  d-lg-none ">
             <Tabs defaultActiveKey="information" className="mb-3  " justify>

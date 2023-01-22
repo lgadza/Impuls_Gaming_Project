@@ -30,23 +30,26 @@ const NavigationBar = () => {
                 size={20}
               />
             </div>
-            <Nav className=" ">
-              <Link to="/" className="textColor mr-4 ">
+            <Nav className="nav-links ">
+              <Link to="/" className="textColor mr-4 link-btm-bar ">
                 Home
               </Link>
-              <Link to="/" className="textColor mr-4 ">
+              <Link to="/" className="textColor mr-4 link-btm-bar">
                 Tournaments
               </Link>
-              <Link to="#" className="textColor">
+              <Link to="#" className="textColor mr-4 link-btm-bar">
                 League
               </Link>
-              <Link to="" className="mr-4 textColor">
+              <Link to="" className="mr-4 textColor link-btm-bar">
                 Features
               </Link>
-              <Link to="" className="mr-4 textColor">
+              <Link to="" className="mr-4 textColor link-btm-bar">
                 Blog
               </Link>
-              <Link to="/backoffice" className="link-none-deco mr-4 ">
+              <Link
+                to="/backoffice"
+                className="link-none-deco mr-4 link-btm-bar"
+              >
                 Backoffice
               </Link>
             </Nav>
@@ -97,8 +100,9 @@ const NavigationBar = () => {
                 <Link to="" className=" textColor mb-3">
                   Blog
                 </Link>
-                <Link to="/backoffice" className="link-none-deco  mb-3">
-                  Backoffice
+                <hr />
+                <Link to={"/sign-up"} className="join-member   px-5 py-1 mb-2 ">
+                  LogIn
                 </Link>
               </div>
             </div>

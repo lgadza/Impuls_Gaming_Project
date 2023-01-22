@@ -173,6 +173,33 @@ textarea {
 a {
   color: #0cc4f2;
 }
+.nav-links .link-btm-bar {
+  text-decoration: none;
+  position: relative;
+}
+.nav-links .link-btm-bar::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  left: 0;
+  right: 0;
+  bottom: -3px;
+  height: 3px;
+  display: block;
+  transition: 0.3s;
+  transition-timing-function: ease-out;
+}
+.nav-links .link-btm-bar:hover::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  left: 0;
+  right: 0;
+  bottom: -3px;
+  height: 3px;
+  display: block;
+  background-color: #0cc4f2;
+}
 .textColor3 {
   color: #0cc4f2;
 }
@@ -184,6 +211,7 @@ a {
 .main-container {
   background-color: rgba(244, 92, 93, 0.08);
 }
+
 svg {
   margin: 0 10px;
 }
@@ -496,7 +524,11 @@ button[disabled].primary-btn {
 }
 .registration-card {
   width: 80% !important;
+  position: sticky;
+  top: 6rem;
+  z-index: 5;
 }
+
 /* .current {
   color: rgba(244, 92, 93, 255) !important;
 } */
@@ -783,5 +815,19 @@ tab[title] {
     width: 100%;
     height: 60vh !important;
     overflow: hidden;
+  }
+  .d-flex.flex-cart {
+    display: flex;
+    flex-direction: column;
+  }
+  .giftcard-section .giftcard-preview .logo-img {
+    width: 3rem;
+    height: 3rem;
+  }
+  .preview-content.ml-5.d-flex h3.mb-5.pb-2 {
+    font-size: 1.5em;
+  }
+  .preview-content.ml-5.d-flex.flex-column.justify-content-center {
+    margin-left: 5px;
   }
 }
