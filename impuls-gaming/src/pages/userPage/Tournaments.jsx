@@ -57,7 +57,7 @@ const Tournaments = () => {
 
       {tournaments.map((tournament, index) => (
         <div>
-          {tournament.tournament_name && (
+          {tournament.tournament_name ? (
             <Link
               to={`/tournaments/${tournament.tournament_name}`}
               className="link-none-deco"
@@ -97,6 +97,11 @@ const Tournaments = () => {
                 </Col>
               </Row>
             </Link>
+          ) : (
+            <div>
+              No competions open at the moment. We are opening a new competion
+              soon! Check again in a few hours
+            </div>
           )}
         </div>
       ))}

@@ -1,4 +1,4 @@
-import { Col, Container, Row } from "react-bootstrap";
+import { Col, Container, Row, Dropdown } from "react-bootstrap";
 import * as Icon from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
 import profilePic from "../../img/Louis profile .JPG";
@@ -22,20 +22,13 @@ const UserPage = () => {
   const [hoverXB, setHoverXB] = useState(0);
   const [hoverEN, setHoverEN] = useState(0);
   const [hoverPS, setHoverPS] = useState(0);
-  const [showTable, setShowTable] = useState(false);
-  const [showChat, setShowChat] = useState(false);
   const [key, setKey] = useState("activation");
   const dispatch = useDispatch();
   const userPreferenceData = useSelector((state) => state.preference.data);
   console.log(userPreferenceData);
   const [isLeagueChecked, setIsLeagueChecked] = useState(false);
   const [isTournamentChecked, setIsTournamentChecked] = useState(false);
-  const handleShowTable = () => {
-    showChat ? setShowChat(false) : setShowTable(true);
-  };
-  const handleShowChat = () => {
-    showTable ? setShowTable(false) : setShowChat(true);
-  };
+
   const handleTournamentCheck = (e) => {
     // isTournamentChecked
     //   ? setIsTournamentChecked(false)
@@ -72,15 +65,39 @@ const UserPage = () => {
             Homepage
           </Link>
           <Icon.CaretRightFill size={10} />
-          <Link className="textColor">user</Link>
-          <Icon.CaretRightFill size={10} />
+
           <Link className="textColor">Louis Gadza</Link>
         </div>
         <div className="d-flex">
-          <img src={profilePic} className="small-profile-img" alt="" />
-          <Link to="/sign-in" className="textColor mx-2">
-            Log out
-          </Link>
+          <Dropdown>
+            <Dropdown.Toggle>
+              <img src={profilePic} className="small-profile-img" alt="" />
+            </Dropdown.Toggle>
+
+            <Dropdown.Menu>
+              <Dropdown.Item>
+                <div>
+                  <span>Louis Gadza</span>
+                  <img
+                    src={profilePic}
+                    className="small-profile-img ml-2"
+                    alt=""
+                  />
+                </div>
+              </Dropdown.Item>
+              <Dropdown.Item>
+                <Link to="" className="textColor mx-2">
+                  Registrations
+                </Link>
+              </Dropdown.Item>
+              <hr />
+              <Dropdown.Item>
+                <Link to="/sign-in" className="textColor mx-2">
+                  Log out
+                </Link>
+              </Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
         </div>
       </Row>
       <Container className="">

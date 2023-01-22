@@ -738,7 +738,17 @@ tab[title] {
 .tournament-card-edit {
   position: relative;
 }
-
+.dropdown-toggle.btn {
+  background-color: transparent;
+  outline: none;
+  border: none;
+}
+.dropdown-toggle.btn:focus {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  box-shadow: none;
+}
 @media screen and (max-width: 992px) {
   .featured-leagues {
     font-size: 2em !important;
