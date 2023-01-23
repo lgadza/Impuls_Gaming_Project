@@ -19,6 +19,9 @@ import Match from "./pages/backoffice/Match";
 import Participants from "./pages/backoffice/Participants";
 import TournamentDetails from "./components/TournamentDetails";
 import GeneralSettings from "./pages/backoffice/GeneralSettings";
+import MatchType from "./pages/backoffice/structureStages/MatchType";
+import StageType from "./pages/backoffice/structureStages/StageType";
+import ConfigureStage from "./pages/backoffice/structureStages/ConfigureStage";
 
 function App() {
   return (
@@ -63,6 +66,18 @@ function App() {
           <Route
             element={<GeneralSettings />}
             path="/backoffice/projects/settings/:tournamentId/edit"
+          />
+          <Route
+            element={<MatchType />}
+            path="/backoffice/projects/structures/:tournamentId/stages"
+          />
+          <Route
+            element={<StageType />}
+            path="/backoffice/projects/structures/:tournamentId/stages/:typeId"
+          />
+          <Route
+            element={<ConfigureStage />}
+            path="/backoffice/projects/structures/:tournamentId/stages/:typeId/:configType"
           />
         </Routes>
       </BrowserRouter>

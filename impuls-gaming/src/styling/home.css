@@ -275,12 +275,18 @@ svg {
 }
 a:hover {
   color: #0cc4f2;
+  text-decoration: none;
 }
+
 .featured-games {
   border: 3px solid;
 }
 .bg-secondary.text-white {
   border-radius: 3px;
+}
+.border-hover:hover {
+  box-shadow: 1px 3px 5px rgba(25, 0, 76, 255);
+  border-radius: 5px;
 }
 .join-call {
   z-index: 3 !important;

@@ -112,7 +112,7 @@ const TournamentOverview = () => {
                     to={`/backoffice/projects/settings/${tournament.tournament_name}/participants`}
                   >
                     <Icon.Gear size={25} />
-                    <span>Configure check-in</span>
+                    <span className=" link-btm-bar">Configure check-in</span>
                   </Link>
                   {/* (//TODO: do not delete this its import for when thing ) */}
                   {/* <Card.Text>
@@ -148,7 +148,7 @@ const TournamentOverview = () => {
                         to={`/backoffice/projects/settings/${tournament.tournament_name}/registration/`}
                       >
                         <Icon.Gear size={25} />
-                        <span>Configure check-in</span>
+                        <span className=" link-btm-bar">Configure check-in</span>
                       </Link>
                     )}
                   </Card.Text> */}
@@ -164,7 +164,10 @@ const TournamentOverview = () => {
                   <Row className="d-flex justify-content-between align-items-center mb-3 mx-1">
                     <span>Structure</span>
                     {/* {isStrucure && ( */}
-                    <Link className="link-none-deco ">
+                    <Link
+                      to={`/backoffice/projects/structures/${tournament.tournament_name}/stages/`}
+                      className="link-none-deco "
+                    >
                       <Icon.Plus size={30} />
                       <span className="link-btm-bar">Create new stage</span>
                     </Link>
@@ -181,7 +184,7 @@ const TournamentOverview = () => {
 
                       <Link>
                         <Icon.Plus size={30} />
-                        <span>Create new stage</span>
+                        <span className=" link-btm-bar">Create new stage</span>
                       </Link>
                     </>
                   )} */}
@@ -193,7 +196,7 @@ const TournamentOverview = () => {
                           FFA League
                         </span>
                       </div>
-                      <div className="d-flex justify-content-around">
+                      <div className="d-flex justify-content-around align-items-center">
                         <span className="text-small text-muted">
                           1/20 players
                         </span>
@@ -238,6 +241,14 @@ const TournamentOverview = () => {
                       </div>
                     </div>
                   </Card.Text>
+                  <hr />
+                  <Card.Text>
+                    <Link>
+                      <span className="textColor3 link-none-deco link-btm-bar">
+                        View all stages
+                      </span>
+                    </Link>
+                  </Card.Text>
                 </Card.Body>
               </Card>
             </Col>
@@ -257,7 +268,7 @@ const TournamentOverview = () => {
                     to={`/backoffice/projects/settings/${tournament.tournament_name}/registration/`}
                   >
                     <Icon.Gear size={25} />
-                    <span>Enable registration</span>
+                    <span className=" link-btm-bar">Enable registration</span>
                   </Link>
                   {/* (//TODO: do not delete this its import for when thing change ) */}
 

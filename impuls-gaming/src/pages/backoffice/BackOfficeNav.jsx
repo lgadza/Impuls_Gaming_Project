@@ -52,6 +52,16 @@ const BackOfficeNav = ({ data, page }) => {
             </span>
           </Link>
           <Link
+            to={`/backoffice/projects/structures/${data.tournament_name}/stages`}
+            className="my-2 d-flex"
+          >
+            <span
+              className={page === "structure" ? "current textColor" : undefined}
+            >
+              Structures
+            </span>
+          </Link>
+          <Link
             to={`/backoffice/projects/participants/${data.tournament_name}`}
             className="d-flex"
           >
