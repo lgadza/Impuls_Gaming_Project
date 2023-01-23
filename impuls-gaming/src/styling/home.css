@@ -241,6 +241,9 @@ svg {
   height: 2rem;
   border-radius: 50%;
 }
+.text-small {
+  font-size: small;
+}
 .CircularProgressbar-path {
   stroke: rgba(25, 0, 76, 255) !important;
 }
@@ -271,7 +274,7 @@ svg {
   object-fit: fit;
 }
 a:hover {
-  color: rgba(244, 92, 93, 255);
+  color: #0cc4f2;
 }
 .featured-games {
   border: 3px solid;
@@ -316,6 +319,9 @@ a:hover {
 }
 .textColor2 {
   color: rgba(25, 0, 76, 255);
+}
+.textColor3 {
+  color: #0cc4f2;
 }
 button-star {
   background-color: transparent;
@@ -413,6 +419,32 @@ button-star {
 } */
 .user-position {
   border-bottom: 1px solid rgba(244, 92, 93, 255);
+}
+.btn:focus,
+.btn:active:focus,
+.btn.active:focus,
+.btn.focus,
+.btn:active.focus,
+.btn.active.focus {
+  outline: none !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  background-color: transparent !important;
+}
+.show > .btn-success.dropdown-toggle {
+  background-color: transparent !important;
+}
+.dropdown-item:focus,
+.dropdown-item:active:focus,
+.dropdown-item.active:focus,
+.dropdown-item.focus,
+.dropdown-item:active.focus,
+.dropdown-item.active.focus.dropdown-item:active {
+  background-color: transparent !important;
+  color: #0cc4f2 !important;
+}
+.dropdown-item:hover {
+  background-color: transparent !important;
 }
 .date {
   font-size: 12px;

@@ -6,6 +6,7 @@ import {
   Button,
   Form,
   Card,
+  Dropdown,
 } from "react-bootstrap";
 import * as Icon from "react-bootstrap-icons";
 import fifa from "../../img/fifa23.jpg";
@@ -21,6 +22,7 @@ const TournamentOverview = () => {
   console.log(params.tournamentId);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [isCheckIn, setIsCheckIn] = useState(false);
   const tournamentData = useSelector((state) => state.tournament.data);
   const tournament = tournamentData.find(
     (name) => name.tournament_name === params.tournamentId
@@ -62,6 +64,9 @@ const TournamentOverview = () => {
                     <span className="overview-border">SETUP</span>{" "}
                     <span>PENDING</span> <span>RUNNING</span>{" "}
                   </Row>
+                  {/* (//TODO: do not delete this its import for when thing ) */}
+
+                  {/* {isRegistration && isStructure && ( */}
                   <Card.Text>
                     <Icon.InfoCircleFill size={15} />
                     <span>
@@ -71,6 +76,19 @@ const TournamentOverview = () => {
                       structure.
                     </span>
                   </Card.Text>
+                  {/* )} */}
+                  {/* (//TODO: do not delete this its import for when thing ) */}
+
+                  {/* (//TODO: do not delete this its import for when thing ) */}
+                  {/* <Card.Text>
+                    <Icon.InfoCircleFill size={15} />
+                    <span>
+                      {" "}
+                      You should wait for participants to register and then
+                      choose to accept or refuse them.
+                    </span>
+                  </Card.Text> */}
+                  {/* (//TODO: do not delete this its import for when thing ) */}
                 </Card.Body>
               </Card>
             </Col>
@@ -96,24 +114,45 @@ const TournamentOverview = () => {
                     <Icon.Gear size={25} />
                     <span>Configure check-in</span>
                   </Link>
+                  {/* (//TODO: do not delete this its import for when thing ) */}
                   {/* <Card.Text>
-                    <div className="d-flex justify-content-around mb-3">
-                      <div className="text-primary">
-                        <h2>0</h2>
-                        <span>Participants </span>
+                    <div>
+                      <div className="d-flex justify-content-around mb-3">
+                        <div className="text-primary">
+                          <h2>0</h2>
+                          <span>Participants </span>
+                        </div>
+                        {isCheckIn && (
+                          <div className="text-success">
+                            <h2>0</h2>
+                            <span>Checked in </span>
+                          </div>
+                        )}
+                        <div className="text-secondary">
+                          <h2>36</h2>
+                          <span>Tournament size</span>
+                        </div>
                       </div>
-                      <div className="text-success">
-                        <h2>36</h2>
-                        <span>Tournament size</span>
-                      </div>
+                      {isCheckIn && (
+                        <div className="d-flex flex-column">
+                          <span>Participant check-in enabled</span>
+                          <span className="text-muted text-small">
+                            {" "}
+                            Open until 25 Janunary 2023 at 02:30
+                          </span>
+                        </div>
+                      )}
                     </div>
-                    <Link
-                      to={`/backoffice/projects/settings/${tournament.tournament_name}/registration/`}
-                    >
-                      <Icon.Gear size={25} />
-                      <span>Configure check-in</span>
-                    </Link>
+                    {!isCheckIn && (
+                      <Link
+                        to={`/backoffice/projects/settings/${tournament.tournament_name}/registration/`}
+                      >
+                        <Icon.Gear size={25} />
+                        <span>Configure check-in</span>
+                      </Link>
+                    )}
                   </Card.Text> */}
+                  {/* (//TODO: do not delete this its import for when thing change ) */}
                 </Card.Body>
               </Card>
             </Col>
@@ -124,17 +163,81 @@ const TournamentOverview = () => {
                 <Card.Body>
                   <Row className="d-flex justify-content-between align-items-center mb-3 mx-1">
                     <span>Structure</span>
+                    {/* {isStrucure && ( */}
+                    <Link className="link-none-deco ">
+                      <Icon.Plus size={30} />
+                      <span className="link-btm-bar">Create new stage</span>
+                    </Link>
+                    {/* )} */}
                   </Row>
                   <hr className="hr" />
+                  {/* {!isStrucure && (
+                    <>
+                      <Card.Text>
+                        The tournament does not have any stage yet. You should
+                        create the first stage and may use our Structure Guide
+                        if you are not sure of which stage to create.
+                      </Card.Text>
+
+                      <Link>
+                        <Icon.Plus size={30} />
+                        <span>Create new stage</span>
+                      </Link>
+                    </>
+                  )} */}
                   <Card.Text>
-                    The tournament does not have any stage yet. You should
-                    create the first stage and may use our Structure Guide if
-                    you are not sure of which stage to create.
+                    <div className="d-flex justify-content-between">
+                      <div className="d-flex flex-column ">
+                        <span>Name of Tournament</span>
+                        <span className="text-small text-muted d-flex">
+                          FFA League
+                        </span>
+                      </div>
+                      <div className="d-flex justify-content-around">
+                        <span className="text-small text-muted">
+                          1/20 players
+                        </span>
+                        <span className="text-small text-muted mx-4">
+                          Pending
+                        </span>
+                        <span>
+                          <Dropdown>
+                            <Dropdown.Toggle
+                              variant="success"
+                              id="dropdown-basic"
+                            >
+                              <Icon.ThreeDotsVertical
+                                size={20}
+                                color="#0cc4f2"
+                              />
+                            </Dropdown.Toggle>
+
+                            <Dropdown.Menu style={{ width: "18rem" }}>
+                              <Dropdown.Item>
+                                <Icon.Gear size={20} color="#0cc4f2" />
+                                <span className="textColor3 link-btm-bar">
+                                  Configure
+                                </span>
+                              </Dropdown.Item>
+                              <Dropdown.Item className="my-2">
+                                <Icon.Search size={20} color="#0cc4f2" />
+                                <span className="textColor3 link-btm-bar">
+                                  Results
+                                </span>
+                              </Dropdown.Item>
+                              <hr />
+                              <Dropdown.Item>
+                                <Icon.Trash size={20} color="red" />
+                                <span className="text-danger link-btm-bar">
+                                  Delete
+                                </span>
+                              </Dropdown.Item>
+                            </Dropdown.Menu>
+                          </Dropdown>
+                        </span>
+                      </div>
+                    </div>
                   </Card.Text>
-                  <Link>
-                    <Icon.Plus size={30} />
-                    <span>Create new stage</span>
-                  </Link>
                 </Card.Body>
               </Card>
             </Col>
@@ -156,6 +259,8 @@ const TournamentOverview = () => {
                     <Icon.Gear size={25} />
                     <span>Enable registration</span>
                   </Link>
+                  {/* (//TODO: do not delete this its import for when thing change ) */}
+
                   {/* ************************************* DO NOT DELETE ME */}
                   {/* <Card.Text>
                     <div className="d-flex justify-content-around">
@@ -180,6 +285,7 @@ const TournamentOverview = () => {
                       No pending registration
                     </div>
                   </Card.Text> */}
+                  {/* (//TODO: do not delete this its import for when thing change ) */}
                 </Card.Body>
               </Card>
             </Col>

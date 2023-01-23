@@ -55,8 +55,8 @@ const ParticipantCheckin = () => {
           {!update && (
             <div className="registration-card mx-auto mb-5">
               <Alert key={"danger"} variant={"danger"}>
-                <Icon.InfoCircle size={15} />
-                <span>
+                <Icon.InfoCircleFill color="red" size={15} />
+                <span className="text-danger">
                   There is invalid data in the form. Please check it and submit
                   again.
                 </span>
