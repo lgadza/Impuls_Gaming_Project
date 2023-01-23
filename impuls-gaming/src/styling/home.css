@@ -173,11 +173,11 @@ textarea {
 a {
   color: #0cc4f2;
 }
-.nav-links .link-btm-bar {
-  text-decoration: none;
+.link-btm-bar {
+  text-decoration: none !important;
   position: relative;
 }
-.nav-links .link-btm-bar::after {
+.link-btm-bar::after {
   content: "";
   position: absolute;
   width: 0;
@@ -189,7 +189,7 @@ a {
   transition: 0.3s;
   transition-timing-function: ease-out;
 }
-.nav-links .link-btm-bar:hover::after {
+.link-btm-bar:hover::after {
   content: "";
   position: absolute;
   width: 100%;
@@ -199,6 +199,9 @@ a {
   height: 3px;
   display: block;
   background-color: #0cc4f2;
+}
+.bring-top {
+  z-index: 3 !important;
 }
 .textColor3 {
   color: #0cc4f2;
@@ -246,7 +249,11 @@ svg {
 }
 
 .blink_me {
-  animation: blinker 0.5s linear infinite;
+  animation: blinker 1s linear infinite;
+}
+.blink_me2 {
+  animation: blinker 3s linear infinite;
+  color: #0cc4f2 !important;
 }
 
 @keyframes blinker {

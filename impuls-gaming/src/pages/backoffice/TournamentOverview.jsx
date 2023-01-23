@@ -93,9 +93,27 @@ const TournamentOverview = () => {
                   <Link
                     to={`/backoffice/projects/settings/${tournament.tournament_name}/participants`}
                   >
-                    <Icon.Gear size={30} />
+                    <Icon.Gear size={25} />
                     <span>Configure check-in</span>
                   </Link>
+                  {/* <Card.Text>
+                    <div className="d-flex justify-content-around mb-3">
+                      <div className="text-primary">
+                        <h2>0</h2>
+                        <span>Participants </span>
+                      </div>
+                      <div className="text-success">
+                        <h2>36</h2>
+                        <span>Tournament size</span>
+                      </div>
+                    </div>
+                    <Link
+                      to={`/backoffice/projects/settings/${tournament.tournament_name}/registration/`}
+                    >
+                      <Icon.Gear size={25} />
+                      <span>Configure check-in</span>
+                    </Link>
+                  </Card.Text> */}
                 </Card.Body>
               </Card>
             </Col>
@@ -135,9 +153,33 @@ const TournamentOverview = () => {
                   <Link
                     to={`/backoffice/projects/settings/${tournament.tournament_name}/registration/`}
                   >
-                    <Icon.Gear size={30} />
+                    <Icon.Gear size={25} />
                     <span>Enable registration</span>
                   </Link>
+                  {/* ************************************* DO NOT DELETE ME */}
+                  {/* <Card.Text>
+                    <div className="d-flex justify-content-around">
+                      <div className="text-primary">
+                        <h1>0</h1>
+                        <span>Pending</span>
+                      </div>
+                      <div className="text-success">
+                        <h1>0</h1>
+                        <span>Accepted</span>
+                      </div>
+                      <div className="text-secondary">
+                        <h1>0</h1>
+                        <span>Refused</span>
+                      </div>
+                      <div className="text-secondary">
+                        <h1>0</h1>
+                        <span>Cancelled</span>
+                      </div>
+                    </div>
+                    <div className="my-4 text-muted">
+                      No pending registration
+                    </div>
+                  </Card.Text> */}
                 </Card.Body>
               </Card>
             </Col>

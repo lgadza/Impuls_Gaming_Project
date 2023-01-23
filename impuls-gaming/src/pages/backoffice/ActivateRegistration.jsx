@@ -79,7 +79,7 @@ const ActivateRegistration = () => {
         </Col>
         <Col lg={10} className="my-5 px-5">
           {update && (
-            <div className="registration-card mx-auto">
+            <div className="registration-card bring-top mx-auto mb-5">
               <Alert key={"success"} variant={"success"}>
                 <Icon.CheckCircle size={15} />
                 <span>Settings have been successfully updated.</span>
@@ -88,7 +88,7 @@ const ActivateRegistration = () => {
           )}
           <Card className="registration-card mx-auto">
             <Card.Header>
-              <h3 className="d-flex my-4">Registration Settings</h3>
+              <h3 className="d-flex my-2">Registration Settings</h3>
             </Card.Header>
             <Card.Body>
               <Tabs

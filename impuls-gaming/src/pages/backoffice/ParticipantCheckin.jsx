@@ -26,13 +26,15 @@ const ParticipantCheckin = () => {
   const tournament = tournamentData.find(
     (name) => name.tournament_name === params.tournament
   );
-  console.log(tournament);
+  const [isCheckIn, setIsCheckIn] = useState(false);
   const [registrationOpens, setRegistrationOpens] = useState("");
   const [registrationCloses, setRegistrationCloses] = useState("");
   const [key, setKey] = useState("activation");
   const [update, setUpdate] = useState(false);
   const handleUpdate = () => {
-    setUpdate(true);
+    registrationCloses && registrationOpens && isCheckIn
+      ? setUpdate(true)
+      : setUpdate(false);
   };
 
   return (
@@ -43,23 +45,34 @@ const ParticipantCheckin = () => {
         </Col>
         <Col lg={10} className="my-5 px-5">
           {update && (
-            <div className="registration-card mx-auto">
+            <div className="registration-card mx-auto mb-5">
               <Alert key={"success"} variant={"success"}>
                 <Icon.CheckCircle size={15} />
                 <span>Settings have been successfully updated.</span>
               </Alert>
             </div>
           )}
+          {!update && (
+            <div className="registration-card mx-auto mb-5">
+              <Alert key={"danger"} variant={"danger"}>
+                <Icon.InfoCircle size={15} />
+                <span>
+                  There is invalid data in the form. Please check it and submit
+                  again.
+                </span>
+              </Alert>
+            </div>
+          )}
           <Card className="registration-card mx-auto">
             <Card.Header>
-              <h3 className="d-flex my-4">Participant Settings</h3>
+              <h3 className="d-flex my-2">Participant Settings</h3>
             </Card.Header>
             <Card.Body>
               <Tabs
                 activeKey="general"
                 defaultActiveKey="general"
                 onSelect={(k) => setKey(k)}
-                className="mb-3 mx-auto d-flex justify-content-center mx-5 px-5"
+                className="mb-3 mx-auto d-flex justify-content-center mb-5 px-5"
               >
                 <Tab eventKey="general" title="General">
                   <span className=" d-flex align-items-center mt-5">
@@ -92,9 +105,15 @@ const ParticipantCheckin = () => {
                           name="register"
                           label="Yes"
                           className="mr-3"
+                          onClick={() => setIsCheckIn(true)}
                         />
 
-                        <Form.Check type="radio" name="register" label="No" />
+                        <Form.Check
+                          type="radio"
+                          name="register"
+                          label="No"
+                          onClick={() => setIsCheckIn(false)}
+                        />
                       </div>
                     </Form>
                   </div>
@@ -111,6 +130,12 @@ const ParticipantCheckin = () => {
                         showTimeSelect
                         dateFormat="Pp"
                       />
+                      {isCheckIn && !registrationOpens && (
+                        <span className="d-flex mt-2 text-warning blink_me2">
+                          This value must be filled when participant check-in is
+                          enabled.
+                        </span>
+                      )}
                     </Form.Group>
                   </Form.Group>
                   <Form.Group className="mb-3 d-flex flex-column justify-content-start">
@@ -126,6 +151,12 @@ const ParticipantCheckin = () => {
                         showTimeSelect
                         dateFormat="Pp"
                       />
+                      {isCheckIn && !registrationCloses && (
+                        <span className="d-flex mt-2 text-warning blink_me2">
+                          This value must be filled when participant check-in is
+                          enabled.
+                        </span>
+                      )}
                     </Form.Group>
                   </Form.Group>
                   <Link
