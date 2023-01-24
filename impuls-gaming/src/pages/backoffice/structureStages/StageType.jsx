@@ -87,7 +87,7 @@ const StageType = () => {
             </Col>
             <Col md={6}>
               <Link
-                to={`/backoffice/projects/structures/${params.tournamentId}/stages/multiple/league`}
+                to={`/backoffice/projects/structures/${params.tournamentId}/stages/multiple/league/`}
               >
                 <Card
                   className="border-hover textColor"

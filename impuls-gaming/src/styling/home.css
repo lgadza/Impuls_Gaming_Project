@@ -335,6 +335,9 @@ button-star {
   outline: none;
   cursor: pointer;
 }
+.warning-bg {
+  background-color: rgb(255, 254, 230);
+}
 .on {
   color: rgba(244, 92, 93, 255);
 }
