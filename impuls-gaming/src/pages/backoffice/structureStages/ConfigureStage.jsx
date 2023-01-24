@@ -30,7 +30,7 @@ const ConfigureStages = () => {
   const dispatch = useDispatch();
   const [isCheckIn, setIsCheckIn] = useState(false);
   const [key, setKey] = useState("activation");
-  //   const [update, setUpdate] = useState(false);
+  const [update, setUpdate] = useState(false);
 
   const handleNumber = (e) => {
     setNumber(e.target.value);
@@ -43,6 +43,12 @@ const ConfigureStages = () => {
   };
   const handleNumberOfMatches = (e) => {
     setNumberOfMatches(e.target.value);
+  };
+  const handleUpdate = () => {
+    number && name && size && numberOfMatches
+      ? setUpdate(true)
+      : setUpdate(false);
+    // setUpdate(true);
   };
   const formData = {
     number: number,
@@ -63,14 +69,25 @@ const ConfigureStages = () => {
           <BackOfficeNav data={tournament} page={"structure"} />
         </Col>
         <Col lg={10} className="my-5 px-5">
-          {/* {update && (
+          {update && (
             <div className="registration-card bring-top mx-auto mb-5">
               <Alert key={"success"} variant={"success"}>
                 <Icon.CheckCircle size={15} />
                 <span>Settings have been successfully updated.</span>
               </Alert>
             </div>
-          )} */}
+          )}
+          {!update && (
+            <div className="registration-card bring-top mx-auto mb-5">
+              <Alert key={"warning"} variant={"danger"}>
+                <Icon.InfoCircle size={20} color="red" />
+                <span className="text-danger">
+                  There is invalid data in the form. Please check it and submit
+                  again.
+                </span>
+              </Alert>
+            </div>
+          )}
           <Card className="registration-card mx-auto">
             <Card.Header>
               <h3 className="d-flex my-2">
@@ -109,10 +126,12 @@ const ConfigureStages = () => {
                           </OverlayTrigger>
                         </Form.Label>
                         <Form.Control type="number" onChange={handleNumber} />
-                        <span className="text-left blink_me2">
-                          This field is required and the value must be between 1
-                          and 30.
-                        </span>
+                        {update && !number && (
+                          <span className="text-left blink_me2">
+                            This field is required and the value must be between
+                            1 and 30.
+                          </span>
+                        )}
                       </Form.Group>
                     </Col>
                     <Col>
@@ -137,10 +156,12 @@ const ConfigureStages = () => {
                           </OverlayTrigger>
                         </Form.Label>
                         <Form.Control type="number" onChange={handleSize} />
-                        <span className="text-left blink_me2">
-                          This field is required and this stage type must have a
-                          size between 3 and 128
-                        </span>
+                        {!size && update && (
+                          <span className="text-left blink_me2">
+                            This field is required and this stage type must have
+                            a size between 3 and 128
+                          </span>
+                        )}
                       </Form.Group>
                     </Col>
                   </Row>
@@ -158,9 +179,11 @@ const ConfigureStages = () => {
                           maxLength={30}
                           onChange={handleName}
                         />
-                        <span className="text-left blink_me2">
-                          This field is required
-                        </span>
+                        {!name && update && (
+                          <span className="text-left blink_me2">
+                            This field is required
+                          </span>
+                        )}
                       </Form.Group>
                     </Col>
                     <Col>
@@ -172,9 +195,11 @@ const ConfigureStages = () => {
                           type="number"
                           onChange={handleNumberOfMatches}
                         />
-                        <span className="text-left blink_me2">
-                          This field is required
-                        </span>
+                        {!numberOfMatches && update && (
+                          <span className="text-left blink_me2">
+                            This field is required
+                          </span>
+                        )}
                       </Form.Group>
                     </Col>
                   </Row>
@@ -193,7 +218,7 @@ const ConfigureStages = () => {
                   <Link className="d-flex justify-content-end mt-4">
                     <Button
                       type="submit"
-                      //   onClick={handleUpdate}
+                      onClick={handleUpdate}
                       className="primary-btn textColor"
                     >
                       <Icon.PlusLg className="mx-1" size={20} />
