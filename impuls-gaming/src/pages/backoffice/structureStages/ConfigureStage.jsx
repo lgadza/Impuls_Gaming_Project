@@ -30,6 +30,7 @@ const ConfigureStages = () => {
   const dispatch = useDispatch();
   const [isCheckIn, setIsCheckIn] = useState(false);
   const [key, setKey] = useState("activation");
+  //   const [update, setUpdate] = useState(false);
 
   const handleNumber = (e) => {
     setNumber(e.target.value);
@@ -62,6 +63,14 @@ const ConfigureStages = () => {
           <BackOfficeNav data={tournament} page={"structure"} />
         </Col>
         <Col lg={10} className="my-5 px-5">
+          {/* {update && (
+            <div className="registration-card bring-top mx-auto mb-5">
+              <Alert key={"success"} variant={"success"}>
+                <Icon.CheckCircle size={15} />
+                <span>Settings have been successfully updated.</span>
+              </Alert>
+            </div>
+          )} */}
           <Card className="registration-card mx-auto">
             <Card.Header>
               <h3 className="d-flex my-2">
