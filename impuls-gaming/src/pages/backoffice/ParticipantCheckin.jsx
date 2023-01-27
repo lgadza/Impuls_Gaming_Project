@@ -22,9 +22,9 @@ import { useState, useEffect } from "react";
 
 const ParticipantCheckin = () => {
   const params = useParams();
-  const tournamentData = useSelector((state) => state.tournament.data);
-  const tournament = tournamentData.find(
-    (name) => name.tournament_name === params.tournament
+  const tournamentData = useSelector((state) => state.tournaments.tournaments);
+  const tournament = tournamentData.tournaments.find(
+    (name) => name.name === params.tournament
   );
   const [isCheckIn, setIsCheckIn] = useState(false);
   const [registrationOpens, setRegistrationOpens] = useState("");

@@ -11,8 +11,18 @@ import fifa from "../../img/fifa23.jpg";
 import * as Icon from "react-bootstrap-icons";
 import logo from "../../img/Blue_Futuristic_Gaming_Logo-removebg-preview.png";
 import Organizer from "./Organizer";
+import { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+
+import { getTournaments } from "../../redux/actions";
 
 const BackOffice = () => {
+  const dispatch = useDispatch();
+  const projects = useSelector((state) => state.tournaments.tournaments);
+  console.log(projects);
+  useEffect(() => {
+    dispatch(getTournaments());
+  }, []);
   return (
     <Container fluid className="">
       <Row>
@@ -27,7 +37,7 @@ const BackOffice = () => {
           <h3 className="d-flex">My Projects</h3>
         </Col>
         <Col lg={9} md={12} className="">
-          <Organizer />
+          <Organizer projects={projects} />
         </Col>
       </Row>
     </Container>

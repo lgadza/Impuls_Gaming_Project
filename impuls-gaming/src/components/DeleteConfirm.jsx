@@ -13,8 +13,8 @@ const DeleteConfirm = ({ visible, onhide, tournamentId }) => {
   };
 
   const tournamentData = useSelector((state) => state.tournaments.tournaments);
-  const tournament = tournamentData.find(
-    (name) => name.tournament_name === tournamentId
+  const tournament = tournamentData.tournaments.find(
+    (name) => name.name === tournamentId
   );
   console.log(tournament);
   return (
@@ -30,9 +30,7 @@ const DeleteConfirm = ({ visible, onhide, tournamentId }) => {
             <Row>
               <h6 className="my-5 ">
                 Are you sure you want to delete{" "}
-                <strong className="textColor2">
-                  {tournament.tournament_name}{" "}
-                </strong>
+                <strong className="textColor2">{tournament.name} </strong>
                 tournament
               </h6>
               <div className="my-5 ml-auto">

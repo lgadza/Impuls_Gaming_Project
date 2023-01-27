@@ -80,7 +80,10 @@ export const createTournament = (data) => {
     };
     const URL = process.env.REACT_APP_BE_PROD_URL;
     try {
-      await fetch(`${URL}/tournaments`, options);
+      const response = await fetch(`${URL}/tournaments`, options);
+      if (response.ok) {
+        getUsers(`${URL}/users?limit=10`);
+      }
     } catch (error) {
       console.log(error);
     }
@@ -95,7 +98,7 @@ export const getTournaments = (data) => {
     try {
       let response = await fetch(`${URL}/tournaments`, options);
       if (response.ok) {
-        const tournaments = response.json();
+        const tournaments = await response.json();
         dispatch({
           type: GET_TOURNAMENTS,
           payload: tournaments,

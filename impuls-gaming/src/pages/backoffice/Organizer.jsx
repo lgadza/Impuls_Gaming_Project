@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 import { getTournaments } from "../../redux/actions";
 
 import DeleteConfirm from "../../components/DeleteConfirm";
-const Organizer = () => {
+const Organizer = ({ projects }) => {
   const dispatch = useDispatch();
   const [show, setShow] = useState(false);
   const [deleteItem, setDeleteItem] = useState(false);
@@ -23,12 +23,11 @@ const Organizer = () => {
   const handleDeleteItem = () => {
     deleteItem === false ? setDeleteItem(true) : setDeleteItem(false);
   };
-  console.log(projectId);
-  const projects = useSelector((state) => state.tournaments.tournaments);
+  const project = useSelector((state) => state.tournaments.tournaments);
   console.log(projects);
   useEffect(() => {
     dispatch(getTournaments());
-  });
+  }, []);
   return (
     <>
       <>
@@ -69,46 +68,45 @@ const Organizer = () => {
               </span>
             </span>
           </Col>
-          {/* {projects &&
-            projects.tournaments.map((project, index) => (
-              <Col
-                className="tournament-card-edit"
-                lg={6}
-                md={6}
-                xl={4}
-                sm={6}
-                xs={12}
-                key={index}
-              >
-                {deleteItem && (
-                  <button
-                    onClick={() => {
-                      setShowDelete(true);
-                      setProjectId(project);
-                    }}
-                    className="edit-tournament mx-auto "
-                  >
-                    <Icon.Trash size={20} color="red" />
-                  </button>
-                )}
+          {projects.tournaments.map((project, index) => (
+            <Col
+              className="tournament-card-edit"
+              lg={6}
+              md={6}
+              xl={4}
+              sm={6}
+              xs={12}
+              key={index}
+            >
+              {deleteItem && (
+                <button
+                  onClick={() => {
+                    setShowDelete(true);
+                    setProjectId(project);
+                  }}
+                  className="edit-tournament mx-auto "
+                >
+                  <Icon.Trash size={20} color="red" />
+                </button>
+              )}
 
-                <Link to={`projects/overview/${project.tournament_name}`}>
-                  <span className="d-flex mt-5 align-items-center justify-content-center flex-column main-container plus-project  mx-4 mr-4">
-                    <img src={fifa} className="w-100" alt="fifa" />
-                    <span className="d-flex justify-content-center mx-4 align-items-center py-3">
-                      <strong>{project.tournament_name}</strong>
-                    </span>
+              <Link to={`projects/overview/${project.name}`}>
+                <span className="d-flex mt-5 align-items-center justify-content-center flex-column main-container plus-project  mx-4 mr-4">
+                  <img src={fifa} className="w-100" alt="fifa" />
+                  <span className="d-flex justify-content-center mx-4 align-items-center py-3 textColor">
+                    <strong>{project.name}</strong>
                   </span>
-                </Link>
-              </Col>
-            ))} */}
+                </span>
+              </Link>
+            </Col>
+          ))}
         </Row>
       </>
       <CreateTournament visible={show} onhide={handleClose} />
       <DeleteConfirm
         visible={showDelete}
         onhide={handleCloseDelete}
-        tournamentId={projectId.tournament_name}
+        tournamentId={projectId.name}
       />
     </>
   );

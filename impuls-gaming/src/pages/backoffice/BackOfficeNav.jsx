@@ -21,7 +21,7 @@ const BackOfficeNav = ({ data, page }) => {
           <img className="tournament-name-img" src={fifa} alt="" />
           <div className="d-flex flex-column w-75">
             <span className="d-flex ml-2 tournament-name w-75">
-              {data.tournament_name}
+              {data.name}
             </span>{" "}
             <span className="d-flex ml-2">{data.discipline}</span>{" "}
           </div>
@@ -32,7 +32,7 @@ const BackOfficeNav = ({ data, page }) => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Nav className="d-flex flex-column">
           <Link
-            to={`/backoffice/projects/overview/${data.tournament_name}`}
+            to={`/backoffice/projects/overview/${data.name}`}
             className="d-flex d-flex "
           >
             <span
@@ -42,7 +42,7 @@ const BackOfficeNav = ({ data, page }) => {
             </span>
           </Link>
           <Link
-            to={`/backoffice/projects/settings/${data.tournament_name}`}
+            to={`/backoffice/projects/settings/${data.name}`}
             className="my-2 d-flex"
           >
             <span
@@ -52,7 +52,7 @@ const BackOfficeNav = ({ data, page }) => {
             </span>
           </Link>
           <Link
-            to={`/backoffice/projects/structures/${data.tournament_name}/stages`}
+            to={`/backoffice/projects/structures/${data.name}/stages`}
             className="my-2 d-flex"
           >
             <span
@@ -62,7 +62,7 @@ const BackOfficeNav = ({ data, page }) => {
             </span>
           </Link>
           <Link
-            to={`/backoffice/projects/participants/${data.tournament_name}`}
+            to={`/backoffice/projects/participants/${data.name}`}
             className="d-flex"
           >
             <span
@@ -74,7 +74,7 @@ const BackOfficeNav = ({ data, page }) => {
             </span>
           </Link>
           <Link
-            to={`/backoffice/projects/settings/${data.tournament_name}`}
+            to={`/backoffice/projects/settings/${data.name}`}
             className="my-2 d-flex"
           >
             <span
@@ -84,7 +84,7 @@ const BackOfficeNav = ({ data, page }) => {
             </span>
           </Link>
           <Link
-            to={`/backoffice/projects/settings/${data.tournament_name}`}
+            to={`/backoffice/projects/settings/${data.name}`}
             className="d-flex"
           >
             <span

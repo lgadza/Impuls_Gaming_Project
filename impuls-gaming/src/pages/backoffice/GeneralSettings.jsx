@@ -22,9 +22,9 @@ import { useState, useEffect } from "react";
 
 const GeneralSettings = () => {
   const params = useParams();
-  const tournamentData = useSelector((state) => state.tournament.data);
-  const tournament = tournamentData.find(
-    (name) => name.tournament_name === params.tournamentId
+  const tournamentData = useSelector((state) => state.tournaments.tournaments);
+  const tournament = tournamentData.tournaments.find(
+    (name) => name.name === params.tournamentId
   );
   console.log(tournamentData);
   const [startDate, setStartDate] = useState("");
@@ -35,7 +35,7 @@ const GeneralSettings = () => {
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
 
-  const [name, setName] = useState(tournament.tournament_name);
+  const [name, setName] = useState(tournament.name);
   const [size, setSize] = useState(tournament.size);
   const [platform, setPlatform] = useState(tournament.platform);
   const [location, setLocation] = useState("");
@@ -69,7 +69,7 @@ const GeneralSettings = () => {
   };
 
   const formValues = {
-    tournament_name: name,
+    name: name,
     discipline: "FIFA 23",
     size: size,
     platform: platform,

@@ -28,9 +28,9 @@ const ActivateRegistration = () => {
   const [validationMessage, setValidationMessage] = useState("");
   const [refusalMessage, setRefusalMessage] = useState("");
 
-  const tournamentData = useSelector((state) => state.tournament.data);
-  const tournament = tournamentData.find(
-    (name) => name.tournament_name === params.tournament
+  const tournamentData = useSelector((state) => state.tournaments.tournaments);
+  const tournament = tournamentData.tournaments.find(
+    (name) => name.name === params.tournament
   );
   console.log(tournament);
   const [registrationOpens, setRegistrationOpens] = useState("");

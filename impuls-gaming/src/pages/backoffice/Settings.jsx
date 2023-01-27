@@ -21,9 +21,9 @@ const Settings = () => {
   console.log(params.tournamentId);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const tournamentData = useSelector((state) => state.tournament.data);
-  const tournament = tournamentData.find(
-    (name) => name.tournament_name === params.tournamentId
+  const tournamentData = useSelector((state) => state.tournaments.tournaments);
+  const tournament = tournamentData.tournaments.find(
+    (name) => name.name === params.tournamentId
   );
   console.log(tournament);
   return (
@@ -39,7 +39,7 @@ const Settings = () => {
             <Col>
               <Card>
                 <Link
-                  to={`/backoffice/projects/settings/${tournament.tournament_name}/edit`}
+                  to={`/backoffice/projects/settings/${tournament.name}/edit`}
                   className="textColor settings-card link-none-deco"
                 >
                   <Card.Header>
@@ -59,7 +59,7 @@ const Settings = () => {
             <Col>
               <Card>
                 <Link
-                  to={`/backoffice/projects/settings/${tournament.tournament_name}/matches`}
+                  to={`/backoffice/projects/settings/${tournament.name}/matches`}
                   className="textColor settings-card link-none-deco"
                 >
                   <Card.Header>
@@ -79,7 +79,7 @@ const Settings = () => {
             <Col>
               <Card>
                 <Link
-                  to={`/backoffice/projects/settings/${tournament.tournament_name}/registration`}
+                  to={`/backoffice/projects/settings/${tournament.name}/registration`}
                   className="textColor settings-card link-none-deco"
                 >
                   <Card.Header>
@@ -101,7 +101,7 @@ const Settings = () => {
             <Col>
               <Card>
                 <Link
-                  to={`/backoffice/projects/settings/${tournament.tournament_name}/participants`}
+                  to={`/backoffice/projects/settings/${tournament.name}/participants`}
                   className="textColor settings-card link-none-deco"
                 >
                   <Card.Header>

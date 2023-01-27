@@ -22,9 +22,9 @@ import { useState, useEffect } from "react";
 
 const Match = () => {
   const params = useParams();
-  const tournamentData = useSelector((state) => state.tournament.data);
-  const tournament = tournamentData.find(
-    (name) => name.tournament_name === params.tournament
+  const tournamentData = useSelector((state) => state.tournaments.tournaments);
+  const tournament = tournamentData.tournaments.find(
+    (name) => name.name === params.tournament
   );
   const [update, setUpdate] = useState(false);
   const handleUpdate = () => {
@@ -107,10 +107,7 @@ const Match = () => {
                     <option value="3">Best of 5</option>
                     <option value="3">Fixed games</option>
                   </Form.Select>
-                  <Link
-                   
-                    className="d-flex justify-content-end mt-4 link-none-deco"
-                  >
+                  <Link className="d-flex justify-content-end mt-4 link-none-deco">
                     <Button
                       type="submit"
                       onClick={handleUpdate}

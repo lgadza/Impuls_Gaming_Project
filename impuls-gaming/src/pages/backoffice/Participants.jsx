@@ -13,9 +13,9 @@ const Participants = () => {
   const params = useParams();
   const dispatch = useDispatch();
   const users = useSelector((state) => state.users.users);
-  const tournamentData = useSelector((state) => state.tournament.data);
-  const tournament = tournamentData.find(
-    (name) => name.tournament_name === params.tournamentId
+  const tournamentData = useSelector((state) => state.tournaments.tournaments);
+  const tournament = tournamentData.tournaments.find(
+    (name) => name.name === params.tournamentId
   );
 
   useEffect(() => {
@@ -159,49 +159,51 @@ const Participants = () => {
                   </div>
 
                   <div>
-                    <ul className="pl-0 w-100">
-                      {users.users.map((participant, index) => (
-                        <li className="w-100 participant-list" key={index}>
-                          <div className="d-flex justify-content-between my-3">
-                            <div className="d-flex align-items-center">
-                              <span className="mr-1">
-                                <Icon.CheckCircleFill
-                                  size={15}
-                                  color="green"
-                                  className="mx-0 px-0"
-                                />
-                                <span className="text-small text-muted pl-1">
-                                  Checked-in
+                    {users.totalUsers > 10 && (
+                      <ul className="pl-0 w-100">
+                        {users.users.map((participant, index) => (
+                          <li className="w-100 participant-list" key={index}>
+                            <div className="d-flex justify-content-between my-3">
+                              <div className="d-flex align-items-center">
+                                <span className="mr-1">
+                                  <Icon.CheckCircleFill
+                                    size={15}
+                                    color="green"
+                                    className="mx-0 px-0"
+                                  />
+                                  <span className="text-small text-muted pl-1">
+                                    Checked-in
+                                  </span>
                                 </span>
-                              </span>
-                              {/* <span className="mr-1">
+                                {/* <span className="mr-1">
                                 <Icon.XCircleFill size={15} color="gray" />
                                 <span className="text-small text-muted">
                                  Not checked in
                                 </span>
                               </span> */}
-                              <span className="ml-5">
-                                {participant.name} {participant.surname}
-                              </span>
-                            </div>
+                                <span className="ml-5">
+                                  {participant.name} {participant.surname}
+                                </span>
+                              </div>
 
-                            <div className="">
-                              <span>{participant.email} </span>
+                              <div className="">
+                                <span>{participant.email} </span>
+                              </div>
+                              <div className="">
+                                <span className="mr-2">
+                                  {format(
+                                    new Date(participant.createdAt.toString()),
+                                    "dd MMM yyyy"
+                                  )}
+                                </span>
+                                {/* <Icon.ThreeDotsVertical /> */}
+                                <input className="mr-1  px-2" type="checkbox" />
+                              </div>
                             </div>
-                            <div className="">
-                              <span className="mr-2">
-                                {format(
-                                  new Date(participant.createdAt.toString()),
-                                  "dd MMM yyyy"
-                                )}
-                              </span>
-                              {/* <Icon.ThreeDotsVertical /> */}
-                              <input className="mr-1  px-2" type="checkbox" />
-                            </div>
-                          </div>
-                        </li>
-                      ))}
-                    </ul>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
                   </div>
                   {users.totalUsers === 0 && (
                     <>
