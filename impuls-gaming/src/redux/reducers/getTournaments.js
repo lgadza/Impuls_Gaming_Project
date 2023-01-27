@@ -9,12 +9,12 @@ const initialState = {
   isLoading: GET_TOURNAMENTS_LOADING,
   isError: GET_TOURNAMENTS_ERROR,
 };
-const newTournament = (state = initialState, action) => {
+const getTournaments = (state = initialState, action) => {
   switch (action.type) {
     case GET_TOURNAMENTS:
       return {
         ...state,
-        tournaments: [...state.tournaments, action.payload],
+        tournaments: [...state, action.payload],
       };
     case GET_TOURNAMENTS_LOADING:
       return {
@@ -32,4 +32,4 @@ const newTournament = (state = initialState, action) => {
       return state;
   }
 };
-export default newTournament;
+export default getTournaments;
