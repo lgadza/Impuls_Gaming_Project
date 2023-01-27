@@ -97,7 +97,7 @@ export const getTournaments = (data) => {
       if (response.ok) {
         const tournaments = response.json();
         dispatch({
-          type: NEW_TOURNAMENT_DATA,
+          type: GET_TOURNAMENTS,
           payload: tournaments,
         });
         setTimeout(() => {
