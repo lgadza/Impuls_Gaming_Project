@@ -19,7 +19,7 @@ const Participants = () => {
   );
 
   useEffect(() => {
-    const URL = `${process.cwd.REACT_APP_BE_PROD_URL}/users?limit=10`;
+    const URL = `${process.env.REACT_APP_BE_PROD_URL}/users?limit=10`;
     dispatch(getUsers(URL));
   }, []);
 
