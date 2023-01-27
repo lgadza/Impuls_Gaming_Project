@@ -5,7 +5,7 @@ import {
 } from "../actions";
 
 const initialState = {
-  tournaments: "",
+  tournaments: [],
   isLoading: GET_TOURNAMENTS_LOADING,
   isError: GET_TOURNAMENTS_ERROR,
 };
