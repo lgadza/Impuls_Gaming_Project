@@ -4,7 +4,6 @@ import * as Icon from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { createTournament } from "../redux/actions";
 
 const DeleteConfirm = ({ visible, onhide, tournamentId }) => {
   const dispatch = useDispatch();
@@ -13,7 +12,7 @@ const DeleteConfirm = ({ visible, onhide, tournamentId }) => {
     onhide();
   };
 
-  const tournamentData = useSelector((state) => state.tournament.data);
+  const tournamentData = useSelector((state) => state.tournaments.tournaments);
   const tournament = tournamentData.find(
     (name) => name.tournament_name === tournamentId
   );
