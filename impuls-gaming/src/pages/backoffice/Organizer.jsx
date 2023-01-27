@@ -6,8 +6,11 @@ import CreateTournament from "./CreateTournament";
 import fifa from "../../img/fifa23.jpg";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { getTournaments } from "../../redux/actions";
+
 import DeleteConfirm from "../../components/DeleteConfirm";
 const Organizer = () => {
+  const dispatch = useDispatch();
   const [show, setShow] = useState(false);
   const [deleteItem, setDeleteItem] = useState(false);
   const [projectId, setProjectId] = useState("");
@@ -21,7 +24,11 @@ const Organizer = () => {
     deleteItem === false ? setDeleteItem(true) : setDeleteItem(false);
   };
   console.log(projectId);
-  const projects = useSelector((state) => state.tournament.data);
+  const projects = useSelector((state) => state.tournaments.tournaments);
+  console.log(projects);
+  useEffect(() => {
+    dispatch(getTournaments());
+  });
   return (
     <>
       <>

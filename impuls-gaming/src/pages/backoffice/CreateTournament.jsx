@@ -18,14 +18,11 @@ const CreateTournament = ({ visible, onhide }) => {
   const [size, setSize] = useState(undefined);
   const [disable, setDisable] = useState(true);
 
-  const tournamentData = useSelector((state) => state.tournament.data);
-  const notUnique = tournamentData.find(
+  const tournaments = useSelector((state) => state.tournaments.tournaments);
+  const notUnique = tournaments.find(
     (name) => name.tournament_name === tournament
   );
 
-  // const handleProvidedData = (e) => {
-  //   tournament && size && !notUnique ? setDisable(false) : setDisable(true);
-  // };
   const formValues = {
     tournament_name: tournament,
     discipline: "FIFA 23",

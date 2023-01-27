@@ -9,7 +9,7 @@ import { persistReducer, persistStore } from "redux-persist";
 import { encryptTransform } from "redux-persist-transform-encrypt";
 import loginData from "../reducers/login";
 import userChat from "../reducers/userChat";
-import newTournament from "../reducers/newTournament";
+import tournaments from "../reducers/getTournaments";
 import userPreference from "../reducers/userPreference";
 import userData from "../reducers/userData";
 import users from "../reducers/usersReducer.js";
@@ -27,7 +27,7 @@ const bigReducer = combineReducers({
   giftData: giftData,
   log: loginData,
   userChat: userChat,
-  tournament: newTournament,
+  tournaments: tournaments,
   preference: userPreference,
   userData: userData,
   users: users,

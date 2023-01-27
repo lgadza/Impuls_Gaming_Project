@@ -1,6 +1,9 @@
 export const GIFT_CARD_DATA = " GIFT_CARD_DATA";
 export const USER_DATA = " USER_DATA";
 export const GET_USERS = "GET_USERS";
+export const GET_TOURNAMENTS = "GET_TOURNAMENTS";
+export const GET_TOURNAMENTS_LOADING = "GET_TOURNAMENTS_LOADING";
+export const GET_TOURNAMENTS_ERROR = "GET_TOURNAMENTS_ERROR";
 export const GET_USERS_LOADING = "GET_USERS_LOADING";
 export const GET_USERS_ERROR = "GET_USERS_ERROR";
 export const USER_PREFERENCE_DATA = " USER_PREFERENCE_DATA";
@@ -65,6 +68,71 @@ export const USER_DATA_LOADING = " USER_DATA_LOADING";
 //     }
 //   };
 // };
+export const createTournament = (data) => {
+  return async () => {
+    const options = {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    };
+    const URL = process.env.REACT_APP_BE_PROD_URL;
+    try {
+      await fetch(`${URL}/tournaments`, options);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+export const getTournaments = (data) => {
+  return async (dispatch) => {
+    const options = {
+      method: "GET",
+    };
+    const URL = process.env.REACT_APP_BE_PROD_URL;
+    try {
+      let response = await fetch(`${URL}/tournaments`, options);
+      if (response.ok) {
+        const tournaments = response.json();
+        dispatch({
+          type: NEW_TOURNAMENT_DATA,
+          payload: tournaments,
+        });
+        setTimeout(() => {
+          dispatch({
+            type: GET_TOURNAMENTS_LOADING,
+            payload: false,
+          });
+        }, 100);
+      } else {
+        console.log("error");
+
+        dispatch({
+          type: GET_TOURNAMENTS_LOADING,
+          payload: false,
+        });
+        dispatch({
+          type: GET_TOURNAMENTS_ERROR,
+          payload: true,
+        });
+      }
+    } catch (error) {
+      console.log(error);
+
+      dispatch({
+        type: GET_TOURNAMENTS_LOADING,
+        payload: false,
+      });
+
+      dispatch({
+        type: GET_TOURNAMENTS_ERROR,
+        payload: true,
+      });
+    }
+  };
+};
 
 export const getUsers = (URL) => {
   return async (dispatch) => {
@@ -131,12 +199,7 @@ export const userChat = (data) => {
     payload: data,
   };
 };
-export const createTournament = (data) => {
-  return {
-    type: NEW_TOURNAMENT_DATA,
-    payload: data,
-  };
-};
+
 export const userPreference = (data) => {
   return {
     type: USER_PREFERENCE_DATA,
