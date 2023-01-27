@@ -82,12 +82,13 @@ const SignIn = () => {
           <Form.Group className="mb-3">
             <Col>
               <div className="d-flex align-items-center">
-                <Form.Check
+                <input
                   className="mr-2"
+                  lavel="checkbox"
                   type="checkbox"
                   onClick={handleCheck}
                 />
-                <span>Remember me</span>
+                <span id="checkbox">Remember me</span>
               </div>
             </Col>
           </Form.Group>

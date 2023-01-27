@@ -16,7 +16,7 @@ const LogInPage = () => {
   const [surname, setSurname] = useState("");
   const [check, setCheck] = useState(true);
   const [password, setPassword] = useState("");
-  const [confrmPassword, setConfirmPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const isLoading = useSelector((state) => state.giftData.isLoading);
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState(undefined);
@@ -48,7 +48,7 @@ const LogInPage = () => {
     name &&
     surname &&
     email &&
-    password === confrmPassword &&
+    password === confirmPassword &&
     password.length >= 5 &&
     check
       ? setCheck(false)
@@ -63,10 +63,9 @@ const LogInPage = () => {
     email: email,
     phone: phone,
     password: password,
-    confrmPassword: confrmPassword,
+    confirmPassword: confirmPassword,
     check: check,
   };
-  console.log(check);
   return (
     <Container fluid className="login-page">
       <Row className="giftcard-preview-nav py-2 ">
@@ -74,7 +73,7 @@ const LogInPage = () => {
           <Link className="mr-auto" to={"/"}>
             <img className="logo-img " src={logo} alt="" />
           </Link>
-          <span className="mr-auto textColor">LIVE EXPIRIENCE</span>
+          <span className="mr-auto textColor">LIVE EXPERIENCE</span>
         </Col>
       </Row>
       <Row className="d-flex justify-content-center mt-4 textColor">
@@ -135,7 +134,7 @@ const LogInPage = () => {
               />
             </Col>
           </Form.Group>
-          {password !== confrmPassword && (
+          {password !== confirmPassword && (
             <span className="blink_me d-flex ml-3 mb-2">
               Password do not match*
             </span>
@@ -143,14 +142,17 @@ const LogInPage = () => {
           <Form.Group className="mb-3">
             <Col>
               <div className="d-flex align-items-center">
-                <Form.Check
+                <input
                   className="mr-2"
+                  label="checkbox"
                   type="checkbox"
                   onChange={handleCheck}
                 />
-                <span>I accept the</span>
-                <Link className="mx-1"> Teams of Use</Link> &{" "}
-                <Link className="ml-1">Privacy Policy</Link>
+                <div id="checkbox">
+                  <span>I accept the </span>
+                  <Link className="mx-1"> Teams of Use</Link> &{" "}
+                  <Link className="ml-1">Privacy Policy</Link>
+                </div>
               </div>
             </Col>
           </Form.Group>
