@@ -69,7 +69,7 @@ const Organizer = () => {
               </span>
             </span>
           </Col>
-          {projects &&
+          {/* {projects &&
             projects.tournaments.map((project, index) => (
               <Col
                 className="tournament-card-edit"
@@ -101,7 +101,7 @@ const Organizer = () => {
                   </span>
                 </Link>
               </Col>
-            ))}
+            ))} */}
         </Row>
       </>
       <CreateTournament visible={show} onhide={handleClose} />

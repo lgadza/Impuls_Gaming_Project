@@ -14,7 +14,7 @@ const getTournaments = (state = initialState, action) => {
     case GET_TOURNAMENTS:
       return {
         ...state,
-        tournaments: [action.payload],
+        tournaments: action.payload,
       };
     case GET_TOURNAMENTS_LOADING:
       return {
