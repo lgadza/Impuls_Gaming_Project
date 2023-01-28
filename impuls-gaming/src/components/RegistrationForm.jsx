@@ -3,8 +3,11 @@ import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate, useParams, Link } from "react-router-dom";
 import * as Icon from "react-bootstrap-icons";
+import { registerTournament } from "../redux/actions";
 
-const RegistrationForm = () => {
+const RegistrationForm = ({ tournamentId }) => {
+  const [id] = useState(tournamentId);
+  console.log("I AM ID", id);
   const params = useParams();
   const tournamentData = useSelector((state) => state.tournaments.tournaments);
   const tournament = tournamentData.tournaments.find(
@@ -14,16 +17,14 @@ const RegistrationForm = () => {
   const [registrationOpens, setRegistrationOpens] = useState("");
   const [registrationCloses, setRegistrationCloses] = useState("");
   const [update, setUpdate] = useState(false);
-  const handleUpdate = () => {
-    setUpdate(true);
-  };
+
   const dispatch = useDispatch();
   const [nickName, setNickName] = useState(undefined);
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
   const isLoading = useSelector((state) => state.giftData.isLoading);
   const [email, setEmail] = useState("");
-  const [termsCheck, setTermsCheck] = useState(undefined);
+  const [termsCheck, setTermsCheck] = useState(false);
   const handleNickname = (e) => {
     setNickName(e.target.value);
     // dispatch(giftCardInf(userData));
@@ -43,12 +44,11 @@ const RegistrationForm = () => {
     // dispatch(giftCardInf(userData));
   };
   const handleTerms = (e) => {
-    setTermsCheck(e.target.value);
+    termsCheck ? setTermsCheck(false) : setTermsCheck(true);
     // dispatch(giftCardInf(userData));
   };
-
   const userData = {
-    nickName: nickName,
+    nickname: nickName,
     name: name,
     surname: surname,
     email: email,
@@ -57,14 +57,25 @@ const RegistrationForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
   };
-
+  const handleUpdate = () => {
+    setUpdate(true);
+    dispatch(registerTournament(userData, "63d4f14eddb5ffb39bf8f996"));
+  };
   return (
     <>
-      {update && (
+      {name && email && surname && termsCheck && nickName && update && (
         <div className="registration-card mx-auto mt-5">
           <Alert key={"success"} variant={"success"}>
             <Icon.CheckCircle size={15} />
             <span>Registration sent to the organizer</span>
+          </Alert>
+        </div>
+      )}
+      {(!name || !email || !surname || !termsCheck || !nickName || !update) && (
+        <div className="registration-card mx-auto mt-5">
+          <Alert key={"warning"} variant={"danger"}>
+            <Icon.XCircle size={15} />
+            <span>Make sure all the fields are filled</span>
           </Alert>
         </div>
       )}

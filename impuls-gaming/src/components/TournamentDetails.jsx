@@ -34,7 +34,7 @@ const TournamentDetails = () => {
   const tournament = tournamentData.tournaments.find(
     (name) => name.name === params.tournamentId
   );
-  console.log(tournament);
+
   const [key, setKey] = useState("activation");
   const [registrationOpens, setRegistrationOpens] = useState("");
   const [registrationCloses, setRegistrationCloses] = useState("");
@@ -111,8 +111,10 @@ const TournamentDetails = () => {
                         <span className="d-flex">until 6 Jan 2023,13:00</span>
                       </div>
                       <div>
-                        <h3 className="border-bottom pb-2">15</h3>
-                        <h3 className="mt-0">16</h3>
+                        <h3 className="border-bottom pb-2">
+                          {tournament.tournamentParticipants.length}
+                        </h3>
+                        <h3 className="mt-0">{tournament.size}</h3>
                         <span>Players</span>
                       </div>
                     </div>
@@ -138,7 +140,51 @@ const TournamentDetails = () => {
                 <GroupStructure />
               </Tab>
               <Tab eventKey="participants" title="Participants">
-                <PlayerList />
+                {/* *********************************************************** */}
+                <Row>
+                  <Col>
+                    <div className="d-flex  flex-column my-3">
+                      <h4 className="d-flex">Participants</h4>
+                    </div>
+                  </Col>
+                  <Col>
+                    <Form className="d-flex">
+                      <Form.Control
+                        type="search"
+                        placeholder="Search here"
+                        className="mr-3"
+                        aria-label="Search"
+                      />
+                      <Button variant="secondary">
+                        <Icon.Search size={20} />
+                      </Button>
+                    </Form>
+                  </Col>
+                </Row>
+                <hr />
+
+                <Row>
+                  {tournament.tournamentParticipants.length > 0 &&
+                    tournament.tournamentParticipants.map((player, index) => {
+                      return (
+                        <Col xs={6} lg={3}>
+                          <Link className="link-none-deco">
+                            <div className="border round textColor  d-flex px-2 participant-names py-3 my-2">
+                              <span className="mr-4">{player.name}</span>{" "}
+                              <span>{player.surname}</span>
+                            </div>
+                          </Link>
+                        </Col>
+                      );
+                    })}
+                  {tournament.tournamentParticipants.length === 0 && (
+                    <Col xs={6} lg={3}>
+                      <span>No participants available yet</span>
+                    </Col>
+                  )}
+                </Row>
+                {/* *********************************************************** */}
+                {/* <PlayerList participants={tournament.tournamentParticipants} /> */}
               </Tab>
               <Tab eventKey="rules" title="Rules">
                 <Rules />
@@ -166,7 +212,7 @@ const TournamentDetails = () => {
                 <Rules />
               </Tab>
               <Tab eventKey="registration" title={<Icon.RCircle size={20} />}>
-                <RegistrationForm />
+                <RegistrationForm tournamentId={tournament._id} />
               </Tab>
             </Tabs>
 

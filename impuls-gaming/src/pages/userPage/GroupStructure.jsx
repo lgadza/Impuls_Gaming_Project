@@ -22,11 +22,11 @@ import { useState, useEffect } from "react";
 
 const GroupStructure = () => {
   const params = useParams();
-  const tournamentData = useSelector((state) => state.tournaments.tournaments);
-  const tournament = tournamentData.tournaments.find(
-    (name) => name.name === params.tournamentId
-  );
-  console.log(tournament);
+  // const tournamentData = useSelector((state) => state.tournaments.tournaments);
+  // const tournament = tournamentData.tournaments.find(
+  //   (name) => name.name === params.tournamentId
+  // );
+  // console.log(tournament);
   const [key, setKey] = useState("activation");
 
   return (
