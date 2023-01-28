@@ -4,19 +4,21 @@ import * as Icon from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { deleteTournament, getTournaments } from "../redux/actions";
+const URL = process.env.REACT_APP_BE_PROD_URL;
 
 const DeleteConfirm = ({ visible, onhide, tournamentId }) => {
   const dispatch = useDispatch();
-  const handleData = () => {
-    // dispatch(createTournament(formValues));
-    onhide();
-  };
 
-  const tournamentData = useSelector((state) => state.tournaments.tournaments);
-  const tournament = tournamentData.tournaments.find(
+  const tournaments = useSelector((state) => state.tournaments.tournaments);
+  const tournament = tournaments.tournaments.find(
     (name) => name.name === tournamentId
   );
-  console.log(tournament);
+  const handleData = () => {
+    dispatch(deleteTournament(tournament._id));
+    dispatch(getTournaments(`${URL}/tournaments`));
+    onhide();
+  };
   return (
     <Modal
       show={visible}

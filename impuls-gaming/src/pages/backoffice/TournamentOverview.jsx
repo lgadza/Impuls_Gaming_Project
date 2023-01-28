@@ -12,11 +12,11 @@ import * as Icon from "react-bootstrap-icons";
 import fifa from "../../img/fifa23.jpg";
 
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useLayoutEffect } from "react";
 import BackOfficeNav from "./BackOfficeNav";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { getUsers } from "../../redux/actions";
+import { getTournaments, getUsers } from "../../redux/actions";
 const URL = process.env.REACT_APP_BE_PROD_URL;
 
 const TournamentOverview = () => {
@@ -28,13 +28,17 @@ const TournamentOverview = () => {
   const tournament = tournamentData.tournaments.find(
     (name) => name.name === params.tournamentId
   );
+  console.log(tournamentData);
   console.log(tournament);
+  console.log(params.tournamentId);
   useEffect(() => {
-    dispatch(getUsers(`${URL}/users`));
+    dispatch(getUsers(`${URL}/users?limit=10`));
+    dispatch(getTournaments());
   }, []);
+
   return (
     <Container fluid className="main-container textColor">
-      {tournament && (
+      {tournament.name === params.tournamentId && (
         <Row>
           <Col lg={2} className="px-0">
             <BackOfficeNav data={tournament} page={"overview"} />

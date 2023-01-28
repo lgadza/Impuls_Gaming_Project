@@ -5,12 +5,13 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import fifa23 from "../../img/fifa23.jpg";
 import { useSelector, useDispatch } from "react-redux";
-import { createTournament } from "../../redux/actions";
+import { createTournament, getTournaments } from "../../redux/actions";
 
 const CreateTournament = ({ visible, onhide }) => {
   const dispatch = useDispatch();
   const handleData = () => {
     dispatch(createTournament(formValues));
+    dispatch(getTournaments());
     onhide();
   };
   const [tournament, setTournament] = useState("");

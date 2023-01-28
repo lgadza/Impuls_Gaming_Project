@@ -83,6 +83,23 @@ export const createTournament = (data) => {
       const response = await fetch(`${URL}/tournaments`, options);
       if (response.ok) {
         getUsers(`${URL}/users?limit=10`);
+        getTournaments();
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+export const deleteTournament = (id) => {
+  return async () => {
+    const options = {
+      method: "DELETE",
+    };
+    const URL = process.env.REACT_APP_BE_PROD_URL;
+    try {
+      const response = await fetch(`${URL}/tournaments/${id}`, options);
+      if (response.ok) {
+        getTournaments(`${URL}/tournaments`);
       }
     } catch (error) {
       console.log(error);
