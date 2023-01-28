@@ -5,7 +5,7 @@ import fifa from "../../img/fifa23.jpg";
 import { Link } from "react-router-dom";
 
 const Tournaments = () => {
-  const tournaments = useSelector((state) => state.tournament.data);
+  const tournaments = useSelector((state) => state.tournaments.tournaments);
   console.log(tournaments);
   return (
     <Col className="scoll-table gift-container pb-2 pr-0">
@@ -55,11 +55,11 @@ const Tournaments = () => {
         </Col>
       </Row>
 
-      {tournaments.map((tournament, index) => (
+      {tournaments.tournaments.map((tournament, index) => (
         <div>
-          {tournament.tournament_name ? (
+          {tournament.name ? (
             <Link
-              to={`/tournaments/${tournament.tournament_name}`}
+              to={`/tournaments/${tournament.name}`}
               className="link-none-deco"
             >
               <Row className="w-100 pr-0  mr-0 tournament-list  textColor2 container">
@@ -71,9 +71,7 @@ const Tournaments = () => {
                       className="tournament-preview-img mr-2"
                     />
                     <div className="d-flex flex-column justify-content-start">
-                      <h5 className="text-nowrap d-flex ">
-                        {tournament.tournament_name}
-                      </h5>
+                      <h5 className="text-nowrap d-flex ">{tournament.name}</h5>
                       <span className="text-nowrap span d-flex ">
                         {tournament.discipline}
                       </span>

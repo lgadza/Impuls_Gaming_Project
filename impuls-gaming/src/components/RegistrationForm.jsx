@@ -6,9 +6,9 @@ import * as Icon from "react-bootstrap-icons";
 
 const RegistrationForm = () => {
   const params = useParams();
-  const tournamentData = useSelector((state) => state.tournament.data);
-  const tournament = tournamentData.find(
-    (name) => name.tournament_name === params.tournamentId
+  const tournamentData = useSelector((state) => state.tournaments.tournaments);
+  const tournament = tournamentData.tournaments.find(
+    (name) => name.name === params.tournamentId
   );
   const [key, setKey] = useState("activation");
   const [registrationOpens, setRegistrationOpens] = useState("");

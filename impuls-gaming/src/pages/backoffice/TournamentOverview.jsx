@@ -7,6 +7,7 @@ import {
   Form,
   Card,
   Dropdown,
+  ProgressBar,
 } from "react-bootstrap";
 import * as Icon from "react-bootstrap-icons";
 import fifa from "../../img/fifa23.jpg";
@@ -25,6 +26,7 @@ const TournamentOverview = () => {
   const dispatch = useDispatch();
   const [isCheckIn, setIsCheckIn] = useState(false);
   const tournamentData = useSelector((state) => state.tournaments.tournaments);
+  // const tournament = useSelector((state) => state.tournament.tournament);
   const tournament = tournamentData.tournaments.find(
     (name) => name.name === params.tournamentId
   );
@@ -35,7 +37,9 @@ const TournamentOverview = () => {
     dispatch(getUsers(`${URL}/users?limit=10`));
     dispatch(getTournaments());
   }, []);
-
+  const setup = 50;
+  const pending = 0;
+  const running = 0;
   return (
     <Container fluid className="main-container textColor">
       {tournament.name === params.tournamentId && (
@@ -70,8 +74,18 @@ const TournamentOverview = () => {
                       </Col>
                     </Row>
                     <Row className="my-4 mx-2 d-flex justify-content-between">
-                      <span className="overview-border">SETUP</span>{" "}
-                      <span>PENDING</span> <span>RUNNING</span>{" "}
+                      <Col>
+                        <span className="d-flex">SETUP</span>
+                        <ProgressBar now={setup} visuallyHidden />
+                      </Col>{" "}
+                      <Col>
+                        <span className="d-flex"> PENDING</span>
+                        <ProgressBar now={pending} visuallyHidden />
+                      </Col>{" "}
+                      <Col>
+                        <span className="d-flex">RUNNING</span>
+                        <ProgressBar now={running} visuallyHidden />
+                      </Col>{" "}
                     </Row>
                     {/* (//TODO: do not delete this its import for when thing ) */}
 
@@ -118,7 +132,7 @@ const TournamentOverview = () => {
                       either way.
                     </Card.Text>
                     <Link
-                      to={`/backoffice/projects/settings/${tournament.tournament_name}/participants`}
+                      to={`/backoffice/projects/settings/${tournament.name}/participants`}
                     >
                       <Icon.Gear size={25} />
                       <span className=" link-btm-bar">Configure check-in</span>
@@ -154,7 +168,7 @@ const TournamentOverview = () => {
                     </div>
                     {!isCheckIn && (
                       <Link
-                        to={`/backoffice/projects/settings/${tournament.tournament_name}/registration/`}
+                        to={`/backoffice/projects/settings/${tournament.name}/registration/`}
                       >
                         <Icon.Gear size={25} />
                         <span className=" link-btm-bar">Configure check-in</span>
@@ -174,7 +188,7 @@ const TournamentOverview = () => {
                       <span>Structure</span>
                       {/* {isStrucure && ( */}
                       <Link
-                        to={`/backoffice/projects/structures/${tournament.tournament_name}/stages/`}
+                        to={`/backoffice/projects/structures/${tournament.name}/stages/`}
                         className="link-none-deco "
                       >
                         <Icon.Plus size={30} />
@@ -275,7 +289,7 @@ const TournamentOverview = () => {
                       results report ...
                     </Card.Text>
                     <Link
-                      to={`/backoffice/projects/settings/${tournament.tournament_name}/registration/`}
+                      to={`/backoffice/projects/settings/${tournament.name}/registration/`}
                     >
                       <Icon.Gear size={25} />
                       <span className=" link-btm-bar">Enable registration</span>

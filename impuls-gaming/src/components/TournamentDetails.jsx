@@ -30,9 +30,9 @@ import { ReactComponent as Swords } from "../img/swords.svg";
 
 const TournamentDetails = () => {
   const params = useParams();
-  const tournamentData = useSelector((state) => state.tournament.data);
-  const tournament = tournamentData.find(
-    (name) => name.tournament_name === params.tournamentId
+  const tournamentData = useSelector((state) => state.tournaments.tournaments);
+  const tournament = tournamentData.tournaments.find(
+    (name) => name.name === params.tournamentId
   );
   console.log(tournament);
   const [key, setKey] = useState("activation");
@@ -99,7 +99,7 @@ const TournamentDetails = () => {
                       </span>
                       <Link>Fifa 23</Link>
                     </div>
-                    <h1 className="d-flex">{tournament.tournament_name}</h1>
+                    <h1 className="d-flex">{tournament.name}</h1>
                     <span className="d-flex">
                       9 January 2023 - 9 February 2023
                     </span>

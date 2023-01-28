@@ -5,7 +5,7 @@ import logo from "../../img/Blue_Futuristic_Gaming_Logo-removebg-preview.png";
 import { Link } from "react-router-dom";
 
 const BackOfficeNav = ({ data, page }) => {
-  console.log(page);
+  console.log(data);
   return (
     <Col className=" my-projects giftcard-preview-nav d-flex flex-column">
       <img className=" mt-4 logo-img" src={logo} alt="" />

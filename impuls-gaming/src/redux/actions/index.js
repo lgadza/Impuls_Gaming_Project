@@ -1,5 +1,6 @@
 export const GIFT_CARD_DATA = " GIFT_CARD_DATA";
 export const USER_DATA = " USER_DATA";
+export const POST_TOURNAMENT = " POST_TOURNAMENT";
 export const GET_USERS = "GET_USERS";
 export const GET_TOURNAMENTS = "GET_TOURNAMENTS";
 export const GET_TOURNAMENTS_LOADING = "GET_TOURNAMENTS_LOADING";
@@ -69,7 +70,7 @@ export const USER_DATA_LOADING = " USER_DATA_LOADING";
 //   };
 // };
 export const createTournament = (data) => {
-  return async () => {
+  return async (dispatch) => {
     const options = {
       method: "POST",
       headers: {
@@ -82,8 +83,13 @@ export const createTournament = (data) => {
     try {
       const response = await fetch(`${URL}/tournaments`, options);
       if (response.ok) {
+        const tournament = await response.json();
         getUsers(`${URL}/users?limit=10`);
         getTournaments();
+        dispatch({
+          type: POST_TOURNAMENT,
+          payload: tournament,
+        });
       }
     } catch (error) {
       console.log(error);
