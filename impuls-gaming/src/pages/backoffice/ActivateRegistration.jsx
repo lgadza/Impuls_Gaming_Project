@@ -19,6 +19,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { format, compareAsc } from "date-fns";
 import DatePicker from "react-datepicker";
 import { useState, useEffect } from "react";
+import { editTournament } from "../../redux/actions";
 
 const ActivateRegistration = () => {
   const params = useParams();
@@ -27,19 +28,16 @@ const ActivateRegistration = () => {
   const [isEmailNotification, setIsEmailNotification] = useState(false);
   const [validationMessage, setValidationMessage] = useState("");
   const [refusalMessage, setRefusalMessage] = useState("");
-
+  const dispatch = useDispatch();
   const tournamentData = useSelector((state) => state.tournaments.tournaments);
   const tournament = tournamentData.tournaments.find(
     (name) => name.name === params.tournament
   );
-  console.log(tournament);
   const [registrationOpens, setRegistrationOpens] = useState("");
   const [registrationCloses, setRegistrationCloses] = useState("");
   const [key, setKey] = useState("activation");
   const [update, setUpdate] = useState(false);
-  const handleUpdate = () => {
-    setUpdate(true);
-  };
+
   const handleIsRegistration = () => {
     isRegistration === false
       ? setIsRegistration(true)
@@ -62,13 +60,27 @@ const ActivateRegistration = () => {
       : setIsAutoRegistration(false);
   };
   const registrationSettings = {
-    isRegistration: isRegistration,
-    registrationOpens: registrationOpens,
-    registrationCloses: registrationCloses,
-    isEmailNotification: isEmailNotification,
-    isAutoRegistration: isAutoRegistration,
-    validationMessage: validationMessage,
-    refusalMessage: refusalMessage,
+    registration: {
+      activation: {
+        isRegistration: isRegistration,
+        registrationOpeningDate: registrationOpens,
+        registrationClosingDate: {
+          registrationCloses,
+        },
+      },
+      options: {
+        isRegistrationAutomatically: isAutoRegistration,
+        isEmailNotificationAutomatically: isEmailNotification,
+      },
+      customization: {
+        validationMessage: validationMessage,
+        refusalMessage: refusalMessage,
+      },
+    },
+  };
+  const handleUpdate = () => {
+    dispatch(editTournament(registrationSettings, tournament._id));
+    setUpdate(true);
   };
   console.log(registrationSettings);
   return (

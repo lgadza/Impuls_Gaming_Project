@@ -20,9 +20,7 @@ const BackOffice = () => {
   const dispatch = useDispatch();
   const isLoading = useSelector((state) => state.tournaments.isLoading);
   const isError = useSelector((state) => state.tournaments.isError);
-  console.log(isError);
   const projects = useSelector((state) => state.tournaments.tournaments);
-  console.log(projects);
   useEffect(() => {
     dispatch(getTournaments());
   }, []);

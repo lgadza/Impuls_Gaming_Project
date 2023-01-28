@@ -96,6 +96,32 @@ export const createTournament = (data) => {
     }
   };
 };
+export const editTournament = (data, tournamentId) => {
+  return async (dispatch) => {
+    const options = {
+      method: "PUT",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    };
+    const URL = process.env.REACT_APP_BE_PROD_URL;
+    try {
+      const response = await fetch(
+        `${URL}/tournaments/${tournamentId}`,
+        options
+      );
+      if (response.ok) {
+        // const tournament = await response.json();
+        // getUsers(`${URL}/users?limit=10`);
+        getTournaments();
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
 export const registerTournament = (data, tournamentId) => {
   return async (dispatch) => {
     const options = {
@@ -138,7 +164,7 @@ export const deleteTournament = (id) => {
     }
   };
 };
-export const getTournaments = (data) => {
+export const getTournaments = () => {
   return async (dispatch) => {
     const options = {
       method: "GET",
