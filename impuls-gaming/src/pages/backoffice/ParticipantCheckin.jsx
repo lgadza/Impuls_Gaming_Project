@@ -19,24 +19,33 @@ import { useSelector, useDispatch } from "react-redux";
 import { format, compareAsc } from "date-fns";
 import DatePicker from "react-datepicker";
 import { useState, useEffect } from "react";
-
+import { editTournament } from "../../redux/actions";
 const ParticipantCheckin = () => {
   const params = useParams();
+  const dispatch = useDispatch();
   const tournamentData = useSelector((state) => state.tournaments.tournaments);
   const tournament = tournamentData.tournaments.find(
     (name) => name.name === params.tournament
   );
   const [isCheckIn, setIsCheckIn] = useState(false);
-  const [registrationOpens, setRegistrationOpens] = useState("");
-  const [registrationCloses, setRegistrationCloses] = useState("");
+  const [checkInOpens, setCheckInOpens] = useState("");
+  const [checkInCloses, setCheckInCloses] = useState("");
   const [key, setKey] = useState("activation");
   const [update, setUpdate] = useState(false);
+
+  const checkInSettings = {
+    participants: {
+      isCheck_in: isCheckIn,
+      checkInOpeningDate: checkInOpens.toString(),
+      checkInClosingDate: checkInCloses.toString(),
+    },
+  };
   const handleUpdate = () => {
-    registrationCloses && registrationOpens && isCheckIn
+    checkInCloses && checkInOpens && isCheckIn
       ? setUpdate(true)
       : setUpdate(false);
+    dispatch(editTournament(checkInSettings, tournament._id));
   };
-
   return (
     <Container fluid className="main-container textColor">
       <Row>
@@ -124,13 +133,13 @@ const ParticipantCheckin = () => {
                     <Form.Group className="">
                       <DatePicker
                         className="datepicker py-2 px-4 w-100"
-                        selected={registrationOpens}
+                        selected={checkInOpens}
                         placeholderText={new Date()}
-                        onChange={(date) => setRegistrationOpens(date)}
+                        onChange={(date) => setCheckInOpens(date)}
                         showTimeSelect
                         dateFormat="Pp"
                       />
-                      {isCheckIn && !registrationOpens && (
+                      {isCheckIn && !checkInOpens && (
                         <span className="d-flex mt-2 text-warning blink_me2">
                           This value must be filled when participant check-in is
                           enabled.
@@ -145,13 +154,13 @@ const ParticipantCheckin = () => {
                     <Form.Group className="">
                       <DatePicker
                         className="datepicker py-2 px-4 w-100"
-                        selected={registrationCloses}
+                        selected={checkInCloses}
                         placeholderText={new Date()}
-                        onChange={(date) => setRegistrationCloses(date)}
+                        onChange={(date) => setCheckInCloses(date)}
                         showTimeSelect
                         dateFormat="Pp"
                       />
-                      {isCheckIn && !registrationCloses && (
+                      {isCheckIn && !checkInCloses && (
                         <span className="d-flex mt-2 text-warning blink_me2">
                           This value must be filled when participant check-in is
                           enabled.

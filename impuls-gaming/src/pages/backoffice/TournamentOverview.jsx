@@ -160,7 +160,9 @@ const TournamentOverview = () => {
                         <div>
                           <div className="d-flex justify-content-around mb-3">
                             <div className="text-primary">
-                              <h2>0</h2>
+                              <h2>
+                                {tournament.tournamentParticipants.length}
+                              </h2>
                               <span>Participants </span>
                             </div>
                             {isCheckIn && (
@@ -170,7 +172,7 @@ const TournamentOverview = () => {
                               </div>
                             )}
                             <div className="text-secondary">
-                              <h2>36</h2>
+                              <h2>{tournament.size}</h2>
                               <span>Tournament size</span>
                             </div>
                           </div>
@@ -352,7 +354,6 @@ const TournamentOverview = () => {
                         </div>
                       </Card.Text>
                     )}
-                    {/* (//TODO: do not delete this its import for when thing change ) */}
                   </Card.Body>
                 </Card>
               </Col>

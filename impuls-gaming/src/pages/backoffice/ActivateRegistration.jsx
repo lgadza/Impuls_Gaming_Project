@@ -63,10 +63,8 @@ const ActivateRegistration = () => {
     registration: {
       activation: {
         isRegistration: isRegistration,
-        registrationOpeningDate: registrationOpens,
-        registrationClosingDate: {
-          registrationCloses,
-        },
+        registrationOpeningDate: registrationOpens.toString(),
+        registrationClosingDate: registrationCloses.toString(),
       },
       options: {
         isRegistrationAutomatically: isAutoRegistration,
