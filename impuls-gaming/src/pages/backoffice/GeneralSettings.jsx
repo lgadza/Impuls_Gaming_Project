@@ -19,9 +19,10 @@ import { useSelector, useDispatch } from "react-redux";
 import { format, compareAsc } from "date-fns";
 import DatePicker from "react-datepicker";
 import { useState, useEffect } from "react";
-
+import { editTournament } from "../../redux/actions";
 const GeneralSettings = () => {
   const params = useParams();
+  const dispatch = useDispatch();
   const tournamentData = useSelector((state) => state.tournaments.tournaments);
   const tournament = tournamentData.tournaments.find(
     (name) => name.name === params.tournamentId
@@ -61,24 +62,26 @@ const GeneralSettings = () => {
   const handlePrice = (e) => {
     setPrice(e.target.value);
   };
-  const handleUpdate = () => {
-    setUpdate(true);
-  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
   };
 
   const formValues = {
     name: name,
-    discipline: "FIFA 23",
+    discipline_name: "FIFA 23",
     size: size,
     platform: platform,
     location: location,
-    startDate: startDate,
-    endDate: endDate,
+    startDate: startDate.toString(),
+    endDate: endDate.toString(),
     price: price,
     rules: rules,
     description: description,
+  };
+  const handleUpdate = () => {
+    setUpdate(true);
+    dispatch(editTournament(formValues, tournament._id));
   };
   return (
     <Container fluid className="main-container textColor">

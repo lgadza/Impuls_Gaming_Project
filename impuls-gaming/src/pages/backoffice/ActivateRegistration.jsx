@@ -38,11 +38,9 @@ const ActivateRegistration = () => {
   const [key, setKey] = useState("activation");
   const [update, setUpdate] = useState(false);
 
-  const handleIsRegistration = () => {
-    isRegistration === false
-      ? setIsRegistration(true)
-      : setIsRegistration(false);
-  };
+  // const ()=>{setIsRegistration()} = () => {
+  //   isRegistration ? setIsRegistration(false) : setIsRegistration(true);
+  // };
   const handleValidationMessage = (e) => {
     setValidationMessage(e.target.value);
   };
@@ -80,7 +78,7 @@ const ActivateRegistration = () => {
     dispatch(editTournament(registrationSettings, tournament._id));
     setUpdate(true);
   };
-  console.log(registrationSettings);
+  console.log(isRegistration);
   return (
     <Container fluid className="main-container textColor">
       <Row>
@@ -116,12 +114,16 @@ const ActivateRegistration = () => {
                           type="radio"
                           name="register"
                           label="Yes"
-                          onClick={handleIsRegistration}
+                          onClick={() => {
+                            setIsRegistration(true);
+                          }}
                           className="mr-3"
                         />
                         <Form.Check
                           type="radio"
-                          onClick={handleIsRegistration}
+                          onClick={() => {
+                            setIsRegistration(false);
+                          }}
                           name="register"
                           label="No"
                         />
