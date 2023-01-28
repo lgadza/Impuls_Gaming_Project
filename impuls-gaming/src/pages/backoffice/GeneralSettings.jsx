@@ -91,14 +91,14 @@ const GeneralSettings = () => {
         </Col>
         <Col lg={10} className="my-5 px-5">
           {update && (
-            <div className="registration-card mx-auto">
+            <div className="registration-card mx-auto mb-5">
               <Alert key={"success"} variant={"success"}>
                 <Icon.CheckCircle size={15} />
                 <span>Settings have been successfully updated.</span>
               </Alert>
             </div>
           )}
-          <Card className="registration-card mx-auto">
+          <Card className="registration-card mx-auto mt-5">
             <Card.Header>
               <h3 className="d-flex my-4">General Settings</h3>
             </Card.Header>
