@@ -11,7 +11,7 @@ import {
 } from "react-bootstrap";
 import * as Icon from "react-bootstrap-icons";
 import fifa from "../../img/fifa23.jpg";
-
+import { format } from "date-fns";
 import { Link } from "react-router-dom";
 import { useState, useEffect, useLayoutEffect } from "react";
 import BackOfficeNav from "./BackOfficeNav";
@@ -181,10 +181,17 @@ const TournamentOverview = () => {
                               <span className="text-success">
                                 Participant check-in enabled
                               </span>
-                              <span className="text-muted text-small">
-                                {" "}
-                                Open until 25 Janunary 2023 at 02:30
-                              </span>
+                              {tournament.participants.checkInClosingDate && (
+                                <span className="text-muted text-small">
+                                  Open until{" "}
+                                  {format(
+                                    new Date(
+                                      tournament.participants.checkInClosingDate.toString()
+                                    ),
+                                    "dd MMM yyyy 'at' HH:mm"
+                                  )}
+                                </span>
+                              )}
                             </div>
                           )}
                         </div>

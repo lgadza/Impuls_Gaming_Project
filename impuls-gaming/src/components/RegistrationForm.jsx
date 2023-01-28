@@ -3,19 +3,15 @@ import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate, useParams, Link } from "react-router-dom";
 import * as Icon from "react-bootstrap-icons";
-import { registerTournament } from "../redux/actions";
+import { registerTournament, getTournaments } from "../redux/actions";
 
-const RegistrationForm = ({ tournamentId }) => {
-  const [id] = useState(tournamentId);
-  console.log("I AM ID", id);
+const RegistrationForm = () => {
   const params = useParams();
   const tournamentData = useSelector((state) => state.tournaments.tournaments);
   const tournament = tournamentData.tournaments.find(
     (name) => name.name === params.tournamentId
   );
-  const [key, setKey] = useState("activation");
-  const [registrationOpens, setRegistrationOpens] = useState("");
-  const [registrationCloses, setRegistrationCloses] = useState("");
+
   const [update, setUpdate] = useState(false);
 
   const dispatch = useDispatch();
@@ -27,25 +23,20 @@ const RegistrationForm = ({ tournamentId }) => {
   const [termsCheck, setTermsCheck] = useState(false);
   const handleNickname = (e) => {
     setNickName(e.target.value);
-    // dispatch(giftCardInf(userData));
   };
   const handleName = (e) => {
     setName(e.target.value);
-    // dispatch(giftCardInf(userData));
   };
 
   const handleSurname = (e) => {
     setSurname(e.target.value);
-    // dispatch(giftCardInf(userData));
   };
 
   const handleEmail = (e) => {
     setEmail(e.target.value);
-    // dispatch(giftCardInf(userData));
   };
   const handleTerms = (e) => {
     termsCheck ? setTermsCheck(false) : setTermsCheck(true);
-    // dispatch(giftCardInf(userData));
   };
   const userData = {
     nickname: nickName,
@@ -59,7 +50,8 @@ const RegistrationForm = ({ tournamentId }) => {
   };
   const handleUpdate = () => {
     setUpdate(true);
-    dispatch(registerTournament(userData, "63d4f14eddb5ffb39bf8f996"));
+    dispatch(registerTournament(userData, tournament._id));
+    dispatch(getTournaments());
   };
   return (
     <>

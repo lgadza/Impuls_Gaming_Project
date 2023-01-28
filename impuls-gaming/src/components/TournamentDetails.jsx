@@ -35,53 +35,8 @@ const TournamentDetails = () => {
     (name) => name.name === params.tournamentId
   );
 
-  const [key, setKey] = useState("activation");
-  const [registrationOpens, setRegistrationOpens] = useState("");
-  const [registrationCloses, setRegistrationCloses] = useState("");
-  const [update, setUpdate] = useState(false);
-  const handleUpdate = () => {
-    setUpdate(true);
-  };
   const dispatch = useDispatch();
-  const [nickName, setNickName] = useState(undefined);
-  const [name, setName] = useState("");
-  const [surname, setSurname] = useState("");
-  const isLoading = useSelector((state) => state.giftData.isLoading);
-  const [email, setEmail] = useState("");
-  const [termsCheck, setTermsCheck] = useState(undefined);
-  const handleNickname = (e) => {
-    setNickName(e.target.value);
-    // dispatch(giftCardInf(userData));
-  };
-  const handleName = (e) => {
-    setName(e.target.value);
-    // dispatch(giftCardInf(userData));
-  };
 
-  const handleSurname = (e) => {
-    setSurname(e.target.value);
-    // dispatch(giftCardInf(userData));
-  };
-
-  const handleEmail = (e) => {
-    setEmail(e.target.value);
-    // dispatch(giftCardInf(userData));
-  };
-  const handleTerms = (e) => {
-    setTermsCheck(e.target.value);
-    // dispatch(giftCardInf(userData));
-  };
-
-  const userData = {
-    nickName: nickName,
-    name: name,
-    surname: surname,
-    email: email,
-    terms: termsCheck,
-  };
-  const handleSubmit = (e) => {
-    e.preventDefault();
-  };
   return (
     <Container fluid className="main-container textColor  px-0 ">
       <NavigationBar />
@@ -101,14 +56,39 @@ const TournamentDetails = () => {
                     </div>
                     <h1 className="d-flex">{tournament.name}</h1>
                     <span className="d-flex">
-                      9 January 2023 - 9 February 2023
+                      {tournament.startDate && tournament.endDate && (
+                        <span className="d-flex">
+                          {" "}
+                          {format(
+                            new Date(tournament.startDate.toString()),
+                            "dd MMM yyyy"
+                          )}
+                          {" - "}
+                          {format(
+                            new Date(tournament.endDate.toString()),
+                            "dd MMM yyyy"
+                          )}
+                        </span>
+                      )}
                     </span>
                   </div>
                   <div className=" d-none d-lg-block     ">
                     <div className="d-flex giftcard-preview-nav register-card-top  justify-content-between py-1 px-4 ">
                       <div className="d-flex flex-column justify-content-center reg-border-right mr-4 pr-3">
                         <span className="d-flex">Registration open</span>
-                        <span className="d-flex">until 6 Jan 2023,13:00</span>
+
+                        {tournament.registration.activation
+                          .registrationClosingDate && (
+                          <span className="d-flex">
+                            until{" "}
+                            {format(
+                              new Date(
+                                tournament.registration.activation.registrationClosingDate.toString()
+                              ),
+                              "dd MMM yyyy 'at' HH:mm"
+                            )}
+                          </span>
+                        )}
                       </div>
                       <div>
                         <h3 className="border-bottom pb-2">
@@ -167,7 +147,7 @@ const TournamentDetails = () => {
                   {tournament.tournamentParticipants.length > 0 &&
                     tournament.tournamentParticipants.map((player, index) => {
                       return (
-                        <Col xs={6} lg={3}>
+                        <Col xs={6} key={player._id} lg={3}>
                           <Link className="link-none-deco">
                             <div className="border round textColor  d-flex px-2 participant-names py-3 my-2">
                               <span className="mr-4">{player.name}</span>{" "}
@@ -215,15 +195,6 @@ const TournamentDetails = () => {
                 <RegistrationForm tournamentId={tournament._id} />
               </Tab>
             </Tabs>
-
-            {update && (
-              <div className="registration-card mx-auto mt-5">
-                <Alert key={"success"} variant={"success"}>
-                  <Icon.CheckCircle size={15} />
-                  <span>Registration sent to the organizer</span>
-                </Alert>
-              </div>
-            )}
           </Col>
         </Row>
       </Container>
