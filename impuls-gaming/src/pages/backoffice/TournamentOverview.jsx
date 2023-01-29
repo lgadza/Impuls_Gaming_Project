@@ -70,24 +70,20 @@ const TournamentOverview = () => {
                   <span className="textColor2 notification-bell">
                     <Icon.BellFill size={35} />
                     <span className="notification-message text-primary text-small bg-white">
-                      <strong>5</strong>
+                      <strong>1</strong>
                     </span>
                   </span>
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu>
-                  <Dropdown.Item>
-                    <Link
-                      to={`/backoffice/projects/${tournament.name}/reports/dispute`}
-                    >
-                      Notification 1
-                    </Link>
-                  </Dropdown.Item>
-                  <Dropdown.Item href="#/action-2">
-                    Another action
-                  </Dropdown.Item>
-                  <Dropdown.Item href="#/action-3">
-                    Something else
+                  <Dropdown.Item
+                    onClick={() =>
+                      navigate(
+                        `/backoffice/projects/${tournament.name}/reports/disputes`
+                      )
+                    }
+                  >
+                    Louis vs Sage
                   </Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>

@@ -277,6 +277,16 @@ a:hover {
   color: #0cc4f2;
   text-decoration: none;
 }
+.results-input {
+  background-color: #838181;
+  border: 0px solid;
+  font-size: 2em;
+  width: 5rem;
+  text-align: center;
+}
+.results-input::placeholder {
+  color: white !important;
+}
 .notification-bell {
   position: relative;
 }
