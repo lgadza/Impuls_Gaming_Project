@@ -121,6 +121,19 @@ const DisputeReport = () => {
                   </Card>
                 </div>
               </Card.Body>
+              <Link
+                // to={`/backoffice/projects/overview/${tournament}`}
+                className="d-flex justify-content-end m-3 "
+              >
+                <Button
+                  type="submit"
+                  //   onClick={handleUpdate}
+                  className="primary-btn textColor"
+                >
+                  <Icon.ArrowLeft size={25} />
+                  Back
+                </Button>
+              </Link>
             </Card>
           </div>
         </Col>
