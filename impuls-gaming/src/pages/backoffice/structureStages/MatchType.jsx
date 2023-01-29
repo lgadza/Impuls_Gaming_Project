@@ -34,7 +34,26 @@ const MatchType = () => {
           <BackOfficeNav data={tournament} page={"structure"} />
         </Col>
         <Col lg={10} className="my-5 px-5">
-          <h3 className="d-flex mb-5">Select a match type</h3>
+          <div className="d-flex justify-content-between">
+            <h3 className="d-flex mb-5">Select a match type</h3>
+
+            <Dropdown>
+              <Dropdown.Toggle variant="success" id="dropdown-basic">
+                <span className="textColor2 notification-bell">
+                  <Icon.BellFill size={35} />
+                  <span className="notification-message text-primary text-small bg-white">
+                    <strong>5</strong>
+                  </span>
+                </span>
+              </Dropdown.Toggle>
+
+              <Dropdown.Menu>
+                <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+                <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
+                <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+          </div>
           <Row className=" mb-5">
             <Col>
               <Link>

@@ -22,6 +22,7 @@ import GeneralSettings from "./pages/backoffice/GeneralSettings";
 import MatchType from "./pages/backoffice/structureStages/MatchType";
 import StageType from "./pages/backoffice/structureStages/StageType";
 import ConfigureStage from "./pages/backoffice/structureStages/ConfigureStage";
+import DisputeReport from "./pages/backoffice/DisputeReport";
 
 function App() {
   return (
@@ -78,6 +79,10 @@ function App() {
           <Route
             element={<ConfigureStage />}
             path="/backoffice/projects/structures/:tournamentId/stages/:typeId/:configType"
+          />
+          <Route
+            element={<DisputeReport />}
+            path="/backoffice/projects/:tournamentId/reports/disputes"
           />
         </Routes>
       </BrowserRouter>

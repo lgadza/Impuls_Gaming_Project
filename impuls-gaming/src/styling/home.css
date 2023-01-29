@@ -277,7 +277,20 @@ a:hover {
   color: #0cc4f2;
   text-decoration: none;
 }
-
+.notification-bell {
+  position: relative;
+}
+.notification-message {
+  position: absolute;
+  top: 0;
+  right: 10%;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+}
+.dropdown-toggle::after {
+  display: none;
+}
 .featured-games {
   border: 3px solid;
 }

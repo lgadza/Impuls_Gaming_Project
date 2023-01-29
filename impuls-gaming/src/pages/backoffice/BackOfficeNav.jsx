@@ -37,6 +37,7 @@ const BackOfficeNav = ({ data, page }) => {
             <span
               className={page === "overview" ? "current textColor" : undefined}
             >
+              <Icon.Speedometer2 size={20} />
               Overview
             </span>
           </Link>
@@ -47,6 +48,7 @@ const BackOfficeNav = ({ data, page }) => {
             <span
               className={page === "settings" ? "current textColor" : undefined}
             >
+              <Icon.Gear size={20} />
               Settings
             </span>
           </Link>
@@ -57,18 +59,20 @@ const BackOfficeNav = ({ data, page }) => {
             <span
               className={page === "structure" ? "current textColor" : undefined}
             >
+              <Icon.Boxes size={20} />
               Structures
             </span>
           </Link>
           <Link
             to={`/backoffice/projects/participants/${data.name}`}
-            className="d-flex"
+            className="d-flex my-2"
           >
             <span
               className={
                 page === "participants" ? "current textColor" : undefined
               }
             >
+              <Icon.People size={20} />
               Participants
             </span>
           </Link>
@@ -79,22 +83,27 @@ const BackOfficeNav = ({ data, page }) => {
             <span
               className={page === "matches" ? "current textColor" : undefined}
             >
+              <Icon.LightningCharge size={20} />
               Matches
             </span>
           </Link>
           <Link
             to={`/backoffice/projects/settings/${data.name}`}
-            className="d-flex"
+            className="d-flex my-2"
           >
             <span
               className={
                 page === "final-standing" ? "current textColor" : undefined
               }
             >
+              <Icon.Trophy size={20} />
               Final standing
             </span>
           </Link>
-          <Link className="my-2 d-flex">Share</Link>
+          <Link className="my-2 d-flex">
+            <Icon.Share size={20} />
+            Share
+          </Link>
         </Nav>
       </Navbar>
     </Col>
