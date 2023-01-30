@@ -242,36 +242,34 @@ const TournamentOverview = () => {
                   <Card.Body>
                     <Row className="d-flex justify-content-between align-items-center mb-3 mx-1">
                       <span>Structure</span>
-                      {tournament.structure.general.name && (
-                        <Link
-                          to={`/backoffice/projects/structures/${tournament.name}/stages/`}
-                          className="link-none-deco "
-                        >
-                          <Icon.Plus size={30} />
-                          <span className="link-btm-bar">Create new stage</span>
-                        </Link>
-                      )}
+                      {/* {tournament.structure.general.name && ( */}
+                      <Link
+                        to={`/backoffice/projects/structures/${tournament.name}/stages/`}
+                        className="link-none-deco "
+                      >
+                        <Icon.Plus size={30} />
+                        <span className="link-btm-bar">Create new stage</span>
+                      </Link>
+                      {/* )} */}
                     </Row>
                     <hr className="hr" />
-                    {!tournament.structure.general.name && (
-                      <>
-                        <Card.Text>
-                          The tournament does not have any stage yet. You should
-                          create the first stage and may use our Structure Guide
-                          if you are not sure of which stage to create.
-                        </Card.Text>
+                    {/* {!tournament.structure.general.name && ( */}
+                    <>
+                      <Card.Text>
+                        The tournament does not have any stage yet. You should
+                        create the first stage and may use our Structure Guide
+                        if you are not sure of which stage to create.
+                      </Card.Text>
 
-                        <Link
-                          to={`/backoffice/projects/structures/${tournament.name}/stages/`}
-                        >
-                          <Icon.Plus size={30} />
-                          <span className=" link-btm-bar">
-                            Create new stage
-                          </span>
-                        </Link>
-                      </>
-                    )}
-                    {tournament.structure.general.name && (
+                      <Link
+                        to={`/backoffice/projects/structures/${tournament.name}/stages/`}
+                      >
+                        <Icon.Plus size={30} />
+                        <span className=" link-btm-bar">Create new stage</span>
+                      </Link>
+                    </>
+                    {/* )} */}
+                    {/* {tournament.structure.general.name && (
                       <>
                         <Card.Text>
                           <div className="d-flex justify-content-between">
@@ -337,7 +335,7 @@ const TournamentOverview = () => {
                           </Link>
                         </Card.Text>
                       </>
-                    )}
+                    )} */}
                   </Card.Body>
                 </Card>
               </Col>
