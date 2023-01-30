@@ -32,7 +32,7 @@ const TournamentOverview = () => {
   );
   console.log(tournamentData);
   console.log(tournament.registration.activation.isRegistration);
-  console.log(tournament.structure.general.name);
+
   useEffect(() => {
     dispatch(getUsers(`${URL}/users?limit=10`));
     dispatch(getTournaments());
