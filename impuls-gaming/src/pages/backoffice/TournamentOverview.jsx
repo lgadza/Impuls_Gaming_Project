@@ -32,7 +32,7 @@ const TournamentOverview = () => {
   );
   console.log(tournamentData);
   console.log(tournament.registration.activation.isRegistration);
-  console.log(params.tournamentId);
+  console.log(tournament.structure.general.name);
   useEffect(() => {
     dispatch(getUsers(`${URL}/users?limit=10`));
     dispatch(getTournaments());
@@ -242,96 +242,102 @@ const TournamentOverview = () => {
                   <Card.Body>
                     <Row className="d-flex justify-content-between align-items-center mb-3 mx-1">
                       <span>Structure</span>
-                      {/* {isStrucure && ( */}
-                      <Link
-                        to={`/backoffice/projects/structures/${tournament.name}/stages/`}
-                        className="link-none-deco "
-                      >
-                        <Icon.Plus size={30} />
-                        <span className="link-btm-bar">Create new stage</span>
-                      </Link>
-                      {/* )} */}
+                      {tournament.structure.general.name && (
+                        <Link
+                          to={`/backoffice/projects/structures/${tournament.name}/stages/`}
+                          className="link-none-deco "
+                        >
+                          <Icon.Plus size={30} />
+                          <span className="link-btm-bar">Create new stage</span>
+                        </Link>
+                      )}
                     </Row>
                     <hr className="hr" />
-                    {/* {!isStrucure && ( */}
-                    <>
-                      <Card.Text>
-                        The tournament does not have any stage yet. You should
-                        create the first stage and may use our Structure Guide
-                        if you are not sure of which stage to create.
-                      </Card.Text>
+                    {!tournament.structure.general.name && (
+                      <>
+                        <Card.Text>
+                          The tournament does not have any stage yet. You should
+                          create the first stage and may use our Structure Guide
+                          if you are not sure of which stage to create.
+                        </Card.Text>
 
-                      <Link
-                        to={`/backoffice/projects/structures/${tournament.name}/stages/`}
-                      >
-                        <Icon.Plus size={30} />
-                        <span className=" link-btm-bar">Create new stage</span>
-                      </Link>
-                    </>
-                    {/* )} */}
-                    {/* <Card.Text>
-                      <div className="d-flex justify-content-between">
-                        <div className="d-flex flex-column ">
-                          <span>Name of Tournament</span>
-                          <span className="text-small text-muted d-flex">
-                            FFA League
+                        <Link
+                          to={`/backoffice/projects/structures/${tournament.name}/stages/`}
+                        >
+                          <Icon.Plus size={30} />
+                          <span className=" link-btm-bar">
+                            Create new stage
                           </span>
-                        </div>
-                        <div className="d-flex justify-content-around align-items-center">
-                          <span className="text-small text-muted">
-                            1/20 players
-                          </span>
-                          <span className="text-small text-muted mx-4">
-                            Pending
-                          </span>
-                          <span>
-                            <Dropdown>
-                              <Dropdown.Toggle
-                                variant="success"
-                                id="dropdown-basic"
-                              >
-                                <Icon.ThreeDotsVertical
-                                  size={20}
-                                  color="#0cc4f2"
-                                />
-                              </Dropdown.Toggle>
+                        </Link>
+                      </>
+                    )}
+                    {tournament.structure.general.name && (
+                      <>
+                        <Card.Text>
+                          <div className="d-flex justify-content-between">
+                            <div className="d-flex flex-column ">
+                              <span>{tournament.structure.general.name} </span>
+                              <span className="text-small text-muted d-flex">
+                                {tournament.structure.stage_type}
+                              </span>
+                            </div>
+                            <div className="d-flex justify-content-around align-items-center">
+                              <span className="text-small text-muted">
+                                {tournament.tournamentParticipants.length}/
+                                {tournament.structure.general.size} players
+                              </span>
+                              <span className="text-small text-muted mx-4">
+                                Pending
+                              </span>
+                              <span>
+                                <Dropdown>
+                                  <Dropdown.Toggle
+                                    variant="success"
+                                    id="dropdown-basic"
+                                  >
+                                    <Icon.ThreeDotsVertical
+                                      size={20}
+                                      color="#0cc4f2"
+                                    />
+                                  </Dropdown.Toggle>
 
-                              <Dropdown.Menu style={{ width: "18rem" }}>
-                                <Dropdown.Item>
-                                  <Icon.Gear size={20} color="#0cc4f2" />
-                                  <span className="textColor3 link-btm-bar">
-                                    Configure
-                                  </span>
-                                </Dropdown.Item>
-                                <Dropdown.Item className="my-2">
-                                  <Icon.Search size={20} color="#0cc4f2" />
-                                  <span className="textColor3 link-btm-bar">
-                                    Results
-                                  </span>
-                                </Dropdown.Item>
-                                <hr />
-                                <Dropdown.Item>
-                                  <Icon.Trash size={20} color="red" />
-                                  <span className="text-danger link-btm-bar">
-                                    Delete
-                                  </span>
-                                </Dropdown.Item>
-                              </Dropdown.Menu>
-                            </Dropdown>
-                          </span>
-                        </div>
-                      </div>
-                    </Card.Text>
-                     
-                    <hr />
-                    <Card.Text>
-                      <Link>
-                        <span className="textColor3 link-none-deco link-btm-bar">
-                          View all stages
-                        </span>
-                      </Link>
-                    </Card.Text>
-                    */}
+                                  <Dropdown.Menu style={{ width: "18rem" }}>
+                                    <Dropdown.Item>
+                                      <Icon.Gear size={20} color="#0cc4f2" />
+                                      <span className="textColor3 link-btm-bar">
+                                        Configure
+                                      </span>
+                                    </Dropdown.Item>
+                                    <Dropdown.Item className="my-2">
+                                      <Icon.Search size={20} color="#0cc4f2" />
+                                      <span className="textColor3 link-btm-bar">
+                                        Results
+                                      </span>
+                                    </Dropdown.Item>
+                                    <hr />
+                                    <Dropdown.Item>
+                                      <Icon.Trash size={20} color="red" />
+                                      <span className="text-danger link-btm-bar">
+                                        Delete
+                                      </span>
+                                    </Dropdown.Item>
+                                  </Dropdown.Menu>
+                                </Dropdown>
+                              </span>
+                            </div>
+                          </div>
+                        </Card.Text>
+
+                        <hr />
+                        <Card.Text>
+                          <Link>
+                            <span className="textColor3 link-none-deco link-btm-bar">
+                              View all stages
+                            </span>
+                          </Link>
+                        </Card.Text>
+                      </>
+                    )}
                   </Card.Body>
                 </Card>
               </Col>

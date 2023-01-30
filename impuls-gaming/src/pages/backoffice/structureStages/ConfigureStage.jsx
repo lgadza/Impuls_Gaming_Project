@@ -18,17 +18,34 @@ import { useState, useEffect } from "react";
 import BackOfficeNav from "../BackOfficeNav";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-
+import { editTournament } from "../../../redux/actions";
 const ConfigureStages = () => {
   const params = useParams();
-  console.log(params);
-  const [number, setNumber] = useState("");
-  const [size, setSize] = useState("");
+  const [number, setNumber] = useState(undefined);
+  const [size, setSize] = useState(undefined);
   const [name, setName] = useState("");
-  const [numberOfMatches, setNumberOfMatches] = useState("");
+  const [groupSize, setGroupSize] = useState(undefined);
+  const [numberOfWinnersPerGroup, setNumberOfWinnersPerGroup] =
+    useState(undefined);
+  const [numberOfDivisions, setNumberOfDivisions] = useState(undefined);
+  const [groupComp, setGroupComp] = useState("");
+  const [winPoints, setWinPoints] = useState(3);
+  const [win, setWin] = useState(true);
+  const [drawPoints, setDrawPoints] = useState(1);
+  const [draw, setDraw] = useState(true);
+  const [lossPoints, setLossPoints] = useState(0);
+  const [loss, setLoss] = useState(true);
+  const [forfeitPoints, setForfeitPoints] = useState(-1);
+  const [forfeit, setForfeit] = useState(true);
+  const [autoParticipantPlacement, setAutoParticipantPlacement] =
+    useState(true);
+  const [matchFormat, setMatchFormat] = useState("Home and Away");
+  const [tiebreaker1, setTiebreaker1] = useState("");
+  const [tiebreaker2, setTiebreaker2] = useState("");
+  const [tiebreaker3, setTiebreaker3] = useState("");
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [isCheckIn, setIsCheckIn] = useState(false);
   const [key, setKey] = useState("activation");
   const [update, setUpdate] = useState(false);
 
@@ -41,27 +58,105 @@ const ConfigureStages = () => {
   const handleName = (e) => {
     setName(e.target.value);
   };
-  const handleNumberOfMatches = (e) => {
-    setNumberOfMatches(e.target.value);
+  const handleGroupComp = (e) => {
+    setGroupComp(e.target.value);
   };
-  const handleUpdate = () => {
-    number && name && size && numberOfMatches
-      ? setUpdate(true)
-      : setUpdate(false);
-    // setUpdate(true);
+  const handleWin = (e) => {
+    setWin(e.target.value);
   };
+  const handleWinPoints = (e) => {
+    setWinPoints(e.target.value);
+  };
+  const handleDraw = (e) => {
+    setDraw(e.target.value);
+  };
+  const handleDrawPoints = (e) => {
+    setDrawPoints(e.target.value);
+  };
+  const handleLoss = (e) => {
+    setLoss(e.target.value);
+  };
+  const handleLossPoints = (e) => {
+    setLossPoints(e.target.value);
+  };
+  const handleForfeit = (e) => {
+    setForfeit(e.target.value);
+  };
+  const handleForfeitPoints = (e) => {
+    setForfeitPoints(e.target.value);
+  };
+  const handleTiebreaker1 = (e) => {
+    setTiebreaker1(e.target.value);
+  };
+  const handleTiebreaker2 = (e) => {
+    setTiebreaker2(e.target.value);
+  };
+  const handleTiebreaker3 = (e) => {
+    setTiebreaker3(e.target.value);
+  };
+  const handleFalseAutoParticipantPlacement = (e) => {
+    setAutoParticipantPlacement(false);
+  };
+  const handleTrueAutoParticipantPlacement = (e) => {
+    setAutoParticipantPlacement(true);
+  };
+  const handleMatchFormat = (e) => {
+    setMatchFormat(e.target.value);
+  };
+  const handleNumberOfDivisions = (e) => {
+    setNumberOfDivisions(e.target.value);
+  };
+
+  const stage_type = params.typeId + "_" + params.configType;
   const formData = {
-    number: number,
-    size: size,
-    name: size,
-    total_matches: numberOfMatches,
+    structure: {
+      stage_type: stage_type,
+      general: {
+        number: Number(number),
+        size: Number(size),
+        name: name,
+        divisions: Number(numberOfDivisions),
+        group_size: Number(groupSize),
+        numberOfWinnersPerGroup: Number(numberOfWinnersPerGroup),
+      },
+
+      advanced: {
+        groupComp: groupComp,
+        pointsAtrribution: {
+          win: { isWin: win, points: Number(winPoints) },
+          draw: { isDraw: draw, points: Number(drawPoints) },
+          lost: { isLost: loss, points: Number(lossPoints) },
+        },
+        matchForfeit: {
+          isForfeit: forfeit,
+          points: Number(forfeitPoints),
+        },
+      },
+      tiebreaker: {
+        option1: tiebreaker1,
+        option2: tiebreaker2,
+        option3: tiebreaker3,
+      },
+      placement: {
+        isPlacement: autoParticipantPlacement,
+      },
+      matchSettings: {
+        matchFormat: matchFormat,
+      },
+    },
   };
 
   const tournamentData = useSelector((state) => state.tournaments.tournaments);
   const tournament = tournamentData.tournaments.find(
     (name) => name.name === params.tournamentId
   );
-  console.log(tournament);
+
+  const handleUpdate = () => {
+    number && name && size && numberOfDivisions
+      ? setUpdate(true)
+      : setUpdate(false);
+    dispatch(editTournament(formData, tournament._id));
+  };
   return (
     <Container fluid className="main-container textColor">
       <Row>
@@ -125,7 +220,11 @@ const ConfigureStages = () => {
                             </span>
                           </OverlayTrigger>
                         </Form.Label>
-                        <Form.Control type="number" onChange={handleNumber} />
+                        <Form.Control
+                          type="number"
+                          required
+                          onChange={handleNumber}
+                        />
                         {update && !number && (
                           <span className="text-left blink_me2">
                             This field is required and the value must be between
@@ -155,7 +254,11 @@ const ConfigureStages = () => {
                             </span>
                           </OverlayTrigger>
                         </Form.Label>
-                        <Form.Control type="number" onChange={handleSize} />
+                        <Form.Control
+                          type="number"
+                          required
+                          onChange={handleSize}
+                        />
                         {!size && update && (
                           <span className="text-left blink_me2">
                             This field is required and this stage type must have
@@ -177,6 +280,7 @@ const ConfigureStages = () => {
                         <Form.Control
                           type="text"
                           maxLength={30}
+                          required
                           onChange={handleName}
                         />
                         {!name && update && (
@@ -193,13 +297,81 @@ const ConfigureStages = () => {
                         </Form.Label>
                         <Form.Control
                           type="number"
-                          onChange={handleNumberOfMatches}
+                          required
+                          min={2}
+                          onChange={handleNumberOfDivisions}
                         />
-                        {!numberOfMatches && update && (
+                        {!numberOfDivisions && update && (
                           <span className="text-left blink_me2">
                             This field is required
                           </span>
                         )}
+                      </Form.Group>
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col></Col>
+                    <Col>
+                      <Form.Group className="mb-3 d-flex flex-column justify-content-start">
+                        <Form.Label className="d-flex">
+                          Participants per Group
+                          <OverlayTrigger
+                            placement="top"
+                            overlay={
+                              <Tooltip id="tooltip-disabled">
+                                Define how many participants will play in each
+                                group.
+                              </Tooltip>
+                            }
+                          >
+                            <span
+                              variant="light"
+                              className="d-inline-flex align-items-center"
+                            >
+                              <Icon.QuestionCircleFill />
+                            </span>
+                          </OverlayTrigger>
+                        </Form.Label>
+                        <Form.Control
+                          type="number"
+                          required
+                          min={2}
+                          onChange={(e) => setGroupSize(e.target.value)}
+                        />
+                      </Form.Group>
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col></Col>
+                    <Col>
+                      <Form.Group className="mb-3 d-flex flex-column justify-content-start">
+                        <Form.Label className="d-flex">
+                          Winners per Group
+                          <OverlayTrigger
+                            placement="top"
+                            overlay={
+                              <Tooltip id="tooltip-disabled">
+                                Define how many participants will win in the
+                                group and progress to the next round.
+                              </Tooltip>
+                            }
+                          >
+                            <span
+                              variant="light"
+                              className="d-inline-flex align-items-center"
+                            >
+                              <Icon.QuestionCircleFill />
+                            </span>
+                          </OverlayTrigger>
+                        </Form.Label>
+                        <Form.Control
+                          type="number"
+                          required
+                          min={2}
+                          onChange={(e) =>
+                            setNumberOfWinnersPerGroup(e.target.value)
+                          }
+                        />
                       </Form.Group>
                     </Col>
                   </Row>
@@ -220,6 +392,11 @@ const ConfigureStages = () => {
                       type="submit"
                       onClick={handleUpdate}
                       className="primary-btn textColor"
+                      disabled={
+                        name && size && number && numberOfDivisions
+                          ? false
+                          : true
+                      }
                     >
                       <Icon.PlusLg className="mx-1" size={20} />
                       Create
@@ -233,7 +410,10 @@ const ConfigureStages = () => {
                         <Form.Label className="text-left">
                           Group composition
                         </Form.Label>
-                        <Form.Select className="textColor py-2">
+                        <Form.Select
+                          className="textColor py-2"
+                          onSelect={handleGroupComp}
+                        >
                           <option>Adjacent</option>
                           <option value="1">Random</option>
                           <option value="2">Ranking order</option>
@@ -280,7 +460,13 @@ const ConfigureStages = () => {
                     <Col>
                       <Card className="px-4">
                         <div className="d-flex align-items-center my-3 ">
-                          <input type="checkbox" className="mr-2" label="win" />
+                          <input
+                            type="checkbox"
+                            className="mr-2"
+                            defaultChecked
+                            onChange={handleWin}
+                            label="win"
+                          />
                           <span id="win">
                             Win{" "}
                             <OverlayTrigger
@@ -306,6 +492,7 @@ const ConfigureStages = () => {
                             type="number"
                             placeholder="3"
                             defaultValue={3}
+                            onChange={handleWinPoints}
                           />
                         </Card.Text>
                       </Card>
@@ -317,6 +504,8 @@ const ConfigureStages = () => {
                             type="checkbox"
                             className="mr-2"
                             label="draw"
+                            onChange={handleDraw}
+                            defaultChecked
                           />
                           <span id="draw">
                             Draw{" "}
@@ -343,6 +532,7 @@ const ConfigureStages = () => {
                             type="number"
                             placeholder="1"
                             defaultValue={1}
+                            onChange={handleDrawPoints}
                           />
                         </Card.Text>
                       </Card>
@@ -354,6 +544,8 @@ const ConfigureStages = () => {
                             type="checkbox"
                             className="mr-2"
                             label="lost"
+                            onChange={handleLoss}
+                            defaultChecked
                           />
                           <span id="lost">
                             Lost{" "}
@@ -378,8 +570,8 @@ const ConfigureStages = () => {
                           <span className="d-flex">Points</span>
                           <Form.Control
                             type="number"
-                            placeholder="0"
                             defaultValue={0}
+                            onChange={handleLossPoints}
                           />
                         </Card.Text>
                       </Card>
@@ -392,7 +584,9 @@ const ConfigureStages = () => {
                           <input
                             type="checkbox"
                             className="mr-2"
+                            defaultChecked
                             label="forfeit"
+                            onChange={handleForfeit}
                           />
                           <span id="forfeit">
                             Match forfeit{" "}
@@ -418,8 +612,8 @@ const ConfigureStages = () => {
                           <span className="d-flex">Points</span>
                           <Form.Control
                             type="number"
-                            placeholder="0"
-                            defaultValue={0}
+                            defaultValue={-1}
+                            onChange={handleForfeitPoints}
                           />
                         </Card.Text>
                       </Card>
@@ -518,16 +712,17 @@ const ConfigureStages = () => {
                       <div className="my-3 d-flex">
                         <Form.Check
                           type="radio"
-                          name="register"
+                          name="autoPlacement"
                           label="Yes"
-                          //   onClick={handleIsAutoRegistration}
+                          onClick={handleTrueAutoParticipantPlacement}
                           className="mr-3"
+                          defaultChecked
                         />
 
                         <Form.Check
                           type="radio"
-                          //   onClick={handleIsAutoRegistration}
-                          name="register"
+                          onClick={handleFalseAutoParticipantPlacement}
+                          name="autoPlacement"
                           label="No"
                         />
                       </div>
@@ -574,10 +769,13 @@ const ConfigureStages = () => {
                             </span>
                           </OverlayTrigger>
                         </Form.Label>
-                        <Form.Select className="textColor py-2">
-                          <option>Single game</option>
-                          <option value="1">Home and Away</option>
-                          <option value="2">Best of</option>
+                        <Form.Select
+                          className="textColor py-2"
+                          onChange={handleMatchFormat}
+                        >
+                          <option value="Single game">Single game</option>
+                          <option value="Home and Away">Home and Away</option>
+                          <option value="Best of">Best of</option>
                         </Form.Select>
                       </Form.Group>
                     </Col>

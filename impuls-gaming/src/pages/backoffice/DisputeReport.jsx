@@ -59,7 +59,7 @@ const DisputeReport = () => {
               </Card.Header>
               <Card.Body>
                 <div className="d-flex justify-content-around align-items-center">
-                  <div>Louis</div>
+                  <h5>Louis</h5>
                   <div>
                     <span className="text-white">
                       <input
@@ -74,7 +74,7 @@ const DisputeReport = () => {
                       />{" "}
                     </span>
                   </div>
-                  <div>Sage</div>
+                  <h5>Sage</h5>
                 </div>
               </Card.Body>
             </Card>
