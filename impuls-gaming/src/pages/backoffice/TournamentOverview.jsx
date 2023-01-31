@@ -62,7 +62,7 @@ const TournamentOverview = () => {
           </Col>
           <Col lg={10} className="my-5 px-5">
             <div className="d-flex justify-content-between">
-              <h3 className="d-flex mb-5 ">Overview</h3>
+              <h3 className="d-flex mb-4 ">Overview</h3>
 
               <Dropdown>
                 <Dropdown.Toggle variant="success" id="dropdown-basic">
@@ -89,7 +89,7 @@ const TournamentOverview = () => {
             </div>
             <Row className=" mb-5">
               <Col>
-                <Card>
+                <Card style={{ height: "16rem" }}>
                   <Card.Body>
                     <Row>
                       <Col>
@@ -152,7 +152,7 @@ const TournamentOverview = () => {
                 </Card>
               </Col>
               <Col>
-                <Card>
+                <Card style={{ height: "16rem" }}>
                   <Card.Body>
                     <Row className="d-flex justify-content-between align-items-center mb-3 mx-1">
                       <span>Participants</span>
@@ -237,7 +237,7 @@ const TournamentOverview = () => {
             </Row>
             <Row>
               <Col>
-                <Card>
+                <Card style={{ height: "16rem" }}>
                   <Card.Body>
                     <Row className="d-flex justify-content-between align-items-center mb-3 mx-1">
                       <span>Structure</span>
@@ -273,7 +273,7 @@ const TournamentOverview = () => {
                     {tournament.structure.general.name !== "name" && (
                       <>
                         <Card.Text>
-                          <div className="d-flex justify-content-between">
+                          <div className="d-flex justify-content-between mt-5">
                             <div className="d-flex flex-column ">
                               <span>{tournament.structure.general.name} </span>
                               <span className="text-small text-muted d-flex">
@@ -343,7 +343,7 @@ const TournamentOverview = () => {
                 </Card>
               </Col>
               <Col>
-                <Card>
+                <Card style={{ height: "16rem" }}>
                   <Card.Body>
                     <Row className="d-flex justify-content-between align-items-center mb-3 mx-1">
                       <span>Registrations</span>
