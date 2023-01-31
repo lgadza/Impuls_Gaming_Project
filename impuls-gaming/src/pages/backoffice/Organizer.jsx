@@ -24,6 +24,7 @@ const Organizer = ({ projects }) => {
     deleteItem === false ? setDeleteItem(true) : setDeleteItem(false);
   };
   const project = useSelector((state) => state.tournaments.tournaments);
+
   console.log(projects);
   useEffect(() => {
     dispatch(getTournaments());
@@ -68,7 +69,7 @@ const Organizer = ({ projects }) => {
               </span>
             </span>
           </Col>
-          {projects.tournaments.map((project, index) => (
+          {project.tournaments.map((project, index) => (
             <Col
               className="tournament-card-edit"
               lg={6}
