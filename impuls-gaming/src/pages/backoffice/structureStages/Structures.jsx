@@ -39,7 +39,10 @@ const Structures = () => {
               md={3}
               className="d-flex align-items-center"
             >
-              <Card>
+              <Card
+                style={{ height: "12rem" }}
+                className="main-container plus-project w-75 mb-3"
+              >
                 <Card.Body>
                   <Icon.PlusLg size={100} color="rgba(244, 92, 93, 255)" />
                   <span className="d-flex justify-content-center  align-items-center">
