@@ -30,7 +30,6 @@ const TournamentOverview = () => {
   const tournament = tournamentData.tournaments.find(
     (name) => name.name === params.tournamentId
   );
-  console.log(tournament.registration.activation.isRegistration);
 
   useEffect(() => {
     dispatch(getUsers(`${URL}/users?limit=10`));
@@ -53,6 +52,7 @@ const TournamentOverview = () => {
   }
   const pending = 0;
   const running = 0;
+  console.log(tournament);
   return (
     <Container fluid className="main-container textColor">
       {tournament.name === params.tournamentId && (
@@ -329,7 +329,9 @@ const TournamentOverview = () => {
 
                         <hr />
                         <Card.Text>
-                          <Link>
+                          <Link
+                            to={`/backoffice/projects/${tournament.name}/structures`}
+                          >
                             <span className="textColor3 link-none-deco link-btm-bar">
                               View all stages
                             </span>
