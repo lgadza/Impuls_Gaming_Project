@@ -25,7 +25,6 @@ const Organizer = ({ projects }) => {
   };
   const project = useSelector((state) => state.tournaments.tournaments);
 
-  console.log(projects);
   useEffect(() => {
     dispatch(getTournaments());
   }, []);
