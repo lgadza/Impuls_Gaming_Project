@@ -57,7 +57,7 @@ const UserPage = () => {
           </Dropdown>
         </div>
       </Row>
-      <Container className="">
+      <Container>
         <Row>
           <Col
             lg={4}
@@ -86,7 +86,7 @@ const UserPage = () => {
               </Tab>
             </Tabs>
           </Col>
-          <Col lg={8} className=" mt-5 side-bar  d-lg-none">
+          <Col sm={12} className=" mt-5 side-bar  d-lg-none">
             <Tabs defaultActiveKey="information" className="mb-3  " justify>
               <Tab
                 eventKey="information"

@@ -35,9 +35,9 @@ const Overview = () => {
     setUpdate(true);
   };
   return (
-    <Container fluid className=" textColor">
+    <Container fluid className=" textColor px-0">
       <Row>
-        <Col className="my-5 px-5">
+        <Col className="my-5 ">
           {update && (
             <div className="registration-card bring-top mx-auto mb-5">
               <Alert key={"success"} variant={"success"}>
@@ -49,7 +49,7 @@ const Overview = () => {
           <div>
             <Card>
               <Card.Header>
-                <h3 className="d-flex my-2">
+                <h3 className="d-flex h3-mobile my-2">
                   Playoffs - Main Bracket-Round 1{" "}
                 </h3>
               </Card.Header>
@@ -76,7 +76,7 @@ const Overview = () => {
                 <Card.Body>
                   <hr />
                   <div className="d-flex justify-content-between mt-3">
-                    <h5 className=" mb-0 pb-0">Match Report</h5>
+                    <h5 className=" mb-0  pb-0">Match Report</h5>
                     <div>
                       <span>Forfeit</span>
                       <span className="mx-4">Score</span>

@@ -888,6 +888,9 @@ tab[title] {
   .featured-leagues {
     font-size: 2em !important;
   }
+  .h3-mobile.my-2.d-flex {
+    font-size: 16px !important;
+  }
   .userProfile {
     display: none !important;
   }
