@@ -140,6 +140,11 @@ input {
 textarea {
   color: rgba(244, 92, 93, 255) !important;
 }
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 .checkout-btn {
   border-radius: 2px;
   border: solid red;
@@ -279,10 +284,37 @@ a:hover {
 }
 .results-input {
   background-color: #838181;
-  border: 0px solid;
+  border: 2px black solid;
+  border-radius: 5px;
   font-size: 2em;
   width: 5rem;
   text-align: center;
+}
+.results-input2 {
+  background-color: #d6cdcd;
+  border: 2px black solid;
+  border-radius: 5px;
+  font-size: 1.5em;
+  width: 4rem;
+  text-align: center;
+}
+.loss_bar {
+  display: inline-block;
+  width: 2rem;
+  background-color: red;
+  color: white;
+}
+.win_bar {
+  display: inline-block;
+  width: 2rem;
+  background-color: green;
+  color: white;
+}
+.draw_bar {
+  display: inline-block;
+  width: 2rem;
+  background-color: gray;
+  color: white;
 }
 .results-input::placeholder {
   color: white !important;
@@ -855,6 +887,9 @@ tab[title] {
 @media screen and (max-width: 992px) {
   .featured-leagues {
     font-size: 2em !important;
+  }
+  .userProfile {
+    display: none !important;
   }
   .featured-league {
     font-size: 1.5em !important;
