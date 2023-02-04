@@ -5,7 +5,7 @@ const Table = () => {
   const API_KEY = "043889e9ea73af9c34129e6f7d0dd4c8";
 
   return (
-    <Col className="scoll-table gift-container pb-2 pr-0">
+    <Col className="scoll-table gift-container pb-2 pr-0 fixture-container">
       <Row className="w-100 d-flex mt-2 ">
         <Col className="d-flex justify-content-between pl-3 pr-0">
           <div className="d-flex align-items-center textColor2 ">
@@ -20,12 +20,12 @@ const Table = () => {
           </div>
         </Col>
       </Row>
-      <Row className="w-100 playerNav py-3 pr-0 mr-0 textColor ">
+      <Row className=" playerNav py-3  textColor pr-0  mr-0  ">
         <Col className="d-flex  justify-content-between pl-3 pr-0">
           <div>
             <span>Player</span>
           </div>
-          <div className="d-flex justify-content-end mr-2">
+          <div className="d-flex justify-content-end ">
             <span className="mx-3">MP</span>
             <span className="mx-3">W</span>
             <span className="mx-3">D</span>
@@ -38,10 +38,10 @@ const Table = () => {
 
       {[...Array(20)].map((player, index) => (
         <div>
-          <Row className="w-100 pr-0  mr-0 textColor2 container">
+          <Row className=" pr-0  mr-0 textColor2">
             <Col className="participant-list pb-2 py-2 d-flex justify-content-between  mr-0 px-0">
               <div>
-                <span className="mr-2">{index + 1}</span>
+                <span className="mx-3">{index + 1}</span>
                 <span className="text-nowrap">Louis Gadza</span>
               </div>
               <div className="d-flex justify-content-end mr-0">

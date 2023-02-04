@@ -35,9 +35,9 @@ const Overview = () => {
     setUpdate(true);
   };
   return (
-    <Container fluid className=" textColor px-0 ">
+    <Container fluid className=" textColor px-0 fixture-container">
       <Row>
-        <Col className="my-5 ">
+        <Col className="mb-5 ">
           {update && (
             <div className="registration-card bring-top mx-auto mb-5">
               <Alert key={"success"} variant={"success"}>

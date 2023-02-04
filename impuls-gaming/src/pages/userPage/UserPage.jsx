@@ -78,7 +78,7 @@ const UserPage = () => {
               <Tab className="w-100" eventKey="table" title="Table">
                 <Table />
               </Tab>
-              <Tab eventKey="fixture" title="Fixture">
+              <Tab eventKey="fixture" title="Fixtures">
                 <Fixtures />
               </Tab>
               <Tab eventKey="tournaments" title="Tournaments">
