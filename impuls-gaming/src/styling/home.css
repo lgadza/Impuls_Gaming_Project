@@ -774,9 +774,15 @@ tab[title] {
   border-left: 2px solid !important;
 }
 .border {
-  /* border: 2px solid !important; */
-  border-radius: 5px;
   background-color: white;
+}
+.fixture-container {
+  max-height: 73vh;
+  overflow-y: scroll;
+}
+.profile-fixed {
+  position: sticky;
+  top: 20%;
 }
 .tournament-structure-card:hover {
   box-shadow: 0.4px 0.6px 3px black;

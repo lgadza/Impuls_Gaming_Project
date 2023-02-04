@@ -78,7 +78,7 @@ const Chat = () => {
                   <Row>
                     <Col className="d-flex justify-content-between mt-3 w-100">
                       <div className="d-flex w-100  flex-column text-left mr-auto">
-                        <span className="text-chat w-100 main-container px-2 py-1">
+                        <span className="text-chat w-100 main-container2 px-2 py-1">
                           {message}
                         </span>
                         <span className="d-flex justify-content-end align-items-center">
@@ -102,9 +102,9 @@ const Chat = () => {
           <hr />
           <div>
             <Form onSubmit={handleSubmit}>
-              <Form.Group className="mb-2 d-flex align-items-center main-container ">
+              <Form.Group className="mb-2 d-flex align-items-center main-container2 ">
                 <Form.Control
-                  className="main-container"
+                  className="main-container2"
                   placeholder="Write a message..."
                   as="textarea"
                   rows={3}
@@ -116,7 +116,7 @@ const Chat = () => {
                 <Icon.Image size={20} />
                 {userMessage && (
                   <button
-                    className="textColor px-3 mb-1 send-btn main-container"
+                    className="textColor px-3 mb-1 send-btn main-container2"
                     type="submit"
                     onClick={handleSend}
                   >

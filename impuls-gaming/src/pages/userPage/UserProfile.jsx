@@ -53,7 +53,7 @@ const UserProfile = () => {
     dispatch(userPreference(allRating));
   }, []);
   return (
-    <div>
+    <div className="gift-container">
       <Row className="d-flex flex-column align-items-center  mt-4">
         <div>
           <img className="profile-img" src={profilePic} alt="" />
@@ -173,78 +173,6 @@ const UserProfile = () => {
                   </Link>
                 );
               })}
-            </Col>
-          </Row>
-          <hr />
-          <Row>
-            <Col>
-              <span className="d-flex mt-2 ml-2 ">Favorite game setup</span>
-              <div className="d-flex my-2 ml-2">
-                <span>
-                  <strong>Tournaments</strong>
-                </span>
-                <input
-                  key={"tournament"}
-                  className="ml-2"
-                  type="radio"
-                  name="like"
-                  checked={isTournamentChecked}
-                  onChange={handleTournamentCheck}
-                />
-
-                <span className="ml-3">
-                  <strong>Leagues</strong>
-                </span>
-                <input
-                  key={"league"}
-                  className="ml-2"
-                  type="radio"
-                  name="like"
-                  checked={isLeagueChecked}
-                  onChange={handleLeagueCheck}
-                />
-              </div>
-            </Col>
-          </Row>
-          <hr />
-          <Row>
-            <Col className="d-flex mt-2 ml-2 ">
-              <span>Trophies</span>
-              <Icon.TrophyFill color="gold" size={30} />
-            </Col>
-          </Row>
-          <Row className="mt-3">
-            <Col className="d-flex mt-2 ml-2 ">
-              <div className="d-flex flex-column">
-                <span>
-                  <strong>Wins</strong>
-                </span>
-                <span>50</span>
-              </div>
-            </Col>
-            <Col className=" mt-2  ">
-              <div className="d-flex flex-column">
-                <span>
-                  <strong>Draws</strong>
-                </span>
-                <span>4</span>
-              </div>
-            </Col>
-            <Col className=" mt-2  ">
-              <div className="d-flex flex-column">
-                <span>
-                  <strong>Lost</strong>
-                </span>
-                <span>10</span>
-              </div>
-            </Col>
-            <Col className=" mt-2  ">
-              <div className="d-flex flex-column">
-                <span>
-                  <strong>Played</strong>
-                </span>
-                <span>104</span>
-              </div>
             </Col>
           </Row>
           {/* <Row>

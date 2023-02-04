@@ -62,7 +62,7 @@ const UserPage = () => {
         <Row>
           <Col
             lg={4}
-            className="gift-container userProfile  d-flex flex-column  mt-5 side-bar"
+            className=" userProfile profile-fixed d-flex flex-column  mt-5 side-bar"
           >
             <UserProfile />
           </Col>
