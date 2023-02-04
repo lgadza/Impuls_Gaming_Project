@@ -9,9 +9,9 @@ const Footer = () => {
     <div className="background footer container-fluid mt-5 mb-3 textColor">
       <Container className="pt-4">
         <Row>
-          <Col sm={6} md={4} lg={3}>
+          <Col md={6} lg={3}>
             <ListGroup variant="flush" className="navbar-nav">
-              <ListGroup.Item>
+              <ListGroup.Item className="text-left px-0">
                 <Link>
                   <Icon.Facebook color="#4267B2" size={25} />
                 </Link>
@@ -25,52 +25,52 @@ const Footer = () => {
                   <Icon.Youtube color="red" size={25} />
                 </Link>
               </ListGroup.Item>
-              <ListGroup.Item>
+              <ListGroup.Item className="text-left px-0">
                 <Link className=" textColor">Media Center</Link>
               </ListGroup.Item>
 
-              <ListGroup.Item>
+              <ListGroup.Item className="text-left px-0">
                 <Link className=" textColor">Contact Us</Link>
               </ListGroup.Item>
             </ListGroup>
           </Col>
-          <Col sm={6} md={4} lg={3}>
+          <Col md={6} lg={3}>
             <ListGroup variant="flush" className="navbar-nav">
-              <ListGroup.Item>
-                <Link className=" textColor">Investor Relations</Link>
+              <ListGroup.Item className="text-left px-0">
+                <Link className=" textColor ">Investor Relations</Link>
               </ListGroup.Item>
-              <ListGroup.Item>
+              <ListGroup.Item className="text-left px-0">
                 <Link className=" textColor">Legal Notices</Link>
               </ListGroup.Item>
-              <ListGroup.Item className=" mt-2">
+              <ListGroup.Item className="text-left px-0">
                 <Link className="textColor">Service Code</Link>
               </ListGroup.Item>
             </ListGroup>
           </Col>
-          <Col sm={6} md={4} lg={3}>
+          <Col md={6} lg={3}>
             <ListGroup variant="flush" className="navbar-nav">
-              <ListGroup.Item>
+              <ListGroup.Item className="text-left px-0">
                 <Link className=" textColor">Help Center</Link>
               </ListGroup.Item>
-              <ListGroup.Item>
+              <ListGroup.Item className="text-left px-0">
                 <Link className=" textColor">Jobs</Link>
               </ListGroup.Item>
             </ListGroup>
           </Col>
-          <Col sm={6} md={4} lg={3}>
+          <Col md={6} lg={3}>
             <ListGroup variant="flush" className="navbar-nav">
-              <ListGroup.Item>
+              <ListGroup.Item className="text-left px-0">
                 <Link to={"/giftcard"} className=" textColor">
                   Gift Cards
                 </Link>
               </ListGroup.Item>
-              <ListGroup.Item>
+              <ListGroup.Item className="text-left px-0">
                 <Link className=" textColor">Terms Of Use</Link>
               </ListGroup.Item>
-              <ListGroup.Item>
+              <ListGroup.Item className="text-left px-0">
                 <Link className=" textColor">Privacy</Link>
               </ListGroup.Item>
-              <ListGroup.Item>
+              <ListGroup.Item className="text-left px-0">
                 <Link className=" textColor">Corporate Information</Link>
               </ListGroup.Item>
             </ListGroup>

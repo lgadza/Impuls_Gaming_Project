@@ -60,11 +60,12 @@
 .h1 {
   color: #12bae3;
 }
+
 .into-content {
   margin-top: 10%;
-  background-color: rgba(0, 0, 0, 0.6);
   color: #12bae3;
 }
+
 h1 {
   font-size: 3em;
 }
@@ -916,7 +917,9 @@ tab[title] {
   .position-relative .height {
     min-height: 100vh;
   }
-
+  .into-content h1.textColor {
+    font-size: 1.4em;
+  }
   .swords {
     font-size: 10px;
     transform: scale(0.4);
