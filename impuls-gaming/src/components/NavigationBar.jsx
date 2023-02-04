@@ -14,7 +14,7 @@ const NavigationBar = () => {
         key="md"
         expand="md"
         variant="dark"
-        className="my-0 py-2 d-none d-lg-block px-5 navBackground myNav"
+        className="my-0 py-2 d-none d-lg-block px-5 navBackground myNav "
       >
         <Container fluid className="my-0 py-0 position-relative">
           <Navbar.Brand className="navbarBrand  d-md-block  my-0 py-0">
@@ -62,42 +62,45 @@ const NavigationBar = () => {
           </Link>
         </Container>
       </Navbar>
-      <Navbar className="d-lg-none my-0 py-2  px-5 navBackground myNav">
-        <Container fluid className="my-0 py-0 position-relative ">
-          <Navbar.Brand className="navbarBrand  d-md-block  my-0 py-0">
-            {/* <img className="logo-img" src={logo} alt="" /> */}
-            <h3 className="impuls">Impuls</h3>
+      <Navbar className="d-lg-none my-0 py-2  px-5 navBackground2 myNav">
+        <Container
+          fluid
+          className="my-0 py-0 position-relative d-flex align-items-start"
+        >
+          <Navbar.Brand className="navbarBrand d-flex  d-md-block  my-0 py-0">
+            <img className="logo-img" src={logo} alt="" />
+            {/* <h3 className="impuls">Impuls</h3> */}
           </Navbar.Brand>
           <div>
-            <div className="d-flex justify-content-end">
+            <div className="d-flex justify-content-end ">
               <div
-                className={`nav-toggle ${isOpen ? "open " : ""}`}
+                className={`nav-toggle  ${isOpen ? "open  " : ""}`}
                 onClick={() => setIsOpen(!isOpen)}
               >
                 <span className="textColor">Impuls</span>
                 <span></span>
-                <span>Gaming</span>
+                <span className="textColor3">Gaming</span>
               </div>
             </div>
-            <div className="d-flex flex-column align-items-start">
+            <div className="d-flex flex-column text-right pr-0">
               <div
                 className={`nav-menu mt-4 ${
-                  isOpen ? "open d-flex flex-column" : ""
+                  isOpen ? "open d-flex flex-column height" : ""
                 }`}
               >
-                <Link to="/" className="textColor mb-3  ">
+                <Link to="/" className="textColor mb-3 pr-0  ">
                   Home
                 </Link>
-                <Link to="/" className="textColor mb-3  ">
+                <Link to="/" className="textColor mb-3 pr-0  ">
                   Tournaments
                 </Link>
-                <Link to="#" className="textColor mb-3">
+                <Link to="#" className="textColor mb-3 pr-0">
                   League
                 </Link>
-                <Link to="" className=" textColor mb-3">
+                <Link to="" className=" textColor mb-3 pr-0">
                   Features
                 </Link>
-                <Link to="" className=" textColor mb-3">
+                <Link to="" className=" textColor mb-3 pr-0">
                   Blog
                 </Link>
                 <hr />
@@ -108,12 +111,12 @@ const NavigationBar = () => {
             </div>
           </div>
         </Container>
-        <Link
+        {/* <Link
           to={"/sign-up"}
           className={`d-lg-none ml-2 login-closed ${isOpen ? "open " : ""}`}
         >
           <Icon.PersonCircle size={30} />
-        </Link>
+        </Link> */}
       </Navbar>
     </>
   );
