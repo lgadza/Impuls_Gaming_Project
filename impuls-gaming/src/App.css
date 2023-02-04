@@ -106,13 +106,7 @@
   .nav-toggle {
     display: block;
   }
-  .navBackground {
-    position: relative;
-    min-height: 5em;
-    background-color: rgba(25, 0, 76, 0.7) !important;
-    position: fixed !important;
-    width: 100%;
-  }
+
   .login-closed.open {
     display: none;
   }

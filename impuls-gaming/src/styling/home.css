@@ -897,6 +897,26 @@ tab[title] {
   .featured-league {
     font-size: 1.5em !important;
   }
+  .navBackground2.myNav {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+    background-color: rgb(25, 0, 76);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 3;
+  }
+  .position-relative .navbarBrand {
+  }
+  .position-relative .logo-img {
+    width: 2.5rem;
+    height: 2.5rem;
+    object-fit: cover;
+  }
+  .position-relative .height {
+    min-height: 100vh;
+  }
+
   .swords {
     font-size: 10px;
     transform: scale(0.4);
