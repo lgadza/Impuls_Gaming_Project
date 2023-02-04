@@ -1,4 +1,4 @@
-import { Col, Row, NavDropdown, Dropdown, Form } from "react-bootstrap";
+import { Col, Row, NavDropdown, Dropdown, Form, Button } from "react-bootstrap";
 import * as Icon from "react-bootstrap-icons";
 import { useSelector, useDispatch } from "react-redux";
 import fifa from "../../img/fifa23.jpg";
@@ -9,49 +9,41 @@ const Tournaments = () => {
   console.log(tournaments);
   return (
     <Col className="scoll-table gift-container pb-2 pr-0">
-      <Row className="w-100 playerNav pr-0 mt-0 mr-0 textColor w-100 mb-3">
-        <Col className="d-flex  justify-content-between pl-3 pr-0">
-          <Form>
-            <div className="my-3 d-flex align-items-center">
-              <Form.Check
-                type="radio"
-                name="query"
-                label="All"
-                className="mr-3"
-              />
-              <Form.Check
-                type="radio"
-                className="mr-3"
-                name="query"
-                label="Past"
-              />
-              <Form.Check
-                className="mr-3"
-                type="radio"
-                name="query"
-                label="Ongoing"
-              />
-              <Form.Check
-                type="radio"
-                className="mr-3"
-                name="query"
-                label="Upcoming"
-              />
-              <Form.Check
-                type="checkbox"
-                className="mr-3"
-                name="query"
-                label="Featured"
-              />
+      <Row>
+        <Col className="d-flex justify-content-end">
+          <Dropdown>
+            <Dropdown.Toggle className="textColor mt-1 mr-3">
+              <span className="bg-secondary text-white  px-3 py-1">Filter</span>
+            </Dropdown.Toggle>
 
-              <Form.Check
-                type="checkbox"
-                className="mr-3"
-                name="query"
-                label="Open"
-              />
-            </div>
-          </Form>
+            <Dropdown.Menu>
+              <Dropdown.Item>
+                <span>All</span>
+              </Dropdown.Item>
+              <Dropdown.Item>
+                {/* {" "}
+                <Form.Check
+                  type="radio"
+                  className="mr-3"
+                  name="query"
+                  label="Past"
+                /> */}
+                <span>Past</span>
+              </Dropdown.Item>
+              <Dropdown.Item>
+                <span>Ongoing</span>
+              </Dropdown.Item>
+              <Dropdown.Item>
+                <span>Upcoming</span>
+              </Dropdown.Item>
+              <Dropdown.Item>
+                <span>Featured</span>
+              </Dropdown.Item>
+              <Dropdown.Item>
+                <span>Open</span>
+              </Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
         </Col>
       </Row>
 
@@ -71,14 +63,16 @@ const Tournaments = () => {
                       className="tournament-preview-img mr-2"
                     />
                     <div className="d-flex flex-column justify-content-start">
-                      <h5 className="text-nowrap d-flex ">{tournament.name}</h5>
+                      <h5 className="text-nowrap tournament-name d-flex ">
+                        {tournament.name}
+                      </h5>
                       <span className="text-nowrap span d-flex ">
                         {tournament.discipline}
                       </span>
                     </div>
                   </div>
                   <div className="d-flex justify-content-end mr-0">
-                    <span className="span">2 Feb 2023</span>
+                    <span className="span ">2 Feb 2023</span>
                   </div>
                   <div>
                     <div className="d-flex flex-column justify-content-end mr-0">

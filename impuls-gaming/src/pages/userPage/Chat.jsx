@@ -33,7 +33,7 @@ const Chat = () => {
     setUserMessage("");
   };
   return (
-    <Col className=" gift-container chat-section ">
+    <Col className=" gift-container chat-section  ">
       <Row className="w-100 d-flex mx-auto  py-2 mb-3 ">
         <Col className="inputContainer px-0   w-100">
           <Icon.Search className="search-icon textColor" size={20} />

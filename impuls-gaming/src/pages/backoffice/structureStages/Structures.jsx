@@ -22,7 +22,7 @@ const Structures = () => {
     dispatch(getTournaments());
   }, []);
   return (
-    <Container fluid className="main-container textColor">
+    <Container fluid className="main-container2 textColor">
       <Row>
         <Col lg={2} className="px-0">
           <BackOfficeNav data={tournament} page={"settings"} />
@@ -41,7 +41,7 @@ const Structures = () => {
             >
               <Card
                 style={{ height: "12rem" }}
-                className="main-container plus-project w-75 mb-3"
+                className="main-container2 plus-project w-75 mb-3"
               >
                 <Card.Body>
                   <Icon.PlusLg size={100} color="rgba(244, 92, 93, 255)" />

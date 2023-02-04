@@ -35,7 +35,7 @@ const Overview = () => {
     setUpdate(true);
   };
   return (
-    <Container fluid className=" textColor px-0">
+    <Container fluid className=" textColor px-0 ">
       <Row>
         <Col className="my-5 ">
           {update && (

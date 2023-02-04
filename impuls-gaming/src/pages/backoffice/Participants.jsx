@@ -35,7 +35,7 @@ const Participants = () => {
   };
 
   return (
-    <Container fluid className="main-container textColor">
+    <Container fluid className="main-container2 textColor">
       {users && (
         <Row>
           <Col lg={2} className="px-0">
@@ -50,7 +50,7 @@ const Participants = () => {
                 </Alert>
               </div>
             )}
-            <Card className="registration-card mx-auto mb-5 main-container">
+            <Card className="registration-card mx-auto mb-5 main-container2">
               <Card.Body>
                 <div className="d-flex ">
                   <h3 className="d-flex my-1">Participants</h3>
@@ -102,14 +102,14 @@ const Participants = () => {
                 <div className="d-flex ">
                   <h3 className="d-flex my-1">List of participants</h3>
                   <div className="d-flex ml-auto">
-                    <Link className="d-flex justify-content-end align-items-center main-container my-1 mr-2 link-none-deco">
+                    <Link className="d-flex justify-content-end align-items-center main-container2 my-1 mr-2 link-none-deco">
                       <Icon.ArrowClockwise size={20} />
                       <span className="pr-3">Refresh</span>
                     </Link>
                     {search ? (
                       <Link
                         onClick={handleSearch}
-                        className="d-flex justify-content-end align-items-center my-1 main-container link-none-deco"
+                        className="d-flex justify-content-end align-items-center my-1 main-container2 link-none-deco"
                       >
                         <Icon.Search size={20} />
                         <span className="pr-3">Search</span>
@@ -117,7 +117,7 @@ const Participants = () => {
                     ) : (
                       <Link
                         onClick={handleSearch}
-                        className="d-flex justify-content-end align-items-center my-1 main-container link-none-deco"
+                        className="d-flex justify-content-end align-items-center my-1 main-container2 link-none-deco"
                       >
                         <Icon.X size={20} />
                         <span className="pr-3">Hide search</span>

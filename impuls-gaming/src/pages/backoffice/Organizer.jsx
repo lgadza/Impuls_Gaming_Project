@@ -61,7 +61,7 @@ const Organizer = ({ projects }) => {
             xl={4}
             className="d-xs-none d-sm-none d-md-none d-lg-block"
           >
-            <span className="d-flex mt-5 align-items-center justify-content-center flex-column main-container plus-project  mx-4">
+            <span className="d-flex mt-5 align-items-center justify-content-center flex-column main-container2 plus-project  mx-4">
               <Icon.PlusLg size={100} color="rgba(244, 92, 93, 255)" />
               <span className="d-flex justify-content-center mx-4 align-items-center">
                 Create Project
@@ -91,7 +91,7 @@ const Organizer = ({ projects }) => {
               )}
 
               <Link to={`projects/overview/${project.name}`}>
-                <span className="d-flex mt-5 align-items-center justify-content-center flex-column main-container plus-project  mx-4 mr-4">
+                <span className="d-flex mt-5 align-items-center justify-content-center flex-column main-container2 plus-project  mx-4 mr-4">
                   <img src={fifa} className="w-100" alt="fifa" />
                   <span className="d-flex justify-content-center mx-4 align-items-center py-3 textColor">
                     <strong>{project.name}</strong>

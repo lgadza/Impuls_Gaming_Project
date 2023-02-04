@@ -11,11 +11,12 @@ import { useSelector, useDispatch } from "react-redux";
 import Tournaments from "./Tournaments";
 import Overview from "./Overview";
 import UserProfile from "./UserProfile";
+import Fixtures from "./Fixtures";
 
 const UserPage = () => {
   const [key, setKey] = useState("activation");
   return (
-    <Container fluid className="textColor user-page main-container ">
+    <Container fluid className="textColor px-0 user-page main-container ">
       <Row className="mb-3 px-5 w-100 py-3 d-flex align-items-center justify-content-between position-fixed giftcard-preview-nav">
         <div>
           <Link to="/" className="textColor">
@@ -77,7 +78,9 @@ const UserPage = () => {
               <Tab className="w-100" eventKey="table" title="Table">
                 <Table />
               </Tab>
-              <Tab eventKey="fixture" title="Fixture"></Tab>
+              <Tab eventKey="fixture" title="Fixture">
+                <Fixtures />
+              </Tab>
               <Tab eventKey="tournaments" title="Tournaments">
                 <Tournaments />
               </Tab>
