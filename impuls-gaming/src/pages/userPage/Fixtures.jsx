@@ -12,11 +12,11 @@ const Fixtures = () => {
             <hr className="py-0 my-0" />
             <div className="d-flex justify-content-between  border-round p-2">
               <div className="d-flex justify-content-between">
-                <div className="d-flex flex-column ">
+                <div className="d-flex flex-column mr-5">
                   <span className="mb-2 text-secondary ">Louis</span>
                   <span>Louis</span>
                 </div>
-                <div className="d-flex flex-column ">
+                <div className="d-flex flex-column ml-5">
                   <span className="mb-2 text-secondary ">1</span>
                   <span>3</span>
                 </div>

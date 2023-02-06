@@ -39,7 +39,9 @@
 #tooltip-disabled {
   width: 15rem;
 }
-
+.tournament_page {
+  padding-top: 5%;
+}
 .nav-container {
   display: flex;
   align-items: center;

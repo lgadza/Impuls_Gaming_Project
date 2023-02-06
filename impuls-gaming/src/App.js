@@ -24,6 +24,7 @@ import StageType from "./pages/backoffice/structureStages/StageType";
 import ConfigureStage from "./pages/backoffice/structureStages/ConfigureStage";
 import DisputeReport from "./pages/backoffice/DisputeReport";
 import Structures from "./pages/backoffice/structureStages/Structures";
+import TournamentsPage from "./pages/Tournaments/TournamentsPage.jsx";
 
 function App() {
   return (
@@ -89,6 +90,7 @@ function App() {
             element={<Structures />}
             path="/backoffice/projects/:tournamentId/structures"
           />
+          <Route element={<TournamentsPage />} path="/tournaments" />
         </Routes>
       </BrowserRouter>
     </div>

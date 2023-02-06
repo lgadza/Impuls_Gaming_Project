@@ -6,13 +6,14 @@ import * as Icon from "react-bootstrap-icons";
 import logo from "../img/Blue_Futuristic_Gaming_Logo-removebg-preview.png";
 import tournament from "../img/tournament.webp";
 import mk from "../img/mk.avif";
+import TournamentCard from "./TournamentCard";
 
 const HomeUpdates = () => {
   return (
     <Container className="textColor">
-      <h1 className="d-flex mb-5 featured-leagues">Featured Tournaments</h1>
+      <h1 className="d-flex mb-5 featured-leagues"> Tournaments</h1>
       <Row>
-        <Col md={6} lg={4} className="mb-4">
+        {/* <Col md={6} lg={4} className="mb-4">
           <Card className="featured-games">
             <Card.Img variant="top" src={fifa23} />
             <Card.Body>
@@ -38,31 +39,10 @@ const HomeUpdates = () => {
             </Card.Body>
           </Card>
         </Col>
+        */}
+
         <Col md={6} lg={4} className="mb-4">
-          <Card className="featured-games">
-            <Card.Img variant="top" src={tournament} />
-            <Card.Body>
-              <Card.Title className="textColor d-flex">
-                <strong>FIFA 23 Tournament</strong>
-              </Card.Title>
-              <div className=" d-flex">
-                <Icon.Calendar2Event size={30} />
-                <span>Registration Monday - Friday </span>
-              </div>
-              <Card.Text className="bg-dark py-4 my-3 px-2 textColor d-flex">
-                Tournaments by Impuls Gaming
-                <img
-                  className="league-provider-img ml-2"
-                  src={logo}
-                  alt="logo"
-                />
-              </Card.Text>
-              <Link to="/sign-up" className="w-100 d-flex justify-content-end">
-                {" "}
-                <Button variant="danger">Registration Open</Button>
-              </Link>
-            </Card.Body>
-          </Card>
+          <TournamentCard />
         </Col>
         <Col md={6} lg={4} className="mb-4">
           <Card className="featured-games">
@@ -85,7 +65,7 @@ const HomeUpdates = () => {
               </Card.Text> */}
               <Link
                 to="/sign-up"
-                className="w-100 d-flex mt-5 justify-content-end"
+                className="w-100 d-flex mt-4 justify-content-end"
               >
                 {" "}
                 <Button disabled variant="danger">

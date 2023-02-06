@@ -34,17 +34,15 @@ const NavigationBar = () => {
               <Link to="/" className="textColor mr-4 link-btm-bar ">
                 Home
               </Link>
-              <Link to="/" className="textColor mr-4 link-btm-bar">
+              <Link to="/tournaments" className="textColor mr-4 link-btm-bar">
                 Tournaments
               </Link>
-              <Link to="#" className="textColor mr-4 link-btm-bar">
-                League
-              </Link>
+
               <Link to="" className="mr-4 textColor link-btm-bar">
                 Features
               </Link>
               <Link to="" className="mr-4 textColor link-btm-bar">
-                Blog
+                News
               </Link>
               <Link
                 to="/backoffice"
@@ -94,14 +92,11 @@ const NavigationBar = () => {
                 <Link to="/" className="textColor mb-3 pr-0  ">
                   Tournaments
                 </Link>
-                <Link to="#" className="textColor mb-3 pr-0">
-                  League
-                </Link>
                 <Link to="" className=" textColor mb-3 pr-0">
                   Features
                 </Link>
                 <Link to="" className=" textColor mb-3 pr-0">
-                  Blog
+                  News
                 </Link>
                 <hr />
                 <Link to={"/sign-up"} className="join-member   px-5 py-1 mb-2 ">
