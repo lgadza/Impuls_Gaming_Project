@@ -7,8 +7,10 @@ import logo from "../img/Blue_Futuristic_Gaming_Logo-removebg-preview.png";
 import tournament from "../img/tournament.webp";
 import mk from "../img/mk.avif";
 import TournamentCard from "./TournamentCard";
+import { useSelector, useEffect } from "react-redux";
 
 const HomeUpdates = () => {
+  const tournaments = useSelector((state) => state.tournaments.tournaments);
   return (
     <Container className="textColor">
       <h1 className="d-flex mb-5 featured-leagues"> Tournaments</h1>
@@ -41,9 +43,11 @@ const HomeUpdates = () => {
         </Col>
         */}
 
-        <Col md={6} lg={4} className="mb-4">
-          <TournamentCard />
-        </Col>
+        {tournaments.tournaments.map((tournament) => (
+          <Col md={6} lg={4} className="mb-4">
+            <TournamentCard tournament={tournament} />
+          </Col>
+        ))}
         <Col md={6} lg={4} className="mb-4">
           <Card className="featured-games">
             <Card.Img variant="top" src={mk} />
