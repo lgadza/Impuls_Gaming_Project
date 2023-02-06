@@ -2,20 +2,34 @@ import { Card, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import * as Icon from "react-bootstrap-icons";
 import logo from "../img/Blue_Futuristic_Gaming_Logo-removebg-preview.png";
-import tournament from "../img/tournament.webp";
+import tournamentCover from "../img/tournament.webp";
+import { format, compareAsc } from "date-fns";
 
-const TournamentCard = () => {
+const TournamentCard = ({ tournament }) => {
   return (
     <Card className="featured-games">
-      <Card.Img variant="top" src={tournament} />
+      <Card.Img variant="top" src={tournamentCover} />
       <Card.Body>
         <Card.Title className="textColor d-flex">
-          <strong>FIFA 23 Tournament</strong>
+          <strong>{tournament.name}</strong>
+          <span className="text-small text-muted d-flex">
+            {tournament.discipline_name}
+          </span>
         </Card.Title>
         <div className=" d-flex">
           <Icon.Calendar2Event className="pr-1 text-success" size={30} />
           <span className="text-small text-success">
-            Registration Monday - Friday{" "}
+            <span className="d-flex">
+              <span className="mr-2">Registration</span>
+              {tournament.startDate && tournament.endDate && (
+                <span className="d-flex">
+                  {" "}
+                  {format(new Date(tournament.startDate.toString()), "dd MMM")}
+                  {" - "}
+                  {format(new Date(tournament.endDate.toString()), "dd MMM ")}
+                </span>
+              )}
+            </span>
           </span>
         </div>
         <Card.Text className="bg-dark py-3 my-3 px-2 textColor d-flex">

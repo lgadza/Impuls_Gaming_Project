@@ -5,16 +5,19 @@ import { useSelector, useEffect } from "react-redux";
 
 const HomeUpdates = () => {
   const tournaments = useSelector((state) => state.tournaments.tournaments);
-  console.log(tournaments);
+
+  console.log(
+    tournaments.tournaments[0].registration.activation.registrationOpeningDate
+  );
   return (
     <div className="home  main-container">
       <NavigationBar />
 
       <Container className="textColor mt-5 tournament_page px-0">
         <Row className="mb-5">
-          {[...Array(10)].map((t) => (
+          {tournaments.tournaments.map((tournament) => (
             <Col md={6} lg={3} className="mb-4 mt-5">
-              <TournamentCard />
+              <TournamentCard tournament={tournament} />
             </Col>
           ))}
         </Row>
