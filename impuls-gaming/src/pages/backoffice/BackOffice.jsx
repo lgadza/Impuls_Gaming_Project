@@ -1,13 +1,4 @@
-import {
-  Col,
-  Container,
-  Row,
-  Spinner,
-  Form,
-  Button,
-  Nav,
-  Alert,
-} from "react-bootstrap";
+import { Col, Container, Row, Form, Button, Nav, Alert } from "react-bootstrap";
 import fifa from "../../img/fifa23.jpg";
 import * as Icon from "react-bootstrap-icons";
 import logo from "../../img/Blue_Futuristic_Gaming_Logo-removebg-preview.png";
@@ -15,6 +6,7 @@ import Organizer from "./Organizer";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getTournaments } from "../../redux/actions";
+import Spinner from "../../components/Spinner";
 
 const BackOffice = () => {
   const dispatch = useDispatch();
@@ -39,9 +31,9 @@ const BackOffice = () => {
         </Col>
         <Col lg={9} md={12} className="">
           {isLoading && (
-            <div className="mt-5">
+            <div className="mt-5 spinner d-flex justify-content-center">
               {" "}
-              <Spinner animation="grow" />;
+              <Spinner />
             </div>
           )}
           {!isError && (

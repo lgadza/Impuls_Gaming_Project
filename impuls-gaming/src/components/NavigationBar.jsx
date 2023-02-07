@@ -17,9 +17,11 @@ const NavigationBar = () => {
         className="my-0 py-2 d-none d-lg-block px-5 navBackground myNav "
       >
         <Container fluid className="my-0 py-0 position-relative">
-          <Navbar.Brand className="navbarBrand  d-md-block  my-0 py-0">
-            <img className="logo-img" src={logo} alt="" />
-          </Navbar.Brand>
+          <Link to="/">
+            <Navbar.Brand className="navbarBrand  d-md-block  my-0 py-0">
+              <img className="logo-img" src={logo} alt="" />
+            </Navbar.Brand>
+          </Link>
           <div className="d-flex flex-column me-auto  text-size-md">
             <div className="d-flex ">
               <Icon.List

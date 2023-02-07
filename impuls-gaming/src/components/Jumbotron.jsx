@@ -13,10 +13,10 @@ const Jumbotron = () => {
       <div className="into  ">
         <div className="into-content d-none d-lg-block pb-5">
           <h1 className="h1-join-call ">JOIN NOW</h1>
-          <h2 className="h2-join-call">
+          <h2 className="h2-join-call py-2">
             AND STAND A CHANCE TO WIN CASH PRIZE{" "}
           </h2>
-          <span className="dollar-prize px-3">$$$</span>
+          {/* <span className="dollar-prize px-3">$$$</span> */}
         </div>
       </div>
       <div className="into mt-5 textColor ">
