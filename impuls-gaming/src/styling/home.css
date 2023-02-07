@@ -527,8 +527,6 @@ button-star {
   opacity: 0.6;
 }
 .plus-project {
-  /* background-color: white; */
-  /* display: inline-block !important; */
   width: 20rem;
   height: 15rem;
   box-shadow: 1px 3px 5px rgba(25, 0, 76, 255);
@@ -603,7 +601,6 @@ button-star {
   .organizer {
     margin-right: auto;
     padding-right: 2rem;
-    /* margin-right: 5rem !important; */
   }
   .plus-project {
     width: 16rem;
@@ -644,9 +641,6 @@ button[disabled].primary-btn {
   z-index: 5;
 }
 
-/* .current {
-  color: rgba(244, 92, 93, 255) !important;
-} */
 .link-none-deco {
   text-decoration: none !important;
 }
@@ -885,7 +879,6 @@ tab[title] {
   top: 50%;
 }
 .tournament-name {
-  /* width: 75px !important; */
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
