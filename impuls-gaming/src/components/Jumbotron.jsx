@@ -21,8 +21,8 @@ const Jumbotron = () => {
       </div>
       <div className="into mt-5 textColor ">
         <div className="into-content d-lg-none pt-5  pb-5">
-          <h2 className="textColor3">Live experience</h2>
-          <h1 className="textColor">Join Impuls community </h1>
+          <h2 className="textColor3 h2-join-call ">Live experience</h2>
+          <h1 className="textColor h2-join-call">Join Impuls community </h1>
         </div>
       </div>
     </Container>
