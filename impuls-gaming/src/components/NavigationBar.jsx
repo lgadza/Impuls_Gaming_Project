@@ -65,7 +65,7 @@ const NavigationBar = () => {
       <Navbar className="d-lg-none my-0 py-2  px-5 navBackground2 myNav">
         <Container
           fluid
-          className="my-0 py-0 position-relative d-flex align-items-start"
+          className="my-0 pt-2 px-3 position-relative d-flex align-items-start"
         >
           <Navbar.Brand className="navbarBrand d-flex  d-md-block  my-0 py-0">
             <img className="logo-img" src={logo} alt="" />
@@ -91,7 +91,7 @@ const NavigationBar = () => {
                 <Link to="/" className="textColor mb-3 pr-0  ">
                   Home
                 </Link>
-                <Link to="/" className="textColor mb-3 pr-0  ">
+                <Link to="/tournaments" className="textColor mb-3 pr-0  ">
                   Tournaments
                 </Link>
                 <Link to="" className=" textColor mb-3 pr-0">
