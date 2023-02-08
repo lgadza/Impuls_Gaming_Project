@@ -67,10 +67,12 @@ const NavigationBar = () => {
           fluid
           className="my-0 pt-2 px-3 position-relative d-flex align-items-start"
         >
-          <Navbar.Brand className="navbarBrand d-flex  d-md-block  my-0 py-0">
-            <img className="logo-img" src={logo} alt="" />
-            {/* <h3 className="impuls">Impuls</h3> */}
-          </Navbar.Brand>
+          <Link to="/">
+            <Navbar.Brand className="navbarBrand d-flex  d-md-block  my-0 py-0">
+              <img className="logo-img" src={logo} alt="" />
+              {/* <h3 className="impuls">Impuls</h3> */}
+            </Navbar.Brand>
+          </Link>
           <div>
             <div className="d-flex justify-content-end ">
               <div

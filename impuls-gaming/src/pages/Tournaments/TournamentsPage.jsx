@@ -13,7 +13,7 @@ const HomeUpdates = () => {
     <div className="home  main-container">
       <NavigationBar />
 
-      <Container className="textColor mt-5 tournament_page px-0">
+      <Container className="textColor mt-5 tournament_page ">
         <Row className="mb-5">
           {tournaments.tournaments.map((tournament) => (
             <Col md={6} lg={3} className="mb-4 mt-5">

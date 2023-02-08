@@ -20,7 +20,7 @@ const TournamentCard = ({ tournament }) => {
           <Icon.Calendar2Event className="pr-1 text-success" size={30} />
           <span className="text-small text-success">
             <span className="d-flex">
-              <span className="mr-2">Registration</span>
+              <span className="mr-1">Registration</span>
               {tournament.startDate && tournament.endDate && (
                 <span className="d-flex">
                   {" "}
@@ -33,7 +33,7 @@ const TournamentCard = ({ tournament }) => {
           </span>
         </div>
         <Card.Text className="bg-dark py-3 my-3 px-2 textColor d-flex">
-          Tournament by Impuls
+          Sponsored by Impuls
           <img className="league-provider-img ml-2" src={logo} alt="logo" />
         </Card.Text>
         <Link to="/sign-up" className="w-100 d-flex justify-content-end">
