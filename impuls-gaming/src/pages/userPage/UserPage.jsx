@@ -20,7 +20,7 @@ const UserPage = () => {
       <Row className="mb-3 px-5 w-100 py-3 d-flex align-items-center justify-content-between position-fixed giftcard-preview-nav">
         <div>
           <Link to="/" className="textColor">
-            Homepage
+            Home
           </Link>
           <Icon.CaretRightFill size={10} />
 
@@ -56,6 +56,30 @@ const UserPage = () => {
               </Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
+          <div>
+            <Dropdown>
+              <Dropdown.Toggle variant="success" id="dropdown-basic">
+                <span className="textColor notification-bell">
+                  <Icon.BellFill size={30} className="ml-0 pl-0 " />
+                  <span className="notification-message text-primary text-small bg-white">
+                    <strong className="text-small px-0">1</strong>
+                  </span>
+                </span>
+              </Dropdown.Toggle>
+
+              <Dropdown.Menu>
+                <Dropdown.Item
+                // onClick={() =>
+                //   navigate(
+                //     `/backoffice/projects/${tournament.name}/reports/disputes`
+                //   )
+                // }
+                >
+                  Louis vs Sage
+                </Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+          </div>
         </div>
       </Row>
       <Container>
