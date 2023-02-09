@@ -15,6 +15,7 @@ import Fixtures from "./Fixtures";
 
 const UserPage = () => {
   const [key, setKey] = useState("activation");
+  const user = useSelector((state) => state.registerUser.user);
   return (
     <Container fluid className="textColor px-0 user-page main-container ">
       <Row className="mb-3 px-5 w-100 py-3 d-flex align-items-center justify-content-between position-fixed giftcard-preview-nav">
