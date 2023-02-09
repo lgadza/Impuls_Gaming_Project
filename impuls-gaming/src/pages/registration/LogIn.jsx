@@ -26,14 +26,13 @@ const SignIn = () => {
   };
 
   const handleCheck = (e) => {
-    setCheck(e.target.value);
-    dispatch(logInData(loginFormData));
+    check ? setCheck(false) : setCheck(true);
   };
 
   const loginFormData = {
     email: email,
     password: password,
-    check: check,
+    rememberSignIn: check,
   };
   return (
     <Container fluid className="login-page ">
@@ -94,10 +93,28 @@ const SignIn = () => {
           </Form.Group>
           <Col className=" d-flex mb-3 ">
             <Link to="/user-page" className="w-100">
-              <Button className="px-4 sign-up-btn w-100" variant="primary">
+              <Button
+                disabled={!check || !email || !password}
+                className="px-4 sign-up-btn w-100"
+                variant="primary"
+              >
                 Sign in
               </Button>
             </Link>
+          </Col>
+          <span className="mb-2">
+            <strong>OR</strong>
+          </span>
+          <Col className=" d-flex mb-3 ">
+            <a
+              href={`${process.env.REACT_APP_BE_DEV_URL}/users/googleLogin`}
+              className="w-100"
+            >
+              <Button className="px-4 sign-up-btn w-100" variant="primary">
+                <Icon.Google size={20} />
+                <span>Continue with Google</span>
+              </Button>
+            </a>
           </Col>
           <div className="mb-3">
             <span>

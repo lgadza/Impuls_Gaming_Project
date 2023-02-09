@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import logo from "../../img/Blue_Futuristic_Gaming_Logo-removebg-preview.png";
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
-import { logInData } from "../../redux/actions";
+import { logInData, registerUser } from "../../redux/actions";
 import * as Icon from "react-bootstrap-icons";
 
 const LogInPage = () => {
@@ -14,57 +14,42 @@ const LogInPage = () => {
   const dispatch = useDispatch();
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
-  const [check, setCheck] = useState(true);
+  const [check, setCheck] = useState(false);
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const isLoading = useSelector((state) => state.giftData.isLoading);
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState(undefined);
-  console.log(check);
   const handleName = (e) => {
     setName(e.target.value);
-    dispatch(logInData(loginFormData));
   };
 
   const handleSurname = (e) => {
     setSurname(e.target.value);
-    dispatch(logInData(loginFormData));
   };
   const handlePassword = (e) => {
     setPassword(e.target.value);
-    dispatch(logInData(loginFormData));
   };
   const handleEmail = (e) => {
     setEmail(e.target.value);
-    dispatch(logInData(loginFormData));
   };
   const handleConfirmPassword = (e) => {
     setConfirmPassword(e.target.value);
-    dispatch(logInData(loginFormData));
   };
   console.log(password.length);
   const handleCheck = (e) => {
-    // check ? setCheck(false) : setCheck(true);
-    name &&
-    surname &&
-    email &&
-    password === confirmPassword &&
-    password.length >= 5 &&
-    check
-      ? setCheck(false)
-      : setCheck(true);
-    dispatch(logInData(loginFormData));
+    check ? setCheck(false) : setCheck(true);
   };
-  console.log(name);
-
-  const loginFormData = {
+  const registerData = {
     name: name,
     surname: surname,
     email: email,
     phone: phone,
     password: password,
-    confirmPassword: confirmPassword,
-    check: check,
+    terms: check,
+  };
+  const handleUserData = () => {
+    dispatch(registerUser(registerData));
   };
   return (
     <Container fluid className="login-page">
@@ -125,7 +110,7 @@ const LogInPage = () => {
               />
             </Col>
           </Form.Group>
-          <Form.Group className="mb-4">
+          <Form.Group className="mb-2">
             <Col>
               <Form.Control
                 type="password"
@@ -156,16 +141,37 @@ const LogInPage = () => {
               </div>
             </Col>
           </Form.Group>
-          <Col className=" d-flex mb-3">
+          <Col className=" d-flex mb-2">
             <Link to="/user-page" className="w-100">
               <Button
-                disabled={check}
+                disabled={
+                  !check ||
+                  password !== confirmPassword ||
+                  !name ||
+                  !email ||
+                  !surname
+                }
                 className="px-4 sign-up-btn w-100"
                 variant="primary"
+                onClick={handleUserData}
               >
                 Sign Up
               </Button>
             </Link>
+          </Col>
+          <span className="mb-2">
+            <strong>OR</strong>
+          </span>
+          <Col className=" d-flex mb-3 ">
+            <a
+              href={`${process.env.REACT_APP_BE_DEV_URL}/users/googleLogin`}
+              className="w-100"
+            >
+              <Button className="px-4 sign-up-btn w-100" variant="primary">
+                <Icon.Google size={20} />
+                <span>Continue with Google</span>
+              </Button>
+            </a>
           </Col>
           <div className="mb-3">
             <span>

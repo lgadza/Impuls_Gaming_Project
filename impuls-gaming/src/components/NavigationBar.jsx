@@ -58,7 +58,7 @@ const NavigationBar = () => {
             to={"/sign-up"}
             className="join-member d-none d-lg-block  px-5 py-1 "
           >
-            LogIn
+            Register
           </Link>
         </Container>
       </Navbar>
