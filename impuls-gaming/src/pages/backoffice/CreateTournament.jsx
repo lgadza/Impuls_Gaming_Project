@@ -1,7 +1,7 @@
 import { Modal, Row, Container, Col, Button, Form } from "react-bootstrap";
 import * as Icon from "react-bootstrap-icons";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import fifa23 from "../../img/fifa23.jpg";
 import { useSelector, useDispatch } from "react-redux";
@@ -9,15 +9,10 @@ import { createTournament, getTournaments } from "../../redux/actions";
 
 const CreateTournament = ({ visible, onhide }) => {
   const dispatch = useDispatch();
-  const handleData = () => {
-    dispatch(createTournament(formValues));
-    dispatch(getTournaments());
-    onhide();
-  };
+  const navagation = useNavigate();
   const [tournament, setTournament] = useState("");
   const [platformChecked, setPlatformCheck] = useState("");
   const [size, setSize] = useState(undefined);
-  const [disable, setDisable] = useState(true);
 
   const tournaments = useSelector((state) => state.tournaments.tournaments);
   const notUnique = tournaments.tournaments.find(
@@ -37,8 +32,12 @@ const CreateTournament = ({ visible, onhide }) => {
   const handleSize = (e) => {
     setSize(e.target.value);
   };
-
-  console.log(formValues);
+  const handleData = async () => {
+    await dispatch(createTournament(formValues));
+    await dispatch(getTournaments());
+    onhide();
+    navagation.navigate(`/backoffice/projects/overview/${tournament}`);
+  };
   return (
     <Modal
       scrollable
@@ -47,8 +46,17 @@ const CreateTournament = ({ visible, onhide }) => {
       onHide={onhide}
       className="modal-hieght textColor"
     >
-      <Modal.Header closeButton>
-        <Modal.Title>Create new tournament</Modal.Title>
+      <Modal.Header>
+        <Modal.Title className="d-flex justify-content-between w-100">
+          <span>Create new tournament</span>
+          <Link>
+            <Icon.X
+              onClick={onhide}
+              size={30}
+              className="d-flex justify-content-end btn-close textColor"
+            />
+          </Link>
+        </Modal.Title>
       </Modal.Header>
       <Modal.Body className="py-0 mt-3 px-4">
         <Container>
@@ -153,17 +161,16 @@ const CreateTournament = ({ visible, onhide }) => {
               <Button onClick={onhide} variant="outline-primary">
                 Cancel
               </Button>
-              <Link to={`/backoffice/projects/overview/${tournament}`}>
-                <Button
-                  disabled={notUnique}
-                  type="submit"
-                  onClick={handleData}
-                  className="primary-btn ml-3 textColor"
-                >
-                  <Icon.Plus size={30} />
-                  Create
-                </Button>
-              </Link>
+
+              <Button
+                disabled={notUnique || !tournament || !size || !platformChecked}
+                type="submit"
+                onClick={handleData}
+                className="primary-btn ml-3 textColor"
+              >
+                <Icon.Plus size={30} />
+                Create
+              </Button>
             </div>
           </Row>
         </Container>

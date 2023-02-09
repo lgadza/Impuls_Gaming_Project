@@ -14,11 +14,13 @@ const DeleteConfirm = ({ visible, onhide, tournamentId }) => {
   const tournament = tournaments.tournaments.find(
     (name) => name.name === tournamentId
   );
-  const handleData = () => {
-    dispatch(deleteTournament(tournament._id));
-    // dispatch(getTournaments());
-    onhide();
+
+  const handleData = async () => {
+    await dispatch(deleteTournament(tournament._id));
+    await onhide();
+    dispatch(getTournaments());
   };
+
   return (
     <Modal
       show={visible}
@@ -32,7 +34,7 @@ const DeleteConfirm = ({ visible, onhide, tournamentId }) => {
             <Row>
               <h6 className="my-5 ">
                 Are you sure you want to delete{" "}
-                <strong className="textColor2">{tournament.name} </strong>
+                <strong className="textColor2 mx-2">{tournamentId}</strong>
                 tournament
               </h6>
               <div className="my-5 ml-auto">
@@ -51,7 +53,6 @@ const DeleteConfirm = ({ visible, onhide, tournamentId }) => {
                 </Link>
               </div>
             </Row>
-            {/* <Row className="mb-5 "></Row> */}
           </Container>
         )}
       </Modal.Body>

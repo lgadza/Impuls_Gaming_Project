@@ -20,15 +20,15 @@ const Organizer = ({ projects }) => {
   const handleShow = () => {
     setShow(true);
   };
+  console.log(projectId.name);
   const handleDeleteItem = () => {
     deleteItem === false ? setDeleteItem(true) : setDeleteItem(false);
   };
   const project = useSelector((state) => state.tournaments.tournaments);
-  console.log(project.tournaments.length);
 
   useEffect(() => {
     dispatch(getTournaments());
-  }, [project.tournaments.length]);
+  }, []);
   return (
     <>
       <>

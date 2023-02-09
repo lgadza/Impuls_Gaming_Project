@@ -26,6 +26,7 @@ const TournamentOverview = () => {
   const dispatch = useDispatch();
   const [isCheckIn, setIsCheckIn] = useState(false);
   const tournamentData = useSelector((state) => state.tournaments.tournaments);
+  const isLoading = useSelector((state) => state.tournaments.isLoading);
   // const tournament = useSelector((state) => state.tournament.tournament);
   const tournament = tournamentData.tournaments.find(
     (name) => name.name === params.tournamentId
@@ -37,6 +38,7 @@ const TournamentOverview = () => {
   }, []);
   // const setup = 50;
   let setup = 0;
+
   if (
     tournament.participants.isCheck_in &&
     tournament.registration.activation.isRegistration
@@ -50,6 +52,7 @@ const TournamentOverview = () => {
   } else {
     setup = 0;
   }
+
   const pending = 0;
   const running = 0;
   console.log(tournament);
