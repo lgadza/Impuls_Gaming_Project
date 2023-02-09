@@ -216,8 +216,9 @@ export const deleteTournament = (id) => {
     const URL = process.env.REACT_APP_BE_PROD_URL;
     try {
       const response = await fetch(`${URL}/tournaments/${id}`, options);
-      if (response.ok) {
-        getTournaments(`${URL}/tournaments`);
+      console.log(response.ok);
+      if (response.ok || response === 204) {
+        getTournaments();
       }
     } catch (error) {
       console.log(error);
