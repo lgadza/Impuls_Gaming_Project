@@ -1,6 +1,6 @@
 import { Col, Container, Row, Dropdown } from "react-bootstrap";
 import * as Icon from "react-bootstrap-icons";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import profilePic from "../../img/Louis profile .JPG";
 import Table from "./Table";
 import { useEffect, useState } from "react";
@@ -14,8 +14,17 @@ import UserProfile from "./UserProfile";
 import Fixtures from "./Fixtures";
 
 const UserPage = () => {
+  const [searchParams] = useSearchParams();
+  const navigate = useNavigate();
   const [key, setKey] = useState("activation");
   const user = useSelector((state) => state.registerUser.user);
+  useEffect(() => {
+    if (!localStorage.getItem("accessToken")) navigate("/user-page");
+    if (searchParams.get("accessToken")) {
+      localStorage.setItem("accessToken", searchParams.get("accessToken"));
+      navigate("/user-page");
+    }
+  }, [navigate, searchParams]);
   return (
     <Container fluid className="textColor px-0 user-page main-container ">
       <Row className="mb-3 px-5 w-100 py-3 d-flex align-items-center justify-content-between position-fixed giftcard-preview-nav">
