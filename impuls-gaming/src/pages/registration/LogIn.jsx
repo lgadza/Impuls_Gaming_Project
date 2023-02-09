@@ -107,7 +107,7 @@ const SignIn = () => {
           </span>
           <Col className=" d-flex mb-3 ">
             <a
-              href={`${process.env.REACT_APP_BE_DEV_URL}/users/googleLogin`}
+              href={`${process.env.REACT_APP_BE_PROD_URL}/users/googleLogin`}
               className="w-100"
             >
               <Button className="px-4 sign-up-btn w-100" variant="primary">
