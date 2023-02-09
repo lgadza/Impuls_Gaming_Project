@@ -17,7 +17,10 @@ const TournamentCard = ({ tournament }) => {
           </span>
         </Card.Title>
         <div className=" d-flex">
-          <Icon.Calendar2Event className="pr-1 text-success" size={30} />
+          <Icon.Calendar2Event
+            className="pr-1 pl-0 ml-0 text-success"
+            size={30}
+          />
           <span className="text-small text-success">
             <span className="d-flex">
               <span className="mr-1">Registration</span>

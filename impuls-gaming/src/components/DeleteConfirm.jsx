@@ -16,7 +16,7 @@ const DeleteConfirm = ({ visible, onhide, tournamentId }) => {
   );
   const handleData = () => {
     dispatch(deleteTournament(tournament._id));
-    dispatch(getTournaments(`${URL}/tournaments`));
+    // dispatch(getTournaments());
     onhide();
   };
   return (
