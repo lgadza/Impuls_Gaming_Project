@@ -1,4 +1,4 @@
-import { Col, Container, Row, Form, Button } from "react-bootstrap";
+import { Col, Container, Row, Form, Button, Alert } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import logo from "../../img/Blue_Futuristic_Gaming_Logo-removebg-preview.png";
 import { useSelector, useDispatch } from "react-redux";
@@ -9,7 +9,7 @@ import * as Icon from "react-bootstrap-icons";
 const LogInPage = () => {
   const signInData = useSelector((state) => state.log.data);
   console.log(signInData);
-  const [formData, updateFormData] = useState("");
+  const [signUp, setSignUp] = useState(false);
 
   const dispatch = useDispatch();
   const [name, setName] = useState("");
@@ -49,6 +49,7 @@ const LogInPage = () => {
     terms: check,
   };
   const handleUserData = () => {
+    setSignUp(true);
     dispatch(registerUser(registerData));
   };
   return (
@@ -64,14 +65,24 @@ const LogInPage = () => {
       <Row className="d-flex justify-content-center mt-4 textColor">
         <Col lg={4} className=" login-content">
           <div className=" ml-3 d-flex justify-content-between align-items-center">
-            <h1>Sign Up</h1>
+            <h4>Sign Up</h4>
             <Link to={"/"}>
-              <Icon.XLg size={20} />
+              <Icon.XLg className="textColor" size={20} />
             </Link>{" "}
           </div>
-          <span className="d-flex ml-3 ">
+          <span className="d-flex ml-3 mb-1 ">
             Please fill in the form to create an account
           </span>
+          {password !== confirmPassword && (
+            <Alert variant="danger" className="blink_me ">
+              Password and Confirm Password do not match
+            </Alert>
+          )}
+          {signUp && (
+            <Alert variant="primary">
+              We've sent a verification link on your email address
+            </Alert>
+          )}
           <hr />
           <Form.Group className="d-flex mb-4">
             <Col>
@@ -119,11 +130,11 @@ const LogInPage = () => {
               />
             </Col>
           </Form.Group>
-          {password !== confirmPassword && (
+          {/* {password !== confirmPassword && (
             <span className="blink_me d-flex ml-3 mb-2">
               Password do not match*
             </span>
-          )}
+          )} */}
           <Form.Group className="mb-3">
             <Col>
               <div className="d-flex align-items-center">
@@ -142,7 +153,7 @@ const LogInPage = () => {
             </Col>
           </Form.Group>
           <Col className=" d-flex mb-2">
-            <Link to="/user-page" className="w-100">
+            <Link to="" className="w-100">
               <Button
                 disabled={
                   !check ||

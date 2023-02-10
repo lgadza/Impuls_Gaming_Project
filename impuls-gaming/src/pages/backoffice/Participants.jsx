@@ -1,4 +1,12 @@
-import { Container, Col, Row, Card, Button, Alert } from "react-bootstrap";
+import {
+  Container,
+  Col,
+  Row,
+  Card,
+  Button,
+  Alert,
+  Form,
+} from "react-bootstrap";
 
 import BackOfficeNav from "./BackOfficeNav";
 import { useNavigate, useParams, Link } from "react-router-dom";
@@ -28,10 +36,9 @@ const Participants = () => {
     setUpdate(true);
   };
 
-  //   const [key, setKey] = useState("activation");
   const [search, setSearch] = useState(false);
   const handleSearch = () => {
-    search === false ? setSearch(true) : setSearch(false);
+    search ? setSearch(false) : setSearch(true);
   };
 
   return (
@@ -106,7 +113,7 @@ const Participants = () => {
                       <Icon.ArrowClockwise size={20} />
                       <span className="pr-3">Refresh</span>
                     </Link>
-                    {search ? (
+                    {!search ? (
                       <Link
                         onClick={handleSearch}
                         className="d-flex justify-content-end align-items-center my-1 main-container2 link-none-deco"
@@ -129,6 +136,63 @@ const Participants = () => {
 
               <Card.Body>
                 <Card.Text>
+                  {search && (
+                    <>
+                      <Row>
+                        <Col>
+                          <Form.Group className="mb-3 d-flex flex-column justify-content-start">
+                            <Form.Label className="d-flex">Name</Form.Label>
+                            <Form.Control
+                              type="text"
+                              required
+                              // onChange={handleNumber}
+                            />
+                          </Form.Group>
+                          <div>
+                            <div className="d-flex">
+                              <span>Check-in status</span>
+                            </div>
+
+                            <div className="my-3 d-flex">
+                              <Form.Check
+                                type="radio"
+                                name="autoPlacement"
+                                label="All"
+                                // onClick={handleTrueAutoParticipantPlacement}
+                                className="mr-3"
+                                defaultChecked
+                              />
+
+                              <Form.Check
+                                type="radio"
+                                // onClick={handleFalseAutoParticipantPlacement}
+                                className="mr-3"
+                                name="autoPlacement"
+                                label="Checked in"
+                              />
+                              <Form.Check
+                                type="radio"
+                                // onClick={handleFalseAutoParticipantPlacement}
+                                name="autoPlacement"
+                                label="Not checked in"
+                              />
+                            </div>
+                          </div>
+                        </Col>
+                        <Col>
+                          <Form.Group className="mb-3 d-flex flex-column justify-content-start">
+                            <Form.Label className="d-flex">Email</Form.Label>
+                            <Form.Control
+                              type="email"
+                              required
+                              // onChange={handleSize}
+                            />
+                          </Form.Group>
+                        </Col>
+                      </Row>
+                      <hr />
+                    </>
+                  )}
                   <div className=" d-flex justify-content-between">
                     <div className="my-auto">
                       <span>
