@@ -63,9 +63,10 @@ const SignIn = () => {
               <Link className="d-flex ml-3 mb-2" to={"/sign-up"}>
                 or create an account
               </Link>
-              <Alert variant="success">
+              {/* //TODO do not delete me I am the registration confirmation */}
+              {/* <Alert variant="success">
                 Account verification has been successfully completed
-              </Alert>
+              </Alert> */}
               <hr />
               <Form.Group className="mb-4">
                 <Col>
