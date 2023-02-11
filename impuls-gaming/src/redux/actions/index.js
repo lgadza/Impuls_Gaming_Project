@@ -77,16 +77,12 @@ export const USER_DATA_LOADING = " USER_DATA_LOADING";
 //   };
 // };
 export const registerUser = (userData) => {
-  console.log(userData);
   return async (dispatch) => {
     const options = {
       method: "POST",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
-        // Authorization:
-        //   "Bearer " +
-        //   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2UzOThmYzMyY2E2NWNkZjU3YzA3NDkiLCJyb2xlIjoiQWRtaW4iLCJpYXQiOjE2NzU4NjA1NDksImV4cCI6MTY3NjQ2NTM0OX0.Dejz0FWZmTizmBSaG3ZTnpTr0pNFccxCOpiODGdpbMk",
       },
       body: JSON.stringify(userData),
     };

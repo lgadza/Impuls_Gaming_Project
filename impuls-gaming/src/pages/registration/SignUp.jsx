@@ -5,9 +5,12 @@ import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import { registerUser } from "../../redux/actions";
 import * as Icon from "react-bootstrap-icons";
+import Spinner from "../../components/Spinner";
 
 const LogInPage = () => {
   const accessToken = useSelector((state) => state.accessToken.accessToken);
+  const isLoading = useSelector((state) => state.registerUser.isLoading);
+  const isError = useSelector((state) => state.registerUser.isError);
   console.log(accessToken);
   const [signUp, setSignUp] = useState(false);
 
@@ -20,7 +23,7 @@ const LogInPage = () => {
   const registrationResponse = useSelector(
     (state) => state.registerUser.registrationResponse
   );
-  console.log(registrationResponse);
+  console.log("I am IsLOading", isLoading);
   const [email, setEmail] = useState("");
   const handleName = (e) => {
     setName(e.target.value);
@@ -80,7 +83,22 @@ const LogInPage = () => {
               Password and Confirm Password do not match
             </Alert>
           )}
-          {signUp && (
+          {isLoading && signUp && (
+            <div className="  d-flex justify-content-center">
+              {" "}
+              <Spinner />
+            </div>
+          )}
+          {isError && (
+            <Alert variant="danger" className="mt-5">
+              <Alert.Heading>!You got an error!</Alert.Heading>
+              <p>
+                Something went wrong on our side, we are working on it, we
+                apologies for the inconvenience caused
+              </p>
+            </Alert>
+          )}
+          {registrationResponse.message && (
             <Alert variant="primary">{registrationResponse.message}</Alert>
           )}
           <hr />

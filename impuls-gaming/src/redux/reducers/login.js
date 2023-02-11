@@ -14,7 +14,7 @@ const signInToken = (state = initialState, action) => {
     case GET_LOGIN_ACCESSTOKEN:
       return {
         ...state,
-        data: action.payload,
+        accessToken: action.payload,
       };
     case GET_LOGIN_ACCESSTOKEN_LOADING:
       return {

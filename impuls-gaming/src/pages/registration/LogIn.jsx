@@ -11,26 +11,31 @@ import { Link } from "react-router-dom";
 import logo from "../../img/Blue_Futuristic_Gaming_Logo-removebg-preview.png";
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
-import { logInData } from "../../redux/actions";
+import { logInData, signIn } from "../../redux/actions";
 import * as Icon from "react-bootstrap-icons";
+import Spinner from "../../components/Spinner";
 
 const SignIn = () => {
   const [forgotPassword, setForgotPassword] = useState(false);
 
   const dispatch = useDispatch();
 
+  const [sign_in, setSign_in] = useState(false);
   const [check, setCheck] = useState(false);
   const [password, setPassword] = useState("");
-  const isLoading = useSelector((state) => state.giftData.isLoading);
+  const isLoading = useSelector((state) => state.accessToken.isLoading);
+  const isError = useSelector((state) => state.accessToken.isError);
+  const signInCredentials = useSelector(
+    (state) => state.accessToken.accessToken
+  );
+  console.log(signInCredentials);
   const [email, setEmail] = useState("");
 
   const handlePassword = (e) => {
     setPassword(e.target.value);
-    dispatch(logInData(loginFormData));
   };
   const handleEmail = (e) => {
     setEmail(e.target.value);
-    dispatch(logInData(loginFormData));
   };
 
   const handleCheck = (e) => {
@@ -46,6 +51,10 @@ const SignIn = () => {
     email: email,
     password: password,
     rememberSignIn: check,
+  };
+  const handleSignIn = () => {
+    dispatch(signIn(loginFormData));
+    setSign_in(true);
   };
   return (
     <Container fluid className="login-page ">
@@ -66,6 +75,17 @@ const SignIn = () => {
               <Icon.XLg size={20} className="textColor" />
             </Link>{" "}
           </div>
+          {isLoading && sign_in && (
+            <div className="  d-flex justify-content-center">
+              {" "}
+              <Spinner />
+            </div>
+          )}
+          {isError && (
+            <Alert variant="danger">
+              The email or password you provided is incorrect
+            </Alert>
+          )}
           {!forgotPassword && (
             <>
               {/* //TODO do not delete me I am the registration confirmation */}
@@ -108,11 +128,12 @@ const SignIn = () => {
                 </Col>
               </Form.Group>
               <Col className=" mb-3 ">
-                <Link to="/user-page" className="w-100">
+                <Link to="" className="w-100">
                   <Button
                     disabled={!email || !password}
                     className="px-4 sign-up-btn w-100"
                     variant="primary"
+                    onClick={handleSignIn}
                   >
                     Sign in
                   </Button>
