@@ -1,4 +1,12 @@
-import { Col, Container, Row, Form, Button, Alert } from "react-bootstrap";
+import {
+  Col,
+  Container,
+  Row,
+  Form,
+  Button,
+  Alert,
+  Card,
+} from "react-bootstrap";
 import { Link } from "react-router-dom";
 import logo from "../../img/Blue_Futuristic_Gaming_Logo-removebg-preview.png";
 import { useSelector, useDispatch } from "react-redux";
@@ -51,7 +59,7 @@ const SignIn = () => {
       </Row>
       <Row className="d-flex justify-content-center mt-4 textColor">
         <Col lg={4} className=" login-content">
-          <div className=" ml-3 d-flex justify-content-between align-items-center">
+          <div className=" ml-3 mt-3 d-flex justify-content-between align-items-center">
             {forgotPassword && <h4 className="mb-3">Forgot Password</h4>}
             {!forgotPassword && <h4>Sign In</h4>}
             <Link to={"/"}>
@@ -60,9 +68,6 @@ const SignIn = () => {
           </div>
           {!forgotPassword && (
             <>
-              <Link className="d-flex ml-3 mb-2" to={"/sign-up"}>
-                or create an account
-              </Link>
               {/* //TODO do not delete me I am the registration confirmation */}
               {/* <Alert variant="success">
                 Account verification has been successfully completed
@@ -102,16 +107,23 @@ const SignIn = () => {
                   </div>
                 </Col>
               </Form.Group>
-              <Col className=" d-flex mb-3 ">
+              <Col className=" mb-3 ">
                 <Link to="/user-page" className="w-100">
                   <Button
-                    disabled={!check || !email || !password}
+                    disabled={!email || !password}
                     className="px-4 sign-up-btn w-100"
                     variant="primary"
                   >
                     Sign in
                   </Button>
                 </Link>
+                <div className="mb-3">
+                  <span>
+                    <Link onClick={handleForgetPassword}>
+                      Forgotten your password
+                    </Link>
+                  </span>
+                </div>
               </Col>
 
               <span className="mb-2">
@@ -128,13 +140,6 @@ const SignIn = () => {
                   </Button>
                 </a>
               </Col>
-              <div className="mb-3">
-                <span>
-                  <Link onClick={handleForgetPassword}>
-                    Forgotten your password
-                  </Link>
-                </span>
-              </div>
             </>
           )}
           {forgotPassword && (
@@ -172,6 +177,17 @@ const SignIn = () => {
               </div>
             </>
           )}
+        </Col>
+      </Row>
+      <Row className="d-flex justify-content-center mt-4 textColor">
+        <Col lg={4} className=" login-content py-3">
+          <span className="py-3">You don't have an account yet?</span>
+          <hr />
+          <Link to="/sign-up">
+            <Button className="px-4 sign-up-btn w-100" variant="success">
+              Sign Up
+            </Button>
+          </Link>
         </Col>
       </Row>
     </Container>

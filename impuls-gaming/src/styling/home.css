@@ -441,6 +441,10 @@ button-star {
   position: static;
   top: 20% !important;
 }
+.me-auto {
+  border: 2px solid rgb(244, 92, 93);
+  border-radius: 5px;
+}
 .user-chats {
   max-height: 45vh !important;
   overflow-y: scroll;

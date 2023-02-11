@@ -22,8 +22,8 @@ const NavigationBar = () => {
               <img className="logo-img" src={logo} alt="" />
             </Navbar.Brand>
           </Link>
-          <div className="d-flex flex-column me-auto  text-size-md">
-            <div className="d-flex ">
+          <div className="d-flex flex-column me-auto py-2 px-3  text-size-md">
+            {/* <div className="d-flex ">
               <Icon.List
                 onClick={() =>
                   isHidden ? setIsHidden(false) : setIsHidden(true)
@@ -31,7 +31,7 @@ const NavigationBar = () => {
                 className="d-md-none ml-auto"
                 size={20}
               />
-            </div>
+            </div> */}
             <Nav className="nav-links ">
               <Link to="/" className="textColor mr-4 link-btm-bar ">
                 Home
@@ -43,23 +43,28 @@ const NavigationBar = () => {
               <Link to="" className="mr-4 textColor link-btm-bar">
                 Features
               </Link>
-              <Link to="" className="mr-4 textColor link-btm-bar">
+              <Link to="" className=" mr-4  textColor link-btm-bar">
                 News
               </Link>
-              <Link
-                to="/backoffice"
-                className="link-none-deco mr-4 link-btm-bar"
-              >
-                Backoffice
+              <Link to="" className=" textColor link-btm-bar">
+                About Us
               </Link>
             </Nav>
           </div>
-          <Link
-            to={"/sign-up"}
-            className="join-member d-none d-lg-block  px-5 py-1 "
-          >
-            Register
-          </Link>
+          <div className="d-flex align-items-center">
+            <Link
+              to="/sign-in"
+              className="link-none-deco text-small mr-2 link-btm-bar"
+            >
+              Organizer
+            </Link>
+            <Link
+              to={"/sign-up"}
+              className="join-member d-none d-lg-block  px-5 py-1 "
+            >
+              Register
+            </Link>
+          </div>
         </Container>
       </Navbar>
       <Navbar className="d-lg-none my-0 py-2  px-5 navBackground2 myNav">
