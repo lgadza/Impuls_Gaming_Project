@@ -15,20 +15,21 @@ import * as Icon from "react-bootstrap-icons";
 import { useSelector, useDispatch } from "react-redux";
 import { format } from "date-fns";
 import { useState, useEffect } from "react";
-import { getUsers } from "../../redux/actions/index.js";
+import { getTournaments, getUsers } from "../../redux/actions/index.js";
 
 const Participants = () => {
   const params = useParams();
   const dispatch = useDispatch();
-  const users = useSelector((state) => state.users.users);
+  // const users = useSelector((state) => state.users.users);
   const tournamentData = useSelector((state) => state.tournaments.tournaments);
   const tournament = tournamentData.tournaments.find(
     (name) => name.name === params.tournamentId
   );
-
+  const users = tournament.tournamentParticipants;
   useEffect(() => {
     const URL = `${process.env.REACT_APP_BE_PROD_URL}/users?limit=10`;
     dispatch(getUsers(URL));
+    dispatch(getTournaments());
   }, []);
 
   const [update, setUpdate] = useState(false);
@@ -43,7 +44,7 @@ const Participants = () => {
 
   return (
     <Container fluid className="main-container2 textColor">
-      {users && (
+      {users.length > 0 && (
         <Row>
           <Col lg={2} className="px-0">
             <BackOfficeNav data={tournament} page={"participants"} />
@@ -90,11 +91,11 @@ const Participants = () => {
               <Card.Body>
                 <div className="d-flex ">
                   <Col className="d-flex flex-column border-right">
-                    <h1>{users.totalUsers}</h1>
+                    <h1>{users.length}</h1>
                     <span>participants</span>
                   </Col>
                   <Col className="d-flex flex-column  border-right">
-                    <h1 className=" text-success">{users.totalUsers}</h1>
+                    <h1 className=" text-success">{users.length}</h1>
                     <span className=" text-success"> Checked-in </span>
                   </Col>
                   <Col className="d-flex flex-column ml-auto">
@@ -196,7 +197,7 @@ const Participants = () => {
                   <div className=" d-flex justify-content-between">
                     <div className="my-auto">
                       <span>
-                        <strong>{users.totalUsers} participants </strong>
+                        <strong>{users.length} participants </strong>
                         <span className="text-mute">out of 36</span>
                       </span>
                     </div>
@@ -223,7 +224,7 @@ const Participants = () => {
                   </div>
 
                   <div>
-                    {users.totalUsers > 10 && (
+                    {users.length > 10 && (
                       <ul className="pl-0 w-100">
                         {users.users.map((participant, index) => (
                           <li className="w-100 participant-list" key={index}>
@@ -269,7 +270,7 @@ const Participants = () => {
                       </ul>
                     )}
                   </div>
-                  {users.totalUsers === 0 && (
+                  {users.length === 0 && (
                     <>
                       <hr />
                       <div className="d-flex justify-content-between">
@@ -279,7 +280,7 @@ const Participants = () => {
                       </div>
                     </>
                   )}
-                  <div className="d-flex justify-content-center mb-2">
+                  {/* <div className="d-flex justify-content-center mb-2">
                     {users.links.first && (
                       <Button
                         type="submit"
@@ -320,14 +321,12 @@ const Participants = () => {
                         Last
                       </Button>
                     )}
-                  </div>
+                  </div> */}
                   <div className="d-flex">
                     <div className="my-auto">
                       <span>
                         <strong>0 participants </strong>
-                        <span className="text-mute">
-                          out of {users.totalUsers}
-                        </span>
+                        <span className="text-mute">out of {users.length}</span>
                       </span>
                     </div>
 
