@@ -5,7 +5,7 @@ import {
 } from "../actions";
 
 const initialState = {
-  user: "",
+  registrationResponse: "",
   isLoading: true,
   isError: false,
 };
@@ -15,7 +15,7 @@ const registerUser = (state = initialState, action) => {
     case REGISTER_USER:
       return {
         ...state,
-        user: action.payload,
+        registrationResponse: action.payload,
       };
     case REGISTER_USER_LOADING:
       return {

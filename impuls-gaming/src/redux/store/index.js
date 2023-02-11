@@ -7,7 +7,7 @@ import giftData from "../reducers/giftCard";
 import localStorage from "redux-persist/lib/storage";
 import { persistReducer, persistStore } from "redux-persist";
 import { encryptTransform } from "redux-persist-transform-encrypt";
-import loginData from "../reducers/login";
+import signInToken from "../reducers/login.js";
 import userChat from "../reducers/userChat";
 import tournaments from "../reducers/getTournaments";
 import userPreference from "../reducers/userPreference";
@@ -27,7 +27,7 @@ const persistConfig = {
 
 const bigReducer = combineReducers({
   giftData: giftData,
-  log: loginData,
+  accessToken: signInToken,
   userChat: userChat,
   tournaments: tournaments,
   preference: userPreference,

@@ -2,9 +2,11 @@ import { Col, Container, ListGroup, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import * as Icon from "react-bootstrap-icons";
 import { format, compareAsc } from "date-fns";
+import { useNavigate } from "react-router-dom";
 
 const Footer = () => {
   const date = new Date();
+  const navigate = useNavigate();
   return (
     <div className="background footer container-fluid mt-5 mb-3 textColor">
       <Container className="pt-4">
@@ -20,6 +22,13 @@ const Footer = () => {
                 </Link>
                 <Link>
                   <Icon.Twitter color="#1DA1F2" size={25} />
+                </Link>
+                <Link
+                  onClick={navigate(
+                    "https://www.linkedin.com/company/impuls-gaming/"
+                  )}
+                >
+                  <Icon.Linkedin color="#1DA1F2" size={25} />
                 </Link>
                 <Link>
                   <Icon.Youtube color="red" size={25} />

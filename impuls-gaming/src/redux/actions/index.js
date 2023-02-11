@@ -3,6 +3,9 @@ export const USER_DATA = " USER_DATA";
 export const REGISTER_USER_LOADING = "REGISTER_USER_LOADING";
 export const REGISTER_USER = "REGISTER_USER";
 export const REGISTER_USER_ERROR = "REGISTER_USER_ERROR";
+export const GET_LOGIN_ACCESSTOKEN = "GET_LOGIN_ACCESSTOKEN";
+export const GET_LOGIN_ACCESSTOKEN_LOADING = "GET_LOGIN_ACCESSTOKEN_LOADING";
+export const GET_LOGIN_ACCESSTOKEN_ERROR = "GET_LOGIN_ACCESSTOKEN_ERROR";
 
 export const POST_TOURNAMENT = " POST_TOURNAMENT";
 export const GET_USERS = "GET_USERS";
@@ -81,9 +84,9 @@ export const registerUser = (userData) => {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
-        Authorization:
-          "Bearer " +
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2UzOThmYzMyY2E2NWNkZjU3YzA3NDkiLCJyb2xlIjoiQWRtaW4iLCJpYXQiOjE2NzU4NjA1NDksImV4cCI6MTY3NjQ2NTM0OX0.Dejz0FWZmTizmBSaG3ZTnpTr0pNFccxCOpiODGdpbMk",
+        // Authorization:
+        //   "Bearer " +
+        //   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2UzOThmYzMyY2E2NWNkZjU3YzA3NDkiLCJyb2xlIjoiQWRtaW4iLCJpYXQiOjE2NzU4NjA1NDksImV4cCI6MTY3NjQ2NTM0OX0.Dejz0FWZmTizmBSaG3ZTnpTr0pNFccxCOpiODGdpbMk",
       },
       body: JSON.stringify(userData),
     };
@@ -179,6 +182,57 @@ export const editTournament = (data, tournamentId) => {
       }
     } catch (error) {
       console.log(error);
+    }
+  };
+};
+export const signIn = (data) => {
+  return async (dispatch) => {
+    const options = {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    };
+    const URL = process.env.REACT_APP_BE_PROD_URL;
+    try {
+      const response = await fetch(`${URL}/users/login`, options);
+      if (response.ok) {
+        const accessToken = await response.json();
+        dispatch({
+          type: GET_LOGIN_ACCESSTOKEN,
+          payload: accessToken,
+        });
+        setTimeout(() => {
+          dispatch({
+            type: GET_LOGIN_ACCESSTOKEN_LOADING,
+            payload: false,
+          });
+        }, 100);
+      } else {
+        console.log("error");
+
+        dispatch({
+          type: GET_LOGIN_ACCESSTOKEN_LOADING,
+          payload: false,
+        });
+        dispatch({
+          type: GET_LOGIN_ACCESSTOKEN_ERROR,
+          payload: true,
+        });
+      }
+    } catch (error) {
+      console.log(error);
+      dispatch({
+        type: GET_LOGIN_ACCESSTOKEN_LOADING,
+        payload: false,
+      });
+
+      dispatch({
+        type: GET_LOGIN_ACCESSTOKEN_ERROR,
+        payload: true,
+      });
     }
   };
 };

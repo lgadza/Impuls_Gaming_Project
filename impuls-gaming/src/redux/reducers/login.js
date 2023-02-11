@@ -1,27 +1,27 @@
 import {
-  LOG_IN_DATA,
-  LOG_IN_DATA_ERROR,
-  LOG_IN_DATA_LOADING,
+  GET_LOGIN_ACCESSTOKEN_ERROR,
+  GET_LOGIN_ACCESSTOKEN_LOADING,
+  GET_LOGIN_ACCESSTOKEN,
 } from "../actions";
 
 const initialState = {
-  data: undefined,
+  accessToken: "",
   isLoading: true,
   isError: false,
 };
-const loginData = (state = initialState, action) => {
+const signInToken = (state = initialState, action) => {
   switch (action.type) {
-    case LOG_IN_DATA:
+    case GET_LOGIN_ACCESSTOKEN:
       return {
         ...state,
         data: action.payload,
       };
-    case LOG_IN_DATA_LOADING:
+    case GET_LOGIN_ACCESSTOKEN_LOADING:
       return {
         ...state,
         isLoading: action.payload,
       };
-    case LOG_IN_DATA_ERROR:
+    case GET_LOGIN_ACCESSTOKEN_ERROR:
       return {
         ...state,
         isError: action.payload,
@@ -30,4 +30,4 @@ const loginData = (state = initialState, action) => {
       return state;
   }
 };
-export default loginData;
+export default signInToken;

@@ -3,12 +3,12 @@ import { Link } from "react-router-dom";
 import logo from "../../img/Blue_Futuristic_Gaming_Logo-removebg-preview.png";
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
-import { logInData, registerUser } from "../../redux/actions";
+import { registerUser } from "../../redux/actions";
 import * as Icon from "react-bootstrap-icons";
 
 const LogInPage = () => {
-  const signInData = useSelector((state) => state.log.data);
-  console.log(signInData);
+  const accessToken = useSelector((state) => state.accessToken.accessToken);
+  console.log(accessToken);
   const [signUp, setSignUp] = useState(false);
 
   const dispatch = useDispatch();
@@ -17,9 +17,11 @@ const LogInPage = () => {
   const [check, setCheck] = useState(false);
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const isLoading = useSelector((state) => state.giftData.isLoading);
+  const registrationResponse = useSelector(
+    (state) => state.registerUser.registrationResponse
+  );
+  console.log(registrationResponse);
   const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState(undefined);
   const handleName = (e) => {
     setName(e.target.value);
   };
@@ -36,7 +38,7 @@ const LogInPage = () => {
   const handleConfirmPassword = (e) => {
     setConfirmPassword(e.target.value);
   };
-  console.log(password.length);
+
   const handleCheck = (e) => {
     check ? setCheck(false) : setCheck(true);
   };
@@ -44,7 +46,6 @@ const LogInPage = () => {
     name: name,
     surname: surname,
     email: email,
-    phone: phone,
     password: password,
     terms: check,
   };
@@ -64,14 +65,15 @@ const LogInPage = () => {
       </Row>
       <Row className="d-flex justify-content-center mt-4 textColor">
         <Col lg={4} className=" login-content">
-          <div className=" ml-3 d-flex justify-content-between align-items-center">
+          <div className=" ml-3 mt-3  d-flex justify-content-between align-items-center">
             <h4>Sign Up</h4>
             <Link to={"/"}>
               <Icon.XLg className="textColor" size={20} />
             </Link>{" "}
           </div>
-          <span className="d-flex ml-3 mb-1 ">
-            Please fill in the form to create an account
+          <span className="d-flex ml-3 mb-1 text-secondary ">
+            Please fill <strong className="mx-1">ALL fields</strong> in the form
+            to create an account
           </span>
           {password !== confirmPassword && (
             <Alert variant="danger" className="blink_me ">
@@ -79,9 +81,7 @@ const LogInPage = () => {
             </Alert>
           )}
           {signUp && (
-            <Alert variant="primary">
-              We've sent a verification link on your email address
-            </Alert>
+            <Alert variant="primary">{registrationResponse.message}</Alert>
           )}
           <hr />
           <Form.Group className="d-flex mb-4">
