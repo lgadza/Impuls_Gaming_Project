@@ -30,7 +30,7 @@ const UserPage = () => {
     if (!localStorage.getItem("accessToken")) navigate("/user-page");
     if (searchParams.get("accessToken")) {
       localStorage.setItem("accessToken", searchParams.get("accessToken"));
-      navigate("/user-page");
+      // navigate("/user-page");
     }
   }, [navigate, searchParams]);
   console.log(user);
