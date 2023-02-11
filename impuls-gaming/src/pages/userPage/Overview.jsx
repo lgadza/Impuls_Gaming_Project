@@ -25,9 +25,9 @@ const Overview = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const tournamentData = useSelector((state) => state.tournaments.tournaments);
-  const tournament = tournamentData.tournaments.find(
-    (name) => name.name === params.tournamentId
-  );
+  // const tournament = tournamentData.tournaments.find(
+  //   (name) => name.name === params.tournamentId
+  // );
 
   const [update, setUpdate] = useState(false);
 

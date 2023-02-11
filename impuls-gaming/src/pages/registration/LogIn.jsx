@@ -11,9 +11,10 @@ import { Link } from "react-router-dom";
 import logo from "../../img/Blue_Futuristic_Gaming_Logo-removebg-preview.png";
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
-import { logInData, signIn } from "../../redux/actions";
+import { getTournaments, logInData, signIn } from "../../redux/actions";
 import * as Icon from "react-bootstrap-icons";
 import Spinner from "../../components/Spinner";
+import { getMe } from "../../redux/actions";
 
 const SignIn = () => {
   const [forgotPassword, setForgotPassword] = useState(false);
@@ -28,7 +29,6 @@ const SignIn = () => {
   const signInCredentials = useSelector(
     (state) => state.accessToken.accessToken
   );
-  console.log(signInCredentials);
   const [email, setEmail] = useState("");
 
   const handlePassword = (e) => {
@@ -37,7 +37,7 @@ const SignIn = () => {
   const handleEmail = (e) => {
     setEmail(e.target.value);
   };
-
+  console.log(signInCredentials.accessToken);
   const handleCheck = (e) => {
     check ? setCheck(false) : setCheck(true);
   };
@@ -52,9 +52,11 @@ const SignIn = () => {
     password: password,
     rememberSignIn: check,
   };
-  const handleSignIn = () => {
-    dispatch(signIn(loginFormData));
+  const handleSignIn = async () => {
+    await dispatch(signIn(loginFormData));
     setSign_in(true);
+    dispatch(getMe(signInCredentials.accessToken));
+    dispatch(getTournaments());
   };
   return (
     <Container fluid className="login-page ">

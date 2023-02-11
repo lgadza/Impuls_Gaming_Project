@@ -12,12 +12,16 @@ import Tournaments from "./Tournaments";
 import Overview from "./Overview";
 import UserProfile from "./UserProfile";
 import Fixtures from "./Fixtures";
+import { getTournaments } from "../../redux/actions";
 
 const UserPage = () => {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [key, setKey] = useState("activation");
-  const user = useSelector((state) => state.registerUser.user);
+  const user = useSelector((state) => state.me.me);
+  const tournaments = useSelector((state) => state.tournaments.tournaments);
+  dispatch(getTournaments());
   useEffect(() => {
     if (!localStorage.getItem("accessToken")) navigate("/user-page");
     if (searchParams.get("accessToken")) {
@@ -25,6 +29,8 @@ const UserPage = () => {
       navigate("/user-page");
     }
   }, [navigate, searchParams]);
+  console.log(user);
+  console.log(tournaments.tournaments);
   return (
     <Container fluid className="textColor px-0 user-page main-container ">
       <Row className="mb-3 px-5 w-100 py-3 d-flex align-items-center justify-content-between position-fixed giftcard-preview-nav">
@@ -107,7 +113,7 @@ const UserPage = () => {
               className="mb-3  d-flex justify-content-center  textColor w-100"
             >
               <Tab className="textColor2" eventKey="overview" title="Overview">
-                <Overview />
+                <Overview tournaments={tournaments.tournaments} />
               </Tab>
               <Tab className="w-100" eventKey="table" title="Table">
                 <Table />
@@ -116,7 +122,7 @@ const UserPage = () => {
                 <Fixtures />
               </Tab>
               <Tab eventKey="tournaments" title="Tournaments">
-                <Tournaments />
+                <Tournaments tournaments={tournaments.tournaments} />
               </Tab>
               <Tab eventKey="friends" title="Friends">
                 <Chat />
@@ -129,7 +135,7 @@ const UserPage = () => {
                 eventKey="information"
                 title={<Icon.Speedometer2 size={20} />}
               >
-                <Overview />
+                <Overview tournaments={tournaments.tournaments} />
               </Tab>
               <Tab eventKey="matches" title={<Icon.Table size={20} />}>
                 <Table />
@@ -138,7 +144,7 @@ const UserPage = () => {
                 eventKey="participants"
                 title={<Icon.Controller size={20} />}
               >
-                <Tournaments />
+                <Tournaments tournaments={tournaments.tournaments} />
               </Tab>
               <Tab eventKey="rules" title={<Icon.ChatDots size={20} />}>
                 <Chat />

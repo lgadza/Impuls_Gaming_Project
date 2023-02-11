@@ -4,9 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import fifa from "../../img/fifa23.jpg";
 import { Link } from "react-router-dom";
 
-const Tournaments = () => {
-  const tournaments = useSelector((state) => state.tournaments.tournaments);
-  console.log(tournaments);
+const Tournaments = ({ tournaments }) => {
   return (
     <Col className="scoll-table gift-container pb-2 pr-0">
       <Row>
@@ -47,7 +45,7 @@ const Tournaments = () => {
         </Col>
       </Row>
 
-      {tournaments.tournaments.map((tournament, index) => (
+      {tournaments.map((tournament, index) => (
         <div>
           {tournament.name ? (
             <Link

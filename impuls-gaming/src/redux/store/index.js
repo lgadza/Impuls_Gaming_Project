@@ -15,6 +15,7 @@ import userData from "../reducers/userData";
 import users from "../reducers/usersReducer.js";
 import postTournament from "../reducers/postTournament";
 import registerUser from "../reducers/registerUser";
+import getMe from "../reducers/meReducer";
 const persistConfig = {
   key: "root",
   storage: localStorage,
@@ -35,6 +36,7 @@ const bigReducer = combineReducers({
   users: users,
   tournament: postTournament,
   registerUser: registerUser,
+  me: getMe,
 });
 
 const persistedReducer = persistReducer(persistConfig, bigReducer);
