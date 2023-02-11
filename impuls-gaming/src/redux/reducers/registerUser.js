@@ -5,7 +5,7 @@ import {
 } from "../actions";
 
 const initialState = {
-  registrationResponse: "",
+  registrationResponse: undefined,
   isLoading: true,
   isError: false,
 };

@@ -23,7 +23,7 @@ const LogInPage = () => {
   const registrationResponse = useSelector(
     (state) => state.registerUser.registrationResponse
   );
-  console.log("I am IsLOading", isLoading);
+  console.log("I am IsLOading", registrationResponse);
   const [email, setEmail] = useState("");
   const handleName = (e) => {
     setName(e.target.value);
