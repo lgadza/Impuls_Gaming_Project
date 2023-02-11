@@ -8,7 +8,7 @@ import profilePic from "../../img/Louis profile .JPG";
 import { CircularProgressbar } from "react-circular-progressbar";
 import { userPreference } from "../../redux/actions";
 
-const UserProfile = () => {
+const UserProfile = ({ user }) => {
   const percentage = 80;
   const [rating, setRating] = useState(0);
   const [ratePS, setRatePS] = useState(0);
@@ -57,7 +57,9 @@ const UserProfile = () => {
       <Row className="d-flex flex-column align-items-center  mt-4">
         <div>
           <img className="profile-img" src={profilePic} alt="" />
-          <h5 className="d-flex mt-2  ml-3 ">Louis Gadza</h5>
+          <h5 className="d-flex mt-2  ml-3 ">
+            {user.name} {user.surname}
+          </h5>
           <Row>
             <div className="d-flex align-items-center ml-3 flex-column mt-2">
               <span>

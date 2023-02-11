@@ -12,7 +12,7 @@ import Tournaments from "./Tournaments";
 import Overview from "./Overview";
 import UserProfile from "./UserProfile";
 import Fixtures from "./Fixtures";
-import { getTournaments } from "../../redux/actions";
+import { getMe, getTournaments } from "../../redux/actions";
 
 const UserPage = () => {
   const [searchParams] = useSearchParams();
@@ -21,8 +21,12 @@ const UserPage = () => {
   const [key, setKey] = useState("activation");
   const user = useSelector((state) => state.me.me);
   const tournaments = useSelector((state) => state.tournaments.tournaments);
-  dispatch(getTournaments());
+  const signInCredentials = useSelector(
+    (state) => state.accessToken.accessToken
+  );
   useEffect(() => {
+    dispatch(getTournaments());
+    dispatch(getMe(signInCredentials.accessToken));
     if (!localStorage.getItem("accessToken")) navigate("/user-page");
     if (searchParams.get("accessToken")) {
       localStorage.setItem("accessToken", searchParams.get("accessToken"));
@@ -40,7 +44,9 @@ const UserPage = () => {
           </Link>
           <Icon.CaretRightFill size={10} />
 
-          <Link className="textColor">Louis Gadza</Link>
+          <Link className="textColor">
+            {user.name} {user.surname}
+          </Link>
         </div>
         <div className="d-flex">
           <Dropdown>
@@ -51,7 +57,9 @@ const UserPage = () => {
             <Dropdown.Menu>
               <Dropdown.Item>
                 <div>
-                  <span>Louis Gadza</span>
+                  <span>
+                    {user.name} {user.surname}
+                  </span>
                   <img
                     src={profilePic}
                     className="small-profile-img ml-2"
@@ -104,7 +112,7 @@ const UserPage = () => {
             lg={4}
             className=" userProfile profile-fixed d-flex flex-column  mt-5 side-bar"
           >
-            <UserProfile />
+            <UserProfile user={user} />
           </Col>
 
           <Col lg={8} className=" mt-5 side-bar d-none d-lg-block">

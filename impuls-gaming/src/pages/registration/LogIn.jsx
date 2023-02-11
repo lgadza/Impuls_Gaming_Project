@@ -7,7 +7,7 @@ import {
   Alert,
   Card,
 } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../../img/Blue_Futuristic_Gaming_Logo-removebg-preview.png";
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
@@ -30,7 +30,7 @@ const SignIn = () => {
     (state) => state.accessToken.accessToken
   );
   const [email, setEmail] = useState("");
-
+  const navigate = useNavigate();
   const handlePassword = (e) => {
     setPassword(e.target.value);
   };
@@ -53,11 +53,16 @@ const SignIn = () => {
     rememberSignIn: check,
   };
   const handleSignIn = async () => {
-    await dispatch(signIn(loginFormData));
+    const token = await dispatch(signIn(loginFormData));
     setSign_in(true);
+  };
+  if (signInCredentials.accessToken) {
     dispatch(getMe(signInCredentials.accessToken));
     dispatch(getTournaments());
-  };
+    setTimeout(() => {
+      navigate("/user-page");
+    }, 500);
+  }
   return (
     <Container fluid className="login-page ">
       <Row className="giftcard-preview-nav py-2 ">
