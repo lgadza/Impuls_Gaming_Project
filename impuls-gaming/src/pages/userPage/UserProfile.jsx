@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import profilePic from "../../img/Louis profile .JPG";
 import { CircularProgressbar } from "react-circular-progressbar";
 import { userPreference } from "../../redux/actions";
+import Avatar from "../../components/Avatar";
 
 const UserProfile = ({ user }) => {
   const percentage = 80;
@@ -56,7 +57,14 @@ const UserProfile = ({ user }) => {
     <div className="gift-container">
       <Row className="d-flex flex-column align-items-center  mt-4">
         <div>
-          <img className="profile-img" src={profilePic} alt="" />
+          {/* <img className="profile-img" src={profilePic} alt="" /> */}
+          <Avatar
+            src="https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_960_720.png"
+            alt="Profile Avatar"
+            className="avatar"
+            width={100}
+            height={100}
+          />
           <h5 className="d-flex mt-2  ml-3 ">
             {user.name} {user.surname}
           </h5>

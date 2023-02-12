@@ -7,6 +7,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { userChat } from "../../redux/actions";
 import ScrollToBottom from "react-scroll-to-bottom";
 import Moment from "react-moment";
+import Avatar from "../../components/Avatar";
 
 const Chat = () => {
   const message = useSelector((state) => state.userChat.data);
@@ -51,12 +52,14 @@ const Chat = () => {
               {[...Array(5)].map((user) => (
                 <Row>
                   <Col className="d-flex justify-content-between mt-4">
-                    <img
-                      src={profilePic}
-                      alt=""
-                      className="small-profile-img mr-3"
+                    <Avatar
+                      src="https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_960_720.png"
+                      alt="Profile Avatar"
+                      className="avatar "
+                      width={30}
+                      height={30}
                     />
-                    <div className="d-flex flex-column text-left ">
+                    <div className="d-flex ml-1 flex-column text-left ">
                       <span>
                         <strong>Louis Gadza</strong>
                         <Icon.Dot />
@@ -89,10 +92,12 @@ const Chat = () => {
                           <strong className="mr-0 pr-0">Louis Gadza</strong>
                         </span>
                       </div>
-                      <img
-                        src={profilePic}
-                        alt=""
-                        className="small-profile-img mt-auto mx-3"
+                      <Avatar
+                        src="https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_960_720.png"
+                        alt="Profile Avatar"
+                        className="avatar"
+                        width={30}
+                        height={30}
                       />
                     </Col>
                   </Row>
@@ -132,12 +137,19 @@ const Chat = () => {
           {[...Array(15)].map((user) => (
             <Row className="user-friends">
               <Col className=" d-flex  pl-2  ">
-                <img
+                {/* <img
                   src={profilePic}
                   alt=""
                   className="small-profile-img2 mr-3 my-auto"
+                /> */}
+                <Avatar
+                  src="https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_960_720.png"
+                  alt="Profile Avatar"
+                  className="avatar"
+                  width={30}
+                  height={30}
                 />
-                <div className="py-1 friends-list d-flex flex-column text-left  ">
+                <div className="py-1  ml-1 friends-list d-flex flex-column text-left  ">
                   <span className="text-nowrap user-fullname">
                     Louis Gadzewewea
                   </span>

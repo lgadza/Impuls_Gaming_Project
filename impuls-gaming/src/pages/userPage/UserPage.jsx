@@ -13,6 +13,7 @@ import Overview from "./Overview";
 import UserProfile from "./UserProfile";
 import Fixtures from "./Fixtures";
 import { getMe, getTournaments } from "../../redux/actions";
+import Avatar from "../../components/Avatar";
 
 const UserPage = () => {
   const [searchParams] = useSearchParams();
@@ -33,8 +34,7 @@ const UserPage = () => {
       // navigate("/user-page");
     }
   }, [navigate, searchParams]);
-  console.log(user);
-  console.log(tournaments.tournaments);
+
   return (
     <Container fluid className="textColor px-0 user-page main-container ">
       <Row className="mb-3 px-5 w-100 py-3 d-flex align-items-center justify-content-between position-fixed giftcard-preview-nav">
@@ -51,7 +51,14 @@ const UserPage = () => {
         <div className="d-flex">
           <Dropdown>
             <Dropdown.Toggle>
-              <img src={profilePic} className="small-profile-img" alt="" />
+              {/* <img src={profilePic} className="small-profile-img" alt="" /> */}
+              <Avatar
+                src="https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_960_720.png"
+                alt="Profile Avatar"
+                className="avatar"
+                width={40}
+                height={40}
+              />
             </Dropdown.Toggle>
 
             <Dropdown.Menu>
