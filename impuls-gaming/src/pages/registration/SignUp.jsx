@@ -15,6 +15,8 @@ const LogInPage = () => {
   const [signUp, setSignUp] = useState(false);
 
   const dispatch = useDispatch();
+  const [response, setResponse] = useState(false);
+
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
   const [check, setCheck] = useState(false);
@@ -53,8 +55,9 @@ const LogInPage = () => {
     terms: check,
   };
   const handleUserData = async () => {
-    await dispatch(registerUser(registerData));
     setSignUp(true);
+    await dispatch(registerUser(registerData));
+    setResponse(true);
   };
   return (
     <Container fluid className="login-page">
@@ -98,7 +101,7 @@ const LogInPage = () => {
               </p>
             </Alert>
           )}
-          {signUp && (
+          {response && (
             <Alert variant="primary">{registrationResponse.message}</Alert>
           )}
           <hr />

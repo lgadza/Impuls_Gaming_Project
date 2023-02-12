@@ -25,6 +25,8 @@ import ConfigureStage from "./pages/backoffice/structureStages/ConfigureStage";
 import DisputeReport from "./pages/backoffice/DisputeReport";
 import Structures from "./pages/backoffice/structureStages/Structures";
 import TournamentsPage from "./pages/Tournaments/TournamentsPage.jsx";
+import OrganizerSignIn from "./pages/registration/OrganiserLogin";
+import OrganiserSignUp from "./pages/registration/OrganiserSignUp";
 
 function App() {
   return (
@@ -38,6 +40,7 @@ function App() {
           <Route element={<SignIn />} path="/sign-in" />
           <Route element={<UserPage />} path="/user-page" />
           <Route element={<BackOffice />} path="/backoffice" />
+          <Route element={<OrganizerSignIn />} path="/organiser/signIn" />
           <Route
             element={<TournamentOverview />}
             path="/backoffice/projects/overview/:tournamentId"
@@ -66,6 +69,7 @@ function App() {
             element={<TournamentDetails />}
             path="/tournaments/:tournamentId"
           />
+          <Route element={<OrganiserSignUp />} path="organiser/signUp" />
           <Route
             element={<GeneralSettings />}
             path="/backoffice/projects/settings/:tournamentId/edit"
