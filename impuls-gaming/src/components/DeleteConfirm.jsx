@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { deleteTournament, getTournaments } from "../redux/actions";
-const URL = process.env.REACT_APP_BE_PROD_URL;
 
 const DeleteConfirm = ({ visible, onhide, tournamentId }) => {
   const dispatch = useDispatch();

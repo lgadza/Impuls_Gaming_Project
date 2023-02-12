@@ -52,9 +52,9 @@ const LogInPage = () => {
     password: password,
     terms: check,
   };
-  const handleUserData = () => {
+  const handleUserData = async () => {
+    await dispatch(registerUser(registerData));
     setSignUp(true);
-    dispatch(registerUser(registerData));
   };
   return (
     <Container fluid className="login-page">
@@ -78,7 +78,7 @@ const LogInPage = () => {
             Please fill <strong className="mx-1">ALL fields</strong> in the form
             to create an account
           </span>
-          {password !== confirmPassword && (
+          {password !== confirmPassword && signUp && (
             <Alert variant="danger" className="blink_me ">
               Password and Confirm Password do not match
             </Alert>
@@ -98,7 +98,7 @@ const LogInPage = () => {
               </p>
             </Alert>
           )}
-          {registrationResponse.message && (
+          {signUp && (
             <Alert variant="primary">{registrationResponse.message}</Alert>
           )}
           <hr />

@@ -20,7 +20,6 @@ const Organizer = ({ projects }) => {
   const handleShow = () => {
     setShow(true);
   };
-  console.log(projectId.name);
   const handleDeleteItem = () => {
     deleteItem === false ? setDeleteItem(true) : setDeleteItem(false);
   };
@@ -36,7 +35,7 @@ const Organizer = ({ projects }) => {
           {" "}
           <h1 className="d-flex ml-5 mt-4 ">My Projects</h1>
           <Link onClick={handleDeleteItem}>
-            <Icon.Trash size={30} />
+            <Icon.Trash size={20} />
           </Link>
         </div>
         <Row id="create-btn" className="w-100">

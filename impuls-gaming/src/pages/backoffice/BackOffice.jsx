@@ -8,9 +8,11 @@ import { useSelector, useDispatch } from "react-redux";
 import { getTournaments } from "../../redux/actions";
 import Spinner from "../../components/Spinner";
 import { Link } from "react-router-dom";
+import OrganizerAccount from "./OrganizerAccount";
 
 const BackOffice = () => {
   const [profileClicked, setProfileClicked] = useState(false);
+  const [organizerAccountClicked, setOrganizerAccountClicked] = useState(false);
   const dispatch = useDispatch();
   const isLoading = useSelector((state) => state.tournaments.isLoading);
   const isError = useSelector((state) => state.tournaments.isError);
@@ -20,6 +22,11 @@ const BackOffice = () => {
   }, []);
   const handleProfileClicked = () => {
     profileClicked ? setProfileClicked(false) : setProfileClicked(true);
+  };
+  const handleOrganizerAccountClicked = () => {
+    organizerAccountClicked
+      ? setOrganizerAccountClicked(false)
+      : setOrganizerAccountClicked(true);
   };
   return (
     <Container fluid>
@@ -41,6 +48,14 @@ const BackOffice = () => {
               profileClicked ? "active" : ""
             } w-75`}
           >
+            {organizerAccountClicked && (
+              <Button
+                onClick={() => setOrganizerAccountClicked(false)}
+                className="primary-btn w-75 mr-3 textColor3"
+              >
+                Back
+              </Button>
+            )}
             <hr className="hr" />
             <Link
               onClick={handleProfileClicked}
@@ -50,7 +65,12 @@ const BackOffice = () => {
               <Icon.CaretDown size={15} />
             </Link>
             <div className="d-flex flex-column align-items-start">
-              <Link className="my-3 textColor">
+              <Link
+                onClick={handleOrganizerAccountClicked}
+                className={`my-3  ${
+                  organizerAccountClicked ? "" : "textColor"
+                }`}
+              >
                 <span>Account</span>
               </Link>
               <Link className="textColor">
@@ -76,7 +96,10 @@ const BackOffice = () => {
               </p>
             </Alert>
           )}
-          {projects.totalTournaments && <Organizer projects={projects} />}
+          {projects.totalTournaments && !organizerAccountClicked && (
+            <Organizer projects={projects} />
+          )}
+          {organizerAccountClicked && <OrganizerAccount />}
         </Col>
       </Row>
     </Container>
