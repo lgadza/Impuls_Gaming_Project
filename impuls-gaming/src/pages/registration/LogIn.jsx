@@ -25,6 +25,7 @@ const SignIn = () => {
   const [check, setCheck] = useState(false);
   const [password, setPassword] = useState("");
   const isLoading = useSelector((state) => state.accessToken.isLoading);
+  const isGetMeLoading = useSelector((state) => state.me.isLoading);
   const isError = useSelector((state) => state.accessToken.isError);
   const signInCredentials = useSelector(
     (state) => state.accessToken.accessToken
@@ -59,9 +60,12 @@ const SignIn = () => {
   if (signInCredentials.accessToken) {
     dispatch(getMe(signInCredentials.accessToken));
     dispatch(getTournaments());
-    setTimeout(() => {
+    // setTimeout(() => {
+    // navigate("/user-page");
+    // }, 500);
+    if (!isGetMeLoading) {
       navigate("/user-page");
-    }, 500);
+    }
   }
   return (
     <Container fluid className="login-page ">
@@ -83,6 +87,12 @@ const SignIn = () => {
             </Link>{" "}
           </div>
           {isLoading && sign_in && (
+            <div className="  d-flex justify-content-center">
+              {" "}
+              <Spinner />
+            </div>
+          )}
+          {isGetMeLoading && sign_in && (
             <div className="  d-flex justify-content-center">
               {" "}
               <Spinner />
