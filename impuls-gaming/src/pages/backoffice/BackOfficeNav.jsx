@@ -3,8 +3,13 @@ import fifa from "../../img/fifa23.jpg";
 import * as Icon from "react-bootstrap-icons";
 import logo from "../../img/Blue_Futuristic_Gaming_Logo-removebg-preview.png";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 const BackOfficeNav = ({ data, page }) => {
+  const [profileClicked, setProfileClicked] = useState(false);
+  const handleProfileClicked = () => {
+    profileClicked ? setProfileClicked(false) : setProfileClicked(true);
+  };
   return (
     <Col className=" my-projects giftcard-preview-nav d-flex flex-column">
       <img className=" mt-4 logo-img" src={logo} alt="" />
@@ -22,7 +27,7 @@ const BackOfficeNav = ({ data, page }) => {
             <span className="d-flex ml-2 tournament-name w-75">
               {data.name}
             </span>{" "}
-            <span className="d-flex ml-2">{data.discipline}</span>{" "}
+            <span className="d-flex ml-2">{data.discipline_name}</span>{" "}
           </div>
         </div>
       </div>
@@ -106,6 +111,28 @@ const BackOfficeNav = ({ data, page }) => {
           </Link>
         </Nav>
       </Navbar>
+      <div
+        className={`organizer-profile giftcard-preview-nav ${
+          profileClicked ? "active" : ""
+        } w-75`}
+      >
+        <hr className="hr" />
+        <Link
+          onClick={handleProfileClicked}
+          className="d-flex justify-content-between textColor align-items-center "
+        >
+          <span>Louis Gadza</span>
+          <Icon.CaretDown size={15} />
+        </Link>
+        <div className="d-flex flex-column align-items-start">
+          <Link className="my-3 textColor">
+            <span>Account</span>
+          </Link>
+          <Link className="textColor">
+            <span>Logout</span>
+          </Link>
+        </div>
+      </div>
     </Col>
   );
 };

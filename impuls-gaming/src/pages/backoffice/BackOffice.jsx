@@ -7,8 +7,10 @@ import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getTournaments } from "../../redux/actions";
 import Spinner from "../../components/Spinner";
+import { Link } from "react-router-dom";
 
 const BackOffice = () => {
+  const [profileClicked, setProfileClicked] = useState(false);
   const dispatch = useDispatch();
   const isLoading = useSelector((state) => state.tournaments.isLoading);
   const isError = useSelector((state) => state.tournaments.isError);
@@ -16,8 +18,11 @@ const BackOffice = () => {
   useEffect(() => {
     dispatch(getTournaments());
   }, []);
+  const handleProfileClicked = () => {
+    profileClicked ? setProfileClicked(false) : setProfileClicked(true);
+  };
   return (
-    <Container fluid className="">
+    <Container fluid>
       <Row>
         <Col
           md={3}
@@ -25,9 +30,35 @@ const BackOffice = () => {
           xl={2}
           className=" my-projects giftcard-preview-nav d-flex flex-column d-xs-none d-sm-none d-md-none d-lg-block"
         >
-          <img className=" mt-4 logo-img" src={logo} alt="" />
-          <hr className="hr" />
-          <h3 className="d-flex">My Projects</h3>
+          {/* <div className="d-flex flex-column justify-content-between"> */}
+          <div>
+            <img className=" mt-4 logo-img" src={logo} alt="" />
+            <hr className="hr" />
+            <h3 className="d-flex">My Projects</h3>
+          </div>
+          <div
+            className={`organizer-profile ${
+              profileClicked ? "active" : ""
+            } w-75`}
+          >
+            <hr className="hr" />
+            <Link
+              onClick={handleProfileClicked}
+              className="d-flex justify-content-between align-items-center textColor "
+            >
+              <span>Louis Gadza</span>
+              <Icon.CaretDown size={15} />
+            </Link>
+            <div className="d-flex flex-column align-items-start">
+              <Link className="my-3 textColor">
+                <span>Account</span>
+              </Link>
+              <Link className="textColor">
+                <span>Logout</span>
+              </Link>
+            </div>
+          </div>
+          {/* </div> */}
         </Col>
         <Col lg={9} md={12} className="">
           {isLoading && (

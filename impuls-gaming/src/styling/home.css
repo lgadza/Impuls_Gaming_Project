@@ -537,7 +537,8 @@ button-star {
   border-radius: 5px;
 }
 .my-projects {
-  min-height: 100vh;
+  height: 100vh !important;
+  overflow: hidden;
 }
 .plus-project:hover {
   border: 2px solid rgba(244, 92, 93, 255);
@@ -872,6 +873,18 @@ tab[title] {
   position: absolute;
   right: -2rem;
   bottom: 50%;
+}
+.my-projects.giftcard-preview-nav.flex.flex-column {
+  position: relative;
+}
+.organizer-profile {
+  position: absolute;
+  bottom: 10px;
+  transform: translateY(50%);
+  transition: transform 1s;
+}
+.organizer-profile.active {
+  transform: translateY(-10%);
 }
 .player-round-4::after {
   content: "";

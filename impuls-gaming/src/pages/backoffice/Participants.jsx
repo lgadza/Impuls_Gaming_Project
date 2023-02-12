@@ -280,7 +280,7 @@ const Participants = () => {
                       </div>
                     </>
                   )}
-                  {/* <div className="d-flex justify-content-center mb-2">
+                  <div className="d-flex justify-content-center mb-2">
                     {users.links.first && (
                       <Button
                         type="submit"
@@ -321,7 +321,7 @@ const Participants = () => {
                         Last
                       </Button>
                     )}
-                  </div> */}
+                  </div>
                   <div className="d-flex">
                     <div className="my-auto">
                       <span>
