@@ -86,18 +86,17 @@ const SignIn = () => {
               <Icon.XLg size={20} className="textColor" />
             </Link>{" "}
           </div>
-          {isLoading && sign_in && (
+          {isLoading && sign_in ? (
             <div className="  d-flex justify-content-center">
               {" "}
               <Spinner />
             </div>
-          )}
-          {isGetMeLoading && sign_in && (
+          ) : isGetMeLoading && sign_in ? (
             <div className="  d-flex justify-content-center">
               {" "}
               <Spinner />
             </div>
-          )}
+          ) : null}
           {isError && (
             <Alert variant="danger">
               The email or password you provided is incorrect
