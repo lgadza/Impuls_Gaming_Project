@@ -26,12 +26,12 @@ const StageType = () => {
   const tournament = tournamentData.tournaments.find(
     (name) => name.name === params.tournamentId
   );
-  console.log(tournament);
+  const user = useSelector((state) => state.me.me);
   return (
     <Container fluid className="main-container textColor">
       <Row>
         <Col lg={2} className="px-0">
-          <BackOfficeNav data={tournament} page={"structure"} />
+          <BackOfficeNav user={user} data={tournament} page={"structure"} />
         </Col>
         <Col lg={10} className="my-5 px-5">
           <h3 className="d-flex mb-5">Select a stage type</h3>

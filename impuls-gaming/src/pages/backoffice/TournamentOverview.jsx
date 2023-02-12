@@ -31,7 +31,7 @@ const TournamentOverview = () => {
   const tournament = tournamentData.tournaments.find(
     (name) => name.name === params.tournamentId
   );
-
+  const user = useSelector((state) => state.me.me);
   useEffect(() => {
     dispatch(getUsers(`${URL}/users?limit=10`));
     dispatch(getTournaments());
@@ -55,13 +55,12 @@ const TournamentOverview = () => {
 
   const pending = 0;
   const running = 0;
-  console.log(tournament);
   return (
     <Container fluid className="main-container textColor">
       {tournament.name === params.tournamentId && (
         <Row>
           <Col lg={2} className="px-0">
-            <BackOfficeNav data={tournament} page={"overview"} />
+            <BackOfficeNav data={tournament} user={user} page={"overview"} />
           </Col>
           <Col lg={10} className="my-5 px-5">
             <div className="d-flex justify-content-between">

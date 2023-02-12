@@ -26,12 +26,13 @@ const Settings = () => {
   const tournament = tournamentData.tournaments.find(
     (name) => name.name === params.tournamentId
   );
-  console.log(tournament);
+  const user = useSelector((state) => state.me.me);
+
   return (
     <Container fluid className="main-container textColor">
       <Row>
         <Col lg={2} className="px-0">
-          <BackOfficeNav data={tournament} page={"settings"} />
+          <BackOfficeNav data={tournament} user={user} page={"settings"} />
         </Col>
 
         <Col lg={10} className="my-5 px-5">

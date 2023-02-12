@@ -78,12 +78,12 @@ const ActivateRegistration = () => {
     dispatch(editTournament(registrationSettings, tournament._id));
     setUpdate(true);
   };
-  console.log(isRegistration);
+  const user = useSelector((state) => state.me.me);
   return (
     <Container fluid className="main-container textColor">
       <Row>
         <Col lg={2} className="px-0">
-          <BackOfficeNav data={tournament} page={"settings"} />
+          <BackOfficeNav user={user} data={tournament} page={"settings"} />
         </Col>
         <Col lg={10} className="my-5 px-5">
           {update && (

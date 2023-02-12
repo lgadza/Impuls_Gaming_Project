@@ -11,11 +11,7 @@ import { Link, useNavigate } from "react-router-dom";
 import logo from "../../img/Blue_Futuristic_Gaming_Logo-removebg-preview.png";
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
-import {
-  getTournaments,
-  logInData,
-  organizerSignIn,
-} from "../../redux/actions";
+import { getTournaments, logInData, signIn } from "../../redux/actions";
 import * as Icon from "react-bootstrap-icons";
 import Spinner from "../../components/Spinner";
 import { getMe } from "../../redux/actions";
@@ -59,8 +55,8 @@ const OrganizerSignIn = () => {
     role: "Admin",
   };
   const handleSignIn = async () => {
-    const token = await dispatch(organizerSignIn(loginFormData));
     setSign_in(true);
+    const token = await dispatch(signIn(loginFormData));
   };
   if (signInCredentials.accessToken) {
     dispatch(getMe(signInCredentials.accessToken));

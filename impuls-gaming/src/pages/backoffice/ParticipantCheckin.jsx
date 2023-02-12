@@ -27,6 +27,7 @@ const ParticipantCheckin = () => {
   const tournament = tournamentData.tournaments.find(
     (name) => name.name === params.tournament
   );
+  const user = useSelector((state) => state.me.me);
   const [isCheckIn, setIsCheckIn] = useState(false);
   const [checkInOpens, setCheckInOpens] = useState("");
   const [checkInCloses, setCheckInCloses] = useState("");
@@ -50,7 +51,7 @@ const ParticipantCheckin = () => {
     <Container fluid className="main-container textColor">
       <Row>
         <Col lg={2} className="px-0">
-          <BackOfficeNav data={tournament} page={"settings"} />
+          <BackOfficeNav user={user} data={tournament} page={"settings"} />
         </Col>
         <Col lg={10} className="my-5 px-5">
           {update && (

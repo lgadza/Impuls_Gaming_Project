@@ -35,6 +35,7 @@ const GeneralSettings = () => {
   const [rules, setRules] = useState("");
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
+  const user = useSelector((state) => state.me.me);
 
   const [name, setName] = useState(tournament.name);
   const [size, setSize] = useState(tournament.size);
@@ -87,7 +88,7 @@ const GeneralSettings = () => {
     <Container fluid className="main-container textColor">
       <Row>
         <Col lg={2} className="px-0">
-          <BackOfficeNav data={tournament} page={"settings"} />
+          <BackOfficeNav user={user} data={tournament} page={"settings"} />
         </Col>
         <Col lg={10} className="my-5 px-5">
           {update && (

@@ -4,8 +4,9 @@ import * as Icon from "react-bootstrap-icons";
 import logo from "../../img/Blue_Futuristic_Gaming_Logo-removebg-preview.png";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import LoggedInOrganizer from "../../components/LoggedInOrganizer";
 
-const BackOfficeNav = ({ data, page }) => {
+const BackOfficeNav = ({ data, page, user }) => {
   const [profileClicked, setProfileClicked] = useState(false);
   const handleProfileClicked = () => {
     profileClicked ? setProfileClicked(false) : setProfileClicked(true);
@@ -117,21 +118,7 @@ const BackOfficeNav = ({ data, page }) => {
         } w-75`}
       >
         <hr className="hr" />
-        <Link
-          onClick={handleProfileClicked}
-          className="d-flex justify-content-between textColor align-items-center "
-        >
-          <span>Louis Gadza</span>
-          <Icon.CaretDown size={15} />
-        </Link>
-        <div className="d-flex flex-column align-items-start">
-          <Link className="my-3 textColor">
-            <span>Account</span>
-          </Link>
-          <Link className="textColor">
-            <span>Logout</span>
-          </Link>
-        </div>
+        <LoggedInOrganizer clicked={handleProfileClicked} user={user} />
       </div>
     </Col>
   );

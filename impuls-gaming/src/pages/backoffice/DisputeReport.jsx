@@ -31,7 +31,7 @@ const DisputeReport = () => {
   );
 
   const [update, setUpdate] = useState(false);
-
+  const user = useSelector((state) => state.me.me);
   const handleUpdate = () => {
     setUpdate(true);
   };
@@ -39,7 +39,7 @@ const DisputeReport = () => {
     <Container fluid className="main-container textColor">
       <Row>
         <Col lg={2} className="px-0">
-          <BackOfficeNav data={tournament} page={"settings"} />
+          <BackOfficeNav user={user} data={tournament} page={"settings"} />
         </Col>
         <Col lg={10} className="my-5 px-5">
           {update && (

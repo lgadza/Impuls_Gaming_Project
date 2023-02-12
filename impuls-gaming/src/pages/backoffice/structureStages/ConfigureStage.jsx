@@ -48,7 +48,7 @@ const ConfigureStages = () => {
   const dispatch = useDispatch();
   const [key, setKey] = useState("activation");
   const [update, setUpdate] = useState(false);
-
+  const user = useSelector((state) => state.me.me);
   const handleNumber = (e) => {
     setNumber(e.target.value);
   };
@@ -161,7 +161,7 @@ const ConfigureStages = () => {
     <Container fluid className="main-container textColor">
       <Row>
         <Col lg={2} className="px-0">
-          <BackOfficeNav data={tournament} page={"structure"} />
+          <BackOfficeNav user={user} data={tournament} page={"structure"} />
         </Col>
         <Col lg={10} className="my-5 px-5">
           {update && (

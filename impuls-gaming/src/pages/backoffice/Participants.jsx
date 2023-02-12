@@ -36,7 +36,7 @@ const Participants = () => {
   const handleUpdate = () => {
     setUpdate(true);
   };
-
+  const user = useSelector((state) => state.me.me);
   const [search, setSearch] = useState(false);
   const handleSearch = () => {
     search ? setSearch(false) : setSearch(true);
@@ -47,7 +47,11 @@ const Participants = () => {
       {users.length > 0 && (
         <Row>
           <Col lg={2} className="px-0">
-            <BackOfficeNav data={tournament} page={"participants"} />
+            <BackOfficeNav
+              data={tournament}
+              user={user}
+              page={"participants"}
+            />
           </Col>
           <Col lg={10} className="my-5 px-5">
             {update && (

@@ -23,6 +23,7 @@ import { useState, useEffect } from "react";
 const Match = () => {
   const params = useParams();
   const tournamentData = useSelector((state) => state.tournaments.tournaments);
+  const user = useSelector((state) => state.me.me);
   const tournament = tournamentData.tournaments.find(
     (name) => name.name === params.tournament
   );
@@ -36,7 +37,7 @@ const Match = () => {
     <Container fluid className="main-container textColor">
       <Row>
         <Col lg={2} className="px-0">
-          <BackOfficeNav data={tournament} page={"settings"} />
+          <BackOfficeNav user={user} data={tournament} page={"settings"} />
         </Col>
         <Col lg={10} className="my-5 px-5">
           {update && (

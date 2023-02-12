@@ -9,9 +9,11 @@ import { getTournaments } from "../../redux/actions";
 import Spinner from "../../components/Spinner";
 import { Link } from "react-router-dom";
 import OrganizerAccount from "./OrganizerAccount";
+import Avatar from "../../components/Avatar";
 
 const BackOffice = () => {
   const [profileClicked, setProfileClicked] = useState(false);
+  const user = useSelector((state) => state.me.me);
   const [organizerAccountClicked, setOrganizerAccountClicked] = useState(false);
   const dispatch = useDispatch();
   const isLoading = useSelector((state) => state.tournaments.isLoading);
@@ -61,8 +63,17 @@ const BackOffice = () => {
               onClick={handleProfileClicked}
               className="d-flex justify-content-between align-items-center textColor "
             >
-              <span>Louis Gadza</span>
-              <Icon.CaretDown size={15} />
+              <div>
+                <Avatar
+                  src="https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_960_720.png"
+                  alt="Profile Avatar"
+                  className="avatar"
+                  width={40}
+                  height={40}
+                />
+                <span className="ml-1">{user.nickname}</span>
+              </div>
+              <Icon.CaretDownFill size={15} />
             </Link>
             <div className="d-flex flex-column align-items-start">
               <Link
