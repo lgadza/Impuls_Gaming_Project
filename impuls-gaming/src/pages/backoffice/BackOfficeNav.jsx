@@ -70,7 +70,7 @@ const BackOfficeNav = ({ data, page, user }) => {
             </span>
           </Link>
           <Link
-            to={`/backoffice/projects/participants/${data.name}`}
+            // to={`/backoffice/projects/participants/${data.name}`}
             className="d-flex my-2"
           >
             <span

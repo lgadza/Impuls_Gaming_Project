@@ -61,7 +61,7 @@ const Chat = () => {
                     />
                     <div className="d-flex ml-1 flex-column text-left ">
                       <span>
-                        <strong>Louis Gadza</strong>
+                        <strong>Player 1</strong>
                         <Icon.Dot />
                         <span>12 min</span>
                       </span>

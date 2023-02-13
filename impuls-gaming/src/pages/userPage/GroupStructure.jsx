@@ -49,7 +49,7 @@ const GroupStructure = () => {
                             key={index}
                             className="d-flex border-bottom py-1"
                           >
-                            Louis Gadza
+                            _
                           </span>
                         ))}
                       </Card.Body>

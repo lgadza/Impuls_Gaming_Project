@@ -55,7 +55,7 @@ const Overview = () => {
               </Card.Header>
               <Card.Body>
                 <div className="d-flex justify-content-around align-items-center">
-                  <h5>Louis</h5>
+                  <h5>Player 1</h5>
                   <div>
                     <span className="text-white">
                       <input
@@ -70,7 +70,7 @@ const Overview = () => {
                       />{" "}
                     </span>
                   </div>
-                  <h5>Sage</h5>
+                  <h5>Player 2</h5>
                 </div>
 
                 <Card.Body>
@@ -80,13 +80,13 @@ const Overview = () => {
                     <div>
                       <span>Forfeit</span>
                       <span className="mx-4">Score</span>
-                      <span>Results</span>
+                      {/* <span>Results</span> */}
                     </div>
                   </div>
 
                   <div className="d-flex justify-content-between mt-3">
                     <div className="d-flex align-items-start flex-column">
-                      <span>Louis</span>
+                      <span>Player 1</span>
                     </div>
                     <div className="d-flex align-items-center">
                       <input type="radio" name="forfeit" />
@@ -95,15 +95,15 @@ const Overview = () => {
                         className="results-input2 text-white py-0 mx-4"
                       />
                       <div>
-                        <span className="loss_bar py-2">L</span>
+                        {/* <span className="loss_bar py-2">L</span>
                         <span className="draw_bar py-2 ">D</span>
-                        <span className="win_bar py-2 ">W</span>
+                        <span className="win_bar py-2 ">W</span> */}
                       </div>
                     </div>
                   </div>
                   <div className="d-flex justify-content-between mt-3">
                     <div className="d-flex align-items-start flex-column">
-                      <span>Sage</span>
+                      <span>Player 2</span>
                     </div>
                     <div className="d-flex align-items-center">
                       <input type="radio" name="forfeit" />
@@ -111,11 +111,11 @@ const Overview = () => {
                         type="number"
                         className="results-input2 text-white py-0 mx-4"
                       />
-                      <div>
+                      {/* <div>
                         <span className="loss_bar py-2">L</span>
                         <span className="draw_bar py-2 ">D</span>
                         <span className="win_bar py-2 ">W</span>
-                      </div>
+                      </div> */}
                     </div>
                   </div>
                 </Card.Body>

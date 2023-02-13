@@ -42,7 +42,7 @@ const Table = () => {
             <Col className="participant-list pb-2 py-2 d-flex justify-content-between  mr-0 px-0">
               <div>
                 <span className="mx-3">{index + 1}</span>
-                <span className="text-nowrap">Louis Gadza</span>
+                <span className="text-nowrap">-</span>
               </div>
               <div className="d-flex justify-content-end mr-0">
                 <span className="mx-3">MP</span>

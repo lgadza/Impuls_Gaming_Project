@@ -31,7 +31,6 @@ const Match = () => {
   const handleUpdate = () => {
     setUpdate(true);
   };
-  //   const [key, setKey] = useState("activation");
 
   return (
     <Container fluid className="main-container textColor">
@@ -57,7 +56,6 @@ const Match = () => {
               <Tabs
                 activeKey="match"
                 defaultActiveKey="match"
-                // onSelect={(k) => setKey(k)}
                 className="mb-3 mx-auto d-flex justify-content-center mx-5 px-5"
               >
                 <Tab eventKey="match" title="Match">
