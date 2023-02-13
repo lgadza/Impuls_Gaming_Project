@@ -97,7 +97,7 @@ const SignIn = () => {
               <Spinner />
             </div>
           ) : null}
-          {isError && (
+          {isError && sign_in && (
             <Alert variant="danger">
               The email or password you provided is incorrect
             </Alert>

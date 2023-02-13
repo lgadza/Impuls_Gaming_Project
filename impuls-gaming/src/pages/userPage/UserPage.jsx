@@ -14,6 +14,7 @@ import UserProfile from "./UserProfile";
 import Fixtures from "./Fixtures";
 import { getMe, getTournaments } from "../../redux/actions";
 import Avatar from "../../components/Avatar";
+import { logout } from "../../redux/actions";
 
 const UserPage = () => {
   const [searchParams] = useSearchParams();
@@ -34,7 +35,10 @@ const UserPage = () => {
       // navigate("/user-page");
     }
   }, [navigate, searchParams]);
-
+  const handleLogout = async () => {
+    await dispatch(logout(user._id));
+    navigate("/");
+  };
   return (
     <Container fluid className="textColor px-0 user-page main-container ">
       <Row className="mb-3 px-5 w-100 py-3 d-flex align-items-center justify-content-between position-fixed giftcard-preview-nav">
@@ -81,7 +85,7 @@ const UserPage = () => {
               </Dropdown.Item>
               <hr />
               <Dropdown.Item>
-                <Link to="/sign-in" className="textColor mx-2">
+                <Link to="" onClick={handleLogout} className="textColor mx-2">
                   Log out
                 </Link>
               </Dropdown.Item>

@@ -5,13 +5,14 @@ import logo from "../../img/Blue_Futuristic_Gaming_Logo-removebg-preview.png";
 import Organizer from "./Organizer";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getTournaments } from "../../redux/actions";
+import { adminLogout, getTournaments } from "../../redux/actions";
 import Spinner from "../../components/Spinner";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import OrganizerAccount from "./OrganizerAccount";
 import Avatar from "../../components/Avatar";
 
 const BackOffice = () => {
+  const navigate = useNavigate();
   const [profileClicked, setProfileClicked] = useState(false);
   const user = useSelector((state) => state.me.me);
   const [organizerAccountClicked, setOrganizerAccountClicked] = useState(false);
@@ -29,6 +30,10 @@ const BackOffice = () => {
     organizerAccountClicked
       ? setOrganizerAccountClicked(false)
       : setOrganizerAccountClicked(true);
+  };
+  const handleLogout = async () => {
+    await dispatch(adminLogout(user._id));
+    navigate("/");
   };
   return (
     <Container fluid>
@@ -84,7 +89,7 @@ const BackOffice = () => {
               >
                 <span>Account</span>
               </Link>
-              <Link className="textColor">
+              <Link onClick={handleLogout} className="textColor">
                 <span>Logout</span>
               </Link>
             </div>
