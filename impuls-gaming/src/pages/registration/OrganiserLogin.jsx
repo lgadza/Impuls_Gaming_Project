@@ -11,7 +11,7 @@ import { Link, useNavigate } from "react-router-dom";
 import logo from "../../img/Blue_Futuristic_Gaming_Logo-removebg-preview.png";
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
-import { getTournaments, logInData, signIn } from "../../redux/actions";
+import { getTournaments, logInData, adminSignIn } from "../../redux/actions";
 import * as Icon from "react-bootstrap-icons";
 import Spinner from "../../components/Spinner";
 import { getMe } from "../../redux/actions";
@@ -24,11 +24,11 @@ const OrganizerSignIn = () => {
   const [sign_in, setSign_in] = useState(false);
   const [check, setCheck] = useState(false);
   const [password, setPassword] = useState("");
-  const isLoading = useSelector((state) => state.accessToken.isLoading);
+  const isLoading = useSelector((state) => state.adminToken.isLoading);
   const isGetMeLoading = useSelector((state) => state.me.isLoading);
-  const isError = useSelector((state) => state.accessToken.isError);
+  const isError = useSelector((state) => state.adminToken.isError);
   const signInCredentials = useSelector(
-    (state) => state.accessToken.accessToken
+    (state) => state.adminToken.accessToken
   );
   const [email, setEmail] = useState("");
   const navigate = useNavigate();
@@ -38,7 +38,6 @@ const OrganizerSignIn = () => {
   const handleEmail = (e) => {
     setEmail(e.target.value);
   };
-  console.log(signInCredentials.accessToken);
   const handleCheck = (e) => {
     check ? setCheck(false) : setCheck(true);
   };
@@ -56,7 +55,7 @@ const OrganizerSignIn = () => {
   };
   const handleSignIn = async () => {
     setSign_in(true);
-    const token = await dispatch(signIn(loginFormData));
+    const token = await dispatch(adminSignIn(loginFormData));
   };
   if (signInCredentials.accessToken) {
     dispatch(getMe(signInCredentials.accessToken));

@@ -12,6 +12,12 @@ export const GET_LOGIN_ACCESSTOKEN = "GET_LOGIN_ACCESSTOKEN";
 export const GET_LOGIN_ACCESSTOKEN_LOADING = "GET_LOGIN_ACCESSTOKEN_LOADING";
 export const GET_LOGIN_ACCESSTOKEN_ERROR = "GET_LOGIN_ACCESSTOKEN_ERROR";
 
+export const GET_ADMIN_LOGIN_ACCESSTOKEN = "GET_ADMIN_LOGIN_ACCESSTOKEN";
+export const GET_ADMIN_LOGIN_ACCESSTOKEN_LOADING =
+  "GET_ADMIN_LOGIN_ACCESSTOKEN_LOADING";
+export const GET_ADMIN_LOGIN_ACCESSTOKEN_ERROR =
+  "GET_ADMIN_LOGIN_ACCESSTOKEN_ERROR";
+
 export const POST_TOURNAMENT = " POST_TOURNAMENT";
 export const GET_USERS = "GET_USERS";
 export const GET_TOURNAMENTS = "GET_TOURNAMENTS";
@@ -232,6 +238,57 @@ export const signIn = (data) => {
 
       dispatch({
         type: GET_LOGIN_ACCESSTOKEN_ERROR,
+        payload: true,
+      });
+    }
+  };
+};
+export const adminSignIn = (data) => {
+  return async (dispatch) => {
+    const options = {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    };
+    const URL = process.env.REACT_APP_BE_PROD_URL;
+    try {
+      const response = await fetch(`${URL}/users/admin/login`, options);
+      if (response.ok) {
+        const accessToken = await response.json();
+        dispatch({
+          type: GET_ADMIN_LOGIN_ACCESSTOKEN,
+          payload: accessToken,
+        });
+        setTimeout(() => {
+          dispatch({
+            type: GET_ADMIN_LOGIN_ACCESSTOKEN_LOADING,
+            payload: false,
+          });
+        }, 100);
+      } else {
+        console.log("error");
+
+        dispatch({
+          type: GET_ADMIN_LOGIN_ACCESSTOKEN_LOADING,
+          payload: false,
+        });
+        dispatch({
+          type: GET_ADMIN_LOGIN_ACCESSTOKEN_ERROR,
+          payload: true,
+        });
+      }
+    } catch (error) {
+      console.log(error);
+      dispatch({
+        type: GET_ADMIN_LOGIN_ACCESSTOKEN_LOADING,
+        payload: false,
+      });
+
+      dispatch({
+        type: GET_ADMIN_LOGIN_ACCESSTOKEN_ERROR,
         payload: true,
       });
     }
