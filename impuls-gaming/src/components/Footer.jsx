@@ -23,11 +23,7 @@ const Footer = () => {
                 <Link>
                   <Icon.Twitter color="#1DA1F2" size={25} />
                 </Link>
-                <Link
-                  onClick={navigate(
-                    "https://www.linkedin.com/company/impuls-gaming/"
-                  )}
-                >
+                <Link>
                   <Icon.Linkedin color="#1DA1F2" size={25} />
                 </Link>
                 <Link>
