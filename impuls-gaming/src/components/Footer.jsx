@@ -1,7 +1,7 @@
 import { Col, Container, ListGroup, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import * as Icon from "react-bootstrap-icons";
-import { format, compareAsc } from "date-fns";
+
 import { useNavigate } from "react-router-dom";
 
 const Footer = () => {
