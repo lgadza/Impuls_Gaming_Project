@@ -115,7 +115,7 @@ const BackOffice = () => {
           {projects.totalTournaments && !organizerAccountClicked && (
             <Organizer projects={projects} />
           )}
-          {organizerAccountClicked && <OrganizerAccount />}
+          {organizerAccountClicked && <OrganizerAccount user={user} />}
         </Col>
       </Row>
     </Container>

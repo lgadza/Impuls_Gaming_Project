@@ -13,8 +13,9 @@ import { useNavigate, useParams, Link } from "react-router-dom";
 import * as Icon from "react-bootstrap-icons";
 import { registerTournament, getTournaments } from "../../redux/actions";
 import DeleteConfirm from "../../components/DeleteConfirm";
+import Avatar from "../../components/Avatar";
 
-const OrganizerAccount = () => {
+const OrganizerAccount = ({ user }) => {
   const params = useParams();
   const tournamentData = useSelector((state) => state.tournaments.tournaments);
   const tournament = tournamentData.tournaments.find(
@@ -110,7 +111,7 @@ const OrganizerAccount = () => {
                 <Form.Label className="d-flex"> Nickname</Form.Label>
                 <Form.Control
                   type="text"
-                  placeholder="Enter nickname"
+                  placeholder={user.nickname}
                   onChange={handleNickname}
                 />
                 <span className="d-flex my-3">
@@ -121,7 +122,7 @@ const OrganizerAccount = () => {
                 <Form.Label className="d-flex"> Email</Form.Label>
                 <Form.Control
                   type="email"
-                  placeholder="email"
+                  placeholder={user.email}
                   onChange={handleEmail}
                 />
               </Form.Group>
@@ -129,7 +130,7 @@ const OrganizerAccount = () => {
                 <Form.Label className="d-flex">First name</Form.Label>
                 <Form.Control
                   type="text"
-                  placeholder="John"
+                  placeholder={user.name}
                   onChange={handleName}
                 />
               </Form.Group>
@@ -137,7 +138,7 @@ const OrganizerAccount = () => {
                 <Form.Label className="d-flex">Last name</Form.Label>
                 <Form.Control
                   type="text"
-                  placeholder="Doe"
+                  placeholder={user.surname}
                   onChange={handleSurname}
                 />
               </Form.Group>
@@ -156,7 +157,8 @@ const OrganizerAccount = () => {
                 <Form.Label className="d-flex">Position </Form.Label>
                 <Form.Control
                   type="text"
-                  placeholder="Host"
+                  disabled={true}
+                  placeholder="Admin"
                   onChange={handleSurname}
                 />
               </Form.Group>
@@ -183,14 +185,36 @@ const OrganizerAccount = () => {
         </Row>
       </Col>
       <Col lg={2}></Col>
-      <Col lg={2}>
+      <Col lg={2} className="d-flex flex-column justify-content-between">
+        <div className="mt-5">
+          <Avatar
+            src={user.avatar}
+            alt="Profile Avatar"
+            className="avatar"
+            width={100}
+            height={100}
+          />
+          <Row>
+            <Col>
+              <label className="textColor3 mt-2" htmlFor="profile">
+                Change profile
+              </label>
+              <input
+                id="profile"
+                type="file"
+                style={{ visibility: "hidden" }}
+                label="Change profile picture"
+              />
+            </Col>
+          </Row>
+        </div>
         <Button
           // disabled={true}
           type="submit"
           onClick={() => {
             setShowDelete(true);
           }}
-          className="primary-btn w-100 mt-5 textColor"
+          className="primary-btn w-100  textColor"
         >
           Delete Account
         </Button>
