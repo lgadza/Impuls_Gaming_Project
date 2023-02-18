@@ -1,4 +1,6 @@
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
+import "../styling/spinner.css";
+
 import { Link } from "react-router-dom";
 import giftcard from "../img/playstation_store.jpg";
 import fifa23 from "../img/fifa23 .jpg";
@@ -27,34 +29,6 @@ const HomeUpdates = () => {
       <h1 className="d-flex mb-5 featured-leagues"> Tournaments</h1>
 
       <Row>
-        {/* <Col md={6} lg={4} className="mb-4">
-          <Card className="featured-games">
-            <Card.Img variant="top" src={fifa23} />
-            <Card.Body>
-              <Card.Title className="textColor d-flex">
-                <strong>FIFA 23 Season League</strong>
-              </Card.Title>
-              <div className=" d-flex">
-                <Icon.Calendar2Event size={30} />
-                <span>Registration Friday - Sunday </span>
-              </div>
-              <Card.Text className="bg-dark py-4 my-3 px-2 textColor d-flex">
-                League by Impuls Gaming
-                <img
-                  className="league-provider-img ml-2"
-                  src={logo}
-                  alt="logo"
-                />
-              </Card.Text>
-              <Link to="/sign-up" className="w-100 d-flex justify-content-end">
-                {" "}
-                <Button variant="danger">Registration Open</Button>
-              </Link>
-            </Card.Body>
-          </Card>
-        </Col>
-        */}
-
         {tournaments.tournaments &&
           tournaments.tournaments.map((tournament) => (
             <Col md={6} lg={4} className="mb-4">
@@ -94,53 +68,10 @@ const HomeUpdates = () => {
         </Col>
       </Row>
       <h2 className="my-5 d-flex featured-league">WHAT'S NEW</h2>
+
+      {/* <Spinner /> */}
       <Row>
         <Col lg={4} md={6} className="mb-4 ">
-          <Card>
-            <Card.Img variant="top" src={giftcard} />
-            <Card.Body>
-              <Card.Title className="textColor">Gift Cards</Card.Title>
-              <Card.Text className="textColor">
-                Gift Cards now available to order for your loved ones
-              </Card.Text>
-              <Link to={"/giftcard"}>
-                {" "}
-                <Button variant="danger">Buy Gift Card</Button>
-              </Link>
-            </Card.Body>
-          </Card>
-        </Col>
-        <Col lg={4} md={6} className="mb-4">
-          <Card>
-            <Card.Img variant="top" src={giftcard} />
-            <Card.Body>
-              <Card.Title className="textColor">Gift Cards</Card.Title>
-              <Card.Text className="textColor">
-                Gift Cards now available to order for your loved ones
-              </Card.Text>
-              <Link to={"/giftcard"}>
-                {" "}
-                <Button variant="danger">Buy Gift Card</Button>
-              </Link>
-            </Card.Body>
-          </Card>
-        </Col>
-        <Col lg={4} md={6} className="mb-4">
-          <Card>
-            <Card.Img variant="top" src={giftcard} />
-            <Card.Body>
-              <Card.Title className="textColor">Gift Cards</Card.Title>
-              <Card.Text className="textColor">
-                Gift Cards now available to order for your loved ones
-              </Card.Text>
-              <Link to={"/giftcard"}>
-                {" "}
-                <Button variant="danger">Buy Gift Card</Button>
-              </Link>
-            </Card.Body>
-          </Card>
-        </Col>
-        <Col lg={4} md={6} className="mb-4">
           <Card>
             <Card.Img variant="top" src={giftcard} />
             <Card.Body>
