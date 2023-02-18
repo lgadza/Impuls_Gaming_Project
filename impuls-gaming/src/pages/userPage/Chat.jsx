@@ -1,6 +1,6 @@
 import { Col, Form, Row } from "react-bootstrap";
 import * as Icon from "react-bootstrap-icons";
-import profilePic from "../../img/Louis profile .JPG";
+
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
@@ -8,30 +8,67 @@ import { userChat } from "../../redux/actions";
 import ScrollToBottom from "react-scroll-to-bottom";
 import Moment from "react-moment";
 import Avatar from "../../components/Avatar";
+import { io } from "socket.io-client";
+const socket = io("http://localhost:3001", { transports: ["websocket"] });
+const Chat = ({ user, isChat }) => {
+  const messages = useSelector((state) => state.userChat.data);
 
-const Chat = () => {
-  const message = useSelector((state) => state.userChat.data);
-  console.log(message);
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const [userMessage, setUserMessage] = useState(undefined);
+  const [message, setMessage] = useState(undefined);
   const dispatch = useDispatch();
   const date = new Date();
+  const [chatHistory, setChatHistory] = useState([]);
+  const [onlineUsers, setOnlineUsers] = useState([]);
 
   const handleMessage = (e) => {
-    setUserMessage(e.target.value);
-    // dispatch(userChat(userMessage));
+    setMessage(e.target.value);
+    // dispatch(userChat(message));
   };
-  // useEffect(() => {
-  //   dispatch(userChat(userMessage));
-  // }, [userMessage === undefined]);
+  useEffect(() => {
+    socket.on("welcome", (welcomeMessage) => {
+      console.log(welcomeMessage);
+
+      socket.on("loggedIn", (onlineUsersList) => {
+        console.log("logged in event:", onlineUsersList);
+        //  setLoggedIn(true);
+        setOnlineUsers(onlineUsersList);
+      });
+
+      socket.on("updateOnlineUsersList", (onlineUsersList) => {
+        console.log("A new user connected/disconnected");
+        //  setOnlineUsers(onlineUsersList);
+      });
+
+      socket.on("newMessage", (newMessage) => {
+        console.log(newMessage);
+        setChatHistory([...chatHistory, newMessage.message]);
+      });
+    });
+  });
+  const submitUsername = () => {
+    // here we will be emitting a "setUsername" event (the server is already listening for that)
+    socket.emit("setUsername", `${user.name} ${user.surname}`);
+  };
+  if (user && isChat) {
+    submitUsername();
+  }
+  const sendMessage = () => {
+    const newMessage = {
+      sender: `${user.name} ${user.surname}`,
+      text: message,
+      createdAt: new Date(),
+    };
+    socket.emit("sendMessage", { message: newMessage });
+    setChatHistory([...chatHistory, newMessage]);
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
   };
   const handleSend = () => {
-    dispatch(userChat(userMessage));
-    setUserMessage("");
+    dispatch(userChat(message));
+    setMessage("");
   };
   return (
     <Col className=" gift-container chat-section  ">
@@ -76,20 +113,27 @@ const Chat = () => {
                   </Col>
                 </Row>
               ))}
-              {message &&
-                message.map((message) => (
+              {messages &&
+                chatHistory.map((message, index) => (
                   <Row>
-                    <Col className="d-flex justify-content-between mt-3 w-100">
+                    <Col
+                      key={index}
+                      className="d-flex justify-content-between mt-3 w-100"
+                    >
                       <div className="d-flex w-100  flex-column text-left mr-auto">
                         <span className="text-chat w-100 main-container2 px-2 py-1">
-                          {message}
+                          {message.text}
                         </span>
                         <span className="d-flex justify-content-end align-items-center">
                           <span className="date ml-0 px-0">
-                            <Moment format="D MMM, HH:mm">{date}</Moment>
+                            <Moment format="D MMM, HH:mm">
+                              {message.createdAt}
+                            </Moment>
                           </span>
                           <Icon.Dot className="mx-0 px-0" />
-                          <strong className="mr-0 pr-0">Louis Gadza</strong>
+                          <strong className="mr-0 pr-0">
+                            {message.sender}
+                          </strong>
                         </span>
                       </div>
                       <Avatar
@@ -112,18 +156,18 @@ const Chat = () => {
                   className="main-container2"
                   placeholder="Write a message..."
                   as="textarea"
-                  rows={3}
+                  rows={2}
                   onChange={handleMessage}
-                  value={userMessage}
+                  value={message}
                 />
               </Form.Group>
-              <div className="d-flex py-3 justify-content-between">
-                <Icon.Image size={20} />
-                {userMessage && (
+              <div className="d-flex py-2 justify-content-between">
+                {/* <Icon.Image size={20} /> */}
+                {message && (
                   <button
                     className="textColor px-3 mb-1 send-btn main-container2"
                     type="submit"
-                    onClick={handleSend}
+                    onClick={sendMessage}
                   >
                     Send
                   </button>
@@ -137,11 +181,6 @@ const Chat = () => {
           {[...Array(15)].map((user) => (
             <Row className="user-friends">
               <Col className=" d-flex  pl-2  ">
-                {/* <img
-                  src={profilePic}
-                  alt=""
-                  className="small-profile-img2 mr-3 my-auto"
-                /> */}
                 <Avatar
                   src="https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_960_720.png"
                   alt="Profile Avatar"

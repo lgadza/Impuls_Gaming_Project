@@ -17,6 +17,7 @@ import Avatar from "../../components/Avatar";
 import { logout } from "../../redux/actions";
 
 const UserPage = () => {
+  const [isChat, setIsChat] = useState(false);
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -53,6 +54,30 @@ const UserPage = () => {
           </Link>
         </div>
         <div className="d-flex">
+          <div>
+            <Dropdown>
+              <Dropdown.Toggle variant="success" id="dropdown-basic">
+                <span className="textColor notification-bell">
+                  <Icon.BellFill size={30} className="ml-0 pl-0 " />
+                  <span className="notification-message text-primary text-small bg-white">
+                    <strong className="text-small px-0">1</strong>
+                  </span>
+                </span>
+              </Dropdown.Toggle>
+
+              <Dropdown.Menu>
+                <Dropdown.Item
+                // onClick={() =>
+                //   navigate(
+                //     `/backoffice/projects/${tournament.name}/reports/disputes`
+                //   )
+                // }
+                >
+                  Louis vs Sage
+                </Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+          </div>
           <Dropdown>
             <Dropdown.Toggle>
               {/* <img src={profilePic} className="small-profile-img" alt="" /> */}
@@ -91,30 +116,6 @@ const UserPage = () => {
               </Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
-          <div>
-            <Dropdown>
-              <Dropdown.Toggle variant="success" id="dropdown-basic">
-                <span className="textColor notification-bell">
-                  <Icon.BellFill size={30} className="ml-0 pl-0 " />
-                  <span className="notification-message text-primary text-small bg-white">
-                    <strong className="text-small px-0">1</strong>
-                  </span>
-                </span>
-              </Dropdown.Toggle>
-
-              <Dropdown.Menu>
-                <Dropdown.Item
-                // onClick={() =>
-                //   navigate(
-                //     `/backoffice/projects/${tournament.name}/reports/disputes`
-                //   )
-                // }
-                >
-                  Louis vs Sage
-                </Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
-          </div>
         </div>
       </Row>
       <Container>
@@ -143,8 +144,12 @@ const UserPage = () => {
               <Tab eventKey="tournaments" title="Tournaments">
                 <Tournaments tournaments={tournaments.tournaments} />
               </Tab>
-              <Tab eventKey="friends" title="Friends">
-                <Chat />
+              <Tab
+                onClick={() => setIsChat(true)}
+                eventKey="friends"
+                title="Friends"
+              >
+                <Chat user={user} clicked={isChat} />
               </Tab>
             </Tabs>
           </Col>
