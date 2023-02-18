@@ -880,7 +880,7 @@ tab[title] {
 .organizer-profile {
   position: absolute;
   bottom: 10px;
-  transform: translateY(50%);
+  transform: translateY(45%);
   transition: transform 1s;
 }
 .organizer-profile.active {

@@ -1,5 +1,5 @@
-import { Col, Container, Row, Button } from "react-bootstrap";
-import logo from "../../img/Blue_Futuristic_Gaming_Logo-removebg-preview.png";
+import { Col, Row, Button } from "react-bootstrap";
+
 import * as Icon from "react-bootstrap-icons";
 import { useState, useEffect } from "react";
 import CreateTournament from "./CreateTournament";

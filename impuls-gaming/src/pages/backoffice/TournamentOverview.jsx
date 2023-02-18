@@ -1,10 +1,8 @@
 import {
-  Modal,
   Row,
   Container,
   Col,
   Button,
-  Form,
   Card,
   Dropdown,
   ProgressBar,
@@ -13,7 +11,7 @@ import * as Icon from "react-bootstrap-icons";
 import fifa from "../../img/fifa23.jpg";
 import { format } from "date-fns";
 import { Link } from "react-router-dom";
-import { useState, useEffect, useLayoutEffect } from "react";
+import { useState, useEffect } from "react";
 import BackOfficeNav from "./BackOfficeNav";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
