@@ -7,11 +7,17 @@ import {
   Alert,
   Modal,
 } from "react-bootstrap";
+import axios from "axios";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate, useParams, Link } from "react-router-dom";
 import * as Icon from "react-bootstrap-icons";
-import { registerTournament, getTournaments } from "../../redux/actions";
+import {
+  registerTournament,
+  getTournaments,
+  postProfilePicture,
+  getMe,
+} from "../../redux/actions";
 import DeleteConfirm from "../../components/DeleteConfirm";
 import Avatar from "../../components/Avatar";
 
@@ -21,7 +27,9 @@ const OrganizerAccount = ({ user }) => {
   const tournament = tournamentData.tournaments.find(
     (name) => name.name === params.tournamentId
   );
-
+  const signInCredentials = useSelector(
+    (state) => state.adminToken.accessToken
+  );
   const [update, setUpdate] = useState(false);
 
   const dispatch = useDispatch();
@@ -42,13 +50,18 @@ const OrganizerAccount = ({ user }) => {
   const handleSurname = (e) => {
     setSurname(e.target.value);
   };
-
+  const [avatar, setAvatar] = useState(null);
   const handleEmail = (e) => {
     setEmail(e.target.value);
   };
   const handleTerms = (e) => {
     termsCheck ? setTermsCheck(false) : setTermsCheck(true);
   };
+  const handleAvatar = (e) => {
+    setAvatar(e.target.files[0]);
+  };
+
+  // formData.append("post", files[0]);
   const userData = {
     nickname: nickName,
     name: name,
@@ -59,6 +72,8 @@ const OrganizerAccount = ({ user }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
   };
+
+  console.log(avatar);
   const handleUpdate = () => {
     setUpdate(true);
     dispatch(registerTournament(userData, tournament._id));
@@ -69,6 +84,27 @@ const OrganizerAccount = ({ user }) => {
     //  dispatch(getTournaments());
     handleCloseDelete();
   };
+
+  const handleAvatarUpload = (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("avatar", avatar);
+    const URL = process.env.REACT_APP_BE_PROD_URL;
+    axios
+      .post(`${URL}/files/${user._id}/avatar`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
+      .then((response) => {
+        console.log(response);
+        dispatch(getMe(signInCredentials.accessToken));
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <Row className="-d-flex  w-100 ml-auto organizer">
       <Col
@@ -204,7 +240,17 @@ const OrganizerAccount = ({ user }) => {
                 type="file"
                 style={{ visibility: "hidden" }}
                 label="Change profile picture"
+                onChange={handleAvatar}
               />
+              {avatar && (
+                <Button
+                  type="submit"
+                  onClick={handleAvatarUpload}
+                  className="primary-btn w-100  textColor"
+                >
+                  Update Profile
+                </Button>
+              )}
             </Col>
           </Row>
         </div>

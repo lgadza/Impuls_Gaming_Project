@@ -1,5 +1,4 @@
-import { Col, Container, Row, Form, Button, Nav, Alert } from "react-bootstrap";
-import fifa from "../../img/fifa23.jpg";
+import { Col, Container, Row, Button, Alert } from "react-bootstrap";
 import * as Icon from "react-bootstrap-icons";
 import logo from "../../img/Blue_Futuristic_Gaming_Logo-removebg-preview.png";
 import Organizer from "./Organizer";

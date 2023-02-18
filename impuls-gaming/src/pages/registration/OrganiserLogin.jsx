@@ -55,7 +55,7 @@ const OrganizerSignIn = () => {
   };
   const handleSignIn = async () => {
     setSign_in(true);
-    const token = await dispatch(adminSignIn(loginFormData));
+    await dispatch(adminSignIn(loginFormData));
   };
   if (signInCredentials.accessToken) {
     dispatch(getMe(signInCredentials.accessToken));

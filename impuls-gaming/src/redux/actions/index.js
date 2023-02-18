@@ -1,3 +1,5 @@
+import axios from "axios";
+
 export const GIFT_CARD_DATA = " GIFT_CARD_DATA";
 export const USER_DATA = " USER_DATA";
 export const REGISTER_USER_LOADING = "REGISTER_USER_LOADING";
@@ -335,6 +337,7 @@ export const adminLogout = (userId) => {
     }
   };
 };
+
 export const adminSignIn = (data) => {
   return async (dispatch) => {
     const options = {
