@@ -10,17 +10,13 @@ import Moment from "react-moment";
 import Avatar from "../../components/Avatar";
 import { io } from "socket.io-client";
 const PROD_URL = process.env.REACT_APP_BE_PROD_URL;
-const socket = io(`${PROD_URL}`, { transports: ["websocket"] });
+const socket = io(PROD_URL, { transports: ["websocket"] });
 const DEV_URL = process.env.REACT_APP_BE_DEV_URL;
 const Chat = ({ user, isChat }) => {
   // const messages = useSelector((state) => state.userChat.data);
 
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
   const [message, setMessage] = useState(undefined);
   const dispatch = useDispatch();
-  const date = new Date();
   const [chatHistory, setChatHistory] = useState([]);
   const [onlineUsers, setOnlineUsers] = useState([]);
 
