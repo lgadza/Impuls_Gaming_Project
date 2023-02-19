@@ -11,14 +11,15 @@ import Avatar from "../../components/Avatar";
 import { io } from "socket.io-client";
 const DEV_URL = process.env.REACT_APP_BE_DEV_URL;
 const PROD_URL = process.env.REACT_APP_BE_PROD_URL;
-const socket = io(PROD_URL, { transports: ["websocket"] });
+const socket = io(`https://impulsgaming.cyclic.app`, {
+  transports: ["websocket"],
+});
 const Chat = ({ user }) => {
   // const messages = useSelector((state) => state.userChat.data);
   const [message, setMessage] = useState(undefined);
   const dispatch = useDispatch();
   const [chatHistory, setChatHistory] = useState([]);
   const [onlineUsers, setOnlineUsers] = useState([]);
-
   const handleMessage = (e) => {
     setMessage(e.target.value);
   };
