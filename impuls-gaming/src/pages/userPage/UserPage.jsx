@@ -147,7 +147,7 @@ const UserPage = () => {
               <Tab
                 onClick={() => setIsChat(true)}
                 eventKey="friends"
-                title="Friends"
+                title="Chats"
               >
                 <Chat user={user} clicked={isChat} />
               </Tab>

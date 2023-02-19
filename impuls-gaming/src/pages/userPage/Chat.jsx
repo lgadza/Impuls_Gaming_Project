@@ -9,9 +9,11 @@ import ScrollToBottom from "react-scroll-to-bottom";
 import Moment from "react-moment";
 import Avatar from "../../components/Avatar";
 import { io } from "socket.io-client";
-const socket = io("http://localhost:3001", { transports: ["websocket"] });
+const PROD_URL = process.env.REACT_APP_BE_PROD_URL;
+const socket = io(`${PROD_URL}`, { transports: ["websocket"] });
+const DEV_URL = process.env.REACT_APP_BE_DEV_URL;
 const Chat = ({ user, isChat }) => {
-  const messages = useSelector((state) => state.userChat.data);
+  // const messages = useSelector((state) => state.userChat.data);
 
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -24,52 +26,70 @@ const Chat = ({ user, isChat }) => {
 
   const handleMessage = (e) => {
     setMessage(e.target.value);
-    // dispatch(userChat(message));
   };
   useEffect(() => {
-    socket.on("welcome", (welcomeMessage) => {
-      console.log(welcomeMessage);
+    socket.on("message", (messages) => {
+      console.log(messages);
+      setChatHistory(messages);
 
-      socket.on("loggedIn", (onlineUsersList) => {
-        console.log("logged in event:", onlineUsersList);
-        //  setLoggedIn(true);
-        setOnlineUsers(onlineUsersList);
+      // socket.on("loggedIn", (onlineUsersList) => {
+      //   console.log("logged in event:", onlineUsersList);
+      //   //  setLoggedIn(true);
+      //   setOnlineUsers(onlineUsersList);
+      // });
+      socket.on("newMessage", async (newMessage) => {
+        await newMessage;
+        console.log(newMessage);
+        setChatHistory([...chatHistory, newMessage]);
       });
-
       socket.on("updateOnlineUsersList", (onlineUsersList) => {
         console.log("A new user connected/disconnected");
         //  setOnlineUsers(onlineUsersList);
       });
-
-      socket.on("newMessage", (newMessage) => {
-        console.log(newMessage);
-        setChatHistory([...chatHistory, newMessage.message]);
-      });
     });
   });
+  // const postMessage = async (text) => {
+  //   const options = {
+  //     method: "POST",
+  //     headers: {
+  //       Accept: "application/json",
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify(text),
+  //   };
+  //   try {
+  //     const response = await fetch(`${DEV_URL}/messages`, options);
+  //     if (response.ok) {
+  //       const message = await response.json();
+  //       console.log(message);
+  //     }
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+
   const submitUsername = () => {
     // here we will be emitting a "setUsername" event (the server is already listening for that)
     socket.emit("setUsername", `${user.name} ${user.surname}`);
   };
-  if (user && isChat) {
+  if (user) {
     submitUsername();
   }
-  const sendMessage = () => {
+  const sendMessage = async () => {
     const newMessage = {
       sender: `${user.name} ${user.surname}`,
       text: message,
       createdAt: new Date(),
     };
-    socket.emit("sendMessage", { message: newMessage });
+    await socket.emit("sendMessage", { message: newMessage });
     setChatHistory([...chatHistory, newMessage]);
+    // await postMessage(newMessage);
+    setMessage("");
   };
   const handleSubmit = (e) => {
     e.preventDefault();
   };
-  const handleSend = () => {
-    dispatch(userChat(message));
-    setMessage("");
-  };
+
   return (
     <Col className=" gift-container chat-section  ">
       <Row className="w-100 d-flex mx-auto  py-2 mb-3 ">
@@ -84,102 +104,107 @@ const Chat = ({ user, isChat }) => {
       </Row>
       <Row>
         <Col md={8} className="pr-0">
-          <ScrollToBottom>
-            <div className="user-chats user-profiles ">
-              {[...Array(5)].map((user) => (
-                <Row>
-                  <Col className="d-flex justify-content-between mt-4">
-                    <Avatar
-                      src="https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_960_720.png"
-                      alt="Profile Avatar"
-                      className="avatar "
-                      width={30}
-                      height={30}
-                    />
-                    <div className="d-flex ml-1 flex-column text-left ">
-                      <span>
-                        <strong>Player 1</strong>
-                        <Icon.Dot />
-                        <span>12 min</span>
-                      </span>
-                      <span className="text-chat text-background  pl-2 mr-2 py-1 ">
-                        Not completely sure if Offcanvas is added to the alpha
-                        yet just looking to confirm, but it appeared to be based
-                        off the project board. I can successfully import and use
-                        other react-bootstrap components, but Offcanvas is
-                        failing to import.
-                      </span>
-                    </div>
-                  </Col>
-                </Row>
-              ))}
-              {messages &&
-                chatHistory.map((message, index) => (
+          <div className="d-flex flex-column justify-content-between">
+            <ScrollToBottom>
+              <div className="user-chats user-profiles ">
+                {/* {chatHistory.map((user, index) => (
                   <Row>
                     <Col
                       key={index}
-                      className="d-flex justify-content-between mt-3 w-100"
+                      className="d-flex justify-content-between mt-4"
                     >
-                      <div className="d-flex w-100  flex-column text-left mr-auto">
-                        <span className="text-chat w-100 main-container2 px-2 py-1">
-                          {message.text}
-                        </span>
-                        <span className="d-flex justify-content-end align-items-center">
-                          <span className="date ml-0 px-0">
-                            <Moment format="D MMM, HH:mm">
-                              {message.createdAt}
-                            </Moment>
-                          </span>
-                          <Icon.Dot className="mx-0 px-0" />
-                          <strong className="mr-0 pr-0">
-                            {message.sender}
-                          </strong>
-                        </span>
-                      </div>
                       <Avatar
                         src="https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_960_720.png"
                         alt="Profile Avatar"
-                        className="avatar"
+                        className="avatar "
                         width={30}
                         height={30}
                       />
+                      <div className="d-flex ml-1 flex-column text-left ">
+                        <span>
+                          <strong>Player 1</strong>
+                          <Icon.Dot />
+                          <span>12 min</span>
+                        </span>
+                        <span className="text-chat text-background  pl-2 mr-2 py-1 ">
+                          Not completely sure if Offcanvas is added to the alpha
+                          yet just looking to confirm, but it appeared to be
+                          based off the project board. I can successfully import
+                          and use other react-bootstrap components, but
+                          Offcanvas is failing to import.
+                        </span>
+                      </div>
                     </Col>
                   </Row>
-                ))}
-            </div>
-          </ScrollToBottom>
-          <hr />
-          <div>
-            <Form onSubmit={handleSubmit}>
-              <Form.Group className="mb-2 d-flex align-items-center main-container2 ">
-                <Form.Control
-                  className="main-container2"
-                  placeholder="Write a message..."
-                  as="textarea"
-                  rows={2}
-                  onChange={handleMessage}
-                  value={message}
-                />
-              </Form.Group>
-              <div className="d-flex py-2 justify-content-between">
-                {/* <Icon.Image size={20} /> */}
-                {message && (
-                  <button
-                    className="textColor px-3 mb-1 send-btn main-container2"
-                    type="submit"
-                    onClick={sendMessage}
-                  >
-                    Send
-                  </button>
-                )}
+                ))} */}
+                {chatHistory.length !== 0 &&
+                  chatHistory.map((message, index) => (
+                    <Row>
+                      <Col
+                        key={index}
+                        className="d-flex justify-content-between mt-3 w-100"
+                      >
+                        <div className="d-flex w-100  flex-column text-left mr-auto">
+                          <span className="text-chat w-100 main-container2 px-2 py-1">
+                            {message.text}
+                          </span>
+                          <span className="d-flex justify-content-end align-items-center">
+                            <span className="date ml-0 px-0">
+                              <Moment format="D MMM, HH:mm">
+                                {message.createdAt}
+                              </Moment>
+                            </span>
+                            <Icon.Dot className="mx-0 px-0" />
+                            <strong className="mr-0 pr-0">
+                              {message.sender}
+                            </strong>
+                          </span>
+                        </div>
+                        <Avatar
+                          src="https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_960_720.png"
+                          alt="Profile Avatar"
+                          className="avatar"
+                          width={30}
+                          height={30}
+                        />
+                      </Col>
+                    </Row>
+                  ))}
               </div>
-            </Form>
+            </ScrollToBottom>
+            <div>
+              <hr />
+              <Form onSubmit={handleSubmit}>
+                <Form.Group className="mb-2 d-flex align-items-center main-container2 ">
+                  <Form.Control
+                    className="main-container2"
+                    placeholder="Write a message..."
+                    as="textarea"
+                    rows={2}
+                    onChange={handleMessage}
+                    value={message}
+                  />
+                </Form.Group>
+                <div className="d-flex py-2 justify-content-between">
+                  {/* <Icon.Image size={20} /> */}
+                  {message && (
+                    <button
+                      className="textColor px-3 mb-1 send-btn main-container2"
+                      type="submit"
+                      onClick={sendMessage}
+                    >
+                      Send
+                    </button>
+                  )}
+                </div>
+              </Form>
+            </div>
           </div>
         </Col>
 
         <Col md={4} className=" user-profiles pr-0  ">
-          {[...Array(15)].map((user) => (
-            <Row className="user-friends">
+          {[...Array(15)].map((user, index) => (
+            <Row key={index} className="user-friends">
               <Col className=" d-flex  pl-2  ">
                 <Avatar
                   src="https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_960_720.png"
@@ -189,9 +214,7 @@ const Chat = ({ user, isChat }) => {
                   height={30}
                 />
                 <div className="py-1  ml-1 friends-list d-flex flex-column text-left  ">
-                  <span className="text-nowrap user-fullname">
-                    Louis Gadzewewea
-                  </span>
+                  <span className="text-nowrap user-fullname">Louis Gadza</span>
 
                   <span className="user-time-reply ">12 min</span>
                 </div>

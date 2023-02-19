@@ -22,7 +22,7 @@ const UserProfile = ({ user }) => {
   const [key, setKey] = useState("activation");
   const dispatch = useDispatch();
   const userPreferenceData = useSelector((state) => state.preference.data);
-  console.log(userPreferenceData);
+
   const [isLeagueChecked, setIsLeagueChecked] = useState(false);
   const [isTournamentChecked, setIsTournamentChecked] = useState(false);
 
@@ -41,8 +41,7 @@ const UserProfile = ({ user }) => {
     : isTournamentChecked
     ? "tournament"
     : "none";
-  console.log(like);
-  console.log(isTournamentChecked);
+
   const allRating = {
     PS: ratePS,
     PC: rating,
