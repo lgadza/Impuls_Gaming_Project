@@ -9,12 +9,11 @@ import ScrollToBottom from "react-scroll-to-bottom";
 import Moment from "react-moment";
 import Avatar from "../../components/Avatar";
 import { io } from "socket.io-client";
+const DEV_URL = process.env.REACT_APP_BE_DEV_URL;
 const PROD_URL = process.env.REACT_APP_BE_PROD_URL;
 const socket = io(PROD_URL, { transports: ["websocket"] });
-const DEV_URL = process.env.REACT_APP_BE_DEV_URL;
-const Chat = ({ user, isChat }) => {
+const Chat = ({ user }) => {
   // const messages = useSelector((state) => state.userChat.data);
-
   const [message, setMessage] = useState(undefined);
   const dispatch = useDispatch();
   const [chatHistory, setChatHistory] = useState([]);
@@ -85,7 +84,7 @@ const Chat = ({ user, isChat }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
   };
-
+  console.log(chatHistory);
   return (
     <Col className=" gift-container chat-section  ">
       <Row className="w-100 d-flex mx-auto  py-2 mb-3 ">
