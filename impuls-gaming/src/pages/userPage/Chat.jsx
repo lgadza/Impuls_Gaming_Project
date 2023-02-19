@@ -4,7 +4,7 @@ import * as Icon from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { userChat } from "../../redux/actions";
+import { getUsers, userChat } from "../../redux/actions";
 import ScrollToBottom from "react-scroll-to-bottom";
 import Moment from "react-moment";
 import Avatar from "../../components/Avatar";
@@ -13,7 +13,7 @@ const DEV_URL = process.env.REACT_APP_BE_DEV_URL;
 const PROD_URL = process.env.REACT_APP_BE_PROD_URL;
 const socket = io(DEV_URL, { transports: ["websocket"] });
 const Chat = ({ user }) => {
-  // const messages = useSelector((state) => state.userChat.data);
+  const users = useSelector((state) => state.users.users);
   const [message, setMessage] = useState(undefined);
   const dispatch = useDispatch();
   const [chatHistory, setChatHistory] = useState([]);
@@ -23,7 +23,6 @@ const Chat = ({ user }) => {
   };
   useEffect(() => {
     socket.on("message", (messages) => {
-      console.log(messages);
       setChatHistory(messages);
 
       // socket.on("loggedIn", (onlineUsersList) => {
@@ -31,10 +30,9 @@ const Chat = ({ user }) => {
       //   //  setLoggedIn(true);
       //   setOnlineUsers(onlineUsersList);
       // });
-      socket.on("newMessage", async (newMessage) => {
-        await newMessage;
+      socket.on("newMessage", (newMessage) => {
         console.log(newMessage);
-        setChatHistory([...chatHistory, newMessage]);
+        setChatHistory.push(newMessage);
       });
       socket.on("updateOnlineUsersList", (onlineUsersList) => {
         console.log("A new user connected/disconnected");
@@ -42,26 +40,7 @@ const Chat = ({ user }) => {
       });
     });
   });
-  // const postMessage = async (text) => {
-  //   const options = {
-  //     method: "POST",
-  //     headers: {
-  //       Accept: "application/json",
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify(text),
-  //   };
-  //   try {
-  //     const response = await fetch(`${DEV_URL}/messages`, options);
-  //     if (response.ok) {
-  //       const message = await response.json();
-  //       console.log(message);
-  //     }
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-
+  // console.log(users);
   const submitUsername = () => {
     // here we will be emitting a "setUsername" event (the server is already listening for that)
     socket.emit("setUsername", `${user.name} ${user.surname}`);
@@ -69,21 +48,21 @@ const Chat = ({ user }) => {
   if (user) {
     submitUsername();
   }
-  const sendMessage = async () => {
+  const sendMessage = () => {
     const newMessage = {
       sender: `${user.name} ${user.surname}`,
+      avatar: `${user.avatar}`,
       text: message,
       createdAt: new Date(),
     };
-    await socket.emit("sendMessage", { message: newMessage });
-    setChatHistory([...chatHistory, newMessage]);
-    // await postMessage(newMessage);
+    socket.emit("sendMessage", { message: newMessage });
+    chatHistory.push(newMessage);
     setMessage("");
   };
   const handleSubmit = (e) => {
     e.preventDefault();
   };
-  console.log(chatHistory);
+  console.log();
   return (
     <Col className=" gift-container chat-section  ">
       <Row className="w-100 d-flex mx-auto  py-2 mb-3 ">
@@ -97,7 +76,7 @@ const Chat = ({ user }) => {
         </Col>
       </Row>
       <Row>
-        <Col md={8} className="pr-0">
+        <Col md={9} className="pr-0">
           <div className="d-flex flex-column justify-content-between">
             <ScrollToBottom>
               <div className="user-chats user-profiles ">
@@ -138,7 +117,7 @@ const Chat = ({ user }) => {
                         key={index}
                         className="d-flex justify-content-between mt-3 w-100"
                       >
-                        <div className="d-flex w-100  flex-column text-left mr-auto">
+                        <div className="d-flex w-100 mr-2 flex-column text-left mr-auto">
                           <span className="text-chat w-100 main-container2 px-2 py-1">
                             {message.text}
                           </span>
@@ -149,13 +128,13 @@ const Chat = ({ user }) => {
                               </Moment>
                             </span>
                             <Icon.Dot className="mx-0 px-0" />
-                            <strong className="mr-0 pr-0">
+                            <strong className="mr-2 pr-0">
                               {message.sender}
                             </strong>
                           </span>
                         </div>
                         <Avatar
-                          src="https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_960_720.png"
+                          src={message.avatar}
                           alt="Profile Avatar"
                           className="avatar"
                           width={30}
@@ -196,21 +175,23 @@ const Chat = ({ user }) => {
           </div>
         </Col>
 
-        <Col md={4} className=" user-profiles pr-0  ">
-          {[...Array(15)].map((user, index) => (
+        <Col md={3} className=" user-profiles pr-0  ">
+          {users.map((user, index) => (
             <Row key={index} className="user-friends">
-              <Col className=" d-flex  pl-2  ">
+              <Col className=" d-flex  pl-2  my-1 ">
                 <Avatar
-                  src="https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_960_720.png"
+                  src={user.avatar}
                   alt="Profile Avatar"
                   className="avatar"
                   width={30}
                   height={30}
                 />
                 <div className="py-1  ml-1 friends-list d-flex flex-column text-left  ">
-                  <span className="text-nowrap user-fullname">Louis Gadza</span>
+                  <span className="text-nowrap user-fullname">
+                    {user.name} {user.surname}
+                  </span>
 
-                  <span className="user-time-reply ">12 min</span>
+                  {/* <span className="user-time-reply ">12 min</span> */}
                 </div>
               </Col>
             </Row>

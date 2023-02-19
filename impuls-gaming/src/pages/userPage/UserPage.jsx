@@ -12,7 +12,7 @@ import Tournaments from "./Tournaments";
 import Overview from "./Overview";
 import UserProfile from "./UserProfile";
 import Fixtures from "./Fixtures";
-import { getMe, getTournaments } from "../../redux/actions";
+import { getMe, getTournaments, getUsers } from "../../redux/actions";
 import Avatar from "../../components/Avatar";
 import { logout } from "../../redux/actions";
 
@@ -28,6 +28,8 @@ const UserPage = () => {
     (state) => state.accessToken.accessToken
   );
   useEffect(() => {
+    dispatch(getUsers());
+
     dispatch(getTournaments());
     dispatch(getMe(signInCredentials.accessToken));
     if (!localStorage.getItem("accessToken")) navigate("/user-page");

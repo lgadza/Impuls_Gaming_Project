@@ -483,12 +483,14 @@ export const getTournaments = () => {
 
 export const getUsers = (accessToken) => {
   return async (dispatch) => {
+    // const URL = process.env.REACT_APP_BE_PROD_URL;
+    const URL = process.env.REACT_APP_BE_DEV_URL;
     const options = {
       method: "GET",
     };
 
     try {
-      let response = await fetch(URL, options);
+      let response = await fetch(`${URL}/users`, options);
       if (response.ok) {
         const users = await response.json();
         dispatch({
