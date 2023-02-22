@@ -8,7 +8,7 @@ import {
   Card,
 } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
-import logo from "../../img/Blue_Futuristic_Gaming_Logo-removebg-preview.png";
+import logo from "../../img/impuls logo.png";
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import { getTournaments, logInData, signIn } from "../../redux/actions";

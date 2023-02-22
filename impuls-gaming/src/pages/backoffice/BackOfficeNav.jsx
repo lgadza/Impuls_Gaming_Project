@@ -1,7 +1,7 @@
 import { Col, Container, Row, Navbar, Nav } from "react-bootstrap";
 import fifa from "../../img/fifa23.jpg";
 import * as Icon from "react-bootstrap-icons";
-import logo from "../../img/Blue_Futuristic_Gaming_Logo-removebg-preview.png";
+import logo from "../../img/impuls logo.png";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import LoggedInOrganizer from "../../components/LoggedInOrganizer";

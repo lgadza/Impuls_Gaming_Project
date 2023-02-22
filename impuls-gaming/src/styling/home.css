@@ -376,11 +376,15 @@ a:hover {
 }
 .notification-message {
   position: absolute;
-  top: 0;
-  right: 10%;
-  width: 1.5rem;
-  height: 1.5rem;
+  top: 55%;
+  right: 40%;
+  width: 0.5rem;
+  height: 0.5rem;
   border-radius: 50%;
+  background-color: yellow;
+}
+.fade.alert.show {
+  z-index: 2 !important;
 }
 .dropdown-toggle::after {
   display: none;
@@ -737,6 +741,7 @@ ul li {
   border: none;
   box-sizing: border-box;
   background-color: rgb(42, 57, 66);
+  z-index: 0;
 }
 .card-body {
   background-color: rgb(42, 57, 66);

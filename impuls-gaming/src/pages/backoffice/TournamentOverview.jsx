@@ -67,10 +67,8 @@ const TournamentOverview = () => {
               <Dropdown>
                 <Dropdown.Toggle variant="success" id="dropdown-basic">
                   <span className="notification-bell">
-                    <Icon.BellFill color="rgb(0, 123, 255)" size={35} />
-                    <span className="notification-message text-primary text-small bg-white">
-                      <strong>1</strong>
-                    </span>
+                    <Icon.BellFill color="rgb(0, 123, 255)" size={20} />
+                    <span className="notification-message text-primary text-small "></span>
                   </span>
                 </Dropdown.Toggle>
 

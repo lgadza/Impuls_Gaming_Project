@@ -2,7 +2,7 @@ import { Container, Navbar, Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import * as Icon from "react-bootstrap-icons";
 import "../styling/home.css";
-import logo from "../img/Blue_Futuristic_Gaming_Logo-removebg-preview.png";
+import logo from "../img/impuls logo.png";
 import { useState } from "react";
 const NavigationBar = () => {
   const [isHidden, setIsHidden] = useState(false);
