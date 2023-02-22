@@ -172,7 +172,8 @@ const ConfigureStages = () => {
               </Alert>
             </div>
           )}
-          {!update && (
+          {/* //TODO Do NOT DELETE ME, I AM ERROR MESSAGE FROM THE BE TO BE RENDERED */}
+          {/* {!update && (
             <div className="registration-card bring-top mx-auto mb-5">
               <Alert key={"warning"} variant={"danger"}>
                 <Icon.InfoCircle size={20} color="red" />
@@ -182,7 +183,7 @@ const ConfigureStages = () => {
                 </span>
               </Alert>
             </div>
-          )}
+          )} */}
           <Card className="registration-card mx-auto">
             <Card.Header>
               <h3 className="d-flex my-2">

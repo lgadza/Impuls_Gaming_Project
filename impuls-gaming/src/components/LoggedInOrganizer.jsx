@@ -24,9 +24,10 @@ const LoggedInOrganizer = ({ clicked, user, profileClicked }) => {
             width={40}
             height={40}
           />
-          <span className="ml-1">{user.nickname}</span>
+          <span className="ml-4">
+            <strong>{user.nickname}</strong>
+          </span>
         </div>
-        <Icon.CaretDownFill size={15} />
       </Link>
       <div className="d-flex flex-column align-items-start">
         <Link
