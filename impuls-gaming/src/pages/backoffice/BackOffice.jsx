@@ -1,6 +1,6 @@
 import { Col, Container, Row, Button, Alert } from "react-bootstrap";
 import * as Icon from "react-bootstrap-icons";
-import logo from "../../img/Blue_Futuristic_Gaming_Logo-removebg-preview.png";
+import logo from "../../img/impuls logo.png";
 import Organizer from "./Organizer";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
