@@ -70,7 +70,7 @@ const BackOfficeNav = ({ data, page, user }) => {
             </span>
           </Link>
           <Link
-            // to={`/backoffice/projects/participants/${data.name}`}
+            to={`/backoffice/projects/participants/${data.name}`}
             className="d-flex my-2"
           >
             <span
@@ -83,7 +83,7 @@ const BackOfficeNav = ({ data, page, user }) => {
             </span>
           </Link>
           <Link
-            to={`/backoffice/projects/settings/${data.name}`}
+            to={`/backoffice/projects/${data.name}/matches`}
             className="my-2 d-flex"
           >
             <span
@@ -94,7 +94,7 @@ const BackOfficeNav = ({ data, page, user }) => {
             </span>
           </Link>
           <Link
-            to={`/backoffice/projects/settings/${data.name}`}
+            to={`/backoffice/projects/${data.name}/finals`}
             className="d-flex my-2"
           >
             <span

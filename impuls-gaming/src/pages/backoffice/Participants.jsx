@@ -13,14 +13,12 @@ import { useNavigate, useParams, Link } from "react-router-dom";
 import * as Icon from "react-bootstrap-icons";
 
 import { useSelector, useDispatch } from "react-redux";
-import { format } from "date-fns";
 import { useState, useEffect } from "react";
 import { getTournaments, getUsers } from "../../redux/actions/index.js";
 
 const Participants = () => {
   const params = useParams();
   const dispatch = useDispatch();
-  // const users = useSelector((state) => state.users.users);
   const tournamentData = useSelector((state) => state.tournaments.tournaments);
   const tournament = tournamentData.tournaments.find(
     (name) => name.name === params.tournamentId
@@ -103,7 +101,7 @@ const Participants = () => {
                     <span className=" text-success"> Checked-in </span>
                   </Col>
                   <Col className="d-flex flex-column ml-auto">
-                    <h1>36</h1>
+                    <h1>{tournament.size}</h1>
                     <span>Tournament size</span>
                   </Col>
                 </div>
@@ -218,21 +216,21 @@ const Participants = () => {
                     </div>
                   </div>
                   <hr />
-                  <div className="d-flex mb-3  justify-content-between">
+                  <div className="d-flex mb-3  justify-content-between text-success">
                     <div className="d-flex  justify-content-between">
                       <span className="mr-5">Status</span>
                       <span className="ml-5">Name</span>
                     </div>
                     <span>Email</span>
-                    <span>Created at</span>
+                    <span>Select</span>
                   </div>
 
                   <div>
-                    {users.length > 10 && (
+                    {users.length > 0 && (
                       <ul className="pl-0 w-100">
-                        {users.users.map((participant, index) => (
+                        {users.map((participant, index) => (
                           <li className="w-100 participant-list" key={index}>
-                            <div className="d-flex justify-content-between my-3">
+                            <div className="d-flex justify-content-between px-2 py-3">
                               <div className="d-flex align-items-center">
                                 <span className="mr-1">
                                   <Icon.CheckCircleFill
@@ -259,12 +257,14 @@ const Participants = () => {
                                 <span>{participant.email} </span>
                               </div>
                               <div className="">
-                                <span className="mr-2">
-                                  {format(
-                                    new Date(participant.createdAt.toString()),
-                                    "dd MMM yyyy"
-                                  )}
-                                </span>
+                                {/* <span className="mr-2">
+                                    {format(
+                                      new Date(
+                                        participant.createdAt.toString()
+                                      ),
+                                      "dd MMM yyyy"
+                                    )}
+                                  </span> */}
                                 {/* <Icon.ThreeDotsVertical /> */}
                                 <input className="mr-1  px-2" type="checkbox" />
                               </div>
@@ -284,7 +284,7 @@ const Participants = () => {
                       </div>
                     </>
                   )}
-                  <div className="d-flex justify-content-center mb-2">
+                  {/* <div className="d-flex justify-content-center mb-2">
                     {users.links.first && (
                       <Button
                         type="submit"
@@ -325,7 +325,7 @@ const Participants = () => {
                         Last
                       </Button>
                     )}
-                  </div>
+                  </div> */}
                   <div className="d-flex">
                     <div className="my-auto">
                       <span>

@@ -583,7 +583,7 @@ button-star {
   background-color: rgb(17, 27, 33);
   color: white;
 }
-.dropdown-menu {
+.dropdown-menu.show {
   background-color: rgb(42, 57, 66);
   min-width: 15rem;
   z-index: 4 !important;
@@ -736,12 +736,14 @@ button[disabled].primary-btn {
 ul li {
   list-style: none;
 }
-
+.card-header {
+  z-index: 0 !important;
+}
 .card {
   border: none;
   box-sizing: border-box;
   background-color: rgb(42, 57, 66);
-  z-index: 0;
+  z-index: 0 !important;
 }
 .card-body {
   background-color: rgb(42, 57, 66);
@@ -836,6 +838,9 @@ input[type="checkbox"]:not(:checked) {
   display: none !important;
 }
 .fixture-container .participant-list:hover {
+  background-color: rgb(17, 27, 33);
+}
+.participant-list:hover {
   background-color: rgb(17, 27, 33);
 }
 .fixture-container .participant-list {

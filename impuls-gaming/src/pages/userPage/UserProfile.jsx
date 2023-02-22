@@ -81,13 +81,13 @@ const UserProfile = ({ user }) => {
               <span>following</span>
             </div>
           </Row>
-          <hr />
+          {/* <hr />
           <Row>
             <div className="d-flex  bg-secondary text-white px-2 py-2">
               <span className="mr-3">Joined</span>
               <span>Dec 11, 2022</span>
             </div>
-          </Row>
+          </Row> */}
         </div>
         <div>
           <hr />

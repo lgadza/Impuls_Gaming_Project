@@ -27,6 +27,8 @@ import Structures from "./pages/backoffice/structureStages/Structures";
 import TournamentsPage from "./pages/Tournaments/TournamentsPage.jsx";
 import OrganizerSignIn from "./pages/registration/OrganiserLogin";
 import OrganiserSignUp from "./pages/registration/OrganiserSignUp";
+import MatchOverview from "./pages/backoffice/MatchOverview";
+import FinalStanding from "./pages/backoffice/FinalStanding";
 
 function App() {
   return (
@@ -95,6 +97,14 @@ function App() {
             path="/backoffice/projects/:tournamentId/structures"
           />
           <Route element={<TournamentsPage />} path="/tournaments" />
+          <Route
+            element={<MatchOverview />}
+            path="/backoffice/projects/:tournamentId/matches"
+          />
+          <Route
+            element={<FinalStanding />}
+            path="/backoffice/projects/:tournamentId/finals"
+          />
         </Routes>
       </BrowserRouter>
     </div>
