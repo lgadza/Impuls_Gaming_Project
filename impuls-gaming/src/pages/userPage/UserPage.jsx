@@ -53,19 +53,17 @@ const UserPage = () => {
             {user.name} {user.surname}
           </Link>
         </div>
-        <div className="d-flex">
+        <div className="d-flex align-items-center">
           <div>
             <Dropdown>
               <Dropdown.Toggle variant="success" id="dropdown-basic">
                 <span className="textColor notification-bell">
                   <Icon.BellFill
                     color="rgb(0, 123, 255)"
-                    size={30}
+                    size={20}
                     className="ml-0 pl-0 "
                   />
-                  <span className="notification-message text-primary text-small bg-white">
-                    <strong className="text-small px-0">1</strong>
-                  </span>
+                  <span className="notification-message text-primary text-small "></span>
                 </span>
               </Dropdown.Toggle>
 
