@@ -106,7 +106,10 @@ const OrganizerAccount = ({ user }) => {
   };
 
   return (
-    <Row className="-d-flex  w-100 ml-auto organizer">
+    <Row
+      className="-d-flex  w-100 ml-auto 
+    organizer-account pb-2 organizer"
+    >
       <Col
         // onClick={handleShow}
         lg={8}

@@ -36,7 +36,7 @@ const TournamentDetails = () => {
   );
 
   const dispatch = useDispatch();
-
+  console.log(tournament);
   return (
     <Container fluid className="main-container textColor  px-0 ">
       <NavigationBar />
@@ -50,9 +50,9 @@ const TournamentDetails = () => {
                   <div>
                     <div className="d-flex">
                       <span className="mr-3 bg-secondary rounded text-white px-3 py-1">
-                        XBox
+                        {tournament.platform}
                       </span>
-                      <Link>Fifa 23</Link>
+                      <Link>{tournament.discipline_name}</Link>
                     </div>
                     <h1 className="d-flex">{tournament.name}</h1>
                     <span className="d-flex">
@@ -121,48 +121,56 @@ const TournamentDetails = () => {
               </Tab>
               <Tab eventKey="participants" title="Participants">
                 {/* *********************************************************** */}
-                <Row>
-                  <Col>
-                    <div className="d-flex  flex-column my-3">
-                      <h4 className="d-flex">Participants</h4>
-                    </div>
-                  </Col>
-                  <Col>
-                    <Form className="d-flex">
-                      <Form.Control
-                        type="search"
-                        placeholder="Search here"
-                        className="mr-3"
-                        aria-label="Search"
-                      />
-                      <Button variant="secondary">
-                        <Icon.Search size={20} />
-                      </Button>
-                    </Form>
-                  </Col>
-                </Row>
-                <hr />
-
-                <Row>
-                  {tournament.tournamentParticipants.length > 0 &&
-                    tournament.tournamentParticipants.map((player, index) => {
-                      return (
-                        <Col xs={6} key={player._id} lg={3}>
-                          <Link className="link-none-deco">
-                            <div className="border round textColor  d-flex px-2 participant-names py-3 my-2">
-                              <span className="mr-4">{player.name}</span>{" "}
-                              <span>{player.surname}</span>
-                            </div>
-                          </Link>
-                        </Col>
-                      );
-                    })}
-                  {tournament.tournamentParticipants.length === 0 && (
-                    <Col xs={6} lg={3}>
-                      <span>No participants available yet</span>
+                <Container className="participants-registered pb-3">
+                  <Row>
+                    <Col>
+                      <div className="d-flex  flex-column my-3">
+                        <h4 className="d-flex">Participants</h4>
+                      </div>
                     </Col>
-                  )}
-                </Row>
+                    <Col>
+                      <Form className="d-flex my-3">
+                        <Form.Control
+                          type="search"
+                          placeholder="Search here"
+                          className="mr-3"
+                          aria-label="Search"
+                        />
+                        <Button variant="secondary">
+                          <Icon.Search size={20} />
+                        </Button>
+                      </Form>
+                    </Col>
+                  </Row>
+
+                  <hr />
+
+                  <Row>
+                    {tournament.tournamentParticipants.length > 0 &&
+                      tournament.tournamentParticipants.map((player, index) => {
+                        return (
+                          <Col xs={6} key={player._id} lg={3}>
+                            <Link className="link-none-deco">
+                              <div className="border round textColor  d-flex px-2 participant-names py-3 my-2">
+                                <span className="mr-4">{player.name}</span>{" "}
+                                <span>{player.surname}</span>
+                              </div>
+                            </Link>
+                          </Col>
+                        );
+                      })}
+
+                    {tournament.tournamentParticipants.length === 0 && (
+                      <Col xs={6} lg={3}>
+                        <span>No participants available yet</span>
+                      </Col>
+                    )}
+                  </Row>
+                  <div className="d-flex text-danger justify-content-end">
+                    <span className="px-3">Total</span>
+                    <span>{tournament.tournamentParticipants.length}</span>
+                  </div>
+                </Container>
                 {/* *********************************************************** */}
                 {/* <PlayerList participants={tournament.tournamentParticipants} /> */}
               </Tab>
@@ -186,7 +194,7 @@ const TournamentDetails = () => {
                 eventKey="participants"
                 title={<Icon.PeopleFill size={20} />}
               >
-                <PlayerList />
+                <PlayerList participants={tournament.tournamentParticipants} />
               </Tab>
               <Tab eventKey="rules" title={<Icon.FileEarmarkText size={20} />}>
                 <Rules />

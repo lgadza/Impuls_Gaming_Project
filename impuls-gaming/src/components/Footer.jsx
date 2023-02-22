@@ -8,7 +8,7 @@ const Footer = () => {
   const date = new Date();
   const navigate = useNavigate();
   return (
-    <div className="background footer container-fluid mt-5 mb-3 textColor">
+    <div className=" footer container-fluid mt-5 pb-3 textColor">
       <Container className="pt-4">
         <Row>
           <Col md={6} lg={3}>

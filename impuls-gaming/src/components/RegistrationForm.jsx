@@ -63,7 +63,7 @@ const RegistrationForm = () => {
           </Alert>
         </div>
       )}
-      {(!name || !email || !surname || !termsCheck || !nickName || !update) && (
+      {!name && !email && !surname && !termsCheck && !nickName && update && (
         <div className="registration-card mx-auto mt-5">
           <Alert key={"warning"} variant={"danger"}>
             <Icon.XCircle size={15} />
@@ -72,7 +72,7 @@ const RegistrationForm = () => {
         </div>
       )}
       <Row>
-        <Col>
+        <Col className="registration-forms mt-3">
           <div className="d-flex  flex-column my-3">
             <h4 className="d-flex">Tournament registration</h4>
           </div>

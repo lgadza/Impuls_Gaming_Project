@@ -2,6 +2,7 @@ import { Container, Row, Col, Card, Button } from "react-bootstrap";
 import NavigationBar from "../../components/NavigationBar";
 import TournamentCard from "../../components/TournamentCard";
 import { useSelector, useDispatch } from "react-redux";
+import Table from "../userPage/Table";
 import { getTournaments } from "../../redux/actions";
 import { useEffect, useState } from "react";
 
@@ -26,6 +27,9 @@ const HomeUpdates = () => {
               <TournamentCard tournament={tournament} />
             </Col>
           ))}
+          <Col md={6} lg={6}>
+            <Table />
+          </Col>
         </Row>
       </Container>
     </div>

@@ -46,8 +46,8 @@ const Organizer = ({ projects }) => {
               size="lg"
               className=" d-flex justify-content-center create-btn"
             >
-              <Icon.PlusLg size={30} color="rgba(244, 92, 93, 255)" />
-              <span className=" textColor">Create Project</span>
+              <Icon.PlusLg size={30} color="green" />
+              <span className=" text-success">Create Project</span>
             </Button>
           </div>
         </Row>
@@ -62,8 +62,8 @@ const Organizer = ({ projects }) => {
             className="d-xs-none d-sm-none d-md-none d-lg-block"
           >
             <span className="d-flex mt-5 align-items-center justify-content-center flex-column main-container2 plus-project  mx-4">
-              <Icon.PlusLg size={100} color="rgba(244, 92, 93, 255)" />
-              <span className="d-flex justify-content-center mx-4 align-items-center">
+              <Icon.PlusLg size={100} color="green" />
+              <span className="d-flex justify-content-center mx-4 align-items-center text-success">
                 Create Project
               </span>
             </span>

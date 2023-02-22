@@ -66,6 +66,7 @@ const Table = () => {
               </div>
             </Col>
           </Row>
+          <hr className="p-0 m-0 " />
         </div>
       ))}
     </Col>

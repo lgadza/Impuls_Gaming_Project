@@ -32,7 +32,7 @@ const PlayerList = ({ participants }) => {
         </Col>
       </Row>
       <Row>
-        {/* {participants.length > 0 &&
+        {participants.length > 0 &&
           participants.map((player, index) => {
             return (
               <Col xs={6} lg={3}>
@@ -48,7 +48,7 @@ const PlayerList = ({ participants }) => {
           <Col xs={6} lg={3}>
             <span>No participants available yet</span>
           </Col>
-        )} */}
+        )}
       </Row>
     </>
   );

@@ -46,12 +46,10 @@ const UserPage = () => {
     <Container fluid className="textColor px-0 user-page main-container ">
       <Row className="mb-3 px-5 w-100 py-3 d-flex align-items-center justify-content-between position-fixed giftcard-preview-nav">
         <div>
-          <Link to="/" className="textColor">
-            Home
-          </Link>
-          <Icon.CaretRightFill size={10} />
+          <Link to="/">Home</Link>
+          <Icon.CaretRightFill color="white" size={10} />
 
-          <Link className="textColor">
+          <Link>
             {user.name} {user.surname}
           </Link>
         </div>
@@ -60,7 +58,11 @@ const UserPage = () => {
             <Dropdown>
               <Dropdown.Toggle variant="success" id="dropdown-basic">
                 <span className="textColor notification-bell">
-                  <Icon.BellFill size={30} className="ml-0 pl-0 " />
+                  <Icon.BellFill
+                    color="rgb(0, 123, 255)"
+                    size={30}
+                    className="ml-0 pl-0 "
+                  />
                   <span className="notification-message text-primary text-small bg-white">
                     <strong className="text-small px-0">1</strong>
                   </span>

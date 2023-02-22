@@ -40,8 +40,8 @@ const Settings = () => {
             <h3 className="d-flex mb-5">Settings</h3>
             <Dropdown>
               <Dropdown.Toggle variant="success" id="dropdown-basic">
-                <span className="textColor2 notification-bell">
-                  <Icon.BellFill size={35} />
+                <span className="notification-bell">
+                  <Icon.BellFill color="rgb(0, 123, 255)" size={35} />
                   <span className="notification-message text-primary text-small bg-white">
                     <strong>5</strong>
                   </span>

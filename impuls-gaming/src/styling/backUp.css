@@ -2,13 +2,6 @@
 /* .home {
   background-color: rgba(0, 0, 0, 0.4);
 } */
-body {
-  background-color: rgb(32, 44, 51) !important;
-  color: rgb(233, 237, 227);
-}
-.navbar-nav.list-group .list-group-item {
-  background-color: rgb(42, 57, 66);
-}
 .join-member {
   background-color: red;
   border-radius: 20px;
@@ -24,9 +17,7 @@ body {
   height: 100vh;
   overflow: hidden;
 }
-.modal-content {
-  background-color: rgb(42, 57, 66);
-}
+
 #video-background {
   position: absolute;
   top: 0;
@@ -80,7 +71,7 @@ h1 {
   font-size: 3em;
 }
 .h6-border {
-  border-bottom: 0.2em solid rgb(233, 237, 227);
+  border-bottom: 0.2em solid rgba(244, 92, 93, 255);
   display: inline-block;
   color: #12bae3;
 }
@@ -90,7 +81,7 @@ h1 {
   object-fit: cover;
 }
 .navBackground {
-  background-color: rgb(17, 27, 33);
+  background-color: rgba(25, 0, 76, 255);
   font-weight: bold;
   color: #12bae3;
   position: fixed;
@@ -103,18 +94,18 @@ h1 {
 }
 
 .giftcard-preview {
-  background-color: rgb(17, 27, 33);
+  background-color: rgba(25, 0, 76, 255);
   color: #12bae3;
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
   font-size: 0.75em;
 }
 .giftcard-preview-nav {
-  background-color: rgb(17, 27, 33);
+  background-color: rgba(25, 0, 76, 255);
   color: #12bae3;
 }
 .card-preview-info {
-  border-bottom: 1px solid rgb(17, 27, 33);
+  border-bottom: 1px solid rgba(25, 0, 76, 255);
 }
 .recipient-info {
   font-family: "Just Another Hand", cursive;
@@ -131,27 +122,25 @@ h1 {
   overflow-wrap: break-word;
 }
 .giftcard-section {
-  border-bottom: 2px solid rgb(17, 27, 33);
-  border-top: 2px solid rgb(17, 27, 33);
-  border-right: 2px solid rgb(17, 27, 33);
+  border-bottom: 2px solid rgba(25, 0, 76, 255);
+  border-top: 2px solid rgba(25, 0, 76, 255);
+  border-right: 2px solid rgba(25, 0, 76, 255);
   border-radius: 20px;
 }
 .textColor {
-  color: rgb(233, 237, 227) !important;
+  color: rgba(244, 92, 93, 255) !important;
 }
 textarea:focus {
-  color: rgb(233, 237, 227) !important;
+  color: rgba(244, 92, 93, 255) !important;
 }
 input:focus {
-  color: rgb(233, 237, 227) !important;
+  color: rgba(244, 92, 93, 255) !important;
 }
-input,
-textarea {
-  color: rgb(233, 237, 227) !important;
-  background-color: rgb(32, 44, 51) !important;
+input {
+  color: rgba(244, 92, 93, 255) !important;
 }
 textarea {
-  color: rgb(233, 237, 227) !important;
+  color: rgba(244, 92, 93, 255) !important;
 }
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -170,20 +159,19 @@ input::-webkit-inner-spin-button {
   border-radius: 3px !important;
 }
 .preview-content {
-  color: rgb(233, 237, 227);
+  color: rgba(244, 92, 93, 255);
 }
 ::placeholder {
-  color: rgb(233, 237, 227) !important;
+  color: rgba(244, 92, 93, 255) !important;
   opacity: 0.5 !important ;
 }
 .login-page {
-  background-color: rgb(32, 44, 51);
+  background-color: #12bae3;
   min-height: 100vh;
 }
 .login-content {
-  background-color: rgb(42, 57, 66);
+  background-color: white;
   width: fit-content;
-  color: white;
 }
 .sign-up-btn {
   font-weight: bold;
@@ -225,16 +213,16 @@ a {
   color: #0cc4f2;
 }
 .gift-container {
-  /* border: 1px solid rgba(244, 92, 93, 0.2); */
-  border-radius: 5px;
-  background-color: rgb(42, 57, 66);
+  border: 1px solid rgba(244, 92, 93, 0.2);
+  border-radius: 10px;
+  background-color: rgb(255, 255, 255);
 }
 .main-container {
-  /* background-color: rgba(244, 92, 93, 0.08); */
+  background-color: rgba(244, 92, 93, 0.08);
   min-height: 100vh;
 }
 .main-container2 {
-  /* background-color: rgba(244, 92, 93, 0.08); */
+  background-color: rgba(244, 92, 93, 0.08);
 }
 
 svg {
@@ -242,7 +230,7 @@ svg {
 }
 
 .background {
-  /* background-color: white; */
+  background-color: white;
 }
 .profile-img {
   width: 8rem;
@@ -267,10 +255,10 @@ svg {
   font-size: small;
 }
 .CircularProgressbar-path {
-  stroke: rgb(17, 27, 33) !important;
+  stroke: rgba(25, 0, 76, 255) !important;
 }
 .CircularProgressbar-text {
-  fill: rgb(17, 27, 33) !important;
+  fill: rgba(25, 0, 76, 255) !important;
 }
 
 .blink_me {
@@ -286,43 +274,8 @@ svg {
     opacity: 0;
   }
 }
-.send-content-container {
-  position: relative;
-}
-.send-btn-icon {
-  position: absolute;
-  top: 20%;
-  bottom: 0;
-  right: 5px;
-  background-color: rgb(42, 57, 66);
-  border-radius: 10%;
-}
-.btn-danger {
-  position: relative;
-  isolation: isolate;
-  overflow: hidden;
-  border: none;
-  background-color: rgb(32, 44, 51) !important;
-}
-.btn-danger::before {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 180%;
-  left: 0;
-  right: 0;
-  background-color: rgb(200, 35, 51);
-  z-index: -1;
-  transition: 0.4s;
-  top: 0;
-  border-radius: 0 0 50% 50%;
-}
-.btn-danger:hover::before {
-  height: 0;
-}
 .bg-dark {
   border-radius: 10px;
-  background-color: rgb(32, 44, 51) !important;
 }
 .league-provider-img {
   width: 2rem;
@@ -387,13 +340,12 @@ a:hover {
 }
 .featured-games {
   border: 3px solid;
-  border-radius: 5px;
 }
 .bg-secondary.text-white {
   border-radius: 3px;
 }
 .border-hover:hover {
-  box-shadow: 1px 3px 5px rgb(17, 27, 33);
+  box-shadow: 1px 3px 5px rgba(25, 0, 76, 255);
   border-radius: 5px;
 }
 .join-call {
@@ -408,7 +360,7 @@ a:hover {
 }
 .h2-join-call {
   font-size: 2em;
-  color: rgb(233, 237, 227);
+  color: rgba(244, 92, 93, 255);
   transform: rotate(-4deg);
   font-weight: bold;
   background-color: rgb(212, 201, 201, 0.3);
@@ -425,7 +377,7 @@ a:hover {
   color: goldenrod;
   font-weight: bold;
   font-size: 1.5rem;
-  background-color: rgb(17, 27, 33);
+  background-color: rgba(25, 0, 76, 255);
 }
 .position-fixed {
   position: fixed;
@@ -439,7 +391,7 @@ a:hover {
   margin-top: 7rem !important;
 }
 .textColor2 {
-  color: white;
+  color: rgba(25, 0, 76, 255);
 }
 .textColor3 {
   color: #0cc4f2;
@@ -454,7 +406,7 @@ button-star {
   background-color: rgb(255, 254, 230);
 }
 .on {
-  color: rgb(233, 237, 227);
+  color: rgba(244, 92, 93, 255);
 }
 .off {
   color: #ccc;
@@ -467,10 +419,10 @@ button-star {
 .search-field {
   padding-right: 38px;
   border-radius: 3px;
-  border: 1px solid rgb(233, 237, 227);
+  border: 1px solid rgba(244, 92, 93, 255);
 }
 .search-field:focus {
-  outline: 1px solid rgb(233, 237, 227) !important;
+  outline: 1px solid rgba(244, 92, 93, 255) !important;
 }
 .inputContainer {
   display: flex;
@@ -488,10 +440,9 @@ button-star {
   overflow-x: hidden;
   position: static;
   top: 20% !important;
-  background-color: rgb(42, 57, 66);
 }
 .me-auto {
-  border: 2px solid rgb(32, 44, 51);
+  border: 2px solid rgb(244, 92, 93);
   border-radius: 5px;
 }
 .user-chats {
@@ -522,7 +473,7 @@ button-star {
   box-shadow: inset 0 0 5px rgba(244, 92, 93, 0);
 }
 ::-webkit-scrollbar-thumb {
-  background: rgb(17, 27, 33);
+  background: rgba(25, 0, 76, 255);
 }
 .text-chat {
   line-height: 1.3em;
@@ -530,7 +481,7 @@ button-star {
   border-radius: 3px;
 }
 .send-btn {
-  /* border: 1px solid rgb(233, 237, 227); */
+  /* border: 1px solid rgba(244, 92, 93, 255); */
   border: none;
   border-radius: 20px;
 }
@@ -547,7 +498,7 @@ button-star {
   width: 300px !important;
 } */
 .user-position {
-  border-bottom: 1px solid rgb(233, 237, 227);
+  border-bottom: 1px solid rgba(244, 92, 93, 255);
 }
 .btn:focus,
 .btn:active:focus,
@@ -572,17 +523,8 @@ button-star {
   background-color: transparent !important;
   color: #0cc4f2 !important;
 }
-.dropdown-item {
-  color: white;
-}
 .dropdown-item:hover {
-  background-color: rgb(17, 27, 33);
-  color: white;
-}
-.dropdown-menu {
-  background-color: rgb(42, 57, 66);
-  min-width: 15rem;
-  z-index: 4 !important;
+  background-color: transparent !important;
 }
 .date {
   font-size: 12px;
@@ -591,25 +533,18 @@ button-star {
 .plus-project {
   width: 20rem;
   height: 15rem;
-  box-shadow: 3px 5px 5px rgb(17, 27, 33);
+  box-shadow: 1px 3px 5px rgba(25, 0, 76, 255);
   border-radius: 5px;
-  background-color: rgb(42, 57, 66);
-  border: none;
-  overflow: hidden;
-}
-.react-datepicker-popper {
-  background-color: rgb(42, 57, 66) !important;
 }
 .my-projects {
   height: 100vh !important;
   overflow: hidden;
 }
 .plus-project:hover {
-  /* border: 1px solid rgb(233, 237, 227); */
-  background-color: rgb(25, 35, 40);
+  border: 2px solid rgba(244, 92, 93, 255);
 }
 .settings-card:hover {
-  box-shadow: 1px 3px 5px rgb(17, 27, 33);
+  box-shadow: 1px 3px 5px rgba(25, 0, 76, 255);
 }
 
 .discipline-img {
@@ -619,30 +554,24 @@ button-star {
 }
 .primary-btn {
   width: 10rem;
-  background-color: rgb(17, 27, 33);
-  border: none;
-}
-hr {
-  color: rgb(42, 57, 66);
-  background-color: rgb(32, 44, 51);
-  height: 1px;
+  background-color: rgba(25, 0, 76, 255);
 }
 .primary-btn:hover {
   color: white !important;
-  background-color: rgb(17, 27, 33);
+  background-color: rgba(25, 0, 76, 255);
 }
 .primary-btn:focus {
-  background-color: rgb(233, 237, 227);
-  color: rgb(17, 27, 33) !important;
+  background-color: rgba(244, 92, 93, 255);
+  color: rgba(25, 0, 76, 255) !important;
   outline: none !important;
   box-shadow: none !important;
 }
 .create-btn {
-  background-color: rgb(17, 27, 33);
+  background-color: rgba(25, 0, 76, 255);
   width: 80%;
 }
 .create-btn:focus {
-  background-color: rgb(17, 27, 33);
+  background-color: rgba(25, 0, 76, 255);
   outline: none !important;
   box-shadow: none !important;
 }
@@ -664,15 +593,12 @@ hr {
 #create-btn {
   display: none;
 }
-.organizer-account {
-  background-color: rgb(42, 57, 66);
-}
 @media screen and (max-width: 1413px) {
   .plus-project {
     width: 18rem;
     height: 13rem;
     overflow: hidden;
-    box-shadow: 1px 3px 5px rgb(17, 27, 33);
+    box-shadow: 1px 3px 5px rgba(25, 0, 76, 255);
     border-radius: 5px;
   }
 }
@@ -685,7 +611,7 @@ hr {
     width: 16rem;
     height: 12rem;
     overflow: hidden;
-    box-shadow: 1px 3px 5px rgb(17, 27, 33);
+    box-shadow: 1px 3px 5px rgba(25, 0, 76, 255);
     border-radius: 5px;
   }
   .d-sm-none.my-projects.giftcard-preview-nav {
@@ -697,7 +623,7 @@ hr {
     width: 100%;
     height: 18rem;
     overflow: hidden;
-    box-shadow: 1px 3px 5px rgb(17, 27, 33);
+    box-shadow: 1px 3px 5px rgba(25, 0, 76, 255);
     border-radius: 5px;
   }
 }
@@ -732,54 +658,9 @@ button[disabled].primary-btn {
 ul li {
   list-style: none;
 }
-
-.card {
-  border: none;
-  box-sizing: border-box;
-  background-color: rgb(42, 57, 66);
-}
-.card-body {
-  background-color: rgb(42, 57, 66);
-}
-.card-header {
-  background-color: rgb(29, 39, 46);
-}
 .my-projects.giftcard-preview-nav {
   position: sticky;
   top: 0;
-}
-.form-select {
-  background-color: rgb(32, 44, 51);
-  border: none;
-  border-radius: 5px;
-}
-
-.form-control {
-  border: none;
-}
-.nav-link.active {
-  background-color: rgb(32, 44, 51) !important;
-  color: white !important;
-  border: none;
-}
-.nav-link:hover {
-  border: none;
-}
-.nav-link {
-  color: rgb(18, 186, 227);
-}
-select option:hover {
-  background-color: rgb(42, 57, 66) !important;
-}
-input[type="radio"] {
-  background-color: rgb(32, 44, 51) !important;
-}
-input[type="email"].form-control {
-  background-color: rgb(32, 44, 51) !important;
-}
-
-input[type="checkbox"]:not(:checked) {
-  background-color: rgb(32, 44, 51) !important;
 }
 .carousel-indicators {
   margin-top: 3rem !important;
@@ -817,7 +698,7 @@ input[type="checkbox"]:not(:checked) {
   margin-left: 3px;
   text-indent: -999px;
   cursor: pointer;
-  background-color: rgb(17, 27, 33);
+  background-color: rgba(25, 0, 76, 255);
   background-clip: padding-box;
   border: 0;
   border-top: 10px solid transparent;
@@ -830,34 +711,30 @@ input[type="checkbox"]:not(:checked) {
 .carousel-control-next {
   display: none !important;
 }
-.fixture-container .participant-list:hover {
-  background-color: rgb(17, 27, 33);
+.participant-list:hover {
+  background-color: rgba(244, 92, 93, 0.08);
 }
-.fixture-container .participant-list {
-  background-color: rgb(42, 57, 66);
-  border: none !important;
+.participant-list {
+  border-top: 1px solid;
+  border-bottom: 1px solid;
 }
 .friends-list {
   border-bottom: 1px solid rgb(206, 197, 197);
 }
 .user-friends:hover {
-  background-color: rgb(17, 27, 33);
+  background-color: #bbbaba;
 }
 .playerNav {
   position: sticky;
   top: 0rem;
-  background-color: rgb(17, 27, 33);
+  background-color: rgb(25, 0, 76);
   z-index: 2;
-}
-.registration-forms {
-  background-color: rgb(42, 57, 66);
-  padding-bottom: 10px;
 }
 .tournament-preview-img {
   width: 6rem;
 }
 .tournament-list :hover {
-  background-color: rgb(17, 27, 33);
+  background-color: rgb(254, 242, 242);
 }
 .span {
   font-size: 0.9em;
@@ -910,50 +787,37 @@ tab[title] {
   max-height: 76vh;
   overflow-y: scroll;
   overflow-x: hidden;
-  /* background-color: rgb(42, 57, 66) !important; */
 }
 .profile-fixed {
   position: sticky;
   top: 20%;
 }
 .tournament-structure-card:hover {
-  box-shadow: 3px 3px 5px black;
-  border-radius: 5px;
+  box-shadow: 0.4px 0.6px 3px black;
 }
 .participant-names:hover {
-  background-color: rgb(17, 27, 33);
+  background-color: white;
 }
-.participant-names {
-  background-color: rgb(32, 44, 51);
-  border-radius: 4px;
-  border: none !important;
-}
-.container.participants-registered {
-  background-color: rgb(42, 57, 66);
-}
+
 .player-round-1 {
   position: relative;
   border: 1px solid gray !important;
   border-radius: 5px;
-  background-color: rgb(42, 57, 66) !important;
 }
 .player-round-2 {
   position: relative;
   border: 1px solid gray !important;
   border-radius: 5px;
-  background-color: rgb(42, 57, 66) !important;
 }
 .player-round-3 {
   position: relative;
   border: 1px solid gray !important;
   border-radius: 5px;
-  background-color: rgb(42, 57, 66) !important;
 }
 .player-round-4 {
   position: relative;
   border: 1px solid gray !important;
   border-radius: 5px;
-  background-color: rgb(42, 57, 66) !important;
 }
 .player-round-1::after {
   content: "";
@@ -963,9 +827,6 @@ tab[title] {
   position: absolute;
   right: -2rem;
   top: 50%;
-}
-.footer {
-  background-color: rgb(42, 57, 66);
 }
 .player-round-1::before {
   content: "";

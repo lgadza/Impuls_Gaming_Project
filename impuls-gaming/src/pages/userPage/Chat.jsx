@@ -65,7 +65,7 @@ const Chat = ({ user }) => {
   console.log();
   return (
     <Col className=" gift-container chat-section  ">
-      <Row className="w-100 d-flex mx-auto  py-2 mb-3 ">
+      <Row className="w-100 d-flex mx-auto  py-4 mb-3 ">
         <Col className="inputContainer px-0   w-100">
           <Icon.Search className="search-icon textColor" size={20} />
           <input
@@ -148,27 +148,25 @@ const Chat = ({ user }) => {
             <div>
               <hr />
               <Form onSubmit={handleSubmit}>
-                <Form.Group className="mb-2 d-flex align-items-center main-container2 ">
+                <Form.Group className="mb-2 d-flex align-items-center main-container2 send-content-container ">
                   <Form.Control
-                    className="main-container2"
+                    className="main-container2 "
                     placeholder="Write a message..."
                     as="textarea"
                     rows={2}
                     onChange={handleMessage}
                     value={message}
                   />
+                  {message && (
+                    <Icon.Send
+                      onClick={sendMessage}
+                      className="send-btn-icon p-2"
+                      size={40}
+                    />
+                  )}
                 </Form.Group>
                 <div className="d-flex py-2 justify-content-between">
-                  {/* <Icon.Image size={20} /> */}
-                  {message && (
-                    <button
-                      className="textColor px-3 mb-1 send-btn main-container2"
-                      type="submit"
-                      onClick={sendMessage}
-                    >
-                      Send
-                    </button>
-                  )}
+                  <Icon.Image size={20} />
                 </div>
               </Form>
             </div>
