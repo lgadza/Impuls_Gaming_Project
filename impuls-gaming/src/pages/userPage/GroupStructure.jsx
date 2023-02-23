@@ -28,6 +28,46 @@ const GroupStructure = () => {
   // );
   // console.log(tournament);
   const [key, setKey] = useState("activation");
+  // *******************************BRACKET FUNCTION***********
+  const knockoutBoxes = (numPlayers) => {
+    // Make sure the number of players is even
+    if (numPlayers % 2 !== 0) {
+      console.log("Number of players must be even!");
+      return;
+    }
+
+    // Create initial list of players
+    const players = Array.from({ length: numPlayers }, (_, i) => i + 1);
+
+    // Keep track of each round's boxes
+    const boxes = [];
+
+    // Play rounds until there are only 2 players left
+    while (players.length > 2) {
+      // Create empty boxes for this round
+      const roundBoxes = Array.from({ length: players.length / 2 }, () => []);
+
+      // Fill boxes with pairs of players
+      for (let i = 0; i < players.length; i += 2) {
+        roundBoxes[i / 2] = [players[i], players[i + 1]];
+      }
+
+      // Update players for next round
+      players.splice(0, players.length, ...roundBoxes.flat().filter(Boolean));
+
+      // Add this round's boxes to the overall list of boxes
+      boxes.push(roundBoxes);
+    }
+
+    // Add final box for the championship match
+    const finalBox = [players];
+    boxes.push(finalBox);
+
+    // Print out the boxes for each round
+    boxes.forEach((roundBoxes, i) => {
+      console.log(`Round ${i + 1}: ${JSON.stringify(roundBoxes)}`);
+    });
+  };
 
   return (
     <Row className="mt-5">
@@ -69,7 +109,7 @@ const GroupStructure = () => {
                 <Button variant="secondary px-5 mx-5">Round 3</Button>
               </div>
             </Row>
-            <Row>
+            {/* <Row>
               <Col>
                 <div className="d-flex flex-column align-items-start px-0 mt-3 mb-2">
                   <h5>Qaurster Final</h5>
@@ -127,7 +167,8 @@ const GroupStructure = () => {
                   </div>
                 </div>
               </Col>
-            </Row>
+            </Row> */}
+            {/* <div>{knockoutBoxes(36)}</div> */}
           </Tab>
           <Tab eventKey="schedule" title="Schedule">
             <Row>

@@ -135,6 +135,16 @@ h1 {
   border-top: 2px solid rgb(17, 27, 33);
   border-right: 2px solid rgb(17, 27, 33);
   border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+}
+.giftcard-section::after {
+  content: url("../img/impuls\ logo.png");
+  right: 0;
+  top: 0;
+  bottom: 0;
+  position: absolute;
+  opacity: 0.2;
 }
 .textColor {
   color: rgb(233, 237, 227) !important;
@@ -144,6 +154,10 @@ textarea:focus {
 }
 input:focus {
   color: rgb(233, 237, 227) !important;
+}
+.preview-content {
+  background-color: rgb(42, 57, 66);
+  overflow: hidden !important;
 }
 input,
 textarea {
@@ -303,6 +317,9 @@ svg {
   overflow: hidden;
   border: none;
   background-color: rgb(32, 44, 51) !important;
+}
+.component-frame.visible {
+  color: white !important;
 }
 .btn-danger::before {
   content: "";

@@ -4,12 +4,12 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { giftCardInf } from "../redux/actions/index.js";
 import { useSelector, useDispatch } from "react-redux";
-import logo from "../img/Blue_Futuristic_Gaming_Logo-removebg-preview.png";
+import logo from "../img/impuls logo.png";
 import * as Icon from "react-bootstrap-icons";
 import { format, compareAsc } from "date-fns";
 import { Link } from "react-router-dom";
 import Footer from "./Footer.jsx";
-
+import { PayPalButtons, PayPalScriptProvider } from "@paypal/react-paypal-js";
 const GiftCard = () => {
   const [formData, updateFormData] = useState("");
   const [sendDate, setSendDate] = useState(new Date());
@@ -17,7 +17,7 @@ const GiftCard = () => {
     format(new Date(sendDate).setDate(sendDate.getDate() + 7), "MM/dd/yyyy")
   );
   const dispatch = useDispatch();
-  const [amount, setAmount] = useState(undefined);
+  const [amount, setAmount] = useState("");
   const [name, setName] = useState("");
   const [senderName, setSenderName] = useState("");
   const [senderSurname, setSenderSurname] = useState("");
@@ -28,35 +28,27 @@ const GiftCard = () => {
   const [phone, setPhone] = useState(undefined);
   const handleAmount = (e) => {
     setAmount(e.target.value);
-    dispatch(giftCardInf(giftFormData));
   };
   const handleName = (e) => {
     setName(e.target.value);
-    dispatch(giftCardInf(giftFormData));
   };
   const handleSenderName = (e) => {
     setSenderName(e.target.value);
-    dispatch(giftCardInf(giftFormData));
   };
   const handleSenderSurname = (e) => {
     setSenderSurname(e.target.value);
-    dispatch(giftCardInf(giftFormData));
   };
   const handleSurname = (e) => {
     setSurname(e.target.value);
-    dispatch(giftCardInf(giftFormData));
   };
   const handleMessage = (e) => {
     setMessage(e.target.value);
-    dispatch(giftCardInf(giftFormData));
   };
   const handleEmail = (e) => {
     setEmail(e.target.value);
-    dispatch(giftCardInf(giftFormData));
   };
   const handlePhone = (e) => {
     setPhone(e.target.value);
-    dispatch(giftCardInf(giftFormData));
   };
 
   const giftFormData = {
@@ -80,9 +72,8 @@ const GiftCard = () => {
   // };
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData);
-    // ... submit to API
   };
+  console.log(amount);
 
   return (
     <Container className="main-container" fluid>
@@ -228,19 +219,37 @@ const GiftCard = () => {
                 </Col>
               </Form.Group>
               <div className="d-flex justify-content-flex-end mt-4 mb-3">
-                <button
-                  className="checkout-btn py-1 px-4 ml-auto w-100"
-                  type="submit"
-                >
-                  CheckOut
-                </button>
+                <PayPalScriptProvider>
+                  <PayPalButtons
+                    className="w-100 text-white "
+                    createOrder={(data, actions) => {
+                      return actions.order.create({
+                        purchase_units: [
+                          {
+                            amount: {
+                              value: amount,
+                            },
+                          },
+                        ],
+                      });
+                    }}
+                    onApprove={(data, actions) => {
+                      return actions.order.capture().then(function (details) {
+                        alert(
+                          "Gift card bought completely " +
+                            details.payer.name.given_name
+                        );
+                      });
+                    }}
+                  />
+                </PayPalScriptProvider>
               </div>
             </Form>
           </Col>
           <Col md={12} lg={6} className="d-none d-sm-block mt-5 mx-3">
             <h3 className="mt-5">Card Preview</h3>
-            <div className="d-flex giftcard-section mx-1 py-0  mt-5 mb-5">
-              <div column md={3} className="mr-2  giftcard-preview py-3 px-2">
+            <div className="d-flex giftcard-section w-100 mx-1 py-0  mt-5 mb-5">
+              <div column md={3} className="pr-2  giftcard-preview py-3 px-2">
                 <img className="logo-img mb-3" src={logo} alt="impuls logo" />
                 <div className="card-preview">
                   <div className=" mb-2">
@@ -263,7 +272,7 @@ const GiftCard = () => {
               <div
                 column
                 md={9}
-                className="  preview-content ml-3 d-flex flex-column justify-content-center"
+                className=" w-100  preview-content m-0 px-3 d-flex flex-column justify-content-center"
               >
                 <div>
                   <h3 className="mb-5 pb-2">Impuls Gift Card</h3>
@@ -271,7 +280,7 @@ const GiftCard = () => {
                     className="d-flex justify-content-end  "
                     style={amount ? { color: "red" } : { color: "black" }}
                   >
-                    $USD <span className="ml-2 ">{amount}</span>
+                    $USD <span>{amount}</span>
                   </h6>
                 </div>
                 <div className="card-preview-info d-flex ">
