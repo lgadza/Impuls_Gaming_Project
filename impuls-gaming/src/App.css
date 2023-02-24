@@ -104,7 +104,9 @@
   .nav-menu {
     display: none;
   }
-
+  .all-fields {
+    font-size: 0.8rem;
+  }
   .nav-toggle {
     display: block;
   }

@@ -94,13 +94,13 @@ const UserPage = () => {
 
             <Dropdown.Menu>
               <Dropdown.Item>
-                <div>
+                <div className="d-flex ml-2 justify-content-between">
                   <span>
                     {user.name} {user.surname}
                   </span>
                   <img
-                    src={profilePic}
-                    className="small-profile-img ml-2"
+                    src={user.avatar}
+                    className="small-profile-img "
                     alt=""
                   />
                 </div>
@@ -122,14 +122,17 @@ const UserPage = () => {
       </Row>
       <Container>
         <Row>
-          <Col
+          {/* <Col
             lg={4}
             className=" userProfile profile-fixed d-flex flex-column  mt-5 side-bar"
           >
             <UserProfile user={user} />
-          </Col>
+          </Col> */}
 
-          <Col lg={8} className=" mt-5 side-bar d-none d-lg-block">
+          <Col
+            // lg={8}
+            className=" mt-5 side-bar d-none d-lg-block"
+          >
             <Tabs
               onSelect={(k) => setKey(k)}
               className="mb-3  d-flex justify-content-center  textColor w-100"

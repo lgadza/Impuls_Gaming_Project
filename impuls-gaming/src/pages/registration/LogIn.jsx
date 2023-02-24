@@ -78,7 +78,7 @@ const SignIn = () => {
         </Col>
       </Row>
       <Row className="d-flex justify-content-center mt-4 textColor">
-        <Col lg={4} className=" login-content">
+        <Col lg={4} md={12} className=" login-content ">
           <div className=" ml-3 mt-3 d-flex justify-content-between align-items-center">
             {forgotPassword && <h4 className="mb-3">Forgot Password</h4>}
             {!forgotPassword && <h4>Sign In</h4>}

@@ -2,10 +2,8 @@ import { Col, Row, NavDropdown, Dropdown } from "react-bootstrap";
 import * as Icon from "react-bootstrap-icons";
 
 const Table = () => {
-  const API_KEY = "043889e9ea73af9c34129e6f7d0dd4c8";
-
   return (
-    <Col className="scoll-table gift-container pb-2 pr-0 fixture-container">
+    <Col className="gift-container mb-5 pb-2 mx-2 fixture-containerr">
       <Row className="w-100 d-flex mt-2 ">
         <Col className="d-flex justify-content-between pl-3 pr-0">
           <div className="d-flex align-items-center textColor2 ">

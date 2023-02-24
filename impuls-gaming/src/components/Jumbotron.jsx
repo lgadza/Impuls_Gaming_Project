@@ -16,13 +16,12 @@ const Jumbotron = () => {
           <h2 className="h2-join-call py-2">
             AND STAND A CHANCE TO WIN CASH PRIZE{" "}
           </h2>
-          {/* <span className="dollar-prize px-3">$$$</span> */}
         </div>
       </div>
       <div className="into mt-5 textColor ">
         <div className="into-content d-lg-none pt-5  pb-5">
-          <h2 className="textColor3 h2-join-call ">Live experience</h2>
-          <h1 className="textColor h2-join-call">Join Impuls community </h1>
+          <h1 className="textColor3">Live experience</h1>
+          <h1 className="textColor  h2-join-call">Join Impuls community </h1>
         </div>
       </div>
     </Container>

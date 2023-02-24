@@ -77,7 +77,7 @@ const LogInPage = () => {
               <Icon.XLg className="textColor" size={20} />
             </Link>{" "}
           </div>
-          <span className="d-flex ml-3 mb-1 text-secondary ">
+          <span className="d-flex ml-3 mb-1 all-fields text-secondary ">
             Please fill <strong className="mx-1">ALL fields</strong> in the form
             to create an account
           </span>

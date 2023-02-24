@@ -72,52 +72,57 @@ const NavigationBar = () => {
           fluid
           className="my-0 pt-2 px-3 position-relative d-flex align-items-start"
         >
-          <Link to="/">
-            <Navbar.Brand className="navbarBrand d-flex  d-md-block  my-0 py-0">
-              <img className="logo-img" src={logo} alt="" />
-              {/* <h3 className="impuls">Impuls</h3> */}
-            </Navbar.Brand>
-          </Link>
           <div>
-            <div className="d-flex justify-content-end ">
-              <div
-                className={`nav-toggle  ${isOpen ? "open  " : ""}`}
-                onClick={() => setIsOpen(!isOpen)}
-              >
-                <span className="textColor">Impuls</span>
-                <span></span>
-                <span className="textColor3">Gaming</span>
-              </div>
-            </div>
-            <div className="d-flex flex-column text-right pr-0">
+            <Link to="/">
+              <Navbar.Brand className="navbarBrand d-flex  d-md-block  my-0 py-0">
+                <img className="logo-img" src={logo} alt="" />
+              </Navbar.Brand>
+            </Link>
+            <div className="d-flex flex-column text-left pr-0">
               <div
                 className={`nav-menu mt-4 ${
                   isOpen ? "open d-flex flex-column height" : ""
                 }`}
               >
-                <Link to="/" className="textColor mb-3 pr-0  ">
-                  Home
-                </Link>
-                <Link to="/tournaments" className="textColor mb-3 pr-0  ">
-                  Tournaments
-                </Link>
-                <Link to="" className=" textColor mb-3 pr-0">
-                  Features
-                </Link>
-                <Link to="" className=" textColor mb-3 pr-0">
-                  News
-                </Link>
-                <hr />
-                <Link
-                  to="/organiser/signIn"
-                  className="link-none-deco text-small mr-2 link-btm-bar"
-                >
-                  Organizer
-                </Link>
-                <Link to={"/sign-up"} className="join-member   px-5 py-1 mb-2 ">
-                  LogIn
-                </Link>
+                <div className="d-flex flex-column ">
+                  <Link to="/" className="textColor mb-4 pr-0  ">
+                    Home
+                  </Link>
+                  <Link to="/tournaments" className="textColor mb-4 pr-0  ">
+                    Tournaments
+                  </Link>
+                  <Link to="" className=" textColor mb-4 pr-0">
+                    Features
+                  </Link>
+                  <Link to="" className=" textColor mb-4 pr-0">
+                    News
+                  </Link>
+                </div>
+                <div className="d-flex users flex-column mt-5 ">
+                  <hr className="hr" />
+                  <>
+                    <Link
+                      to="/organiser/signIn"
+                      className="link-none-deco text-small mb-4 mr-2 link-btm-bar"
+                    >
+                      Organizer
+                    </Link>
+                    <Link to={"/sign-up"} className="   mb-2 ">
+                      Player
+                    </Link>
+                  </>
+                </div>
               </div>
+            </div>
+          </div>
+          <div className="d-flex justify-content-end ">
+            <div
+              className={`nav-toggle  ${isOpen ? "open  " : ""}`}
+              onClick={() => setIsOpen(!isOpen)}
+            >
+              <span className="textColor">Impuls</span>
+              <span></span>
+              <span className="textColor3">Gaming</span>
             </div>
           </div>
         </Container>

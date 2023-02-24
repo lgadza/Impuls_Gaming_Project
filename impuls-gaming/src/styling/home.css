@@ -558,15 +558,7 @@ button-star {
 .text-background {
   background-color: #ddd4d4d4;
 }
-/* .scoll-table {
-  max-height: 75vh !important;
-  overflow-y: scroll;
-  overflow-x: hidden;
-  background-color: white;
-  width: 100% !important;
-  position: relative;
-  width: 300px !important;
-} */
+
 .user-position {
   border-bottom: 1px solid rgb(233, 237, 227);
 }
@@ -1109,11 +1101,15 @@ tab[title] {
   .navBackground2.myNav {
     padding-left: 10px !important;
     padding-right: 10px !important;
-    background-color: rgb(25, 0, 76);
+    background-color: rgb(17, 27, 33);
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 3;
+  }
+  .users {
+    position: absolute;
+    top: 60%;
   }
   .jumbotron {
     position: relative;
