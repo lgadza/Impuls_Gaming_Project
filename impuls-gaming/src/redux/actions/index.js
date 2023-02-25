@@ -10,6 +10,10 @@ export const GET_ME = "GET_ME";
 export const GET_ME_LOADING = "GET_ME_LOADING";
 export const GET_ME_ERROR = "GET_ME_ERROR";
 
+export const EMAIL_VERIFICATION = "EMAIL_VERIFICATION";
+export const EMAIL_VERIFICATION_LOADING = "EMAIL_VERIFICATION_LOADING";
+export const EMAIL_VERIFICATION_ERROR = "EMAIL_VERIFICATION_ERROR";
+
 export const GET_LOGIN_ACCESSTOKEN = "GET_LOGIN_ACCESSTOKEN";
 export const GET_LOGIN_ACCESSTOKEN_LOADING = "GET_LOGIN_ACCESSTOKEN_LOADING";
 export const GET_LOGIN_ACCESSTOKEN_ERROR = "GET_LOGIN_ACCESSTOKEN_ERROR";
@@ -43,52 +47,6 @@ export const USER_PREFERENCE_DATA_LOADING = " USER_PREFERENCE_DATA_LOADING";
 export const USER_DATA_ERROR = " USER_DATA_ERROR";
 export const USER_DATA_LOADING = " USER_DATA_LOADING";
 
-// export const getUsers = () => {
-//   return async (dispatch) => {
-//     const options = {
-//       method: "GET",
-//     };
-//     const URL = process.cwd.REACT_APP_BE_DEV_URL;
-//     try {
-//       const response = fetch(`http://localhost:3001/users`, options);
-//       console.log("I AM THE CALLER");
-//       if (response.ok) {
-//         const users = await response.json();
-//         dispatch({
-//           type: GET_USERS,
-//           payload: users,
-//         });
-//         setTimeout(() => {
-//           dispatch({
-//             type: GET_USERS_LOADING,
-//             payload: false,
-//           });
-//         }, 100);
-//       } else {
-//         console.log("error");
-//         dispatch({
-//           type: GET_USERS_LOADING,
-//           payload: false,
-//         });
-
-//         dispatch({
-//           type: GET_USERS_ERROR,
-//           payload: true,
-//         });
-//       }
-//     } catch (error) {
-//       console.log(error);
-//       dispatch({
-//         type: GET_USERS_LOADING,
-//         payload: false,
-//       });
-//       dispatch({
-//         type: GET_USERS_ERROR,
-//         payload: true,
-//       });
-//     }
-//   };
-// };
 export const registerUser = (userData) => {
   return async (dispatch) => {
     const options = {
@@ -413,6 +371,63 @@ export const registerTournament = (data, tournamentId) => {
       }
     } catch (error) {
       console.log(error);
+    }
+  };
+};
+export const emailVerification = (data, userId) => {
+  return async (dispatch) => {
+    const options = {
+      method: "PUT",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    };
+    const URL = process.env.REACT_APP_BE_PROD_URL;
+    try {
+      const response = await fetch(
+        `${URL}/users/admin/verifyEmail/${userId}`,
+        options
+      );
+
+      if (response.ok) {
+        const emailVerificationResponse = await response.json();
+        console.log(emailVerificationResponse);
+        dispatch({
+          type: EMAIL_VERIFICATION,
+          payload: emailVerificationResponse,
+        });
+        setTimeout(() => {
+          dispatch({
+            type: EMAIL_VERIFICATION_LOADING,
+            payload: false,
+          });
+        }, 100);
+      } else {
+        console.log("error");
+
+        dispatch({
+          type: EMAIL_VERIFICATION_LOADING,
+          payload: false,
+        });
+        dispatch({
+          type: EMAIL_VERIFICATION_ERROR,
+          payload: true,
+        });
+      }
+    } catch (error) {
+      console.log(error);
+
+      dispatch({
+        type: EMAIL_VERIFICATION_LOADING,
+        payload: false,
+      });
+
+      dispatch({
+        type: EMAIL_VERIFICATION_ERROR,
+        payload: true,
+      });
     }
   };
 };
