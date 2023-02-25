@@ -9,7 +9,7 @@ import Spinner from "../../components/Spinner";
 
 const EmailVerification = () => {
   const params = useParams();
-  console.log(params.userId);
+
   const isLoading = useSelector((state) => state.emailVerification.isLoading);
   const isError = useSelector((state) => state.emailVerification.isError);
   const emailVerificationResponse = useSelector(
@@ -74,7 +74,9 @@ const EmailVerification = () => {
               <Form.Group className="d-flex mb-4">
                 <Col>
                   <Form.Text>
-                    <strong>Hey Name! Please verify your email.</strong>
+                    <strong>
+                      Hey {params.userName}! Please verify your email.
+                    </strong>
                   </Form.Text>
                   <Button
                     onClick={handleVerification}

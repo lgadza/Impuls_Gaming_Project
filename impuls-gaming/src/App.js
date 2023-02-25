@@ -108,7 +108,7 @@ function App() {
           />
           <Route
             element={<EmailVerification />}
-            path={`/organizer/verifyEmail/:userId`}
+            path={`/organizer/verifyEmail/:userId/:userName`}
           />
         </Routes>
       </BrowserRouter>

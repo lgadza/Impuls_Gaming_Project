@@ -109,11 +109,12 @@ const OrganiserSignUp = () => {
                   <Alert.Heading>!You got an error!</Alert.Heading>
                   <p>
                     Something went wrong on our side, we are working on it, we
-                    apologies for the inconvenience caused
+                    apologies for the inconvenience caused, please try again in
+                    a moment
                   </p>
                 </Alert>
               )}
-              {response && (
+              {response && !isError && (
                 <Alert variant="primary">{registrationResponse.message}</Alert>
               )}
               <hr />
