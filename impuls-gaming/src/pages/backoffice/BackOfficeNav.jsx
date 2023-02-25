@@ -5,6 +5,9 @@ import logo from "../../img/impuls logo.png";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import LoggedInOrganizer from "../../components/LoggedInOrganizer";
+import SocialMediaSharing from "../../components/SocialMediaSharing";
+import "font-awesome/css/font-awesome.css";
+import "../../styling/socialSharing.css";
 
 const BackOfficeNav = ({ data, page, user }) => {
   const [profileClicked, setProfileClicked] = useState(false);
@@ -106,10 +109,8 @@ const BackOfficeNav = ({ data, page, user }) => {
               Final standing
             </span>
           </Link>
-          <Link className="my-2 d-flex">
-            <Icon.Share size={20} />
-            Share
-          </Link>
+          <Link className="mt-4 pt-3">{/* <Icon.Share size={20} /> */}</Link>
+          <SocialMediaSharing />
         </Nav>
       </Navbar>
       <div

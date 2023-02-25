@@ -18,6 +18,7 @@ import registerUser from "../reducers/registerUser";
 import getMe from "../reducers/meReducer";
 import adminSignInToken from "../reducers/adminLogin";
 import emailVerification from "../reducers/emailVerification";
+import getProjectImgs from "../reducers/getProjectImgs";
 const persistConfig = {
   key: "root",
   storage: localStorage,
@@ -41,6 +42,7 @@ const bigReducer = combineReducers({
   me: getMe,
   adminToken: adminSignInToken,
   emailVerification: emailVerification,
+  projectImgs: getProjectImgs,
 });
 
 const persistedReducer = persistReducer(persistConfig, bigReducer);

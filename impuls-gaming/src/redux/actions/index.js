@@ -18,6 +18,10 @@ export const GET_LOGIN_ACCESSTOKEN = "GET_LOGIN_ACCESSTOKEN";
 export const GET_LOGIN_ACCESSTOKEN_LOADING = "GET_LOGIN_ACCESSTOKEN_LOADING";
 export const GET_LOGIN_ACCESSTOKEN_ERROR = "GET_LOGIN_ACCESSTOKEN_ERROR";
 
+export const GET_PROJECT_IMAGES = "GET_PROJECT_IMAGES";
+export const GET_PROJECT_IMAGES_LOADING = "GET_PROJECT_IMAGES_LOADING";
+export const GET_PROJECT_IMAGES_ERROR = "GET_PROJECT_IMAGES_ERROR";
+
 export const GET_ADMIN_LOGIN_ACCESSTOKEN = "GET_ADMIN_LOGIN_ACCESSTOKEN";
 export const GET_ADMIN_LOGIN_ACCESSTOKEN_LOADING =
   "GET_ADMIN_LOGIN_ACCESSTOKEN_LOADING";
@@ -490,6 +494,53 @@ export const getTournaments = () => {
 
       dispatch({
         type: GET_TOURNAMENTS_ERROR,
+        payload: true,
+      });
+    }
+  };
+};
+export const getProjectsImgs = () => {
+  return async (dispatch) => {
+    const options = {
+      method: "GET",
+    };
+    const URL = process.env.REACT_APP_BE_PROD_URL;
+    try {
+      let response = await fetch(`${URL}/files/projects/imgs`, options);
+      if (response.ok) {
+        const tournaments = await response.json();
+        dispatch({
+          type: GET_PROJECT_IMAGES,
+          payload: tournaments,
+        });
+        setTimeout(() => {
+          dispatch({
+            type: GET_PROJECT_IMAGES_LOADING,
+            payload: false,
+          });
+        }, 100);
+      } else {
+        console.log("error");
+
+        dispatch({
+          type: GET_PROJECT_IMAGES_LOADING,
+          payload: false,
+        });
+        dispatch({
+          type: GET_PROJECT_IMAGES_ERROR,
+          payload: true,
+        });
+      }
+    } catch (error) {
+      console.log(error);
+
+      dispatch({
+        type: GET_PROJECT_IMAGES_LOADING,
+        payload: false,
+      });
+
+      dispatch({
+        type: GET_PROJECT_IMAGES_ERROR,
         payload: true,
       });
     }

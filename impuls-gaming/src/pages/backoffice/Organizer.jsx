@@ -6,7 +6,7 @@ import CreateTournament from "./CreateTournament";
 import fifa from "../../img/fifa23.jpg";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { getTournaments } from "../../redux/actions";
+import { getProjectsImgs, getTournaments } from "../../redux/actions";
 
 import DeleteConfirm from "../../components/DeleteConfirm";
 const Organizer = ({ projects }) => {
@@ -18,6 +18,7 @@ const Organizer = ({ projects }) => {
   const handleClose = () => setShow(false);
   const handleCloseDelete = () => setShowDelete(false);
   const handleShow = () => {
+    dispatch(getProjectsImgs());
     setShow(true);
   };
   const handleDeleteItem = () => {

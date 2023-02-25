@@ -626,9 +626,10 @@ button-star {
 }
 
 .discipline-img {
-  width: 10rem;
-  height: 10rem;
+  width: 15rem;
+  height: 20rem;
   object-fit: cover;
+  border-radius: 5px;
 }
 .primary-btn {
   width: 10rem;
@@ -1084,6 +1085,9 @@ tab[title] {
   outline: none;
   border: none;
   box-shadow: none;
+}
+.social-icons {
+  position: relative;
 }
 @media screen and (max-width: 992px) {
   .featured-leagues {
