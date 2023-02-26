@@ -63,7 +63,7 @@ const Tournaments = ({ tournaments }) => {
                         className="tournament-preview-img mr-2"
                       />
                       <div className="d-flex flex-column justify-content-start">
-                        <h5 className="text-nowrap tournament-name d-flex ">
+                        <h5 className="text-nowrap text-left tournament-name1  ">
                           {tournament.name}
                         </h5>
                         <span className="text-nowrap span d-flex ">

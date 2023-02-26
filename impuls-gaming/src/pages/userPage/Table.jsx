@@ -1,9 +1,10 @@
 import { Col, Row, NavDropdown, Dropdown } from "react-bootstrap";
 import * as Icon from "react-bootstrap-icons";
-
+import Avatar from "../../components/Avatar";
+import profilePic from "../../img/Louis profile .JPG";
 const Table = () => {
   return (
-    <Col className="gift-container mb-5 pb-2 mx-2 fixture-containerr">
+    <Col className="gift-container mb-5 pb-2 mx-2 fixture-container fixture-scroll">
       <Row className="w-100 d-flex mt-2 ">
         <Col className="d-flex justify-content-between pl-3 pr-0">
           <div className="d-flex align-items-center textColor2 ">
@@ -18,7 +19,7 @@ const Table = () => {
           </div>
         </Col>
       </Row>
-      <Row className=" playerNav py-3  textColor pr-0  mr-0  ">
+      <Row className=" playerNav   textColor py-3 ">
         <Col className="d-flex  justify-content-between pl-3 pr-0">
           <div>
             <span>Player</span>
@@ -29,7 +30,7 @@ const Table = () => {
             <span className="mx-3">D</span>
             <span className="mx-3">L</span>
             <span className="mx-3">Pts</span>
-            <span className="ml-4">Last 3</span>
+            <span className="mx-3">Last 3</span>
           </div>
         </Col>
       </Row>
@@ -39,8 +40,11 @@ const Table = () => {
           <Row className=" pr-0  mr-0 textColor2">
             <Col className="participant-list pb-2 py-2 d-flex justify-content-between  mr-0 px-0">
               <div>
-                <span className="mx-3">{index + 1}</span>
-                <span className="text-nowrap">-</span>
+                <div className="d-flex align-items-center">
+                  <span className="mx-3 ">{index + 1}</span>
+                  <Avatar height={20} width={20} alt="louis" src={profilePic} />
+                  <span className="text-nowrap ml-1">LOUIS GADZA</span>
+                </div>
               </div>
               <div className="d-flex justify-content-end mr-0">
                 <span className="mx-3">MP</span>

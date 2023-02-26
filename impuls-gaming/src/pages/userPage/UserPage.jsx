@@ -1,7 +1,7 @@
 import { Col, Container, Row, Dropdown } from "react-bootstrap";
 import * as Icon from "react-bootstrap-icons";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
-import profilePic from "../../img/Louis profile .JPG";
+
 import Table from "./Table";
 import { useEffect, useState } from "react";
 import Chat from "./Chat";
@@ -10,7 +10,7 @@ import Tabs from "react-bootstrap/Tabs";
 import { useSelector, useDispatch } from "react-redux";
 import Tournaments from "./Tournaments";
 import Overview from "./Overview";
-import UserProfile from "./UserProfile";
+
 import Fixtures from "./Fixtures";
 import { getMe, getTournaments, getUsers } from "../../redux/actions";
 import Avatar from "../../components/Avatar";
@@ -135,7 +135,7 @@ const UserPage = () => {
           >
             <Tabs
               onSelect={(k) => setKey(k)}
-              className="mb-3  d-flex justify-content-center  textColor w-100"
+              className="navigation-tabs  d-flex justify-content-center mt-3 textColor"
             >
               <Tab className="textColor2" eventKey="overview" title="Overview">
                 <Overview tournaments={tournaments.tournaments} />

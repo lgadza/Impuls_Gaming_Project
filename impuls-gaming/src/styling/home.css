@@ -867,6 +867,11 @@ input[type="checkbox"]:not(:checked) {
   background-color: rgb(42, 57, 66);
   border: none !important;
 }
+.fixture-container {
+  /* max-height: 76vh;
+  overflow-y: scroll;
+  overflow-x: hidden; */
+}
 .friends-list {
   border-bottom: 1px solid rgb(206, 197, 197);
 }
@@ -875,10 +880,18 @@ input[type="checkbox"]:not(:checked) {
 }
 .playerNav {
   position: sticky;
-  top: 0rem;
+  top: 10%;
   background-color: rgb(17, 27, 33);
   z-index: 2;
 }
+.navigation-tabs.d-flex.justify-content-center.textColor.nav.nav-tabs {
+  position: fixed !important;
+  top: 0;
+  left: 15%;
+  right: 15%;
+  z-index: 2;
+}
+
 .registration-forms {
   background-color: rgb(42, 57, 66);
   padding-bottom: 10px;
@@ -936,12 +949,7 @@ tab[title] {
 .border {
   background-color: white;
 }
-.fixture-container {
-  max-height: 76vh;
-  overflow-y: scroll;
-  overflow-x: hidden;
-  /* background-color: rgb(42, 57, 66) !important; */
-}
+
 .profile-fixed {
   position: sticky;
   top: 20%;
@@ -1195,3 +1203,9 @@ tab[title] {
     margin-left: 5px;
   }
 }
+/* //TODO for table */
+/* @media screen and (max-width: 510px) {
+  .gift-container.mb-5.pb-2.mx-2.fixture-container.fixture-scroll {
+    width: 1000px !important;
+  }
+} */
