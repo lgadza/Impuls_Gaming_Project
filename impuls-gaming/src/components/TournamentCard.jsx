@@ -1,7 +1,7 @@
 import { Card, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import * as Icon from "react-bootstrap-icons";
-import logo from "../img/Blue_Futuristic_Gaming_Logo-removebg-preview.png";
+import logo from "../img/impuls logo.png";
 import tournamentCover from "../img/tournament.webp";
 import { format, compareAsc } from "date-fns";
 
@@ -18,7 +18,7 @@ const TournamentCard = ({ tournament }) => {
           <strong className="tournament-name1 text-left">
             {tournament.name}
           </strong>
-          <span className="text-small text-left text-muted d-flex">
+          <span className="text-small text-nowrap text-left text-muted d-flex">
             {tournament.discipline_name}
           </span>
         </Card.Title>

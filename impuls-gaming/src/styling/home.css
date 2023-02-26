@@ -440,8 +440,17 @@ a:hover {
     #0cc4f2,
     rgba(11, 11, 11, 0.3)
   );
-  color: white;
 }
+.h2-join-call1 {
+  background-image: radial-gradient(
+    circle closest-side,
+    yellow,
+    black,
+    #0cc4f2,
+    rgba(11, 11, 11, 0)
+  );
+}
+
 .dollar-prize {
   color: goldenrod;
   font-weight: bold;
@@ -1087,7 +1096,7 @@ tab[title] {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  width: 200px;
+  width: 260px;
 }
 .edit-tournament {
   position: absolute;
