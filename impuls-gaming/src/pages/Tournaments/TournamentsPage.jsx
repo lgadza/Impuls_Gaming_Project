@@ -27,7 +27,7 @@ const HomeUpdates = () => {
               <TournamentCard tournament={tournament} />
             </Col>
           ))}
-          <Col md={6} lg={6}>
+          <Col md={12} className="px-0">
             <Table />
           </Col>
         </Row>

@@ -489,6 +489,9 @@ button-star {
 .off {
   color: #ccc;
 }
+.player-position {
+  width: 40px;
+}
 .search-icon {
   position: absolute;
   left: 30px;
@@ -560,7 +563,6 @@ button-star {
   border-radius: 3px;
 }
 .send-btn {
-  /* border: 1px solid rgb(233, 237, 227); */
   border: none;
   border-radius: 20px;
 }
@@ -889,7 +891,7 @@ input[type="checkbox"]:not(:checked) {
 }
 .playerNav {
   position: sticky;
-  top: 10%;
+  top: 11.5%;
   background-color: rgb(17, 27, 33);
   z-index: 2;
 }
@@ -1212,9 +1214,75 @@ tab[title] {
     margin-left: 5px;
   }
 }
+
 /* //TODO for table */
-/* @media screen and (max-width: 510px) {
+@media screen and (max-width: 510px) {
   .gift-container.mb-5.pb-2.mx-2.fixture-container.fixture-scroll {
-    width: 1000px !important;
+    overflow-x: scroll;
+    margin-left: 0 !important;
+    /* padding-left: 0 !important;
+    padding-right: 0 !important; */
+    font-size: 0.8rem;
+    /* position: relative; */
   }
-} */
+  .playerNav {
+    position: sticky;
+    /* position: fixed;
+    top: 60px; */
+    top: 0;
+    background-color: rgb(17, 27, 33);
+    z-index: 3;
+    width: 500px !important;
+  }
+
+  .playerNav .d-flex.justify-content-between {
+    padding-right: 0 !important;
+  }
+  .gift-container.mb-5.pb-2.mx-2.fixture-container.fixture-scroll
+    .mobile-scrolling {
+    width: 500px !important;
+    padding-right: 15px !important;
+    /* position: absolute; */
+    left: 0;
+    top: 0;
+    bottom: 0;
+    height: 100%;
+  }
+
+  .player-name-sticky.player {
+    position: sticky;
+    left: 0px;
+    background-color: rgb(17, 27, 33);
+    z-index: 3;
+    width: 188px;
+  }
+  .player-stats {
+    transform: translateX(-8px);
+  }
+  .participant-list .player-name-sticky {
+    position: sticky;
+    left: -15px;
+    background-color: rgb(42, 57, 66);
+  }
+  .seasons-list {
+    position: sticky;
+    left: 0;
+    background-color: rgb(42, 57, 66);
+  }
+  .participant-list:hover .player-name-sticky {
+    position: sticky;
+    left: -15px;
+    background-color: rgb(17, 27, 33);
+  }
+  .player-name-sticky .text-nowrap {
+    width: 140px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  .player-name-sticky.player {
+    /* width: 180px; */
+    position: sticky;
+    top: 64px;
+  }
+}
