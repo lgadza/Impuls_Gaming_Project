@@ -54,13 +54,13 @@ const NavigationBar = () => {
           <div className="d-flex align-items-center">
             <Link
               to="/organiser/signIn"
-              className="link-none-deco text-small mr-2 link-btm-bar"
+              className="link-none-deco text-small pr-2 link-btm-bar border-right"
             >
               Organizer
             </Link>
             <Link
               to={"/sign-up"}
-              className="join-member d-none d-lg-block  px-5 py-1 "
+              className="link-none-deco text-small ml-2 link-btm-bar"
             >
               Player
             </Link>

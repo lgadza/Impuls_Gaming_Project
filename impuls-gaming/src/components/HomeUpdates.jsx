@@ -35,37 +35,6 @@ const HomeUpdates = () => {
               <TournamentCard tournament={tournament} />
             </Col>
           ))}
-        {/* <Col md={6} lg={4} className="mb-4">
-          <Card className="featured-games">
-            <Card.Img variant="top" src={mk} />
-            <Card.Body>
-              <Card.Title className="textColor d-flex">
-                <strong>Mortal Kombat Tournament</strong>
-              </Card.Title>
-              <div className=" d-flex">
-                <Icon.Calendar2Event size={30} />
-                <span>Registration Coming Soon </span>
-              </div>
-              <Card.Text className="bg-dark py-2 my-3 px-2 textColor d-flex">
-                Tournaments by Impuls Gaming
-                <img
-                  className="league-provider-img ml-2"
-                  src={logo}
-                  alt="logo"
-                />
-              </Card.Text>
-              <Link
-                to="/sign-up"
-                className="w-100 d-flex mt-4 justify-content-end"
-              >
-                {" "}
-                <Button disabled variant="danger">
-                  Registration Opens Soon
-                </Button>
-              </Link>
-            </Card.Body>
-          </Card>
-        </Col> */}
       </Row>
       <h2 className="my-5 d-flex featured-league">WHAT'S NEW</h2>
 

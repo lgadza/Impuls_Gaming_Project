@@ -2,7 +2,6 @@ import { Card, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import * as Icon from "react-bootstrap-icons";
 import logo from "../img/impuls logo.png";
-import tournamentCover from "../img/tournament.webp";
 import { format, compareAsc } from "date-fns";
 
 const TournamentCard = ({ tournament }) => {
@@ -22,21 +21,40 @@ const TournamentCard = ({ tournament }) => {
             {tournament.discipline_name}
           </span>
         </Card.Title>
-        <div className=" d-flex">
+        <div className=" d-flex align-items-center">
           <Icon.Calendar2Event
-            className="pr-1 pl-0 ml-0 text-success"
+            className="pr-1 pl-0 textColor3 ml-0"
             size={30}
           />
-          <span className="text-small text-success">
-            <span className="d-flex">
-              <span className="mr-1">Registration</span>
-              {tournament.startDate && tournament.endDate && (
-                <span className="d-flex">
+          <span className="text-small">
+            <span className="d-flex ">
+              <span className="mr-1 textColor3">Registration</span>
+              {tournament.registration.activation.registrationOpeningDate &&
+              tournament.registration.activation.registrationClosingDate &&
+              new Date(
+                tournament.registration.activation.registrationClosingDate
+              ) >= new Date() ? (
+                <span
+                  className="d-flex 
+text-success ml-3"
+                >
                   {" "}
-                  {format(new Date(tournament.startDate.toString()), "dd MMM")}
+                  {format(
+                    new Date(
+                      tournament.registration.activation.registrationOpeningDate.toString()
+                    ),
+                    "dd MMM"
+                  )}
                   {" - "}
-                  {format(new Date(tournament.endDate.toString()), "dd MMM ")}
+                  {format(
+                    new Date(
+                      tournament.registration.activation.registrationClosingDate.toString()
+                    ),
+                    "dd MMM "
+                  )}
                 </span>
+              ) : (
+                <span className="text-danger ml-3">Closed</span>
               )}
             </span>
           </span>
@@ -45,10 +63,24 @@ const TournamentCard = ({ tournament }) => {
           Sponsored by Impuls
           <img className="league-provider-img ml-2" src={logo} alt="logo" />
         </Card.Text>
-        <Link to="/sign-up" className="w-100 d-flex justify-content-end">
-          {" "}
-          <Button variant="danger">Registration Open</Button>
-        </Link>
+        {tournament.registration.activation.registrationOpeningDate &&
+        tournament.registration.activation.registrationClosingDate &&
+        new Date(tournament.registration.activation.registrationClosingDate) >=
+          new Date() ? (
+          <Link to="/sign-up" className="w-100 d-flex justify-content-end">
+            {" "}
+            <Button variant="danger" className="register-btn">
+              Registration Open
+            </Button>
+          </Link>
+        ) : (
+          <Link className="w-100 d-flex justify-content-end">
+            {" "}
+            <Button disabled={true} variant="danger">
+              Registration Closed
+            </Button>
+          </Link>
+        )}
       </Card.Body>
     </Card>
   );
