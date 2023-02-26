@@ -7,7 +7,7 @@ const Table = () => {
     <Col className="gift-container mb-5 pb-2 mx-2 fixture-container fixture-scroll">
       <Row className="w-100 d-flex mt-2 ">
         <Col className="d-flex justify-content-between pl-3 pr-0">
-          <div className="d-flex seasons-list align-items-center textColor2 ">
+          <div className="d-flex seasons-list align-items-center justify-content-between textColor2 ">
             <div>Season</div>
             <div>
               <NavDropdown title="March/20-27 " menuVariant="dark">
@@ -16,6 +16,9 @@ const Table = () => {
                 <Dropdown.Item href="#/action-3">April/01-07</Dropdown.Item>
               </NavDropdown>
             </div>
+          </div>
+          <div>
+            <Icon.ArrowLeftRight size={20} className="d-lg-none sm-d-block" />
           </div>
         </Col>
       </Row>
