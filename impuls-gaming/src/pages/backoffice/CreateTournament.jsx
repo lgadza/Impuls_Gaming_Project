@@ -40,13 +40,24 @@ const CreateTournament = ({ visible, onhide }) => {
   const handleSize = (e) => {
     setSize(e.target.value);
   };
+  const handleDisciplineName = (index) => {
+    if (index === 0) {
+      setDisciplineName("FIFA 23");
+    } else if (index === 1) {
+      setDisciplineName("Motal Kombat 11");
+    } else if (index === 2) {
+      setDisciplineName("Tournaments");
+    } else if (index === 3) {
+      setDisciplineName("Call Of Duty");
+    }
+  };
   const handleData = async () => {
     await dispatch(createTournament(formValues));
     await dispatch(getTournaments());
     onhide();
     navagation.navigate(`/backoffice/projects/overview/${tournament}`);
   };
-  console.log("Dname Cover", disciplineCoverUrl);
+  console.log("Dname Cover", projectImgs);
   return (
     <Modal
       scrollable
@@ -83,8 +94,13 @@ const CreateTournament = ({ visible, onhide }) => {
                       onChange={handleTournament}
                     />
                     {notUnique && (
-                      <span className=" blink_me ml-2 mt-2 textColor">
+                      <span className=" blink_me ml-2 mt-3 text-danger">
                         Tournament name already exist
+                      </span>
+                    )}
+                    {tournament.includes("/") && (
+                      <span className=" blink_me text-danger ml-2 mt-3 ">
+                        Characters / not allowed
                       </span>
                     )}
                   </Form.Group>
@@ -96,7 +112,10 @@ const CreateTournament = ({ visible, onhide }) => {
                 <Carousel>
                   {projectImgs.map((discipline, index) => (
                     <Link
-                      onClick={() => setDisciplineCoverUrl(discipline.url)}
+                      onClick={() => {
+                        setDisciplineCoverUrl(discipline.url);
+                        handleDisciplineName(index);
+                      }}
                       className="image-project"
                       key={index}
                     >
@@ -117,13 +136,13 @@ const CreateTournament = ({ visible, onhide }) => {
                         className="w-100"
                         type="text"
                         placeholder="Chosen game"
-                        value={disciplineCoverUrl}
+                        value={disciplineName}
                       />
                     </Form.Group>
                   </Form>
                 </Col>
               </Row>
-              <Row>
+              {/* <Row>
                 <Col>
                   <Form className="w-100">
                     <Form.Group className="mt-1 mb-2 w-100">
@@ -137,12 +156,12 @@ const CreateTournament = ({ visible, onhide }) => {
                     </Form.Group>
                   </Form>
                 </Col>
-              </Row>
+              </Row> */}
               <div className="my-2">Platform</div>
               <Row>
                 <Col>
                   <Button
-                    className="primary-btn textColor"
+                    className="primary-btn textColor mb-2"
                     size="lg"
                     onClick={() => {
                       setPlatformCheck("Playstation 5");
@@ -154,7 +173,7 @@ const CreateTournament = ({ visible, onhide }) => {
                 <Col>
                   {" "}
                   <Button
-                    className="primary-btn textColor"
+                    className="primary-btn textColor mb-2"
                     size="lg"
                     onClick={() => {
                       setPlatformCheck("Playstation 4");
@@ -166,7 +185,7 @@ const CreateTournament = ({ visible, onhide }) => {
                 <Col>
                   {" "}
                   <Button
-                    className="primary-btn textColor"
+                    className="primary-btn textColor mb-2"
                     size="lg"
                     onClick={() => {
                       setPlatformCheck("XBox");

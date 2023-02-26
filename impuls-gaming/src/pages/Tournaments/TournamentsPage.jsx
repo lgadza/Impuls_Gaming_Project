@@ -23,7 +23,7 @@ const HomeUpdates = () => {
       <Container className="textColor mt-5 tournament_page ">
         <Row className="mb-5">
           {tournaments.tournaments.map((tournament) => (
-            <Col md={6} lg={3} className="mb-4 mt-5">
+            <Col md={6} lg={4} className="mb-4 mt-5">
               <TournamentCard tournament={tournament} />
             </Col>
           ))}

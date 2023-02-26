@@ -1,5 +1,4 @@
 import { Col, Container, Row, Navbar, Nav } from "react-bootstrap";
-import fifa from "../../img/fifa23.jpg";
 import * as Icon from "react-bootstrap-icons";
 import logo from "../../img/impuls logo.png";
 import { Link } from "react-router-dom";
@@ -26,7 +25,11 @@ const BackOfficeNav = ({ data, page, user }) => {
       <div>
         <h6 className="d-flex my-3">Tournament</h6>
         <div className="d-flex w-100 ">
-          <img className="tournament-name-img" src={fifa} alt="" />
+          <img
+            className="tournament-name-img"
+            src={data.discipline_cover}
+            alt=""
+          />
           <div className="d-flex flex-column w-75">
             <span className="d-flex ml-2 tournament-name w-75">
               {data.name}

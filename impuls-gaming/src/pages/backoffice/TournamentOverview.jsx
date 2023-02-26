@@ -8,7 +8,7 @@ import {
   ProgressBar,
 } from "react-bootstrap";
 import * as Icon from "react-bootstrap-icons";
-import fifa from "../../img/fifa23.jpg";
+
 import { format } from "date-fns";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
@@ -94,7 +94,7 @@ const TournamentOverview = () => {
                         <div className="d-flex  ">
                           <img
                             className="tournament-name-img"
-                            src={fifa}
+                            src={tournament.discipline_cover}
                             alt=""
                           />
                           <div className="d-flex flex-column">

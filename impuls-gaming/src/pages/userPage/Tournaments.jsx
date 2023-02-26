@@ -10,7 +10,7 @@ const Tournaments = ({ tournaments }) => {
       <Row>
         <Col className="d-flex justify-content-end">
           <Dropdown>
-            <Dropdown.Toggle className="textColor mt-1 mr-3">
+            <Dropdown.Toggle className="textColor my-1 mr-3">
               <span className="bg-secondary text-white  px-3 py-1">Filter</span>
             </Dropdown.Toggle>
 
@@ -48,45 +48,62 @@ const Tournaments = ({ tournaments }) => {
       {tournaments.map((tournament, index) => (
         <div>
           {tournament.name ? (
-            <Link
-              to={`/tournaments/${tournament.name}`}
-              className="link-none-deco"
-            >
-              <Row className="w-100 pr-0  mr-0 tournament-list  textColor2 container">
-                <Col className="pb-2 px-1 py-2 d-flex justify-content-between  mr-0 px-0">
-                  <div className="d-flex">
-                    <img
-                      src={fifa}
-                      alt=""
-                      className="tournament-preview-img mr-2"
-                    />
-                    <div className="d-flex flex-column justify-content-start">
-                      <h5 className="text-nowrap tournament-name d-flex ">
-                        {tournament.name}
-                      </h5>
-                      <span className="text-nowrap span d-flex ">
-                        {tournament.discipline}
-                      </span>
+            <>
+              <hr className="my-0" />
+              <Link
+                to={`/tournaments/${tournament.name}`}
+                className="link-none-deco"
+              >
+                <Row className="w-100 pr-0  mr-0 tournament-list  textColor2 container">
+                  <Col className="pb-2 px-1 py-2 d-flex justify-content-between  mr-0 px-0">
+                    <div className="d-flex">
+                      <img
+                        src={tournament.discipline_cover}
+                        alt=""
+                        className="tournament-preview-img mr-2"
+                      />
+                      <div className="d-flex flex-column justify-content-start">
+                        <h5 className="text-nowrap tournament-name d-flex ">
+                          {tournament.name}
+                        </h5>
+                        <span className="text-nowrap span d-flex ">
+                          {tournament.discipline_name}
+                        </span>
+                      </div>
                     </div>
-                  </div>
-                  <div className="d-flex justify-content-end mr-0">
-                    <span className="span ">2 Feb 2023</span>
-                  </div>
-                  <div>
-                    <div className="d-flex flex-column justify-content-end mr-0">
-                      <span className="span">23/36</span>
-                      <span className="span">Players</span>
+
+                    <div className="d-flex justify-content-end mr-0">
+                      <span className="span ">2 Feb 2023</span>
                     </div>
-                  </div>
-                  <div>
-                    <div className="d-flex flex-column justify-content-end text-success mr-0">
-                      <span className="span">Registration</span>
-                      <span className="span ">Open</span>
+                    <div>
+                      <div className="d-flex flex-column justify-content-end mr-0">
+                        <span className="span">
+                          {tournament.tournamentParticipants.length}/
+                          {tournament.size}
+                        </span>
+                        <span className="span">Players</span>
+                      </div>
                     </div>
-                  </div>
-                </Col>
-              </Row>
-            </Link>
+                    <div>
+                      {tournament.registration.activation.isRegistration &&
+                      new Date(
+                        tournament.registration.activation.registrationClosingDate
+                      ) >= new Date() ? (
+                        <div className="d-flex flex-column justify-content-end text-success mr-0">
+                          <span className="span">Registration</span>
+                          <span className="span ">Open</span>
+                        </div>
+                      ) : (
+                        <div className="d-flex flex-column justify-content-end text-danger mr-0">
+                          <span className="span">Registration</span>
+                          <span className="span ">Closed</span>
+                        </div>
+                      )}
+                    </div>
+                  </Col>
+                </Row>
+              </Link>
+            </>
           ) : (
             <div>
               No competions open at the moment. We are opening a new competion

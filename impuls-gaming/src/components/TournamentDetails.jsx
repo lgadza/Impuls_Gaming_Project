@@ -19,7 +19,7 @@ import { format, compareAsc } from "date-fns";
 import DatePicker from "react-datepicker";
 import { useState, useEffect } from "react";
 import NavigationBar from "./NavigationBar";
-import fifa from "../../src/img/fifa23.jpg";
+
 import Footer from "./Footer";
 import GroupStructure from "../pages/userPage/GroupStructure";
 import RegistrationForm from "./RegistrationForm";
@@ -42,7 +42,11 @@ const TournamentDetails = () => {
       <NavigationBar />
       <div className="tournament-img-cover-container ">
         <Card className="bg-dark text-white   ">
-          <Card.Img src={fifa} alt="fifa" className=" tournament-img-cover" />
+          <Card.Img
+            src={tournament.discipline_cover}
+            alt={tournament.discipline_name}
+            className=" tournament-img-cover"
+          />
           <Card.ImgOverlay className="tournament-info">
             <Container>
               <Card.Text>

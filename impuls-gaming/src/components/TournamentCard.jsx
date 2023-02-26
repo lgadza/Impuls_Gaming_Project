@@ -8,11 +8,17 @@ import { format, compareAsc } from "date-fns";
 const TournamentCard = ({ tournament }) => {
   return (
     <Card className="featured-games">
-      <Card.Img variant="top" src={tournamentCover} />
+      <Card.Img
+        variant="top"
+        className="project-cover-img1"
+        src={tournament.discipline_cover}
+      />
       <Card.Body>
-        <Card.Title className="textColor d-flex">
-          <strong>{tournament.name}</strong>
-          <span className="text-small text-muted d-flex">
+        <Card.Title className="textColor d-flex justify-content-between">
+          <strong className="tournament-name1 text-left">
+            {tournament.name}
+          </strong>
+          <span className="text-small text-left text-muted d-flex">
             {tournament.discipline_name}
           </span>
         </Card.Title>
@@ -35,7 +41,7 @@ const TournamentCard = ({ tournament }) => {
             </span>
           </span>
         </div>
-        <Card.Text className="bg-dark py-3 my-3 px-2 textColor d-flex">
+        <Card.Text className="bg-dark py-2 my-3 px-2 textColor d-flex">
           Sponsored by Impuls
           <img className="league-provider-img ml-2" src={logo} alt="logo" />
         </Card.Text>

@@ -664,6 +664,16 @@ hr {
   width: 4rem;
   height: 3rem;
 }
+.project-cover-img {
+  width: 100%;
+  height: 85%;
+  object-fit: cover;
+}
+.project-cover-img1 {
+  width: 100%;
+  height: 250px;
+  /* object-fit: cover; */
+}
 .hr {
   width: 100%;
   height: 1px;
@@ -1064,6 +1074,12 @@ tab[title] {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+.tournament-name1 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 200px;
 }
 .edit-tournament {
   position: absolute;

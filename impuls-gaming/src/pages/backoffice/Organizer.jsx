@@ -3,7 +3,7 @@ import { Col, Row, Button } from "react-bootstrap";
 import * as Icon from "react-bootstrap-icons";
 import { useState, useEffect } from "react";
 import CreateTournament from "./CreateTournament";
-import fifa from "../../img/fifa23.jpg";
+
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { getProjectsImgs, getTournaments } from "../../redux/actions";
@@ -93,8 +93,12 @@ const Organizer = ({ projects }) => {
 
               <Link to={`projects/overview/${project.name}`}>
                 <span className="d-flex mt-5 align-items-center justify-content-center flex-column main-container2 plus-project  mx-4 mr-4">
-                  <img src={fifa} className="w-100" alt="fifa" />
-                  <span className="d-flex justify-content-center mx-4 align-items-center py-3 textColor">
+                  <img
+                    src={project.discipline_cover}
+                    className="w-100 project-cover-img"
+                    alt={project.discipline_cover}
+                  />
+                  <span className="d-flex justify-content-center mx-4 align-items-center py-2 textColor">
                     <strong>{project.name}</strong>
                   </span>
                 </span>
