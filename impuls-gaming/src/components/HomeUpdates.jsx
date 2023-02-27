@@ -13,7 +13,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import { getTournaments } from "../redux/actions";
 import Spinner from "./Spinner";
-
+import Reservations from "./Reservations";
 const HomeUpdates = () => {
   const tournaments = useSelector((state) => state.tournaments.tournaments);
   const dispatch = useDispatch();
@@ -21,12 +21,21 @@ const HomeUpdates = () => {
   useEffect(() => {
     dispatch(getTournaments());
   }, []);
-
+  const [showReservations, setShowReservation] = useState(false);
+  const handleHideReservation = () => setShowReservation(false);
   return (
     <Container className="textColor">
       {isLoading && <Spinner />}
 
-      <h1 className="d-flex mb-5 featured-leagues"> Tournaments</h1>
+      <div className="d-flex justify-content-between">
+        <h1 className="d-flex mb-5 featured-leagues"> Tournaments</h1>
+        <Link
+          onClick={() => setShowReservation(true)}
+          className="textColor3 show-reservs"
+        >
+          Show available stations
+        </Link>
+      </div>
 
       <Row>
         {tournaments.tournaments &&
@@ -56,6 +65,7 @@ const HomeUpdates = () => {
           </Card>
         </Col>
       </Row>
+      <Reservations visible={showReservations} onhide={handleHideReservation} />
     </Container>
   );
 };

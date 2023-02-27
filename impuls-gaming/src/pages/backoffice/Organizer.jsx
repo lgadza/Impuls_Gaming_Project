@@ -7,8 +7,10 @@ import CreateTournament from "./CreateTournament";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { getProjectsImgs, getTournaments } from "../../redux/actions";
-
+import { io } from "socket.io-client";
 import DeleteConfirm from "../../components/DeleteConfirm";
+const DEV_URL = process.env.REACT_APP_BE_DEV_URL;
+const socket = io(DEV_URL, { transports: ["websocket"] });
 const Organizer = ({ projects }) => {
   const dispatch = useDispatch();
   const [show, setShow] = useState(false);
@@ -25,10 +27,13 @@ const Organizer = ({ projects }) => {
     deleteItem === false ? setDeleteItem(true) : setDeleteItem(false);
   };
   const project = useSelector((state) => state.tournaments.tournaments);
-
+  const user = useSelector((state) => state.me.me);
   useEffect(() => {
     dispatch(getTournaments());
   }, []);
+  useEffect(() => {
+    socket.emit("newUser", user.name);
+  }, [socket, user.name]);
   return (
     <>
       <>

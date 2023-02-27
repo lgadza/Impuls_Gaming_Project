@@ -1,0 +1,99 @@
+.reservations-stations-container {
+  background-color: rgba(16, 22, 26, 0.9);
+  position: absolute;
+
+  left: 0;
+  right: 0;
+  isolation: isolate;
+}
+.model-header {
+  background-color: rgba(16, 22, 26, 0.9);
+}
+.reservations-stations {
+  background-color: rgba(16, 22, 26, 0.4);
+}
+.station.reserved {
+  background-color: rgb(225, 225, 225, 0.3);
+  width: 20rem;
+  height: 10rem;
+  border-radius: 5px;
+  position: relative;
+  border-left: 5px solid red;
+}
+.station.free {
+  background-color: rgb(225, 225, 225, 0.3);
+  width: 20rem;
+  height: 8rem;
+  border-radius: 5px;
+  position: relative;
+  border-left: 5px solid rgb(40, 167, 69);
+}
+.station.free .player-chair {
+  width: 5rem;
+  height: 3rem;
+  border-radius: 10%;
+  border-right: 12px solid green;
+  border-left: 12px solid green;
+  background-color: rgb(40, 167, 69);
+  z-index: -1;
+  isolation: isolate;
+}
+.station.reserved .player-chair {
+  width: 5rem;
+  height: 3rem;
+  border-radius: 10%;
+  border-right: 12px solid red;
+  border-left: 12px solid red;
+  background-color: rgb(224, 67, 67);
+  z-index: -1;
+  isolation: isolate;
+}
+
+.free .player-chair.chair-1 {
+  position: absolute;
+  bottom: -1.5rem;
+  left: 1rem;
+  border-bottom: 12px solid green;
+}
+.free .player-chair.chair-2 {
+  position: absolute;
+  bottom: -1.5rem;
+  right: 1rem;
+  border-bottom: 12px solid green;
+}
+.reserved .player-chair.chair-1 {
+  position: absolute;
+  bottom: -1.5rem;
+  left: 1rem;
+  border-bottom: 12px solid red;
+}
+.reserved .player-chair.chair-2 {
+  position: absolute;
+  bottom: -1.5rem;
+  right: 1rem;
+  border-bottom: 12px solid red;
+}
+.free .player-chair.chair-3 {
+  position: absolute;
+  top: -1.5rem;
+  left: 1rem;
+  border-top: 12px solid green;
+}
+.free .player-chair.chair-4 {
+  position: absolute;
+  top: -1.5rem;
+  right: 1rem;
+  border-top: 12px solid green;
+}
+.reserved .player-chair.chair-3 {
+  position: absolute;
+  top: -1.5rem;
+  left: 1rem;
+  border-top: 12px solid red;
+}
+.reserved .player-chair.chair-4 {
+  position: absolute;
+  top: -1.5rem;
+  right: 1rem;
+  border-top: 12px solid red;
+}

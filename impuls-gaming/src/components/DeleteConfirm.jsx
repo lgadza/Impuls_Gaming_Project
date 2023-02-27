@@ -33,7 +33,9 @@ const DeleteConfirm = ({ visible, onhide, tournamentId }) => {
             <Row>
               <h6 className="my-5 ">
                 Are you sure you want to delete{" "}
-                <strong className="textColor2 mx-2">{tournamentId}</strong>
+                <strong className="textColor2 text-danger mx-2">
+                  {tournamentId}
+                </strong>
                 tournament
               </h6>
               <div className="my-5 ml-auto">

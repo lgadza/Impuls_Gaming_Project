@@ -31,7 +31,7 @@ const UserPage = () => {
   );
 
   useEffect(() => {
-    socket.emit("newUser", user.name);
+    socket.emit("newUser", { username: user.name + " " + user.surname });
   }, [socket, user.name]);
   useEffect(() => {
     dispatch(getUsers());
