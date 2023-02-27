@@ -18,22 +18,34 @@ import { useSelector, useDispatch } from "react-redux";
 import { format, compareAsc } from "date-fns";
 import DatePicker from "react-datepicker";
 import { useState, useEffect } from "react";
-import { editTournament } from "../../redux/actions";
+import { editTournament, getTournaments } from "../../redux/actions";
 
-const Overview = () => {
+const Overview = ({ socket, tournamentId }) => {
+  const user = useSelector((state) => state.me.me);
   const params = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const tournamentData = useSelector((state) => state.tournaments.tournaments);
-  // const tournament = tournamentData.tournaments.find(
-  //   (name) => name.name === params.tournamentId
-  // );
-
   const [update, setUpdate] = useState(false);
-
-  const handleUpdate = () => {
-    setUpdate(true);
+  const [reportMyScore, setReportMyScore] = useState("");
+  const [reportHisScore, setReportHisScore] = useState("");
+  const [receiverName, setReceiverName] = useState("");
+  const [forfeited, setForfeited] = useState(null);
+  const reportData = {
+    senderName: `${user.name} ${user.surname}`,
+    receiverName: receiverName,
+    tournament: "63fb123704b9b9cb723ff4ab",
+    score: {
+      senderName: reportHisScore,
+      receiverName: reportHisScore,
+      forfeited: forfeited,
+    },
   };
+  const handleUpdate = (type) => {
+    setUpdate(true);
+    socket.emit("sendNotification", { reportData, type });
+  };
+  console.log(receiverName);
   return (
     <Container fluid className=" textColor px-0 fixture-container">
       <Row>
@@ -42,7 +54,7 @@ const Overview = () => {
             <div className="registration-card bring-top mx-auto mb-5">
               <Alert key={"success"} variant={"success"}>
                 <Icon.CheckCircle size={15} />
-                <span>Settings have been successfully updated.</span>
+                <span>Your results report has been successfully updated.</span>
               </Alert>
             </div>
           )}
@@ -54,23 +66,72 @@ const Overview = () => {
                 </h3>
               </Card.Header>
               <Card.Body>
-                <div className="d-flex justify-content-around align-items-center">
-                  <h5>Player 1</h5>
+                <div className="d-flex justify-content-between px-3 align-items-center">
+                  <div className="d-flex flex-column">
+                    <h5
+                      className={` d-flex ${
+                        Number(reportMyScore) >= Number(reportHisScore)
+                          ? "text-success"
+                          : "text-danger"
+                      } `}
+                    >
+                      {user.name}
+                    </h5>
+                    {forfeited === user.name && (
+                      <span className="text-danger text-small">
+                        You forfeited
+                      </span>
+                    )}
+                  </div>
                   <div>
                     <span className="text-white">
                       <input
-                        className="results-input text-white py-0 mr-3"
+                        className={`results-input mr-3 ${
+                          Number(reportMyScore) >= Number(reportHisScore)
+                            ? "text-success"
+                            : "text-danger"
+                        } `}
                         type="number"
-                        placeholder="0"
+                        disabled={true}
+                        placeholder="-"
+                        value={Number(reportMyScore)}
                       />{" "}
                       <input
-                        className="results-input text-white"
+                        disabled={true}
+                        className={`results-input ${
+                          Number(reportHisScore) >= Number(reportMyScore)
+                            ? "text-success"
+                            : "text-danger"
+                        } `}
                         type="number"
-                        placeholder="0"
+                        placeholder="-"
+                        value={Number(reportHisScore)}
                       />{" "}
                     </span>
                   </div>
-                  <h5>Player 2</h5>
+                  <div className="d-flex flex-column">
+                    <h5
+                      className={` ${
+                        Number(reportHisScore) >= Number(reportMyScore)
+                          ? "text-success"
+                          : "text-danger"
+                      } `}
+                    >
+                      {receiverName ? (
+                        <span>{receiverName}</span>
+                      ) : (
+                        <span className="text-danger">
+                          {" "}
+                          Select Opponent Name
+                        </span>
+                      )}
+                    </h5>
+                    {forfeited === receiverName && (
+                      <span className="text-danger text-small">
+                        He forfeited
+                      </span>
+                    )}
+                  </div>
                 </div>
 
                 <Card.Body>
@@ -86,12 +147,17 @@ const Overview = () => {
 
                   <div className="d-flex justify-content-between mt-3">
                     <div className="d-flex align-items-start flex-column">
-                      <span>Player 1</span>
+                      <span>{user.name}</span>
                     </div>
                     <div className="d-flex align-items-center">
-                      <input type="radio" name="forfeit" />
+                      <input
+                        type="radio"
+                        onClick={() => setForfeited(user.name)}
+                        name="forfeit"
+                      />
                       <input
                         type="number"
+                        onChange={(e) => setReportMyScore(e.target.value)}
                         className="results-input2 text-white py-0 mx-4"
                       />
                       <div>
@@ -103,12 +169,30 @@ const Overview = () => {
                   </div>
                   <div className="d-flex justify-content-between mt-3">
                     <div className="d-flex align-items-start flex-column">
-                      <span>Player 2</span>
+                      {tournamentId ? (
+                        <Form.Select
+                          onClick={(e) => setReceiverName(e.target.value)}
+                          className="textColor px-2 py-1"
+                          placeholder="Opponent"
+                        >
+                          <option value="">Opponent</option>
+                          <option>Sage</option>
+                          <option>Steve</option>
+                          <option>Lelo</option>
+                        </Form.Select>
+                      ) : (
+                        <span className="text-mute">No Opponent available</span>
+                      )}
                     </div>
                     <div className="d-flex align-items-center">
-                      <input type="radio" name="forfeit" />
+                      <input
+                        type="radio"
+                        onClick={() => setForfeited(receiverName)}
+                        name="forfeit"
+                      />
                       <input
                         type="number"
+                        onChange={(e) => setReportHisScore(e.target.value)}
                         className="results-input2 text-white py-0 mx-4"
                       />
                       {/* <div>
@@ -125,7 +209,7 @@ const Overview = () => {
                 >
                   <Button
                     type="submit"
-                    //   onClick={handleUpdate}
+                    onClick={() => handleUpdate("reportScore")}
                     className="primary-btn textColor"
                   >
                     Report

@@ -22,18 +22,18 @@ const TournamentCard = ({ tournament }) => {
           </span>
         </Card.Title>
         <div className=" d-flex align-items-center">
-          <Icon.Calendar2Event
-            className="pr-1 pl-0 textColor3 ml-0"
-            size={30}
-          />
-          <span className="text-small">
-            <span className="d-flex ">
-              <span className="mr-1 textColor3">Registration</span>
-              {tournament.registration.activation.registrationOpeningDate &&
-              tournament.registration.activation.registrationClosingDate &&
-              new Date(
-                tournament.registration.activation.registrationClosingDate
-              ) >= new Date() ? (
+          {tournament.registration.activation.registrationOpeningDate &&
+          tournament.registration.activation.registrationClosingDate &&
+          new Date(
+            tournament.registration.activation.registrationClosingDate
+          ) >= new Date() ? (
+            <>
+              <Icon.Calendar2Event
+                className="pr-1 pl-0 text-success ml-0"
+                size={30}
+              />
+              <span className="d-flex text-small">
+                <span className="mr-1 text-success">Registration</span>
                 <span
                   className="d-flex 
 text-success ml-3"
@@ -53,11 +53,25 @@ text-success ml-3"
                     "dd MMM "
                   )}
                 </span>
-              ) : (
-                <span className="text-danger ml-3">Closed</span>
-              )}
-            </span>
-          </span>
+              </span>
+            </>
+          ) : (
+            <>
+              <Icon.Calendar2Event
+                className="pr-1 pl-0 text-danger ml-0"
+                size={30}
+              />
+              <span className="d-flex text-small">
+                <span className="mr-1 text-danger">Registration</span>
+                <span
+                  className="d-flex 
+text-danger ml-3"
+                >
+                  Closed
+                </span>
+              </span>
+            </>
+          )}
         </div>
         <Card.Text className="bg-dark py-2 my-3 px-2 textColor d-flex">
           Sponsored by Impuls

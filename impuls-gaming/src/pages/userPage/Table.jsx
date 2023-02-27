@@ -41,7 +41,7 @@ const Table = () => {
       <div className="mobile-scrolling">
         {[...Array(20)].map((player, index) => (
           <div>
-            <Row className=" pr-0  mr-0 textColor2">
+            <Row key={index} className=" pr-0  mr-0 textColor2">
               <Col className="participant-list pb-2 py-2 d-flex justify-content-between  mr-0 px-0">
                 <div className="d-flex align-items-center player-name-sticky">
                   <span className="px-3 player-position ">{index + 1}</span>

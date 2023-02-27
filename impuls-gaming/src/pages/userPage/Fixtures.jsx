@@ -4,8 +4,8 @@ const Fixtures = () => {
   return (
     <Container fluid>
       <Row className="fixture-container">
-        {[...Array(30)].map((fixture) => (
-          <Col md={6} className="border participant-list">
+        {[...Array(30)].map((fixture, index) => (
+          <Col md={6} key={index} className="border participant-list">
             <span className="d-flex d-block pb-2 text-mute text-secondary">
               League
             </span>

@@ -10,23 +10,29 @@ import Tabs from "react-bootstrap/Tabs";
 import { useSelector, useDispatch } from "react-redux";
 import Tournaments from "./Tournaments";
 import Overview from "./Overview";
-
 import Fixtures from "./Fixtures";
 import { getMe, getTournaments, getUsers } from "../../redux/actions";
 import Avatar from "../../components/Avatar";
 import { logout } from "../../redux/actions";
-
+import { io } from "socket.io-client";
+const DEV_URL = process.env.REACT_APP_BE_DEV_URL;
+const socket = io(DEV_URL, { transports: ["websocket"] });
 const UserPage = () => {
   const [isChat, setIsChat] = useState(false);
+  const [tournamentToReport, setTournamentToReport] = useState("Call Of Duty");
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [key, setKey] = useState("activation");
+
   const user = useSelector((state) => state.me.me);
   const tournaments = useSelector((state) => state.tournaments.tournaments);
   const signInCredentials = useSelector(
     (state) => state.accessToken.accessToken
   );
+
+  useEffect(() => {
+    socket.emit("newUser", user.name);
+  }, [socket, user.name]);
   useEffect(() => {
     dispatch(getUsers());
 
@@ -35,13 +41,13 @@ const UserPage = () => {
     if (!localStorage.getItem("accessToken")) navigate("/user-page");
     if (searchParams.get("accessToken")) {
       localStorage.setItem("accessToken", searchParams.get("accessToken"));
-      // navigate("/user-page");
     }
   }, [navigate, searchParams]);
   const handleLogout = async () => {
     await dispatch(logout(user._id));
     navigate("/");
   };
+
   return (
     <Container fluid className="textColor px-0 user-page main-container ">
       <Row className="mb-3 px-5 w-100 py-3 d-flex align-items-center justify-content-between position-fixed giftcard-preview-nav">
@@ -133,28 +139,34 @@ const UserPage = () => {
             // lg={8}
             className=" mt-5 side-bar d-none d-lg-block"
           >
-            <Tabs
-              onSelect={(k) => setKey(k)}
-              className="navigation-tabs  d-flex justify-content-center mt-3 textColor"
-            >
+            <Tabs className="navigation-tabs  d-flex justify-content-center mt-3 textColor">
               <Tab className="textColor2" eventKey="overview" title="Overview">
-                <Overview tournaments={tournaments.tournaments} />
+                <Overview
+                  // tournaments={tournaments.tournaments}
+                  socket={socket}
+                  user={user}
+                  tournamentId={tournamentToReport}
+                />
               </Tab>
               <Tab className="w-100" eventKey="table" title="Table">
-                <Table />
+                <Table socket={socket} user={user} />
               </Tab>
               <Tab eventKey="fixture" title="Fixtures">
-                <Fixtures />
+                <Fixtures socket={socket} user={user} />
               </Tab>
               <Tab eventKey="tournaments" title="Tournaments">
-                <Tournaments tournaments={tournaments.tournaments} />
+                <Tournaments
+                  tournaments={tournaments.tournaments}
+                  socket={socket}
+                  user={user}
+                />
               </Tab>
               <Tab
                 onClick={() => setIsChat(true)}
                 eventKey="friends"
                 title="Chats"
               >
-                <Chat user={user} clicked={isChat} />
+                <Chat user={user} clicked={isChat} socket={socket} />
               </Tab>
             </Tabs>
           </Col>

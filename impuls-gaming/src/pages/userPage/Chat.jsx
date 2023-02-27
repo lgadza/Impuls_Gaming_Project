@@ -34,12 +34,12 @@ const Chat = ({ user }) => {
         console.log(newMessage);
         setChatHistory.push(newMessage);
       });
-      socket.on("updateOnlineUsersList", (onlineUsersList) => {
-        console.log("A new user connected/disconnected");
-        //  setOnlineUsers(onlineUsersList);
-      });
+      // socket.on("updateOnlineUsersList", (onlineUsersList) => {
+      //   console.log("A new user connected/disconnected");
+      //   //  setOnlineUsers(onlineUsersList);
+      // });
     });
-  });
+  }, []);
   // console.log(users);
   const submitUsername = () => {
     // here we will be emitting a "setUsername" event (the server is already listening for that)
@@ -62,7 +62,7 @@ const Chat = ({ user }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
   };
-  console.log();
+
   return (
     <Col className=" gift-container chat-section  ">
       <Row className="w-100 d-flex mx-auto  py-4 mb-3 ">
