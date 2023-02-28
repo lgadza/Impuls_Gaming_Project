@@ -1,16 +1,17 @@
 .reservations-stations-container {
-  background-color: rgba(16, 22, 26, 0.9);
+  width: 100%;
+  height: 100%;
+  background-color: rgb(32, 44, 51);
   position: absolute;
-
   left: 0;
   right: 0;
   isolation: isolate;
+  margin-top: 88px;
 }
-.model-header {
-  background-color: rgba(16, 22, 26, 0.9);
-}
+
 .reservations-stations {
-  background-color: rgba(16, 22, 26, 0.4);
+  background-color: rgba(16, 22, 26);
+  /* margin-top: ; */
 }
 .station.reserved {
   background-color: rgb(225, 225, 225, 0.3);

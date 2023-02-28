@@ -1,19 +1,14 @@
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
 import "../styling/spinner.css";
-
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import giftcard from "../img/playstation_store.jpg";
-import fifa23 from "../img/fifa23 .jpg";
 import * as Icon from "react-bootstrap-icons";
-import logo from "../img/Blue_Futuristic_Gaming_Logo-removebg-preview.png";
-import tournament from "../img/tournament.webp";
-import mk from "../img/mk.avif";
 import TournamentCard from "./TournamentCard";
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import { getTournaments } from "../redux/actions";
 import Spinner from "./Spinner";
-import Reservations from "./Reservations";
+
 const HomeUpdates = () => {
   const tournaments = useSelector((state) => state.tournaments.tournaments);
   const dispatch = useDispatch();
@@ -23,6 +18,7 @@ const HomeUpdates = () => {
   }, []);
   const [showReservations, setShowReservation] = useState(false);
   const handleHideReservation = () => setShowReservation(false);
+  const navigate = useNavigate();
   return (
     <Container className="textColor">
       {isLoading && <Spinner />}
@@ -30,7 +26,7 @@ const HomeUpdates = () => {
       <div className="d-flex justify-content-between">
         <h1 className="d-flex mb-5 featured-leagues"> Tournaments</h1>
         <Link
-          onClick={() => setShowReservation(true)}
+          onClick={() => navigate("/reservations")}
           className="textColor3 show-reservs"
         >
           Show available stations
@@ -65,7 +61,6 @@ const HomeUpdates = () => {
           </Card>
         </Col>
       </Row>
-      <Reservations visible={showReservations} onhide={handleHideReservation} />
     </Container>
   );
 };

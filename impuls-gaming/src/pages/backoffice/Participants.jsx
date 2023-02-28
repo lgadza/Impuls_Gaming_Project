@@ -25,8 +25,8 @@ const Participants = () => {
   );
   const users = tournament.tournamentParticipants;
   useEffect(() => {
-    const URL = `${process.env.REACT_APP_BE_PROD_URL}/users?limit=10`;
-    dispatch(getUsers(URL));
+    // const URL = `${process.env.REACT_APP_BE_PROD_URL}/users?limit=10`;
+    // dispatch(getUsers(URL));
     dispatch(getTournaments());
   }, []);
 
@@ -42,15 +42,11 @@ const Participants = () => {
 
   return (
     <Container fluid className="main-container2 textColor">
-      {users.length > 0 && (
-        <Row>
-          <Col lg={2} className="px-0">
-            <BackOfficeNav
-              data={tournament}
-              user={user}
-              page={"participants"}
-            />
-          </Col>
+      <Row>
+        <Col lg={2} className="px-0">
+          <BackOfficeNav data={tournament} user={user} page={"participants"} />
+        </Col>
+        {users.length >= 0 && (
           <Col lg={10} className="my-5 px-5">
             {update && (
               <div className="registration-card mx-auto">
@@ -350,8 +346,8 @@ const Participants = () => {
               </Card.Body>
             </Card>
           </Col>
-        </Row>
-      )}
+        )}
+      </Row>
     </Container>
   );
 };

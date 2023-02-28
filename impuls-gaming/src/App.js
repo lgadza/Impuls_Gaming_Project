@@ -30,6 +30,7 @@ import OrganiserSignUp from "./pages/registration/OrganiserSignUp";
 import MatchOverview from "./pages/backoffice/MatchOverview";
 import FinalStanding from "./pages/backoffice/FinalStanding";
 import EmailVerification from "./pages/registration/EmailVerification";
+import Reservations from "./components/Reservations";
 
 function App() {
   return (
@@ -110,6 +111,7 @@ function App() {
             element={<EmailVerification />}
             path={`/organizer/verifyEmail/:userId/:userName`}
           />
+          <Route element={<Reservations />} path={`/reservations`} />
         </Routes>
       </BrowserRouter>
     </div>
