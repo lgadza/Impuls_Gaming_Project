@@ -111,8 +111,12 @@ body {
 .into-content {
   margin-top: 18%;
   color: #12bae3;
+  z-index: 3 !important;
 }
-
+.into-content .h2-join-call {
+  color: white;
+  z-index: 3;
+}
 h1 {
   font-size: 3em;
 }
