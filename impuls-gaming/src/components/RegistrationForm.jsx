@@ -71,8 +71,8 @@ const RegistrationForm = () => {
           </Alert>
         </div>
       )}
-      <Row>
-        <Col className="registration-forms mt-3">
+      <Row className="d-flex justify-content-center">
+        <Col lg={8} className="registration-forms mt-3">
           <div className="d-flex  flex-column my-3">
             <h4 className="d-flex">Tournament registration</h4>
           </div>

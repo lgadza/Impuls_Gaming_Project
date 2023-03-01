@@ -38,7 +38,10 @@ const TournamentDetails = () => {
   const dispatch = useDispatch();
   console.log(tournament);
   return (
-    <Container fluid className="main-container textColor  px-0 ">
+    <Container
+      fluid
+      className="main-container textColor tournament-details  px-0 "
+    >
       <NavigationBar />
       <div className="tournament-img-cover-container ">
         <Card className="bg-dark text-white   ">

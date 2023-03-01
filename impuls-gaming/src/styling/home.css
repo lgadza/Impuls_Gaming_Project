@@ -1034,7 +1034,11 @@ tab[title] {
 .border {
   background-color: white;
 }
-
+.rounds-robing.nav.nav.nav-tabs {
+  border: none;
+  display: flex;
+  justify-content: center;
+}
 .profile-fixed {
   position: sticky;
   top: 20%;
@@ -1422,9 +1426,15 @@ button.nav-link {
     text-align: center;
   }
   .primary-btn {
-    width: 5rem;
+    width: 6rem;
     background-color: rgb(17, 27, 33);
     border: none;
+  }
+  .modal-header .modal-title.h4 span {
+    font-size: 1rem;
+  }
+  input {
+    font-size: 1rem !important;
   }
   .tournament-name1 {
     width: 6rem;
@@ -1435,6 +1445,9 @@ button.nav-link {
   }
   .tournament-preview-img {
     width: 4rem;
+  }
+  .modal-content button {
+    font-size: 0.8rem;
   }
 }
 @media screen and (max-width: 400px) {
@@ -1471,5 +1484,18 @@ button.nav-link {
   .user-page .position-fixed.giftcard-preview-nav {
     padding-left: 20px !important;
     padding-right: 20px !important;
+  }
+  .tournament-details .nav.nav-tabs button.nav-link {
+    padding-left: 3px;
+    padding-right: 3px;
+  }
+  h4 {
+    font-size: 1rem;
+  }
+  h1 {
+    font-size: 1.2rem;
+  }
+  .modal-content button {
+    font-size: 0.8rem;
   }
 }

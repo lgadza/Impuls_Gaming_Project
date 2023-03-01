@@ -72,7 +72,7 @@ const GroupStructure = () => {
   return (
     <Row className="mt-5">
       <Col className="mb-5 ">
-        <Tabs defaultActiveKey="groups" className="mb-3">
+        <Tabs defaultActiveKey="groups" className="mb-3 rounds-robing">
           <Tab eventKey="groups" title="Groups">
             <h4 className="d-flex my-3">Groups</h4>
             <Row>
@@ -183,7 +183,7 @@ const GroupStructure = () => {
           </Tab>
           <Tab eventKey="latest-results" title="Results">
             <Row>
-              <Col>
+              <Col md={12}>
                 <div className="d-flex  flex-column my-3">
                   <h4 className="d-flex">Latest results</h4>
                   <span className="d-flex">No results found.</span>

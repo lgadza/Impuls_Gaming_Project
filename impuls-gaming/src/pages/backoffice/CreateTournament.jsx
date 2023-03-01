@@ -142,26 +142,12 @@ const CreateTournament = ({ visible, onhide }) => {
                   </Form>
                 </Col>
               </Row>
-              {/* <Row>
-                <Col>
-                  <Form className="w-100">
-                    <Form.Group className="mt-1 mb-2 w-100">
-                      <Form.Control
-                        className="w-100"
-                        type="text"
-                        placeholder="Discipline name"
-                        value={disciplineName}
-                        onChange={(e) => setDisciplineName(e.target.value)}
-                      />
-                    </Form.Group>
-                  </Form>
-                </Col>
-              </Row> */}
+
               <div className="my-2">Platform</div>
               <Row>
                 <Col>
                   <Button
-                    className="primary-btn textColor mb-2"
+                    className="primary-btn textColor text-nowrap mb-2"
                     size="lg"
                     onClick={() => {
                       setPlatformCheck("Playstation 5");
@@ -173,7 +159,7 @@ const CreateTournament = ({ visible, onhide }) => {
                 <Col>
                   {" "}
                   <Button
-                    className="primary-btn textColor mb-2"
+                    className="primary-btn text-nowrap textColor mb-2"
                     size="lg"
                     onClick={() => {
                       setPlatformCheck("Playstation 4");
@@ -185,7 +171,7 @@ const CreateTournament = ({ visible, onhide }) => {
                 <Col>
                   {" "}
                   <Button
-                    className="primary-btn textColor mb-2"
+                    className="primary-btn textColor text-nowrap mb-2"
                     size="lg"
                     onClick={() => {
                       setPlatformCheck("XBox");
@@ -213,7 +199,7 @@ const CreateTournament = ({ visible, onhide }) => {
               </Row>
 
               <Row className="my-5 ">
-                <div className="ml-auto">
+                <div className="ml-auto d-flex">
                   <Button onClick={onhide} variant="outline-primary">
                     Cancel
                   </Button>
@@ -229,10 +215,10 @@ const CreateTournament = ({ visible, onhide }) => {
                     }
                     type="submit"
                     onClick={handleData}
-                    className="primary-btn ml-3 textColor"
+                    className="primary-btn d-flex justify-content-center ml-3 textColor"
                   >
-                    <Icon.Plus size={30} />
-                    Create
+                    <Icon.Plus size={30} className="d-none d-md-block ml-0" />
+                    <span>Create</span>
                   </Button>
                 </div>
               </Row>

@@ -97,20 +97,28 @@ const NavigationBar = () => {
                   <Link to="" className=" textColor mb-4 pr-0">
                     News
                   </Link>
+                  <Link to={"/sign-up"} className="d-flex mb-2 ">
+                    Sign up
+                  </Link>
                 </div>
                 <div className="d-flex users flex-column mt-5 ">
-                  <hr className="hr" />
                   <>
-                    <Link
+                    {/* <Link
                       to="/organiser/signIn"
                       className="link-none-deco text-small mb-4 mr-2 link-btm-bar"
                     >
                       Organizer
-                    </Link>
-                    <Link to={"/sign-up"} className="   mb-2 ">
+                    </Link> */}
+                    {/* <hr className="hr" />
+                    <Link to={"/sign-up"} className="d-flex mb-2 ">
                       Player
-                    </Link>
+                    </Link> */}
                   </>
+                  <hr className="hr mt-5" />
+                  <span className="text-nowrap textColor3">
+                    @{new Date().getFullYear()} Impuls Gaming. All rights
+                    reserved
+                  </span>
                 </div>
               </div>
             </div>

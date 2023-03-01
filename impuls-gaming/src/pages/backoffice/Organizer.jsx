@@ -45,15 +45,17 @@ const Organizer = ({ projects }) => {
           </Link>
         </div>
         <Row id="create-btn" className="w-100">
-          <div className="d-grid gap-2 mx-5 mt-4 d-flex justify-content-center">
+          <div className="mx-5 mt-4 d-flex justify-content-center">
             <Button
               onClick={handleShow}
               variant="primary"
               size="lg"
               className=" d-flex justify-content-center create-btn"
             >
-              <Icon.PlusLg size={30} color="green" />
-              <span className=" text-success">Create Project</span>
+              <Icon.PlusLg size={20} color="green" />
+              <span className=" text-success text-small text-nowrap">
+                Create Project
+              </span>
             </Button>
           </div>
         </Row>
@@ -65,7 +67,7 @@ const Organizer = ({ projects }) => {
             sm={6}
             xs={12}
             xl={4}
-            className="d-xs-none d-sm-none d-md-none d-lg-block"
+            className="d-none d-lg-block"
           >
             <span className="d-flex mt-5 align-items-center justify-content-center flex-column main-container2 plus-project  mx-4">
               <Icon.PlusLg size={100} color="green" />
