@@ -27,7 +27,8 @@ const Jumbotron = () => {
           <h1 className="textColor  h2-join-call1">Join Impuls community </h1>
         </div>
       </div>
-      <div className=" d-none d-lg-block reservation-btn-container w-25">
+      {/* //TODO THIS IS A RESERVATION BARNER */}
+      {/* <div className=" d-none d-lg-block reservation-btn-container w-25">
         <div className="d-flex giftcard-preview-nav register-card-top  justify-content-between py-1 px-4 ">
           <div className="d-flex py-4 w-100 justify-content-center">
             <h6 className="d-flex textColor reg-border-right pr-4">
@@ -42,7 +43,8 @@ const Jumbotron = () => {
         <div class="arrow">
           <a href=""></a>
         </div>
-      </div>
+      </div> */}
+      {/* //TODO THIS IS A RESERVATION BARNER */}
     </Container>
   );
 };
