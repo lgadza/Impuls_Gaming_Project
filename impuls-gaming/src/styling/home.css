@@ -477,6 +477,7 @@ a:hover {
   z-index: 3 !important;
 }
 .h1-join-call {
+  font-family: "Times New Roman", Times, serif;
   font-size: 8em;
   color: #0cc4f2;
   font-weight: bold;
@@ -484,6 +485,7 @@ a:hover {
   z-index: 3 !important;
 }
 .h2-join-call {
+  font-family: "Times New Roman", Times, serif;
   font-size: 2em;
   color: rgb(233, 237, 227);
   transform: rotate(-4deg);
@@ -526,6 +528,7 @@ a:hover {
 .side-bar {
   margin-top: 7rem !important;
 }
+
 .textColor2 {
   color: white;
 }
@@ -540,6 +543,10 @@ button-star {
 }
 .warning-bg {
   background-color: rgb(255, 254, 230);
+}
+.fixture-container .participant-list.border {
+  border-right: 4px solid rgb(32, 44, 51) !important;
+  margin: 2px 0;
 }
 .on {
   color: rgb(233, 237, 227);
@@ -1451,6 +1458,9 @@ button.nav-link {
   }
   .modal-content button {
     font-size: 0.8rem;
+  }
+  h1 {
+    font-size: 1.5rem;
   }
 }
 @media screen and (max-width: 400px) {

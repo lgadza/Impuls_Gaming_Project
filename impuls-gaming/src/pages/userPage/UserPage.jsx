@@ -17,6 +17,7 @@ import { getMe, getTournaments, getUsers } from "../../redux/actions";
 import Avatar from "../../components/Avatar";
 import { logout } from "../../redux/actions";
 import { io } from "socket.io-client";
+import Footer from "../../components/Footer";
 const DEV_URL = process.env.REACT_APP_BE_DEV_URL;
 const socket = io(DEV_URL, { transports: ["websocket"] });
 const UserPage = () => {
@@ -212,6 +213,7 @@ const UserPage = () => {
           </Col>
         </Row>
       </Container>
+      <Footer />
     </Container>
   );
 };

@@ -9,7 +9,8 @@ const Tournaments = ({ tournaments }) => {
     <Col className="scoll-table gift-container pb-2 pr-0">
       <Row>
         <Col className="d-flex justify-content-end">
-          <Dropdown>
+          {/* //TODO THIS IS THE FILTER TOURNAMENT SECTION */}
+          {/* <Dropdown>
             <Dropdown.Toggle className="textColor my-1 mr-3">
               <span className="bg-secondary text-white  px-3 py-1">Filter</span>
             </Dropdown.Toggle>
@@ -19,13 +20,6 @@ const Tournaments = ({ tournaments }) => {
                 <span>All</span>
               </Dropdown.Item>
               <Dropdown.Item>
-                {/* {" "}
-                <Form.Check
-                  type="radio"
-                  className="mr-3"
-                  name="query"
-                  label="Past"
-                /> */}
                 <span>Past</span>
               </Dropdown.Item>
               <Dropdown.Item>
@@ -41,7 +35,8 @@ const Tournaments = ({ tournaments }) => {
                 <span>Open</span>
               </Dropdown.Item>
             </Dropdown.Menu>
-          </Dropdown>
+          </Dropdown> */}
+          {/* //TODO THIS IS THE FILTER TOURNAMENT SECTION */}
         </Col>
       </Row>
 
