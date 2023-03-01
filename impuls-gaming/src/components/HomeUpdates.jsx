@@ -8,6 +8,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import { getTournaments } from "../redux/actions";
 import Spinner from "./Spinner";
+import IntersectionObserverComponent from "./ScollAnimation";
 
 const HomeUpdates = () => {
   const tournaments = useSelector((state) => state.tournaments.tournaments);
@@ -37,7 +38,11 @@ const HomeUpdates = () => {
         {tournaments.tournaments &&
           tournaments.tournaments.map((tournament) => (
             <Col md={6} lg={4} className="mb-4">
-              <TournamentCard tournament={tournament} />
+              <IntersectionObserverComponent>
+                <div className="hidden">
+                  <TournamentCard tournament={tournament} />
+                </div>
+              </IntersectionObserverComponent>
             </Col>
           ))}
       </Row>

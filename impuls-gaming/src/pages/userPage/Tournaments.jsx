@@ -36,8 +36,8 @@ const Tournaments = ({ tournaments }) => {
               </Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown> */}
-          {/* //TODO THIS IS THE FILTER TOURNAMENT SECTION */}
         </Col>
+        {/* //TODO THIS IS THE FILTER TOURNAMENT SECTION */}
       </Row>
 
       {tournaments.map((tournament, index) => (

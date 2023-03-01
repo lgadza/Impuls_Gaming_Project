@@ -7,6 +7,7 @@ import { getTournaments } from "../../redux/actions";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Footer from "../../components/Footer";
+import IntersectionObserverComponent from "../../components/ScollAnimation";
 
 const HomeUpdates = () => {
   const [tournamentTable, setTournamentTable] = useState(false);
@@ -22,6 +23,18 @@ const HomeUpdates = () => {
   const handleTournamentTable = () => {
     tournamentTable ? setTournamentTable(false) : setTournamentTable(true);
   };
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      console.log(entry);
+      if (entry.isIntersecting) {
+        entry.target.classList.add("show");
+      } else {
+        entry.target.classList.remove("show");
+      }
+    });
+  });
+  const hiddenElements = document.querySelectorAll(".hidden");
+  hiddenElements.forEach((el) => observer.observe(el));
   return (
     <div className="home  main-container">
       <NavigationBar />
@@ -46,7 +59,11 @@ const HomeUpdates = () => {
           </Col>
           {tournaments.tournaments.map((tournament) => (
             <Col md={6} lg={4} className="my-3">
-              <TournamentCard tournament={tournament} />
+              <IntersectionObserverComponent>
+                <div className="hidden">
+                  <TournamentCard tournament={tournament} />
+                </div>
+              </IntersectionObserverComponent>
             </Col>
           ))}
         </Row>
