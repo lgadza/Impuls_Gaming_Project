@@ -6,7 +6,8 @@
   position: relative;
   width: 23rem;
   height: 23rem;
-  perspective: 500px;
+
+  perspective: ;
   transform-style: preserve-3d;
 }
 
