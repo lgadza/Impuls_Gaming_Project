@@ -54,9 +54,9 @@ const NavigationBar = () => {
           <div className="d-flex align-items-center">
             <Link
               to="/organiser/signIn"
-              className="link-none-deco text-small pr-2 link-btm-bar border-right"
+              className="link-none-deco text-small border-right"
             >
-              Organizer
+              <span className="mr-2 link-btm-bar  ">Organizer</span>
             </Link>
             <Link
               to={"/sign-up"}

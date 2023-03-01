@@ -23,7 +23,6 @@ const UserPage = () => {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
   const user = useSelector((state) => state.me.me);
   const tournaments = useSelector((state) => state.tournaments.tournaments);
   const signInCredentials = useSelector(

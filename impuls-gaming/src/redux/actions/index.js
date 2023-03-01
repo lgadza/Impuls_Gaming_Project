@@ -30,9 +30,16 @@ export const GET_ADMIN_LOGIN_ACCESSTOKEN_ERROR =
 
 export const POST_TOURNAMENT = " POST_TOURNAMENT";
 export const GET_USERS = "GET_USERS";
+
 export const GET_TOURNAMENTS = "GET_TOURNAMENTS";
 export const GET_TOURNAMENTS_LOADING = "GET_TOURNAMENTS_LOADING";
 export const GET_TOURNAMENTS_ERROR = "GET_TOURNAMENTS_ERROR";
+
+export const GET_TOURNAMENTS_RESULTS = "GET_TOURNAMENTS_RESULTS";
+export const GET_TOURNAMENTS_RESULTS_LOADING =
+  "GET_TOURNAMENTS_RESULTS_LOADING";
+export const GET_TOURNAMENTS_RESULTS_ERROR = "GET_TOURNAMENTS_RESULTS_ERROR";
+
 export const GET_USERS_LOADING = "GET_USERS_LOADING";
 export const GET_USERS_ERROR = "GET_USERS_ERROR";
 export const USER_PREFERENCE_DATA = " USER_PREFERENCE_DATA";
@@ -494,6 +501,55 @@ export const getTournaments = () => {
 
       dispatch({
         type: GET_TOURNAMENTS_ERROR,
+        payload: true,
+      });
+    }
+  };
+};
+export const getTournamentsResults = () => {
+  return async (dispatch) => {
+    const options = {
+      method: "POST",
+    };
+    // const URL = process.env.REACT_APP_BE_PROD_URL;
+    const URL =
+      "https://apiv3.apifootball.com/?action=get_standings&league_id=302&APIkey=9a071c302fe8a84e9e2e5a2654f52c3fa674cc4fa8273c984bed8f0ffa38c76b";
+    try {
+      let response = await fetch(`${URL}`, options);
+      if (response.ok) {
+        const tournaments = await response.json();
+        dispatch({
+          type: GET_TOURNAMENTS_RESULTS,
+          payload: tournaments,
+        });
+        setTimeout(() => {
+          dispatch({
+            type: GET_TOURNAMENTS_RESULTS_LOADING,
+            payload: false,
+          });
+        }, 100);
+      } else {
+        console.log("error");
+
+        dispatch({
+          type: GET_TOURNAMENTS_RESULTS_LOADING,
+          payload: false,
+        });
+        dispatch({
+          type: GET_TOURNAMENTS_RESULTS_ERROR,
+          payload: true,
+        });
+      }
+    } catch (error) {
+      console.log(error);
+
+      dispatch({
+        type: GET_TOURNAMENTS_RESULTS_LOADING,
+        payload: false,
+      });
+
+      dispatch({
+        type: GET_TOURNAMENTS_RESULTS_ERROR,
         payload: true,
       });
     }

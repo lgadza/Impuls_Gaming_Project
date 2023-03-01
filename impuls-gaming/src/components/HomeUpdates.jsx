@@ -27,7 +27,7 @@ const HomeUpdates = () => {
         <h1 className="d-flex mb-5 featured-leagues"> Tournaments</h1>
         <Link
           onClick={() => navigate("/reservations")}
-          className="textColor3 show-reservs"
+          className="textColor3 text-small show-reservs"
         >
           Show available stations
         </Link>

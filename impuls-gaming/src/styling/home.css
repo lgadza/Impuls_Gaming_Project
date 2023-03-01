@@ -543,6 +543,7 @@ button-star {
 }
 .player-position {
   width: 40px;
+  padding-left: 20px;
 }
 .search-icon {
   position: absolute;
@@ -976,6 +977,10 @@ input[type="checkbox"]:not(:checked) {
 .tournament-img-cover-container {
   position: relative;
 }
+.player-states {
+  width: 3rem;
+  text-align: left;
+}
 .tournament-img-cover-container::after {
   content: "";
   position: absolute;
@@ -988,6 +993,12 @@ input[type="checkbox"]:not(:checked) {
   background-color: black;
   opacity: 0.6;
   /* z-index: 1; */
+}
+.user_current-position {
+  background-color: rgb(32, 44, 51) !important;
+}
+.user_current-position:hover {
+  background-color: rgb(17, 27, 33) !important;
 }
 .tournament-info {
   z-index: 3 !important;
@@ -1271,7 +1282,7 @@ tab[title] {
 }
 
 /* //TODO for table */
-@media screen and (max-width: 510px) {
+@media screen and (max-width: 768px) {
   .gift-container.mb-5.pb-2.mx-2.fixture-container.fixture-scroll {
     overflow-x: scroll;
     margin-left: 0 !important;
@@ -1282,11 +1293,11 @@ tab[title] {
   }
   .playerNav {
     position: sticky;
-    /* position: fixed;
-    top: 60px; */
     top: 0;
+    left: 0;
+    right: 0;
+    padding-right: 8px;
     background-color: rgb(17, 27, 33);
-    z-index: 3;
     width: 500px !important;
   }
 
@@ -1296,14 +1307,16 @@ tab[title] {
   .gift-container.mb-5.pb-2.mx-2.fixture-container.fixture-scroll
     .mobile-scrolling {
     width: 500px !important;
-    padding-right: 15px !important;
+    /* padding-right: 15px !important; */
     /* position: absolute; */
     left: 0;
     top: 0;
     bottom: 0;
     height: 100%;
   }
-
+  .mobile-scrolling .player-position {
+    padding-left: 0px !important;
+  }
   .player-name-sticky.player {
     position: sticky;
     left: 0px;
@@ -1311,13 +1324,23 @@ tab[title] {
     z-index: 3;
     width: 188px;
   }
+  .mobile-scrolling .participant-list {
+    padding-right: 8px;
+  }
+
+  /* .player-stats {
+    transform: translateX(0px);
+  } */
   .player-stats {
-    transform: translateX(-8px);
+    transform: translateX(-15px);
   }
   .participant-list .player-name-sticky {
     position: sticky;
     left: -15px;
     background-color: rgb(42, 57, 66);
+  }
+  .user_current-position .player-name-sticky {
+    background-color: rgb(32, 44, 51);
   }
   .seasons-list {
     position: sticky;
@@ -1336,8 +1359,16 @@ tab[title] {
     text-overflow: ellipsis;
   }
   .player-name-sticky.player {
-    /* width: 180px; */
+    /* width: 20px; */
     position: sticky;
     top: 64px;
+  }
+  .user_current-position {
+    background-color: rgb(32, 44, 51);
+  }
+  .player-states {
+    width: 15px;
+    text-align: left;
+    padding-right: 5px;
   }
 }

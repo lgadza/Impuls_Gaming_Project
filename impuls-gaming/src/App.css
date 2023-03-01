@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Didact+Gothic&family=Just+Another+Hand&display=swap");
 body {
-  font-family: "Didact Gothic", sans-serif;
+  font-family: "Didact Gothic", sans-serif !important;
 }
 .App {
   text-align: center;
