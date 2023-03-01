@@ -1,7 +1,9 @@
 import { Col, Container, Row, Dropdown } from "react-bootstrap";
 import * as Icon from "react-bootstrap-icons";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
-
+import "font-awesome/css/font-awesome.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheckSquare, faCoffee } from "@fortawesome/fontawesome-free-solid";
 import Table from "./Table";
 import { useEffect, useState } from "react";
 import Chat from "./Chat";
@@ -49,7 +51,7 @@ const UserPage = () => {
 
   return (
     <Container fluid className="textColor px-0 user-page main-container ">
-      <Row className="mb-3 px-5 w-100 py-3 d-flex align-items-center justify-content-between position-fixed giftcard-preview-nav">
+      <Row className="mb-3 px-5 py-3 d-flex align-items-center justify-content-between position-fixed giftcard-preview-nav ">
         <div>
           <Link to="/">Home</Link>
           <Icon.CaretRightFill color="white" size={10} />
@@ -66,7 +68,7 @@ const UserPage = () => {
                   <Icon.BellFill
                     color="rgb(0, 123, 255)"
                     size={20}
-                    className="ml-0 pl-0 "
+                    className="mx-0 px-0 "
                   />
                   <span className="notification-message text-primary text-small "></span>
                 </span>
@@ -92,8 +94,8 @@ const UserPage = () => {
                 src={user.avatar}
                 alt="Profile Avatar"
                 className="avatar"
-                width={40}
-                height={40}
+                width={30}
+                height={30}
               />
             </Dropdown.Toggle>
 
@@ -160,35 +162,52 @@ const UserPage = () => {
                   user={user}
                 />
               </Tab>
-              <Tab
+              {/* //**********DO NOT DELETE ME I AM CHATS  */}
+              {/* <Tab
                 onClick={() => setIsChat(true)}
                 eventKey="friends"
                 title="Chats"
               >
                 <Chat user={user} clicked={isChat} socket={socket} />
-              </Tab>
+              </Tab> */}
+              {/* //**********DO NOT DELETE ME I AM CHATS  */}
             </Tabs>
           </Col>
           <Col sm={12} className=" mt-5 side-bar  d-lg-none">
             <Tabs defaultActiveKey="information" className="mb-3  " justify>
               <Tab
                 eventKey="information"
-                title={<Icon.Speedometer2 size={20} />}
+                title={<Icon.Speedometer2 className="mx-0" size={20} />}
               >
                 <Overview tournaments={tournaments.tournaments} />
               </Tab>
-              <Tab eventKey="matches" title={<Icon.Table size={20} />}>
+              <Tab
+                eventKey="matches"
+                title={<Icon.Table className="mx-0" size={20} />}
+              >
                 <Table />
               </Tab>
               <Tab
+                eventKey="fixture"
+                title={<FontAwesomeIcon icon={faCoffee} size="lg" />}
+              >
+                <Fixtures socket={socket} user={user} />
+              </Tab>
+              <Tab
                 eventKey="participants"
-                title={<Icon.Controller size={20} />}
+                title={<Icon.Controller className="mx-0" size={20} />}
               >
                 <Tournaments tournaments={tournaments.tournaments} />
               </Tab>
-              <Tab eventKey="rules" title={<Icon.ChatDots size={20} />}>
+              {/* //**********DO NOT DELETE ME I AM CHATS  */}
+
+              {/* <Tab
+                eventKey="rules"
+                title={<Icon.ChatDots className="mx-0" size={20} />}
+              >
                 <Chat />
-              </Tab>
+              </Tab> */}
+              {/* //**********DO NOT DELETE ME I AM CHATS  */}
             </Tabs>
           </Col>
         </Row>

@@ -103,7 +103,7 @@ const Table = () => {
           ))}
         </div>
       )}
-      <Link className=" textColor my-3 ">
+      <Link className=" textColor my-3 seasons-list text-nowrap ">
         @{date.getFullYear()} Impuls Gaming. All rights reserved
       </Link>
     </Col>

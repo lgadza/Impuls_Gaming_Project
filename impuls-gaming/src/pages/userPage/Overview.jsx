@@ -61,7 +61,7 @@ const Overview = ({ socket, tournamentId }) => {
           <div>
             <Card>
               <Card.Header>
-                <h3 className="d-flex h3-mobile my-2">
+                <h3 className="d-flex text-nowrap h3-mobile my-2">
                   Playoffs - Main Bracket-Round 1{" "}
                 </h3>
               </Card.Header>
@@ -69,7 +69,7 @@ const Overview = ({ socket, tournamentId }) => {
                 <div className="d-flex justify-content-between px-3 align-items-center">
                   <div className="d-flex flex-column">
                     <h5
-                      className={` d-flex ${
+                      className={` d-flex user-name-reporter ${
                         Number(reportMyScore) >= Number(reportHisScore)
                           ? "text-success"
                           : "text-danger"
@@ -109,20 +109,20 @@ const Overview = ({ socket, tournamentId }) => {
                       />{" "}
                     </span>
                   </div>
-                  <div className="d-flex flex-column">
+                  <div className="d-flex flex-column text-right">
                     <h5
-                      className={` ${
+                      className={` user-name-reporter ${
                         Number(reportHisScore) >= Number(reportMyScore)
                           ? "text-success"
                           : "text-danger"
                       } `}
                     >
                       {receiverName ? (
-                        <span>{receiverName}</span>
+                        <span className="text-nowrap">{receiverName}</span>
                       ) : (
-                        <span className="text-danger">
+                        <span className="text-danger text-nowrap">
                           {" "}
-                          Select Opponent Name
+                          Opponent
                         </span>
                       )}
                     </h5>
@@ -137,10 +137,10 @@ const Overview = ({ socket, tournamentId }) => {
                 <Card.Body>
                   <hr />
                   <div className="d-flex justify-content-between mt-3">
-                    <h5 className=" mb-0  pb-0">Match Report</h5>
+                    <h5 className=" mb-0  pb-0 textColor3">Match Report</h5>
                     <div>
                       <span>Forfeit</span>
-                      <span className="mx-4">Score</span>
+                      <span className="ml-4">Score</span>
                       {/* <span>Results</span> */}
                     </div>
                   </div>
@@ -158,7 +158,7 @@ const Overview = ({ socket, tournamentId }) => {
                       <input
                         type="number"
                         onChange={(e) => setReportMyScore(e.target.value)}
-                        className="results-input2 text-white py-0 mx-4"
+                        className="results-input2 text-white py-0 ml-4"
                       />
                       <div>
                         {/* <span className="loss_bar py-2">L</span>
@@ -193,7 +193,7 @@ const Overview = ({ socket, tournamentId }) => {
                       <input
                         type="number"
                         onChange={(e) => setReportHisScore(e.target.value)}
-                        className="results-input2 text-white py-0 mx-4"
+                        className="results-input2 text-white py-0 ml-4"
                       />
                       {/* <div>
                         <span className="loss_bar py-2">L</span>

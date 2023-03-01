@@ -73,7 +73,9 @@ const Tournaments = ({ tournaments }) => {
                     </div>
 
                     <div className="d-flex justify-content-end mr-0">
-                      <span className="span ">2 Feb 2023</span>
+                      <span className="span registration-label-hide  ">
+                        2 Feb 2023
+                      </span>
                     </div>
                     <div>
                       <div className="d-flex flex-column justify-content-end mr-0">
@@ -90,12 +92,16 @@ const Tournaments = ({ tournaments }) => {
                         tournament.registration.activation.registrationClosingDate
                       ) >= new Date() ? (
                         <div className="d-flex flex-column justify-content-end text-success mr-0">
-                          <span className="span">Registration</span>
+                          <span className="span registration-label-hide">
+                            Registration
+                          </span>
                           <span className="span ">Open</span>
                         </div>
                       ) : (
                         <div className="d-flex flex-column justify-content-end text-danger mr-0">
-                          <span className="span">Registration</span>
+                          <span className="span registration-label-hide">
+                            Registration
+                          </span>
                           <span className="span ">Closed</span>
                         </div>
                       )}

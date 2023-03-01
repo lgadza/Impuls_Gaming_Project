@@ -512,6 +512,8 @@ a:hover {
 .position-fixed {
   position: fixed;
   z-index: 1;
+  left: 0;
+  right: 0;
 }
 .position-fixed-2 {
   border-radius: 2px;
@@ -955,6 +957,13 @@ input[type="checkbox"]:not(:checked) {
   left: 15%;
   right: 15%;
   z-index: 2;
+  border: none;
+}
+.text-danger {
+  font-size: 1rem;
+}
+.user-name-reporter {
+  width: 12rem;
 }
 
 .registration-forms {
@@ -1280,9 +1289,16 @@ tab[title] {
     margin-left: 5px;
   }
 }
-
-/* //TODO for table */
+button.nav-link {
+  margin: auto !important;
+}
 @media screen and (max-width: 768px) {
+  body {
+    font-size: 0.8rem !important;
+  }
+  .user-name-reporter {
+    width: 5rem;
+  }
   .gift-container.mb-5.pb-2.mx-2.fixture-container.fixture-scroll {
     overflow-x: scroll;
     margin-left: 0 !important;
@@ -1314,12 +1330,23 @@ tab[title] {
     bottom: 0;
     height: 100%;
   }
+  .user-page button.dropdown-toggle.btn {
+    padding: 5px;
+  }
+  .user-page button.dropdown-toggle.btn .notification-bell svg {
+    width: 15px !important;
+    height: 15px !important;
+  }
+  .user-page button.dropdown-toggle.btn img {
+    width: 20px !important;
+    height: 20px !important;
+  }
   .mobile-scrolling .player-position {
     padding-left: 0px !important;
   }
   .player-name-sticky.player {
     position: sticky;
-    left: 0px;
+    left: 15px;
     background-color: rgb(17, 27, 33);
     z-index: 3;
     width: 188px;
@@ -1336,15 +1363,16 @@ tab[title] {
   }
   .participant-list .player-name-sticky {
     position: sticky;
-    left: -15px;
+    left: 0px;
     background-color: rgb(42, 57, 66);
   }
   .user_current-position .player-name-sticky {
     background-color: rgb(32, 44, 51);
   }
-  .seasons-list {
-    position: sticky;
+  .seasons-list.text-nowrap {
+    position: sticky !important;
     left: 0;
+    right: 0;
     background-color: rgb(42, 57, 66);
   }
   .participant-list:hover .player-name-sticky {
@@ -1370,5 +1398,78 @@ tab[title] {
     width: 15px;
     text-align: left;
     padding-right: 5px;
+  }
+  .user-page
+    .align-items-center.justify-content-between.position-fixed.giftcard-preview-nav {
+    font-size: 0.8rem;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .results-input {
+    background-color: #838181;
+    border: 1px black solid;
+    border-radius: 2px;
+    font-size: 1em;
+    width: 2.5rem;
+    text-align: center;
+  }
+  .results-input2 {
+    background-color: #d6cdcd;
+    border: 1px black solid;
+    border-radius: 2px;
+    font-size: 0.8em;
+    width: 2rem;
+    text-align: center;
+  }
+  .primary-btn {
+    width: 5rem;
+    background-color: rgb(17, 27, 33);
+    border: none;
+  }
+  .tournament-name1 {
+    width: 6rem;
+    font-size: 0.9rem;
+  }
+  .registration-label-hide {
+    display: none;
+  }
+  .tournament-preview-img {
+    width: 4rem;
+  }
+}
+@media screen and (max-width: 400px) {
+  .tournament-preview-img {
+    width: 3rem;
+  }
+  .tournament-name1 {
+    width: 5rem;
+    font-size: 0.8rem;
+  }
+  .results-input {
+    border-radius: 2px;
+    font-size: 1em;
+    width: 2rem;
+  }
+  .results-input2 {
+    border-radius: 2px;
+    font-size: 0.8em;
+    width: 2rem;
+  }
+  .h3-mobile {
+    font-size: 0.8rem;
+  }
+  .user-name-reporter {
+    width: 3rem;
+    font-size: 1rem;
+  }
+  .user-name-reporter.text-danger {
+    font-size: 1rem !important;
+  }
+  h5 {
+    font-size: 1rem;
+  }
+  .user-page .position-fixed.giftcard-preview-nav {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
   }
 }
