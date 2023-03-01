@@ -6,6 +6,7 @@ import Table from "../userPage/Table";
 import { getTournaments } from "../../redux/actions";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import Footer from "../../components/Footer";
 
 const HomeUpdates = () => {
   const [tournamentTable, setTournamentTable] = useState(false);
@@ -26,7 +27,7 @@ const HomeUpdates = () => {
       <NavigationBar />
 
       <Container className="textColor mt-5 tournament_page ">
-        <Row className="mt-3">
+        <Row className="my-3">
           <div className="px-3 d-flex justify-content-between w-100 align-items-center">
             <h1>Tournaments</h1>
             <Link onClick={handleTournamentTable}>
@@ -34,22 +35,23 @@ const HomeUpdates = () => {
             </Link>
           </div>
         </Row>
-        <Row>
+        <Row className="my-3">
           <Col
             md={12}
-            className={`px-0 mt-2 table-animate ${
+            className={`px-0 mt-3 table-animate ${
               !tournamentTable ? "d-none" : ""
             }`}
           >
             <Table />
           </Col>
           {tournaments.tournaments.map((tournament) => (
-            <Col md={6} lg={4}>
+            <Col md={6} lg={4} className="my-3">
               <TournamentCard tournament={tournament} />
             </Col>
           ))}
         </Row>
       </Container>
+      <Footer />
     </div>
   );
 };
