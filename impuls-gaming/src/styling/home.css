@@ -985,6 +985,7 @@ input[type="checkbox"]:not(:checked) {
 }
 .tournament-img-cover-container {
   position: relative;
+  isolation: isolate;
 }
 .player-states {
   width: 3rem;
@@ -995,13 +996,12 @@ input[type="checkbox"]:not(:checked) {
   position: absolute;
   top: 0;
   height: 55vh;
-
   bottom: 0;
   right: 0;
   left: 0;
   background-color: black;
-  opacity: 0.6;
-  /* z-index: 1; */
+  opacity: 0.15;
+  z-index: 0;
 }
 .user_current-position {
   background-color: rgb(32, 44, 51) !important;
@@ -1011,7 +1011,6 @@ input[type="checkbox"]:not(:checked) {
 }
 .tournament-info {
   z-index: 3 !important;
-
   background-image: linear-gradient(to left, rgba(0, 0, 0, 0), rgb(21, 19, 19));
 }
 .register-card-top {
