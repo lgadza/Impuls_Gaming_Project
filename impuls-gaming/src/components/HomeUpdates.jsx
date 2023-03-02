@@ -30,7 +30,7 @@ const HomeUpdates = () => {
           onClick={() => navigate("/reservations")}
           className="textColor3 text-small show-reservs"
         >
-          Show available stations
+          {}
         </Link>
       </div>
 

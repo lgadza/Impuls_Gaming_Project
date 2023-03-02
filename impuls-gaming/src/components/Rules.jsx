@@ -1,11 +1,14 @@
 import { Row, Col } from "react-bootstrap";
-const Rules = () => {
+const Rules = ({ tournament }) => {
   return (
     <Row>
       <Col>
         <div className="d-flex  flex-column my-3">
           <h4 className="d-flex">Rules</h4>
-          <span className="d-flex">Ruleset not available.</span>
+          {/* {tournament.rules && (
+            <span className="d-flex">{tournament.rules}</span>
+          )} */}
+          <span className="d-flex">Rules not available.</span>
         </div>
       </Col>
       <Col></Col>

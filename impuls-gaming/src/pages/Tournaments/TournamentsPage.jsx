@@ -33,7 +33,11 @@ const HomeUpdates = () => {
           <div className="px-3 d-flex justify-content-between w-100 align-items-center">
             <h2>Tournaments</h2>
             <Link onClick={handleTournamentTable}>
-              <span className="textColor3">See Tournament table</span>
+              {tournamentTable ? (
+                <span className="textColor3">Hide Tournament table</span>
+              ) : (
+                <span className="textColor3">See Tournament table</span>
+              )}
             </Link>
           </div>
         </Row>

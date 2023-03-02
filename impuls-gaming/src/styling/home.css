@@ -1210,6 +1210,7 @@ tab[title] {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
 .tournament-name1 {
   white-space: nowrap;
   overflow: hidden;

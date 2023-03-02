@@ -32,9 +32,10 @@ const GeneralSettings = () => {
   const [endDate, setEndDate] = useState("");
   const [key, setKey] = useState("activation");
   const [update, setUpdate] = useState(false);
-  const [rules, setRules] = useState("");
-  const [price, setPrice] = useState("");
-  const [description, setDescription] = useState("");
+  const [rules, setRules] = useState(tournament.rules);
+  const [price, setPrice] = useState(tournament.price);
+  const [discipline, setDiscipline] = useState(tournament);
+  const [description, setDescription] = useState(tournament.description);
   const user = useSelector((state) => state.me.me);
 
   const [name, setName] = useState(tournament.name);
@@ -70,7 +71,7 @@ const GeneralSettings = () => {
 
   const formValues = {
     name: name,
-    discipline_name: "FIFA 23",
+    discipline_name: discipline,
     size: size,
     platform: platform,
     location: location,
@@ -80,9 +81,9 @@ const GeneralSettings = () => {
     rules: rules,
     description: description,
   };
-  const handleUpdate = () => {
+  const handleUpdate = async () => {
     setUpdate(true);
-    dispatch(editTournament(formValues, tournament._id));
+    await dispatch(editTournament(formValues, tournament._id));
   };
   return (
     <Container fluid className="main-container textColor">
@@ -145,9 +146,8 @@ const GeneralSettings = () => {
                           </Form.Label>
                           <Form.Control
                             type="text"
-                            disabled
-                            value={tournament.discipline}
-                            // placeholder="FIFA 23"
+                            value={tournament.discipline_name}
+                            onChange={(e) => setDiscipline(e.target.value)}
                           />
                         </Form.Group>
                         <Form.Group className="mb-3">
@@ -248,6 +248,7 @@ const GeneralSettings = () => {
                         <Form.Control
                           as="textarea"
                           rows={4}
+                          value={description}
                           onChange={handleDescription}
                         />
                       </Form.Group>
@@ -256,6 +257,7 @@ const GeneralSettings = () => {
                         <Form.Control
                           as="textarea"
                           rows={4}
+                          value={price}
                           onChange={handlePrice}
                         />
                       </Form.Group>
@@ -266,6 +268,7 @@ const GeneralSettings = () => {
                         <Form.Control
                           as="textarea"
                           rows={10}
+                          value={rules}
                           onChange={handleRules}
                         />
                       </Form.Group>

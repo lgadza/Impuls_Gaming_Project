@@ -31,10 +31,12 @@ const BackOfficeNav = ({ data, page, user }) => {
             alt=""
           />
           <div className="d-flex flex-column w-75">
-            <span className="d-flex ml-2 tournament-name w-75">
+            <span className="text-left ml-2  tournament-name w-75">
               {data.name}
             </span>{" "}
-            <span className="d-flex ml-2">{data.discipline_name}</span>{" "}
+            <span className="text-left text-small ml-2">
+              {data.discipline_name}
+            </span>{" "}
           </div>
         </div>
       </div>
@@ -49,8 +51,8 @@ const BackOfficeNav = ({ data, page, user }) => {
             <span
               className={page === "overview" ? "current textColor" : undefined}
             >
-              <Icon.Speedometer2 size={20} />
-              Overview
+              <Icon.Speedometer2 size={15} />
+              <span className="text-small">Overview</span>
             </span>
           </Link>
           <Link
@@ -58,10 +60,12 @@ const BackOfficeNav = ({ data, page, user }) => {
             className="my-2 d-flex"
           >
             <span
-              className={page === "settings" ? "current textColor" : undefined}
+              className={
+                page === "settings" ? "current textColor text-small" : undefined
+              }
             >
-              <Icon.Gear size={20} />
-              Settings
+              <Icon.Gear size={15} />
+              <span className="text-small">Settings</span>
             </span>
           </Link>
           <Link
@@ -71,8 +75,8 @@ const BackOfficeNav = ({ data, page, user }) => {
             <span
               className={page === "structure" ? "current textColor" : undefined}
             >
-              <Icon.Boxes size={20} />
-              Structures
+              <Icon.Boxes size={15} />
+              <span className="text-small">Structures</span>
             </span>
           </Link>
           <Link
@@ -84,8 +88,8 @@ const BackOfficeNav = ({ data, page, user }) => {
                 page === "participants" ? "current textColor" : undefined
               }
             >
-              <Icon.People size={20} />
-              Participants
+              <Icon.People size={15} />
+              <span className="text-small">Participants</span>
             </span>
           </Link>
           <Link
@@ -95,8 +99,8 @@ const BackOfficeNav = ({ data, page, user }) => {
             <span
               className={page === "matches" ? "current textColor" : undefined}
             >
-              <Icon.LightningCharge size={20} />
-              Matches
+              <Icon.LightningCharge size={15} />
+              <span className="text-small">Matches</span>
             </span>
           </Link>
           <Link
@@ -108,8 +112,8 @@ const BackOfficeNav = ({ data, page, user }) => {
                 page === "final-standing" ? "current textColor" : undefined
               }
             >
-              <Icon.Trophy size={20} />
-              Final standing
+              <Icon.Trophy size={15} />
+              <span className="text-small"> Final standing</span>
             </span>
           </Link>
           <Link className="mt-4 pt-3">{/* <Icon.Share size={20} /> */}</Link>

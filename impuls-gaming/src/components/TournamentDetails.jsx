@@ -212,7 +212,7 @@ textColor"
                 <PlayerList participants={tournament.tournamentParticipants} />
               </Tab>
               <Tab eventKey="rules" title={<Icon.FileEarmarkText size={20} />}>
-                <Rules />
+                <Rules tournament={tournament} />
               </Tab>
               <Tab eventKey="registration" title={<Icon.RCircle size={20} />}>
                 <RegistrationForm tournamentId={tournament._id} />

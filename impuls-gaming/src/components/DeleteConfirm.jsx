@@ -1,14 +1,14 @@
 import { Modal, Row, Container, Col, Button, Form } from "react-bootstrap";
 import * as Icon from "react-bootstrap-icons";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { deleteTournament, getTournaments } from "../redux/actions";
 
-const DeleteConfirm = ({ visible, onhide, tournamentId }) => {
+const DeleteConfirm = ({ visible, onhide, tournamentId, from }) => {
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
   const tournaments = useSelector((state) => state.tournaments.tournaments);
   const tournament = tournaments.tournaments.find(
     (name) => name.name === tournamentId
@@ -18,6 +18,9 @@ const DeleteConfirm = ({ visible, onhide, tournamentId }) => {
     await dispatch(deleteTournament(tournament._id));
     await onhide();
     dispatch(getTournaments());
+    if (from === "settings") {
+      navigate("/backoffice");
+    }
   };
 
   return (

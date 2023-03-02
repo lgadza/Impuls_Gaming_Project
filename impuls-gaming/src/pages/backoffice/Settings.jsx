@@ -9,8 +9,7 @@ import {
   Dropdown,
 } from "react-bootstrap";
 import * as Icon from "react-bootstrap-icons";
-import fifa from "../../img/fifa23.jpg";
-
+import DeleteConfirm from "../../components/DeleteConfirm";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import BackOfficeNav from "./BackOfficeNav";
@@ -19,7 +18,8 @@ import { useNavigate, useParams } from "react-router-dom";
 
 const Settings = () => {
   const params = useParams();
-  console.log(params.tournamentId);
+  const [showDelete, setShowDelete] = useState(false);
+  const handleCloseDelete = () => setShowDelete(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const tournamentData = useSelector((state) => state.tournaments.tournaments);
@@ -47,9 +47,9 @@ const Settings = () => {
               </Dropdown.Toggle>
 
               <Dropdown.Menu>
-                <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-                <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-                <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+                <Dropdown.Item>Louis vs Sage</Dropdown.Item>
+                <Dropdown.Item>Sage vs Steve </Dropdown.Item>
+                <Dropdown.Item>He cheated me</Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
           </div>
@@ -137,7 +137,10 @@ const Settings = () => {
             </Col>
             <Col>
               <Card>
-                <Link className="textColor settings-card link-none-deco">
+                <Link
+                  onClick={() => setShowDelete(true)}
+                  className="textColor settings-card link-none-deco"
+                >
                   <Card.Header>
                     <Icon.Trash3Fill size={20} />
                     <span>Delete Tournament</span>
@@ -167,6 +170,12 @@ const Settings = () => {
           </Row>
         </Col>
       </Row>
+      <DeleteConfirm
+        visible={showDelete}
+        onhide={handleCloseDelete}
+        tournamentId={tournament.name}
+        from="settings"
+      />
     </Container>
   );
 };
