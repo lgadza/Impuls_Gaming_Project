@@ -669,6 +669,9 @@ button-star {
   background-color: rgb(17, 27, 33);
   color: white;
 }
+.match_teams {
+  width: 10rem;
+}
 .hidden {
   opacity: 0;
   filter: blur(5px);
@@ -804,6 +807,9 @@ hr {
   .organizer {
     margin-right: auto;
     padding-right: 2rem;
+  }
+  .match_teams {
+    width: 6rem;
   }
   .plus-project {
     width: 16rem;
@@ -1238,6 +1244,9 @@ tab[title] {
   .featured-leagues {
     font-size: 2em !important;
   }
+  .match_teams {
+    width: 6rem;
+  }
   .h3-mobile.my-2.d-flex {
     font-size: 16px !important;
   }
@@ -1530,7 +1539,13 @@ button.nav-link {
   h1 {
     font-size: 1.2rem;
   }
+  h2 {
+    font-size: 1.2rem;
+  }
   .modal-content button {
     font-size: 0.8rem;
+  }
+  .match_teams {
+    width: 4rem;
   }
 }

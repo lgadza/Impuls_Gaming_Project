@@ -53,7 +53,7 @@ const NavigationBar = () => {
               </Link>
 
               <Link
-                to=""
+                to="/fixtures"
                 onClick={() => setActive("fixtures")}
                 className={`mr-4 link-btm-bar ${
                   active === "fixtures" ? "textColor" : "textColor3 "
@@ -121,7 +121,7 @@ const NavigationBar = () => {
                   <Link to="/tournaments" className="textColor mb-4 pr-0  ">
                     Tournaments
                   </Link>
-                  <Link to="" className=" textColor mb-4 pr-0">
+                  <Link to="/fixtures" className=" textColor mb-4 pr-0">
                     Fixtures
                   </Link>
                   <Link to="" className=" textColor mb-4 pr-0">

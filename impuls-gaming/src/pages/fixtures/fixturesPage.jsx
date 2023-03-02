@@ -2,14 +2,14 @@ import { Container, Row, Col, Card, Button } from "react-bootstrap";
 import NavigationBar from "../../components/NavigationBar";
 import TournamentCard from "../../components/TournamentCard";
 import { useSelector, useDispatch } from "react-redux";
-import Table from "../../components/Table";
+import Fixtures from "../../components/Fixtures";
 import { getTournaments } from "../../redux/actions";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Footer from "../../components/Footer";
 import IntersectionObserverComponent from "../../components/ScollAnimation";
 
-const HomeUpdates = () => {
+const FixturesPage = () => {
   const [tournamentTable, setTournamentTable] = useState(false);
   const dispatch = useDispatch();
   const tournaments = useSelector((state) => state.tournaments.tournaments);
@@ -30,35 +30,14 @@ const HomeUpdates = () => {
 
       <Container className="textColor mt-5 tournament_page ">
         <Row className="my-3">
-          <div className="px-3 d-flex justify-content-between w-100 align-items-center">
-            <h2>Tournaments</h2>
-            <Link onClick={handleTournamentTable}>
-              <span className="textColor3">See Tournament table</span>
-            </Link>
-          </div>
+          <h2 className="ml-3">Fixtures</h2>
         </Row>
         <Row className="my-3">
-          <Col
-            md={12}
-            className={`px-0 my-3 table-animate ${
-              !tournamentTable ? "d-none" : ""
-            }`}
-          >
-            <Table />
-          </Col>
-          {tournaments.tournaments.map((tournament) => (
-            <Col md={6} lg={4} className="my-3">
-              <IntersectionObserverComponent>
-                <div className="hidden">
-                  <TournamentCard tournament={tournament} />
-                </div>
-              </IntersectionObserverComponent>
-            </Col>
-          ))}
+          <Fixtures />
         </Row>
       </Container>
       <Footer />
     </div>
   );
 };
-export default HomeUpdates;
+export default FixturesPage;

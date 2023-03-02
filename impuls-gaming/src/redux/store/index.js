@@ -20,6 +20,7 @@ import adminSignInToken from "../reducers/adminLogin";
 import emailVerification from "../reducers/emailVerification";
 import getProjectImgs from "../reducers/getProjectImgs";
 import getTournamentsResults from "../reducers/getTournamentsResults";
+import getTournamentsFixtures from "../reducers/getTournamentsFixtures";
 const persistConfig = {
   key: "root",
   storage: localStorage,
@@ -45,6 +46,7 @@ const bigReducer = combineReducers({
   emailVerification: emailVerification,
   projectImgs: getProjectImgs,
   results: getTournamentsResults,
+  fixtures: getTournamentsFixtures,
 });
 
 const persistedReducer = persistReducer(persistConfig, bigReducer);

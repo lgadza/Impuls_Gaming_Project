@@ -2,8 +2,8 @@ import { useEffect } from "react";
 import { Col, Row, NavDropdown, Dropdown } from "react-bootstrap";
 import * as Icon from "react-bootstrap-icons";
 import { useDispatch, useSelector } from "react-redux";
-import Avatar from "../../components/Avatar";
-import { getTournamentsResults } from "../../redux/actions";
+import Avatar from "./Avatar";
+import { getTournamentsResults } from "../redux/actions";
 import { Link } from "react-router-dom";
 
 const Table = () => {

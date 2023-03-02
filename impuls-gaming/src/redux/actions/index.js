@@ -10,6 +10,11 @@ export const GET_ME = "GET_ME";
 export const GET_ME_LOADING = "GET_ME_LOADING";
 export const GET_ME_ERROR = "GET_ME_ERROR";
 
+export const GET_TOURNAMENTS_FIXTURES = "GET_TOURNAMENTS_FIXTURES";
+export const GET_TOURNAMENTS_FIXTURES_LOADING =
+  "GET_TOURNAMENTS_FIXTURES_LOADING";
+export const GET_TOURNAMENTS_FIXTURES_ERROR = "GET_TOURNAMENTS_FIXTURES_ERROR";
+
 export const EMAIL_VERIFICATION = "EMAIL_VERIFICATION";
 export const EMAIL_VERIFICATION_LOADING = "EMAIL_VERIFICATION_LOADING";
 export const EMAIL_VERIFICATION_ERROR = "EMAIL_VERIFICATION_ERROR";
@@ -550,6 +555,55 @@ export const getTournamentsResults = () => {
 
       dispatch({
         type: GET_TOURNAMENTS_RESULTS_ERROR,
+        payload: true,
+      });
+    }
+  };
+};
+export const getTournamentsFixtures = () => {
+  return async (dispatch) => {
+    const options = {
+      method: "POST",
+    };
+    // const URL = process.env.REACT_APP_BE_PROD_URL;
+    const URL =
+      "https://apiv3.apifootball.com/?action=get_events&from=2022-07-12&to=2023-07-12&league_id=302&APIkey=9a071c302fe8a84e9e2e5a2654f52c3fa674cc4fa8273c984bed8f0ffa38c76b";
+    try {
+      let response = await fetch(`${URL}`, options);
+      if (response.ok) {
+        const tournaments = await response.json();
+        dispatch({
+          type: GET_TOURNAMENTS_FIXTURES,
+          payload: tournaments,
+        });
+        setTimeout(() => {
+          dispatch({
+            type: GET_TOURNAMENTS_FIXTURES_LOADING,
+            payload: false,
+          });
+        }, 100);
+      } else {
+        console.log("error");
+
+        dispatch({
+          type: GET_TOURNAMENTS_FIXTURES_LOADING,
+          payload: false,
+        });
+        dispatch({
+          type: GET_TOURNAMENTS_FIXTURES_ERROR,
+          payload: true,
+        });
+      }
+    } catch (error) {
+      console.log(error);
+
+      dispatch({
+        type: GET_TOURNAMENTS_FIXTURES_LOADING,
+        payload: false,
+      });
+
+      dispatch({
+        type: GET_TOURNAMENTS_FIXTURES_ERROR,
         payload: true,
       });
     }
