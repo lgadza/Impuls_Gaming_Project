@@ -31,7 +31,7 @@ const HomeUpdates = () => {
       <Container className="textColor mt-5 tournament_page ">
         <Row className="my-3">
           <div className="px-3 d-flex justify-content-between w-100 align-items-center">
-            <h1>Tournaments</h1>
+            <h2>Tournaments</h2>
             <Link onClick={handleTournamentTable}>
               <span className="textColor3">See Tournament table</span>
             </Link>

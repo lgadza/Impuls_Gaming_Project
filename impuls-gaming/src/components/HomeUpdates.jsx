@@ -25,7 +25,7 @@ const HomeUpdates = () => {
       {isLoading && <Spinner />}
 
       <div className="d-flex justify-content-between">
-        <h1 className="d-flex mb-5 featured-leagues"> Tournaments</h1>
+        <h2 className="d-flex mb-5 featured-leagues"> Tournaments</h2>
         <Link
           onClick={() => navigate("/reservations")}
           className="textColor3 text-small show-reservs"
@@ -46,7 +46,7 @@ const HomeUpdates = () => {
             </Col>
           ))}
       </Row>
-      <h2 className="my-5 d-flex featured-league">WHAT'S NEW</h2>
+      <h2 className="my-5 d-flex featured-league">What's new?</h2>
 
       {/* <Spinner /> */}
       <Row>

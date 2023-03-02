@@ -61,7 +61,7 @@ const TournamentDetails = () => {
                       </span>
                       <Link>{tournament.discipline_name}</Link>
                     </div>
-                    <h1 className="d-flex">{tournament.name}</h1>
+                    <h2 className="d-flex">{tournament.name}</h2>
                     <span className="d-flex">
                       {tournament.startDate && tournament.endDate && (
                         <span className="d-flex">
@@ -79,14 +79,22 @@ const TournamentDetails = () => {
                       )}
                     </span>
                   </div>
-                  <div className=" d-none d-lg-block     ">
+                  <div className=" d-none d-lg-block textColor ">
                     <div className="d-flex giftcard-preview-nav register-card-top  justify-content-between py-1 px-4 ">
                       <div className="d-flex flex-column justify-content-center reg-border-right mr-4 pr-3">
-                        <span className="d-flex">Registration open</span>
+                        <span
+                          className="d-flex 
+textColor"
+                        >
+                          Registration open
+                        </span>
 
                         {tournament.registration.activation
                           .registrationClosingDate && (
-                          <span className="d-flex">
+                          <span
+                            className="d-flex
+textColor"
+                          >
                             until{" "}
                             {format(
                               new Date(
@@ -98,11 +106,11 @@ const TournamentDetails = () => {
                         )}
                       </div>
                       <div>
-                        <h3 className="border-bottom pb-2">
+                        <h3 className="border-bottom pb-2  textColor">
                           {tournament.tournamentParticipants.length}
                         </h3>
-                        <h3 className="mt-0">{tournament.size}</h3>
-                        <span>Players</span>
+                        <h3 className="mt-0  textColor">{tournament.size}</h3>
+                        <span className=" textColor">Players</span>
                       </div>
                     </div>
                     <div className="bg-success px-3 text-white py-2">

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-
+import * as Icon from "react-bootstrap-icons";
 const categories = [
   {
     name: "Football Teams",
@@ -81,7 +81,7 @@ const shuffle = (playerList) => {
   return playerList;
 };
 
-function App(categories, blankRound) {
+const TournamentBracket = () => {
   const [state, setState] = useState({
     categories: categories,
     round: blankRound.map((arr) => arr.slice()),
@@ -94,7 +94,7 @@ function App(categories, blankRound) {
     setState((prevState) => ({ ...prevState, round: round }));
   }, []);
 
-  function changeCategory(event) {
+  const changeCategory = (event) => {
     let round = [...blankRound];
     round[0] = shuffle(state.categories[event.target.value].items);
     setState((prevState) => ({
@@ -102,9 +102,9 @@ function App(categories, blankRound) {
       champion: "",
       round: round,
     }));
-  }
+  };
 
-  function onSelect(item, index, roundIndex) {
+  const onSelect = (item, index, roundIndex) => {
     let champion = state.champion;
     let round = [...state.round];
     if (roundIndex === 3) {
@@ -129,7 +129,7 @@ function App(categories, blankRound) {
       round: round,
       champion: champion,
     }));
-  }
+  };
 
   const list = state.round.map((round, i) => {
     return round.map((el, j) => {
@@ -157,34 +157,29 @@ function App(categories, blankRound) {
   });
 
   return (
-    <div className="app">
-      <header>
-        <h1 className="title">Championship of Anything</h1>
-      </header>
-      <div className="category-selection">
-        <div>Choose Category: </div>
+    <div className="tournament-bracket-render mt-4">
+      {/* <div className="category-selection d-flex">
+        <div className="text-nowrap">Choose Category: </div>
         <select onChange={changeCategory}>{options}</select>
-      </div>
+      </div> */}
       <div className="knockout-container">{rounds}</div>
     </div>
   );
-}
+};
 
-function Match(props) {
-  let checked = props.checked === props.data && props.data !== "";
+const Match = ({ data, checked, index, roundIndex, onSelect }) => {
+  let isChecked = checked === data && data !== "";
   return (
-    <div className="knockout-match bracket-team">
+    <div className="knockout-match text-small bracket-team">
       <div className="team-name">
-        <div>{props.data}</div>
+        <div>{data}</div>
       </div>
       <div className="team-radio">
-        {props.data ? (
+        {data ? (
           <input
             type="radio"
-            checked={checked}
-            onChange={() =>
-              props.onSelect(props.data, props.index, props.roundIndex)
-            }
+            checked={isChecked}
+            onChange={() => onSelect(data, index, roundIndex)}
           ></input>
         ) : (
           ""
@@ -192,34 +187,30 @@ function Match(props) {
       </div>
     </div>
   );
-}
-class Round extends React.Component {
-  render() {
-    const champions =
-      this.props.champion && this.props.round === 3 ? (
-        <div className="champions-container">
-          <div className="champions-data">
-            <div>
-              <i className="fas fa-trophy" />
-            </div>
-            <div className="champions-team">{this.props.champion}</div>
+};
+const Round = ({ round, champion, data }) => {
+  const champions =
+    champion && round === 3 ? (
+      <div className="champions-container">
+        <div className="champions-data">
+          <div>
+            <Icon.TrophyFill size={40} color="gold" />
           </div>
-        </div>
-      ) : (
-        ""
-      );
-    return (
-      <div className="knockout-stage">
-        <h2></h2>
-        <div
-          className={
-            "knockout-round-container bracket-" + (this.props.round + 1)
-          }
-        >
-          {champions}
-          {this.props.data}
+          <div className="champions-team">{champion}</div>
         </div>
       </div>
+    ) : (
+      ""
     );
-  }
-}
+  return (
+    <div className="knockout-stage">
+      <h5 className="mt-4 text-secondary">Round {round + 1}</h5>
+      <div className={"knockout-round-container bracket-" + (round + 1)}>
+        {champions}
+        {data}
+      </div>
+    </div>
+  );
+};
+
+export default TournamentBracket;

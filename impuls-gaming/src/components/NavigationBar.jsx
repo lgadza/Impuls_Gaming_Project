@@ -7,7 +7,7 @@ import { useState } from "react";
 const NavigationBar = () => {
   const [isHidden, setIsHidden] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-
+  const [active, setActive] = useState("home");
   return (
     <>
       <Navbar
@@ -33,20 +33,50 @@ const NavigationBar = () => {
               />
             </div> */}
             <Nav className="nav-links ">
-              <Link to="/" className="textColor mr-4 link-btm-bar ">
+              <Link
+                to="/"
+                onClick={() => setActive("home")}
+                className={`mr-4 link-btm-bar ${
+                  active === "home" ? "textColor" : "textColor3 "
+                } `}
+              >
                 Home
               </Link>
-              <Link to="/tournaments" className="textColor mr-4 link-btm-bar">
+              <Link
+                to="/tournaments"
+                onClick={() => setActive("tournaments")}
+                className={`mr-4 link-btm-bar ${
+                  active === "tournaments" ? "textColor" : "textColor3 "
+                } `}
+              >
                 Tournaments
               </Link>
 
-              <Link to="" className="mr-4 textColor link-btm-bar">
-                Features
+              <Link
+                to=""
+                onClick={() => setActive("fixtures")}
+                className={`mr-4 link-btm-bar ${
+                  active === "fixtures" ? "textColor" : "textColor3 "
+                } `}
+              >
+                Fixtures
               </Link>
-              <Link to="" className=" mr-4  textColor link-btm-bar">
+              <Link
+                to=""
+                onClick={() => setActive("news")}
+                className={`mr-4 link-btm-bar ${
+                  active === "news" ? "textColor" : "textColor3 "
+                } `}
+              >
                 News
               </Link>
-              <Link to="" className=" textColor link-btm-bar">
+              <Link
+                to=""
+                onClick={() => setActive("about-us")}
+                className={`mr-4 link-btm-bar ${
+                  active === "about-us" ? "textColor" : "textColor3 "
+                } `}
+              >
                 About Us
               </Link>
             </Nav>
@@ -92,7 +122,7 @@ const NavigationBar = () => {
                     Tournaments
                   </Link>
                   <Link to="" className=" textColor mb-4 pr-0">
-                    Features
+                    Fixtures
                   </Link>
                   <Link to="" className=" textColor mb-4 pr-0">
                     News
