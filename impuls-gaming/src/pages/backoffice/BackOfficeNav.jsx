@@ -116,8 +116,13 @@ const BackOfficeNav = ({ data, page, user }) => {
               <span className="text-small"> Final standing</span>
             </span>
           </Link>
-          <Link className="mt-4 pt-3">{/* <Icon.Share size={20} /> */}</Link>
-          <SocialMediaSharing />
+          {/* // TODO SHARING OPTIONS */}
+          {/* <Link className="mt-4 pt-3">
+            <Icon.Share size={15} />
+            <span className="text-small">share</span>
+          </Link>
+          <SocialMediaSharing /> */}
+          {/* // TODO SHARING OPTIONS */}
         </Nav>
       </Navbar>
       <div

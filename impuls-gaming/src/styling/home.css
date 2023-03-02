@@ -5,6 +5,7 @@
 body {
   background-color: rgb(32, 44, 51) !important;
   color: rgb(233, 237, 227);
+  font-size: 0.8rem;
 }
 .navbar-nav.list-group .list-group-item {
   background-color: rgb(42, 57, 66);
@@ -204,6 +205,7 @@ input,
 textarea {
   color: rgb(233, 237, 227) !important;
   background-color: rgb(32, 44, 51) !important;
+  font-size: 0.8rem !important;
 }
 textarea {
   color: rgb(233, 237, 227) !important;
@@ -411,7 +413,7 @@ a:hover {
   background-color: #838181;
   border: 2px black solid;
   border-radius: 5px;
-  font-size: 2em;
+  font-size: 2em !important;
   width: 5rem;
   text-align: center;
 }
@@ -419,7 +421,7 @@ a:hover {
   background-color: #d6cdcd;
   border: 2px black solid;
   border-radius: 5px;
-  font-size: 1.5em;
+  font-size: 1.5em !important;
   width: 4rem;
   text-align: center;
 }
@@ -1455,7 +1457,7 @@ button.nav-link {
     background-color: #838181;
     border: 1px black solid;
     border-radius: 2px;
-    font-size: 1em;
+    font-size: 1em !important;
     width: 2.5rem;
     text-align: center;
   }
@@ -1463,7 +1465,7 @@ button.nav-link {
     background-color: #d6cdcd;
     border: 1px black solid;
     border-radius: 2px;
-    font-size: 0.8em;
+    font-size: 0.8em !important;
     width: 2rem;
     text-align: center;
   }
@@ -1475,13 +1477,12 @@ button.nav-link {
   .modal-header .modal-title.h4 span {
     font-size: 1rem;
   }
-  input {
-    font-size: 1rem !important;
-  }
+
   .tournament-name1 {
     width: 6rem;
-    font-size: 0.9rem;
+    font-size: 0rem;
   }
+
   .registration-label-hide {
     display: none;
   }
@@ -1505,12 +1506,12 @@ button.nav-link {
   }
   .results-input {
     border-radius: 2px;
-    font-size: 1em;
+    font-size: 1em !important;
     width: 2rem;
   }
   .results-input2 {
     border-radius: 2px;
-    font-size: 0.8em;
+    font-size: 0.8em !important;
     width: 2rem;
   }
   .h3-mobile {

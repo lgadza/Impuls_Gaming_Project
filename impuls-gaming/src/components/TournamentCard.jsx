@@ -14,9 +14,7 @@ const TournamentCard = ({ tournament }) => {
       />
       <Card.Body>
         <Card.Title className="textColor d-flex justify-content-between">
-          <strong className="tournament-name1 text-left">
-            {tournament.name}
-          </strong>
+          <span className="tournament-name1  text-left">{tournament.name}</span>
           <span className="text-small text-nowrap text-left text-muted d-flex">
             {tournament.discipline_name}
           </span>

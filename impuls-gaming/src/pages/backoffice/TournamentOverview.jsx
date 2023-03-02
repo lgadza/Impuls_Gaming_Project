@@ -126,8 +126,11 @@ const TournamentOverview = () => {
 
                     {setup !== 100 && (
                       <Card.Text>
-                        <Icon.InfoCircleFill size={15} />
-                        <span>
+                        <Icon.InfoCircleFill
+                          color="rgb(229, 176, 14)"
+                          size={15}
+                        />
+                        <span className="text-warning">
                           {" "}
                           You should now enable the registration or manually add
                           participants. You could also create the tournament
@@ -170,7 +173,7 @@ const TournamentOverview = () => {
                         <Link
                           to={`/backoffice/projects/settings/${tournament.name}/participants`}
                         >
-                          <Icon.Gear size={25} />
+                          <Icon.Gear size={15} />
                           <span className=" link-btm-bar">
                             Configure check-in
                           </span>
@@ -221,7 +224,7 @@ const TournamentOverview = () => {
                           <Link
                             to={`/backoffice/projects/settings/${tournament.name}/registration/`}
                           >
-                            <Icon.Gear size={25} />
+                            <Icon.Gear size={15} />
                             <span className=" link-btm-bar">
                               Configure check-in
                             </span>
@@ -300,7 +303,7 @@ const TournamentOverview = () => {
 
                                   <Dropdown.Menu style={{ width: "18rem" }}>
                                     <Dropdown.Item>
-                                      <Icon.Gear size={20} color="#0cc4f2" />
+                                      <Icon.Gear size={15} color="#0cc4f2" />
                                       <span className="textColor3 link-btm-bar">
                                         Configure
                                       </span>
@@ -358,7 +361,7 @@ const TournamentOverview = () => {
                         <Link
                           to={`/backoffice/projects/settings/${tournament.name}/registration/`}
                         >
-                          <Icon.Gear size={25} />
+                          <Icon.Gear size={15} />
                           <span className=" link-btm-bar">
                             Enable registration
                           </span>

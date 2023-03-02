@@ -68,7 +68,7 @@ const UserPage = () => {
                 <span className="textColor notification-bell">
                   <Icon.BellFill
                     color="rgb(0, 123, 255)"
-                    size={20}
+                    size={18}
                     className="mx-0 px-0 "
                   />
                   <span className="notification-message text-primary text-small "></span>
@@ -95,8 +95,8 @@ const UserPage = () => {
                 src={user.avatar}
                 alt="Profile Avatar"
                 className="avatar"
-                width={30}
-                height={30}
+                width={25}
+                height={25}
               />
             </Dropdown.Toggle>
 
