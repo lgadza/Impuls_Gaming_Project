@@ -23,18 +23,7 @@ const HomeUpdates = () => {
   const handleTournamentTable = () => {
     tournamentTable ? setTournamentTable(false) : setTournamentTable(true);
   };
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      console.log(entry);
-      if (entry.isIntersecting) {
-        entry.target.classList.add("show");
-      } else {
-        entry.target.classList.remove("show");
-      }
-    });
-  });
-  const hiddenElements = document.querySelectorAll(".hidden");
-  hiddenElements.forEach((el) => observer.observe(el));
+
   return (
     <div className="home  main-container">
       <NavigationBar />
@@ -51,7 +40,7 @@ const HomeUpdates = () => {
         <Row className="my-3">
           <Col
             md={12}
-            className={`px-0 mt-3 table-animate ${
+            className={`px-0 my-3 table-animate ${
               !tournamentTable ? "d-none" : ""
             }`}
           >
