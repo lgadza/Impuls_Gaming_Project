@@ -6,8 +6,8 @@ import {
 
 const initialState = {
   fixtures: [],
-  isLoading: GET_TOURNAMENTS_FIXTURES_LOADING,
-  isError: GET_TOURNAMENTS_FIXTURES_ERROR,
+  isLoading: true,
+  isError: false,
 };
 const getTournamentsFixtures = (state = initialState, action) => {
   switch (action.type) {

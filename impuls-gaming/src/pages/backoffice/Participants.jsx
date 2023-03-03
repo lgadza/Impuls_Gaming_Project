@@ -11,10 +11,14 @@ import {
 import BackOfficeNav from "./BackOfficeNav";
 import { useNavigate, useParams, Link } from "react-router-dom";
 import * as Icon from "react-bootstrap-icons";
-
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
-import { getTournaments, getUsers } from "../../redux/actions/index.js";
+import {
+  editOneTournamentParticipant,
+  getTournaments,
+  getUsers,
+} from "../../redux/actions/index.js";
+import { Spinner } from "react-bootstrap-v5";
 
 const Participants = () => {
   const params = useParams();
@@ -23,13 +27,16 @@ const Participants = () => {
   const tournament = tournamentData.tournaments.find(
     (name) => name.name === params.tournamentId
   );
+
+  const [checkedIn, setCheckedIn] = useState(false);
+  const [clicked, setClicked] = useState("");
   const users = tournament.tournamentParticipants;
   useEffect(() => {
     // const URL = `${process.env.REACT_APP_BE_PROD_URL}/users?limit=10`;
     // dispatch(getUsers(URL));
     dispatch(getTournaments());
   }, []);
-
+  const isLoading = useSelector((state) => state.editParticipant.isLoading);
   const [update, setUpdate] = useState(false);
   const handleUpdate = () => {
     setUpdate(true);
@@ -39,7 +46,10 @@ const Participants = () => {
   const handleSearch = () => {
     search ? setSearch(false) : setSearch(true);
   };
-
+  const tournamentParticipant = useSelector(
+    (state) => state.participant.participant
+  );
+  console.log(isLoading);
   return (
     <Container fluid className="main-container2 textColor">
       <Row>
@@ -212,13 +222,13 @@ const Participants = () => {
                     </div>
                   </div>
                   <hr />
-                  <div className="d-flex mb-3  justify-content-between text-success">
-                    <div className="d-flex  justify-content-between">
-                      <span className="mr-5">Status</span>
-                      <span className="ml-5">Name</span>
-                    </div>
-                    <span>Email</span>
-                    <span>Select</span>
+                  <div className="d-flex mb-3 bd-highlight justify-content-between text-success">
+                    {/* <div className="d-flex  justify-content-between">
+                    </div> */}
+                    <span className="flex-grow-1 bd-highlight">Status</span>
+                    <span className=" flex-grow-1 bd-highlight">Name</span>
+                    <span className="flex-grow-1 bd-highlight">Email</span>
+                    <span className="flex-grow-1 bd-highlight">Select</span>
                   </div>
 
                   <div>
@@ -226,9 +236,10 @@ const Participants = () => {
                       <ul className="pl-0 w-100">
                         {users.map((participant, index) => (
                           <li className="w-100 participant-list" key={index}>
-                            <div className="d-flex justify-content-between px-2 py-3">
-                              <div className="d-flex align-items-center">
-                                <span className="mr-1">
+                            <div className="d-flex justify-content-between px-2 py-3 bd-highligh">
+                              {/* <div className="d-flex align-items-center"> */}
+                              {tournamentParticipant.checkedIn && !isLoading ? (
+                                <span className=" d-flex align-items-center justify-content-center flex-grow-1 bd-highlight">
                                   <Icon.CheckCircleFill
                                     size={15}
                                     color="green"
@@ -238,30 +249,68 @@ const Participants = () => {
                                     Checked-in
                                   </span>
                                 </span>
-                                {/* <span className="mr-1">
-                                <Icon.XCircleFill size={15} color="gray" />
-                                <span className="text-small text-muted">
-                                 Not checked in
+                              ) : (
+                                <span className=" d-flex align-items-center justify-content-center flex-grow-1 bd-highlight">
+                                  <Icon.XCircleFill size={15} color="gray" />
+                                  <span className="text-small text-muted">
+                                    Not checked in
+                                  </span>
                                 </span>
-                              </span> */}
-                                <span className="ml-5">
-                                  {participant.name} {participant.surname}
-                                </span>
-                              </div>
+                              )}
 
-                              <div className="">
+                              {isLoading && clicked && (
+                                <Spinner animation="grow" size="sm" />
+                              )}
+
+                              <span className="flex-grow-1 bd-highlight">
+                                {participant.name} {participant.surname}
+                              </span>
+                              {/* </div> */}
+
+                              <div className="flex-grow-1 bd-highlight">
                                 <span>{participant.email} </span>
                               </div>
-                              <div className="">
-                                {/* <span className="mr-2">
-                                    {format(
-                                      new Date(
-                                        participant.createdAt.toString()
-                                      ),
-                                      "dd MMM yyyy"
-                                    )}
-                                  </span> */}
-                                {/* <Icon.ThreeDotsVertical /> */}
+
+                              <div className=" d-flex align-items-center justify-content-center flex-grow-1 bd-highlight">
+                                <Link
+                                  onClick={() => {
+                                    checkedIn
+                                      ? setCheckedIn(false)
+                                      : setCheckedIn(true);
+                                    setClicked("clicked");
+                                  }}
+                                >
+                                  {checkedIn ? (
+                                    <Icon.ToggleOn
+                                      color="green"
+                                      size={20}
+                                      onClick={() =>
+                                        dispatch(
+                                          editOneTournamentParticipant(
+                                            tournament._id,
+                                            participant._id,
+                                            { checkedIn: true }
+                                          )
+                                        )
+                                      }
+                                    />
+                                  ) : (
+                                    <Icon.ToggleOff
+                                      size={20}
+                                      color="gray"
+                                      onClick={() =>
+                                        dispatch(
+                                          editOneTournamentParticipant(
+                                            tournament._id,
+                                            participant._id,
+                                            { checkedIn: false }
+                                          )
+                                        )
+                                      }
+                                    />
+                                  )}
+                                </Link>
+
                                 <input className="mr-1  px-2" type="checkbox" />
                               </div>
                             </div>

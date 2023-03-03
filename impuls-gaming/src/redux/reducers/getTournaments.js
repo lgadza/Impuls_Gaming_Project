@@ -6,8 +6,8 @@ import {
 
 const initialState = {
   tournaments: [],
-  isLoading: GET_TOURNAMENTS_LOADING,
-  isError: GET_TOURNAMENTS_ERROR,
+  isLoading: true,
+  isError: false,
 };
 const getTournaments = (state = initialState, action) => {
   switch (action.type) {

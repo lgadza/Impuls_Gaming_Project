@@ -6,8 +6,8 @@ import {
 
 const initialState = {
   projectImgs: [],
-  isLoading: GET_PROJECT_IMAGES_LOADING,
-  isError: GET_PROJECT_IMAGES_ERROR,
+  isLoading: true,
+  isError: false,
 };
 const getProjectImgs = (state = initialState, action) => {
   switch (action.type) {

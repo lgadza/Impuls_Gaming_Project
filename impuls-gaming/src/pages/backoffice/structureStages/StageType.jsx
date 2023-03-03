@@ -37,7 +37,9 @@ const StageType = () => {
           <h3 className="d-flex mb-5">Select a stage type</h3>
           <Row className=" mb-5">
             <Col md={6}>
-              <Link>
+              <Link
+                to={`/backoffice/projects/structures/${params.tournamentId}/stages/multiple/Simple`}
+              >
                 <Card
                   className="border-hover textColor"
                   style={{ height: "12rem" }}
@@ -52,7 +54,9 @@ const StageType = () => {
               </Link>
             </Col>
             <Col md={6}>
-              <Link>
+              <Link
+                to={`/backoffice/projects/structures/${params.tournamentId}/stages/multiple/Single Elimination`}
+              >
                 <Card
                   className="border-hover textColor"
                   style={{ height: "12rem" }}
@@ -70,7 +74,9 @@ const StageType = () => {
           </Row>
           <Row>
             <Col md={6}>
-              <Link>
+              <Link
+                to={`/backoffice/projects/structures/${params.tournamentId}/stages/multiple/Bracket Groups`}
+              >
                 <Card
                   className="border-hover textColor"
                   style={{ height: "12rem" }}
@@ -87,7 +93,7 @@ const StageType = () => {
             </Col>
             <Col md={6}>
               <Link
-                to={`/backoffice/projects/structures/${params.tournamentId}/stages/multiple/league/`}
+                to={`/backoffice/projects/structures/${params.tournamentId}/stages/multiple/league`}
               >
                 <Card
                   className="border-hover textColor"

@@ -10,6 +10,19 @@ export const GET_ME = "GET_ME";
 export const GET_ME_LOADING = "GET_ME_LOADING";
 export const GET_ME_ERROR = "GET_ME_ERROR";
 
+export const GET_ONE_TOURNAMENT_PARTICIPANT = "GET_ONE_TOURNAMENT_PARTICIPANT";
+export const GET_ONE_TOURNAMENT_PARTICIPANT_LOADING =
+  "GET_ONE_TOURNAMENT_PARTICIPANT_LOADING";
+export const GET_ONE_TOURNAMENT_PARTICIPANT_ERROR =
+  "GET_ONE_TOURNAMENT_PARTICIPANT_ERROR";
+
+export const EDIT_ONE_TOURNAMENT_PARTICIPANT =
+  "EDIT_ONE_TOURNAMENT_PARTICIPANT";
+export const EDIT_ONE_TOURNAMENT_PARTICIPANT_LOADING =
+  "EDIT_ONE_TOURNAMENT_PARTICIPANT_LOADING";
+export const EDIT_ONE_TOURNAMENT_PARTICIPANT_ERROR =
+  "EDIT_ONE_TOURNAMENT_PARTICIPANT_ERROR";
+
 export const GET_TOURNAMENTS_FIXTURES = "GET_TOURNAMENTS_FIXTURES";
 export const GET_TOURNAMENTS_FIXTURES_LOADING =
   "GET_TOURNAMENTS_FIXTURES_LOADING";
@@ -657,10 +670,128 @@ export const getProjectsImgs = () => {
   };
 };
 
+export const getOneTournamentParticipant = (
+  // accessToken,
+  tournamentId,
+  participantId
+) => {
+  return async (dispatch) => {
+    const URL = process.env.REACT_APP_BE_PROD_URL;
+    // const URL = process.env.REACT_APP_BE_DEV_URL;
+    const options = {
+      method: "GET",
+    };
+
+    try {
+      let response = await fetch(
+        `${URL}/tournaments/${tournamentId}/participants/${participantId}`,
+        options
+      );
+      if (response.ok) {
+        const participant = await response.json();
+        dispatch({
+          type: EDIT_ONE_TOURNAMENT_PARTICIPANT,
+          payload: participant,
+        });
+        setTimeout(() => {
+          dispatch({
+            type: EDIT_ONE_TOURNAMENT_PARTICIPANT_LOADING,
+            payload: false,
+          });
+        }, 100);
+      } else {
+        console.log("error");
+
+        dispatch({
+          type: EDIT_ONE_TOURNAMENT_PARTICIPANT_LOADING,
+          payload: false,
+        });
+        dispatch({
+          type: EDIT_ONE_TOURNAMENT_PARTICIPANT_ERROR,
+          payload: true,
+        });
+      }
+    } catch (error) {
+      console.log(error);
+
+      dispatch({
+        type: EDIT_ONE_TOURNAMENT_PARTICIPANT_LOADING,
+        payload: false,
+      });
+
+      dispatch({
+        type: EDIT_ONE_TOURNAMENT_PARTICIPANT_ERROR,
+        payload: true,
+      });
+    }
+  };
+};
+export const editOneTournamentParticipant = (
+  // accessToken,
+  tournamentId,
+  participantId,
+  data
+) => {
+  return async (dispatch) => {
+    const URL = process.env.REACT_APP_BE_PROD_URL;
+    // const URL = process.env.REACT_APP_BE_DEV_URL;
+    const options = {
+      method: "PUT",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    };
+
+    try {
+      let response = await fetch(
+        `${URL}/tournaments/${tournamentId}/participants/${participantId}`,
+        options
+      );
+      if (response.ok) {
+        const participant = await response.json();
+        dispatch(getOneTournamentParticipant(tournamentId, participantId));
+        dispatch({
+          type: GET_ONE_TOURNAMENT_PARTICIPANT,
+          payload: participant,
+        });
+        setTimeout(() => {
+          dispatch({
+            type: GET_ONE_TOURNAMENT_PARTICIPANT_LOADING,
+            payload: false,
+          });
+        }, 100);
+      } else {
+        console.log("error");
+
+        dispatch({
+          type: GET_ONE_TOURNAMENT_PARTICIPANT_LOADING,
+          payload: false,
+        });
+        dispatch({
+          type: GET_ONE_TOURNAMENT_PARTICIPANT_ERROR,
+          payload: true,
+        });
+      }
+    } catch (error) {
+      console.log(error);
+
+      dispatch({
+        type: GET_ONE_TOURNAMENT_PARTICIPANT_LOADING,
+        payload: false,
+      });
+
+      dispatch({
+        type: GET_ONE_TOURNAMENT_PARTICIPANT_ERROR,
+        payload: true,
+      });
+    }
+  };
+};
 export const getUsers = (accessToken) => {
   return async (dispatch) => {
-    // const URL = process.env.REACT_APP_BE_PROD_URL;
-    const URL = process.env.REACT_APP_BE_DEV_URL;
+    const URL = process.env.REACT_APP_BE_PROD_URL;
     const options = {
       method: "GET",
     };
@@ -706,6 +837,7 @@ export const getUsers = (accessToken) => {
     }
   };
 };
+
 export const getMe = (accessToken) => {
   return async (dispatch) => {
     const options = {

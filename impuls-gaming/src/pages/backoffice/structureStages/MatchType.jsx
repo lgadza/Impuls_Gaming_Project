@@ -54,7 +54,9 @@ const MatchType = () => {
           </div>
           <Row className=" mb-5">
             <Col>
-              <Link>
+              <Link
+                to={`/backoffice/projects/structures/${params.tournamentId}/stages/dual/simple`}
+              >
                 <Card
                   className="border-hover textColor"
                   style={{ height: "12rem" }}

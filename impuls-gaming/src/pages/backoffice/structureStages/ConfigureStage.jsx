@@ -376,17 +376,19 @@ const ConfigureStages = () => {
                       </Form.Group>
                     </Col>
                   </Row>
-                  <Card className="text-warning warning-bg">
-                    <Card.Body>
-                      <Icon.ExclamationTriangleFill className="mx-1" />
-                      <span className="text-left ">
-                        This stage type involves a manual matching method. All
-                        matches must therefore be manually entered in the
-                        "matching values" found in the advanced settings of each
-                        division.
-                      </span>
-                    </Card.Body>
-                  </Card>
+                  {params.configType === "league" && (
+                    <Card className="text-warning warning-bg">
+                      <Card.Body>
+                        <Icon.ExclamationTriangleFill className="mx-1" />
+                        <span className="text-left ">
+                          This stage type involves a manual matching method. All
+                          matches must therefore be manually entered in the
+                          "matching values" found in the advanced settings of
+                          each division.
+                        </span>
+                      </Card.Body>
+                    </Card>
+                  )}
 
                   <Link className="d-flex justify-content-end mt-4">
                     <Button

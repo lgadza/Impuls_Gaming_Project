@@ -24,7 +24,7 @@ const OrganiserSignUp = () => {
   const registrationResponse = useSelector(
     (state) => state.registerUser.registrationResponse
   );
-  console.log("I am IsLOading", isLoading);
+
   const [email, setEmail] = useState("");
   const handleName = (e) => {
     setName(e.target.value);
