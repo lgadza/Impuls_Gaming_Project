@@ -477,6 +477,26 @@ export const deleteTournament = (id) => {
     }
   };
 };
+export const deleteTournamentParticipant = (tournamentId, participantId) => {
+  return async () => {
+    const options = {
+      method: "DELETE",
+    };
+    const URL = process.env.REACT_APP_BE_PROD_URL;
+    try {
+      const response = await fetch(
+        `${URL}/tournaments/${tournamentId}/participants/${participantId}`,
+        options
+      );
+      console.log(response.ok);
+      if (response.ok || response === 204) {
+        getTournaments();
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
 export const getTournaments = () => {
   return async (dispatch) => {
     const options = {
@@ -751,7 +771,8 @@ export const editOneTournamentParticipant = (
       );
       if (response.ok) {
         const participant = await response.json();
-        dispatch(getOneTournamentParticipant(tournamentId, participantId));
+        // dispatch(getOneTournamentParticipant(tournamentId, participantId));
+        dispatch(getTournaments());
         dispatch({
           type: GET_ONE_TOURNAMENT_PARTICIPANT,
           payload: participant,

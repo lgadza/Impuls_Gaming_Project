@@ -29,6 +29,9 @@ const TournamentOverview = () => {
   const tournament = tournamentData.tournaments.find(
     (name) => name.name === params.tournamentId
   );
+  const checkedInParticipants = tournament.tournamentParticipants.filter(
+    (player) => player.checkedIn === true
+  );
   const user = useSelector((state) => state.me.me);
   useEffect(() => {
     dispatch(getUsers(`${URL}/users?limit=10`));
@@ -185,19 +188,19 @@ const TournamentOverview = () => {
                         <div>
                           <div className="d-flex justify-content-around mb-3">
                             <div className="text-primary">
-                              <h2>
+                              <h3>
                                 {tournament.tournamentParticipants.length}
-                              </h2>
+                              </h3>
                               <span>Participants </span>
                             </div>
-                            {isCheckIn && (
-                              <div className="text-success">
-                                <h2>0</h2>
-                                <span>Checked in </span>
-                              </div>
-                            )}
+
+                            <div className="text-success">
+                              <h3>{checkedInParticipants.length}</h3>
+                              <span>Checked in </span>
+                            </div>
+
                             <div className="text-secondary">
-                              <h2>{tournament.size}</h2>
+                              <h3>{tournament.size}</h3>
                               <span>Tournament size</span>
                             </div>
                           </div>
@@ -373,19 +376,19 @@ const TournamentOverview = () => {
                       <Card.Text>
                         <div className="d-flex justify-content-around">
                           <div className="text-primary">
-                            <h1>0</h1>
+                            <h3>0</h3>
                             <span>Pending</span>
                           </div>
                           <div className="text-success">
-                            <h1>0</h1>
+                            <h3>0</h3>
                             <span>Accepted</span>
                           </div>
                           <div className="text-secondary">
-                            <h1>0</h1>
+                            <h3>0</h3>
                             <span>Refused</span>
                           </div>
                           <div className="text-danger">
-                            <h1>0</h1>
+                            <h3>0</h3>
                             <span>Cancelled</span>
                           </div>
                         </div>

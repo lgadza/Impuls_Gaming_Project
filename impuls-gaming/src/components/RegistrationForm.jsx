@@ -56,7 +56,7 @@ const RegistrationForm = () => {
   return (
     <>
       {name && email && surname && termsCheck && nickName && update && (
-        <div className="registration-card mx-auto mt-5">
+        <div className="registration-card mx-auto mt-5 ">
           <Alert key={"success"} variant={"success"}>
             <Icon.CheckCircle size={15} />
             <span>Registration sent to the organizer</span>
@@ -72,7 +72,7 @@ const RegistrationForm = () => {
         </div>
       )}
       <Row className="d-flex justify-content-center">
-        <Col lg={8} className="registration-forms mt-3">
+        <Col lg={10} className="registration-forms mt-3">
           <div className="d-flex  flex-column my-3">
             <h4 className="d-flex">Tournament registration</h4>
           </div>

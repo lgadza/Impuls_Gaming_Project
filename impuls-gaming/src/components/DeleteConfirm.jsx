@@ -39,7 +39,6 @@ const DeleteConfirm = ({ visible, onhide, tournamentId, from }) => {
                 <strong className="textColor2 text-danger mx-2">
                   {tournamentId}
                 </strong>
-                tournament
               </h6>
               <div className="my-5 ml-auto">
                 <Button onClick={onhide} variant="outline-primary">
@@ -51,7 +50,7 @@ const DeleteConfirm = ({ visible, onhide, tournamentId, from }) => {
                     onClick={handleData}
                     className="primary-btn ml-3 textColor"
                   >
-                    <Icon.Trash size={20} />
+                    <Icon.Trash size={15} />
                     Delete
                   </Button>
                 </Link>

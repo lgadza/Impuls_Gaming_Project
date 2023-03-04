@@ -19,6 +19,7 @@ import {
   getUsers,
 } from "../../redux/actions/index.js";
 import { Spinner } from "react-bootstrap-v5";
+import DeleteConfirm from "../../components/DeleteConfirm";
 
 const Participants = () => {
   const params = useParams();
@@ -27,16 +28,30 @@ const Participants = () => {
   const tournament = tournamentData.tournaments.find(
     (name) => name.name === params.tournamentId
   );
-
-  const [checkedIn, setCheckedIn] = useState(false);
-  const [clicked, setClicked] = useState("");
+  const checkedInParticipants = tournament.tournamentParticipants.filter(
+    (player) => player.checkedIn === true
+  );
+  const [deleteParticipant, setDeleteParticipant] = useState("");
+  const tournamentParticipant = useSelector(
+    (state) => state.participant.participant
+  );
+  const [selectedParticipant, setSelectedParticipant] = useState([]);
+  // console.log(selectedParticipant);
+  const [clicked, setClicked] = useState(false);
   const users = tournament.tournamentParticipants;
   useEffect(() => {
     // const URL = `${process.env.REACT_APP_BE_PROD_URL}/users?limit=10`;
     // dispatch(getUsers(URL));
     dispatch(getTournaments());
   }, []);
-  const isLoading = useSelector((state) => state.editParticipant.isLoading);
+  const isLoadingTournament = useSelector(
+    (state) => state.tournaments.isLoading
+  );
+  const isLoadingCheckIn = useSelector(
+    (state) => state.editParticipant.isLoading
+  );
+  const [showDelete, setShowDelete] = useState(false);
+  const handleCloseDelete = () => setShowDelete(false);
   const [update, setUpdate] = useState(false);
   const handleUpdate = () => {
     setUpdate(true);
@@ -46,10 +61,7 @@ const Participants = () => {
   const handleSearch = () => {
     search ? setSearch(false) : setSearch(true);
   };
-  const tournamentParticipant = useSelector(
-    (state) => state.participant.participant
-  );
-  console.log(isLoading);
+
   return (
     <Container fluid className="main-container2 textColor">
       <Row>
@@ -61,7 +73,7 @@ const Participants = () => {
             {update && (
               <div className="registration-card mx-auto">
                 <Alert key={"success"} variant={"success"}>
-                  <Icon.CheckCircle size={15} />
+                  <Icon.CheckCircle size={13} />
                   <span>Settings have been successfully updated.</span>
                 </Alert>
               </div>
@@ -69,7 +81,7 @@ const Participants = () => {
             <Card className="registration-card mx-auto mb-5 main-container2">
               <Card.Body>
                 <div className="d-flex ">
-                  <h3 className="d-flex my-1">Participants</h3>
+                  <h5 className="d-flex my-1">Participants</h5>
                   <div className="d-flex ml-auto">
                     <Link className="d-flex justify-content-end my-1 mr-2 link-none-deco">
                       <Button
@@ -99,15 +111,17 @@ const Participants = () => {
               <Card.Body>
                 <div className="d-flex ">
                   <Col className="d-flex flex-column border-right">
-                    <h1>{users.length}</h1>
+                    <h3>{users.length}</h3>
                     <span>participants</span>
                   </Col>
                   <Col className="d-flex flex-column  border-right">
-                    <h1 className=" text-success">{users.length}</h1>
+                    <h3 className=" text-success">
+                      {checkedInParticipants.length}
+                    </h3>
                     <span className=" text-success"> Checked-in </span>
                   </Col>
                   <Col className="d-flex flex-column ml-auto">
-                    <h1>{tournament.size}</h1>
+                    <h3>{tournament.size}</h3>
                     <span>Tournament size</span>
                   </Col>
                 </div>
@@ -116,18 +130,26 @@ const Participants = () => {
             <Card className="registration-card mx-auto">
               <Card.Header>
                 <div className="d-flex ">
-                  <h3 className="d-flex my-1">List of participants</h3>
+                  <h5 className="d-flex my-1">List of participants</h5>
                   <div className="d-flex ml-auto">
-                    <Link className="d-flex justify-content-end align-items-center main-container2 my-1 mr-2 link-none-deco">
-                      <Icon.ArrowClockwise size={20} />
-                      <span className="pr-3">Refresh</span>
-                    </Link>
+                    {isLoadingTournament && (
+                      <Spinner animation="grow" size="sm" />
+                    )}
+                    {!isLoadingTournament && (
+                      <Link
+                        onClick={() => dispatch(getTournaments())}
+                        className="d-flex justify-content-end align-items-center main-container2 my-1 mr-2 link-none-deco"
+                      >
+                        <Icon.ArrowClockwise size={13} />
+                        <span className="pr-3">Refresh</span>
+                      </Link>
+                    )}
                     {!search ? (
                       <Link
                         onClick={handleSearch}
                         className="d-flex justify-content-end align-items-center my-1 main-container2 link-none-deco"
                       >
-                        <Icon.Search size={20} />
+                        <Icon.Search size={13} />
                         <span className="pr-3">Search</span>
                       </Link>
                     ) : (
@@ -205,19 +227,21 @@ const Participants = () => {
                   <div className=" d-flex justify-content-between">
                     <div className="my-auto">
                       <span>
-                        <strong>{users.length} participants </strong>
-                        <span className="text-mute">out of 36</span>
+                        <strong>
+                          {selectedParticipant.length} participants{" "}
+                        </strong>
+                        <span className="text-mute">out of {users.length}</span>
                       </span>
                     </div>
                     <div className="ml-auto">
                       <Button
-                        disabled={true}
+                        disabled={selectedParticipant.length > 0 ? false : true}
                         type="submit"
                         //   onClick={handleUpdate}
-                        className="primary-btn textColor"
+                        className="primary-btn textColor d-flex align-items-center text-small justify-content-center"
                       >
-                        <Icon.Trash3Fill size={20} />
-                        Delete All
+                        <Icon.Trash3Fill size={13} />
+                        <span>Delete All</span>
                       </Button>
                     </div>
                   </div>
@@ -228,6 +252,7 @@ const Participants = () => {
                     <span className="flex-grow-1 bd-highlight">Status</span>
                     <span className=" flex-grow-1 bd-highlight">Name</span>
                     <span className="flex-grow-1 bd-highlight">Email</span>
+                    <span className="flex-grow-1 bd-highlight">Check in</span>
                     <span className="flex-grow-1 bd-highlight">Select</span>
                   </div>
 
@@ -235,13 +260,19 @@ const Participants = () => {
                     {users.length > 0 && (
                       <ul className="pl-0 w-100">
                         {users.map((participant, index) => (
-                          <li className="w-100 participant-list" key={index}>
+                          <li
+                            className="w-100 participant-list"
+                            key={index}
+                            id={participant._id}
+                          >
                             <div className="d-flex justify-content-between px-2 py-3 bd-highligh">
                               {/* <div className="d-flex align-items-center"> */}
-                              {tournamentParticipant.checkedIn && !isLoading ? (
+                              {participant.checkedIn &&
+                              !isLoadingTournament &&
+                              !isLoadingCheckIn ? (
                                 <span className=" d-flex align-items-center justify-content-center flex-grow-1 bd-highlight">
                                   <Icon.CheckCircleFill
-                                    size={15}
+                                    size={13}
                                     color="green"
                                     className="mx-0 px-0"
                                   />
@@ -251,16 +282,17 @@ const Participants = () => {
                                 </span>
                               ) : (
                                 <span className=" d-flex align-items-center justify-content-center flex-grow-1 bd-highlight">
-                                  <Icon.XCircleFill size={15} color="gray" />
+                                  <Icon.XCircleFill size={13} color="gray" />
                                   <span className="text-small text-muted">
                                     Not checked in
                                   </span>
                                 </span>
                               )}
 
-                              {isLoading && clicked && (
-                                <Spinner animation="grow" size="sm" />
-                              )}
+                              {(isLoadingTournament || isLoadingCheckIn) &&
+                                clicked === true && (
+                                  <Spinner animation="grow" size="sm" />
+                                )}
 
                               <span className="flex-grow-1 bd-highlight">
                                 {participant.name} {participant.surname}
@@ -270,17 +302,13 @@ const Participants = () => {
                               <div className="flex-grow-1 bd-highlight">
                                 <span>{participant.email} </span>
                               </div>
-
-                              <div className=" d-flex align-items-center justify-content-center flex-grow-1 bd-highlight">
+                              <div className="flex-grow-1 bd-highlight">
                                 <Link
                                   onClick={() => {
-                                    checkedIn
-                                      ? setCheckedIn(false)
-                                      : setCheckedIn(true);
-                                    setClicked("clicked");
+                                    setClicked(true);
                                   }}
                                 >
-                                  {checkedIn ? (
+                                  {participant.checkedIn ? (
                                     <Icon.ToggleOn
                                       color="green"
                                       size={20}
@@ -289,7 +317,7 @@ const Participants = () => {
                                           editOneTournamentParticipant(
                                             tournament._id,
                                             participant._id,
-                                            { checkedIn: true }
+                                            { checkedIn: false }
                                           )
                                         )
                                       }
@@ -303,15 +331,46 @@ const Participants = () => {
                                           editOneTournamentParticipant(
                                             tournament._id,
                                             participant._id,
-                                            { checkedIn: false }
+                                            { checkedIn: true }
                                           )
                                         )
                                       }
                                     />
                                   )}
                                 </Link>
+                              </div>
 
-                                <input className="mr-1  px-2" type="checkbox" />
+                              <div className=" d-flex align-items-center justify-content-center flex-grow-1 bd-highlight">
+                                <input
+                                  onClick={(e) => {
+                                    if (
+                                      selectedParticipant.includes(
+                                        tournament._id
+                                      )
+                                    ) {
+                                      const index = selectedParticipant.indexOf(
+                                        participant._id
+                                      );
+                                    } else {
+                                      setSelectedParticipant([
+                                        ...selectedParticipant,
+                                        participant._id,
+                                      ]);
+                                    }
+                                  }}
+                                  className="mr-1  px-2"
+                                  type="checkbox"
+                                />
+                                <Link
+                                  onClick={() => {
+                                    setDeleteParticipant(
+                                      `${participant.name} ${participant.surname}`
+                                    );
+                                    setShowDelete(true);
+                                  }}
+                                >
+                                  <Icon.Trash3Fill size={13} color="red" />
+                                </Link>
                               </div>
                             </div>
                           </li>
@@ -374,20 +433,22 @@ const Participants = () => {
                   <div className="d-flex">
                     <div className="my-auto">
                       <span>
-                        <strong>0 participants </strong>
+                        <strong>
+                          {selectedParticipant.length} participants{" "}
+                        </strong>
                         <span className="text-mute">out of {users.length}</span>
                       </span>
                     </div>
 
                     <div className="ml-auto">
                       <Button
-                        disabled={true}
+                        disabled={selectedParticipant.length > 0 ? false : true}
                         type="submit"
                         //   onClick={handleUpdate}
-                        className="primary-btn textColor"
+                        className="primary-btn textColor d-flex align-items-center text-small justify-content-center"
                       >
-                        <Icon.Trash3Fill size={20} />
-                        Delete All
+                        <Icon.Trash3Fill size={13} />
+                        <span>Delete All</span>
                       </Button>
                     </div>
                   </div>
@@ -397,6 +458,11 @@ const Participants = () => {
           </Col>
         )}
       </Row>
+      <DeleteConfirm
+        visible={showDelete}
+        onhide={handleCloseDelete}
+        tournamentId={deleteParticipant}
+      />
     </Container>
   );
 };

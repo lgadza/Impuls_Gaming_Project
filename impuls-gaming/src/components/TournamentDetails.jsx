@@ -34,7 +34,7 @@ const TournamentDetails = () => {
   const tournament = tournamentData.tournaments.find(
     (name) => name.name === params.tournamentId
   );
-
+  console.log("regi", tournament.registration.activation.isRegistration);
   const dispatch = useDispatch();
   console.log(tournament);
   return (
@@ -193,7 +193,16 @@ textColor"
                 <Rules />
               </Tab>
               <Tab eventKey="registration" title="Registration">
-                <RegistrationForm />
+                {!tournament.registration.activation.isRegistration &&
+                new Date(
+                  tournament.registration.activation.registrationClosingDate
+                ) <= new Date() ? (
+                  <h4 className="text-left mt-4 text-danger">
+                    Registration closed, Please find an open tournament
+                  </h4>
+                ) : (
+                  <RegistrationForm tournamentId={tournament._id} />
+                )}
               </Tab>
             </Tabs>
           </Col>
@@ -215,7 +224,16 @@ textColor"
                 <Rules tournament={tournament} />
               </Tab>
               <Tab eventKey="registration" title={<Icon.RCircle size={20} />}>
-                <RegistrationForm tournamentId={tournament._id} />
+                {tournament.registration.activation.isRegistration &&
+                new Date(
+                  tournament.registration.activation.registrationClosingDate
+                ) >= new Date() ? (
+                  <RegistrationForm tournamentId={tournament._id} />
+                ) : (
+                  <h4 className="text-left mt-4 text-danger">
+                    Registration closed, Please find an open tournament
+                  </h4>
+                )}
               </Tab>
             </Tabs>
           </Col>

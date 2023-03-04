@@ -16,8 +16,8 @@ const Organizer = ({ projects }) => {
   const [show, setShow] = useState(false);
   const [deleteItem, setDeleteItem] = useState(false);
   const [projectId, setProjectId] = useState("");
-  const [showDelete, setShowDelete] = useState(false);
   const handleClose = () => setShow(false);
+  const [showDelete, setShowDelete] = useState(false);
   const handleCloseDelete = () => setShowDelete(false);
   const handleShow = () => {
     dispatch(getProjectsImgs());
