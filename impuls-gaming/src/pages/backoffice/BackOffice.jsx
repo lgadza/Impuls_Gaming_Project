@@ -47,7 +47,7 @@ const BackOffice = () => {
           <div>
             <img className=" mt-4 logo-img" src={logo} alt="" />
             <hr className="hr" />
-            <h3 className="d-flex">My Projects</h3>
+            <h4 className="d-flex">My Projects</h4>
           </div>
           <div
             className={`organizer-profile ${
@@ -102,7 +102,7 @@ const BackOffice = () => {
               <Spinner />
             </div>
           )}
-          {!isError && (
+          {isError && (
             <Alert variant="danger" className="mt-5">
               <Alert.Heading>!You got an error!</Alert.Heading>
               <p>

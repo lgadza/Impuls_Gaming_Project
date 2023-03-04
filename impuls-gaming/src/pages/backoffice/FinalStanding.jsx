@@ -25,16 +25,16 @@ const FinalStanding = () => {
           <Card className="registration-card mx-auto mb-5 main-container2">
             <Card.Body>
               <div className="d-flex ">
-                <h3 className="d-flex my-1">Participants</h3>
+                <h5 className="d-flex my-1">Participants</h5>
                 <div className="d-flex ml-auto">
                   <Link className="d-flex justify-content-end my-1 mr-2 link-none-deco">
                     <Button
                       type="submit"
                       //   onClick={handleUpdate}
-                      className="primary-btn textColor"
+                      className="primary-btn textColor d-flex align-items-center justify-content-center"
                     >
                       <Icon.Plus size={20} />
-                      Add
+                      <span className="text-small">Add</span>
                     </Button>
                   </Link>
                 </div>

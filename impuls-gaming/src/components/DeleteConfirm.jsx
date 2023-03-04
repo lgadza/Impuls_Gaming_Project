@@ -4,9 +4,20 @@ import * as Icon from "react-bootstrap-icons";
 import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { deleteTournament, getTournaments } from "../redux/actions";
+import {
+  deleteTournament,
+  deleteTournamentParticipant,
+  getTournaments,
+} from "../redux/actions";
 
-const DeleteConfirm = ({ visible, onhide, tournamentId, from }) => {
+const DeleteConfirm = ({
+  visible,
+  onhide,
+  tournamentId,
+  from,
+  participantId,
+  tournamentWithParticipantId,
+}) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const tournaments = useSelector((state) => state.tournaments.tournaments);
@@ -15,11 +26,20 @@ const DeleteConfirm = ({ visible, onhide, tournamentId, from }) => {
   );
 
   const handleData = async () => {
-    await dispatch(deleteTournament(tournament._id));
-    await onhide();
-    dispatch(getTournaments());
-    if (from === "settings") {
-      navigate("/backoffice");
+    if (from === "participants") {
+      await dispatch(
+        deleteTournamentParticipant(tournamentWithParticipantId, participantId)
+      );
+      await onhide();
+
+      dispatch(getTournaments());
+    } else {
+      await dispatch(deleteTournament(tournament._id));
+      await onhide();
+      dispatch(getTournaments());
+      if (from === "settings") {
+        navigate("/backoffice");
+      }
     }
   };
 
@@ -34,21 +54,21 @@ const DeleteConfirm = ({ visible, onhide, tournamentId, from }) => {
         {tournamentId && (
           <Container>
             <Row>
-              <h6 className="my-5 ">
+              <span className="my-5 text-small ">
                 Are you sure you want to delete{" "}
                 <strong className="textColor2 text-danger mx-2">
                   {tournamentId}
                 </strong>
-              </h6>
+              </span>
               <div className="my-5 ml-auto">
-                <Button onClick={onhide} variant="outline-primary">
+                <Button onClick={onhide} variant="outline-primary text-small">
                   Cancel
                 </Button>
                 <Link>
                   <Button
                     type="submit"
                     onClick={handleData}
-                    className="primary-btn ml-3 textColor"
+                    className="primary-btn text-small ml-3 textColor"
                   >
                     <Icon.Trash size={15} />
                     Delete

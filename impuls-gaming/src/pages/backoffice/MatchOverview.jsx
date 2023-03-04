@@ -20,19 +20,19 @@ const MatchOverview = () => {
         <Col lg={10} className="my-5 px-5">
           <Card className="registration-card mx-auto mb-5 main-container2">
             <Card.Header>
-              <h3 className="d-flex p-3 my-1">Matches</h3>
+              <h5 className="d-flex p-3 my-1">Matches</h5>
             </Card.Header>
           </Card>
           <Card className="registration-card mx-auto mb-5">
             <Card.Body>
               <div className="d-flex justify-content-between ">
                 <Col className="d-flex flex-column  border-right">
-                  <h1>{tournament.size}</h1>
+                  <h2>{tournament.size}</h2>
                   <span>Matches</span>
                 </Col>
 
                 <Col className="d-flex flex-column ml-auto">
-                  <h1>{tournament.size}</h1>
+                  <h2>0</h2>
                   <span>Completed</span>
                 </Col>
               </div>
@@ -40,7 +40,7 @@ const MatchOverview = () => {
           </Card>
           <Card className="registration-card mx-auto mt-4">
             <Card.Header>
-              <h3 className="d-flex my-1">List of matches</h3>
+              <h5 className="d-flex my-1">List of matches</h5>
             </Card.Header>
             <Card.Body>No matches to display yet</Card.Body>
           </Card>

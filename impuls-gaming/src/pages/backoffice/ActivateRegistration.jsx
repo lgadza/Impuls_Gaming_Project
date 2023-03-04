@@ -96,7 +96,7 @@ const ActivateRegistration = () => {
           )}
           <Card className="registration-card mx-auto">
             <Card.Header>
-              <h3 className="d-flex my-2">Registration Settings</h3>
+              <h5 className="d-flex my-2">Registration Settings</h5>
             </Card.Header>
             <Card.Body>
               <Tabs
@@ -164,10 +164,10 @@ const ActivateRegistration = () => {
                     <Button
                       type="submit"
                       onClick={handleUpdate}
-                      className="primary-btn textColor"
+                      className="primary-btn textColor d-flex align-items-center justify-content-center"
                     >
-                      <Icon.Pencil size={20} />
-                      Update
+                      <Icon.Pencil size={15} />
+                      <span className="text-small">Update</span>
                     </Button>
                   </Link>
                 </Tab>
@@ -255,10 +255,10 @@ const ActivateRegistration = () => {
                     <Button
                       type="submit"
                       onClick={handleUpdate}
-                      className="primary-btn textColor"
+                      className="primary-btn textColor d-flex align-items-center justify-content-center"
                     >
-                      <Icon.Pencil size={20} />
-                      Update
+                      <Icon.Pencil size={15} />
+                      <span className="text-small">Update</span>
                     </Button>
                   </Link>
                 </Tab>
@@ -323,10 +323,10 @@ const ActivateRegistration = () => {
                     <Button
                       type="submit"
                       onClick={handleUpdate}
-                      className="primary-btn textColor"
+                      className="primary-btn textColor d-flex align-items-center justify-content-center"
                     >
-                      <Icon.Pencil size={20} />
-                      Update
+                      <Icon.Pencil size={15} />
+                      <span className="text-small">Update</span>
                     </Button>
                   </Link>
                 </Tab>

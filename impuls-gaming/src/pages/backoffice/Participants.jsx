@@ -31,7 +31,8 @@ const Participants = () => {
   const checkedInParticipants = tournament.tournamentParticipants.filter(
     (player) => player.checkedIn === true
   );
-  const [deleteParticipant, setDeleteParticipant] = useState("");
+  const [deleteParticipantName, setDeleteParticipantName] = useState("");
+  const [deleteParticipantId, setDeleteParticipantId] = useState("");
   const tournamentParticipant = useSelector(
     (state) => state.participant.participant
   );
@@ -87,20 +88,20 @@ const Participants = () => {
                       <Button
                         type="submit"
                         onClick={handleUpdate}
-                        className="primary-btn textColor"
+                        className="primary-btn textColor d-flex align-items-center justify-content-center"
                       >
                         <Icon.Plus size={20} />
-                        Add
+                        <span className="text-small"> Add</span>
                       </Button>
                     </Link>
                     <Link className="d-flex justify-content-end my-1 link-none-deco">
                       <Button
                         type="submit"
                         onClick={handleUpdate}
-                        className="primary-btn textColor"
+                        className="primary-btn textColor d-flex align-items-center justify-content-center"
                       >
                         <Icon.ListOl size={20} />
-                        Fill All
+                        <span className="text-small"> Fill All</span>
                       </Button>
                     </Link>
                   </div>
@@ -267,9 +268,7 @@ const Participants = () => {
                           >
                             <div className="d-flex justify-content-between px-2 py-3 bd-highligh">
                               {/* <div className="d-flex align-items-center"> */}
-                              {participant.checkedIn &&
-                              !isLoadingTournament &&
-                              !isLoadingCheckIn ? (
+                              {participant.checkedIn ? (
                                 <span className=" d-flex align-items-center justify-content-center flex-grow-1 bd-highlight">
                                   <Icon.CheckCircleFill
                                     size={13}
@@ -289,10 +288,9 @@ const Participants = () => {
                                 </span>
                               )}
 
-                              {(isLoadingTournament || isLoadingCheckIn) &&
-                                clicked === true && (
-                                  <Spinner animation="grow" size="sm" />
-                                )}
+                              {isLoadingTournament && clicked === true && (
+                                <Spinner animation="grow" size="sm" />
+                              )}
 
                               <span className="flex-grow-1 bd-highlight">
                                 {participant.name} {participant.surname}
@@ -363,10 +361,11 @@ const Participants = () => {
                                 />
                                 <Link
                                   onClick={() => {
-                                    setDeleteParticipant(
+                                    setDeleteParticipantName(
                                       `${participant.name} ${participant.surname}`
                                     );
                                     setShowDelete(true);
+                                    setDeleteParticipantId(participant._id);
                                   }}
                                 >
                                   <Icon.Trash3Fill size={13} color="red" />
@@ -461,7 +460,10 @@ const Participants = () => {
       <DeleteConfirm
         visible={showDelete}
         onhide={handleCloseDelete}
-        tournamentId={deleteParticipant}
+        tournamentId={deleteParticipantName}
+        from="participants"
+        participantId={deleteParticipantId}
+        tournamentWithParticipantId={tournament._id}
       />
     </Container>
   );

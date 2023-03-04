@@ -186,9 +186,9 @@ const ConfigureStages = () => {
           )} */}
           <Card className="registration-card mx-auto">
             <Card.Header>
-              <h3 className="d-flex my-2">
+              <h5 className="d-flex my-2">
                 Configure stage: {params.typeId} {params.configType}
-              </h3>
+              </h5>
             </Card.Header>
             <Card.Body>
               <Tabs

@@ -102,7 +102,7 @@ const GeneralSettings = () => {
           )}
           <Card className="registration-card mx-auto mt-5">
             <Card.Header>
-              <h3 className="d-flex my-4">General Settings</h3>
+              <h5 className="d-flex my-4">General Settings</h5>
             </Card.Header>
             <Card.Body>
               <Tabs
@@ -231,10 +231,10 @@ const GeneralSettings = () => {
                     <Button
                       type="submit"
                       onClick={handleUpdate}
-                      className="primary-btn textColor"
+                      className="primary-btn textColor d-flex align-items-center justify-content-center"
                     >
-                      <Icon.Pencil size={20} />
-                      Update
+                      <Icon.Pencil size={15} />
+                      <span className="text-small">Update</span>
                     </Button>
                   </Link>
                 </Tab>
@@ -278,10 +278,10 @@ const GeneralSettings = () => {
                     <Button
                       type="submit"
                       onClick={handleUpdate}
-                      className="primary-btn textColor"
+                      className="primary-btn textColor d-flex align-items-center justify-content-center"
                     >
-                      <Icon.Pencil size={20} />
-                      Update
+                      <Icon.Pencil size={15} />
+                      <span className="text-small">Update</span>
                     </Button>
                   </Link>
                 </Tab>

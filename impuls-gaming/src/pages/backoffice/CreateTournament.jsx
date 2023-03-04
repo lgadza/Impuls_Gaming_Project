@@ -66,21 +66,25 @@ const CreateTournament = ({ visible, onhide }) => {
       onHide={onhide}
       className="modal-hieght textColor"
     >
-      {isProjectImgsLoading && <Spinner />}
+      <Modal.Header>
+        <Modal.Title className="d-flex justify-content-between w-100">
+          <span>Create new tournament</span>
+          <Link>
+            <Icon.X
+              onClick={onhide}
+              size={30}
+              className="d-flex justify-content-end btn-close textColor"
+            />
+          </Link>
+        </Modal.Title>
+      </Modal.Header>
+      {isProjectImgsLoading && (
+        <Row className="d-flex justify-content-center">
+          <Spinner />
+        </Row>
+      )}
       {!isProjectImgsLoading && (
         <>
-          <Modal.Header>
-            <Modal.Title className="d-flex justify-content-between w-100">
-              <span>Create new tournament</span>
-              <Link>
-                <Icon.X
-                  onClick={onhide}
-                  size={30}
-                  className="d-flex justify-content-end btn-close textColor"
-                />
-              </Link>
-            </Modal.Title>
-          </Modal.Header>
           <Modal.Body className="py-0 mt-3 px-4">
             <Container>
               <Row className="mx-auto w-100  mb-5">
@@ -147,7 +151,7 @@ const CreateTournament = ({ visible, onhide }) => {
               <Row>
                 <Col>
                   <Button
-                    className="primary-btn textColor text-nowrap mb-2"
+                    className="primary-btn text-small textColor text-nowrap mb-2"
                     size="lg"
                     onClick={() => {
                       setPlatformCheck("Playstation 5");
@@ -159,7 +163,7 @@ const CreateTournament = ({ visible, onhide }) => {
                 <Col>
                   {" "}
                   <Button
-                    className="primary-btn text-nowrap textColor mb-2"
+                    className="primary-btn text-small text-nowrap textColor mb-2"
                     size="lg"
                     onClick={() => {
                       setPlatformCheck("Playstation 4");
@@ -171,7 +175,7 @@ const CreateTournament = ({ visible, onhide }) => {
                 <Col>
                   {" "}
                   <Button
-                    className="primary-btn textColor text-nowrap mb-2"
+                    className="primary-btn text-small textColor text-nowrap mb-2"
                     size="lg"
                     onClick={() => {
                       setPlatformCheck("XBox");
@@ -215,10 +219,10 @@ const CreateTournament = ({ visible, onhide }) => {
                     }
                     type="submit"
                     onClick={handleData}
-                    className="primary-btn d-flex justify-content-center ml-3 textColor"
+                    className="primary-btn d-flex justify-content-center align-items-center ml-3 textColor"
                   >
-                    <Icon.Plus size={30} className="d-none d-md-block ml-0" />
-                    <span>Create</span>
+                    <Icon.Plus size={20} className="d-none d-md-block ml-0" />
+                    <span className="text-small">Create</span>
                   </Button>
                 </div>
               </Row>

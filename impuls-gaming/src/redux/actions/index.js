@@ -470,7 +470,7 @@ export const deleteTournament = (id) => {
       const response = await fetch(`${URL}/tournaments/${id}`, options);
       console.log(response.ok);
       if (response.ok || response === 204) {
-        getTournaments();
+        // getTournaments();
       }
     } catch (error) {
       console.log(error);
@@ -490,7 +490,7 @@ export const deleteTournamentParticipant = (tournamentId, participantId) => {
       );
       console.log(response.ok);
       if (response.ok || response === 204) {
-        getTournaments();
+        // getTournaments();
       }
     } catch (error) {
       console.log(error);

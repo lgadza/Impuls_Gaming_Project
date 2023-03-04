@@ -37,15 +37,16 @@ const Organizer = ({ projects }) => {
   return (
     <>
       <>
-        <div className="d-flex justify-content-between align-items-center">
+        <div className="d-flex mt-5 justify-content-between align-items-center">
           {" "}
-          <h1 className="d-flex ml-5 mt-4 ">My Projects</h1>
+          <h4 className="d-flex ml-5 mt-4 ">My Projects</h4>
           <Link onClick={handleDeleteItem}>
-            <Icon.Trash size={20} />
+            {/* <Icon.Trash size={15} /> */}
+            <span className="text-small textColor3">Delete tournament</span>
           </Link>
         </div>
         <Row id="create-btn" className="w-100">
-          <div className="mx-5 mt-4 d-flex justify-content-center">
+          <div className="mx-5 mt-1 d-flex justify-content-center">
             <Button
               onClick={handleShow}
               variant="primary"
@@ -94,7 +95,7 @@ const Organizer = ({ projects }) => {
                   }}
                   className="edit-tournament mx-auto "
                 >
-                  <Icon.Trash size={20} color="red" />
+                  <Icon.Trash size={15} color="red" />
                 </button>
               )}
 

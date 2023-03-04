@@ -30,7 +30,7 @@ const Structures = () => {
         <Col lg={10} className="my-5 px-5">
           <Row>
             <Col>
-              <h3 className="d-flex mb-4">Structure</h3>
+              <h4 className="d-flex mb-4">Structure</h4>
             </Col>
           </Row>
           <Row>

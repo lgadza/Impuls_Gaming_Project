@@ -58,24 +58,16 @@ const ParticipantCheckin = () => {
             <div className="registration-card mx-auto mb-5">
               <Alert key={"success"} variant={"success"}>
                 <Icon.CheckCircle size={15} />
-                <span>Settings have been successfully updated.</span>
-              </Alert>
-            </div>
-          )}
-          {!update && (
-            <div className="registration-card mx-auto mb-5">
-              <Alert key={"danger"} variant={"danger"}>
-                <Icon.InfoCircleFill color="red" size={15} />
-                <span className="text-danger">
-                  There is invalid data in the form. Please check it and submit
-                  again.
+                <span className="text-small">
+                  Settings have been successfully updated.
                 </span>
               </Alert>
             </div>
           )}
+
           <Card className="registration-card mx-auto">
             <Card.Header>
-              <h3 className="d-flex my-2">Participant Settings</h3>
+              <h5 className="d-flex my-2">Participant Settings</h5>
             </Card.Header>
             <Card.Body>
               <Tabs
@@ -176,10 +168,10 @@ const ParticipantCheckin = () => {
                     <Button
                       type="submit"
                       onClick={handleUpdate}
-                      className="primary-btn textColor"
+                      className="primary-btn textColor d-flex align-items-center justify-content-center"
                     >
-                      <Icon.Pencil size={20} />
-                      Update
+                      <Icon.Pencil size={15} />
+                      <span className="text-small">Update</span>
                     </Button>
                   </Link>
                 </Tab>

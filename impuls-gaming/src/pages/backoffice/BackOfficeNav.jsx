@@ -18,7 +18,7 @@ const BackOfficeNav = ({ data, page, user }) => {
       <img className=" mt-4 logo-img" src={logo} alt="" />
       <hr className="hr" />
       <Link className="link-none-deco" to="/backoffice">
-        <h3 className="d-flex ">My Projects</h3>
+        <h4 className="d-flex">My Projects</h4>
       </Link>
       <hr className="hr" />
 

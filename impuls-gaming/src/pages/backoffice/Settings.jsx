@@ -37,7 +37,7 @@ const Settings = () => {
 
         <Col lg={10} className="my-5 px-5">
           <div className="d-flex justify-content-between">
-            <h3 className="d-flex mb-5">Settings</h3>
+            <h4 className="d-flex mb-5">Settings</h4>
             <Dropdown>
               <Dropdown.Toggle variant="success" id="dropdown-basic">
                 <span className="notification-bell">
@@ -143,7 +143,7 @@ const Settings = () => {
                   className="textColor settings-card link-none-deco"
                 >
                   <Card.Header className="d-flex align-items-center justify-content-center">
-                    <Icon.Trash3Fill size={15} />
+                    <Icon.Trash3Fill size={13} />
                     <span>Delete Tournament</span>
                   </Card.Header>
                   <Card.Body>

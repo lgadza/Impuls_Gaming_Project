@@ -54,7 +54,8 @@ const TournamentOverview = () => {
     setup = 0;
   }
 
-  const pending = 0;
+  const pending =
+    (tournament.tournamentParticipants.length / tournament.size) * 100;
   const running = 0;
   return (
     <Container fluid className="main-container textColor">
@@ -65,7 +66,7 @@ const TournamentOverview = () => {
           </Col>
           <Col lg={10} className="my-5 px-5">
             <div className="d-flex justify-content-between">
-              <h3 className="d-flex mb-4 ">Overview</h3>
+              <h4 className="d-flex mb-4 ">Overview</h4>
 
               <Dropdown>
                 <Dropdown.Toggle variant="success" id="dropdown-basic">
@@ -160,9 +161,9 @@ const TournamentOverview = () => {
                   <Card.Body>
                     <Row className="d-flex justify-content-between align-items-center mb-3 mx-1">
                       <span>Participants</span>
-                      <Button className="primary-btn ml-3 textColor">
-                        <Icon.Plus size={30} />
-                        Add
+                      <Button className="primary-btn ml-3 textColor d-flex align-items-center justify-content-center">
+                        <Icon.Plus size={20} />
+                        <span className="text-small">Add</span>
                       </Button>
                     </Row>
                     <hr className="hr" />
