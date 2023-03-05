@@ -394,14 +394,14 @@ const ConfigureStages = () => {
                     <Button
                       type="submit"
                       onClick={handleUpdate}
-                      className="primary-btn textColor"
+                      className="primary-btn textColor text-small d-flex align-items-center justify-content-center"
                       disabled={
                         name && size && number && numberOfDivisions
                           ? false
                           : true
                       }
                     >
-                      <Icon.PlusLg className="mx-1" size={20} />
+                      <Icon.PlusLg className="mx-1" size={15} />
                       Create
                     </Button>
                   </Link>
@@ -654,7 +654,7 @@ const ConfigureStages = () => {
                               Least game forfeits overall
                             </option>
                           </Form.Select>
-                          <Icon.Trash color="red" size={30} />
+                          <Icon.Trash color="red" size={15} />
                         </Card.Text>
                         <Card.Text className="mb-4 d-flex align-items-center">
                           <Form.Select className="textColor px-2 py-2 w-100">
@@ -664,7 +664,7 @@ const ConfigureStages = () => {
                               Least game forfeits overall
                             </option>
                           </Form.Select>
-                          <Icon.Trash color="red" size={30} />
+                          <Icon.Trash color="red" size={15} />
                         </Card.Text>
                       </Card>
                     </Col>
@@ -673,9 +673,9 @@ const ConfigureStages = () => {
                     <Button
                       type="submit"
                       //   onClick={handleUpdate}
-                      className="primary-btn textColor"
+                      className="primary-btn textColor text-small d-flex align-items-center justify-content-center"
                     >
-                      <Icon.PlusLg className="mx-1" size={20} />
+                      <Icon.PlusLg className="mx-1" size={15} />
                       Add
                     </Button>
                   </Link>
@@ -683,9 +683,9 @@ const ConfigureStages = () => {
                     <Button
                       type="submit"
                       //   onClick={handleUpdate}
-                      className="primary-btn textColor"
+                      className="primary-btn textColor text-small d-flex align-items-center justify-content-center"
                     >
-                      <Icon.PlusLg className="mx-1" size={20} />
+                      <Icon.PlusLg className="mx-1" size={15} />
                       Create
                     </Button>
                   </Link>
@@ -735,9 +735,9 @@ const ConfigureStages = () => {
                     <Button
                       type="submit"
                       //   onClick={handleUpdate}
-                      className="primary-btn textColor"
+                      className="primary-btn textColor text-small d-flex align-items-center justify-content-center"
                     >
-                      <Icon.PlusLg className="mx-1" size={20} />
+                      <Icon.PlusLg className="mx-1" size={15} />
                       Create
                     </Button>
                   </Link>
@@ -788,9 +788,9 @@ const ConfigureStages = () => {
                     <Button
                       type="submit"
                       //   onClick={handleUpdate}
-                      className="primary-btn textColor"
+                      className="primary-btn textColor text-small d-flex align-items-center justify-content-center"
                     >
-                      <Icon.PlusLg className="mx-1" size={20} />
+                      <Icon.PlusLg className="mx-1" size={15} />
                       Create
                     </Button>
                   </Link>

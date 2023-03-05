@@ -166,8 +166,8 @@ textColor"
                         return (
                           <Col xs={6} key={player._id} lg={3}>
                             <Link className="link-none-deco">
-                              <div className="border round textColor  d-flex px-2 participant-names py-3 my-2">
-                                <span className="mr-4">{player.name}</span>{" "}
+                              <div className="border round textColor  d-flex px-2 participant-names py-3 my-2 justify-content-center">
+                                <span className="mr-2">{player.name}</span>
                                 <span>{player.surname}</span>
                               </div>
                             </Link>
@@ -183,7 +183,10 @@ textColor"
                   </Row>
                   <div className="d-flex text-danger justify-content-end">
                     <span className="px-3">Total</span>
-                    <span>{tournament.tournamentParticipants.length}</span>
+                    <span>
+                      {tournament.tournamentParticipants.length}/
+                      {tournament.size}
+                    </span>
                   </div>
                 </Container>
                 {/* *********************************************************** */}
@@ -218,7 +221,60 @@ textColor"
                 eventKey="participants"
                 title={<Icon.PeopleFill size={20} />}
               >
-                <PlayerList participants={tournament.tournamentParticipants} />
+                <Container className="participants-registered pb-3">
+                  <Row>
+                    <Col>
+                      <div className="d-flex  flex-column my-3">
+                        <h4 className="d-flex">Participants</h4>
+                      </div>
+                    </Col>
+                    <Col>
+                      <Form className="d-flex my-3">
+                        <Form.Control
+                          type="search"
+                          placeholder="Search here"
+                          className="mr-3"
+                          aria-label="Search"
+                        />
+                        <Button variant="secondary">
+                          <Icon.Search size={20} />
+                        </Button>
+                      </Form>
+                    </Col>
+                  </Row>
+
+                  <hr />
+
+                  <Row>
+                    {tournament.tournamentParticipants.length > 0 &&
+                      tournament.tournamentParticipants.map((player, index) => {
+                        return (
+                          <Col xs={6} key={player._id} lg={3}>
+                            <Link className="link-none-deco">
+                              <div className="border round textColor  d-flex px-2 participant-names py-3 my-2">
+                                <span className="mr-4">{player.name}</span>{" "}
+                                <span>{player.surname}</span>
+                              </div>
+                            </Link>
+                          </Col>
+                        );
+                      })}
+
+                    {tournament.tournamentParticipants.length === 0 && (
+                      <Col xs={6} lg={3}>
+                        <span>No participants available yet</span>
+                      </Col>
+                    )}
+                  </Row>
+                  <div className="d-flex text-danger justify-content-end">
+                    <span className="px-3">Total</span>
+                    <span>
+                      {tournament.tournamentParticipants.length}/
+                      {tournament.size}
+                    </span>
+                  </div>
+                </Container>
+                {/* <PlayerList participants={tournament.tournamentParticipants} /> */}
               </Tab>
               <Tab eventKey="rules" title={<Icon.FileEarmarkText size={20} />}>
                 <Rules tournament={tournament} />

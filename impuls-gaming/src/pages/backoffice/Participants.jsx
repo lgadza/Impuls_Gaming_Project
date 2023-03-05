@@ -14,6 +14,7 @@ import * as Icon from "react-bootstrap-icons";
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import {
+  deleteTournamentParticipant,
   editOneTournamentParticipant,
   getTournaments,
   getUsers,
@@ -37,7 +38,8 @@ const Participants = () => {
     (state) => state.participant.participant
   );
   const [selectedParticipant, setSelectedParticipant] = useState([]);
-  // console.log(selectedParticipant);
+  console.log(selectedParticipant);
+
   const [clicked, setClicked] = useState(false);
   const users = tournament.tournamentParticipants;
   useEffect(() => {
@@ -48,6 +50,8 @@ const Participants = () => {
   const isLoadingTournament = useSelector(
     (state) => state.tournaments.isLoading
   );
+  console.log(isLoadingTournament);
+
   const isLoadingCheckIn = useSelector(
     (state) => state.editParticipant.isLoading
   );
@@ -62,7 +66,15 @@ const Participants = () => {
   const handleSearch = () => {
     search ? setSearch(false) : setSearch(true);
   };
-
+  const handleDeleteSelectedParticipant = async () => {
+    for (let i = 0; i < selectedParticipant.length; i++) {
+      await dispatch(
+        deleteTournamentParticipant(tournament._id, selectedParticipant[i])
+      );
+    }
+    dispatch(getTournaments());
+    setSelectedParticipant([]);
+  };
   return (
     <Container fluid className="main-container2 textColor">
       <Row>
@@ -150,8 +162,14 @@ const Participants = () => {
                         onClick={handleSearch}
                         className="d-flex justify-content-end align-items-center my-1 main-container2 link-none-deco"
                       >
-                        <Icon.Search size={13} />
-                        <span className="pr-3">Search</span>
+                        {isLoadingTournament ? (
+                          <Spinner animation="grow" size="sm" />
+                        ) : (
+                          <>
+                            <Icon.Search size={13} />
+                            <span className="pr-3">Search</span>
+                          </>
+                        )}
                       </Link>
                     ) : (
                       <Link
@@ -238,7 +256,7 @@ const Participants = () => {
                       <Button
                         disabled={selectedParticipant.length > 0 ? false : true}
                         type="submit"
-                        //   onClick={handleUpdate}
+                        onClick={handleDeleteSelectedParticipant}
                         className="primary-btn textColor d-flex align-items-center text-small justify-content-center"
                       >
                         <Icon.Trash3Fill size={13} />
@@ -292,13 +310,15 @@ const Participants = () => {
                                 <Spinner animation="grow" size="sm" />
                               )}
 
-                              <span className="flex-grow-1 bd-highlight">
+                              <span className="flex-grow-1 bd-highlight text-nowrap">
                                 {participant.name} {participant.surname}
                               </span>
                               {/* </div> */}
 
                               <div className="flex-grow-1 bd-highlight">
-                                <span>{participant.email} </span>
+                                <span className="text-nowrap">
+                                  {participant.email}{" "}
+                                </span>
                               </div>
                               <div className="flex-grow-1 bd-highlight">
                                 <Link
@@ -343,11 +363,15 @@ const Participants = () => {
                                   onClick={(e) => {
                                     if (
                                       selectedParticipant.includes(
-                                        tournament._id
+                                        participant._id
                                       )
                                     ) {
-                                      const index = selectedParticipant.indexOf(
-                                        participant._id
+                                      const filteredSelectedParticipant =
+                                        selectedParticipant.filter(
+                                          (id) => id !== participant._id
+                                        );
+                                      setSelectedParticipant(
+                                        filteredSelectedParticipant
                                       );
                                     } else {
                                       setSelectedParticipant([
@@ -443,7 +467,7 @@ const Participants = () => {
                       <Button
                         disabled={selectedParticipant.length > 0 ? false : true}
                         type="submit"
-                        //   onClick={handleUpdate}
+                        onClick={handleDeleteSelectedParticipant}
                         className="primary-btn textColor d-flex align-items-center text-small justify-content-center"
                       >
                         <Icon.Trash3Fill size={13} />
