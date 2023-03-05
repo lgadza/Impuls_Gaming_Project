@@ -11,41 +11,49 @@ import TournamentBracket from "../../components/TournamentBracket";
 
 const GroupStructure = () => {
   const params = useParams();
-  // const tournamentData = useSelector((state) => state.tournaments.tournaments);
-  // const tournament = tournamentData.tournaments.find(
-  //   (name) => name.name === params.tournamentId
-  // );
-  // console.log(tournament);
-  const [key, setKey] = useState("activation");
+  const tournamentData = useSelector((state) => state.tournaments.tournaments);
+  const tournament = tournamentData.tournaments.find(
+    (name) => name.name === params.tournamentId
+  );
 
   return (
     <Row className="mt-5">
       <Col className="mb-5 ">
         <Tabs defaultActiveKey="groups" className="mb-3 rounds-robing">
           <Tab eventKey="groups" title="Groups">
-            <h4 className="d-flex my-3">Groups</h4>
+            <h5 className="d-flex my-3">Groups</h5>
             <Row>
-              {[...Array(8)].map((group, index) => {
-                return (
-                  <Col lg={3} key={index}>
-                    <Card className="mt-3 tournament-structure-card">
-                      <Card.Header>
-                        <strong>Group {index + 1}</strong>
-                      </Card.Header>
-                      <Card.Body>
-                        {[...Array(4)].map((player, index) => (
-                          <span
-                            key={index}
-                            className="d-flex border-bottom py-1"
-                          >
-                            _
-                          </span>
-                        ))}
-                      </Card.Body>
-                    </Card>
-                  </Col>
-                );
-              })}
+              {tournament.structures.length > 0 ? (
+                <>
+                  {[...Array(8)].map((group, index) => {
+                    return (
+                      <Col lg={3} key={index}>
+                        <Card className="mt-3 tournament-structure-card">
+                          <Card.Header>
+                            <strong>Group {index + 1}</strong>
+                          </Card.Header>
+                          <Card.Body>
+                            {[...Array(4)].map((player, index) => (
+                              <span
+                                key={index}
+                                className="d-flex border-bottom py-1"
+                              >
+                                _
+                              </span>
+                            ))}
+                          </Card.Body>
+                        </Card>
+                      </Col>
+                    );
+                  })}
+                </>
+              ) : (
+                <Col lg={3}>
+                  <Card className="mt-3 tournament-structure-card">
+                    <Card.Header>No groups available</Card.Header>
+                  </Card>
+                </Col>
+              )}
             </Row>
           </Tab>
           <Tab eventKey="playOffs" title="PlayOffs">

@@ -246,18 +246,18 @@ const TournamentOverview = () => {
                   <Card.Body>
                     <Row className="d-flex justify-content-between align-items-center mb-3 mx-1">
                       <span>Structure</span>
-                      {tournament.structure.general.name !== "name" && (
+                      {tournament.structures.length > 0 && (
                         <Link
                           to={`/backoffice/projects/structures/${tournament.name}/stages/`}
                           className="link-none-deco "
                         >
-                          <Icon.Plus size={30} />
+                          <Icon.Plus size={20} />
                           <span className="link-btm-bar">Create new stage</span>
                         </Link>
                       )}
                     </Row>
-                    <hr className="hr" />
-                    {tournament.structure.general.name === "name" && (
+                    <hr className="hr mb-3 pb-0" />
+                    {tournament.structures.length === 0 && (
                       <>
                         <Card.Text>
                           The tournament does not have any stage yet. You should
@@ -268,82 +268,103 @@ const TournamentOverview = () => {
                         <Link
                           to={`/backoffice/projects/structures/${tournament.name}/stages/`}
                         >
-                          <Icon.Plus size={30} />
+                          <Icon.Plus size={20} />
                           <span className=" link-btm-bar">
                             Create new stage
                           </span>
                         </Link>
                       </>
                     )}
-                    {tournament.structure.general.name !== "name" && (
-                      <>
-                        <Card.Text>
-                          <div className="d-flex justify-content-between mt-5">
-                            <div className="d-flex flex-column ">
-                              <span>{tournament.structure.general.name} </span>
-                              <span className="text-small text-muted d-flex">
-                                {tournament.structure.stage_type}
-                              </span>
-                            </div>
-                            <div className="d-flex justify-content-around align-items-center">
-                              <span className="text-small text-muted">
-                                {tournament.tournamentParticipants.length}/
-                                {tournament.structure.general.size} players
-                              </span>
-                              <span className="text-small text-muted mx-4">
-                                Pending
-                              </span>
-                              <span>
-                                <Dropdown>
-                                  <Dropdown.Toggle
-                                    variant="success"
-                                    id="dropdown-basic"
-                                  >
-                                    <Icon.ThreeDotsVertical
-                                      size={20}
-                                      color="#0cc4f2"
-                                    />
-                                  </Dropdown.Toggle>
+                    <div className="structure-card-scroll">
+                      {tournament.structures.length > 0 && (
+                        <>
+                          <Card.Text>
+                            {tournament.structures.map((structure, index) => (
+                              <div
+                                key={index}
+                                className="d-flex justify-content-between py-2 participant-list"
+                              >
+                                <div className="d-flex flex-column ">
+                                  <span className="d-flex">
+                                    <span className="px-1">
+                                      {structure.general.number}.
+                                    </span>
 
-                                  <Dropdown.Menu style={{ width: "18rem" }}>
-                                    <Dropdown.Item>
-                                      <Icon.Gear size={15} color="#0cc4f2" />
-                                      <span className="textColor3 link-btm-bar">
-                                        Configure
-                                      </span>
-                                    </Dropdown.Item>
-                                    <Dropdown.Item className="my-2">
-                                      <Icon.Search size={20} color="#0cc4f2" />
-                                      <span className="textColor3 link-btm-bar">
-                                        Results
-                                      </span>
-                                    </Dropdown.Item>
-                                    <hr />
-                                    <Dropdown.Item>
-                                      <Icon.Trash size={20} color="red" />
-                                      <span className="text-danger link-btm-bar">
-                                        Delete
-                                      </span>
-                                    </Dropdown.Item>
-                                  </Dropdown.Menu>
-                                </Dropdown>
-                              </span>
-                            </div>
-                          </div>
-                        </Card.Text>
+                                    <span>{structure.general.name} </span>
+                                  </span>
+                                  <span className="text-small text-muted d-flex px-1">
+                                    {structure.stage_type}
+                                  </span>
+                                </div>
+                                <div className="d-flex justify-content-around align-items-center">
+                                  <span className="text-small text-muted">
+                                    {tournament.tournamentParticipants.length}/
+                                    {structure.general.size} players
+                                  </span>
+                                  <span className="text-small text-muted mx-4">
+                                    Pending
+                                  </span>
+                                  <span>
+                                    <Dropdown>
+                                      <Dropdown.Toggle
+                                        variant="success"
+                                        id="dropdown-basic"
+                                        className="align-text-end pr-0"
+                                      >
+                                        <Icon.ThreeDotsVertical
+                                          size={20}
+                                          color="#0cc4f2"
+                                          className="pr-0 mr-0 "
+                                        />
+                                      </Dropdown.Toggle>
 
-                        <hr />
-                        <Card.Text>
-                          <Link
-                            to={`/backoffice/projects/${tournament.name}/structures`}
-                          >
-                            <span className="textColor3 link-none-deco link-btm-bar">
-                              View all stages
-                            </span>
-                          </Link>
-                        </Card.Text>
-                      </>
-                    )}
+                                      <Dropdown.Menu style={{ width: "5rem" }}>
+                                        <Dropdown.Item className="text-left">
+                                          <Icon.Gear
+                                            size={15}
+                                            color="#0cc4f2"
+                                          />
+                                          <span className="textColor3 text-small link-btm-bar">
+                                            Configure
+                                          </span>
+                                        </Dropdown.Item>
+                                        <Dropdown.Item className="my-2">
+                                          <Icon.Search
+                                            size={15}
+                                            color="#0cc4f2"
+                                          />
+                                          <span className="textColor3 text-small link-btm-bar">
+                                            Results
+                                          </span>
+                                        </Dropdown.Item>
+                                        <hr className="py-0 my-0" />
+                                        <Dropdown.Item>
+                                          <Icon.Trash size={13} color="red" />
+                                          <span className="text-danger text-small link-btm-bar">
+                                            Delete
+                                          </span>
+                                        </Dropdown.Item>
+                                      </Dropdown.Menu>
+                                    </Dropdown>
+                                  </span>
+                                </div>
+                              </div>
+                            ))}
+                          </Card.Text>
+
+                          <hr />
+                          <Card.Text>
+                            <Link
+                              to={`/backoffice/projects/${tournament.name}/structures`}
+                            >
+                              <span className="textColor3 link-none-deco link-btm-bar all-stages ">
+                                View all stages
+                              </span>
+                            </Link>
+                          </Card.Text>
+                        </>
+                      )}
+                    </div>
                   </Card.Body>
                 </Card>
               </Col>

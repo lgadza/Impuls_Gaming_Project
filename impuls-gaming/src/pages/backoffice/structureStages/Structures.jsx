@@ -7,7 +7,11 @@ import * as Icon from "react-bootstrap-icons";
 import { useSelector, useDispatch } from "react-redux";
 
 import { useState, useEffect } from "react";
-import { editTournament, getTournaments } from "../../../redux/actions";
+import {
+  deleteTournamentStructure,
+  editTournament,
+  getTournaments,
+} from "../../../redux/actions";
 const Structures = () => {
   const params = useParams();
   const dispatch = useDispatch();
@@ -43,60 +47,82 @@ const Structures = () => {
                 style={{ height: "12rem" }}
                 className="main-container2 plus-project w-75 mb-3"
               >
-                <Card.Body>
-                  <Icon.PlusLg size={100} color="rgba(244, 92, 93, 255)" />
-                  <span className="d-flex justify-content-center  align-items-center">
-                    Create new stage
-                  </span>
+                <Card.Body className="d-flex flex-column justify-content-center  align-items-center">
+                  <Link
+                    to={`/backoffice/projects/structures/${tournament.name}/stages`}
+                  >
+                    <Icon.PlusLg size={60} color="rgba(244, 92, 93, 255)" />
+                    <span className="d-flex justify-content-center  align-items-center">
+                      Create new stage
+                    </span>
+                  </Link>
                 </Card.Body>
               </Card>
             </Col>
 
             <Col className="tournament-card-edit" md={9}>
               <Row>
-                {[...Array(4)].map((project, index) => (
-                  <Col md={4}>
+                {tournament.structures.map((structure, index) => (
+                  <Col key={index} md={6} className="structures-stage">
                     <Card className=" mb-3">
                       <Card.Header>
-                        <h5>1. League</h5>
+                        <h6>{structure.general.name}</h6>
                       </Card.Header>
-                      <span>League</span>
-                      <Card.Body className="d-flex justify-content-between mt-3 pb-2 align-items-center">
-                        <span className="textColor3 mr-5">Configure</span>
-                        <Dropdown>
-                          <Dropdown.Toggle
-                            variant="success"
-                            className="px-0 mx-0"
-                          >
-                            <Icon.ThreeDotsVertical
-                              size={20}
-                              color="#0cc4f2"
-                              className="px-0 mx-0"
-                            />
-                          </Dropdown.Toggle>
+                      <Card.Body>
+                        <Card.Text>
+                          <span className="d-flex">{structure.stage_type}</span>
+                        </Card.Text>
+                        <Card.Text className="d-flex justify-content-between mt-3 pb-2 align-items-center">
+                          <span className="textColor3 mr-5">Configure</span>
 
-                          <Dropdown.Menu>
-                            <Dropdown.Item>
-                              <Icon.Gear size={20} color="#0cc4f2" />
-                              <span className="textColor3 link-btm-bar">
-                                Configure
-                              </span>
-                            </Dropdown.Item>
-                            <Dropdown.Item className="my-2">
-                              <Icon.Search size={20} color="#0cc4f2" />
-                              <span className="textColor3 link-btm-bar">
-                                Results
-                              </span>
-                            </Dropdown.Item>
-                            <hr />
-                            <Dropdown.Item>
-                              <Icon.Trash size={20} color="red" />
-                              <span className="text-danger link-btm-bar">
-                                Delete
-                              </span>
-                            </Dropdown.Item>
-                          </Dropdown.Menu>
-                        </Dropdown>
+                          <Dropdown>
+                            <Dropdown.Toggle
+                              variant="success"
+                              className="px-0 mx-0"
+                            >
+                              <Icon.ThreeDotsVertical
+                                size={20}
+                                color="#0cc4f2"
+                                className="px-0 mx-0"
+                              />
+                            </Dropdown.Toggle>
+
+                            <Dropdown.Menu>
+                              <Dropdown.Item className="d-flex align-items-center">
+                                <Icon.Gear size={15} color="#0cc4f2" />
+                                <span className="textColor3 link-btm-bar text-small">
+                                  Configure
+                                </span>
+                              </Dropdown.Item>
+                              <Dropdown.Item className="my-2 d-flex align-items-center">
+                                <Icon.Search size={15} color="#0cc4f2" />
+                                <span className="textColor3 link-btm-bar text-small">
+                                  Results
+                                </span>
+                              </Dropdown.Item>
+                              <hr className="py-0 my-0" />
+                              <Dropdown.Item>
+                                <Link
+                                  onClick={async () => {
+                                    await dispatch(
+                                      deleteTournamentStructure(
+                                        tournament._id,
+                                        structure._id
+                                      )
+                                    );
+                                    dispatch(getTournaments());
+                                  }}
+                                  className="d-flex align-items-center"
+                                >
+                                  <Icon.Trash size={13} color="red" />
+                                  <span className="text-danger link-btm-bar text-small">
+                                    Delete
+                                  </span>
+                                </Link>
+                              </Dropdown.Item>
+                            </Dropdown.Menu>
+                          </Dropdown>
+                        </Card.Text>
                       </Card.Body>
                     </Card>
                   </Col>

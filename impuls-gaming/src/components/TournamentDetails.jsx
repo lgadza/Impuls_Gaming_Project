@@ -34,7 +34,7 @@ const TournamentDetails = () => {
   const tournament = tournamentData.tournaments.find(
     (name) => name.name === params.tournamentId
   );
-  console.log("regi", tournament.registration.activation.isRegistration);
+
   const dispatch = useDispatch();
   console.log(tournament);
   return (
@@ -129,10 +129,10 @@ textColor"
           <Col className="mb-5 d-none d-lg-block ">
             <Tabs defaultActiveKey="information" className="mb-3  " justify>
               <Tab eventKey="information" title="Information">
-                <TournamentInfo />
+                <TournamentInfo tournament={tournament} />
               </Tab>
               <Tab eventKey="matches" title="Matches">
-                <GroupStructure />
+                <GroupStructure tournament={tournament} />
               </Tab>
               <Tab eventKey="participants" title="Participants">
                 {/* *********************************************************** */}
@@ -189,8 +189,6 @@ textColor"
                     </span>
                   </div>
                 </Container>
-                {/* *********************************************************** */}
-                {/* <PlayerList participants={tournament.tournamentParticipants} /> */}
               </Tab>
               <Tab eventKey="rules" title="Rules">
                 <Rules />

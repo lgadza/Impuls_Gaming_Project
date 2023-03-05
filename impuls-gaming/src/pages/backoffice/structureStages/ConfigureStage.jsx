@@ -18,7 +18,11 @@ import { useState, useEffect } from "react";
 import BackOfficeNav from "../BackOfficeNav";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { editTournament } from "../../../redux/actions";
+import {
+  editTournament,
+  getTournaments,
+  postTournamentStructure,
+} from "../../../redux/actions";
 const ConfigureStages = () => {
   const params = useParams();
   const [number, setNumber] = useState(undefined);
@@ -108,41 +112,40 @@ const ConfigureStages = () => {
   };
 
   const stage_type = params.typeId + "_" + params.configType;
+  console.log(stage_type);
   const formData = {
-    structure: {
-      stage_type: stage_type,
-      general: {
-        number: Number(number),
-        size: Number(size),
-        name: name,
-        divisions: Number(numberOfDivisions),
-        group_size: Number(groupSize),
-        numberOfWinnersPerGroup: Number(numberOfWinnersPerGroup),
-      },
+    stage_type: stage_type,
+    general: {
+      number: Number(number),
+      size: Number(size),
+      name: name,
+      divisions: Number(numberOfDivisions),
+      group_size: Number(groupSize),
+      numberOfWinnersPerGroup: Number(numberOfWinnersPerGroup),
+    },
 
-      advanced: {
-        groupComp: groupComp,
-        pointsAtrribution: {
-          win: { isWin: win, points: Number(winPoints) },
-          draw: { isDraw: draw, points: Number(drawPoints) },
-          lost: { isLost: loss, points: Number(lossPoints) },
-        },
-        matchForfeit: {
-          isForfeit: forfeit,
-          points: Number(forfeitPoints),
-        },
+    advanced: {
+      groupComp: groupComp,
+      pointsAtrribution: {
+        win: { isWin: win, points: Number(winPoints) },
+        draw: { isDraw: draw, points: Number(drawPoints) },
+        lost: { isLost: loss, points: Number(lossPoints) },
       },
-      tiebreaker: {
-        option1: tiebreaker1,
-        option2: tiebreaker2,
-        option3: tiebreaker3,
+      matchForfeit: {
+        isForfeit: forfeit,
+        points: Number(forfeitPoints),
       },
-      placement: {
-        isPlacement: autoParticipantPlacement,
-      },
-      matchSettings: {
-        matchFormat: matchFormat,
-      },
+    },
+    tiebreaker: {
+      option1: tiebreaker1,
+      option2: tiebreaker2,
+      option3: tiebreaker3,
+    },
+    placement: {
+      isPlacement: autoParticipantPlacement,
+    },
+    matchSettings: {
+      matchFormat: matchFormat,
     },
   };
 
@@ -151,11 +154,14 @@ const ConfigureStages = () => {
     (name) => name.name === params.tournamentId
   );
 
-  const handleUpdate = () => {
+  const handleUpdate = async () => {
     number && name && size && numberOfDivisions
       ? setUpdate(true)
       : setUpdate(false);
-    dispatch(editTournament(formData, tournament._id));
+    if (name) {
+      await dispatch(postTournamentStructure(formData, tournament._id));
+      dispatch(getTournaments());
+    }
   };
   return (
     <Container fluid className="main-container textColor">
@@ -294,7 +300,7 @@ const ConfigureStages = () => {
                     <Col>
                       <Form.Group className="mb-3 d-flex flex-column justify-content-start">
                         <Form.Label className="d-flex">
-                          Number of divisions
+                          Number of groups
                         </Form.Label>
                         <Form.Control
                           type="number"
@@ -396,7 +402,12 @@ const ConfigureStages = () => {
                       onClick={handleUpdate}
                       className="primary-btn textColor text-small d-flex align-items-center justify-content-center"
                       disabled={
-                        name && size && number && numberOfDivisions
+                        name &&
+                        size &&
+                        number &&
+                        numberOfDivisions &&
+                        numberOfWinnersPerGroup &&
+                        groupSize
                           ? false
                           : true
                       }
@@ -672,7 +683,7 @@ const ConfigureStages = () => {
                   <Link className="d-flex justify-content-end mt-2">
                     <Button
                       type="submit"
-                      //   onClick={handleUpdate}
+                      // onClick={handleUpdate}
                       className="primary-btn textColor text-small d-flex align-items-center justify-content-center"
                     >
                       <Icon.PlusLg className="mx-1" size={15} />
@@ -682,7 +693,7 @@ const ConfigureStages = () => {
                   <Link className="d-flex justify-content-end mt-4">
                     <Button
                       type="submit"
-                      //   onClick={handleUpdate}
+                      onClick={handleUpdate}
                       className="primary-btn textColor text-small d-flex align-items-center justify-content-center"
                     >
                       <Icon.PlusLg className="mx-1" size={15} />
@@ -734,7 +745,7 @@ const ConfigureStages = () => {
                   <Link className="d-flex justify-content-end mt-4">
                     <Button
                       type="submit"
-                      //   onClick={handleUpdate}
+                      onClick={handleUpdate}
                       className="primary-btn textColor text-small d-flex align-items-center justify-content-center"
                     >
                       <Icon.PlusLg className="mx-1" size={15} />
@@ -787,7 +798,7 @@ const ConfigureStages = () => {
                   <Link className="d-flex justify-content-end mt-4">
                     <Button
                       type="submit"
-                      //   onClick={handleUpdate}
+                      onClick={handleUpdate}
                       className="primary-btn textColor text-small d-flex align-items-center justify-content-center"
                     >
                       <Icon.PlusLg className="mx-1" size={15} />

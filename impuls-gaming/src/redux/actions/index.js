@@ -10,6 +10,12 @@ export const GET_ME = "GET_ME";
 export const GET_ME_LOADING = "GET_ME_LOADING";
 export const GET_ME_ERROR = "GET_ME_ERROR";
 
+export const GET_TOURNAMENTS_STRUCTURES = "GET_TOURNAMENTS_STRUCTURES";
+export const GET_TOURNAMENTS_STRUCTURES_LOADING =
+  "GET_TOURNAMENTS_STRUCTURES_LOADING";
+export const GET_TOURNAMENTS_STRUCTURES_ERROR =
+  "GET_TOURNAMENTS_STRUCTURES_ERROR";
+
 export const GET_ONE_TOURNAMENT_PARTICIPANT = "GET_ONE_TOURNAMENT_PARTICIPANT";
 export const GET_ONE_TOURNAMENT_PARTICIPANT_LOADING =
   "GET_ONE_TOURNAMENT_PARTICIPANT_LOADING";
@@ -178,6 +184,122 @@ export const editTournament = (data, tournamentId) => {
       }
     } catch (error) {
       console.log(error);
+    }
+  };
+};
+export const postTournamentStructure = (data, tournamentId) => {
+  return async (dispatch) => {
+    const options = {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    };
+    const URL = process.env.REACT_APP_BE_PROD_URL;
+    try {
+      const response = await fetch(
+        `${URL}/tournaments/${tournamentId}/structures`,
+        options
+      );
+      if (response.ok) {
+        // getTournaments();
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+export const editTournamentStructure = (data, tournamentId, structureId) => {
+  return async (dispatch) => {
+    const options = {
+      method: "PUT",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    };
+    const URL = process.env.REACT_APP_BE_PROD_URL;
+    try {
+      const response = await fetch(
+        `${URL}/tournaments/${tournamentId}/structures/${structureId}`,
+        options
+      );
+      if (response.ok) {
+        getTournaments();
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+export const deleteTournamentStructure = (tournamentId, structureId) => {
+  return async (dispatch) => {
+    const options = {
+      method: "DELETE",
+    };
+    const URL = process.env.REACT_APP_BE_PROD_URL;
+    try {
+      const response = await fetch(
+        `${URL}/tournaments/${tournamentId}/structures/${structureId}`,
+        options
+      );
+      if (response.ok) {
+        // getTournaments();
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+export const getTournamentsStructures = (tournamentId) => {
+  return async (dispatch) => {
+    const options = {
+      method: "GET",
+    };
+    const URL = process.env.REACT_APP_BE_PROD_URL;
+    try {
+      const response = await fetch(
+        `${URL}/tournaments/${tournamentId}/structures`,
+        options
+      );
+      if (response.ok) {
+        const accessToken = await response.json();
+        dispatch({
+          type: GET_TOURNAMENTS_STRUCTURES,
+          payload: accessToken,
+        });
+        setTimeout(() => {
+          dispatch({
+            type: GET_TOURNAMENTS_STRUCTURES_LOADING,
+            payload: false,
+          });
+        }, 100);
+      } else {
+        console.log("error");
+
+        dispatch({
+          type: GET_TOURNAMENTS_STRUCTURES_LOADING,
+          payload: false,
+        });
+        dispatch({
+          type: GET_TOURNAMENTS_STRUCTURES_ERROR,
+          payload: true,
+        });
+      }
+    } catch (error) {
+      console.log(error);
+      dispatch({
+        type: GET_TOURNAMENTS_STRUCTURES_LOADING,
+        payload: false,
+      });
+
+      dispatch({
+        type: GET_TOURNAMENTS_STRUCTURES_ERROR,
+        payload: true,
+      });
     }
   };
 };

@@ -23,6 +23,7 @@ import getTournamentsResults from "../reducers/getTournamentsResults";
 import getTournamentsFixtures from "../reducers/getTournamentsFixtures";
 import getOneTournamentParticipant from "../reducers/getOneTournamentParticipant";
 import editOneTournamentParticipant from "../reducers/editOneTournamentParticipant";
+import getTournamentsStructures from "../reducers/getTournamentsStructures";
 const persistConfig = {
   key: "root",
   storage: localStorage,
@@ -51,6 +52,7 @@ const bigReducer = combineReducers({
   fixtures: getTournamentsFixtures,
   participant: getOneTournamentParticipant,
   editParticipant: editOneTournamentParticipant,
+  structures: getTournamentsStructures,
 });
 
 const persistedReducer = persistReducer(persistConfig, bigReducer);

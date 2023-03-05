@@ -759,6 +759,29 @@ hr {
   outline: none !important;
   box-shadow: none !important;
 }
+.structure-card-scroll {
+  overflow-y: scroll !important;
+  overflow: hidden;
+  height: 10rem;
+  isolation: isolate;
+}
+.structure-card-scroll .all-stages {
+  z-index: 0 !important;
+  isolation: isolate;
+}
+.structure-card-scroll .dropdown.show {
+  z-index: 1 !important;
+  isolation: isolate;
+}
+.structures-stage {
+  isolation: isolate;
+  z-index: 0;
+}
+.structures-stage .dropdown-menu.show {
+  z-index: 1 !important;
+  isolation: isolate;
+}
+
 .create-btn {
   background-color: rgb(17, 27, 33);
   width: 80%;
