@@ -43,7 +43,7 @@ const GroupStructure = () => {
       fillGroup(groups.general.divisions, tournament.tournamentParticipants);
     }
   }, []);
-  console.log(filledGroups);
+
   return (
     <Row className="mt-5">
       <Col className="mb-5 ">
