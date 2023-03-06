@@ -120,7 +120,7 @@ const ConfigureStages = () => {
       size: Number(size),
       name: name,
       divisions: Number(numberOfDivisions),
-      group_size: Number(groupSize),
+      participantPerGroup: Number(groupSize),
       numberOfWinnersPerGroup: Number(numberOfWinnersPerGroup),
     },
 

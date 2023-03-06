@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { Col, Container, Row, Table } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { getTournamentsFixtures } from "../redux/actions";
@@ -6,17 +6,32 @@ import Avatar from "./Avatar";
 
 const Fixtures = () => {
   const dispatch = useDispatch();
-  // const [fixtures,setFixtures]
+  const fixturesRef = useRef([]);
   const fixtures = useSelector((state) => state.fixtures.fixtures);
-  console.log(fixtures);
+
   useEffect(() => {
     dispatch(getTournamentsFixtures());
   }, []);
+  useEffect(() => {
+    const fixture = fixtures.find(
+      (fixture) => fixture.match_status !== "Finished"
+    );
+
+    if (fixture) {
+      fixturesRef.current[fixture.match_id].scrollIntoView();
+    }
+  }, [fixtures]);
+
   return (
     <Container fluid>
       <Row className="fixture-container">
         {fixtures.map((fixture, index) => (
-          <Col md={6} key={index} className="border participant-list">
+          <Col
+            md={6}
+            key={index}
+            ref={(element) => (fixturesRef.current[fixture.match_id] = element)}
+            className="border participant-list"
+          >
             <div className="d-flex d-block pb-2 mt-2 text-mute text-secondary">
               <Avatar
                 height={20}

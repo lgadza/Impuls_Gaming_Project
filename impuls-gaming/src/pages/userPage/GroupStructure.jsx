@@ -4,18 +4,46 @@ import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
 import { useNavigate, useParams, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { format, compareAsc } from "date-fns";
-import DatePicker from "react-datepicker";
 import { useState, useEffect } from "react";
 import TournamentBracket from "../../components/TournamentBracket";
 
 const GroupStructure = () => {
+  const [participantsPerGroup, setParticipantsPerGroup] = useState(null);
+  const [filledGroups, setFilledGroups] = useState([]);
   const params = useParams();
   const tournamentData = useSelector((state) => state.tournaments.tournaments);
   const tournament = tournamentData.tournaments.find(
     (name) => name.name === params.tournamentId
   );
+  const groups = tournament.structures.find((group) => group.general.size > 16);
+  const fillGroup = (numberOfGroups, participantsList) => {
+    const groups = Array.from({ length: numberOfGroups }, () => []);
 
+    const shuffledParticipants = participantsList.sort(
+      () => Math.random() - 0.5
+    );
+
+    for (let i = 0; i < shuffledParticipants.length; i++) {
+      const participant = shuffledParticipants[i];
+      const groupIndex = i % groups.length;
+      groups[groupIndex].push(participant);
+    }
+
+    setFilledGroups(groups);
+  };
+  useEffect(() => {
+    if (tournament.structures.length > 0) {
+      if (groups.general.participantPerGroup) {
+        setParticipantsPerGroup(groups.general.participantPerGroup);
+      } else {
+        setParticipantsPerGroup(
+          Math.floor(groups.general.size / groups.general.divisions)
+        );
+      }
+      fillGroup(groups.general.divisions, tournament.tournamentParticipants);
+    }
+  }, []);
+  console.log(filledGroups);
   return (
     <Row className="mt-5">
       <Col className="mb-5 ">
@@ -25,7 +53,7 @@ const GroupStructure = () => {
             <Row>
               {tournament.structures.length > 0 ? (
                 <>
-                  {[...Array(8)].map((group, index) => {
+                  {filledGroups.map((group, index) => {
                     return (
                       <Col lg={3} key={index}>
                         <Card className="mt-3 tournament-structure-card">
@@ -33,14 +61,21 @@ const GroupStructure = () => {
                             <strong>Group {index + 1}</strong>
                           </Card.Header>
                           <Card.Body>
-                            {[...Array(4)].map((player, index) => (
-                              <span
-                                key={index}
-                                className="d-flex border-bottom py-1"
-                              >
-                                _
-                              </span>
-                            ))}
+                            {tournament.tournamentParticipants.length ===
+                            groups.general.size ? (
+                              group.map((participant, index) => {
+                                return (
+                                  <span
+                                    key={index}
+                                    className="d-flex border-bottom py-1"
+                                  >
+                                    {participant.name} {participant.surname}
+                                  </span>
+                                );
+                              })
+                            ) : (
+                              <span>-</span>
+                            )}
                           </Card.Body>
                         </Card>
                       </Col>

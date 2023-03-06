@@ -7,6 +7,7 @@ import { getTournaments } from "../../redux/actions";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Footer from "../../components/Footer";
+import Spinner from "../../components/Spinner";
 import IntersectionObserverComponent from "../../components/ScollAnimation";
 
 const FixturesPage = () => {
@@ -14,9 +15,7 @@ const FixturesPage = () => {
   const dispatch = useDispatch();
   const tournaments = useSelector((state) => state.tournaments.tournaments);
 
-  console.log(
-    tournaments.tournaments[0].registration.activation.registrationOpeningDate
-  );
+  const isLoading = useSelector((state) => state.fixtures.isLoading);
   useEffect(() => {
     dispatch(getTournaments());
   }, []);
@@ -33,7 +32,13 @@ const FixturesPage = () => {
           <h2 className="ml-3">Fixtures</h2>
         </Row>
         <Row className="my-3">
-          <Fixtures />
+          {isLoading ? (
+            <div className="d-flex justify-content-center">
+              <Spinner />
+            </div>
+          ) : (
+            <Fixtures />
+          )}
         </Row>
       </Container>
       <Footer />

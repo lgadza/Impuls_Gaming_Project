@@ -1,5 +1,12 @@
 import { Row, Col } from "react-bootstrap";
-const Rules = ({ tournament }) => {
+import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+const Rules = () => {
+  const params = useParams();
+  const tournamentData = useSelector((state) => state.tournaments.tournaments);
+  const tournament = tournamentData.tournaments.find(
+    (name) => name.name === params.tournamentId
+  );
   return (
     <Row>
       {tournament && (
