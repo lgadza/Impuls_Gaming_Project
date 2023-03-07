@@ -93,7 +93,7 @@ const GiftCard = () => {
             className="input-section gift-container mt-5  mt-5 "
           >
             <Form onSubmit={handleSubmit}>
-              <h3 className="mt-2">Give a Gift</h3>
+              <h5 className="mt-2">Give a Gift</h5>
               <h6>Choose amount</h6>
               <hr />
               <Form.Group
@@ -222,32 +222,32 @@ const GiftCard = () => {
                 <PayPalScriptProvider>
                   <PayPalButtons
                     className="w-100 text-white "
-                    createOrder={(data, actions) => {
-                      return actions.order.create({
-                        purchase_units: [
-                          {
-                            amount: {
-                              value: amount,
-                            },
-                          },
-                        ],
-                      });
-                    }}
-                    onApprove={(data, actions) => {
-                      return actions.order.capture().then(function (details) {
-                        alert(
-                          "Gift card bought completely " +
-                            details.payer.name.given_name
-                        );
-                      });
-                    }}
+                    // createOrder={(data, actions) => {
+                    //   return actions.order.create({
+                    //     purchase_units: [
+                    //       {
+                    //         amount: {
+                    //           value: amount,
+                    //         },
+                    //       },
+                    //     ],
+                    //   });
+                    // }}
+                    // onApprove={(data, actions) => {
+                    //   return actions.order.capture().then(function (details) {
+                    //     alert(
+                    //       "Gift card bought completely " +
+                    //         details.payer.name.given_name
+                    //     );
+                    //   });
+                    // }}
                   />
                 </PayPalScriptProvider>
               </div>
             </Form>
           </Col>
           <Col md={12} lg={6} className="d-none d-sm-block mt-5 mx-3">
-            <h3 className="mt-5">Card Preview</h3>
+            <h5 className="mt-5">Card Preview</h5>
             <div className="d-flex giftcard-section w-100 mx-1 py-0  mt-5 mb-5">
               <div column md={3} className="pr-2  giftcard-preview py-3 px-2">
                 <img className="logo-img mb-3" src={logo} alt="impuls logo" />
@@ -275,7 +275,7 @@ const GiftCard = () => {
                 className=" w-100  preview-content m-0 px-3 d-flex flex-column justify-content-center"
               >
                 <div>
-                  <h3 className="mb-5 pb-2">Impuls Gift Card</h3>
+                  <h6 className="mb-5 pb-2">Impuls Gift Card</h6>
                   <h6
                     className="d-flex justify-content-end  "
                     style={amount ? { color: "red" } : { color: "black" }}

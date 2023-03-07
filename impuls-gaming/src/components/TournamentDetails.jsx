@@ -59,7 +59,7 @@ const TournamentDetails = () => {
                       </span>
                       <Link>{tournament.discipline_name}</Link>
                     </div>
-                    <h2 className="d-flex">{tournament.name}</h2>
+                    <h2 className="d-flex text-nowrap">{tournament.name}</h2>
                     <span className="d-flex">
                       {tournament.startDate && tournament.endDate && (
                         <span className="d-flex">

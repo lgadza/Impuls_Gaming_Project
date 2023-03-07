@@ -71,7 +71,7 @@ text-danger ml-3"
             </>
           )}
         </div>
-        <Card.Text className="bg-dark py-2 my-3 px-2 textColor d-flex">
+        <Card.Text className="bg-dark py-2 my-3 px-2 textColor d-flex align-items-center">
           Sponsored by Impuls
           <img className="league-provider-img ml-2" src={logo} alt="logo" />
         </Card.Text>

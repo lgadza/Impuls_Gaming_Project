@@ -9,7 +9,7 @@ import { useState, useEffect } from "react";
 import { getTournaments } from "../redux/actions";
 import Spinner from "./Spinner";
 import IntersectionObserverComponent from "./ScollAnimation";
-
+import Reservations from "../components/Reservations";
 const HomeUpdates = () => {
   const tournaments = useSelector((state) => state.tournaments.tournaments);
   const dispatch = useDispatch();
@@ -27,10 +27,10 @@ const HomeUpdates = () => {
       <div className="d-flex justify-content-between">
         <h2 className="d-flex mb-5 featured-leagues"> Tournaments</h2>
         <Link
-          onClick={() => navigate("/reservations")}
+          onClick={() => setShowReservation(true)}
           className="textColor3 text-small show-reservs"
         >
-          {}
+          Make reservations
         </Link>
       </div>
 
@@ -66,6 +66,7 @@ const HomeUpdates = () => {
           </Card>
         </Col>
       </Row>
+      <Reservations visible={showReservations} onhide={handleHideReservation} />
     </Container>
   );
 };

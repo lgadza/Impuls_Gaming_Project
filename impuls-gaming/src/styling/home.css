@@ -192,6 +192,7 @@ h1 {
   position: absolute;
   opacity: 0.2;
 }
+
 .textColor {
   color: rgb(233, 237, 227) !important;
 }
@@ -1161,6 +1162,10 @@ tab[title] {
 .footer {
   background-color: rgb(42, 57, 66);
 }
+
+.footer .list-group-item {
+  text-align: center !important;
+}
 .player-round-1::before {
   content: "";
   width: 1.2px;
@@ -1521,6 +1526,9 @@ button.nav-link {
   }
   h1 {
     font-size: 1.5rem;
+  }
+  .tournament-img-cover-container h2.d-flex {
+    font-size: 1.1rem;
   }
 }
 @media screen and (max-width: 400px) {

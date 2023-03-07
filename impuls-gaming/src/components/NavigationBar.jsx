@@ -115,7 +115,13 @@ const NavigationBar = () => {
                 }`}
               >
                 <div className="d-flex flex-column ">
-                  <Link to="/" className="textColor mb-4 pr-0  ">
+                  <Link
+                    to="/"
+                    onClick={() => setActive("home")}
+                    className={`mr-4 link-btm-bar mb-4 ${
+                      active === "home" ? "textColor" : "textColor3 "
+                    } `}
+                  >
                     Home
                   </Link>
                   <Link to="/tournaments" className="textColor mb-4 pr-0  ">
@@ -126,6 +132,15 @@ const NavigationBar = () => {
                   </Link>
                   <Link to="" className=" textColor mb-4 pr-0">
                     News
+                  </Link>
+                  <Link
+                    to=""
+                    onClick={() => setActive("about-us")}
+                    className={`mr-4 link-btm-bar mb-4 ${
+                      active === "about-us" ? "textColor" : "textColor3 "
+                    } `}
+                  >
+                    About us
                   </Link>
                   <Link to={"/sign-up"} className="d-flex mb-2 ">
                     Sign up
