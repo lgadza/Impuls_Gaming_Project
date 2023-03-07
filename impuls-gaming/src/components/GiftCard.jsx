@@ -73,7 +73,6 @@ const GiftCard = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
   };
-  console.log(amount);
 
   return (
     <Container className="main-container" fluid>

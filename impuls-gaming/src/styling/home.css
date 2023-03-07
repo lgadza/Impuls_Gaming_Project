@@ -1003,11 +1003,7 @@ input[type="checkbox"]:not(:checked) {
   background-color: rgb(42, 57, 66);
   border: none !important;
 }
-.fixture-container {
-  /* max-height: 76vh;
-  overflow-y: scroll;
-  overflow-x: hidden; */
-}
+
 .friends-list {
   border-bottom: 1px solid rgb(206, 197, 197);
 }

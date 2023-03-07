@@ -19,7 +19,7 @@ const UserProfile = ({ user }) => {
   const [hoverXB, setHoverXB] = useState(0);
   const [hoverEN, setHoverEN] = useState(0);
   const [hoverPS, setHoverPS] = useState(0);
-  const [key, setKey] = useState("activation");
+
   const dispatch = useDispatch();
   const userPreferenceData = useSelector((state) => state.preference.data);
 
@@ -105,7 +105,6 @@ const UserProfile = ({ user }) => {
                     } button-star px-0`}
                     onClick={() => {
                       setRating(index);
-                      // dispatch(userPreference(allRating));
                     }}
                     onMouseEnter={() => setHover(index)}
                     onMouseLeave={() => setHover(rating)}
@@ -127,7 +126,6 @@ const UserProfile = ({ user }) => {
                     }  button-star px-0`}
                     onClick={() => {
                       setRatePS(index);
-                      // dispatch(userPreference(allRating));
                     }}
                     onMouseEnter={() => setHoverPS(index)}
                     onMouseLeave={() => setHoverPS(ratePS)}
@@ -151,7 +149,6 @@ const UserProfile = ({ user }) => {
                     } button-star px-0`}
                     onClick={() => {
                       setRateXB(index);
-                      // dispatch(userPreference(allRating));
                     }}
                     onMouseEnter={() => setHoverXB(index)}
                     onMouseLeave={() => setHoverXB(rateXB)}
@@ -173,7 +170,6 @@ const UserProfile = ({ user }) => {
                     } button-star px-0`}
                     onClick={() => {
                       setRateEN(index);
-                      // dispatch(userPreference(allRating));
                     }}
                     onMouseEnter={() => setHoverEN(index)}
                     onMouseLeave={() => setHoverEN(rateEN)}

@@ -17,8 +17,7 @@ const HomeUpdates = () => {
   useEffect(() => {
     dispatch(getTournaments());
   }, []);
-  const [showReservations, setShowReservation] = useState(false);
-  const handleHideReservation = () => setShowReservation(false);
+
   const navigate = useNavigate();
   return (
     <Container className="textColor">
@@ -26,10 +25,7 @@ const HomeUpdates = () => {
 
       <div className="d-flex justify-content-between">
         <h2 className="d-flex mb-5 featured-leagues"> Tournaments</h2>
-        <Link
-          onClick={() => setShowReservation(true)}
-          className="textColor3 text-small show-reservs"
-        >
+        <Link to="/reservations" className="textColor3 text-small show-reservs">
           Make reservations
         </Link>
       </div>
@@ -66,7 +62,6 @@ const HomeUpdates = () => {
           </Card>
         </Col>
       </Row>
-      <Reservations visible={showReservations} onhide={handleHideReservation} />
     </Container>
   );
 };

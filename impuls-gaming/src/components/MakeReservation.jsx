@@ -23,6 +23,8 @@ const MakeReservation = ({ visible, onhide, tournamentId, stationNo }) => {
   const tournament = tournaments.tournaments.find(
     (name) => name.name === tournamentId
   );
+  const [people, setPeople] = useState(0);
+  const [hover, setHover] = useState(0);
   const [isComment, setIsComment] = useState(false);
   const [comment, setComment] = useState("");
   const [reservationDate, setReservationDate] = useState("");
@@ -121,9 +123,27 @@ const MakeReservation = ({ visible, onhide, tournamentId, stationNo }) => {
               <div className="d-flex mt-2 align-items-center justify-content-between">
                 {[...Array(10)].map((player, index) => {
                   return (
-                    <Link className="d-flex flex-column  justify-content-center align-items-center textColor">
-                      <Icon.Person className="px-0 mx-0 text-muted" size={20} />
-                      <span className="text-muted">{index + 1} </span>
+                    <Link
+                      className={`d-flex flex-column  justify-content-center align-items-center textColor`}
+                    >
+                      <Icon.PersonFill
+                        onClick={() => {
+                          setPeople(index);
+                        }}
+                        onMouseEnter={() => setHover(index)}
+                        onMouseLeave={() => setHover(people)}
+                        className={`px-0 mx-0 ${
+                          index <= (hover || people) ? "on" : "text-muted"
+                        }  `}
+                        size={20}
+                      />
+                      <span
+                        className={`${
+                          index <= (hover || people) ? "on" : "text-muted"
+                        }`}
+                      >
+                        {index + 1}{" "}
+                      </span>
                     </Link>
                   );
                 })}
