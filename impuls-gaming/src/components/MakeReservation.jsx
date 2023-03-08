@@ -12,7 +12,11 @@ import * as Icon from "react-bootstrap-icons";
 import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getTournaments } from "../redux/actions";
+import {
+  getReservations,
+  getTournaments,
+  postReservation,
+} from "../redux/actions";
 import { format, compareAsc } from "date-fns";
 import DatePicker from "react-datepicker";
 
@@ -23,7 +27,7 @@ const MakeReservation = ({ visible, onhide, tournamentId, stationNo }) => {
   const tournament = tournaments.tournaments.find(
     (name) => name.name === tournamentId
   );
-  const [people, setPeople] = useState(0);
+  const [people, setPeople] = useState(1);
   const [hover, setHover] = useState(0);
   const [isComment, setIsComment] = useState(false);
   const [comment, setComment] = useState("");
@@ -35,6 +39,14 @@ const MakeReservation = ({ visible, onhide, tournamentId, stationNo }) => {
   };
   const handleEmail = (e) => {
     setEmail(e.target.value);
+  };
+  const reservationData = {
+    date: reservationDate,
+    station_No: stationNo,
+    userName,
+    email,
+    comment,
+    number: people,
   };
   return (
     <Modal
@@ -66,7 +78,9 @@ const MakeReservation = ({ visible, onhide, tournamentId, stationNo }) => {
               </span>
               <span className="d-flex flex-column">
                 <span>Station No</span>
-                <h3>{stationNo}</h3>
+                <h5 className="h5-station d-flex justify-content-center align-items-center">
+                  {stationNo}
+                </h5>
               </span>
             </Col>
           </Row>
@@ -128,18 +142,18 @@ const MakeReservation = ({ visible, onhide, tournamentId, stationNo }) => {
                     >
                       <Icon.PersonFill
                         onClick={() => {
-                          setPeople(index);
+                          setPeople(index + 1);
                         }}
                         onMouseEnter={() => setHover(index)}
                         onMouseLeave={() => setHover(people)}
                         className={`px-0 mx-0 ${
-                          index <= (hover || people) ? "on" : "text-muted"
+                          index < (hover || people) ? "on" : "text-muted"
                         }  `}
                         size={20}
                       />
                       <span
                         className={`${
-                          index <= (hover || people) ? "on" : "text-muted"
+                          index < (hover || people) ? "on" : "text-muted"
                         }`}
                       >
                         {index + 1}{" "}
@@ -181,7 +195,13 @@ const MakeReservation = ({ visible, onhide, tournamentId, stationNo }) => {
               <Link to="" className="d-flex  mb-4  justify-content-start">
                 <Button
                   className=" text-center px-3 primary-btn w-25   textColor "
+                  disabled={!reservationDate || !email || !userName}
                   variant="primary"
+                  onClick={async () => {
+                    await dispatch(postReservation(reservationData));
+                    dispatch(getReservations());
+                    onhide();
+                  }}
                 >
                   <span className="text-small">Reserve</span>
                 </Button>

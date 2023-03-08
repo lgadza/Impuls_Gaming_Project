@@ -7,25 +7,36 @@ import {
   Form,
   Alert,
 } from "react-bootstrap-v5";
+import Spinner from "./Spinner";
 import * as Icon from "react-bootstrap-icons";
 import "../styling/reservations.css";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { deleteTournament, getTournaments } from "../redux/actions";
+import {
+  deleteTournament,
+  getReservations,
+  getTournaments,
+} from "../redux/actions";
 import NavigationBar from "./NavigationBar";
 import MakeReservation from "./MakeReservation";
 import logo from "../img/impuls logo.png";
+import { format, compareAsc } from "date-fns";
 
 const Reservations = ({ visible, onhide }) => {
   const dispatch = useDispatch();
-
+  const reservations = useSelector((state) => state.reservations.reservations);
+  const isLoading = useSelector((state) => state.reservations.isLoading);
   const handleData = async () => {
     await onhide();
   };
+  const [remainingStations, setRemainingStations] = useState("");
   const [stationNumber, setStationNumber] = useState(null);
   const [showMakeReservations, setShowMakeReservation] = useState(false);
   const handleHideMakeReservation = () => setShowMakeReservation(false);
+  useEffect(() => {
+    dispatch(getReservations());
+  }, []);
   return (
     <Container className="main-container reservations-bg" fluid>
       <div className="reservation-cover"></div>
@@ -83,45 +94,114 @@ const Reservations = ({ visible, onhide }) => {
             </div>
           </Col>
         </Row>
-        <Row>
-          {[...Array(12)].map((station, index) => {
-            index++;
-            return (
-              <Col
-                xs={6}
-                lg={4}
-                key={index}
-                className="pb-5 d-flex justify-content-center"
-                onClick={() => setShowMakeReservation(true)}
-              >
-                <Link
-                  onClick={() => setStationNumber(index)}
-                  className=" mt-4 px-2 d-flex align-items-center station free station-1 textColor"
-                >
-                  <div className="w-100 d-flex justify-content-between ">
-                    <span className="d-flex flex-column justify-content-end">
-                      <span className="d-flex align-items-center">
-                        <Icon.Watch size={15} className="pl-0 ml-0" />
-                        <span className="reserve-info">14:00</span>
-                      </span>
-                      <span className="d-flex align-items-center">
-                        <Icon.Person size={15} className="pl-0 ml-0" />
-                        <span className="reserve-info">Louis Gadza</span>
-                      </span>{" "}
-                    </span>
-                    <h6 className="d-flex align-items-center justify-content-center">
-                      {index}
-                    </h6>
-                  </div>
-                  {/* <span className="player-chair chair-1"></span>
+        {isLoading ? (
+          <div className="d-flex my-5 justify-content-center">
+            <Spinner />
+          </div>
+        ) : (
+          <Row>
+            {[...Array(9)].map((stations, index) => {
+              index++;
+              stations = reservations;
+              const reservation = reservations.find(
+                (No) => No.station_No === index
+              );
+              // let counter = 0;
+              if (reservation) {
+                // counter++;
+                // setRemainingStations(Number(9 - counter));
+                return (
+                  <Col
+                    xs={6}
+                    lg={4}
+                    key={index}
+                    className="pb-5 d-flex justify-content-center"
+                    onClick={() => setShowMakeReservation(true)}
+                  >
+                    <Link
+                      onClick={() => setStationNumber(index)}
+                      className=" mt-4 px-2 d-flex align-items-center station reserved station-1 textColor"
+                    >
+                      <div className="w-100 d-flex justify-content-between ">
+                        <span className="d-flex flex-column justify-content-end">
+                          <span className="d-flex align-items-center my-2">
+                            {/* <Icon.Watch size={15} className="pl-0 ml-0" /> */}
+                            <span className="reserve-info d-flex flex-column justify-content-start align-items-start">
+                              <span>
+                                {format(
+                                  new Date(reservation.date).getTime(),
+                                  "HH:mm"
+                                )}
+                              </span>
+                              <span>
+                                {format(
+                                  new Date(reservation.date),
+                                  "EEE dd MMM"
+                                )}
+                              </span>
+                            </span>
+                          </span>
+                          <span className="d-flex align-items-center">
+                            <span className="d-flex align-items-center">
+                              <Icon.PersonFill
+                                size={15}
+                                className="p-0 mb-1 m-0"
+                              />
+                              <span className="ml-1">{reservation.number}</span>
+                            </span>
+                            <span className="reserve-info mx-2">
+                              {reservation.userName}
+                            </span>
+                          </span>{" "}
+                        </span>
+                        <h6 className="d-flex align-items-center justify-content-center">
+                          {index}
+                        </h6>
+                      </div>
+                      {/* <span className="player-chair chair-1"></span>
                   <span className="player-chair chair-2"></span>
                   <span className="player-chair chair-3"></span>
                   <span className="player-chair chair-4"></span> */}
-                </Link>
-              </Col>
-            );
-          })}
-        </Row>
+                    </Link>
+                  </Col>
+                );
+              } else {
+                return (
+                  <Col
+                    xs={6}
+                    lg={4}
+                    key={index}
+                    className="pb-5 d-flex justify-content-center"
+                    onClick={() => setShowMakeReservation(true)}
+                  >
+                    <Link
+                      onClick={() => setStationNumber(index)}
+                      className=" mt-4 px-2 d-flex align-items-center station free station-1 textColor"
+                    >
+                      <div className="w-100 d-flex justify-content-between ">
+                        <span className="d-flex flex-column justify-content-end">
+                          <span className="d-flex align-items-center">
+                            <strong className="reserve-info">
+                              Free for Reservation
+                            </strong>
+                          </span>{" "}
+                        </span>
+                        <h6 className="d-flex align-items-center justify-content-center">
+                          {index}
+                        </h6>
+                      </div>
+                      {/* <span className="player-chair chair-1"></span>
+                  <span className="player-chair chair-2"></span>
+                  <span className="player-chair chair-3"></span>
+                  <span className="player-chair chair-4"></span> */}
+                    </Link>
+                  </Col>
+                );
+              }
+            })}
+          </Row>
+        )}
+
         <Row>
           <Col className="d-flex  mb-4  justify-content-end">
             <Link to="/">

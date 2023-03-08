@@ -5,7 +5,12 @@
 }
 .reservations-bg {
   position: relative;
-  background-image: url("https://www.liveabout.com/thmb/l9yK5fbahqhtJiI0xprxCIuhJ7U=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/reserved-sign-on-restaurant-table-534761709-d4ef78d8a57743429658561abb9f615e.jpg");
+  background-image: url("https://i.pinimg.com/736x/3a/79/86/3a79860b23479eeae243b2cd7ed183c0.jpg");
+  isolation: isolate;
+}
+.reservations-bg .giftcard-preview-nav {
+  z-index: 1 !important;
+  isolation: isolate;
 }
 .reservation-cover {
   height: 100%;
@@ -65,7 +70,17 @@
   background-color: rgb(224, 67, 67);
 }
 .station.station-1 h6 {
-  background-color: rgb(40, 54, 63);
+  /* background-color: rgb(40, 54, 63); */
+  background-color: rgb(211, 158, 0);
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  position: absolute;
+  right: 3px;
+  top: 3px;
+}
+.h5-station {
+  background-color: rgb(211, 158, 0);
   width: 2rem;
   height: 2rem;
   border-radius: 50%;

@@ -10,6 +10,10 @@ export const GET_ME = "GET_ME";
 export const GET_ME_LOADING = "GET_ME_LOADING";
 export const GET_ME_ERROR = "GET_ME_ERROR";
 
+export const GET_RESERVATIONS = "GET_RESERVATIONS";
+export const GET_RESERVATIONS_LOADING = "GET_RESERVATIONS_LOADING";
+export const GET_RESERVATIONS_ERROR = "GET_RESERVATIONS_ERROR";
+
 export const GET_TOURNAMENTS_STRUCTURES = "GET_TOURNAMENTS_STRUCTURES";
 export const GET_TOURNAMENTS_STRUCTURES_LOADING =
   "GET_TOURNAMENTS_STRUCTURES_LOADING";
@@ -298,6 +302,116 @@ export const getTournamentsStructures = (tournamentId) => {
 
       dispatch({
         type: GET_TOURNAMENTS_STRUCTURES_ERROR,
+        payload: true,
+      });
+    }
+  };
+};
+export const postReservation = (data) => {
+  return async (dispatch) => {
+    const options = {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    };
+    const URL = process.env.REACT_APP_BE_PROD_URL;
+    try {
+      const response = await fetch(`${URL}/reservations`, options);
+      if (response.ok) {
+        getReservations();
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+export const editReservation = (data, reservationId, structureId) => {
+  return async (dispatch) => {
+    const options = {
+      method: "PUT",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    };
+    const URL = process.env.REACT_APP_BE_PROD_URL;
+    try {
+      const response = await fetch(
+        `${URL}/reservations/${reservationId}`,
+        options
+      );
+      if (response.ok) {
+        getReservations();
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+export const deleteReservation = (reservationId) => {
+  return async (dispatch) => {
+    const options = {
+      method: "DELETE",
+    };
+    const URL = process.env.REACT_APP_BE_PROD_URL;
+    try {
+      const response = await fetch(
+        `${URL}/reservations/${reservationId}`,
+        options
+      );
+      if (response.ok) {
+        getReservations();
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+export const getReservations = () => {
+  return async (dispatch) => {
+    const options = {
+      method: "GET",
+    };
+    const URL = process.env.REACT_APP_BE_PROD_URL;
+    try {
+      const response = await fetch(`${URL}/reservations`, options);
+      if (response.ok) {
+        const reservations = await response.json();
+        dispatch({
+          type: GET_RESERVATIONS,
+          payload: reservations,
+        });
+        setTimeout(() => {
+          dispatch({
+            type: GET_RESERVATIONS_LOADING,
+            payload: false,
+          });
+        }, 100);
+      } else {
+        console.log("error");
+
+        dispatch({
+          type: GET_RESERVATIONS_LOADING,
+          payload: false,
+        });
+        dispatch({
+          type: GET_RESERVATIONS_ERROR,
+          payload: true,
+        });
+      }
+    } catch (error) {
+      console.log(error);
+      dispatch({
+        type: GET_RESERVATIONS_LOADING,
+        payload: false,
+      });
+
+      dispatch({
+        type: GET_RESERVATIONS_ERROR,
         payload: true,
       });
     }

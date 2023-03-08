@@ -7,6 +7,7 @@ import giftData from "../reducers/giftCard";
 import localStorage from "redux-persist/lib/storage";
 import { persistReducer, persistStore } from "redux-persist";
 import { encryptTransform } from "redux-persist-transform-encrypt";
+import getReservations from "../reducers/getReservations";
 import signInToken from "../reducers/login.js";
 import userChat from "../reducers/userChat";
 import tournaments from "../reducers/getTournaments";
@@ -53,6 +54,7 @@ const bigReducer = combineReducers({
   participant: getOneTournamentParticipant,
   editParticipant: editOneTournamentParticipant,
   structures: getTournamentsStructures,
+  reservations: getReservations,
 });
 
 const persistedReducer = persistReducer(persistConfig, bigReducer);
