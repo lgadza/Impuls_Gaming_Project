@@ -1,4 +1,12 @@
-import { Col, Container, Row, Button, Alert } from "react-bootstrap";
+import {
+  Col,
+  Container,
+  Row,
+  Button,
+  Alert,
+  Navbar,
+  Nav,
+} from "react-bootstrap";
 import * as Icon from "react-bootstrap-icons";
 import logo from "../../img/impuls logo.png";
 import Organizer from "./Organizer";
@@ -48,6 +56,37 @@ const BackOffice = () => {
             <img className=" mt-4 logo-img" src={logo} alt="" />
             <hr className="hr" />
             <h4 className="d-flex">My Projects</h4>
+            <hr className="hr" />
+          </div>
+          <div>
+            <Navbar className="d-flex flex-column align-items-start">
+              <Nav className="d-flex flex-column">
+                <Link className="my-2 d-flex">
+                  <span
+                  // className={
+                  //   page === "settings"
+                  //     ? "current textColor text-small"
+                  //     : undefined
+                  // }
+                  >
+                    <Icon.Bookmark size={13} />
+                    <span className="text-small">Reservations</span>
+                  </span>
+                </Link>
+                <Link className="my-2 d-flex">
+                  <span
+                  // className={
+                  //   page === "settings"
+                  //     ? "current textColor text-small"
+                  //     : undefined
+                  // }
+                  >
+                    <Icon.PatchQuestion size={13} />
+                    <span className="text-small">Disputes</span>
+                  </span>
+                </Link>
+              </Nav>
+            </Navbar>
           </div>
           <div
             className={`organizer-profile ${

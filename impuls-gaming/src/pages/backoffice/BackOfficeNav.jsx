@@ -51,7 +51,7 @@ const BackOfficeNav = ({ data, page, user }) => {
             <span
               className={page === "overview" ? "current textColor" : undefined}
             >
-              <Icon.Speedometer2 size={15} />
+              <Icon.Speedometer2 size={13} />
               <span className="text-small">Overview</span>
             </span>
           </Link>
@@ -64,7 +64,7 @@ const BackOfficeNav = ({ data, page, user }) => {
                 page === "settings" ? "current textColor text-small" : undefined
               }
             >
-              <Icon.Gear size={15} />
+              <Icon.Gear size={13} />
               <span className="text-small">Settings</span>
             </span>
           </Link>
@@ -75,7 +75,7 @@ const BackOfficeNav = ({ data, page, user }) => {
             <span
               className={page === "structure" ? "current textColor" : undefined}
             >
-              <Icon.Boxes size={15} />
+              <Icon.Boxes size={13} />
               <span className="text-small">Structures</span>
             </span>
           </Link>
@@ -88,7 +88,7 @@ const BackOfficeNav = ({ data, page, user }) => {
                 page === "participants" ? "current textColor" : undefined
               }
             >
-              <Icon.People size={15} />
+              <Icon.People size={13} />
               <span className="text-small">Participants</span>
             </span>
           </Link>
@@ -99,7 +99,7 @@ const BackOfficeNav = ({ data, page, user }) => {
             <span
               className={page === "matches" ? "current textColor" : undefined}
             >
-              <Icon.LightningCharge size={15} />
+              <Icon.LightningCharge size={13} />
               <span className="text-small">Matches</span>
             </span>
           </Link>
@@ -112,13 +112,13 @@ const BackOfficeNav = ({ data, page, user }) => {
                 page === "final-standing" ? "current textColor" : undefined
               }
             >
-              <Icon.Trophy size={15} />
+              <Icon.Trophy size={13} />
               <span className="text-small"> Final standing</span>
             </span>
           </Link>
           {/* // TODO SHARING OPTIONS */}
           {/* <Link className="mt-4 pt-3">
-            <Icon.Share size={15} />
+            <Icon.Share size={13} />
             <span className="text-small">share</span>
           </Link>
           <SocialMediaSharing /> */}
