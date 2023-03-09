@@ -5,8 +5,8 @@ import NavigationBar from "./components/NavigationBar";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/home";
 import GiftCard from "./components/GiftCard";
-import LogInPage from "./pages/registration/SignUp";
-import SignIn from "./pages/registration/LogIn";
+import LogInPage from "./trash/signIn/SignUp";
+import SignIn from "./pages/registration/SignIn.jsx";
 import UserPage from "./pages/userPage/UserPage";
 import "react-circular-progressbar/dist/styles.css";
 import Organizer from "./pages/backoffice/Organizer";
@@ -41,7 +41,7 @@ function App() {
         <Routes>
           <Route element={<Home />} path="/" />
           <Route element={<GiftCard />} path="/giftcard" />
-          <Route element={<LogInPage />} path="/sign-up" />
+          {/* <Route element={<LogInPage />} path="/sign-up" /> */}
           <Route element={<SignIn />} path="/sign-in" />
           <Route element={<UserPage />} path="/user-page" />
           <Route element={<BackOffice />} path="/backoffice" />

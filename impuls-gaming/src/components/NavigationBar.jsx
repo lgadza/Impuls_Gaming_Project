@@ -89,7 +89,7 @@ const NavigationBar = () => {
               <span className="mr-2 link-btm-bar  ">Organizer</span>
             </Link>
             <Link
-              to={"/sign-up"}
+              to={"/sign-in"}
               className="link-none-deco text-small ml-2 link-btm-bar"
             >
               Player
@@ -142,7 +142,7 @@ const NavigationBar = () => {
                   >
                     About us
                   </Link>
-                  <Link to={"/sign-up"} className="d-flex mb-2 ">
+                  <Link to={"/sign-in"} className="d-flex mb-2 ">
                     Sign up
                   </Link>
                 </div>
