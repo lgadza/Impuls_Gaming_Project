@@ -36,7 +36,6 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        {/* <NavigationBar /> */}
         <Routes>
           <Route element={<Home />} path="/" />
           <Route element={<GiftCard />} path="/giftcard" />
