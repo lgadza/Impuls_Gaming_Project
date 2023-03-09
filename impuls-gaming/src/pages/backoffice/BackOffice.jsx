@@ -17,12 +17,14 @@ import Spinner from "../../components/Spinner";
 import { Link, useNavigate } from "react-router-dom";
 import OrganizerAccount from "./OrganizerAccount";
 import Avatar from "../../components/Avatar";
+import ReservationList from "./ReservetionList";
 
 const BackOffice = () => {
   const navigate = useNavigate();
   const [profileClicked, setProfileClicked] = useState(false);
   const user = useSelector((state) => state.me.me);
   const [organizerAccountClicked, setOrganizerAccountClicked] = useState(false);
+  const [reservationsClicked, setReservationsClicked] = useState(false);
   const dispatch = useDispatch();
   const isLoading = useSelector((state) => state.tournaments.isLoading);
   const isError = useSelector((state) => state.tournaments.isError);
@@ -37,6 +39,11 @@ const BackOffice = () => {
     organizerAccountClicked
       ? setOrganizerAccountClicked(false)
       : setOrganizerAccountClicked(true);
+  };
+  const handleReservationsClicked = () => {
+    reservationsClicked
+      ? setReservationsClicked(false)
+      : setReservationsClicked(true);
   };
   const handleLogout = async () => {
     await dispatch(adminLogout(user._id));
@@ -53,21 +60,38 @@ const BackOffice = () => {
         >
           {/* <div className="d-flex flex-column justify-content-between"> */}
           <div>
-            <img className=" mt-4 logo-img" src={logo} alt="" />
+            <Link
+              onClick={() => {
+                setOrganizerAccountClicked(false);
+                setReservationsClicked(false);
+              }}
+            >
+              <img className=" mt-4 logo-img" src={logo} alt="" />
+            </Link>
             <hr className="hr" />
-            <h4 className="d-flex">My Projects</h4>
+            <Link
+              onClick={() => {
+                setOrganizerAccountClicked(false);
+                setReservationsClicked(false);
+              }}
+            >
+              <h4 className="d-flex justify-content-center">My Projects</h4>
+            </Link>
             <hr className="hr" />
           </div>
           <div>
             <Navbar className="d-flex flex-column align-items-start">
               <Nav className="d-flex flex-column">
-                <Link className="my-2 d-flex">
+                <Link
+                  className="my-2 d-flex"
+                  onClick={handleReservationsClicked}
+                >
                   <span
-                  // className={
-                  //   page === "settings"
-                  //     ? "current textColor text-small"
-                  //     : undefined
-                  // }
+                    className={
+                      reservationsClicked
+                        ? "current textColor text-small"
+                        : undefined
+                    }
                   >
                     <Icon.Bookmark size={13} />
                     <span className="text-small">Reservations</span>
@@ -150,10 +174,11 @@ const BackOffice = () => {
               </p>
             </Alert>
           )}
-          {projects.totalTournaments && !organizerAccountClicked && (
-            <Organizer projects={projects} />
-          )}
+          {projects.totalTournaments &&
+            !organizerAccountClicked &&
+            !reservationsClicked && <Organizer projects={projects} />}
           {organizerAccountClicked && <OrganizerAccount user={user} />}
+          {reservationsClicked && <ReservationList />}
         </Col>
       </Row>
     </Container>

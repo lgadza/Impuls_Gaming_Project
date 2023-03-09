@@ -13,12 +13,8 @@ import "../styling/reservations.css";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import {
-  deleteTournament,
-  getReservations,
-  getTournaments,
-} from "../redux/actions";
-import NavigationBar from "./NavigationBar";
+import { getReservations } from "../redux/actions";
+
 import MakeReservation from "./MakeReservation";
 import logo from "../img/impuls logo.png";
 import { format, compareAsc } from "date-fns";

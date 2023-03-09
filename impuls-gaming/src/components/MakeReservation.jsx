@@ -28,6 +28,7 @@ const MakeReservation = ({ visible, onhide, tournamentId, stationNo }) => {
     (name) => name.name === tournamentId
   );
   const [people, setPeople] = useState(1);
+  const [hours, setHours] = useState(1);
   const [hover, setHover] = useState(0);
   const [isComment, setIsComment] = useState(false);
   const [comment, setComment] = useState("");
@@ -47,6 +48,7 @@ const MakeReservation = ({ visible, onhide, tournamentId, stationNo }) => {
     email,
     comment,
     number: people,
+    hours,
   };
   return (
     <Modal
@@ -99,6 +101,21 @@ const MakeReservation = ({ visible, onhide, tournamentId, stationNo }) => {
                   />
                 </Form.Group>
               </Form.Group>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <Form onSubmit={handleSubmit}>
+                <Form.Group className="my-3 d-flex flex-column justify-content-start">
+                  <Form.Label className="d-flex">How many hour?</Form.Label>
+                  <Form.Control
+                    type="number"
+                    placeholder="how many hours?"
+                    value={hours}
+                    onChange={(e) => setHours(e.target.value)}
+                  />
+                </Form.Group>
+              </Form>
             </Col>
           </Row>
           <Row>

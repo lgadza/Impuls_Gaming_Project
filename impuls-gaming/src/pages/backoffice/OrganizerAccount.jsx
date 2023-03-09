@@ -107,7 +107,7 @@ const OrganizerAccount = ({ user }) => {
 
   return (
     <Row
-      className="-d-flex  w-100 ml-auto 
+      className="-d-flex my-5 w-100 ml-auto 
     organizer-account pb-2 organizer"
     >
       <Col
@@ -208,7 +208,7 @@ const OrganizerAccount = ({ user }) => {
                   onClick={handleUpdate}
                   className="primary-btn w-25 mr-3  textColor"
                 >
-                  Back
+                  <small>Back</small>
                 </Button>
                 <Button
                   // disabled={true}
@@ -216,7 +216,7 @@ const OrganizerAccount = ({ user }) => {
                   onClick={handleUpdate}
                   className="primary-btn w-25   textColor"
                 >
-                  Update
+                  <small>Update</small>
                 </Button>
               </div>
             </Form>
@@ -265,7 +265,7 @@ const OrganizerAccount = ({ user }) => {
           }}
           className="primary-btn w-100  textColor"
         >
-          Delete Account
+          <small>Delete Account</small>
         </Button>
       </Col>
       <Modal
@@ -292,8 +292,8 @@ const OrganizerAccount = ({ user }) => {
                     onClick={handleData}
                     className="primary-btn ml-3 textColor"
                   >
-                    <Icon.Trash size={20} />
-                    Delete
+                    <Icon.Trash size={13} />
+                    <small>Delete</small>
                   </Button>
                 </Link>
               </div>
