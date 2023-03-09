@@ -5,7 +5,6 @@ import NavigationBar from "./components/NavigationBar";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/home";
 import GiftCard from "./components/GiftCard";
-import LogInPage from "./trash/signIn/SignUp";
 import SignIn from "./pages/registration/SignIn.jsx";
 import UserPage from "./pages/userPage/UserPage";
 import "react-circular-progressbar/dist/styles.css";
