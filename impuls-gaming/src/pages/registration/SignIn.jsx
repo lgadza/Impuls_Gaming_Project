@@ -104,7 +104,7 @@ const SignIn = () => {
               <Col className=" login-content fieldset ">
                 <div className=" ml-3 d-flex justify-content-between align-items-center">
                   {forgotPassword && <h4 className="mb-3">Forgot Password</h4>}
-                  {!forgotPassword && <h4>Sign In</h4>}
+                  {!forgotPassword && <h5>Sign In</h5>}
                   <Link to={"/"}>
                     <Icon.XLg size={20} className="textColor" />
                   </Link>{" "}
@@ -174,7 +174,7 @@ const SignIn = () => {
                           variant="primary"
                           onClick={handleSignIn}
                         >
-                          Sign in
+                          <small>Sign in</small>
                         </Button>
                       </Link>
                       <div className="mb-3">
@@ -198,8 +198,8 @@ const SignIn = () => {
                           className="px-4 sign-up-btn w-100"
                           variant="primary"
                         >
-                          <Icon.Google size={20} />
-                          <span>Continue with Google</span>
+                          <Icon.Google size={15} />
+                          <small>Continue with Google</small>
                         </Button>
                       </a>
                     </Col>

@@ -62,13 +62,13 @@ const SignUp = ({ handleSignUp }) => {
     <Row className="form w-100 form-signup p-0 textColor">
       <Col className="login-content fieldset">
         <div className=" ml-3  d-flex justify-content-between align-items-center">
-          <h4>Sign Up</h4>
+          <h5>Sign Up</h5>
           <Link to={"/"}>
             <Icon.XLg className="textColor" size={20} />
           </Link>{" "}
         </div>
         <span className="d-flex ml-3 mb-1 all-fields text-secondary ">
-          Please fill <strong className="mx-1">ALL fields</strong> in the form
+          Please fill <strong className="mx-1">ALL fields</strong>
           to create an account
         </span>
         {password !== confirmPassword && signUp && (
@@ -177,7 +177,7 @@ const SignUp = ({ handleSignUp }) => {
               variant="primary"
               onClick={handleUserData}
             >
-              Sign Up
+              <small>Sign Up</small>
             </Button>
           </Link>
         </Col>
@@ -190,8 +190,8 @@ const SignUp = ({ handleSignUp }) => {
             className="w-100"
           >
             <Button className="px-4 sign-up-btn w-100" variant="primary">
-              <Icon.Google size={20} />
-              <span>Continue with Google</span>
+              <Icon.Google size={15} />
+              <small>Continue with Google</small>
             </Button>
           </a>
         </Col>
