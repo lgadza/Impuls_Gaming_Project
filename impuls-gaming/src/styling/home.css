@@ -861,9 +861,9 @@ hr {
     box-shadow: 1px 3px 5px rgb(17, 27, 33);
     border-radius: 5px;
   }
-  .form-wrapper .form {
+  /* .form-wrapper .form {
     min-width: 75vw;
-  }
+  } */
 }
 @media screen and (max-width: 992px) {
   #create-btn {
