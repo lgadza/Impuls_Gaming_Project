@@ -21,6 +21,7 @@ body {
   background-size: contain;
   /* mix-blend-mode: multiply; */
   position: relative;
+  height: 100vh;
 }
 .login-cover {
   position: absolute;
