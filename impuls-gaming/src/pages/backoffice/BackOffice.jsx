@@ -18,6 +18,8 @@ import { Link, useNavigate } from "react-router-dom";
 import OrganizerAccount from "./OrganizerAccount";
 import Avatar from "../../components/Avatar";
 import ReservationList from "./ReservetionList";
+import { ListGroup } from "react-bootstrap-v5";
+import ReservationStations from "./ReservationStations";
 
 const BackOffice = () => {
   const navigate = useNavigate();
@@ -25,6 +27,8 @@ const BackOffice = () => {
   const user = useSelector((state) => state.me.me);
   const [organizerAccountClicked, setOrganizerAccountClicked] = useState(false);
   const [reservationsClicked, setReservationsClicked] = useState(false);
+  const [stationsClicked, setStationClicked] = useState(false);
+  const [isReservation, setIsReservation] = useState(false);
   const dispatch = useDispatch();
   const isLoading = useSelector((state) => state.tournaments.isLoading);
   const isError = useSelector((state) => state.tournaments.isError);
@@ -75,7 +79,7 @@ const BackOffice = () => {
                 setReservationsClicked(false);
               }}
             >
-              <h4 className="d-flex justify-content-center">My Projects</h4>
+              <h4 className="d-flex justify-content-center">Impuls Gaming</h4>
             </Link>
             <hr className="hr" />
           </div>
@@ -84,17 +88,85 @@ const BackOffice = () => {
               <Nav className="d-flex flex-column">
                 <Link
                   className="my-2 d-flex"
-                  onClick={handleReservationsClicked}
+                  onClick={() => {
+                    setOrganizerAccountClicked(false);
+                    setReservationsClicked(false);
+                    setStationClicked(false);
+                  }}
                 >
                   <span
                     className={
-                      reservationsClicked
+                      !reservationsClicked & !organizerAccountClicked &&
+                      !stationsClicked
+                        ? "current textColor text-small"
+                        : undefined
+                    }
+                  >
+                    {organizerAccountClicked &&
+                    reservationsClicked &&
+                    stationsClicked ? (
+                      <Icon.Folder size={13} />
+                    ) : (
+                      <Icon.Folder2Open size={13} />
+                    )}
+                    <span className="text-small">My projects</span>
+                  </span>
+                </Link>
+                <Link
+                  className="my-2 d-flex"
+                  // onClick={handleReservationsClicked}
+                  onClick={() => {
+                    isReservation
+                      ? setIsReservation(false) && setReservationsClicked(true)
+                      : setIsReservation(true);
+                  }}
+                >
+                  <span
+                    className={
+                      isReservation || stationsClicked || reservationsClicked
                         ? "current textColor text-small"
                         : undefined
                     }
                   >
                     <Icon.Bookmark size={13} />
                     <span className="text-small">Reservations</span>
+                    <Icon.CaretDownFill size={12} className="ml-0 pl-0" />
+                    {isReservation && (
+                      <ul>
+                        <li className="my-3">
+                          <Link
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setStationClicked(false);
+                              setReservationsClicked(true);
+                            }}
+                            className={
+                              reservationsClicked
+                                ? "current textColor text-small"
+                                : "textColor3"
+                            }
+                          >
+                            1. Reservation list
+                          </Link>
+                        </li>
+                        <li className="text-left">
+                          <Link
+                            onClick={async (e) => {
+                              e.stopPropagation();
+                              await setReservationsClicked(false);
+                              setStationClicked(true);
+                            }}
+                            className={
+                              stationsClicked
+                                ? "current textColor text-small"
+                                : "textColor3"
+                            }
+                          >
+                            2. Stations
+                          </Link>
+                        </li>
+                      </ul>
+                    )}
                   </span>
                 </Link>
                 <Link className="my-2 d-flex">
@@ -176,9 +248,11 @@ const BackOffice = () => {
           )}
           {projects.totalTournaments &&
             !organizerAccountClicked &&
-            !reservationsClicked && <Organizer projects={projects} />}
+            !reservationsClicked &&
+            !stationsClicked && <Organizer projects={projects} />}
           {organizerAccountClicked && <OrganizerAccount user={user} />}
           {reservationsClicked && <ReservationList />}
+          {stationsClicked && <ReservationStations />}
         </Col>
       </Row>
     </Container>

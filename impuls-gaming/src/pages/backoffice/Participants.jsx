@@ -34,11 +34,12 @@ const Participants = () => {
   );
   const [deleteParticipantName, setDeleteParticipantName] = useState("");
   const [deleteParticipantId, setDeleteParticipantId] = useState("");
+  const [searchEmail, setSearchEmail] = useState("");
+  const [searchName, setSearchName] = useState("");
   const tournamentParticipant = useSelector(
     (state) => state.participant.participant
   );
   const [selectedParticipant, setSelectedParticipant] = useState([]);
-  console.log(selectedParticipant);
 
   const [clicked, setClicked] = useState(false);
   const users = tournament.tournamentParticipants;
@@ -50,7 +51,6 @@ const Participants = () => {
   const isLoadingTournament = useSelector(
     (state) => state.tournaments.isLoading
   );
-  console.log(isLoadingTournament);
 
   const isLoadingCheckIn = useSelector(
     (state) => state.editParticipant.isLoading
@@ -195,7 +195,7 @@ const Participants = () => {
                             <Form.Control
                               type="text"
                               required
-                              // onChange={handleNumber}
+                              onChange={(e) => setSearchName(e.target.value)}
                             />
                           </Form.Group>
                           <div>
@@ -235,7 +235,7 @@ const Participants = () => {
                             <Form.Control
                               type="email"
                               required
-                              // onChange={handleSize}
+                              onChange={(e) => setSearchEmail(e.target.value)}
                             />
                           </Form.Group>
                         </Col>

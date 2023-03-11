@@ -270,6 +270,10 @@ a {
   transition: 0.3s;
   transition-timing-function: ease-out;
 }
+.modal-content {
+  background-color: rgb(42, 57, 66, 0.95);
+  /* opacity: 0.8; */
+}
 .link-btm-bar:hover::after {
   content: "";
   position: absolute;

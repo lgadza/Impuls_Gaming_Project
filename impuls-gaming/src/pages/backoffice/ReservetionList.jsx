@@ -1,10 +1,11 @@
-import { Col, Row, Button } from "react-bootstrap";
+import { Col, Row, Button, Form } from "react-bootstrap";
 
 import * as Icon from "react-bootstrap-icons";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import {
+  deleteReservation,
   getProjectsImgs,
   getReservations,
   getTournaments,
@@ -18,9 +19,17 @@ const ReservationList = ({ projects }) => {
   const dispatch = useDispatch();
   const [user, setUser] = useState("");
   const [deleteItem, setDeleteItem] = useState(false);
+  const [selectedReservations, setSelectedReservations] = useState([]);
+  console.log(selectedReservations);
   const [showDelete, setShowDelete] = useState(false);
   const handleCloseDelete = () => setShowDelete(false);
   const [showReservationDetails, setShowReservationDetails] = useState(false);
+  const [search, setSearch] = useState(false);
+  const [searchEmail, setSearchEmail] = useState("");
+  const [searchName, setSearchName] = useState("");
+  const handleSearch = () => {
+    search ? setSearch(false) : setSearch(true);
+  };
   const handleCloseReservationDetails = () => setShowReservationDetails(false);
 
   const handleDeleteItem = () => {
@@ -34,6 +43,13 @@ const ReservationList = ({ projects }) => {
     dispatch(getReservations());
   }, []);
   const isLoading = useSelector((state) => state.reservations.isLoading);
+  const handleDeleteSelectedReservations = async () => {
+    for (let i = 0; i < selectedReservations.length; i++) {
+      await dispatch(deleteReservation(selectedReservations[i]));
+    }
+    dispatch(getReservations());
+    setSelectedReservations([]);
+  };
   return (
     <>
       <>
@@ -44,20 +60,123 @@ const ReservationList = ({ projects }) => {
             <Card className="mb-4">
               <Card.Header className="d-flex">
                 <h5>Reservation List</h5>
+                <div className="d-flex ml-auto">
+                  {isLoading && <Spinner animation="grow" size="sm" />}
+                  {!isLoading && (
+                    <Link
+                      onClick={() => dispatch(getReservations())}
+                      className="d-flex justify-content-end align-items-center main-container2 my-1 mr-2 link-none-deco"
+                    >
+                      <Icon.ArrowClockwise size={13} />
+                      <span className="pr-3">Refresh</span>
+                    </Link>
+                  )}
+                  {!search ? (
+                    <Link
+                      onClick={handleSearch}
+                      className="d-flex justify-content-end align-items-center my-1 main-container2 link-none-deco"
+                    >
+                      {isLoading ? (
+                        <Spinner animation="grow" size="sm" />
+                      ) : (
+                        <>
+                          <Icon.Search size={13} />
+                          <span className="pr-3">Search</span>
+                        </>
+                      )}
+                    </Link>
+                  ) : (
+                    <Link
+                      onClick={handleSearch}
+                      className="d-flex justify-content-end align-items-center my-1 main-container2 link-none-deco"
+                    >
+                      <Icon.X size={20} />
+                      <span className="pr-3">Hide search</span>
+                    </Link>
+                  )}
+                </div>
               </Card.Header>
               <Card.Text>
+                {search && (
+                  <>
+                    <Row className="mx-3 mt-3">
+                      <Col>
+                        <Form.Group className="mb-3 d-flex flex-column justify-content-start">
+                          <Form.Label className="d-flex">Name</Form.Label>
+                          <Form.Control
+                            type="text"
+                            required
+                            onChange={(e) => setSearchName(e.target.value)}
+                          />
+                        </Form.Group>
+                        <div>
+                          <div className="d-flex">
+                            <span> Reservation status</span>
+                          </div>
+
+                          <div className="my-3 d-flex">
+                            <Form.Check
+                              type="radio"
+                              name="status"
+                              label="All"
+                              // onClick={handleTrueAutoParticipantPlacement}
+                              className="mr-3"
+                              defaultChecked
+                            />
+
+                            <Form.Check
+                              type="radio"
+                              // onClick={handleFalseAutoParticipantPlacement}
+                              className="mr-3"
+                              name="status"
+                              label="pending"
+                            />
+                            <Form.Check
+                              type="radio"
+                              // onClick={handleFalseAutoParticipantPlacement}
+                              name="status"
+                              label="completed"
+                              className="mr-3"
+                            />
+                            <Form.Check
+                              type="radio"
+                              // onClick={handleFalseAutoParticipantPlacement}
+                              name="status"
+                              label="rejected"
+                            />
+                          </div>
+                        </div>
+                      </Col>
+                      <Col>
+                        <Form.Group className="mb-3 d-flex flex-column justify-content-start">
+                          <Form.Label className="d-flex">Email</Form.Label>
+                          <Form.Control
+                            type="email"
+                            required
+                            onChange={(e) => setSearchEmail(e.target.value)}
+                          />
+                        </Form.Group>
+                      </Col>
+                    </Row>
+                    <hr />
+                  </>
+                )}
                 <div className=" d-flex px-3 my-2 justify-content-between">
                   <div className="my-auto">
                     <span>
-                      <strong>5 reservations </strong>
-                      <span className="text-mute">out of 45</span>
+                      <strong>
+                        {selectedReservations.length} reservations{" "}
+                      </strong>
+                      <span className="text-mute">
+                        out of {reservationList.length}
+                      </span>
                     </span>
                   </div>
                   <div className="ml-auto">
                     <Button
-                      //   disabled={selectedParticipant.length > 0 ? false : true}
-                      //   type="submit"
-                      //   onClick={handleDeleteSelectedParticipant}
+                      disabled={selectedReservations.length > 0 ? false : true}
+                      type="submit"
+                      onClick={handleDeleteSelectedReservations}
                       className="primary-btn textColor d-flex align-items-center text-small justify-content-center"
                     >
                       <Icon.Trash3Fill size={13} />
@@ -75,7 +194,7 @@ const ReservationList = ({ projects }) => {
                   <span className=" flex-grow-1 bd-highlight">Time</span>
                   <span className=" flex-grow-1 bd-highlight">Hours</span>
                   <span className="flex-grow-1 bd-highlight">Station No</span>
-                  {/* <span className="flex-grow-1 bd-highlight">Comments</span> */}
+                  <span className="flex-grow-1 bd-highlight">Status</span>
                   <span className="flex-grow-1 bd-highlight">No of People</span>
                   <span className="flex-grow-1 bd-highlight">Select</span>
                 </div>
@@ -131,15 +250,25 @@ const ReservationList = ({ projects }) => {
                                   <span className="flex-grow-1 bd-highlight">
                                     {reservation.station_No}
                                   </span>
-                                  {/* {reservation.comment ? (
+                                  {reservation.status ? (
                                     <span className="flex-grow-1 bd-highlight">
-                                      <small>{reservation.comment}</small>
+                                      <small
+                                        className={`${
+                                          reservation.status === "rejected"
+                                            ? "text-danger"
+                                            : reservation.status === "completed"
+                                            ? "text-success"
+                                            : ""
+                                        }`}
+                                      >
+                                        {reservation.status}
+                                      </small>
                                     </span>
                                   ) : (
                                     <span className="flex-grow-1 bd-highlight">
-                                      <small>N/A</small>
+                                      <small>pending</small>
                                     </span>
-                                  )} */}
+                                  )}
                                   <span className="flex-grow-1 bd-highlight">
                                     {reservation.number}
                                   </span>
@@ -148,37 +277,38 @@ const ReservationList = ({ projects }) => {
                                   </span> */}
                                   <span className=" d-flex align-items-center justify-content-center flex-grow-1 bd-highlight">
                                     <input
-                                      //   onClick={(e) => {
-                                      //     if (
-                                      //       selectedParticipant.includes(
-                                      //         participant._id
-                                      //       )
-                                      //     ) {
-                                      //       const filteredSelectedParticipant =
-                                      //         selectedParticipant.filter(
-                                      //           (id) => id !== participant._id
-                                      //         );
-                                      //       setSelectedParticipant(
-                                      //         filteredSelectedParticipant
-                                      //       );
-                                      //     } else {
-                                      //       setSelectedParticipant([
-                                      //         ...selectedParticipant,
-                                      //         participant._id,
-                                      //       ]);
-                                      //     }
-                                      //   }}
+                                      onClick={(e) => {
+                                        e.stopPropagation();
+                                        if (
+                                          selectedReservations.includes(
+                                            reservation._id
+                                          )
+                                        ) {
+                                          const filteredSelectedReservations =
+                                            selectedReservations.filter(
+                                              (id) => id !== reservation._id
+                                            );
+                                          setSelectedReservations(
+                                            filteredSelectedReservations
+                                          );
+                                        } else {
+                                          setSelectedReservations([
+                                            ...selectedReservations,
+                                            reservation._id,
+                                          ]);
+                                        }
+                                      }}
                                       className="mr-1  px-2"
                                       type="checkbox"
                                     />
                                     <Link
-                                    //   onClick={() => {
-                                    //     setDeleteParticipantName(
-                                    //       `${participant.name} ${participant.surname}`
-                                    //     );
-                                    //     setShowDelete(true);
-                                    //     setDeleteParticipantId(participant._id);
-                                    //   }}
+                                      onClick={async (e) => {
+                                        e.stopPropagation();
+                                        await dispatch(
+                                          deleteReservation(reservation._id)
+                                        );
+                                        dispatch(getReservations());
+                                      }}
                                     >
                                       <Icon.Trash3Fill size={13} color="red" />
                                     </Link>
@@ -195,6 +325,31 @@ const ReservationList = ({ projects }) => {
                       )}
                     </div>
                   )}
+                </div>
+                <hr />
+
+                <div className=" d-flex px-3 my-2 justify-content-between">
+                  <div className="my-auto">
+                    <span>
+                      <strong>
+                        {selectedReservations.length} reservations{" "}
+                      </strong>
+                      <span className="text-mute">
+                        out of {reservationList.length}
+                      </span>
+                    </span>
+                  </div>
+                  <div className="ml-auto">
+                    <Button
+                      disabled={selectedReservations.length > 0 ? false : true}
+                      type="submit"
+                      onClick={handleDeleteSelectedReservations}
+                      className="primary-btn textColor d-flex align-items-center text-small justify-content-center"
+                    >
+                      <Icon.Trash3Fill size={13} />
+                      <span>Delete All</span>
+                    </Button>
+                  </div>
                 </div>
               </Card.Text>
             </Card>

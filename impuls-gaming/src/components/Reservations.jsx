@@ -6,6 +6,7 @@ import {
   Button,
   Form,
   Alert,
+  Carousel,
 } from "react-bootstrap-v5";
 import Spinner from "./Spinner";
 import * as Icon from "react-bootstrap-icons";
@@ -13,7 +14,7 @@ import "../styling/reservations.css";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getReservations } from "../redux/actions";
+import { getProjectsImgs, getReservations } from "../redux/actions";
 
 import MakeReservation from "./MakeReservation";
 import logo from "../img/impuls logo.png";
@@ -26,13 +27,20 @@ const Reservations = ({ visible, onhide }) => {
   const handleData = async () => {
     await onhide();
   };
+
+  const gameCover = useSelector((state) => state.projectImgs.projectImgs);
+  const isGameCoverLoading = useSelector(
+    (state) => state.projectImgs.isLoading
+  );
   const [remainingStations, setRemainingStations] = useState("");
   const [stationNumber, setStationNumber] = useState(null);
   const [showMakeReservations, setShowMakeReservation] = useState(false);
   const handleHideMakeReservation = () => setShowMakeReservation(false);
   useEffect(() => {
     dispatch(getReservations());
+    dispatch(getProjectsImgs());
   }, []);
+
   return (
     <Container className="main-container reservations-bg" fluid>
       <div className="reservation-cover"></div>
@@ -45,7 +53,7 @@ const Reservations = ({ visible, onhide }) => {
         </Col>
       </Row>
       <Container className="reservations-stations-container">
-        <Row className="mt-5">
+        {/* <Row className="mt-5">
           <Col>
             <div className="registration-card mx-auto ">
               <Alert key={"success"} variant={"success"}>
@@ -57,152 +65,144 @@ const Reservations = ({ visible, onhide }) => {
               </Alert>
             </div>
           </Col>
-        </Row>
+        </Row> */}
         <Row>
           <Col>
-            <div className="d-flex justify-content-between mt-5 px-5 mx-2">
-              <h4>Reserve a station now</h4>
-
-              <div className="d-flex">
-                <Link
-                  to=""
-                  onClick={() => setShowMakeReservation(true)}
-                  className="d-flex  mb-4  justify-content-end"
-                >
-                  <Button
-                    className=" text-center px-3 primary-btn w-100   textColor "
-                    variant="primary"
-                  >
-                    <Icon.Plus className="ml-0" size={15} />
-                    <span className="text-small">NEW RESERVATION</span>
-                  </Button>
-                </Link>
-                <Link to="" className="d-flex mb-4 ml-3 justify-content-end">
-                  <Button
-                    className=" text-center bg-warning text-dark px-3 primary-btn w-100"
-                    variant="primary"
-                  >
-                    <span className="mr-3 text-small">6</span>
-                    <span className="text-small">REMAINING STATIONS</span>
-                  </Button>
-                </Link>
-              </div>
+            <div className="d-flex justify-content-between my-4">
+              <h3>Reserve a station now</h3>
             </div>
           </Col>
         </Row>
-        {isLoading ? (
-          <div className="d-flex my-5 justify-content-center">
-            <Spinner />
-          </div>
-        ) : (
-          <Row>
-            {[...Array(9)].map((stations, index) => {
-              index++;
-              stations = reservations;
-              const reservation = reservations.find(
-                (No) => No.station_No === index
-              );
-              // let counter = 0;
-              if (reservation) {
-                // counter++;
-                // setRemainingStations(Number(9 - counter));
-                return (
-                  <Col
-                    xs={6}
-                    lg={4}
-                    key={index}
-                    className="pb-5 d-flex justify-content-center"
-                    onClick={() => setShowMakeReservation(true)}
-                  >
-                    <Link
-                      onClick={() => setStationNumber(index)}
-                      className=" mt-4 px-2 d-flex align-items-center station reserved station-1 textColor"
-                    >
-                      <div className="w-100 d-flex justify-content-between ">
-                        <span className="d-flex flex-column justify-content-end">
-                          <span className="d-flex align-items-center my-2">
-                            {/* <Icon.Watch size={15} className="pl-0 ml-0" /> */}
-                            <span className="reserve-info d-flex flex-column justify-content-start align-items-start">
-                              <span>
-                                {format(
-                                  new Date(reservation.date).getTime(),
-                                  "HH:mm"
-                                )}
-                              </span>
-                              <span>
-                                {format(
-                                  new Date(reservation.date),
-                                  "EEE dd MMM"
-                                )}
-                              </span>
-                            </span>
-                          </span>
-                          <span className="d-flex align-items-center">
-                            <span className="d-flex align-items-center">
-                              <Icon.PersonFill
-                                size={15}
-                                className="p-0 mb-1 m-0"
-                              />
-                              <span className="ml-1">{reservation.number}</span>
-                            </span>
-                            <span className="reserve-info mx-2">
-                              {reservation.userName}
-                            </span>
-                          </span>{" "}
-                        </span>
-                        <h6 className="d-flex align-items-center justify-content-center">
-                          {index}
-                        </h6>
-                      </div>
-                      {/* <span className="player-chair chair-1"></span>
-                  <span className="player-chair chair-2"></span>
-                  <span className="player-chair chair-3"></span>
-                  <span className="player-chair chair-4"></span> */}
-                    </Link>
-                  </Col>
-                );
-              } else {
-                return (
-                  <Col
-                    xs={6}
-                    lg={4}
-                    key={index}
-                    className="pb-5 d-flex justify-content-center"
-                    onClick={() => setShowMakeReservation(true)}
-                  >
-                    <Link
-                      onClick={() => setStationNumber(index)}
-                      className=" mt-4 px-2 d-flex align-items-center station free station-1 textColor"
-                    >
-                      <div className="w-100 d-flex justify-content-between ">
-                        <span className="d-flex flex-column justify-content-end">
-                          <span className="d-flex align-items-center">
-                            <strong className="reserve-info">
-                              Free for Reservation
-                            </strong>
-                          </span>{" "}
-                        </span>
-                        <h6 className="d-flex align-items-center justify-content-center">
-                          {index}
-                        </h6>
-                      </div>
-                      {/* <span className="player-chair chair-1"></span>
-                  <span className="player-chair chair-2"></span>
-                  <span className="player-chair chair-3"></span>
-                  <span className="player-chair chair-4"></span> */}
-                    </Link>
-                  </Col>
-                );
-              }
-            })}
-          </Row>
-        )}
+        <Row>
+          <Col md={4}>
+            <h5 className="d-flex">Reserve your own</h5>
+            <h6 className="text-success d-flex">Station</h6>
+            <span className="d-flex text-left">
+              No waiting is needed, as we have many stations and quality games.
+              Reserve now in seconds.
+            </span>
+
+            <Link
+              onClick={() => setShowMakeReservation(true)}
+              className="w-100 d-flex my-4"
+            >
+              {" "}
+              <Button variant="danger" className="register-btn">
+                Reserve now
+              </Button>
+            </Link>
+          </Col>
+          <Col></Col>
+        </Row>
+        <Row className="bg-success py-2">
+          <Col md={6} sm={12} lg={3} className="d-flex align-items-center">
+            <Icon.CheckCircle className="ml-0 pl-0" size={15} />
+            <span>No waiting in the queue</span>
+          </Col>
+          <Col md={6} sm={12} lg={3} className="d-flex align-items-center">
+            <Icon.CheckCircle className="ml-0 pl-0" size={15} />
+            <span>Easy online reservation</span>
+          </Col>
+          <Col md={6} sm={12} lg={3} className="d-flex align-items-center">
+            <Icon.CheckCircle className="ml-0 pl-0" size={15} />
+            <span>No registration required</span>
+          </Col>
+          <Col md={6} sm={12} lg={3} className="d-flex align-items-center">
+            <Icon.CheckCircle className="ml-0 pl-0" size={15} />
+            <span>live the LIVE EXPIRIENCE</span>
+          </Col>
+        </Row>
+        <Row className="my-3">
+          <Col
+            md={6}
+            sm={12}
+            lg={3}
+            className="d-flex flex-column justify-content-center"
+          >
+            <div>
+              <Icon.Unlock color="gold" className="d-flex my-3" size={40} />
+            </div>
+            <div className="d-flex flex-column">
+              <span>
+                <strong className="d-flex ">No registration required</strong>
+              </span>
+              <span className="d-flex  text-left">
+                You just need to press the reservation button to get started
+              </span>
+            </div>
+          </Col>
+          <Col
+            md={6}
+            sm={12}
+            lg={3}
+            className="d-flex flex-column justify-content-center"
+          >
+            <div>
+              <Icon.CalendarCheck
+                color="yellow"
+                className="d-flex my-3"
+                size={40}
+              />
+            </div>
+            <div className="d-flex flex-column">
+              <span>
+                <strong className="d-flex">Make your reservation</strong>
+              </span>
+              <span className="d-flex  text-left">
+                Stay away from the pressure of queuing. Choose available hours
+                you wish to play
+              </span>
+            </div>
+          </Col>
+          <Col
+            md={6}
+            sm={12}
+            lg={3}
+            className="d-flex flex-column justify-content-center"
+          >
+            <div>
+              <Icon.FilePdf color="red" className="d-flex my-3" size={40} />
+            </div>
+            <div className="d-flex flex-column">
+              <span>
+                <strong className="d-flex  text-left ">
+                  Download your reservation soon after
+                </strong>
+              </span>
+              <span className="d-flex text-left">
+                No need to worry, we will also send it via your email
+              </span>
+            </div>
+          </Col>
+          <Col
+            md={6}
+            sm={12}
+            lg={3}
+            className="d-flex flex-column justify-content-center"
+          >
+            <div>
+              <Icon.ClockHistory
+                color="green"
+                className="d-flex my-3"
+                size={40}
+              />
+            </div>
+            <div className="d-flex flex-column">
+              <span>
+                <strong className="d-flex ">
+                  So what are you waiting for?
+                </strong>
+              </span>
+              <span className="d-flex">Get started</span>
+            </div>
+          </Col>
+        </Row>
 
         <Row>
           <Col className="d-flex  mb-4  justify-content-end">
             <Link to="/">
               <Button
-                className="px-3 primary-btn  w-100 d-flex  textColor align-items-center "
+                className="px-3 primary-btn  w-100 d-flex  textColor "
                 variant="primary"
               >
                 <Icon.ArrowLeft className="pl-0 ml-0" size={20} />

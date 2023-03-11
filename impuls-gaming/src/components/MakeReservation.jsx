@@ -19,6 +19,8 @@ import {
 } from "../redux/actions";
 import { format, compareAsc } from "date-fns";
 import DatePicker from "react-datepicker";
+import getDay from "date-fns/fp/getDay";
+import { setHours, setMinutes } from "date-fns/fp";
 
 const MakeReservation = ({ visible, onhide, tournamentId, stationNo }) => {
   const dispatch = useDispatch();
@@ -27,29 +29,81 @@ const MakeReservation = ({ visible, onhide, tournamentId, stationNo }) => {
   const tournament = tournaments.tournaments.find(
     (name) => name.name === tournamentId
   );
+  const [discipline, setDiscipline] = useState("");
   const [people, setPeople] = useState(1);
-  const [hours, setHours] = useState(1);
+  const [playHours, setPlayHours] = useState(1);
   const [hover, setHover] = useState(0);
-  const [isComment, setIsComment] = useState(false);
-  const [comment, setComment] = useState("");
+  const [isNotes, setIsNotes] = useState(false);
+  const [notes, setNotes] = useState("");
   const [reservationDate, setReservationDate] = useState("");
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
+  const isWeekday = (date) => {
+    const day = getDay(date);
+    return day !== 0 && day !== 6;
+  };
+  const filterPassedTime = (time) => {
+    const currentDate = new Date();
+    const selectedDate = new Date(time);
+
+    return currentDate.getTime() < selectedDate.getTime();
+  };
+
+  const openTime = (time) => {
+    const selectedDate = new Date(time);
+    const selectedHour = selectedDate.getHours();
+
+    if (selectedHour <= 21 && selectedHour > 8) {
+      return true;
+    }
+
+    return false;
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
   };
   const handleEmail = (e) => {
     setEmail(e.target.value);
   };
+  console.log(discipline, "discipline");
   const reservationData = {
     date: reservationDate,
     station_No: stationNo,
     userName,
     email,
-    comment,
+    notes,
     number: people,
-    hours,
+    hours: playHours,
+    discipline,
   };
+  const reservations = useSelector((state) => state.reservations.reservations);
+  const pendingReservations = reservations.filter(
+    (reservation) =>
+      reservation.status === "pending" &&
+      new Date(reservation.date) >= new Date()
+  );
+  console.log(pendingReservations);
+  const bookedDateAndHours = pendingReservations.map(
+    (reservation) => reservation.date
+  );
+  const maxDuplicates = 3;
+
+  const maxBookedDateAndHours = bookedDateAndHours.filter(
+    (value, index, array) => {
+      const count = array.filter((item) => item === value).length;
+      return (
+        count <= maxDuplicates || index < array.indexOf(value) + maxDuplicates
+      );
+    }
+  );
+
+  console.log(bookedDateAndHours);
+  console.log(maxBookedDateAndHours);
+
+  useEffect(() => {
+    dispatch(getReservations());
+  }, []);
   return (
     <Modal
       show={visible}
@@ -96,8 +150,13 @@ const MakeReservation = ({ visible, onhide, tournamentId, stationNo }) => {
                     selected={reservationDate}
                     placeholderText={new Date()}
                     onChange={(date) => setReservationDate(date)}
+                    minDate={new Date()}
+                    filterDate={isWeekday}
                     showTimeSelect
-                    dateFormat="Pp"
+                    filterTime={openTime}
+                    // excludeTimes={closedTime}
+                    dateFormat="MMMM d, yyyy h:mm aa"
+                    // dateFormat="Pp"
                   />
                 </Form.Group>
               </Form.Group>
@@ -111,9 +170,35 @@ const MakeReservation = ({ visible, onhide, tournamentId, stationNo }) => {
                   <Form.Control
                     type="number"
                     placeholder="how many hours?"
-                    value={hours}
-                    onChange={(e) => setHours(e.target.value)}
+                    value={playHours}
+                    onChange={(e) => setPlayHours(e.target.value)}
                   />
+                </Form.Group>
+              </Form>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <Form onSubmit={handleSubmit}>
+                <Form.Group className="my-3 d-flex flex-column justify-content-start">
+                  <Form.Label className="d-flex">Discipline</Form.Label>
+                  {/* <Form.Control
+                    type="number"
+                    placeholder="how many hours?"
+                    value={playHours}
+                    onChange={(e) => setPlayHours(e.target.value)}
+                  /> */}
+                  <Form.Select
+                    onChange={(e) => setDiscipline(e.target.value)}
+                    className="textColor py-2"
+                  >
+                    <option>Select a discipline</option>
+                    <option value="Mortal Kombat">Mortal Kombat</option>
+                    <option value="Call of Duty: Morden Warfare">
+                      Call of Duty: Morden Warfare
+                    </option>
+                    <option value="FIFA 23">FIFA 23</option>
+                  </Form.Select>
                 </Form.Group>
               </Form>
             </Col>
@@ -184,24 +269,24 @@ const MakeReservation = ({ visible, onhide, tournamentId, stationNo }) => {
           <Row>
             <Col>
               <Link
-                onClick={() => setIsComment(true)}
+                onClick={() => setIsNotes(true)}
                 className="d-flex my-2 align-items-center textColor"
               >
                 <Icon.Plus className="mx-0 pl-0" size={15} />
-                <span>Add a comment</span>
+                <span>Add a notes</span>
               </Link>
             </Col>
           </Row>
-          {isComment && (
+          {isNotes && (
             <Row>
               <Col>
                 <Form.Group className="mb-3 d-flex flex-column ">
-                  <Form.Label className="mr-4 d-flex">Comment</Form.Label>
+                  <Form.Label className="mr-4 d-flex">Notes</Form.Label>
                   <Form.Control
                     as="textarea"
                     rows={2}
-                    value={comment}
-                    onChange={(e) => setComment(e.target.value)}
+                    value={notes}
+                    onChange={(e) => setNotes(e.target.value)}
                   />
                 </Form.Group>
               </Col>

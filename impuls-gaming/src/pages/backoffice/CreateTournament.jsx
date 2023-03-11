@@ -57,7 +57,7 @@ const CreateTournament = ({ visible, onhide }) => {
     onhide();
     navagation.navigate(`/backoffice/projects/overview/${tournament}`);
   };
-  console.log("Dname Cover", projectImgs);
+
   return (
     <Modal
       scrollable
