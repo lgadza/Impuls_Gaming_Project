@@ -119,12 +119,12 @@ const Fixtures = () => {
                   fixture.match_status ? "" : "text-success"
                 }`}
               >
-                <span className="text-nowrap text-small">
+                <small className="text-nowrap text-small">
                   {fixture.match_date}{" "}
-                </span>
-                <span className="text-small text-nowrap ">
+                </small>
+                <small className="text-small text-nowrap ">
                   {fixture.match_time}
-                </span>
+                </small>
               </div>
             </div>
           </Col>

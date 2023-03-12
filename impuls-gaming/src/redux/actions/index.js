@@ -10,6 +10,10 @@ export const GET_ME = "GET_ME";
 export const GET_ME_LOADING = "GET_ME_LOADING";
 export const GET_ME_ERROR = "GET_ME_ERROR";
 
+export const PUT_ME = "PUT_ME";
+export const PUT_ME_LOADING = "PUT_ME_LOADING";
+export const PUT_ME_ERROR = "PUT_ME_ERROR";
+
 export const GET_RESERVATIONS = "GET_RESERVATIONS";
 export const GET_RESERVATIONS_LOADING = "GET_RESERVATIONS_LOADING";
 export const GET_RESERVATIONS_ERROR = "GET_RESERVATIONS_ERROR";
@@ -1143,6 +1147,60 @@ export const getMe = (accessToken) => {
 
       dispatch({
         type: GET_ME_ERROR,
+        payload: true,
+      });
+    }
+  };
+};
+export const putMe = (accessToken, updatedMe) => {
+  return async (dispatch) => {
+    const options = {
+      method: "PUT",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + `${accessToken}`,
+      },
+      body: JSON.stringify(updatedMe),
+    };
+    const URL = process.env.REACT_APP_BE_PROD_URL;
+
+    try {
+      let response = await fetch(`${URL}/users/me`, options);
+      if (response.ok) {
+        const me = await response.json();
+        dispatch({
+          type: PUT_ME,
+          payload: me,
+        });
+        setTimeout(() => {
+          dispatch({
+            type: PUT_ME_LOADING,
+            payload: false,
+          });
+        }, 100);
+      } else {
+        console.log("error");
+
+        dispatch({
+          type: PUT_ME_LOADING,
+          payload: false,
+        });
+        dispatch({
+          type: PUT_ME_ERROR,
+          payload: true,
+        });
+      }
+    } catch (error) {
+      console.log(error);
+
+      dispatch({
+        type: PUT_ME_LOADING,
+        payload: false,
+      });
+
+      dispatch({
+        type: PUT_ME_ERROR,
         payload: true,
       });
     }

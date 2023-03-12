@@ -704,6 +704,7 @@ button-star {
   background-color: transparent !important;
 }
 .dropdown-item:focus,
+.dropdown-item:focus-visible,
 .dropdown-item:active:focus,
 .dropdown-item.active:focus,
 .dropdown-item.focus,
@@ -719,9 +720,13 @@ button-star {
   background-color: rgb(17, 27, 33);
   color: white;
 }
+.user-table .match_teams {
+  width: 5rem;
+}
 .match_teams {
   width: 10rem;
 }
+
 .hidden {
   opacity: 0;
   filter: blur(5px);
@@ -1308,9 +1313,10 @@ tab[title] {
   outline: none;
   border: none;
 }
-.dropdown-toggle.btn:focus {
+.dropdown-toggle.btn:focus,
+.dropdown-toggle.btn:focus-visible {
   background-color: transparent;
-  outline: none;
+  outline: none !important;
   border: none;
   box-shadow: none;
 }
@@ -1330,6 +1336,7 @@ tab[title] {
   .userProfile {
     display: none !important;
   }
+
   .featured-league {
     font-size: 1.5em !important;
   }

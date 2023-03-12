@@ -61,9 +61,9 @@ const Overview = ({ socket, tournamentId }) => {
           <div>
             <Card>
               <Card.Header>
-                <h3 className="d-flex text-nowrap h3-mobile my-2">
+                <h6 className="d-flex text-nowrap h3-mobile my-2">
                   Playoffs - Main Bracket-Round 1{" "}
-                </h3>
+                </h6>
               </Card.Header>
               <Card.Body>
                 <div className="d-flex justify-content-between px-3 align-items-center">
@@ -212,7 +212,7 @@ const Overview = ({ socket, tournamentId }) => {
                     onClick={() => handleUpdate("reportScore")}
                     className="primary-btn textColor"
                   >
-                    Report
+                    <small>Report</small>
                   </Button>
                 </Link>
               </Card.Body>

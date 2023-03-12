@@ -1,13 +1,15 @@
-import { Col, Row } from "react-bootstrap";
+import { Col, Dropdown, Row, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import * as Icon from "react-bootstrap-icons";
-
+import "../../styling/playerProfile.css";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import profilePic from "../../img/Louis profile .JPG";
+
 import { CircularProgressbar } from "react-circular-progressbar";
-import { userPreference } from "../../redux/actions";
+import { getMe, putMe, userPreference } from "../../redux/actions";
 import Avatar from "../../components/Avatar";
+import { Spinner } from "react-bootstrap-v5";
+import axios from "axios";
 
 const UserProfile = ({ user }) => {
   const percentage = 80;
@@ -19,13 +21,17 @@ const UserProfile = ({ user }) => {
   const [hoverXB, setHoverXB] = useState(0);
   const [hoverEN, setHoverEN] = useState(0);
   const [hoverPS, setHoverPS] = useState(0);
-
+  const accessToken = useSelector((state) => state.accessToken.accessToken);
   const dispatch = useDispatch();
   const userPreferenceData = useSelector((state) => state.preference.data);
-
+  const isLoading = useSelector((state) => state.putMe.isLoading);
   const [isLeagueChecked, setIsLeagueChecked] = useState(false);
   const [isTournamentChecked, setIsTournamentChecked] = useState(false);
-
+  const [name, setName] = useState(user.name);
+  const [email, setEmail] = useState(user.email);
+  const [isEditing, setIsEditing] = useState(false);
+  const [isEditingEmail, setIsEditingEmail] = useState(false);
+  const [avatar, setAvatar] = useState(null);
   const handleTournamentCheck = (e) => {
     // isTournamentChecked
     //   ? setIsTournamentChecked(false)
@@ -35,6 +41,14 @@ const UserProfile = ({ user }) => {
   const handleLeagueCheck = (e) => {
     // isLeagueChecked ? setIsLeagueChecked(false) :
     setIsLeagueChecked(true);
+  };
+  const updatedData = {
+    email,
+    name,
+  };
+  const updateMe = async () => {
+    await dispatch(putMe(accessToken.accessToken, updatedData));
+    dispatch(getMe(accessToken.accessToken));
   };
   const like = isLeagueChecked
     ? "league"
@@ -52,35 +66,146 @@ const UserProfile = ({ user }) => {
   useEffect(() => {
     dispatch(userPreference(allRating));
   }, []);
+  const handleAvatar = (e) => {
+    setAvatar(e.target.files[0]);
+  };
+  const handleAvatarUpload = (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("avatar", avatar);
+    const URL = process.env.REACT_APP_BE_PROD_URL;
+    axios
+      .post(`${URL}/files/${user._id}/avatar`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
+      .then((response) => {
+        console.log(response);
+        dispatch(getMe(accessToken.accessToken));
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <div className="gift-container">
       <Row className="d-flex flex-column align-items-center  mt-4">
-        <div>
+        <Col>
           {/* <img className="profile-img" src={profilePic} alt="" /> */}
-          <Avatar
-            src={user.avatar}
-            alt="Profile Avatar"
-            className="avatar"
-            width={100}
-            height={100}
-          />
-          <h5 className="d-flex mt-2  ml-3 ">
+
+          <Dropdown className="w-100">
+            <Dropdown.Toggle>
+              <div className="profile-picture">
+                <Avatar
+                  src={user.avatar}
+                  alt="Profile Avatar"
+                  className="avatar"
+                  width={130}
+                  height={130}
+                />
+                <div className="d-flex flex-column justify-content-center align-items-center change-profile">
+                  <Icon.CameraFill size={25} />
+                  <small>Change</small>
+                  <small>profile picture</small>
+                </div>
+              </div>
+            </Dropdown.Toggle>
+
+            <Dropdown.Menu>
+              <Dropdown.Item className="py-2">View Photo</Dropdown.Item>
+              <Dropdown.Item className="py-2">
+                <label className="mt-2" htmlFor="profile">
+                  Upload Photo
+                </label>
+                <input
+                  id="profile"
+                  type="file"
+                  style={{ visibility: "hidden" }}
+                  label="Change profile picture"
+                  onChange={handleAvatar}
+                />
+              </Dropdown.Item>
+              <Dropdown.Item className="py-2">Remove Photo</Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
+          {/* <h6 className="d-flex mt-2  ml-3 ">
             {user.name} {user.surname}
-          </h5>
-          <Row>
-            <div className="d-flex align-items-center ml-3 flex-column mt-2">
+          </h6> */}
+          <div className="d-flex w-100 px-3">
+            <span className="text-success">Your name</span>
+          </div>
+          <div className="d-flex justify-content-between py-0  align-items-center">
+            <Form.Group className=" w-100 px-3  nickname-text-bar mt-2 ">
+              <Form.Control
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                className="py-0 pl-0"
+              />
+            </Form.Group>
+            {isLoading && !isEditing && <Spinner animation="grow" size="sm" />}
+            {!isEditing && (
               <span>
-                <strong>100</strong>
+                <Icon.PencilFill onClick={() => setIsEditing(true)} size={15} />
               </span>
-              <span>followers</span>
-            </div>
-            <div className="d-flex flex-column mt-2 ml-3">
+            )}
+            {isEditing && (
+              <span className="d-flex align-items-center">
+                <span>{name.length}</span>
+
+                <Icon.Check2
+                  onClick={() => {
+                    setIsEditing(false);
+                    updateMe();
+                  }}
+                  size={15}
+                />
+              </span>
+            )}
+          </div>
+          {isEditing && <hr className="mx-3  my-0 user-profile-name" />}
+
+          <div className="d-flex mt-3 px-3 ">
+            <span className="text-success">Email</span>
+          </div>
+          <div className="d-flex justify-content-between py-0     align-items-center">
+            <Form.Group className=" w-100  nickname-text-bar mt-2 px-3 ">
+              <Form.Control
+                type="text"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="py-0 pl-0"
+              />
+            </Form.Group>
+            {isLoading && !isEditingEmail && (
+              <Spinner animation="grow" size="sm" />
+            )}
+            {!isEditingEmail && (
               <span>
-                <strong>2</strong>
+                <Icon.PencilFill
+                  onClick={() => setIsEditingEmail(true)}
+                  size={15}
+                />
               </span>
-              <span>following</span>
-            </div>
-          </Row>
+            )}
+            {isEditingEmail && (
+              <span className="d-flex align-items-center">
+                <span>{email.length}</span>
+
+                <Icon.Check2
+                  onClick={() => {
+                    setIsEditingEmail(false);
+                    updateMe();
+                  }}
+                  size={15}
+                />
+              </span>
+            )}
+          </div>
+          {isEditingEmail && <hr className="mx-3  my-0 user-profile-name" />}
+          {!isEditingEmail && <hr className="mx-3 mb-0 pb-0" />}
           {/* <hr />
           <Row>
             <div className="d-flex  bg-secondary text-white px-2 py-2">
@@ -88,11 +213,10 @@ const UserProfile = ({ user }) => {
               <span>Dec 11, 2022</span>
             </div>
           </Row> */}
-        </div>
+        </Col>
         <div>
-          <hr />
-          <span className="d-flex ml-2 mb-4">Favorite platforms</span>{" "}
-          <Row>
+          <span className="d-flex ml-2 my-4">Favorite platforms</span>{" "}
+          <Row className="fav-platforms">
             <Col>
               <Icon.Display color="black" size={25} />
               {[...Array(5)].map((star, index) => {
@@ -159,7 +283,7 @@ const UserProfile = ({ user }) => {
               })}
             </Col>
             <Col className="mb-3">
-              <Icon.NintendoSwitch size={25} color="black" />
+              <Icon.NintendoSwitch size={25} />
               {[...Array(5)].map((star, index) => {
                 index++;
                 return (

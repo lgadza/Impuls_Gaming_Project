@@ -1,0 +1,51 @@
+.profile-picture {
+  position: relative !important;
+}
+.profile-picture:hover .flex-column.align-items-center.change-profile {
+  visibility: visible !important;
+}
+.flex-column.align-items-center.change-profile:hover {
+  visibility: visible !important;
+}
+.userProfile {
+  isolation: isolate;
+}
+a.dropdown-item {
+  font-size: 0.8rem !important;
+}
+.change-profile {
+  position: absolute !important;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(17, 27, 33, 0.9);
+  border-radius: 50%;
+  visibility: hidden;
+}
+.userProfile .dropdown-menu.show {
+  z-index: 1;
+  background-color: rgb(29, 39, 46);
+  isolation: isolate;
+}
+.fav-platforms {
+  z-index: 0;
+  isolation: isolate;
+}
+.dropdown-toggle.btn-primary:focus-visible {
+  background-color: transparent;
+  outline: none;
+}
+.dropdown:focus-visible {
+  background-color: transparent;
+  outline: none;
+}
+.nickname-text-bar input,
+.nickname-text-bar input:active,
+.nickname-text-bar input:focus {
+  background-color: rgb(42, 57, 66) !important;
+  border: none;
+  outline: none;
+  box-shadow: none !important;
+  color: white;
+}

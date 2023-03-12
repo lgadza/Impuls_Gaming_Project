@@ -10,6 +10,7 @@ import Chat from "./Chat";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
 import { useSelector, useDispatch } from "react-redux";
+import UserProfile from "./UserProfile";
 import Tournaments from "./Tournaments";
 import Overview from "./Overview";
 import Fixtures from "../../components/Fixtures";
@@ -102,7 +103,7 @@ const UserPage = () => {
 
             <Dropdown.Menu>
               <Dropdown.Item>
-                <div className="d-flex ml-2 justify-content-between">
+                <div className="d-flex align-items-center ml-2 justify-content-between">
                   <span>
                     {user.name} {user.surname}
                   </span>
@@ -114,13 +115,17 @@ const UserPage = () => {
                 </div>
               </Dropdown.Item>
               <Dropdown.Item>
-                <Link to="" className="textColor mx-2">
+                <Link to="" className="textColor px-2 py-5">
                   Registrations
                 </Link>
               </Dropdown.Item>
-              <hr />
+              <hr className="my-0 py-0" />
               <Dropdown.Item>
-                <Link to="" onClick={handleLogout} className="textColor mx-2">
+                <Link
+                  to=""
+                  onClick={handleLogout}
+                  className="textColor px-2 py-5"
+                >
                   Log out
                 </Link>
               </Dropdown.Item>
@@ -130,17 +135,14 @@ const UserPage = () => {
       </Row>
       <Container>
         <Row>
-          {/* <Col
+          <Col
             lg={4}
             className=" userProfile profile-fixed d-flex flex-column  mt-5 side-bar"
           >
             <UserProfile user={user} />
-          </Col> */}
+          </Col>
 
-          <Col
-            // lg={8}
-            className=" mt-5 side-bar d-none d-lg-block"
-          >
+          <Col lg={8} className=" mt-5 user-table side-bar d-none d-lg-block">
             <Tabs className="navigation-tabs  d-flex justify-content-center mt-3 textColor">
               <Tab className="textColor2" eventKey="overview" title="Overview">
                 <Overview
