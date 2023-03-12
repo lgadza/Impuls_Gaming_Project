@@ -38,10 +38,29 @@
   border: unset;
 }
 .nav-carousel.left {
+  left: 0;
+
   transform: translateX(-100%) translateY(-50%);
 }
 
 .nav-carousel.right {
   right: 0;
   transform: translateX(100%) translateY(-50%);
+}
+@media screen and (max-width: 768px) {
+  .carousel {
+    width: 18rem !important;
+    /* perspective: ; */
+  }
+  .nav-carousel.left {
+    transform: translateX(-35%) translateY(-50%) !important;
+  }
+
+  .nav-carousel.right {
+    transform: translateX(35%) translateY(-50%) !important;
+  }
+  .comments-section {
+    width: 90vw;
+    overflow-x: hidden;
+  }
 }

@@ -156,12 +156,12 @@ const Reservations = ({ visible, onhide }) => {
           </div>
         </div>
 
-        <Row className="my-3">
+        <Row className="mb-3 pt-4 mt-5">
           <Col
             md={6}
             sm={12}
             lg={3}
-            className="d-flex flex-column justify-content-center"
+            className="d-flex mb-3 flex-column justify-content-center"
           >
             <Card className="p-3">
               <div>
@@ -185,7 +185,7 @@ const Reservations = ({ visible, onhide }) => {
             md={6}
             sm={12}
             lg={3}
-            className="d-flex flex-column justify-content-center"
+            className="d-flex flex-column mb-3 justify-content-center"
           >
             <Card className="p-3">
               <div>
@@ -210,7 +210,7 @@ const Reservations = ({ visible, onhide }) => {
             md={6}
             sm={12}
             lg={3}
-            className="d-flex flex-column justify-content-center"
+            className="d-flex flex-column mb-3 justify-content-center"
           >
             <Card className="p-3">
               <div>
@@ -232,7 +232,7 @@ const Reservations = ({ visible, onhide }) => {
             md={6}
             sm={12}
             lg={3}
-            className="d-flex flex-column justify-content-center"
+            className="d-flex flex-column mb-3 justify-content-center"
           >
             <Card className="p-3">
               <div>
@@ -259,7 +259,7 @@ const Reservations = ({ visible, onhide }) => {
             <h5 className="my-4">Comments</h5>
           </Col>
         </Row>
-        <Row className="d-flex justify-content-center">
+        <Row className="comments-section d-flex justify-content-center">
           <Carousel>
             {[...Array(10)].map((comment, index) => {
               return <CommentCard />;

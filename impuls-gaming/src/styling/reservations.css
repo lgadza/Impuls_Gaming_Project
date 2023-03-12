@@ -27,7 +27,11 @@
 .on {
   color: rgb(40, 167, 69);
 }
-
+.scroll-text-container {
+  position: absolute;
+  left: 0;
+  right: 0;
+}
 .reservations-stations {
   background-color: rgba(16, 22, 26);
   /* margin-top: ; */
