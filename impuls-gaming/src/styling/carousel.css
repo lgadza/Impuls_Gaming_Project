@@ -7,7 +7,7 @@
   width: 23rem;
   height: 23rem;
 
-  perspective: ;
+  perspective: 45deg;
   transform-style: preserve-3d;
 }
 
@@ -25,7 +25,7 @@
 
 .nav-carousel {
   color: white;
-  font-size: 5rem;
+  font-size: 2rem;
   position: absolute;
   display: flex;
   align-items: center;

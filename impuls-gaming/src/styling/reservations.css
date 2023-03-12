@@ -1,18 +1,18 @@
 .reservations-stations-container {
-  /* background-color: rgb(42, 57, 66, 0.5);
-  opacity: 0.9; */
+  /* background-color: rgb(42, 57, 66, 0.5); */
+  opacity: 0.9;
   z-index: 1 !important;
 }
 .reservations-bg {
-  position: relative;
-  background-image: url("https://i.pinimg.com/736x/3a/79/86/3a79860b23479eeae243b2cd7ed183c0.jpg");
-  isolation: isolate;
+  /* position: relative; */
+  /* background-image: url("https://i.pinimg.com/736x/3a/79/86/3a79860b23479eeae243b2cd7ed183c0.jpg"); */
+  /* isolation: isolate; */
 }
 .reservations-bg .giftcard-preview-nav {
   z-index: 1 !important;
   isolation: isolate;
 }
-.reservation-cover {
+/* .reservation-cover {
   height: 100%;
   width: 100%;
   top: 0;
@@ -23,7 +23,7 @@
   background-color: rgb(42, 57, 66);
   opacity: 0.95;
   position: absolute;
-}
+} */
 .on {
   color: rgb(40, 167, 69);
 }

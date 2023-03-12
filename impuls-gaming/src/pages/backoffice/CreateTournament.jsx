@@ -112,7 +112,7 @@ const CreateTournament = ({ visible, onhide }) => {
               </Row>
               <div className="mt-2">Choose discipline</div>
               <hr className="mt-1 pt-0" />
-              <div className=" ml-5 d-flex justify-content-center">
+              <div className="d-flex justify-content-center">
                 <Carousel>
                   {projectImgs.map((discipline, index) => (
                     <Link
@@ -120,7 +120,7 @@ const CreateTournament = ({ visible, onhide }) => {
                         setDisciplineCoverUrl(discipline.url);
                         handleDisciplineName(index);
                       }}
-                      className="image-project"
+                      className="image-project d-flex justify-content-center"
                       key={index}
                     >
                       <img

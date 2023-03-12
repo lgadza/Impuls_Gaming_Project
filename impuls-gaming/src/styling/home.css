@@ -145,6 +145,9 @@ h1 {
   width: 100%;
   z-index: 5;
 }
+.bg-black {
+  background-color: rgb(17, 27, 33);
+}
 .impuls {
   color: #12bae3;
 }
@@ -245,7 +248,7 @@ input::-webkit-inner-spin-button {
 }
 .login-content {
   background-color: rgb(42, 57, 66);
-  /* width: fit-content; */
+
   color: white;
 }
 .sign-up-btn {
@@ -272,7 +275,6 @@ a {
 }
 .modal-content {
   background-color: rgb(42, 57, 66, 0.95);
-  /* opacity: 0.8; */
 }
 .link-btm-bar:hover::after {
   content: "";
@@ -381,7 +383,7 @@ svg {
   height: 180%;
   left: 0;
   right: 0;
-  /* background-color: green; */
+
   background-color: rgb(200, 35, 51);
   z-index: -1;
   transition: 0.4s;
@@ -488,6 +490,41 @@ a:hover {
 .join-call {
   z-index: 3 !important;
 }
+
+.testimonial4_slide {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 70%;
+  min-height: 20rem;
+  margin: auto;
+  padding: 20px;
+  position: relative;
+  text-align: center;
+}
+.testimonial4_slide img {
+  margin: auto;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  position: relative;
+  border-radius: 50%;
+  box-shadow: -6px 6px 6px rgba(0, 0, 0, 0.23);
+  -moz-box-shadow: -6px 6px 6px rgba(0, 0, 0, 0.23);
+  -o-box-shadow: -6px 6px 6px rgba(0, 0, 0, 0.23);
+  -webkit-box-shadow: -6px 6px 6px rgba(0, 0, 0, 0.23);
+}
+.testimonial4_slide p {
+  color: #ffffff;
+  line-height: 1.4;
+  margin: 40px 0 20px 0;
+}
+.testimonial4_slide .card-title {
+  color: #ffffff;
+  font-size: 0.9rem;
+}
+
 .h1-join-call {
   font-family: "Times New Roman", Times, serif;
   font-size: 8em;
@@ -628,6 +665,7 @@ button-star {
 }
 ::-webkit-scrollbar {
   width: 5px;
+  height: 0;
 }
 ::-webkit-scrollbar-track {
   box-shadow: inset 0 0 5px rgba(244, 92, 93, 0);
@@ -1590,3 +1628,25 @@ button.nav-link {
     width: 4rem;
   }
 }
+/* SCROOL */
+.scroll-text-container {
+  overflow: hidden;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.scroll-text {
+  white-space: nowrap;
+  display: inline-block;
+  animation: marquee 30s linear infinite;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+/* SCROOL */

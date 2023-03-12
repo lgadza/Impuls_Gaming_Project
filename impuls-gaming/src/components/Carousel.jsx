@@ -15,7 +15,11 @@ const Carousel = ({ children }) => {
           className="nav-carousel left"
           onClick={() => setActive((i) => i - 1)}
         >
-          <Icon.ChevronDoubleLeft size={40} color="black" />
+          <Icon.ChevronDoubleLeft
+            size={30}
+            className="bg-white rounded-circle p-2"
+            color="black"
+          />
         </button>
       )}
       {React.Children.map(children, (child, i) => (
@@ -39,7 +43,11 @@ const Carousel = ({ children }) => {
           className="nav-carousel right"
           onClick={() => setActive((i) => i + 1)}
         >
-          <Icon.ChevronDoubleRight size={40} color="black" />
+          <Icon.ChevronDoubleRight
+            size={30}
+            className="bg-white rounded-circle p-2"
+            color="black"
+          />
         </button>
       )}
     </div>
