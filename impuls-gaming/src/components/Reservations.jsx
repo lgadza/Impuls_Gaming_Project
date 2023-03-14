@@ -28,6 +28,7 @@ import { format, compareAsc } from "date-fns";
 import CommentCard from "./CommentCard";
 import Carousel from "./Carousel";
 import Avatar from "./Avatar";
+import Footer from "./Footer";
 
 const Reservations = ({ visible, onhide }) => {
   const dispatch = useDispatch();
@@ -50,20 +51,21 @@ const Reservations = ({ visible, onhide }) => {
   const [comment, setComment] = useState("");
   const handleHideMakeReservation = () => setShowMakeReservation(false);
   useEffect(() => {
-    // dispatch(getReservations());
     if (accessToken) {
       dispatch(getMe(accessToken.accessToken));
     }
-    dispatch(getProjectsImgs());
+    // dispatch(getProjectsImgs());
   }, []);
   const [scrollPosition, setScrollPosition] = useState(0);
   const handlePostComment = async () => {
     await dispatch(
       postComment(accessToken.accessToken, { comment, user: user._id })
     );
+    setComment("");
     dispatch(getComments());
   };
   useEffect(() => {
+    dispatch(getComments());
     const handleScroll = () => {
       setScrollPosition(window.scrollY);
     };
@@ -72,6 +74,7 @@ const Reservations = ({ visible, onhide }) => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
   return (
     <Container className="main-container px-0 reservations-bg" fluid>
       {/* <div className="reservation-cover"></div> */}
@@ -83,9 +86,12 @@ const Reservations = ({ visible, onhide }) => {
             </Link>
             <span className="mr-auto textColor">LIVE EXPIRIENCE</span>
           </div>
-          {user.email && (
+          {user && (
             <span sm={2} className="d-flex align-items-center">
-              {user.email}
+              <span className="textColor">{user.email}</span>
+              <Link className="ml-2" to={"/user-page"}>
+                My account
+              </Link>
             </span>
           )}
         </Col>
@@ -257,47 +263,56 @@ const Reservations = ({ visible, onhide }) => {
           {allComments.length > 0 ? (
             <Carousel>
               {allComments.map((comment, index) => {
-                return <CommentCard />;
+                return (
+                  <CommentCard
+                    comment={comment}
+                    user={user}
+                    token={accessToken.accessToken}
+                    key={index}
+                  />
+                );
               })}
             </Carousel>
           ) : (
             <div className="my-3">No Comments available</div>
           )}
-
-          {user.name && (
-            <Card className="w-25 p-3">
-              <Form.Group className="mb-2  d-flex align-items-center main-container2 send-content-container ">
-                <Form.Control
-                  className="main-container2 "
-                  placeholder="Write a comment..."
-                  as="textarea"
-                  rows={2}
-                  onChange={(e) => setComment(e.target.value)}
-                  value={comment}
-                />
-                {comment && (
-                  <Icon.Send
-                    onClick={handlePostComment}
-                    className="send-btn-icon p-2"
-                    size={30}
-                  />
-                )}
-              </Form.Group>
-
-              <div>
-                <Link to="/">
-                  <Button
-                    className="px-3 primary-btn  w-50 d-flex justify-content-center  textColor "
-                    variant="primary"
-                  >
-                    <small>Add comment</small>
-                  </Button>
-                </Link>
-              </div>
-            </Card>
-          )}
         </Row>
-        {/* <Row></Row> */}
+        <Row>
+          <Col className="d-flex justify-content-center">
+            {user && (
+              <Card style={{ width: "18rem" }} className="p-3">
+                <Form.Group className="mb-2  d-flex align-items-center main-container2 send-content-container ">
+                  <Form.Control
+                    className="main-container2"
+                    placeholder="Write a comment..."
+                    as="textarea"
+                    rows={2}
+                    onChange={(e) => setComment(e.target.value)}
+                    value={comment}
+                  />
+                  {comment && (
+                    <Icon.Send
+                      onClick={handlePostComment}
+                      className="send-btn-icon p-2"
+                      size={30}
+                    />
+                  )}
+                </Form.Group>
+
+                <div>
+                  <Link>
+                    <Button
+                      className="px-3 primary-btn  w-50 d-flex justify-content-center  textColor "
+                      variant="primary"
+                    >
+                      <small>Add comment</small>
+                    </Button>
+                  </Link>
+                </div>
+              </Card>
+            )}
+          </Col>
+        </Row>
 
         <Row>
           <Col className="d-flex  my-4  justify-content-end">
@@ -319,6 +334,7 @@ const Reservations = ({ visible, onhide }) => {
         onhide={handleHideMakeReservation}
         stationNo={stationNumber}
       />
+      <Footer />
     </Container>
   );
 };

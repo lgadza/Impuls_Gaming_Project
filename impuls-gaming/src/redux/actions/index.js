@@ -339,20 +339,21 @@ export const postComment = (token, data) => {
     }
   };
 };
-export const editComment = (data, reservationId, structureId) => {
+export const editComment = (token, commentId, data) => {
   return async (dispatch) => {
     const options = {
       method: "PUT",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(data),
     };
     const URL = process.env.REACT_APP_BE_PROD_URL;
     try {
       const response = await fetch(
-        `${URL}/reservationComments/${reservationId}`,
+        `${URL}/reservationComments/${commentId}`,
         options
       );
       if (response.ok) {
@@ -363,15 +364,20 @@ export const editComment = (data, reservationId, structureId) => {
     }
   };
 };
-export const deleteComment = (reservationId) => {
+export const deleteComment = (token, commentId) => {
   return async (dispatch) => {
     const options = {
       method: "DELETE",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
     };
     const URL = process.env.REACT_APP_BE_PROD_URL;
     try {
       const response = await fetch(
-        `${URL}/reservationComments/${reservationId}`,
+        `${URL}/reservationComments/${commentId}`,
         options
       );
       if (response.ok) {
