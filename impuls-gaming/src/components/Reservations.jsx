@@ -14,13 +14,20 @@ import "../styling/reservations.css";
 import { Link } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getProjectsImgs, getReservations } from "../redux/actions";
+import {
+  getComments,
+  getMe,
+  getProjectsImgs,
+  getReservations,
+  postComment,
+} from "../redux/actions";
 
 import MakeReservation from "./MakeReservation";
 import logo from "../img/impuls logo.png";
 import { format, compareAsc } from "date-fns";
 import CommentCard from "./CommentCard";
 import Carousel from "./Carousel";
+import Avatar from "./Avatar";
 
 const Reservations = ({ visible, onhide }) => {
   const dispatch = useDispatch();
@@ -29,21 +36,33 @@ const Reservations = ({ visible, onhide }) => {
   const handleData = async () => {
     await onhide();
   };
-
+  const accessToken = useSelector((state) => state.accessToken.accessToken);
+  const user = useSelector((state) => state.me.me);
   const gameCover = useSelector((state) => state.projectImgs.projectImgs);
   const isGameCoverLoading = useSelector(
     (state) => state.projectImgs.isLoading
   );
-  const [remainingStations, setRemainingStations] = useState("");
+  const allComments = useSelector(
+    (state) => state.reservationsComments.reservationsComments
+  );
   const [stationNumber, setStationNumber] = useState(null);
   const [showMakeReservations, setShowMakeReservation] = useState(false);
+  const [comment, setComment] = useState("");
   const handleHideMakeReservation = () => setShowMakeReservation(false);
   useEffect(() => {
-    dispatch(getReservations());
+    // dispatch(getReservations());
+    if (accessToken) {
+      dispatch(getMe(accessToken.accessToken));
+    }
     dispatch(getProjectsImgs());
   }, []);
   const [scrollPosition, setScrollPosition] = useState(0);
-
+  const handlePostComment = async () => {
+    await dispatch(
+      postComment(accessToken.accessToken, { comment, user: user._id })
+    );
+    dispatch(getComments());
+  };
   useEffect(() => {
     const handleScroll = () => {
       setScrollPosition(window.scrollY);
@@ -54,16 +73,77 @@ const Reservations = ({ visible, onhide }) => {
     };
   }, []);
   return (
-    <Container className="main-container reservations-bg" fluid>
+    <Container className="main-container px-0 reservations-bg" fluid>
       {/* <div className="reservation-cover"></div> */}
-      <Row className="giftcard-preview-nav py-2 ">
-        <Col className="d-flex flex-column ml-5">
-          <Link className="mr-auto" to={"/"}>
-            <img className="logo-img " src={logo} alt="" />
-          </Link>
-          <span className="mr-auto textColor">LIVE EXPIRIENCE</span>
+      <Row className="giftcard-preview-nav py-2 w-100 mx-0 ">
+        <Col className="d-flex mx-4 justify-content-between">
+          <div className="d-flex flex-column">
+            <Link className="mr-auto" to={"/"}>
+              <Avatar width={50} height={50} src={logo} alt="Logo" />
+            </Link>
+            <span className="mr-auto textColor">LIVE EXPIRIENCE</span>
+          </div>
+          {user.email && (
+            <span sm={2} className="d-flex align-items-center">
+              {user.email}
+            </span>
+          )}
         </Col>
       </Row>
+      <Row className="w-100 mx-0">
+        <Col className="px-0">
+          <Card>
+            <Card.Img
+              src="https://pbs.twimg.com/media/EL-qiTuXUAASbId.jpg"
+              alt="reservations stations"
+              className=" tournament-img-cover"
+            />
+            <Card.ImgOverlay className="tournament-info d-flex flex-column justify-content-center pl-4">
+              <h5 className="d-flex">Reserve your own</h5>
+              <h6 className="text-success d-flex">Station</h6>
+              <span className="d-flex text-left">
+                No waiting is needed, as we have many stations and quality
+                games. Reserve now in seconds.
+              </span>
+              <Link
+                onClick={() => setShowMakeReservation(true)}
+                className="w-100 d-flex my-4"
+              >
+                {" "}
+                <Button variant="danger" className="register-btn">
+                  Reserve now
+                </Button>
+              </Link>
+            </Card.ImgOverlay>
+          </Card>
+        </Col>
+      </Row>
+      <div
+        style={{ width: "100%", overflowX: "scroll" }}
+        className="scroll-text-container bg-black"
+      >
+        <div
+          className=" d-flex align-items-center justify-content-between  mx-1 py-2 scroll-text"
+          style={{ transform: `translateX(-${scrollPosition}px)` }}
+        >
+          <div className="d-flex align-items-center">
+            <Icon.CheckCircle size={15} />
+            <span>No waiting in the queue</span>
+          </div>
+          <div className="d-flex align-items-center">
+            <Icon.CheckCircle size={15} />
+            <span>Easy online reservation</span>
+          </div>
+          <div className="d-flex align-items-center">
+            <Icon.CheckCircle size={15} />
+            <span>No registration required</span>
+          </div>
+          <div className="d-flex align-items-center">
+            <Icon.CheckCircle size={15} />
+            <span>live the LIVE EXPERIENCE</span>
+          </div>
+        </div>
+      </div>
       <Container className="reservations-stations-container my-5">
         {/* <Row className="mt-5">
           <Col>
@@ -78,83 +158,6 @@ const Reservations = ({ visible, onhide }) => {
             </div>
           </Col>
         </Row> */}
-        <Row>
-          <Col>
-            <div className="d-flex justify-content-between my-4">
-              <h3>Reserve a station now</h3>
-            </div>
-          </Col>
-        </Row>
-        <Row>
-          <Col md={4}>
-            {/* <Card> */} <h5 className="d-flex">Reserve your own</h5>
-            <h6 className="text-success d-flex">Station</h6>
-            <span className="d-flex text-left">
-              No waiting is needed, as we have many stations and quality games.
-              Reserve now in seconds.
-            </span>
-            <Link
-              onClick={() => setShowMakeReservation(true)}
-              className="w-100 d-flex my-4"
-            >
-              {" "}
-              <Button variant="danger" className="register-btn">
-                Reserve now
-              </Button>
-            </Link>
-            {/* </Card> */}
-          </Col>
-          <Col></Col>
-        </Row>
-        {/* <Row
-          style={{ overflowX: "scroll" }}
-          onScroll={handleScroll}
-          ref={containerRef}
-          className="bg-success w-100 mx-1 py-2"
-        >
-          <Col md={6} sm={12} lg={3} className="d-flex align-items-center">
-            <Icon.CheckCircle className="ml-0 pl-0" size={15} />
-            <span>No waiting in the queue</span>
-          </Col>
-          <Col md={6} sm={12} lg={3} className="d-flex align-items-center">
-            <Icon.CheckCircle className="ml-0 pl-0" size={15} />
-            <span>Easy online reservation</span>
-          </Col>
-          <Col md={6} sm={12} lg={3} className="d-flex align-items-center">
-            <Icon.CheckCircle className="ml-0 pl-0" size={15} />
-            <span>No registration required</span>
-          </Col>
-          <Col md={6} sm={12} lg={3} className="d-flex align-items-center">
-            <Icon.CheckCircle className="ml-0 pl-0" size={15} />
-            <span>live the LIVE EXPIRIENCE</span>
-          </Col>
-        </Row> */}
-        <div
-          style={{ width: "100%", overflowX: "scroll" }}
-          className="scroll-text-container bg-black"
-        >
-          <div
-            className=" d-flex align-items-center justify-content-between  mx-1 py-2 scroll-text"
-            style={{ transform: `translateX(-${scrollPosition}px)` }}
-          >
-            <div className="d-flex align-items-center">
-              <Icon.CheckCircle size={15} />
-              <span>No waiting in the queue</span>
-            </div>
-            <div className="d-flex align-items-center">
-              <Icon.CheckCircle size={15} />
-              <span>Easy online reservation</span>
-            </div>
-            <div className="d-flex align-items-center">
-              <Icon.CheckCircle size={15} />
-              <span>No registration required</span>
-            </div>
-            <div className="d-flex align-items-center">
-              <Icon.CheckCircle size={15} />
-              <span>live the LIVE EXPERIENCE</span>
-            </div>
-          </div>
-        </div>
 
         <Row className="mb-3 pt-4 mt-5">
           <Col
@@ -165,11 +168,7 @@ const Reservations = ({ visible, onhide }) => {
           >
             <Card className="p-3">
               <div>
-                <Icon.Unlock
-                  // color="gold"
-                  className="d-flex my-3"
-                  size={30}
-                />
+                <Icon.Unlock className="d-flex my-3" size={30} />
               </div>
               <div className="d-flex flex-column">
                 <span>
@@ -189,11 +188,7 @@ const Reservations = ({ visible, onhide }) => {
           >
             <Card className="p-3">
               <div>
-                <Icon.CalendarCheck
-                  // color="yellow"
-                  className="d-flex my-3"
-                  size={30}
-                />
+                <Icon.CalendarCheck className="d-flex my-3" size={30} />
               </div>
               <div className="d-flex flex-column">
                 <span>
@@ -236,11 +231,7 @@ const Reservations = ({ visible, onhide }) => {
           >
             <Card className="p-3">
               <div>
-                <Icon.ClockHistory
-                  // color="green"
-                  className="d-flex my-3"
-                  size={30}
-                />
+                <Icon.ClockHistory className="d-flex my-3" size={30} />
               </div>
               <div className="d-flex flex-column">
                 <span>
@@ -259,23 +250,64 @@ const Reservations = ({ visible, onhide }) => {
             <h5 className="my-4">Comments</h5>
           </Col>
         </Row>
-        <Row className="comments-section d-flex justify-content-center">
-          <Carousel>
-            {[...Array(10)].map((comment, index) => {
-              return <CommentCard />;
-            })}
-          </Carousel>
+        {allComments > 5 && (
+          <Link className="d-flex justify-content-end">View all</Link>
+        )}
+        <Row className="comments-section d-flex flex-column align-items-center justify-content-center">
+          {allComments.length > 0 ? (
+            <Carousel>
+              {allComments.map((comment, index) => {
+                return <CommentCard />;
+              })}
+            </Carousel>
+          ) : (
+            <div className="my-3">No Comments available</div>
+          )}
+
+          {user.name && (
+            <Card className="w-25 p-3">
+              <Form.Group className="mb-2  d-flex align-items-center main-container2 send-content-container ">
+                <Form.Control
+                  className="main-container2 "
+                  placeholder="Write a comment..."
+                  as="textarea"
+                  rows={2}
+                  onChange={(e) => setComment(e.target.value)}
+                  value={comment}
+                />
+                {comment && (
+                  <Icon.Send
+                    onClick={handlePostComment}
+                    className="send-btn-icon p-2"
+                    size={30}
+                  />
+                )}
+              </Form.Group>
+
+              <div>
+                <Link to="/">
+                  <Button
+                    className="px-3 primary-btn  w-50 d-flex justify-content-center  textColor "
+                    variant="primary"
+                  >
+                    <small>Add comment</small>
+                  </Button>
+                </Link>
+              </div>
+            </Card>
+          )}
         </Row>
+        {/* <Row></Row> */}
 
         <Row>
-          <Col className="d-flex  mb-4  justify-content-end">
+          <Col className="d-flex  my-4  justify-content-end">
             <Link to="/">
               <Button
-                className="px-3 primary-btn  w-100 d-flex  textColor "
+                className="px-3 primary-btn align-items-center  w-100 d-flex  textColor "
                 variant="primary"
               >
-                <Icon.ArrowLeft className="pl-0 ml-0" size={20} />
-                <span>Back</span>
+                <Icon.ArrowLeft className="pl-0 ml-0" size={15} />
+                <small>Back</small>
               </Button>
             </Link>
           </Col>

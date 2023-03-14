@@ -32,6 +32,7 @@ const UserProfile = ({ user }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [isEditingEmail, setIsEditingEmail] = useState(false);
   const [avatar, setAvatar] = useState(null);
+  const [isPut, setPut] = useState(false);
   const handleTournamentCheck = (e) => {
     // isTournamentChecked
     //   ? setIsTournamentChecked(false)
@@ -47,6 +48,7 @@ const UserProfile = ({ user }) => {
     name,
   };
   const updateMe = async () => {
+    setPut(true);
     await dispatch(putMe(accessToken.accessToken, updatedData));
     dispatch(getMe(accessToken.accessToken));
   };
@@ -69,8 +71,7 @@ const UserProfile = ({ user }) => {
   const handleAvatar = (e) => {
     setAvatar(e.target.files[0]);
   };
-  const handleAvatarUpload = (e) => {
-    e.preventDefault();
+  const handleAvatarUpload = () => {
     const formData = new FormData();
     formData.append("avatar", avatar);
     const URL = process.env.REACT_APP_BE_PROD_URL;
@@ -88,14 +89,49 @@ const UserProfile = ({ user }) => {
         console.log(error);
       });
   };
+  useEffect(() => {
+    if (avatar) {
+      handleAvatarUpload();
+    }
+  }, [avatar]);
 
+  const removeProfilePicture = () => {
+    const formData = new FormData();
+    formData.append(
+      "avatar",
+      "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_960_720.png"
+    );
+
+    const URL = process.env.REACT_APP_BE_PROD_URL;
+    axios
+      .post(`${URL}/files/${user._id}/avatar`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
+      .then((response) => {
+        console.log(response);
+        dispatch(getMe(accessToken.accessToken));
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  // const removeProfilePicture = () => {
+  //   const avatarReplacement = {
+  //     avatar:
+  //       "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_960_720.png",
+  //   };
+  //   dispatch(putMe(avatarReplacement, accessToken.accessToken));
+  // };
   return (
     <div className="gift-container">
       <Row className="d-flex flex-column align-items-center  mt-4">
         <Col>
           {/* <img className="profile-img" src={profilePic} alt="" /> */}
 
-          <Dropdown className="w-100">
+          <Dropdown>
             <Dropdown.Toggle>
               <div className="profile-picture">
                 <Avatar
@@ -113,21 +149,21 @@ const UserProfile = ({ user }) => {
               </div>
             </Dropdown.Toggle>
 
-            <Dropdown.Menu>
-              <Dropdown.Item className="py-2">View Photo</Dropdown.Item>
-              <Dropdown.Item className="py-2">
-                <label className="mt-2" htmlFor="profile">
-                  Upload Photo
+            <Dropdown.Menu className="w-50">
+              <Dropdown.Item as="div" className="py-1">
+                <label htmlFor="profile">
+                  <small>Upload Photo</small>{" "}
                 </label>
                 <input
                   id="profile"
                   type="file"
                   style={{ visibility: "hidden" }}
-                  label="Change profile picture"
                   onChange={handleAvatar}
                 />
               </Dropdown.Item>
-              <Dropdown.Item className="py-2">Remove Photo</Dropdown.Item>
+              <Dropdown.Item onClick={removeProfilePicture} className="py-2">
+                Remove Photo
+              </Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
           {/* <h6 className="d-flex mt-2  ml-3 ">
@@ -145,7 +181,7 @@ const UserProfile = ({ user }) => {
                 className="py-0 pl-0"
               />
             </Form.Group>
-            {isLoading && !isEditing && <Spinner animation="grow" size="sm" />}
+            {isLoading && isPut && <Spinner animation="grow" size="sm" />}
             {!isEditing && (
               <span>
                 <Icon.PencilFill onClick={() => setIsEditing(true)} size={15} />
@@ -179,9 +215,7 @@ const UserProfile = ({ user }) => {
                 className="py-0 pl-0"
               />
             </Form.Group>
-            {isLoading && !isEditingEmail && (
-              <Spinner animation="grow" size="sm" />
-            )}
+            {isLoading && isPut && <Spinner animation="grow" size="sm" />}
             {!isEditingEmail && (
               <span>
                 <Icon.PencilFill

@@ -59,7 +59,7 @@ const TournamentDetails = () => {
                       </span>
                       <Link>{tournament.discipline_name}</Link>
                     </div>
-                    <h2 className="d-flex text-nowrap">{tournament.name}</h2>
+                    <h5 className="d-flex text-nowrap">{tournament.name}</h5>
                     <span className="d-flex">
                       {tournament.startDate && tournament.endDate && (
                         <span className="d-flex">
@@ -104,10 +104,10 @@ textColor"
                         )}
                       </div>
                       <div>
-                        <h3 className="border-bottom pb-2  textColor">
+                        <h5 className="border-bottom pb-2  textColor">
                           {tournament.tournamentParticipants.length}
-                        </h3>
-                        <h3 className="mt-0  textColor">{tournament.size}</h3>
+                        </h5>
+                        <h5 className="mt-0  textColor">{tournament.size}</h5>
                         <span className=" textColor">Players</span>
                       </div>
                     </div>

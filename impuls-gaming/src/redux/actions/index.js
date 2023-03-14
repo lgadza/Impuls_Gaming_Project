@@ -14,6 +14,12 @@ export const PUT_ME = "PUT_ME";
 export const PUT_ME_LOADING = "PUT_ME_LOADING";
 export const PUT_ME_ERROR = "PUT_ME_ERROR";
 
+export const GET_RESERVATIONS_COMMENTS = "GET_RESERVATIONS_COMMENTS";
+export const GET_RESERVATIONS_COMMENTS_LOADING =
+  "GET_RESERVATIONS_COMMENTS_LOADING";
+export const GET_RESERVATIONS_COMMENTS_ERROR =
+  "GET_RESERVATIONS_COMMENTS_ERROR";
+
 export const GET_RESERVATIONS = "GET_RESERVATIONS";
 export const GET_RESERVATIONS_LOADING = "GET_RESERVATIONS_LOADING";
 export const GET_RESERVATIONS_ERROR = "GET_RESERVATIONS_ERROR";
@@ -311,6 +317,118 @@ export const getTournamentsStructures = (tournamentId) => {
     }
   };
 };
+export const postComment = (token, data) => {
+  return async (dispatch) => {
+    const options = {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(data),
+    };
+    const URL = process.env.REACT_APP_BE_PROD_URL;
+    try {
+      const response = await fetch(`${URL}/reservationComments`, options);
+      if (response.ok) {
+        getComments();
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+export const editComment = (data, reservationId, structureId) => {
+  return async (dispatch) => {
+    const options = {
+      method: "PUT",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    };
+    const URL = process.env.REACT_APP_BE_PROD_URL;
+    try {
+      const response = await fetch(
+        `${URL}/reservationComments/${reservationId}`,
+        options
+      );
+      if (response.ok) {
+        getComments();
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+export const deleteComment = (reservationId) => {
+  return async (dispatch) => {
+    const options = {
+      method: "DELETE",
+    };
+    const URL = process.env.REACT_APP_BE_PROD_URL;
+    try {
+      const response = await fetch(
+        `${URL}/reservationComments/${reservationId}`,
+        options
+      );
+      if (response.ok) {
+        getComments();
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+export const getComments = () => {
+  return async (dispatch) => {
+    const options = {
+      method: "GET",
+    };
+    const URL = process.env.REACT_APP_BE_PROD_URL;
+    try {
+      const response = await fetch(`${URL}/reservationComments`, options);
+      if (response.ok) {
+        const reservationComments = await response.json();
+        dispatch({
+          type: GET_RESERVATIONS_COMMENTS,
+          payload: reservationComments,
+        });
+        setTimeout(() => {
+          dispatch({
+            type: GET_RESERVATIONS_COMMENTS_LOADING,
+            payload: false,
+          });
+        }, 100);
+      } else {
+        console.log("error");
+
+        dispatch({
+          type: GET_RESERVATIONS_COMMENTS_LOADING,
+          payload: false,
+        });
+        dispatch({
+          type: GET_RESERVATIONS_COMMENTS_ERROR,
+          payload: true,
+        });
+      }
+    } catch (error) {
+      console.log(error);
+      dispatch({
+        type: GET_RESERVATIONS_COMMENTS_LOADING,
+        payload: false,
+      });
+
+      dispatch({
+        type: GET_RESERVATIONS_COMMENTS_ERROR,
+        payload: true,
+      });
+    }
+  };
+};
+
 export const postReservation = (data) => {
   return async (dispatch) => {
     const options = {

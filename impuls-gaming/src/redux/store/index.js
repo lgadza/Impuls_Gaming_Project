@@ -26,6 +26,7 @@ import getOneTournamentParticipant from "../reducers/getOneTournamentParticipant
 import editOneTournamentParticipant from "../reducers/editOneTournamentParticipant";
 import getTournamentsStructures from "../reducers/getTournamentsStructures";
 import putMe from "../reducers/putMe";
+import getReservationsComments from "../reducers/getReservationsComments";
 const persistConfig = {
   key: "root",
   storage: localStorage,
@@ -57,6 +58,7 @@ const bigReducer = combineReducers({
   structures: getTournamentsStructures,
   reservations: getReservations,
   putMe: putMe,
+  reservationsComments: getReservationsComments,
 });
 
 const persistedReducer = persistReducer(persistConfig, bigReducer);
