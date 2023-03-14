@@ -47,7 +47,7 @@ const CommentCard = ({ comment, user, token }) => {
               as="textarea"
               disabled={user ? user._id !== comment.user._id : true}
               ref={textareaRef}
-              rows={2}
+              rows={6}
               value={commentText}
               onChange={(e) => setCommentText(e.target.value)}
               className="p-1"
