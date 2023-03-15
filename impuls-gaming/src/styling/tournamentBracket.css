@@ -7,13 +7,6 @@
   --bracket-color: #444;
 }
 
-/* Global styles */
-html,
-body {
-  margin: 0;
-  padding: 0;
-}
-
 .tournament-bracket-render {
   text-align: center;
   font-family: var(--base-font);

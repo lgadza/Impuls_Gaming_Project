@@ -9,6 +9,10 @@ const Footer = () => {
   const navigate = useNavigate();
   return (
     <div className=" footer container-fluid mt-5 pb-3 textColor">
+      <div class="wave wave1"></div>
+      <div class="wave wave2"></div>
+      <div class="wave wave3"></div>
+      <div class="wave wave4"></div>
       <Container className="pt-4">
         <Row>
           <Col md={6} lg={3}>

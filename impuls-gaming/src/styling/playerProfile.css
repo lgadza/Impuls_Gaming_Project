@@ -43,7 +43,7 @@ a.dropdown-item {
 .nickname-text-bar input,
 .nickname-text-bar input:active,
 .nickname-text-bar input:focus {
-  background-color: rgb(42, 57, 66) !important;
+  background-color: rgb(42, 57, 66, 0) !important;
   border: none;
   outline: none;
   box-shadow: none !important;
@@ -51,7 +51,7 @@ a.dropdown-item {
 }
 .nickname-text-bar textarea,
 .nickname-text-bar textarea:active {
-  background-color: rgb(42, 57, 66) !important;
+  background-color: rgb(42, 57, 66, 0) !important;
   border: none;
   outline: none;
   box-shadow: none !important;

@@ -16,13 +16,18 @@ import {
   getReservations,
   getTournaments,
   postReservation,
-} from "../redux/actions";
+} from "../../redux/actions";
 import { format, compareAsc } from "date-fns";
 import DatePicker from "react-datepicker";
 import getDay from "date-fns/fp/getDay";
 import { setHours, setMinutes } from "date-fns/fp";
 
-const MakeReservation = ({ visible, onhide, tournamentId, stationNo }) => {
+const ReservationsStationSettings = ({
+  visible,
+  onhide,
+  tournamentId,
+  stationNo,
+}) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const tournaments = useSelector((state) => state.tournaments.tournaments);
@@ -114,7 +119,7 @@ const MakeReservation = ({ visible, onhide, tournamentId, stationNo }) => {
     >
       <Modal.Header>
         <Modal.Title className="d-flex justify-content-between w-100">
-          <h6>Choose a station</h6>
+          <h6>Station settings</h6>
           <Link>
             <Icon.X
               onClick={onhide}
@@ -127,95 +132,29 @@ const MakeReservation = ({ visible, onhide, tournamentId, stationNo }) => {
       <Modal.Body scrollable={true} className="py-0 mt-3 px-4">
         <Container>
           <Row>
-            <Col className="d-flex justify-content-end">
+            <Col className="d-flex justify-content-between">
               <span className="d-flex flex-column">
                 <span>{format(new Date().getTime(), "HH:mm")}</span>
                 <span>{format(new Date(), "EEE dd MMM yyyy")}</span>
               </span>
-              {/* <span className="d-flex flex-column">
+              <span className="d-flex flex-column">
                 <span>Station No</span>
                 <h5 className="h5-station d-flex justify-content-center align-items-center">
                   {stationNo}
                 </h5>
-              </span> */}
+              </span>
             </Col>
           </Row>
+
           <Row>
             <Col>
-              <Form.Group className="my-3 d-flex flex-column justify-content-start">
-                <Form.Label className="d-flex">Date and Time</Form.Label>
-                <Form.Group className="">
-                  <DatePicker
-                    className="datepicker py-2 px-4 w-100"
-                    selected={reservationDate}
-                    placeholderText={new Date()}
-                    onChange={(date) => setReservationDate(date)}
-                    minDate={new Date()}
-                    filterDate={isWeekday}
-                    showTimeSelect
-                    filterTime={openTime}
-                    // excludeTimes={closedTime}
-                    dateFormat="MMMM d, yyyy h:mm aa"
-                    // dateFormat="Pp"
-                  />
-                </Form.Group>
-              </Form.Group>
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <Form onSubmit={handleSubmit}>
-                <Form.Group className="my-3 d-flex flex-column justify-content-start">
-                  <Form.Label className="d-flex">How many hour?</Form.Label>
-                  <Form.Control
-                    type="number"
-                    placeholder="how many hours?"
-                    value={playHours}
-                    onChange={(e) => setPlayHours(e.target.value)}
-                  />
-                </Form.Group>
-              </Form>
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <Form onSubmit={handleSubmit}>
-                <Form.Group className="my-3 d-flex flex-column justify-content-start">
-                  <Form.Label className="d-flex">Discipline</Form.Label>
-                  {/* <Form.Control
-                    type="number"
-                    placeholder="how many hours?"
-                    value={playHours}
-                    onChange={(e) => setPlayHours(e.target.value)}
-                  /> */}
-                  <Form.Select
-                    onChange={(e) => setDiscipline(e.target.value)}
-                    className="textColor py-2"
-                  >
-                    <option>Select a discipline</option>
-                    <option value="Mortal Kombat">Mortal Kombat</option>
-                    <option value="Call of Duty: Morden Warfare">
-                      Call of Duty: Morden Warfare
-                    </option>
-                    <option value="FIFA 23">FIFA 23</option>
-                  </Form.Select>
-                </Form.Group>
-              </Form>
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <Form onSubmit={handleSubmit}>
-                <Form.Group className="my-3 d-flex flex-column justify-content-start">
-                  <Form.Label className="d-flex">username</Form.Label>
-                  <Form.Control
-                    type="text"
-                    placeholder="enter username"
-                    value={userName}
-                    onChange={(e) => setUserName(e.target.value)}
-                  />
-                </Form.Group>
-              </Form>
+              <div className="d-flex my-3 bd-highlight justify-content-between text-success">
+                <span className="flex-grow-1 bd-highlight">Status</span>
+                <span className=" flex-grow-1 bd-highlight">Station No</span>
+
+                <span className="flex-grow-1 bd-highlight">Blocked</span>
+                <span className="flex-grow-1 bd-highlight">Select</span>
+              </div>
             </Col>
           </Row>
           <Row>
@@ -315,4 +254,4 @@ const MakeReservation = ({ visible, onhide, tournamentId, stationNo }) => {
     </Modal>
   );
 };
-export default MakeReservation;
+export default ReservationsStationSettings;

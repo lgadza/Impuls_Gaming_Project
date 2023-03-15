@@ -172,7 +172,7 @@ const Reservations = ({ visible, onhide }) => {
             lg={3}
             className="d-flex mb-3 flex-column justify-content-center"
           >
-            <Card className="p-3">
+            <Card className="p-3" style={{ height: "10rem" }}>
               <div>
                 <Icon.Unlock className="d-flex my-3" size={30} />
               </div>
@@ -192,7 +192,7 @@ const Reservations = ({ visible, onhide }) => {
             lg={3}
             className="d-flex flex-column mb-3 justify-content-center"
           >
-            <Card className="p-3">
+            <Card className="p-3" style={{ height: "10rem" }}>
               <div>
                 <Icon.CalendarCheck className="d-flex my-3" size={30} />
               </div>
@@ -213,7 +213,7 @@ const Reservations = ({ visible, onhide }) => {
             lg={3}
             className="d-flex flex-column mb-3 justify-content-center"
           >
-            <Card className="p-3">
+            <Card className="p-3" style={{ height: "10rem" }}>
               <div>
                 <Icon.FilePdf color="red" className="d-flex my-3" size={30} />
               </div>
@@ -235,7 +235,7 @@ const Reservations = ({ visible, onhide }) => {
             lg={3}
             className="d-flex flex-column mb-3 justify-content-center"
           >
-            <Card className="p-3">
+            <Card className="p-3" style={{ height: "10rem" }}>
               <div>
                 <Icon.ClockHistory className="d-flex my-3" size={30} />
               </div>
@@ -259,7 +259,7 @@ const Reservations = ({ visible, onhide }) => {
         {allComments > 5 && (
           <Link className="d-flex justify-content-end">View all</Link>
         )}
-        <Row className="comments-section d-flex flex-column align-items-center justify-content-center">
+        <Row className="comments-section mt-3 d-flex flex-column align-items-center justify-content-center">
           {allComments.length > 0 ? (
             <Carousel>
               {allComments.map((comment, index) => {

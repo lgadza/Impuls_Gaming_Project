@@ -9,8 +9,8 @@ import Spinner from "../../components/Spinner";
 import DeleteConfirm from "../../components/DeleteConfirm";
 import { Card } from "react-bootstrap-v5";
 import { format, compareAsc } from "date-fns";
+import ReservationsStationSettings from "./ReservationsStationSettings";
 
-import MakeReservation from "../../components/MakeReservation";
 const ReservationStations = () => {
   const dispatch = useDispatch();
   const [user, setUser] = useState("");
@@ -43,13 +43,13 @@ const ReservationStations = () => {
   return (
     <>
       <>
-        <h4 className="d-flex ml-5 my-4 ">Stations</h4>
+        <h5 className="d-flex ml-5 my-4 ">Stations</h5>
 
         <Row className="-d-flex  w-100 ml-auto organizer">
           <Col className="tournament-card-edit">
             <Card className="mb-4">
               <Card.Header className="d-flex">
-                <h5>Station setUp</h5>
+                <h6>Station setUp</h6>
                 <div className="d-flex ml-auto">
                   {isLoading && <Spinner animation="grow" size="sm" />}
                   {!isLoading && (
@@ -65,7 +65,7 @@ const ReservationStations = () => {
               </Card.Header>
               <Card.Text>
                 <Container className="reservations-stations-container">
-                  <Row className="mt-3">
+                  {/* <Row className="mt-3">
                     <Col>
                       <div className="registration-card mx-auto ">
                         <Alert key={"success"} variant={"success"}>
@@ -74,7 +74,7 @@ const ReservationStations = () => {
                         </Alert>
                       </div>
                     </Col>
-                  </Row>
+                  </Row> */}
                   <Row>
                     <Col>
                       <div className="d-flex justify-content-end mt-3 px-5 mx-2">
@@ -141,8 +141,6 @@ const ReservationStations = () => {
                         );
                         // let counter = 0;
                         if (reservation) {
-                          // counter++;
-                          // setRemainingStations(Number(9 - counter));
                           return (
                             <Col
                               xs={6}
@@ -258,7 +256,7 @@ const ReservationStations = () => {
           </Col>
         </Row>
       </>
-      <MakeReservation
+      <ReservationsStationSettings
         visible={showMakeReservations}
         onhide={handleHideMakeReservation}
         stationNo={stationNumber}

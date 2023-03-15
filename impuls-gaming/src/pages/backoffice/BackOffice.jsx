@@ -177,8 +177,8 @@ const BackOffice = () => {
                   //     : undefined
                   // }
                   >
-                    <Icon.PatchQuestion size={13} />
-                    <span className="text-small">Disputes</span>
+                    <Icon.Bell size={13} />
+                    <span className="text-small">Notifications</span>
                   </span>
                 </Link>
               </Nav>

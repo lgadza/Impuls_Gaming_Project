@@ -51,7 +51,7 @@ const Overview = ({ socket, tournamentId }) => {
       <Row>
         <Col className="mb-5 ">
           {update && (
-            <div className="registration-card bring-top mx-auto mb-5">
+            <div className="card registration-card bring-top mx-auto mb-5">
               <Alert key={"success"} variant={"success"}>
                 <Icon.CheckCircle size={15} />
                 <span>Your results report has been successfully updated.</span>

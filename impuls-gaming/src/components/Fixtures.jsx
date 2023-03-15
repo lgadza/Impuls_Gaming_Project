@@ -30,7 +30,7 @@ const Fixtures = () => {
             md={6}
             key={index}
             ref={(element) => (fixturesRef.current[fixture.match_id] = element)}
-            className="border participant-list"
+            className="border card participant-list"
           >
             <div className="d-flex d-block pb-2 mt-2 text-mute text-secondary">
               <Avatar

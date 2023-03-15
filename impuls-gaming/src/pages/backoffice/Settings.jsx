@@ -56,10 +56,10 @@ const Settings = () => {
           </div>
           <Row className=" mb-5">
             <Col>
-              <Card>
+              <Card style={{ height: "8rem" }} className="settings-card">
                 <Link
                   to={`/backoffice/projects/settings/${tournament.name}/edit`}
-                  className="textColor settings-card link-none-deco"
+                  className="textColor link-none-deco"
                 >
                   <Card.Header className="d-flex align-items-center justify-content-center">
                     <Icon.Gear size={15} />
@@ -76,10 +76,10 @@ const Settings = () => {
               </Card>
             </Col>
             <Col>
-              <Card>
+              <Card style={{ height: "8rem" }} className="settings-card">
                 <Link
                   to={`/backoffice/projects/settings/${tournament.name}/matches`}
-                  className="textColor settings-card link-none-deco"
+                  className="textColor link-none-deco"
                 >
                   <Card.Header className="d-flex align-items-center justify-content-center">
                     <Icon.LightningChargeFill size={15} />
@@ -96,10 +96,10 @@ const Settings = () => {
               </Card>
             </Col>
             <Col>
-              <Card>
+              <Card style={{ height: "8rem" }} className="settings-card">
                 <Link
                   to={`/backoffice/projects/settings/${tournament.name}/registration`}
-                  className="textColor settings-card link-none-deco"
+                  className="textColor link-none-deco"
                 >
                   <Card.Header className="d-flex align-items-center justify-content-center">
                     <Icon.TicketFill size={15} />
@@ -118,10 +118,10 @@ const Settings = () => {
           </Row>
           <Row>
             <Col>
-              <Card>
+              <Card style={{ height: "8rem" }} className="settings-card">
                 <Link
                   to={`/backoffice/projects/settings/${tournament.name}/participants`}
-                  className="textColor settings-card link-none-deco"
+                  className="textColor link-none-deco"
                 >
                   <Card.Header className="d-flex align-items-center justify-content-center">
                     <Icon.PeopleFill size={15} />
@@ -137,10 +137,10 @@ const Settings = () => {
               </Card>
             </Col>
             <Col>
-              <Card>
+              <Card style={{ height: "8rem" }} className="settings-card">
                 <Link
                   onClick={() => setShowDelete(true)}
-                  className="textColor settings-card link-none-deco"
+                  className="textColor link-none-deco"
                 >
                   <Card.Header className="d-flex align-items-center justify-content-center">
                     <Icon.Trash3Fill size={13} />
@@ -153,8 +153,8 @@ const Settings = () => {
               </Card>
             </Col>
             <Col>
-              {/* <Card>
-                <Link className="textColor settings-card link-none-deco">
+              {/* <Card style={{height:"8rem"}}>
+                <Link className="textColor link-none-deco">
                   <Card.Header className="d-flex align-items-center justify-content-center">
                     <Icon.TicketFill size={15} />
                     <span>Sponsors</span>

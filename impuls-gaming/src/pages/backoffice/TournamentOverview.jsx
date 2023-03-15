@@ -66,7 +66,7 @@ const TournamentOverview = () => {
           </Col>
           <Col lg={10} className="my-5 px-5">
             <div className="d-flex justify-content-between">
-              <h4 className="d-flex mb-4 ">Overview</h4>
+              <h5 className="d-flex mb-4 ">Overview</h5>
 
               <Dropdown>
                 <Dropdown.Toggle variant="success" id="dropdown-basic">
@@ -115,15 +115,15 @@ const TournamentOverview = () => {
                     </Row>
                     <Row className="my-4 mx-2 d-flex justify-content-between">
                       <Col>
-                        <span className="d-flex">SETUP</span>
+                        <small className="d-flex">SETUP</small>
                         <ProgressBar now={setup} visuallyHidden />
                       </Col>{" "}
                       <Col>
-                        <span className="d-flex"> PENDING</span>
+                        <small className="d-flex"> PENDING</small>
                         <ProgressBar now={pending} visuallyHidden />
                       </Col>{" "}
                       <Col>
-                        <span className="d-flex">RUNNING</span>
+                        <small className="d-flex">RUNNING</small>
                         <ProgressBar now={running} visuallyHidden />
                       </Col>{" "}
                     </Row>

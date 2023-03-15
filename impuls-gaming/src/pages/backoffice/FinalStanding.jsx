@@ -22,8 +22,8 @@ const FinalStanding = () => {
           />
         </Col>
         <Col lg={10} className="my-5 px-5">
-          <Card className="registration-card mx-auto mb-5 main-container2">
-            <Card.Body>
+          <Card className="registration-card mx-auto mt-4">
+            <Card.Header>
               <div className="d-flex ">
                 <h5 className="d-flex my-1">Participants</h5>
                 <div className="d-flex ml-auto">
@@ -39,10 +39,7 @@ const FinalStanding = () => {
                   </Link>
                 </div>
               </div>
-            </Card.Body>
-          </Card>
-
-          <Card className="registration-card mx-auto mt-4">
+            </Card.Header>
             <Card.Body>There is currently no final.</Card.Body>
           </Card>
         </Col>

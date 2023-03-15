@@ -1,15 +1,44 @@
 @import url("https://fonts.googleapis.com/css2?family=Just+Another+Hand&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Alumni+Sans+Inline+One:ital@1&family=Fjalla+One&family=Roboto&family=Titillium+Web&display=swap");
-/* .home {
-  background-color: rgba(0, 0, 0, 0.4);
-} */
-body {
-  background-color: rgb(32, 44, 51) !important;
+
+body#body {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  background-color: rgb(32, 44, 51);
   color: rgb(233, 237, 227);
   font-size: 0.8rem;
+  /* background: radial-gradient(
+    circle,
+    lemonchiffon,
+    skyblue,
+    rgb(32, 44, 51) 25%
+  ); */
+  height: 100%;
+}
+body#body:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background: radial-gradient(circle, transparent, black 25%, transparent);
+  animation: color 5.5s infinite ease-out alternate;
+  opacity: 0;
+  z-index: -1;
+}
+
+@keyframes color {
+  0% {
+    background: radial-gradient(circle, transparent, black 25%, transparent);
+  }
+  100% {
+    opacity: 0.8;
+  }
 }
 .navbar-nav.list-group .list-group-item {
-  background-color: rgb(42, 57, 66);
+  background-color: rgb(42, 57, 66, 0);
 }
 .join-member {
   background-color: red;
@@ -781,6 +810,9 @@ button-star {
 .settings-card:hover {
   box-shadow: 1px 3px 5px rgb(17, 27, 33);
 }
+.settings-card .card-body {
+  height: 100%;
+}
 
 .discipline-img {
   width: 15rem;
@@ -949,8 +981,15 @@ ul li {
 .card {
   border: none;
   box-sizing: border-box;
-  background-color: rgb(42, 57, 66);
+  background-color: rgb(42, 57, 66, 0.7);
   z-index: 0 !important;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.card.featured-games {
+  border: 2.5px solid rgb(129, 123, 16);
+  border-radius: 5px;
+  overflow: hidden;
 }
 .card-body {
   background-color: rgb(42, 57, 66);
@@ -1211,8 +1250,74 @@ tab[title] {
   top: 50%;
 }
 .footer {
-  background-color: rgb(42, 57, 66);
+  background-color: rgb(42, 57, 66, 0.7);
+  position: relative;
+  overflow: hidden;
+  /* opacity: 0.9; */
 }
+/* ANIMATION */
+
+.wave {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background: url(https://i.postimg.cc/XqYkMxZ1/3.png);
+  background-size: 1000px 100px;
+  mix-blend-mode: color-burn;
+}
+/*Change speed of animation*/
+.wave.wave1 {
+  animation: animate 30s linear infinite;
+  z-index: 1000;
+  opacity: 1;
+  animation-delay: 0s;
+  bottom: 0;
+}
+
+.wave.wave2 {
+  animation: animate2 15s linear infinite;
+  z-index: 999;
+  opacity: 0.5;
+  animation-delay: -5s;
+  bottom: 10px;
+}
+
+.wave.wave3 {
+  animation: animate 30s linear infinite;
+  z-index: 99 8;
+  opacity: 0.2;
+  animation-delay: -2s;
+  bottom: 15px;
+}
+
+.wave.wave4 {
+  animation: animate2 5s linear infinite;
+  z-index: 997;
+  opacity: 0.7;
+  animation-delay: -5s;
+  bottom: 20px;
+}
+
+@keyframes animate {
+  0% {
+    background-position-x: 0;
+  }
+  100% {
+    background-position-x: 1000px;
+  }
+}
+
+@keyframes animate2 {
+  0% {
+    background-position-x: 0;
+  }
+  100% {
+    background-position-x: -1000px;
+  }
+}
+/* ANIMATION */
 
 .footer .list-group-item {
   text-align: center !important;

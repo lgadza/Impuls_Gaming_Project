@@ -19,6 +19,7 @@ import Avatar from "../../components/Avatar";
 import { logout } from "../../redux/actions";
 import { io } from "socket.io-client";
 import Footer from "../../components/Footer";
+import { Button, Card } from "react-bootstrap-v5";
 const DEV_URL = process.env.REACT_APP_BE_DEV_URL;
 const socket = io(DEV_URL, { transports: ["websocket"] });
 const UserPage = () => {
@@ -129,6 +130,16 @@ const UserPage = () => {
                   Log out
                 </Link>
               </Dropdown.Item>
+              <Dropdown.Item as="div">
+                <Link>
+                  <Button
+                    className="px-3 primary-btn  w-100 d-flex justify-content-center  textColor "
+                    variant="primary"
+                  >
+                    <small>Delete Account</small>
+                  </Button>
+                </Link>
+              </Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
         </div>
@@ -140,6 +151,31 @@ const UserPage = () => {
             className=" userProfile profile-fixed d-flex flex-column  mt-5 side-bar"
           >
             <UserProfile user={user} />
+            <div className="my-4">
+              {" "}
+              <Card className="p-3">
+                <div>
+                  <Icon.CalendarCheck className="d-flex my-3" size={30} />
+                </div>
+                <div className="d-flex flex-column">
+                  <span>
+                    <strong className="d-flex">Make your reservation</strong>
+                  </span>
+                  <span className="d-flex  text-left">
+                    Stay away from the pressure of queuing. Choose available
+                    hours you wish to play
+                  </span>
+                </div>
+                <Link to="/reservations">
+                  <Button
+                    className="px-3 mt-3 primary-btn  w-50 d-flex justify-content-center  textColor "
+                    variant="primary"
+                  >
+                    <small>Reserve</small>
+                  </Button>
+                </Link>
+              </Card>
+            </div>
           </Col>
 
           <Col lg={8} className=" mt-5 user-table side-bar d-none d-lg-block">

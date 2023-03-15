@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 const Tournaments = ({ tournaments }) => {
   return (
-    <Col className="scoll-table gift-container pb-2 pr-0">
+    <Col className="scoll-table card gift-container pb-2 pr-0">
       <Row>
         <Col className="d-flex justify-content-end">
           {/* //TODO THIS IS THE FILTER TOURNAMENT SECTION */}

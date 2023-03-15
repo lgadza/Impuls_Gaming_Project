@@ -92,7 +92,7 @@ const Participants = () => {
               </div>
             )}
             <Card className="registration-card mx-auto mb-5 main-container2">
-              <Card.Body>
+              <Card.Header>
                 <div className="d-flex ">
                   <h5 className="d-flex my-1">Participants</h5>
                   <div className="d-flex ml-auto">
@@ -118,7 +118,7 @@ const Participants = () => {
                     </Link>
                   </div>
                 </div>
-              </Card.Body>
+              </Card.Header>
             </Card>
             <Card className="registration-card mx-auto mb-4">
               <Card.Body>
@@ -266,8 +266,6 @@ const Participants = () => {
                   </div>
                   <hr />
                   <div className="d-flex mb-3 bd-highlight justify-content-between text-success">
-                    {/* <div className="d-flex  justify-content-between">
-                    </div> */}
                     <span className="flex-grow-1 bd-highlight">Status</span>
                     <span className=" flex-grow-1 bd-highlight">Name</span>
                     <span className="flex-grow-1 bd-highlight">Email</span>
@@ -285,7 +283,6 @@ const Participants = () => {
                             id={participant._id}
                           >
                             <div className="d-flex justify-content-between px-2 py-3 bd-highligh">
-                              {/* <div className="d-flex align-items-center"> */}
                               {participant.checkedIn ? (
                                 <span className=" d-flex align-items-center justify-content-center flex-grow-1 bd-highlight">
                                   <Icon.CheckCircleFill
@@ -313,7 +310,6 @@ const Participants = () => {
                               <span className="flex-grow-1 bd-highlight text-nowrap">
                                 {participant.name} {participant.surname}
                               </span>
-                              {/* </div> */}
 
                               <div className="flex-grow-1 bd-highlight">
                                 <span className="text-nowrap">
