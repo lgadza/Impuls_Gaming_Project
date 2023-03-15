@@ -138,7 +138,7 @@ textColor"
                   <Row>
                     <Col>
                       <div className="d-flex  flex-column my-3">
-                        <h4 className="d-flex">Participants</h4>
+                        <h5 className="d-flex">Participants</h5>
                       </div>
                     </Col>
                     <Col>
@@ -198,9 +198,9 @@ textColor"
                 ) >= new Date() ? (
                   <RegistrationForm tournamentId={tournament._id} />
                 ) : (
-                  <h4 className="text-left mt-4 text-danger">
+                  <h5 className="text-left mt-4 text-danger">
                     Registration closed, Please find an open tournament
-                  </h4>
+                  </h5>
                 )}
               </Tab>
             </Tabs>
@@ -221,7 +221,7 @@ textColor"
                   <Row>
                     <Col>
                       <div className="d-flex  flex-column my-3">
-                        <h4 className="d-flex">Participants</h4>
+                        <h5 className="d-flex">Participants</h5>
                       </div>
                     </Col>
                     <Col>
@@ -282,9 +282,9 @@ textColor"
                 ) >= new Date() ? (
                   <RegistrationForm tournamentId={tournament._id} />
                 ) : (
-                  <h4 className="text-left mt-4 text-danger">
+                  <h5 className="text-left mt-4 text-danger">
                     Registration closed, Please find an open tournament
-                  </h4>
+                  </h5>
                 )}
               </Tab>
             </Tabs>

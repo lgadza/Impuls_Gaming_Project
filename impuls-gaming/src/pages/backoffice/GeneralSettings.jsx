@@ -34,7 +34,7 @@ const GeneralSettings = () => {
   const [update, setUpdate] = useState(false);
   const [rules, setRules] = useState(tournament.rules);
   const [price, setPrice] = useState(tournament.price);
-  const [discipline, setDiscipline] = useState(tournament);
+  const [discipline, setDiscipline] = useState(tournament.discipline_name);
   const [description, setDescription] = useState(tournament.description);
   const user = useSelector((state) => state.me.me);
 

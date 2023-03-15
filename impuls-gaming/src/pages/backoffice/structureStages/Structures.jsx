@@ -64,7 +64,7 @@ const Structures = () => {
               <Row>
                 {tournament.structures.map((structure, index) => (
                   <Col key={index} md={6} className="structures-stage">
-                    <Card className=" mb-3">
+                    <Card className=" mb-3 card">
                       <Card.Header>
                         <h6>{structure.general.name}</h6>
                       </Card.Header>
@@ -75,7 +75,7 @@ const Structures = () => {
                         <Card.Text className="d-flex justify-content-between mt-3 pb-2 align-items-center">
                           <span className="textColor3 mr-5">Configure</span>
 
-                          <Dropdown>
+                          <Dropdown drop="up">
                             <Dropdown.Toggle
                               variant="success"
                               className="px-0 mx-0"
@@ -94,12 +94,7 @@ const Structures = () => {
                                   Configure
                                 </span>
                               </Dropdown.Item>
-                              <Dropdown.Item className="my-2 d-flex align-items-center">
-                                <Icon.Search size={15} color="#0cc4f2" />
-                                <span className="textColor3 link-btm-bar text-small">
-                                  Results
-                                </span>
-                              </Dropdown.Item>
+
                               <hr className="py-0 my-0" />
                               <Dropdown.Item>
                                 <Link

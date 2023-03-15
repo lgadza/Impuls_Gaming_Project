@@ -12,99 +12,13 @@ import * as Icon from "react-bootstrap-icons";
 import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import {
-  getReservations,
-  getTournaments,
-  postReservation,
-} from "../../redux/actions";
+import { getReservations, postReservation } from "../../redux/actions";
 import { format, compareAsc } from "date-fns";
-import DatePicker from "react-datepicker";
-import getDay from "date-fns/fp/getDay";
-import { setHours, setMinutes } from "date-fns/fp";
 
-const ReservationsStationSettings = ({
-  visible,
-  onhide,
-  tournamentId,
-  stationNo,
-}) => {
+const ReservationsStationSettings = ({ visible, onhide, stationNo }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const tournaments = useSelector((state) => state.tournaments.tournaments);
-  const tournament = tournaments.tournaments.find(
-    (name) => name.name === tournamentId
-  );
-  const [discipline, setDiscipline] = useState("");
-  const [people, setPeople] = useState(1);
-  const [playHours, setPlayHours] = useState(1);
-  const [hover, setHover] = useState(0);
-  const [isNotes, setIsNotes] = useState(false);
-  const [notes, setNotes] = useState("");
-  const [reservationDate, setReservationDate] = useState("");
-  const [userName, setUserName] = useState("");
-  const [email, setEmail] = useState("");
-  const isWeekday = (date) => {
-    const day = getDay(date);
-    return day !== 0 && day !== 6;
-  };
-  const filterPassedTime = (time) => {
-    const currentDate = new Date();
-    const selectedDate = new Date(time);
-
-    return currentDate.getTime() < selectedDate.getTime();
-  };
-
-  const openTime = (time) => {
-    const selectedDate = new Date(time);
-    const selectedHour = selectedDate.getHours();
-
-    if (selectedHour <= 21 && selectedHour > 8) {
-      return true;
-    }
-
-    return false;
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-  };
-  const handleEmail = (e) => {
-    setEmail(e.target.value);
-  };
-  console.log(discipline, "discipline");
-  const reservationData = {
-    date: reservationDate,
-    station_No: stationNo,
-    userName,
-    email,
-    notes,
-    number: people,
-    hours: playHours,
-    discipline,
-  };
   const reservations = useSelector((state) => state.reservations.reservations);
-  const pendingReservations = reservations.filter(
-    (reservation) =>
-      reservation.status === "pending" &&
-      new Date(reservation.date) >= new Date()
-  );
-  console.log(pendingReservations);
-  const bookedDateAndHours = pendingReservations.map(
-    (reservation) => reservation.date
-  );
-  const maxDuplicates = 3;
-
-  const maxBookedDateAndHours = bookedDateAndHours.filter(
-    (value, index, array) => {
-      const count = array.filter((item) => item === value).length;
-      return (
-        count <= maxDuplicates || index < array.indexOf(value) + maxDuplicates
-      );
-    }
-  );
-
-  console.log(bookedDateAndHours);
-  console.log(maxBookedDateAndHours);
 
   useEffect(() => {
     dispatch(getReservations());
@@ -157,94 +71,21 @@ const ReservationsStationSettings = ({
               </div>
             </Col>
           </Row>
-          <Row>
-            <Col>
-              <Form onSubmit={handleSubmit}>
-                <Form.Group className="my-3 d-flex flex-column justify-content-start">
-                  <Form.Label className="d-flex">email</Form.Label>
-                  <Form.Control
-                    type="email"
-                    placeholder="enter email"
-                    value={email}
-                    onChange={handleEmail}
-                  />
-                </Form.Group>
-              </Form>
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <span>How many people</span>
-              <div className="d-flex mt-2 align-items-center justify-content-between">
-                {[...Array(10)].map((player, index) => {
-                  return (
-                    <Link
-                      className={`d-flex flex-column  justify-content-center align-items-center textColor`}
-                    >
-                      <Icon.PersonFill
-                        onClick={() => {
-                          setPeople(index + 1);
-                        }}
-                        onMouseEnter={() => setHover(index)}
-                        onMouseLeave={() => setHover(people)}
-                        className={`px-0 mx-0 ${
-                          index < (hover || people) ? "on" : "text-muted"
-                        }  `}
-                        size={20}
-                      />
-                      <span
-                        className={`${
-                          index < (hover || people) ? "on" : "text-muted"
-                        }`}
-                      >
-                        {index + 1}{" "}
-                      </span>
-                    </Link>
-                  );
-                })}
-              </div>
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <Link
-                onClick={() => setIsNotes(true)}
-                className="d-flex my-2 align-items-center textColor"
-              >
-                <Icon.Plus className="mx-0 pl-0" size={15} />
-                <span>Add a notes</span>
-              </Link>
-            </Col>
-          </Row>
-          {isNotes && (
-            <Row>
-              <Col>
-                <Form.Group className="mb-3 d-flex flex-column ">
-                  <Form.Label className="mr-4 d-flex">Notes</Form.Label>
-                  <Form.Control
-                    as="textarea"
-                    rows={2}
-                    value={notes}
-                    onChange={(e) => setNotes(e.target.value)}
-                  />
-                </Form.Group>
-              </Col>
-            </Row>
-          )}
+
           <Row>
             <Col>
               <Link to="" className="d-flex  mb-4  justify-content-start">
                 <Button
                   className=" text-center px-3 primary-btn w-25   textColor "
-                  disabled={!reservationDate || !email || !userName}
+                  // disabled={!reservationDate || !email || !userName}
                   variant="primary"
                   onClick={async () => {
-                    await dispatch(postReservation(reservationData));
+                    // await dispatch(postReservation(reservationData));
                     dispatch(getReservations());
                     onhide();
                   }}
                 >
-                  <span className="text-small">Reserve</span>
+                  <span className="text-small">Update</span>
                 </Button>
               </Link>
             </Col>

@@ -25,17 +25,17 @@ import { setHours, setMinutes } from "date-fns/fp";
 const MakeReservation = ({ visible, onhide, tournamentId, stationNo }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const tournaments = useSelector((state) => state.tournaments.tournaments);
-  const tournament = tournaments.tournaments.find(
-    (name) => name.name === tournamentId
+  const reservationsMade = useSelector(
+    (state) => state.reservations.reservations
   );
+
   const [discipline, setDiscipline] = useState("");
   const [people, setPeople] = useState(1);
   const [playHours, setPlayHours] = useState(1);
   const [hover, setHover] = useState(0);
   const [isNotes, setIsNotes] = useState(false);
   const [notes, setNotes] = useState("");
-  const [reservationDate, setReservationDate] = useState("");
+  const [reservationDate, setReservationDate] = useState(new Date());
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const isWeekday = (date) => {
@@ -48,12 +48,62 @@ const MakeReservation = ({ visible, onhide, tournamentId, stationNo }) => {
 
     return currentDate.getTime() < selectedDate.getTime();
   };
+  //  BOOKED HOUR
+  function isHourBooked(bookings, date, hour) {
+    const bookingsForHour = bookings.filter((booking) => {
+      const bookingDate = new Date(booking.date);
+      return (
+        bookingDate.getFullYear() === date.getFullYear() &&
+        bookingDate.getMonth() === date.getMonth() &&
+        bookingDate.getDate() === date.getDate() &&
+        bookingDate.getHours() === hour
+      );
+    });
 
-  const openTime = (time) => {
+    return bookingsForHour.length >= 9;
+  }
+
+  //  BOOKED HOUR
+
+  function getExcludedHours(bookings) {
+    // Create an array of 9 slots, one for each table
+    const tableSlots = new Array(9).fill(false);
+
+    // Loop through the bookings and mark the corresponding slot as true
+    for (const booking of bookings) {
+      const slot = booking.time.getHours();
+      tableSlots[booking.tableNumber - 1] = true;
+    }
+
+    // Create an array of excluded hours based on the marked slots
+    const excludedHours = [];
+    for (let i = 0; i < tableSlots.length; i++) {
+      if (tableSlots[i]) {
+        excludedHours.push(i);
+      }
+    }
+
+    return excludedHours;
+  }
+  // NIFHYUYTXCHJKIUKYJTDGUYFG
+  const openTime = (time, bookings, date, hour) => {
+    bookings = reservationsMade;
+    date = reservationDate;
     const selectedDate = new Date(time);
     const selectedHour = selectedDate.getHours();
+    const bookingsForHour = bookings.filter((booking) => {
+      const bookingDate = new Date(booking.date);
+      return (
+        bookingDate.getFullYear() === date.getFullYear() &&
+        bookingDate.getMonth() === date.getMonth() &&
+        bookingDate.getDate() === date.getDate()
+        // bookingDate.getHours() === date.getHours()
+      );
+    });
 
     if (selectedHour <= 21 && selectedHour > 8) {
+      return true;
+    } else if (bookingsForHour.length >= 3) {
       return true;
     }
 
@@ -77,29 +127,6 @@ const MakeReservation = ({ visible, onhide, tournamentId, stationNo }) => {
     hours: playHours,
     discipline,
   };
-  const reservations = useSelector((state) => state.reservations.reservations);
-  const pendingReservations = reservations.filter(
-    (reservation) =>
-      reservation.status === "pending" &&
-      new Date(reservation.date) >= new Date()
-  );
-  console.log(pendingReservations);
-  const bookedDateAndHours = pendingReservations.map(
-    (reservation) => reservation.date
-  );
-  const maxDuplicates = 3;
-
-  const maxBookedDateAndHours = bookedDateAndHours.filter(
-    (value, index, array) => {
-      const count = array.filter((item) => item === value).length;
-      return (
-        count <= maxDuplicates || index < array.indexOf(value) + maxDuplicates
-      );
-    }
-  );
-
-  console.log(bookedDateAndHours);
-  console.log(maxBookedDateAndHours);
 
   useEffect(() => {
     dispatch(getReservations());
@@ -154,7 +181,12 @@ const MakeReservation = ({ visible, onhide, tournamentId, stationNo }) => {
                     filterDate={isWeekday}
                     showTimeSelect
                     filterTime={openTime}
-                    // excludeTimes={closedTime}
+                    excludeTimes={[
+                      setHours(setMinutes(new Date(), 0), 17),
+                      setHours(setMinutes(new Date(), 30), 18),
+                      setHours(setMinutes(new Date(), 30), 19),
+                      setHours(setMinutes(new Date(), 30), 17),
+                    ]}
                     dateFormat="MMMM d, yyyy h:mm aa"
                     // dateFormat="Pp"
                   />
