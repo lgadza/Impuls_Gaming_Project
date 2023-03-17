@@ -35,7 +35,7 @@ const MatchType = () => {
         </Col>
         <Col lg={10} className="my-5 px-5">
           <div className="d-flex justify-content-between">
-            <h4 className="d-flex mb-5">Select a match type</h4>
+            <h5 className="d-flex mb-5">Select a match type</h5>
 
             <Dropdown>
               <Dropdown.Toggle variant="success" id="dropdown-basic">

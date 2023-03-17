@@ -188,12 +188,12 @@ const UserPage = () => {
                   tournamentId={tournamentToReport}
                 />
               </Tab>
-              <Tab className="w-100" eventKey="table" title="Table">
+              {/* <Tab className="w-100" eventKey="table" title="Table">
                 <Table socket={socket} user={user} />
-              </Tab>
-              <Tab eventKey="fixture" title="Fixtures">
+              </Tab> */}
+              {/* <Tab eventKey="fixture" title="Fixtures">
                 <Fixtures socket={socket} user={user} />
-              </Tab>
+              </Tab> */}
               <Tab eventKey="tournaments" title="Tournaments">
                 <Tournaments
                   tournaments={tournaments.tournaments}
@@ -220,18 +220,18 @@ const UserPage = () => {
               >
                 <Overview tournaments={tournaments.tournaments} />
               </Tab>
-              <Tab
+              {/* <Tab
                 eventKey="matches"
                 title={<Icon.Table className="mx-0" size={20} />}
               >
                 <Table />
-              </Tab>
-              <Tab
+              </Tab> */}
+              {/* <Tab
                 eventKey="fixture"
                 title={<FontAwesomeIcon icon={faCoffee} size="lg" />}
               >
                 <Fixtures socket={socket} user={user} />
-              </Tab>
+              </Tab> */}
               <Tab
                 eventKey="participants"
                 title={<Icon.Controller className="mx-0" size={20} />}

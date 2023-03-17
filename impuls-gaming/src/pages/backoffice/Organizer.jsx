@@ -31,9 +31,9 @@ const Organizer = ({ projects }) => {
   useEffect(() => {
     dispatch(getTournaments());
   }, []);
-  useEffect(() => {
-    socket.emit("newUser", user.name);
-  }, [socket, user.name]);
+  // useEffect(() => {
+  //   socket.emit("newUser", user.name);
+  // }, [socket, user.name]);
   return (
     <>
       <>

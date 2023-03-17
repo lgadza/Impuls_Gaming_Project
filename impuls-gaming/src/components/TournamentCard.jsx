@@ -79,7 +79,7 @@ text-danger ml-3"
         tournament.registration.activation.registrationClosingDate &&
         new Date(tournament.registration.activation.registrationClosingDate) >=
           new Date() ? (
-          <Link to="/sign-up" className="w-100 d-flex justify-content-end">
+          <Link to="/sign-in" className="w-100 d-flex justify-content-end">
             {" "}
             <Button variant="danger" className="register-btn">
               Registration Open

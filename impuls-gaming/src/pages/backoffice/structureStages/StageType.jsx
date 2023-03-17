@@ -34,7 +34,7 @@ const StageType = () => {
           <BackOfficeNav user={user} data={tournament} page={"structure"} />
         </Col>
         <Col lg={10} className="my-5 px-5">
-          <h4 className="d-flex mb-5">Select a stage type</h4>
+          <h5 className="d-flex mb-5">Select a stage type</h5>
           <Row className=" mb-5">
             <Col md={6}>
               <Link

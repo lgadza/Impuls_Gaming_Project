@@ -13,6 +13,14 @@ const BackOfficeNav = ({ data, page, user }) => {
   const handleProfileClicked = () => {
     profileClicked ? setProfileClicked(false) : setProfileClicked(true);
   };
+  const [isPlacement, setIsPlacement] = useState(false);
+  const [stageClicked, setStageClicked] = useState(false);
+  const [selectedElement, setSelectedElement] = useState(null);
+
+  // const handleClick = (index) => {
+  //   setSelectedElement(index);
+  // };
+  console.log(selectedElement, "SELESCT ELEM");
   return (
     <Col className=" my-projects giftcard-preview-nav d-flex flex-column">
       <img className=" mt-4 logo-img" src={logo} alt="" />
@@ -20,7 +28,7 @@ const BackOfficeNav = ({ data, page, user }) => {
       <Link className="link-none-deco" to="/backoffice">
         <h4 className="d-flex">My Projects</h4>
       </Link>
-      <hr className="hr" />
+      <hr className="hr my-1" />
 
       <div>
         <h6 className="d-flex my-3">Tournament</h6>
@@ -93,8 +101,67 @@ const BackOfficeNav = ({ data, page, user }) => {
             </span>
           </Link>
           <Link
+            onClick={() =>
+              isPlacement ? setIsPlacement(false) : setIsPlacement(true)
+            }
+            to={`/backoffice/projects/placements/${data.name}`}
+            className="d-flex my-2"
+          >
+            <span
+              className={
+                page === "placements" ? "current textColor" : undefined
+              }
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 576 512"
+                width="15px"
+                height="15px"
+              >
+                <path
+                  fill="rgb(17, 121, 208)"
+                  d="M208 80c0-26.5 21.5-48 48-48h64c26.5 0 48 21.5 48 48v64c0 26.5-21.5 48-48 48h-8v40H464c30.9 0 56 25.1 56 56v32h8c26.5 0 48 21.5 48 48v64c0 26.5-21.5 48-48 48H464c-26.5 0-48-21.5-48-48V368c0-26.5 21.5-48 48-48h8V288c0-4.4-3.6-8-8-8H312v40h8c26.5 0 48 21.5 48 48v64c0 26.5-21.5 48-48 48H256c-26.5 0-48-21.5-48-48V368c0-26.5 21.5-48 48-48h8V280H112c-4.4 0-8 3.6-8 8v32h8c26.5 0 48 21.5 48 48v64c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V368c0-26.5 21.5-48 48-48h8V288c0-30.9 25.1-56 56-56H264V192h-8c-26.5 0-48-21.5-48-48V80z"
+                />
+              </svg>
+              <span className="text-small">Placement</span>
+              <Icon.CaretDownFill size={12} className="ml-0 pl-0" />
+              {isPlacement && data.structures.length > 0 && (
+                <ul>
+                  {data.structures.map((stage, index) => {
+                    return (
+                      <li
+                        key={index}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setSelectedElement(index);
+                        }}
+                        className="my-2"
+                      >
+                        <Link
+                          // onClick={(e) => {
+                          //   e.stopPropagation();
+                          //   stageClicked
+                          //     ? setStageClicked(false)
+                          //     : setStageClicked(true);
+                          // }}
+                          className={
+                            selectedElement === index
+                              ? "current d-flex textColor text-small"
+                              : "textColor3 d-flex "
+                          }
+                        >
+                          {stage.general.number}. {stage.general.name}
+                        </Link>
+                      </li>
+                    );
+                  })}
+                </ul>
+              )}
+            </span>
+          </Link>
+          <Link
             to={`/backoffice/projects/${data.name}/matches`}
-            className="my-2 d-flex"
+            className="mb-2 d-flex"
           >
             <span
               className={page === "matches" ? "current textColor" : undefined}
