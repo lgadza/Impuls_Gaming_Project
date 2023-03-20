@@ -36,8 +36,8 @@ const HorizontalImageScroll = ({ root }) => {
     });
 
     showImages();
-    return () => {
-      container.removeEventListener("wheel", handleWheel);
+    return async () => {
+      await container.removeEventListener("wheel", handleWheel);
       scroll.destroy();
     };
   }, []);

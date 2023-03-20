@@ -1,4 +1,5 @@
 .scroll-animations > .scrollsection {
+  /* padding: 10vh 10vh 10vh 10vmax; */
   min-width: 550vh;
   height: 70vh;
   overflow-x: scroll;
