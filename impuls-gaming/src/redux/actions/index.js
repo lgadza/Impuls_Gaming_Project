@@ -914,8 +914,11 @@ export const getTournamentsResults = () => {
       method: "POST",
     };
     // const URL = process.env.REACT_APP_BE_PROD_URL;
+    const APIkey = process.env.FOOTBALL_API_KEY;
+    // const URL = `https://apiv3.apifootball.com/?action=get_standings&league_id=302&APIkey=${APIkey}`;
     const URL =
-      "https://apiv3.apifootball.com/?action=get_standings&league_id=302&APIkey=9a071c302fe8a84e9e2e5a2654f52c3fa674cc4fa8273c984bed8f0ffa38c76b";
+      "https://apiv3.apifootball.com/?action=get_standings&league_id=302&APIkey=4cf526bc2f9e5d84854ad73de2b3d1e359d1ad222017b7bdac3d2fcf526f5d9a";
+
     try {
       let response = await fetch(`${URL}`, options);
       if (response.ok) {
@@ -963,8 +966,10 @@ export const getTournamentsFixtures = () => {
       method: "POST",
     };
     // const URL = process.env.REACT_APP_BE_PROD_URL;
+    const APIkey = process.env.FOOTBALL_API_KEY;
+    // const URL = `https://apiv3.apifootball.com/?action=get_events&from=2022-07-12&to=2023-07-12&league_id=302&APIkey=${APIkey}`;
     const URL =
-      "https://apiv3.apifootball.com/?action=get_events&from=2022-07-12&to=2023-07-12&league_id=302&APIkey=9a071c302fe8a84e9e2e5a2654f52c3fa674cc4fa8273c984bed8f0ffa38c76b";
+      "https://apiv3.apifootball.com/?action=get_standings&league_id=302&APIkey=4cf526bc2f9e5d84854ad73de2b3d1e359d1ad222017b7bdac3d2fcf526f5d9a";
     try {
       let response = await fetch(`${URL}`, options);
       if (response.ok) {

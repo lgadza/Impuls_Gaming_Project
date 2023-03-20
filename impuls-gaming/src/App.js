@@ -32,7 +32,6 @@ import EmailVerification from "./pages/registration/EmailVerification";
 import Reservations from "./components/Reservations";
 import FixturesPage from "./pages/fixtures/fixturesPage";
 import Placements from "./pages/backoffice/Placements";
-
 function App() {
   return (
     <div className="App">

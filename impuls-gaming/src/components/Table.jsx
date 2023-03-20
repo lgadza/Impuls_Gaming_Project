@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 const Table = () => {
   const date = new Date();
   const results = useSelector((state) => state.results.results);
-
+  console.log(results, "RESULTS");
   const dispatch = useDispatch();
   const sortedResults = results.sort(
     (player_1, player_2) =>

@@ -2,8 +2,7 @@ import { Col, Container, Row, Dropdown } from "react-bootstrap";
 import * as Icon from "react-bootstrap-icons";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import "font-awesome/css/font-awesome.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheckSquare, faCoffee } from "@fortawesome/fontawesome-free-solid";
+
 import Table from "../../components/Table";
 import { useEffect, useState } from "react";
 import Chat from "./Chat";
@@ -17,13 +16,10 @@ import Fixtures from "../../components/Fixtures";
 import { getMe, getTournaments, getUsers } from "../../redux/actions";
 import Avatar from "../../components/Avatar";
 import { logout } from "../../redux/actions";
-import { io } from "socket.io-client";
 import Footer from "../../components/Footer";
 import { Button, Card } from "react-bootstrap-v5";
-const DEV_URL = process.env.REACT_APP_BE_DEV_URL;
-const socket = io(DEV_URL, { transports: ["websocket"] });
+// const socket = io(DEV_URL, { transports: ["websocket"] });
 const UserPage = () => {
-  const [isChat, setIsChat] = useState(false);
   const [tournamentToReport, setTournamentToReport] = useState("Call Of Duty");
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
@@ -34,9 +30,9 @@ const UserPage = () => {
     (state) => state.accessToken.accessToken
   );
 
-  useEffect(() => {
-    socket.emit("newUser", { username: user.name + " " + user.surname });
-  }, [socket, user.name]);
+  // useEffect(() => {
+  //   socket.emit("newUser", { username: user.name + " " + user.surname });
+  // }, [socket, user.name]);
   useEffect(() => {
     dispatch(getUsers());
 
@@ -183,21 +179,20 @@ const UserPage = () => {
               <Tab className="textColor2" eventKey="overview" title="Overview">
                 <Overview
                   // tournaments={tournaments.tournaments}
-                  socket={socket}
+
                   user={user}
                   tournamentId={tournamentToReport}
                 />
               </Tab>
               {/* <Tab className="w-100" eventKey="table" title="Table">
-                <Table socket={socket} user={user} />
-              </Tab> */}
-              {/* <Tab eventKey="fixture" title="Fixtures">
-                <Fixtures socket={socket} user={user} />
+                <Table user={user} />
+              </Tab>
+              <Tab eventKey="fixture" title="Fixtures">
+                <Fixtures user={user} />
               </Tab> */}
               <Tab eventKey="tournaments" title="Tournaments">
                 <Tournaments
                   tournaments={tournaments.tournaments}
-                  socket={socket}
                   user={user}
                 />
               </Tab>
@@ -207,7 +202,7 @@ const UserPage = () => {
                 eventKey="friends"
                 title="Chats"
               >
-                <Chat user={user} clicked={isChat} socket={socket} />
+                <Chat user={user} clicked={isChat} />
               </Tab> */}
               {/* //**********DO NOT DELETE ME I AM CHATS  */}
             </Tabs>

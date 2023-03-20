@@ -10,6 +10,8 @@ import { getTournaments } from "../redux/actions";
 import Spinner from "./Spinner";
 import IntersectionObserverComponent from "./ScollAnimation";
 import Reservations from "../components/Reservations";
+import HorizontalImageScroll from "./HorizontalImageScroll";
+
 const HomeUpdates = () => {
   const tournaments = useSelector((state) => state.tournaments.tournaments);
   const dispatch = useDispatch();
@@ -42,6 +44,10 @@ const HomeUpdates = () => {
             </Col>
           ))}
       </Row>
+      <h2 className="my-5 d-flex featured-league">Gallery</h2>
+      <HorizontalImageScroll />
+
+      <Row></Row>
       <h2 className="my-5 d-flex featured-league">What's new?</h2>
 
       {/* <Spinner /> */}
