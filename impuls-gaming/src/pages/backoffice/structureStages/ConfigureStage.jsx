@@ -171,7 +171,7 @@ const ConfigureStages = () => {
         </Col>
         <Col lg={10} className="my-5 px-5">
           {update && (
-            <div className="registration-card bring-top mx-auto mb-5">
+            <div className="bring-top mx-auto mb-5">
               <Alert key={"success"} variant={"success"}>
                 <Icon.CheckCircle size={15} />
                 <span>Settings have been successfully updated.</span>
@@ -180,7 +180,7 @@ const ConfigureStages = () => {
           )}
           {/* //TODO Do NOT DELETE ME, I AM ERROR MESSAGE FROM THE BE TO BE RENDERED */}
           {/* {!update && (
-            <div className="registration-card bring-top mx-auto mb-5">
+            <div className="bring-top mx-auto mb-5">
               <Alert key={"warning"} variant={"danger"}>
                 <Icon.InfoCircle size={20} color="red" />
                 <span className="text-danger">
@@ -190,7 +190,7 @@ const ConfigureStages = () => {
               </Alert>
             </div>
           )} */}
-          <Card className="registration-card mx-auto">
+          <Card className="mx-auto">
             <Card.Header>
               <h5 className="d-flex my-2">
                 Configure stage: {params.typeId} {params.configType}
@@ -472,211 +472,224 @@ const ConfigureStages = () => {
                   </Row>
                   <Row>
                     <Col>
-                      <Card className="px-4">
-                        <div className="d-flex align-items-center my-3 ">
-                          <input
-                            type="checkbox"
-                            className="mr-2"
-                            defaultChecked
-                            onChange={handleWin}
-                            label="win"
-                          />
-                          <span id="win">
-                            Win{" "}
-                            <OverlayTrigger
-                              placement="top"
-                              overlay={
-                                <Tooltip id="tooltip-disabled">
-                                  Award points when a player wins a match using
-                                </Tooltip>
-                              }
-                            >
-                              <span
-                                variant="light"
-                                className="d-inline-flex align-items-center"
+                      <Card className="match-config-card">
+                        <Card.Body>
+                          <div className="d-flex align-items-center my-3 ">
+                            <input
+                              type="checkbox"
+                              className="mr-2"
+                              defaultChecked
+                              onChange={handleWin}
+                              label="win"
+                            />
+                            <span id="win">
+                              Win{" "}
+                              <OverlayTrigger
+                                placement="top"
+                                overlay={
+                                  <Tooltip id="tooltip-disabled">
+                                    Award points when a player wins a match
+                                    using
+                                  </Tooltip>
+                                }
                               >
-                                <Icon.QuestionCircleFill />
-                              </span>
-                            </OverlayTrigger>
-                          </span>
-                        </div>
-                        <Card.Text className="mb-4">
-                          <span className="d-flex">Points</span>
-                          <Form.Control
-                            type="number"
-                            placeholder="3"
-                            defaultValue={3}
-                            onChange={handleWinPoints}
-                          />
-                        </Card.Text>
+                                <span
+                                  variant="light"
+                                  className="d-inline-flex align-items-center"
+                                >
+                                  <Icon.QuestionCircleFill />
+                                </span>
+                              </OverlayTrigger>
+                            </span>
+                          </div>
+                          <Card.Text className="mb-4">
+                            <span className="d-flex">Points</span>
+                            <Form.Control
+                              type="number"
+                              placeholder="3"
+                              defaultValue={3}
+                              onChange={handleWinPoints}
+                            />
+                          </Card.Text>
+                        </Card.Body>
                       </Card>
                     </Col>
                     <Col>
-                      <Card className="px-4">
-                        <div className="d-flex align-items-center my-3 ">
-                          <input
-                            type="checkbox"
-                            className="mr-2"
-                            label="draw"
-                            onChange={handleDraw}
-                            defaultChecked
-                          />
-                          <span id="draw">
-                            Draw{" "}
-                            <OverlayTrigger
-                              placement="top"
-                              overlay={
-                                <Tooltip id="tooltip-disabled">
-                                  Award points when a player draws a match using
-                                </Tooltip>
-                              }
-                            >
-                              <span
-                                variant="light"
-                                className="d-inline-flex align-items-center"
+                      <Card className="match-config-card">
+                        <Card.Body>
+                          <div className="d-flex align-items-center my-3 ">
+                            <input
+                              type="checkbox"
+                              className="mr-2"
+                              label="draw"
+                              onChange={handleDraw}
+                              defaultChecked
+                            />
+                            <span id="draw">
+                              Draw{" "}
+                              <OverlayTrigger
+                                placement="top"
+                                overlay={
+                                  <Tooltip id="tooltip-disabled">
+                                    Award points when a player draws a match
+                                    using
+                                  </Tooltip>
+                                }
                               >
-                                <Icon.QuestionCircleFill />
-                              </span>
-                            </OverlayTrigger>
-                          </span>
-                        </div>
-                        <Card.Text className="mb-4">
-                          <span className="d-flex">Points</span>
-                          <Form.Control
-                            type="number"
-                            placeholder="1"
-                            defaultValue={1}
-                            onChange={handleDrawPoints}
-                          />
-                        </Card.Text>
+                                <span
+                                  variant="light"
+                                  className="d-inline-flex align-items-center"
+                                >
+                                  <Icon.QuestionCircleFill />
+                                </span>
+                              </OverlayTrigger>
+                            </span>
+                          </div>
+                          <Card.Text className="mb-4">
+                            <span className="d-flex">Points</span>
+                            <Form.Control
+                              type="number"
+                              placeholder="1"
+                              defaultValue={1}
+                              onChange={handleDrawPoints}
+                            />
+                          </Card.Text>
+                        </Card.Body>
                       </Card>
                     </Col>
                     <Col>
-                      <Card className="px-4">
-                        <div className="d-flex align-items-center my-3 ">
-                          <input
-                            type="checkbox"
-                            className="mr-2"
-                            label="lost"
-                            onChange={handleLoss}
-                            defaultChecked
-                          />
-                          <span id="lost">
-                            Lost{" "}
-                            <OverlayTrigger
-                              placement="top"
-                              overlay={
-                                <Tooltip id="tooltip-disabled">
-                                  Award points when a player loses a match using
-                                </Tooltip>
-                              }
-                            >
-                              <span
-                                variant="light"
-                                className="d-inline-flex align-items-center"
+                      <Card className="match-config-card">
+                        <Card.Body>
+                          <div className="d-flex align-items-center my-3 ">
+                            <input
+                              type="checkbox"
+                              className="mr-2"
+                              label="lost"
+                              onChange={handleLoss}
+                              defaultChecked
+                            />
+                            <span id="lost">
+                              Lost{" "}
+                              <OverlayTrigger
+                                placement="top"
+                                overlay={
+                                  <Tooltip id="tooltip-disabled">
+                                    Award points when a player loses a match
+                                    using
+                                  </Tooltip>
+                                }
                               >
-                                <Icon.QuestionCircleFill />
-                              </span>
-                            </OverlayTrigger>
-                          </span>
-                        </div>
-                        <Card.Text className="mb-4">
-                          <span className="d-flex">Points</span>
-                          <Form.Control
-                            type="number"
-                            defaultValue={0}
-                            onChange={handleLossPoints}
-                          />
-                        </Card.Text>
-                      </Card>
-                    </Col>
-                  </Row>
-                  <Row>
-                    <Col>
-                      <Card className="px-4 mt-3">
-                        <div className="d-flex align-items-center my-3 ">
-                          <input
-                            type="checkbox"
-                            className="mr-2"
-                            defaultChecked
-                            label="forfeit"
-                            onChange={handleForfeit}
-                          />
-                          <span id="forfeit">
-                            Match forfeit{" "}
-                            <OverlayTrigger
-                              placement="top"
-                              overlay={
-                                <Tooltip id="tooltip-disabled">
-                                  Awards points when a participant is forfeit in
-                                  a match (can be negative for a penalty).
-                                </Tooltip>
-                              }
-                            >
-                              <span
-                                variant="light"
-                                className="d-inline-flex align-items-center"
-                              >
-                                <Icon.QuestionCircleFill />
-                              </span>
-                            </OverlayTrigger>
-                          </span>
-                        </div>
-                        <Card.Text className="mb-4">
-                          <span className="d-flex">Points</span>
-                          <Form.Control
-                            type="number"
-                            defaultValue={-1}
-                            onChange={handleForfeitPoints}
-                          />
-                        </Card.Text>
+                                <span
+                                  variant="light"
+                                  className="d-inline-flex align-items-center"
+                                >
+                                  <Icon.QuestionCircleFill />
+                                </span>
+                              </OverlayTrigger>
+                            </span>
+                          </div>
+                          <Card.Text className="mb-4">
+                            <span className="d-flex">Points</span>
+                            <Form.Control
+                              type="number"
+                              defaultValue={0}
+                              onChange={handleLossPoints}
+                            />
+                          </Card.Text>
+                        </Card.Body>
                       </Card>
                     </Col>
                   </Row>
                   <Row>
                     <Col>
-                      <Card className="px-4 mt-3">
-                        <div className="d-flex align-items-center my-3 ">
-                          <span>
-                            Tiebreakers{" "}
-                            <OverlayTrigger
-                              placement="top"
-                              overlay={
-                                <Tooltip id="tooltip-disabled">
-                                  Choose how you want to break a tie. You can
-                                  Choose more than 1 options
-                                </Tooltip>
-                              }
-                            >
-                              <span
-                                variant="light"
-                                className="d-inline-flex align-items-center"
+                      <Card className="mt-3 match-config-card">
+                        <Card.Body>
+                          <div className="d-flex align-items-center my-3 ">
+                            <input
+                              type="checkbox"
+                              className="mr-2"
+                              defaultChecked
+                              label="forfeit"
+                              onChange={handleForfeit}
+                            />
+                            <span id="forfeit">
+                              Match forfeit{" "}
+                              <OverlayTrigger
+                                placement="top"
+                                overlay={
+                                  <Tooltip id="tooltip-disabled">
+                                    Awards points when a participant is forfeit
+                                    in a match (can be negative for a penalty).
+                                  </Tooltip>
+                                }
                               >
-                                <Icon.QuestionCircleFill />
-                              </span>
-                            </OverlayTrigger>
-                          </span>
-                        </div>
-                        <Card.Text className="mb-4 d-flex align-items-center">
-                          <Form.Select className="  px-2 textColor py-2 w-100">
-                            <option>Goals overall</option>
-                            <option value="1">Least played matches</option>
-                            <option value="2">
-                              Least game forfeits overall
-                            </option>
-                          </Form.Select>
-                          <Icon.Trash color="red" size={15} />
-                        </Card.Text>
-                        <Card.Text className="mb-4 d-flex align-items-center">
-                          <Form.Select className="textColor px-2 py-2 w-100">
-                            <option>Least played matches</option>
-                            <option value="1">Goals overall</option>
-                            <option value="2">
-                              Least game forfeits overall
-                            </option>
-                          </Form.Select>
-                          <Icon.Trash color="red" size={15} />
-                        </Card.Text>
+                                <span
+                                  variant="light"
+                                  className="d-inline-flex align-items-center"
+                                >
+                                  <Icon.QuestionCircleFill />
+                                </span>
+                              </OverlayTrigger>
+                            </span>
+                          </div>
+                          <Card.Text className="mb-4">
+                            <span className="d-flex">Points</span>
+                            <Form.Control
+                              type="number"
+                              defaultValue={-1}
+                              onChange={handleForfeitPoints}
+                            />
+                          </Card.Text>
+                        </Card.Body>
+                      </Card>
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col>
+                      <Card className="mt-3 match-config-card">
+                        <Card.Body>
+                          <div className="d-flex align-items-center my-3 ">
+                            <span>
+                              Tiebreakers{" "}
+                              <OverlayTrigger
+                                placement="top"
+                                overlay={
+                                  <Tooltip id="tooltip-disabled">
+                                    Choose how you want to break a tie. You can
+                                    Choose more than 1 options
+                                  </Tooltip>
+                                }
+                              >
+                                <span
+                                  variant="light"
+                                  className="d-inline-flex align-items-center"
+                                >
+                                  <Icon.QuestionCircleFill />
+                                </span>
+                              </OverlayTrigger>
+                            </span>
+                          </div>
+                          <Card.Text className="mb-4 d-flex align-items-center">
+                            <Form.Select className="  px-2 textColor py-2 w-100">
+                              <option>Goals overall</option>
+                              <option value="1">Least played matches</option>
+                              <option value="2">
+                                Least game forfeits overall
+                              </option>
+                            </Form.Select>
+                            <Icon.Trash color="red" size={15} />
+                          </Card.Text>
+                          <Card.Text className="mb-4 d-flex align-items-center">
+                            <Form.Select className="textColor px-2 py-2 w-100">
+                              <option>Least played matches</option>
+                              <option value="1">Goals overall</option>
+                              <option value="2">
+                                Least game forfeits overall
+                              </option>
+                            </Form.Select>
+                            <Icon.Trash color="red" size={15} />
+                          </Card.Text>
+                        </Card.Body>
                       </Card>
                     </Col>
                   </Row>

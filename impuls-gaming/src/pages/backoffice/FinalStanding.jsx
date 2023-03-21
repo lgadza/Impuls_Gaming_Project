@@ -22,7 +22,7 @@ const FinalStanding = () => {
           />
         </Col>
         <Col lg={10} className="my-5 px-5">
-          <Card className="registration-card mx-auto mt-4">
+          <Card className="mx-auto mt-4">
             <Card.Header>
               <div className="d-flex ">
                 <h5 className="d-flex my-1">Participants</h5>

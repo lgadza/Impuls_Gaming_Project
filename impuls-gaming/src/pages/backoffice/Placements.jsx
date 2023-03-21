@@ -388,10 +388,8 @@ const Placements = () => {
                       )}
                     </>
                   ) : (
-                    <>
-                      {[
-                        ...Array(tournament.structures[0].general.divisions),
-                      ].map((group, index) => {
+                    [...Array(tournament.structures[0].general.divisions)].map(
+                      (group, index) => {
                         group =
                           tournament.structures[0].general.size /
                           tournament.structures[0].general.divisions;
@@ -411,20 +409,19 @@ const Placements = () => {
                                           key={index}
                                           className="pl-1 text-left"
                                         >
-                                          {tournament.tournamentParticipants &&
-                                            autoFill && (
-                                              <>
-                                                <hr className="my-1 py-0" />
-                                                <span>{index + 1}</span>
-                                                <span>
-                                                  <Icon.Plus
-                                                    className="my-0 py-0"
-                                                    color="green"
-                                                    size={20}
-                                                  />
-                                                </span>
-                                              </>
-                                            )}
+                                          {tournament.tournamentParticipants && (
+                                            <>
+                                              <hr className="my-1 py-0" />
+                                              <span>{index + 1}</span>
+                                              <span>
+                                                <Icon.Plus
+                                                  className="my-0 py-0"
+                                                  color="green"
+                                                  size={20}
+                                                />
+                                              </span>
+                                            </>
+                                          )}
                                         </li>
                                       );
                                     }
@@ -433,11 +430,9 @@ const Placements = () => {
                               </Card.Body>
                             </Card>
                           </Col>
-                          //   )}
-                          // </Droppable>
                         );
-                      })}
-                    </>
+                      }
+                    )
                   )}
                 </DragDropContext>
               </Row>

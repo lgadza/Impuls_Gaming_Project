@@ -58,7 +58,7 @@ const MatchType = () => {
                 to={`/backoffice/projects/structures/${params.tournamentId}/stages/dual/simple`}
               >
                 <Card
-                  className="border-hover textColor"
+                  className="border-hover textColor settings-card"
                   style={{ height: "12rem" }}
                 >
                   <Card.Body className="d-flex  align-items-center">
@@ -92,7 +92,7 @@ const MatchType = () => {
                 to={`/backoffice/projects/structures/${params.tournamentId}/stages/multiple/`}
               >
                 <Card
-                  className="border-hover textColor"
+                  className="border-hover textColor settings-card"
                   style={{ height: "12rem" }}
                 >
                   <Card.Body className="d-flex  align-items-center">

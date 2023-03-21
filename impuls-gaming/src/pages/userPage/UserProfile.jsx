@@ -126,7 +126,7 @@ const UserProfile = ({ user }) => {
   //   dispatch(putMe(avatarReplacement, accessToken.accessToken));
   // };
   return (
-    <div className="gift-container card">
+    <div className="gift-container">
       <Row className="d-flex flex-column align-items-center  mt-4">
         <Col>
           {/* <img className="profile-img" src={profilePic} alt="" /> */}

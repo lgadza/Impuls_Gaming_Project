@@ -172,18 +172,22 @@ const Reservations = ({ visible, onhide }) => {
             lg={3}
             className="d-flex mb-3 flex-column justify-content-center"
           >
-            <Card className="p-3" style={{ height: "10rem" }}>
-              <div>
-                <Icon.Unlock className="d-flex my-3" size={30} />
-              </div>
-              <div className="d-flex flex-column">
-                <span>
-                  <strong className="d-flex ">No registration required</strong>
-                </span>
-                <span className="d-flex  text-left">
-                  You just need to press the reservation button to get started
-                </span>
-              </div>
+            <Card>
+              <Card.Body className="p-3" style={{ height: "10rem" }}>
+                <div>
+                  <Icon.Unlock className="d-flex my-3" size={30} />
+                </div>
+                <div className="d-flex flex-column">
+                  <span>
+                    <strong className="d-flex ">
+                      No registration required
+                    </strong>
+                  </span>
+                  <span className="d-flex  text-left">
+                    You just need to press the reservation button to get started
+                  </span>
+                </div>
+              </Card.Body>
             </Card>
           </Col>
           <Col
@@ -192,19 +196,21 @@ const Reservations = ({ visible, onhide }) => {
             lg={3}
             className="d-flex flex-column mb-3 justify-content-center"
           >
-            <Card className="p-3" style={{ height: "10rem" }}>
-              <div>
-                <Icon.CalendarCheck className="d-flex my-3" size={30} />
-              </div>
-              <div className="d-flex flex-column">
-                <span>
-                  <strong className="d-flex">Make your reservation</strong>
-                </span>
-                <span className="d-flex  text-left">
-                  Stay away from the pressure of queuing. Choose available hours
-                  you wish to play
-                </span>
-              </div>
+            <Card>
+              <Card.Body className="p-3" style={{ height: "10rem" }}>
+                <div>
+                  <Icon.CalendarCheck className="d-flex my-3" size={30} />
+                </div>
+                <div className="d-flex flex-column">
+                  <span>
+                    <strong className="d-flex">Make your reservation</strong>
+                  </span>
+                  <span className="d-flex  text-left">
+                    Stay away from the pressure of queuing. Choose available
+                    hours you wish to play
+                  </span>
+                </div>
+              </Card.Body>
             </Card>
           </Col>
           <Col
@@ -213,20 +219,22 @@ const Reservations = ({ visible, onhide }) => {
             lg={3}
             className="d-flex flex-column mb-3 justify-content-center"
           >
-            <Card className="p-3" style={{ height: "10rem" }}>
-              <div>
-                <Icon.FilePdf color="red" className="d-flex my-3" size={30} />
-              </div>
-              <div className="d-flex flex-column">
-                <span>
-                  <strong className="d-flex  text-left ">
-                    Download your reservation soon after
-                  </strong>
-                </span>
-                <span className="d-flex text-left">
-                  No need to worry, we will also send it via your email
-                </span>
-              </div>
+            <Card>
+              <Card.Body className="p-3" style={{ height: "10rem" }}>
+                <div>
+                  <Icon.FilePdf color="red" className="d-flex my-3" size={30} />
+                </div>
+                <div className="d-flex flex-column">
+                  <span>
+                    <strong className="d-flex  text-left ">
+                      Download your reservation soon after
+                    </strong>
+                  </span>
+                  <span className="d-flex text-left">
+                    No need to worry, we will also send it via your email
+                  </span>
+                </div>
+              </Card.Body>
             </Card>
           </Col>
           <Col
@@ -235,18 +243,20 @@ const Reservations = ({ visible, onhide }) => {
             lg={3}
             className="d-flex flex-column mb-3 justify-content-center"
           >
-            <Card className="p-3" style={{ height: "10rem" }}>
-              <div>
-                <Icon.ClockHistory className="d-flex my-3" size={30} />
-              </div>
-              <div className="d-flex flex-column">
-                <span>
-                  <strong className="d-flex ">
-                    So what are you waiting for?
-                  </strong>
-                </span>
-                <span className="d-flex">Get started</span>
-              </div>
+            <Card>
+              <Card.Body className="p-3" style={{ height: "10rem" }}>
+                <div>
+                  <Icon.ClockHistory className="d-flex my-3" size={30} />
+                </div>
+                <div className="d-flex flex-column">
+                  <span>
+                    <strong className="d-flex ">
+                      So what are you waiting for?
+                    </strong>
+                  </span>
+                  <span className="d-flex">Get started</span>
+                </div>
+              </Card.Body>
             </Card>
           </Col>
         </Row>
@@ -280,35 +290,37 @@ const Reservations = ({ visible, onhide }) => {
         <Row>
           <Col className="d-flex justify-content-center">
             {user && (
-              <Card style={{ width: "18rem" }} className="p-3">
-                <Form.Group className="mb-2  d-flex align-items-center main-container2 send-content-container ">
-                  <Form.Control
-                    className="main-container2"
-                    placeholder="Write a comment..."
-                    as="textarea"
-                    rows={2}
-                    onChange={(e) => setComment(e.target.value)}
-                    value={comment}
-                  />
-                  {comment && (
-                    <Icon.Send
-                      onClick={handlePostComment}
-                      className="send-btn-icon p-2"
-                      size={30}
+              <Card>
+                <Card.Body style={{ width: "18rem" }}>
+                  <Form.Group className="mb-2  d-flex align-items-center main-container2 send-content-container ">
+                    <Form.Control
+                      className="main-container2"
+                      placeholder="Write a comment..."
+                      as="textarea"
+                      rows={2}
+                      onChange={(e) => setComment(e.target.value)}
+                      value={comment}
                     />
-                  )}
-                </Form.Group>
+                    {comment && (
+                      <Icon.Send
+                        onClick={handlePostComment}
+                        className="send-btn-icon p-2"
+                        size={30}
+                      />
+                    )}
+                  </Form.Group>
 
-                <div>
-                  <Link>
-                    <Button
-                      className="px-3 primary-btn  w-50 d-flex justify-content-center  textColor "
-                      variant="primary"
-                    >
-                      <small>Add comment</small>
-                    </Button>
-                  </Link>
-                </div>
+                  <div>
+                    <Link>
+                      <Button
+                        className="px-3 primary-btn  w-50 d-flex justify-content-center  textColor "
+                        variant="primary"
+                      >
+                        <small>Add comment</small>
+                      </Button>
+                    </Link>
+                  </div>
+                </Card.Body>
               </Card>
             )}
           </Col>

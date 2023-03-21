@@ -26,8 +26,8 @@ const CommentCard = ({ comment, user, token }) => {
     textarea.setSelectionRange(textarea.value.length, textarea.value.length);
   };
   return (
-    <Card className="testimonial4_slide px-2">
-      <Card.Title>
+    <Card className="testimonial4_slide p-0">
+      <Card.Header>
         <Avatar
           src={comment.user.avatar}
           className="img-circle img-responsive"
@@ -38,8 +38,8 @@ const CommentCard = ({ comment, user, token }) => {
         <small className="mt-3">
           {comment.user.name} {comment.user.surname}
         </small>
-      </Card.Title>
-      <Card.Text>
+      </Card.Header>
+      <Card.Body>
         <div className="d-flex justify-content-between py-0  align-items-center">
           <Form.Group className=" w-100  nickname-text-bar mt-2 ">
             <Form.Control
@@ -101,7 +101,7 @@ const CommentCard = ({ comment, user, token }) => {
             </>
           )}
         </div>
-      </Card.Text>
+      </Card.Body>
     </Card>
   );
 };

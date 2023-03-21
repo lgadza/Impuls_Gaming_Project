@@ -149,27 +149,29 @@ const UserPage = () => {
             <UserProfile user={user} />
             <div className="my-4">
               {" "}
-              <Card className="p-3">
-                <div>
-                  <Icon.CalendarCheck className="d-flex my-3" size={30} />
-                </div>
-                <div className="d-flex flex-column">
-                  <span>
-                    <strong className="d-flex">Make your reservation</strong>
-                  </span>
-                  <span className="d-flex  text-left">
-                    Stay away from the pressure of queuing. Choose available
-                    hours you wish to play
-                  </span>
-                </div>
-                <Link to="/reservations">
-                  <Button
-                    className="px-3 mt-3 primary-btn  w-50 d-flex justify-content-center  textColor "
-                    variant="primary"
-                  >
-                    <small>Reserve</small>
-                  </Button>
-                </Link>
+              <Card>
+                <Card.Body>
+                  <div>
+                    <Icon.CalendarCheck className="d-flex my-3" size={30} />
+                  </div>
+                  <div className="d-flex flex-column">
+                    <span>
+                      <strong className="d-flex">Make your reservation</strong>
+                    </span>
+                    <span className="d-flex  text-left">
+                      Stay away from the pressure of queuing. Choose available
+                      hours you wish to play
+                    </span>
+                  </div>
+                  <Link to="/reservations">
+                    <Button
+                      className="px-3 mt-3 primary-btn  w-50 d-flex justify-content-center  textColor "
+                      variant="primary"
+                    >
+                      <small>Reserve</small>
+                    </Button>
+                  </Link>
+                </Card.Body>
               </Card>
             </div>
           </Col>

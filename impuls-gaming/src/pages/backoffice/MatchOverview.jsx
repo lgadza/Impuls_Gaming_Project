@@ -18,12 +18,11 @@ const MatchOverview = () => {
           <BackOfficeNav data={tournament} user={user} page={"matches"} />
         </Col>
         <Col lg={10} className="my-5 px-5">
-          <Card className="registration-card mx-auto mb-5 main-container2">
+          {/* <Card className="mx-auto mb-5 main-container2"></Card> */}
+          <Card className="mx-auto mb-5">
             <Card.Header>
-              <h5 className="d-flex p-3 my-1">Matches</h5>
+              <h5 className="d-flex p-2 ">Matches</h5>
             </Card.Header>
-          </Card>
-          <Card className="registration-card mx-auto mb-5">
             <Card.Body>
               <div className="d-flex justify-content-between ">
                 <Col className="d-flex flex-column  border-right">
@@ -38,7 +37,7 @@ const MatchOverview = () => {
               </div>
             </Card.Body>
           </Card>
-          <Card className="registration-card mx-auto mt-4">
+          <Card className="mx-auto mt-4">
             <Card.Header>
               <h5 className="d-flex my-1">List of matches</h5>
             </Card.Header>

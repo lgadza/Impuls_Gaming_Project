@@ -56,7 +56,7 @@ const Settings = () => {
           </div>
           <Row className=" mb-5">
             <Col>
-              <Card style={{ height: "8rem" }} className="settings-card">
+              <Card className="settings-card">
                 <Link
                   to={`/backoffice/projects/settings/${tournament.name}/edit`}
                   className="textColor link-none-deco"
@@ -65,7 +65,7 @@ const Settings = () => {
                     <Icon.Gear size={15} />
                     General
                   </Card.Header>
-                  <Card.Body>
+                  <Card.Body style={{ height: "8rem" }}>
                     <Card.Text>
                       Manage the highest level of information about your
                       tournament, its description, size, logo and contact
@@ -76,7 +76,7 @@ const Settings = () => {
               </Card>
             </Col>
             <Col>
-              <Card style={{ height: "8rem" }} className="settings-card">
+              <Card className="settings-card">
                 <Link
                   to={`/backoffice/projects/settings/${tournament.name}/matches`}
                   className="textColor link-none-deco"
@@ -85,7 +85,7 @@ const Settings = () => {
                     <Icon.LightningChargeFill size={15} />
                     <span>Match</span>
                   </Card.Header>
-                  <Card.Body>
+                  <Card.Body style={{ height: "8rem" }}>
                     <Card.Text>
                       Manage the configuration of the match format to be used in
                       your tournament, and whether you want the participants to
@@ -96,7 +96,7 @@ const Settings = () => {
               </Card>
             </Col>
             <Col>
-              <Card style={{ height: "8rem" }} className="settings-card">
+              <Card className="settings-card">
                 <Link
                   to={`/backoffice/projects/settings/${tournament.name}/registration`}
                   className="textColor link-none-deco"
@@ -105,7 +105,7 @@ const Settings = () => {
                     <Icon.TicketFill size={15} />
                     <span>Registration</span>
                   </Card.Header>
-                  <Card.Body>
+                  <Card.Body style={{ height: "8rem" }}>
                     <Card.Text>
                       Manage the registration, to have participants be able to
                       register to your tournament during a set period, and
@@ -118,7 +118,7 @@ const Settings = () => {
           </Row>
           <Row>
             <Col>
-              <Card style={{ height: "8rem" }} className="settings-card">
+              <Card className="settings-card">
                 <Link
                   to={`/backoffice/projects/settings/${tournament.name}/participants`}
                   className="textColor link-none-deco"
@@ -127,7 +127,7 @@ const Settings = () => {
                     <Icon.PeopleFill size={15} />
                     Participant
                   </Card.Header>
-                  <Card.Body>
+                  <Card.Body style={{ height: "8rem" }}>
                     <Card.Text>
                       Manage the participant settings like the minimum and
                       maximum size of teams, and enable the check-in.
@@ -137,7 +137,7 @@ const Settings = () => {
               </Card>
             </Col>
             <Col>
-              <Card style={{ height: "8rem" }} className="settings-card">
+              <Card className="settings-card">
                 <Link
                   onClick={() => setShowDelete(true)}
                   className="textColor link-none-deco"
@@ -146,7 +146,7 @@ const Settings = () => {
                     <Icon.Trash3Fill size={13} />
                     <span>Delete Tournament</span>
                   </Card.Header>
-                  <Card.Body>
+                  <Card.Body style={{ height: "8rem" }}>
                     <Card.Text>This action is irreversible!</Card.Text>
                   </Card.Body>
                 </Link>

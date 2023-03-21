@@ -41,7 +41,7 @@ const StageType = () => {
                 to={`/backoffice/projects/structures/${params.tournamentId}/stages/multiple/Simple`}
               >
                 <Card
-                  className="border-hover textColor"
+                  className="border-hover settings-card textColor"
                   style={{ height: "12rem" }}
                 >
                   <Card.Body className="d-flex flex-column  justify-content-center">
@@ -58,7 +58,7 @@ const StageType = () => {
                 to={`/backoffice/projects/structures/${params.tournamentId}/stages/multiple/Single Elimination`}
               >
                 <Card
-                  className="border-hover textColor"
+                  className="border-hover settings-card textColor"
                   style={{ height: "12rem" }}
                 >
                   <Card.Body className="d-flex flex-column  justify-content-center">
@@ -78,7 +78,7 @@ const StageType = () => {
                 to={`/backoffice/projects/structures/${params.tournamentId}/stages/multiple/Bracket Groups`}
               >
                 <Card
-                  className="border-hover textColor"
+                  className="border-hover settings-card textColor"
                   style={{ height: "12rem" }}
                 >
                   <Card.Body className="d-flex flex-column  justify-content-center">
@@ -96,7 +96,7 @@ const StageType = () => {
                 to={`/backoffice/projects/structures/${params.tournamentId}/stages/multiple/league`}
               >
                 <Card
-                  className="border-hover textColor"
+                  className="border-hover settings-card textColor"
                   style={{ height: "12rem" }}
                 >
                   <Card.Body className="d-flex flex-column  justify-content-center">

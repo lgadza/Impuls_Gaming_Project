@@ -1,6 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Just+Another+Hand&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Alumni+Sans+Inline+One:ital@1&family=Fjalla+One&family=Roboto&family=Titillium+Web&display=swap");
-
+@property --gradient-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
 body#body {
   margin: 0;
   padding: 0;
@@ -8,12 +12,12 @@ body#body {
   background-color: rgb(32, 44, 51);
   color: rgb(233, 237, 227);
   font-size: 0.8rem;
-  /* background: radial-gradient(
+  background: radial-gradient(
     circle,
     lemonchiffon,
-    skyblue,
+    rgb(49, 76, 87),
     rgb(32, 44, 51) 25%
-  ); */
+  );
   height: 100%;
 }
 body#body:after {
@@ -24,7 +28,7 @@ body#body:after {
   left: 0;
   bottom: 0;
   background: radial-gradient(circle, transparent, black 25%, transparent);
-  animation: color 1.5s infinite ease-out alternate;
+  animation: color 3.5s infinite ease-out alternate;
   opacity: 0;
   z-index: -1;
 }
@@ -330,9 +334,6 @@ a {
 .main-container {
   /* background-color: rgba(244, 92, 93, 0.08); */
   min-height: 100vh;
-}
-.main-container2 {
-  /* background-color: rgba(244, 92, 93, 0.08); */
 }
 
 svg {
@@ -825,13 +826,23 @@ button-star {
   /* border: 1px solid rgb(233, 237, 227); */
   background-color: rgb(25, 35, 40);
 }
-.settings-card:hover {
-  box-shadow: 1px 3px 5px rgb(17, 27, 33);
+.settings-card:hover.card::after,
+.settings-card:hover.card::before {
+  /* filter: blur(1.5rem); */
+  background: conic-gradient(
+    from var(--gradient-angle),
+    white,
+    rgb(18, 186, 227),
+    rgb(18, 186, 227),
+    white
+  ) !important;
 }
 .settings-card .card-body {
   height: 100%;
 }
-
+.match-config-card {
+  overflow: hidden;
+}
 .discipline-img {
   width: 15rem;
   height: 20rem;
@@ -999,15 +1010,44 @@ ul li {
 .card {
   border: none;
   box-sizing: border-box;
-  background-color: rgb(42, 57, 66, 0.7);
+  background-color: rgb(42, 57, 66);
   z-index: 0 !important;
   border-radius: 5px;
-  overflow: hidden;
+  /* overflow: hidden; */
+  position: relative;
+}
+.card::after,
+.card::before {
+  content: "";
+  position: absolute;
+  inset: -0.2rem;
+  background: conic-gradient(
+    from var(--gradient-angle),
+    rgb(18, 186, 227),
+    rgb(31, 43, 49),
+    rgb(42, 57, 66),
+    rgb(31, 43, 49),
+    rgb(18, 186, 227)
+  ) !important;
+  border-radius: inherit;
+  animation: rotation 10s linear infinite;
+  z-index: -2 !important;
+}
+@keyframes rotation {
+  0% {
+    --gradient-angle: 0deg;
+  }
+  100% {
+    --gradient-angle: 360deg;
+  }
+}
+.card::after {
+  filter: blur(0.3rem);
 }
 .card.featured-games {
   border: 2.5px solid rgb(129, 123, 16);
   border-radius: 5px;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 .lobby-placement {
   /* height: 9rem; */
@@ -1016,6 +1056,7 @@ ul li {
 }
 .card-body {
   background-color: rgb(42, 57, 66);
+  z-index: 0;
 }
 .card-header {
   background-color: rgb(29, 39, 46);

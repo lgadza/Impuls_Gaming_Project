@@ -91,7 +91,8 @@ const Participants = () => {
                 </Alert>
               </div>
             )}
-            <Card className="registration-card mx-auto mb-5 main-container2">
+            {/* <Card className="registration-card mx-auto mb-5 main-container2"></Card> */}
+            <Card className=" mx-auto mb-4">
               <Card.Header>
                 <div className="d-flex ">
                   <h5 className="d-flex my-1">Participants</h5>
@@ -119,8 +120,6 @@ const Participants = () => {
                   </div>
                 </div>
               </Card.Header>
-            </Card>
-            <Card className="registration-card mx-auto mb-4">
               <Card.Body>
                 <div className="d-flex ">
                   <Col className="d-flex flex-column border-right">
@@ -140,7 +139,7 @@ const Participants = () => {
                 </div>
               </Card.Body>
             </Card>
-            <Card className="registration-card mx-auto">
+            <Card className="mx-auto">
               <Card.Header>
                 <div className="d-flex ">
                   <h5 className="d-flex my-1">List of participants</h5>
@@ -151,7 +150,7 @@ const Participants = () => {
                     {!isLoadingTournament && (
                       <Link
                         onClick={() => dispatch(getTournaments())}
-                        className="d-flex justify-content-end align-items-center main-container2 my-1 mr-2 link-none-deco"
+                        className="d-flex justify-content-end align-items-center my-1 mr-2 link-none-deco"
                       >
                         <Icon.ArrowClockwise size={13} />
                         <span className="pr-3">Refresh</span>
@@ -160,7 +159,7 @@ const Participants = () => {
                     {!search ? (
                       <Link
                         onClick={handleSearch}
-                        className="d-flex justify-content-end align-items-center my-1 main-container2 link-none-deco"
+                        className="d-flex justify-content-end align-items-center my-1 link-none-deco"
                       >
                         {isLoadingTournament ? (
                           <Spinner animation="grow" size="sm" />

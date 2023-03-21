@@ -60,22 +60,29 @@ const GroupStructure = () => {
                           <Card.Header>
                             <strong>Group {index + 1}</strong>
                           </Card.Header>
-                          <Card.Body>
+                          <Card.Body style={{ minWidth: "15rem" }}>
                             {tournament.tournamentParticipants.length ===
-                            groups.general.size ? (
-                              group.map((participant, index) => {
-                                return (
-                                  <span
-                                    key={index}
-                                    className="d-flex border-bottom py-1"
-                                  >
-                                    {participant.name} {participant.surname}
-                                  </span>
-                                );
-                              })
-                            ) : (
-                              <span>-</span>
-                            )}
+                            groups.general.size
+                              ? group.map((participant, index) => {
+                                  return (
+                                    <span
+                                      key={index}
+                                      className="d-flex border-bottom py-1"
+                                    >
+                                      {participant.name} {participant.surname}
+                                    </span>
+                                  );
+                                })
+                              : [...Array(4)].map((placeHolder, index) => {
+                                  return (
+                                    <span
+                                      className="d-flex flex-column"
+                                      key={index}
+                                    >
+                                      -
+                                    </span>
+                                  );
+                                })}
                           </Card.Body>
                         </Card>
                       </Col>
