@@ -3,6 +3,7 @@ import BackOfficeNav from "./BackOfficeNav";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate, useParams, Link } from "react-router-dom";
 import * as Icon from "react-bootstrap-icons";
+import { useState } from "react";
 const FinalStanding = () => {
   const params = useParams();
   const dispatch = useDispatch();
@@ -11,6 +12,20 @@ const FinalStanding = () => {
     (name) => name.name === params.tournamentId
   );
   const user = useSelector((state) => state.me.me);
+  const [isPressed, setIsPressed] = useState(false);
+  const [isAnimated, setIsAnimated] = useState(false);
+  const handleMouseDown = () => {
+    setIsPressed(true);
+    setIsAnimated(false);
+  };
+
+  const handleMouseUp = () => {
+    setIsPressed(false);
+  };
+
+  const handleClick = () => {
+    setIsAnimated(true);
+  };
   return (
     <Container fluid className="main-container2 textColor">
       <Row>
@@ -30,11 +45,32 @@ const FinalStanding = () => {
                   <Link className="d-flex justify-content-end my-1 mr-2 link-none-deco">
                     <Button
                       type="submit"
-                      //   onClick={handleUpdate}
-                      className="primary-btn textColor d-flex align-items-center justify-content-center"
+                      onClick={() => {
+                        // handleUpdate()
+                        handleClick();
+                      }}
+                      className={`primary-btn textColor d-flex align-items-center justify-content-center ${
+                        isPressed ? "pressed" : ""
+                      }`}
+                      onMouseDown={handleMouseDown}
+                      onMouseUp={handleMouseUp}
+                      onMouseLeave={handleMouseUp}
                     >
-                      <Icon.Plus size={20} />
-                      <span className="text-small">Add</span>
+                      <span className={`content ${isPressed ? "pressed" : ""}`}>
+                        <Icon.Plus size={20} />
+                        <span className="text-small">Add</span>
+                      </span>
+                      <span
+                        className={`particles ${isAnimated ? "animate" : ""}`}
+                      >
+                        <span className="particle-square-red"></span>
+                        <span className="particle-circle-green"></span>
+                        <span className="particle-square-yellow"></span>
+                        <span className="particle-square-red"></span>
+                        <span className="particle-square-yellow"></span>
+                        <span className="particle-circle-green"></span>
+                        <span className="particle-circle-white"></span>
+                      </span>
                     </Button>
                   </Link>
                 </div>

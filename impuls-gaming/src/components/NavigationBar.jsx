@@ -143,7 +143,7 @@ const NavigationBar = () => {
                     About us
                   </Link>
                   <Link to={"/sign-in"} className="d-flex mb-2 ">
-                    Sign up
+                    Sign in
                   </Link>
                 </div>
                 <div className="d-flex users flex-column mt-5 ">

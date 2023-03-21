@@ -53,7 +53,7 @@ const HomeUpdates = () => {
       {/* <Spinner /> */}
       <Row>
         <Col lg={4} md={6} className="mb-4 ">
-          <Card>
+          <Card className="settings-card">
             <Card.Img variant="top" src={giftcard} />
             <Card.Body>
               <Card.Title className="textColor">Gift Cards</Card.Title>

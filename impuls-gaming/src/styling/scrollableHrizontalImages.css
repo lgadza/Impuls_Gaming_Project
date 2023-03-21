@@ -145,22 +145,22 @@
     white-space: nowrap;
   }
   .scroll-animations > .scrollsection > .item:nth-of-type(4n) > .image {
-    transform: translateX(-10vh) translateY(-10vh) scale(0.8);
+    transform: translateX(-5vh) translateY(-5vh) scale(0.8);
     transition-delay: 0;
   }
 
   .scroll-animations > .scrollsection > .item:nth-of-type(4n - 1) > .image {
-    transform: translateX(10vh) translateY(10vh) scale(0.8);
+    transform: translateX(5vh) translateY(5vh) scale(0.8);
     transition-delay: 0.05s;
   }
 
   .scroll-animations > .scrollsection > .item:nth-of-type(4n - 2) > .image {
-    transform: translateX(-10vh) translateY(10vh) scale(0.8);
+    transform: translateX(-5vh) translateY(5vh) scale(0.8);
     transition-delay: 0.1s;
   }
 
   .scroll-animations > .scrollsection > .item:nth-of-type(4n - 3) > .image {
-    transform: translateX(-10vh) translateY(-10vh) scale(0.8);
+    transform: translateX(-5vh) translateY(-5vh) scale(0.8);
     transition-delay: 0.15s;
   }
 }

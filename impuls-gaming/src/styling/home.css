@@ -32,6 +32,213 @@ body#body:after {
   opacity: 0;
   z-index: -1;
 }
+/* BUTTON */
+
+/* .primary-btn:after {
+  content: '';
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: #BB1433;
+  border-radius: 0.2rem;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin-top: 0.3rem;
+  z-index: -1;
+} */
+
+.primary-btn .content {
+  position: relative;
+
+  cursor: pointer;
+  user-select: none;
+  z-index: 0;
+}
+
+.primary-btn .content.pressed {
+  position: relative;
+}
+
+.primary-btn .content.pressed p {
+  opacity: 0.75;
+}
+
+.primary-btn .content p {
+  font-size: 1.5rem;
+  color: white;
+  font-weight: 700;
+  padding: 0;
+  margin: 0;
+  pointer-events: none;
+}
+
+.primary-btn .particles {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+}
+
+.primary-btn .particles .particle {
+  width: 1rem;
+  height: 1rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 0.1rem solid;
+}
+
+.primary-btn .particles .particle.bigCircle {
+  border-radius: 100%;
+}
+
+.primary-btn .particles .particle.circle {
+  border-radius: 100%;
+}
+
+.primary-btn .particles .particle.white {
+  border-color: #ffffff;
+}
+
+.primary-btn .particles .particle.red {
+  border-color: #ef2e52;
+}
+
+.primary-btn .particles .particle.yellow {
+  border-color: #efbd3f;
+}
+
+.primary-btn .particles .particle.green {
+  border-color: #32e68f;
+}
+
+.primary-btn .particles.animate .particle:first-of-type {
+  animation: particle1 1s cubic-bezier(0.02, 0.82, 0.42, 0.94) forwards;
+}
+
+.primary-btn .particles.animate .particle:nth-of-type(2) {
+  animation: particle2 1s cubic-bezier(0.02, 0.82, 0.42, 0.94) forwards;
+}
+
+.primary-btn .particles.animate .particle:nth-of-type(3) {
+  animation: particle3 1s cubic-bezier(0.02, 0.82, 0.42, 0.94) forwards;
+}
+
+.primary-btn .particles.animate .particle:nth-of-type(4) {
+  animation: particle4 1s cubic-bezier(0.02, 0.82, 0.42, 0.94) forwards;
+}
+
+.primary-btn .particles.animate .particle:nth-of-type(5) {
+  animation: particle5 1s cubic-bezier(0.02, 0.82, 0.42, 0.94) forwards;
+}
+
+.primary-btn .particles.animate .particle:nth-of-type(6) {
+  animation: particle6 1s cubic-bezier(0.02, 0.82, 0.42, 0.94) forwards;
+}
+.primary-btn .particles.animate .particle:last-of-type {
+  animation: blast 0.5s cubic-bezier(0.02, 0.82, 0.42, 0.94) forwards;
+  width: 12rem;
+  height: 12rem;
+  z-index: -1;
+}
+
+@keyframes particle1 {
+  0% {
+    transform: translate(-50%, -50%) rotate(0);
+  }
+  40% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(calc(-50% + -0.5rem), calc(-50% + -7rem))
+      rotate(3.25turn);
+    opacity: 0;
+  }
+}
+
+@keyframes particle2 {
+  0% {
+    transform: translate(-50%, -50%) rotate(0);
+  }
+  40% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(calc(-50% + -8rem), calc(-50% + -3rem))
+      rotate(3.25turn);
+    opacity: 0;
+  }
+}
+
+@keyframes particle3 {
+  0% {
+    transform: translate(-50%, -50%) rotate(0);
+  }
+  40% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(calc(-50% + 8rem), calc(-50% + -3rem)) rotate(3.25turn);
+    opacity: 0;
+  }
+}
+
+@keyframes particle4 {
+  0% {
+    transform: translate(-50%, -50%) rotate(0);
+  }
+  40% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(calc(-50% + 1rem), calc(-50% + 7rem)) rotate(3.25turn);
+    opacity: 0;
+  }
+}
+
+@keyframes particle5 {
+  0% {
+    transform: translate(-50%, -50%) rotate(0);
+  }
+  40% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(calc(-50% + -6rem), calc(-50% + 5rem)) rotate(3.25turn);
+    opacity: 0;
+  }
+}
+
+@keyframes particle6 {
+  0% {
+    transform: translate(-50%, -50%) rotate(0);
+  }
+  40% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(calc(-50% + 7rem), calc(-50% + 5rem)) rotate(3.25turn);
+    opacity: 0;
+  }
+}
+
+@keyframes blast {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+  }
+  40% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0;
+  }
+}
+
+/* BUTTON */
 
 @keyframes color {
   0% {
@@ -746,7 +953,8 @@ button-star {
   outline: none !important;
   -webkit-box-shadow: none !important;
   box-shadow: none !important;
-  background-color: transparent !important;
+  background-color: rgb(17, 27, 33) !important;
+  color: white !important;
 }
 .show > .btn-success.dropdown-toggle {
   background-color: transparent !important;
@@ -853,6 +1061,38 @@ button-star {
   width: 7rem;
   background-color: rgb(17, 27, 33);
   border: none;
+  position: relative;
+}
+.primary-btn::after,
+.primary-btn::before {
+  content: "";
+  position: absolute;
+  inset: -0.2rem;
+  background: conic-gradient(
+    from var(--gradient-angle),
+    rgb(18, 186, 227),
+    rgb(31, 43, 49),
+    rgb(42, 57, 66),
+    rgb(31, 43, 49),
+    rgb(18, 186, 227)
+  ) !important;
+  border-radius: inherit;
+  animation: rotation 3s linear infinite;
+  z-index: -1 !important;
+}
+.primary-btn:hover.primary-btn::after,
+.primary-btn:hover.primary-btn::before {
+  /* filter: blur(1.5rem); */
+  background: conic-gradient(
+    from var(--gradient-angle),
+    white,
+    rgb(18, 186, 227),
+    rgb(18, 186, 227),
+    white
+  ) !important;
+}
+.primary-btn::after {
+  filter: blur(0.3rem);
 }
 hr {
   color: rgb(42, 57, 66);
@@ -864,8 +1104,7 @@ hr {
   background-color: rgb(17, 27, 33);
 }
 .primary-btn:focus {
-  background-color: rgb(233, 237, 227);
-  color: rgb(17, 27, 33) !important;
+  /* color: rgb(17, 27, 33) !important; */
   outline: none !important;
   box-shadow: none !important;
 }
@@ -979,11 +1218,15 @@ hr {
     margin-right: 5rem;
   }
 }
-.button:disabled,
-button[disabled].primary-btn {
+button:disabled {
   border: 1px solid #999999;
-  background-color: #cccccc;
+  background-color: #353232 !important;
   color: #666666 !important;
+}
+button:disabled::after,
+button:disabled::before {
+  content: "";
+  background-color: none !important;
 }
 .registration-card {
   width: 80% !important;
@@ -1010,7 +1253,7 @@ ul li {
 .card {
   border: none;
   box-sizing: border-box;
-  background-color: rgb(42, 57, 66);
+  background-color: rgb(42, 57, 66, 0.7);
   z-index: 0 !important;
   border-radius: 5px;
   /* overflow: hidden; */
@@ -1055,7 +1298,7 @@ ul li {
   overflow-y: scroll;
 }
 .card-body {
-  background-color: rgb(42, 57, 66);
+  background-color: rgb(42, 57, 66, 0.98);
   z-index: 0;
 }
 .card-header {
@@ -1730,7 +1973,10 @@ button.nav-link {
     width: 6rem;
     background-color: rgb(17, 27, 33);
     border: none;
+    border-radius: 5px;
+    position: relative;
   }
+
   .modal-header .modal-title.h4 span {
     font-size: 1rem;
   }

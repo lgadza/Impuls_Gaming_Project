@@ -15,6 +15,7 @@ import { useState, useEffect } from "react";
 import BackOfficeNav from "./BackOfficeNav";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
+import { editTournament } from "../../redux/actions";
 
 const Placements = () => {
   const params = useParams();
@@ -160,7 +161,14 @@ const Placements = () => {
   //   return children(item, restProps);
   // };
   // ALTANATIVE
+
   const [columns, setColumns] = useState(containerList);
+  console.log(Object.entries(columns), "COLUMNS");
+  console.log(containerList, "CONTAINER LIST");
+  const handleUpdate = () => {
+    const groups = Object.entries(columns);
+    dispatch(editTournament({ brackets: groups }, tournament._id));
+  };
   return (
     <Container fluid className="main-container textColor">
       <Row>
@@ -270,18 +278,19 @@ const Placements = () => {
                       })}
                   </ul>
                 </Card.Body>
-                <Card.Footer>
+                <Card.Header>
                   <Link className="d-flex justify-content-end my-1 mr-2 link-none-deco">
                     <Button
+                      disabled={Object.entries(columns).length === 0}
                       type="submit"
-                      // onClick={handleUpdate}
+                      onClick={handleUpdate}
                       className="primary-btn textColor d-flex align-items-center justify-content-center"
                     >
                       <Icon.Check className="ml-0 p-0" size={20} />
                       <span className="text-small"> Save</span>
                     </Button>
                   </Link>
-                </Card.Footer>
+                </Card.Header>
               </Card>
             </Col>
             <Col md={6}>

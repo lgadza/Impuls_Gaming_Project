@@ -89,7 +89,7 @@ const GiftCard = () => {
           <Col
             md={12}
             lg={5}
-            className="input-section gift-container card mt-5  mt-5 "
+            className="input-section gift-container mt-5  mt-5 "
           >
             <Form onSubmit={handleSubmit}>
               <h5 className="mt-2">Give a Gift</h5>
@@ -271,7 +271,7 @@ const GiftCard = () => {
               <div
                 column
                 md={9}
-                className=" w-100  preview-content card m-0 px-3 d-flex flex-column justify-content-center"
+                className=" w-100  preview-content m-0 px-3 d-flex flex-column justify-content-center"
               >
                 <div>
                   <h6 className="mb-5 pb-2">Impuls Gift Card</h6>

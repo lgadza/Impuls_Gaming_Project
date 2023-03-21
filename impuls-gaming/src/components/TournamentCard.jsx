@@ -6,7 +6,7 @@ import { format, compareAsc } from "date-fns";
 
 const TournamentCard = ({ tournament }) => {
   return (
-    <Card className="featured-games">
+    <Card className="featured-games settings-card">
       <Card.Img
         variant="top"
         className="project-cover-img1"
