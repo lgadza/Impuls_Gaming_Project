@@ -169,6 +169,20 @@ const Placements = () => {
     const groups = Object.entries(columns);
     dispatch(editTournament({ brackets: groups }, tournament._id));
   };
+  const [isPressed, setIsPressed] = useState(false);
+  const [isAnimated, setIsAnimated] = useState(false);
+  const handleMouseDown = () => {
+    setIsPressed(true);
+    setIsAnimated(false);
+  };
+
+  const handleMouseUp = () => {
+    setIsPressed(false);
+  };
+
+  const handleClick = () => {
+    setIsAnimated(true);
+  };
   return (
     <Container fluid className="main-container textColor">
       <Row>
@@ -280,7 +294,7 @@ const Placements = () => {
                 </Card.Body>
                 <Card.Header>
                   <Link className="d-flex justify-content-end my-1 mr-2 link-none-deco">
-                    <Button
+                    {/* <Button
                       disabled={Object.entries(columns).length === 0}
                       type="submit"
                       onClick={handleUpdate}
@@ -288,6 +302,35 @@ const Placements = () => {
                     >
                       <Icon.Check className="ml-0 p-0" size={20} />
                       <span className="text-small"> Save</span>
+                    </Button> */}
+                    <Button
+                      type="submit"
+                      onClick={() => {
+                        handleUpdate();
+                        handleClick();
+                      }}
+                      className={`primary-btn textColor d-flex align-items-center small-text justify-content-center ${
+                        isPressed ? "pressed" : ""
+                      }`}
+                      onMouseDown={handleMouseDown}
+                      onMouseUp={handleMouseUp}
+                      onMouseLeave={handleMouseUp}
+                    >
+                      <span className={`content ${isPressed ? "pressed" : ""}`}>
+                        <Icon.Check className="ml-0 p-0" size={20} />
+                        <span className="text-small"> Save</span>
+                      </span>
+                      <span
+                        className={`particles ${isAnimated ? "animate" : ""}`}
+                      >
+                        <span className="particle square red"></span>
+                        <span className="particle circle green"></span>
+                        <span className="particle square yellow"></span>
+                        <span className="particle square red"></span>
+                        <span className="particle square yellow"></span>
+                        <span className="particle circle green"></span>
+                        <span className="particle circle white"></span>
+                      </span>
                     </Button>
                   </Link>
                 </Card.Header>

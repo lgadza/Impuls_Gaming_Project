@@ -63,7 +63,7 @@ const ReservationStations = () => {
                   )}
                 </div>
               </Card.Header>
-              <Card.Text>
+              <Card.Body>
                 <Container className="reservations-stations-container">
                   {/* <Row className="mt-3">
                     <Col>
@@ -251,7 +251,7 @@ const ReservationStations = () => {
                     </Col>
                   </Row>
                 </Container>
-              </Card.Text>
+              </Card.Body>
             </Card>
           </Col>
         </Row>

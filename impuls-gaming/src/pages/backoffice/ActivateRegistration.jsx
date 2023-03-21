@@ -74,6 +74,20 @@ const ActivateRegistration = () => {
       },
     },
   };
+  const [isPressed, setIsPressed] = useState(false);
+  const [isAnimated, setIsAnimated] = useState(false);
+  const handleMouseDown = () => {
+    setIsPressed(true);
+    setIsAnimated(false);
+  };
+
+  const handleMouseUp = () => {
+    setIsPressed(false);
+  };
+
+  const handleClick = () => {
+    setIsAnimated(true);
+  };
   const handleUpdate = () => {
     dispatch(editTournament(registrationSettings, tournament._id));
     setUpdate(true);
@@ -87,14 +101,14 @@ const ActivateRegistration = () => {
         </Col>
         <Col lg={10} className="my-5 px-5">
           {update && (
-            <div className="registration-card bring-top mx-auto mb-5">
+            <div className="bring-top mx-auto mb-5">
               <Alert key={"success"} variant={"success"}>
                 <Icon.CheckCircle size={15} />
                 <span>Settings have been successfully updated.</span>
               </Alert>
             </div>
           )}
-          <Card className="registration-card mx-auto">
+          <Card className="mx-auto">
             <Card.Header>
               <h5 className="d-flex my-2">Registration Settings</h5>
             </Card.Header>
@@ -161,13 +175,42 @@ const ActivateRegistration = () => {
                     </Form.Group>
                   </Form.Group>
                   <Link className="d-flex justify-content-end mt-4">
-                    <Button
+                    {/* <Button
                       type="submit"
                       onClick={handleUpdate}
                       className="primary-btn textColor d-flex align-items-center justify-content-center"
                     >
                       <Icon.Pencil size={15} />
                       <span className="text-small">Update</span>
+                    </Button> */}
+                    <Button
+                      type="submit"
+                      onClick={() => {
+                        handleUpdate();
+                        handleClick();
+                      }}
+                      className={`primary-btn textColor d-flex align-items-center small-text justify-content-center ${
+                        isPressed ? "pressed" : ""
+                      }`}
+                      onMouseDown={handleMouseDown}
+                      onMouseUp={handleMouseUp}
+                      onMouseLeave={handleMouseUp}
+                    >
+                      <span className={`content ${isPressed ? "pressed" : ""}`}>
+                        <Icon.Pencil size={15} />
+                        <span className="text-small">Update</span>
+                      </span>
+                      <span
+                        className={`particles ${isAnimated ? "animate" : ""}`}
+                      >
+                        <span className="particle square red"></span>
+                        <span className="particle circle green"></span>
+                        <span className="particle square yellow"></span>
+                        <span className="particle square red"></span>
+                        <span className="particle square yellow"></span>
+                        <span className="particle circle green"></span>
+                        <span className="particle circle white"></span>
+                      </span>
                     </Button>
                   </Link>
                 </Tab>
@@ -252,13 +295,42 @@ const ActivateRegistration = () => {
                     </Form>
                   </div>
                   <Link className="d-flex justify-content-end mt-4">
-                    <Button
+                    {/* <Button
                       type="submit"
                       onClick={handleUpdate}
                       className="primary-btn textColor d-flex align-items-center justify-content-center"
                     >
                       <Icon.Pencil size={15} />
                       <span className="text-small">Update</span>
+                    </Button> */}
+                    <Button
+                      type="submit"
+                      onClick={() => {
+                        // handleUpdate()
+                        handleClick();
+                      }}
+                      className={`primary-btn textColor d-flex align-items-center small-text justify-content-center ${
+                        isPressed ? "pressed" : ""
+                      }`}
+                      onMouseDown={handleMouseDown}
+                      onMouseUp={handleMouseUp}
+                      onMouseLeave={handleMouseUp}
+                    >
+                      <span className={`content ${isPressed ? "pressed" : ""}`}>
+                        <Icon.Pencil size={15} />
+                        <span className="text-small">Update</span>
+                      </span>
+                      <span
+                        className={`particles ${isAnimated ? "animate" : ""}`}
+                      >
+                        <span className="particle square red"></span>
+                        <span className="particle circle green"></span>
+                        <span className="particle square yellow"></span>
+                        <span className="particle square red"></span>
+                        <span className="particle square yellow"></span>
+                        <span className="particle circle green"></span>
+                        <span className="particle circle white"></span>
+                      </span>
                     </Button>
                   </Link>
                 </Tab>
@@ -320,13 +392,42 @@ const ActivateRegistration = () => {
                     />
                   </Form.Group>
                   <Link className="d-flex justify-content-end mt-4">
-                    <Button
+                    {/* <Button
                       type="submit"
                       onClick={handleUpdate}
                       className="primary-btn textColor d-flex align-items-center justify-content-center"
                     >
                       <Icon.Pencil size={15} />
                       <span className="text-small">Update</span>
+                    </Button> */}
+                    <Button
+                      type="submit"
+                      onClick={() => {
+                        handleUpdate();
+                        handleClick();
+                      }}
+                      className={`primary-btn textColor d-flex align-items-center small-text justify-content-center ${
+                        isPressed ? "pressed" : ""
+                      }`}
+                      onMouseDown={handleMouseDown}
+                      onMouseUp={handleMouseUp}
+                      onMouseLeave={handleMouseUp}
+                    >
+                      <span className={`content ${isPressed ? "pressed" : ""}`}>
+                        <Icon.Pencil size={15} />
+                        <span className="text-small">Update</span>
+                      </span>
+                      <span
+                        className={`particles ${isAnimated ? "animate" : ""}`}
+                      >
+                        <span className="particle square red"></span>
+                        <span className="particle circle green"></span>
+                        <span className="particle square yellow"></span>
+                        <span className="particle square red"></span>
+                        <span className="particle square yellow"></span>
+                        <span className="particle circle green"></span>
+                        <span className="particle circle white"></span>
+                      </span>
                     </Button>
                   </Link>
                 </Tab>

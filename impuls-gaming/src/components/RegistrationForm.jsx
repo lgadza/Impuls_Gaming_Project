@@ -27,7 +27,20 @@ const RegistrationForm = () => {
   const handleName = (e) => {
     setName(e.target.value);
   };
+  const [isPressed, setIsPressed] = useState(false);
+  const [isAnimated, setIsAnimated] = useState(false);
+  const handleMouseDown = () => {
+    setIsPressed(true);
+    setIsAnimated(false);
+  };
 
+  const handleMouseUp = () => {
+    setIsPressed(false);
+  };
+
+  const handleClick = () => {
+    setIsAnimated(true);
+  };
   const handleSurname = (e) => {
     setSurname(e.target.value);
   };
@@ -121,13 +134,39 @@ Toornament's terms of use."
               />
             </Form.Group>
             <div className="d-flex">
-              <Button
+              {/* <Button
                 // disabled={true}
                 type="submit"
                 onClick={handleUpdate}
                 className="primary-btn w-25   textColor"
               >
                 Register
+              </Button> */}
+              <Button
+                type="submit"
+                onClick={() => {
+                  handleUpdate();
+                  handleClick();
+                }}
+                className={`primary-btn textColor d-flex align-items-center justify-content-center ${
+                  isPressed ? "pressed" : ""
+                }`}
+                onMouseDown={handleMouseDown}
+                onMouseUp={handleMouseUp}
+                onMouseLeave={handleMouseUp}
+              >
+                <span className={`content ${isPressed ? "pressed" : ""}`}>
+                  <small>Register</small>
+                </span>
+                <span className={`particles ${isAnimated ? "animate" : ""}`}>
+                  <span className="particle square red"></span>
+                  <span className="particle circle green"></span>
+                  <span className="particle square yellow"></span>
+                  <span className="particle square red"></span>
+                  <span className="particle square yellow"></span>
+                  <span className="particle circle green"></span>
+                  <span className="particle circle white"></span>
+                </span>
               </Button>
             </div>
           </Form>

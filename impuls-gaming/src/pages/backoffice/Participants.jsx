@@ -40,7 +40,20 @@ const Participants = () => {
     (state) => state.participant.participant
   );
   const [selectedParticipant, setSelectedParticipant] = useState([]);
+  const [isPressed, setIsPressed] = useState(false);
+  const [isAnimated, setIsAnimated] = useState(false);
+  const handleMouseDown = () => {
+    setIsPressed(true);
+    setIsAnimated(false);
+  };
 
+  const handleMouseUp = () => {
+    setIsPressed(false);
+  };
+
+  const handleClick = () => {
+    setIsAnimated(true);
+  };
   const [clicked, setClicked] = useState(false);
   const users = tournament.tournamentParticipants;
   useEffect(() => {
@@ -252,7 +265,7 @@ const Participants = () => {
                       </span>
                     </div>
                     <div className="ml-auto">
-                      <Button
+                      {/* <Button
                         disabled={selectedParticipant.length > 0 ? false : true}
                         type="submit"
                         onClick={handleDeleteSelectedParticipant}
@@ -260,6 +273,38 @@ const Participants = () => {
                       >
                         <Icon.Trash3Fill size={13} />
                         <span>Delete All</span>
+                      </Button> */}
+                      <Button
+                        disabled={selectedParticipant.length > 0 ? false : true}
+                        type="submit"
+                        onClick={() => {
+                          handleDeleteSelectedParticipant();
+                          handleClick();
+                        }}
+                        className={`primary-btn textColor d-flex align-items-center text-small  justify-content-center ${
+                          isPressed ? "pressed" : ""
+                        }`}
+                        onMouseDown={handleMouseDown}
+                        onMouseUp={handleMouseUp}
+                        onMouseLeave={handleMouseUp}
+                      >
+                        <span
+                          className={`content ${isPressed ? "pressed" : ""}`}
+                        >
+                          <Icon.Trash3Fill size={13} />
+                          <small>Delete All</small>
+                        </span>
+                        <span
+                          className={`particles ${isAnimated ? "animate" : ""}`}
+                        >
+                          <span className="particle square red"></span>
+                          <span className="particle circle green"></span>
+                          <span className="particle square yellow"></span>
+                          <span className="particle square red"></span>
+                          <span className="particle square yellow"></span>
+                          <span className="particle circle green"></span>
+                          <span className="particle circle white"></span>
+                        </span>
                       </Button>
                     </div>
                   </div>
@@ -459,7 +504,7 @@ const Participants = () => {
                     </div>
 
                     <div className="ml-auto">
-                      <Button
+                      {/* <Button
                         disabled={selectedParticipant.length > 0 ? false : true}
                         type="submit"
                         onClick={handleDeleteSelectedParticipant}
@@ -467,6 +512,38 @@ const Participants = () => {
                       >
                         <Icon.Trash3Fill size={13} />
                         <span>Delete All</span>
+                      </Button> */}
+                      <Button
+                        disabled={selectedParticipant.length > 0 ? false : true}
+                        type="submit"
+                        onClick={() => {
+                          handleDeleteSelectedParticipant();
+                          handleClick();
+                        }}
+                        className={`primary-btn textColor d-flex align-items-center text-small  justify-content-center ${
+                          isPressed ? "pressed" : ""
+                        }`}
+                        onMouseDown={handleMouseDown}
+                        onMouseUp={handleMouseUp}
+                        onMouseLeave={handleMouseUp}
+                      >
+                        <span
+                          className={`content ${isPressed ? "pressed" : ""}`}
+                        >
+                          <Icon.Trash3Fill size={13} />
+                          <small>Delete All</small>
+                        </span>
+                        <span
+                          className={`particles ${isAnimated ? "animate" : ""}`}
+                        >
+                          <span className="particle square red"></span>
+                          <span className="particle circle green"></span>
+                          <span className="particle square yellow"></span>
+                          <span className="particle square red"></span>
+                          <span className="particle square yellow"></span>
+                          <span className="particle circle green"></span>
+                          <span className="particle circle white"></span>
+                        </span>
                       </Button>
                     </div>
                   </div>

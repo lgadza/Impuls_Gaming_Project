@@ -63,13 +63,13 @@ const FinalStanding = () => {
                       <span
                         className={`particles ${isAnimated ? "animate" : ""}`}
                       >
-                        <span className="particle-square-red"></span>
-                        <span className="particle-circle-green"></span>
-                        <span className="particle-square-yellow"></span>
-                        <span className="particle-square-red"></span>
-                        <span className="particle-square-yellow"></span>
-                        <span className="particle-circle-green"></span>
-                        <span className="particle-circle-white"></span>
+                        <span className="particle square red"></span>
+                        <span className="particle circle green"></span>
+                        <span className="particle square yellow"></span>
+                        <span className="particle square red"></span>
+                        <span className="particle square yellow"></span>
+                        <span className="particle circle green"></span>
+                        <span className="particle circle white"></span>
                       </span>
                     </Button>
                   </Link>

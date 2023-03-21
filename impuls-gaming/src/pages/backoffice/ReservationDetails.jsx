@@ -37,7 +37,7 @@ const ReservationDetails = ({ visible, onhide, user }) => {
   }, [isEmail]);
   return (
     <Modal show={visible} onHide={onhide} className="modal-hieght textColor">
-      <Modal.Body className="py-0 mt-3 px-4">
+      <Modal.Body className="py-0 px-0">
         {user && (
           <Container>
             <Row>
@@ -46,7 +46,7 @@ const ReservationDetails = ({ visible, onhide, user }) => {
                   <h5 className="my-0">{user.userName} </h5>
                   <small>{user.email} </small>
                 </Card.Header>
-                <Card.Body className="px-0">
+                <Card.Body className="px-4">
                   <Card.Text>
                     <Row>
                       <Col className="d-flex justify-content-end">
@@ -266,10 +266,10 @@ const ReservationDetails = ({ visible, onhide, user }) => {
                     <hr />
                     <Row>
                       <Col>
-                        <div>
+                        <div className="mb-2">
                           <span>Notes:</span>
                         </div>
-                        <Card>
+                        {/* <Card>
                           <Card.Header className="px-1">
                             {user.comment ? (
                               <small>{user.comment}</small>
@@ -277,7 +277,14 @@ const ReservationDetails = ({ visible, onhide, user }) => {
                               <small>N/A</small>
                             )}
                           </Card.Header>
-                        </Card>
+                        </Card> */}
+                        {user.comment ? (
+                          <Form.Control as="textarea" value={user.comment} />
+                        ) : (
+                          <small className="bg-dark py-2 px-2 d-block">
+                            N/A
+                          </small>
+                        )}
                       </Col>
                     </Row>
                     <hr />

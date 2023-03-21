@@ -37,6 +37,20 @@ const Reservations = ({ visible, onhide }) => {
   const handleData = async () => {
     await onhide();
   };
+  const [isPressed, setIsPressed] = useState(false);
+  const [isAnimated, setIsAnimated] = useState(false);
+  const handleMouseDown = () => {
+    setIsPressed(true);
+    setIsAnimated(false);
+  };
+
+  const handleMouseUp = () => {
+    setIsPressed(false);
+  };
+
+  const handleClick = () => {
+    setIsAnimated(true);
+  };
   const accessToken = useSelector((state) => state.accessToken.accessToken);
   const user = useSelector((state) => state.me.me);
   const gameCover = useSelector((state) => state.projectImgs.projectImgs);
@@ -313,10 +327,34 @@ const Reservations = ({ visible, onhide }) => {
                   <div>
                     <Link>
                       <Button
-                        className="px-3 primary-btn  w-50 d-flex justify-content-center  textColor "
-                        variant="primary"
+                        type="submit"
+                        onClick={() => {
+                          // handleUpdate()
+                          handleClick();
+                        }}
+                        className={`primary-btn textColor d-flex align-items-center justify-content-center ${
+                          isPressed ? "pressed" : ""
+                        }`}
+                        onMouseDown={handleMouseDown}
+                        onMouseUp={handleMouseUp}
+                        onMouseLeave={handleMouseUp}
                       >
-                        <small>Add comment</small>
+                        <span
+                          className={`content ${isPressed ? "pressed" : ""}`}
+                        >
+                          <small>Add comment</small>
+                        </span>
+                        <span
+                          className={`particles ${isAnimated ? "animate" : ""}`}
+                        >
+                          <span className="particle square red"></span>
+                          <span className="particle circle green"></span>
+                          <span className="particle square yellow"></span>
+                          <span className="particle square red"></span>
+                          <span className="particle square yellow"></span>
+                          <span className="particle circle green"></span>
+                          <span className="particle circle white"></span>
+                        </span>
                       </Button>
                     </Link>
                   </div>

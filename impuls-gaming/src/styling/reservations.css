@@ -7,6 +7,7 @@
   /* position: relative; */
   /* background-image: url("https://i.pinimg.com/736x/3a/79/86/3a79860b23479eeae243b2cd7ed183c0.jpg"); */
   /* isolation: isolate; */
+  background-color: rgb(32, 43, 49, 0.7);
 }
 .reservations-bg .giftcard-preview-nav {
   z-index: 1 !important;
@@ -20,7 +21,6 @@
   left: 0;
   right: 0;
   z-index: 0 !important;
-  background-color: rgb(42, 57, 66);
   opacity: 0.95;
   position: absolute;
 } */

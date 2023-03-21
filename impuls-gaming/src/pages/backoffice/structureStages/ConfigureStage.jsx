@@ -47,6 +47,20 @@ const ConfigureStages = () => {
   const [tiebreaker1, setTiebreaker1] = useState("");
   const [tiebreaker2, setTiebreaker2] = useState("");
   const [tiebreaker3, setTiebreaker3] = useState("");
+  const [isPressed, setIsPressed] = useState(false);
+  const [isAnimated, setIsAnimated] = useState(false);
+  const handleMouseDown = () => {
+    setIsPressed(true);
+    setIsAnimated(false);
+  };
+
+  const handleMouseUp = () => {
+    setIsPressed(false);
+  };
+
+  const handleClick = () => {
+    setIsAnimated(true);
+  };
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -397,7 +411,7 @@ const ConfigureStages = () => {
                   )}
 
                   <Link className="d-flex justify-content-end mt-4">
-                    <Button
+                    {/* <Button
                       type="submit"
                       onClick={handleUpdate}
                       className="primary-btn textColor text-small d-flex align-items-center justify-content-center"
@@ -414,6 +428,46 @@ const ConfigureStages = () => {
                     >
                       <Icon.PlusLg className="mx-1" size={15} />
                       Create
+                    </Button> */}
+                    <Button
+                      disabled={
+                        name &&
+                        size &&
+                        number &&
+                        numberOfDivisions &&
+                        numberOfWinnersPerGroup &&
+                        groupSize
+                          ? false
+                          : true
+                      }
+                      type="submit"
+                      onClick={() => {
+                        handleUpdate();
+                        handleClick();
+                      }}
+                      className={`primary-btn textColor d-flex align-items-center justify-content-center ${
+                        isPressed ? "pressed" : ""
+                      }`}
+                      onMouseDown={handleMouseDown}
+                      onMouseUp={handleMouseUp}
+                      onMouseLeave={handleMouseUp}
+                    >
+                      <span className={`content ${isPressed ? "pressed" : ""}`}>
+                        <Icon.PlusLg className="mx-1" size={15} />
+
+                        <small>Create</small>
+                      </span>
+                      <span
+                        className={`particles ${isAnimated ? "animate" : ""}`}
+                      >
+                        <span className="particle square red"></span>
+                        <span className="particle circle green"></span>
+                        <span className="particle square yellow"></span>
+                        <span className="particle square red"></span>
+                        <span className="particle square yellow"></span>
+                        <span className="particle circle green"></span>
+                        <span className="particle circle white"></span>
+                      </span>
                     </Button>
                   </Link>
                 </Tab>
@@ -704,13 +758,43 @@ const ConfigureStages = () => {
                     </Button>
                   </Link>
                   <Link className="d-flex justify-content-end mt-4">
-                    <Button
+                    {/* <Button
                       type="submit"
                       onClick={handleUpdate}
                       className="primary-btn textColor text-small d-flex align-items-center justify-content-center"
                     >
                       <Icon.PlusLg className="mx-1" size={15} />
                       Create
+                    </Button> */}
+                    <Button
+                      type="submit"
+                      onClick={() => {
+                        handleUpdate();
+                        handleClick();
+                      }}
+                      className={`primary-btn textColor d-flex align-items-center justify-content-center ${
+                        isPressed ? "pressed" : ""
+                      }`}
+                      onMouseDown={handleMouseDown}
+                      onMouseUp={handleMouseUp}
+                      onMouseLeave={handleMouseUp}
+                    >
+                      <span className={`content ${isPressed ? "pressed" : ""}`}>
+                        <Icon.PlusLg className="mx-1" size={15} />
+
+                        <small>Create</small>
+                      </span>
+                      <span
+                        className={`particles ${isAnimated ? "animate" : ""}`}
+                      >
+                        <span className="particle square red"></span>
+                        <span className="particle circle green"></span>
+                        <span className="particle square yellow"></span>
+                        <span className="particle square red"></span>
+                        <span className="particle square yellow"></span>
+                        <span className="particle circle green"></span>
+                        <span className="particle circle white"></span>
+                      </span>
                     </Button>
                   </Link>
                 </Tab>
@@ -756,13 +840,43 @@ const ConfigureStages = () => {
                     </Form>
                   </div>
                   <Link className="d-flex justify-content-end mt-4">
-                    <Button
+                    {/* <Button
                       type="submit"
                       onClick={handleUpdate}
                       className="primary-btn textColor text-small d-flex align-items-center justify-content-center"
                     >
                       <Icon.PlusLg className="mx-1" size={15} />
                       Create
+                    </Button> */}
+                    <Button
+                      type="submit"
+                      onClick={() => {
+                        handleUpdate();
+                        handleClick();
+                      }}
+                      className={`primary-btn textColor d-flex align-items-center justify-content-center ${
+                        isPressed ? "pressed" : ""
+                      }`}
+                      onMouseDown={handleMouseDown}
+                      onMouseUp={handleMouseUp}
+                      onMouseLeave={handleMouseUp}
+                    >
+                      <span className={`content ${isPressed ? "pressed" : ""}`}>
+                        <Icon.PlusLg className="mx-1" size={15} />
+
+                        <small>Create</small>
+                      </span>
+                      <span
+                        className={`particles ${isAnimated ? "animate" : ""}`}
+                      >
+                        <span className="particle square red"></span>
+                        <span className="particle circle green"></span>
+                        <span className="particle square yellow"></span>
+                        <span className="particle square red"></span>
+                        <span className="particle square yellow"></span>
+                        <span className="particle circle green"></span>
+                        <span className="particle circle white"></span>
+                      </span>
                     </Button>
                   </Link>
                 </Tab>
@@ -809,13 +923,43 @@ const ConfigureStages = () => {
                   </Row>
 
                   <Link className="d-flex justify-content-end mt-4">
-                    <Button
+                    {/* <Button
                       type="submit"
                       onClick={handleUpdate}
                       className="primary-btn textColor text-small d-flex align-items-center justify-content-center"
                     >
                       <Icon.PlusLg className="mx-1" size={15} />
                       Create
+                    </Button> */}
+                    <Button
+                      type="submit"
+                      onClick={() => {
+                        handleUpdate();
+                        handleClick();
+                      }}
+                      className={`primary-btn textColor d-flex align-items-center justify-content-center ${
+                        isPressed ? "pressed" : ""
+                      }`}
+                      onMouseDown={handleMouseDown}
+                      onMouseUp={handleMouseUp}
+                      onMouseLeave={handleMouseUp}
+                    >
+                      <span className={`content ${isPressed ? "pressed" : ""}`}>
+                        <Icon.PlusLg className="mx-1" size={15} />
+
+                        <small>Create</small>
+                      </span>
+                      <span
+                        className={`particles ${isAnimated ? "animate" : ""}`}
+                      >
+                        <span className="particle square red"></span>
+                        <span className="particle circle green"></span>
+                        <span className="particle square yellow"></span>
+                        <span className="particle square red"></span>
+                        <span className="particle square yellow"></span>
+                        <span className="particle circle green"></span>
+                        <span className="particle circle white"></span>
+                      </span>
                     </Button>
                   </Link>
                 </Tab>

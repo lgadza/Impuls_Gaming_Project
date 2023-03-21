@@ -96,7 +96,7 @@ const ReservationList = ({ projects }) => {
                   )}
                 </div>
               </Card.Header>
-              <Card.Text>
+              <Card.Body>
                 {search && (
                   <>
                     <Row className="mx-3 mt-3">
@@ -351,7 +351,7 @@ const ReservationList = ({ projects }) => {
                     </Button>
                   </div>
                 </div>
-              </Card.Text>
+              </Card.Body>
             </Card>
           </Col>
         </Row>
