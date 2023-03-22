@@ -10,6 +10,21 @@
   --bg-1: rgb(32, 44, 51);
   --bg-2: rgb(42, 57, 66);
   --textColor: rgb(233, 237, 227);
+  --blackAndWhite: black;
+  --bg-gradient: rgb(49, 76, 87);
+  --card-bg: rgb(42, 57, 66, 0.7);
+  --card-body-bg: rgb(42, 57, 66, 0.96);
+  /* --card-header-bg: */
+}
+[data-theme="light"] {
+  --main-bg: rgb(243, 242, 239);
+  --bg-1: rgb(146, 145, 143);
+  --bg-2: rgb(229, 227, 230);
+  --textColor: black;
+  --blackAndWhite: rgb(230, 210, 203);
+  --bg-gradient: rgb(175, 162, 162);
+  --card-bg: white;
+  --card-body-bg: white;
 }
 body#body {
   margin: 0;
@@ -21,7 +36,7 @@ body#body {
   background: radial-gradient(
     circle,
     lemonchiffon,
-    rgb(49, 76, 87),
+    var(--bg-gradient),
     var(--bg-1) 25%
   );
   height: 100%;
@@ -33,18 +48,17 @@ body#body:after {
   right: 0;
   left: 0;
   bottom: 0;
-  background: radial-gradient(circle, transparent, black 25%, transparent);
+  background: radial-gradient(
+    circle,
+    transparent,
+    var(--blackAndWhite) 25%,
+    transparent
+  );
   animation: color 3.5s infinite ease-out alternate;
   opacity: 0;
   z-index: -1;
 }
 
-[data-theme="light"] {
-  --main-bg: rgb(146, 145, 143);
-  --bg-1: rgb(229, 227, 230);
-  --bg-2: white;
-  --textColor: black;
-}
 /* BUTTON */
 
 .primary-btn .content {
@@ -242,7 +256,12 @@ body#body:after {
 
 @keyframes color {
   0% {
-    background: radial-gradient(circle, transparent, black 25%, transparent);
+    background: radial-gradient(
+      circle,
+      transparent,
+      var(--blackAndWhite) 25%,
+      transparent
+    );
   }
   100% {
     opacity: 0.8;
@@ -1259,7 +1278,7 @@ ul li {
 .card {
   border: none;
   box-sizing: border-box;
-  background-color: rgb(42, 57, 66, 0.7);
+  background-color: var(--card-bg);
   z-index: 0 !important;
   border-radius: 5px;
   /* overflow: hidden; */
@@ -1304,7 +1323,7 @@ ul li {
   overflow-y: scroll;
 }
 .card-body {
-  background-color: rgb(42, 57, 66, 0.96);
+  background-color: var(--card-body-bg);
   z-index: 0;
 }
 .card-header {
@@ -1566,7 +1585,7 @@ tab[title] {
   top: 50%;
 }
 .footer {
-  background-color: rgb(42, 57, 66, 0.7);
+  background-color: var(--card-bg);
   position: relative;
   overflow: hidden;
   /* opacity: 0.9; */

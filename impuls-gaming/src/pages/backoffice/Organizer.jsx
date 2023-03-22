@@ -6,7 +6,7 @@ import CreateTournament from "./CreateTournament";
 import useLocalStorage from "use-local-storage";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { getProjectsImgs, getTournaments } from "../../redux/actions";
+import { getProjectsImgs, getTournaments, switcher } from "../../redux/actions";
 import { io } from "socket.io-client";
 import DeleteConfirm from "../../components/DeleteConfirm";
 const DEV_URL = process.env.REACT_APP_BE_DEV_URL;
@@ -34,18 +34,21 @@ const Organizer = ({ projects }) => {
   // useEffect(() => {
   //   socket.emit("newUser", user.name);
   // }, [socket, user.name]);
-  const defaultDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-  const [theme, setTheme] = useLocalStorage(
-    "theme",
-    defaultDark ? "dark" : "light"
-  );
-  const themeSwitcher = () => {
-    const newTheme = theme === "light" ? "dark" : "light";
-    setTheme(newTheme);
+  // const defaultDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  // const [theme, setTheme] = useLocalStorage(
+  //   "theme",
+  //   defaultDark ? "dark" : "light"
+  // );
+  const themeColor = useSelector((state) => state.theme.theme);
+  const [theme, setTheme] = useState("light");
+  const themeSwitcher = async () => {
+    const newTheme = (await theme) === "light" ? "dark" : "light";
+    await setTheme(newTheme);
+    dispatch(switcher(theme));
   };
   return (
     <>
-      <div data-theme={theme}>
+      <div data-theme={themeColor}>
         <div className="d-flex justify-content-end mt-3">
           <span className="theme-switcher p-1">
             <Icon.MoonFill onClick={themeSwitcher} size={20} color="black" />

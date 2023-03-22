@@ -186,12 +186,12 @@ const UserPage = () => {
                   tournamentId={tournamentToReport}
                 />
               </Tab>
-              {/* <Tab className="w-100" eventKey="table" title="Table">
+              <Tab className="w-100" eventKey="table" title="Table">
                 <Table user={user} />
               </Tab>
               <Tab eventKey="fixture" title="Fixtures">
                 <Fixtures user={user} />
-              </Tab> */}
+              </Tab>
               <Tab eventKey="tournaments" title="Tournaments">
                 <Tournaments
                   tournaments={tournaments.tournaments}

@@ -35,9 +35,11 @@ import FixturesPage from "./pages/fixtures/fixturesPage";
 import Placements from "./pages/backoffice/Placements";
 import { useEffect } from "react";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 function App() {
+  const theme = useSelector((state) => state.theme.theme);
   return (
-    <div className="App">
+    <div className="App" data-theme={theme}>
       <BrowserRouter>
         <Routes>
           <Route element={<Home />} path="/" />

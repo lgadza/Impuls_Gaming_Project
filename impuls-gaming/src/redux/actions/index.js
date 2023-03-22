@@ -93,9 +93,18 @@ export const USER_CHAT_DATA_ERROR = " USER_CHAT_DATA_ERROR";
 export const USER_CHAT_DATA_LOADING = " USER_CHAT_DATA_LOADING";
 export const USER_PREFERENCE_DATA_ERROR = " USER_PREFERENCE_DATA_ERROR";
 export const USER_PREFERENCE_DATA_LOADING = " USER_PREFERENCE_DATA_LOADING";
+export const THEME_DATA_ERROR = " THEME_DATA_ERROR";
+export const THEME_DATA = " THEME_DATA";
+export const THEME_DATA_LOADING = " THEME_DATA_LOADING";
 export const USER_DATA_ERROR = " USER_DATA_ERROR";
 export const USER_DATA_LOADING = " USER_DATA_LOADING";
 
+export const switcher = (theme) => {
+  return {
+    type: THEME_DATA,
+    payload: theme,
+  };
+};
 export const registerUser = (userData) => {
   return async (dispatch) => {
     const options = {
@@ -966,8 +975,8 @@ export const getTournamentsFixtures = () => {
     };
     // const URL = process.env.REACT_APP_BE_PROD_URL;
     const APIkey = process.env.FOOTBALL_API_KEY;
-    // const URL = `https://apiv3.apifootball.com/?action=get_events&from=2022-07-12&to=2023-07-12&league_id=302&APIkey=${APIkey}`;
-    const URL = `https://apiv3.apifootball.com/?action=get_standings&league_id=302&APIkey=9a071c302fe8a84e9e2e5a2654f52c3fa674cc4fa8273c984bed8f0ffa38c76b`;
+    const URL = `https://apiv3.apifootball.com/?action=get_events&from=2022-07-12&to=2023-07-12&league_id=302&APIkey=${APIkey}`;
+
     try {
       let response = await fetch(`${URL}`, options);
       if (response.ok) {

@@ -28,6 +28,7 @@ const BackOffice = () => {
     "theme",
     defaultDark ? "dark" : "light"
   );
+  console.log(defaultDark, "THEMES");
   const navigate = useNavigate();
   const [profileClicked, setProfileClicked] = useState(false);
   const user = useSelector((state) => state.me.me);
@@ -60,10 +61,7 @@ const BackOffice = () => {
     navigate("/");
   };
   return (
-    <Container
-      fluid
-      // data-theme={theme}
-    >
+    <Container fluid>
       <Row>
         <Col
           md={3}
