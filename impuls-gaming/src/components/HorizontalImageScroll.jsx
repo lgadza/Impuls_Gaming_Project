@@ -1,5 +1,6 @@
 import LocomotiveScroll from "locomotive-scroll";
 import React, { useEffect, useRef, useState, useLayoutEffect } from "react";
+import { Row } from "react-bootstrap-v5";
 import "../styling/scrollableHrizontalImages.css";
 
 const HorizontalImageScroll = () => {
@@ -75,7 +76,7 @@ const HorizontalImageScroll = () => {
   // };
 
   return (
-    <div
+    <Row
       className="scroll-animations"
       ref={scrollRef}
       // onLoad={init}
@@ -239,7 +240,7 @@ const HorizontalImageScroll = () => {
         </div>
       </div>
       {/* )} */}
-    </div>
+    </Row>
   );
 };
 export default HorizontalImageScroll;

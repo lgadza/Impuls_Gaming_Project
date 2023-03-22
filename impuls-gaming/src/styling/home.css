@@ -5,18 +5,24 @@
   initial-value: 0deg;
   inherits: false;
 }
+:root {
+  --main-bg: rgb(17, 27, 33);
+  --bg-1: rgb(32, 44, 51);
+  --bg-2: rgb(42, 57, 66);
+  --textColor: rgb(233, 237, 227);
+}
 body#body {
   margin: 0;
   padding: 0;
   position: relative;
-  background-color: rgb(32, 44, 51);
-  color: rgb(233, 237, 227);
+  background-color: var(--bg-1);
+  color: var(--textColor);
   font-size: 0.8rem;
   background: radial-gradient(
     circle,
     lemonchiffon,
     rgb(49, 76, 87),
-    rgb(32, 44, 51) 25%
+    var(--bg-1) 25%
   );
   height: 100%;
 }
@@ -31,6 +37,13 @@ body#body:after {
   animation: color 3.5s infinite ease-out alternate;
   opacity: 0;
   z-index: -1;
+}
+
+[data-theme="light"] {
+  --main-bg: rgb(146, 145, 143);
+  --bg-1: rgb(229, 227, 230);
+  --bg-2: white;
+  --textColor: black;
 }
 /* BUTTON */
 
@@ -281,7 +294,10 @@ body#body:after {
   border-right: 10px solid rgb(40, 167, 69);
   transform: rotate(135deg);
 }
-
+.theme-switcher {
+  background-color: var(--bg-2);
+  border-radius: 20px;
+}
 @keyframes arr {
   0%,
   100% {
@@ -295,7 +311,7 @@ body#body:after {
   cursor: pointer;
 }
 .modal-content {
-  background-color: rgb(42, 57, 66);
+  background-color: var(--bg-2);
 }
 #video-background {
   position: absolute;
@@ -354,7 +370,7 @@ h1 {
   font-size: 3em;
 }
 .h6-border {
-  border-bottom: 0.2em solid rgb(233, 237, 227);
+  border-bottom: 0.2em solidvar(--textColor);
   display: inline-block;
   color: #12bae3;
 }
@@ -364,7 +380,7 @@ h1 {
   object-fit: cover;
 }
 .navBackground {
-  background-color: rgb(17, 27, 33);
+  background-color: var(--main-bg);
   font-weight: bold;
   color: #12bae3;
   position: fixed;
@@ -373,25 +389,25 @@ h1 {
   z-index: 5;
 }
 .bg-black {
-  background-color: rgb(17, 27, 33);
+  background-color: var(--main-bg);
 }
 .impuls {
   color: #12bae3;
 }
 
 .giftcard-preview {
-  background-color: rgb(17, 27, 33);
+  background-color: var(--main-bg);
   color: #12bae3;
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
   font-size: 0.75em;
 }
 .giftcard-preview-nav {
-  background-color: rgb(17, 27, 33);
+  background-color: var(--main-bg);
   color: #12bae3;
 }
 .card-preview-info {
-  border-bottom: 1px solid rgb(17, 27, 33);
+  border-bottom: 1px solid var(--main-bg);
 }
 .recipient-info {
   font-family: "Just Another Hand", cursive;
@@ -408,9 +424,9 @@ h1 {
   overflow-wrap: break-word;
 }
 .giftcard-section {
-  border-bottom: 2px solid rgb(17, 27, 33);
-  border-top: 2px solid rgb(17, 27, 33);
-  border-right: 2px solid rgb(17, 27, 33);
+  border-bottom: 2px solid var(--main-bg);
+  border-top: 2px solid var(--main-bg);
+  border-right: 2px solid var(--main-bg);
   border-radius: 20px;
   overflow: hidden;
   position: relative;
@@ -425,26 +441,26 @@ h1 {
 }
 
 .textColor {
-  color: rgb(233, 237, 227) !important;
+  color: var(--textColor) !important;
 }
 textarea:focus {
-  color: rgb(233, 237, 227) !important;
+  color: var(--textColor) !important;
 }
 input:focus {
-  color: rgb(233, 237, 227) !important;
+  color: var(--textColor) !important;
 }
 .preview-content {
-  background-color: rgb(42, 57, 66);
+  background-color: var(--bg-2);
   overflow: hidden !important;
 }
 input,
 textarea {
-  color: rgb(233, 237, 227) !important;
-  background-color: rgb(32, 44, 51) !important;
+  color: var(--textColor) !important;
+  background-color: var(--bg-1) !important;
   font-size: 0.8rem !important;
 }
 textarea {
-  color: rgb(233, 237, 227) !important;
+  color: var(--textColor) !important;
 }
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -463,18 +479,18 @@ input::-webkit-inner-spin-button {
   border-radius: 3px !important;
 }
 .preview-content {
-  color: rgb(233, 237, 227);
+  color: var(--textColor);
 }
 ::placeholder {
-  color: rgb(233, 237, 227) !important;
+  color: var(--textColor) !important;
   opacity: 0.5 !important ;
 }
 .login-page {
-  background-color: rgb(32, 44, 51);
+  background-color: var(--bg-1);
   min-height: 100vh;
 }
 .login-content {
-  background-color: rgb(42, 57, 66);
+  background-color: var(--bg-2);
 
   color: white;
 }
@@ -523,7 +539,7 @@ a {
 .gift-container {
   /* border: 1px solid rgba(244, 92, 93, 0.2); */
   border-radius: 5px;
-  background-color: rgb(42, 57, 66);
+  background-color: var(--bg-2);
 }
 .main-container {
   /* background-color: rgba(244, 92, 93, 0.08); */
@@ -560,10 +576,10 @@ svg {
   font-size: small;
 }
 .CircularProgressbar-path {
-  stroke: rgb(17, 27, 33) !important;
+  stroke: var(--main-bg) !important;
 }
 .CircularProgressbar-text {
-  fill: rgb(17, 27, 33) !important;
+  fill: var(--main-bg) !important;
 }
 
 .blink_me {
@@ -587,7 +603,7 @@ svg {
   top: 20%;
   bottom: 0;
   right: 5px;
-  background-color: rgb(42, 57, 66);
+  background-color: var(--bg-2);
   border-radius: 10%;
 }
 .btn-danger {
@@ -595,7 +611,7 @@ svg {
   isolation: isolate;
   overflow: hidden;
   border: none;
-  background-color: rgb(32, 44, 51) !important;
+  background-color: var(--bg-1) !important;
 }
 .component-frame.visible {
   color: white !important;
@@ -633,7 +649,7 @@ svg {
 }
 .bg-dark {
   border-radius: 10px;
-  background-color: rgb(32, 44, 51) !important;
+  background-color: var(--bg-1) !important;
 }
 .league-provider-img {
   width: 2rem;
@@ -708,7 +724,7 @@ a:hover {
   border-radius: 3px;
 }
 .border-hover:hover {
-  box-shadow: 1px 3px 5px rgb(17, 27, 33);
+  box-shadow: 1px 3px 5px var(--main-bg);
   border-radius: 5px;
 }
 .join-call {
@@ -760,7 +776,7 @@ a:hover {
 .h2-join-call {
   font-family: "Times New Roman", Times, serif;
   font-size: 2em;
-  color: rgb(233, 237, 227);
+  color: var(--textColor);
   transform: rotate(-4deg);
   font-weight: bold;
   background-color: rgb(212, 201, 201, 0.3);
@@ -786,7 +802,7 @@ a:hover {
   color: goldenrod;
   font-weight: bold;
   font-size: 1.5rem;
-  background-color: rgb(17, 27, 33);
+  background-color: var(--main-bg);
 }
 .position-fixed {
   position: fixed;
@@ -818,11 +834,11 @@ button-star {
   background-color: rgb(255, 254, 230);
 }
 .fixture-container .participant-list.border {
-  border-right: 4px solid rgb(32, 44, 51) !important;
+  border-right: 4px solid var(--bg-1) !important;
   margin: 2px 0;
 }
 .on {
-  color: rgb(233, 237, 227);
+  color: var(--textColor);
 }
 .off {
   color: #ccc;
@@ -839,10 +855,10 @@ button-star {
 .search-field {
   padding-right: 38px;
   border-radius: 3px;
-  border: 1px solid rgb(233, 237, 227);
+  border: 1px solidvar(--textColor);
 }
 .search-field:focus {
-  outline: 1px solid rgb(233, 237, 227) !important;
+  outline: 1px solidvar(--textColor) !important;
 }
 .inputContainer {
   display: flex;
@@ -860,10 +876,10 @@ button-star {
   overflow-x: hidden;
   position: static;
   top: 20% !important;
-  background-color: rgb(42, 57, 66);
+  background-color: var(--bg-2);
 }
 .me-auto {
-  border: 2px solid rgb(32, 44, 51);
+  border: 2px solid var(--bg-1);
   border-radius: 5px;
 }
 .my-projects .d-flex.flex-column.align-items-start.navbar.navbar-expand {
@@ -913,7 +929,7 @@ button-star {
   box-shadow: inset 0 0 5px rgba(244, 92, 93, 0);
 }
 ::-webkit-scrollbar-thumb {
-  background: rgb(17, 27, 33);
+  background: var(--main-bg);
 }
 .text-chat {
   line-height: 1.3em;
@@ -929,7 +945,7 @@ button-star {
 }
 
 .user-position {
-  border-bottom: 1px solid rgb(233, 237, 227);
+  border-bottom: 1px solidvar(--textColor);
 }
 .btn:focus,
 .btn:active:focus,
@@ -940,7 +956,7 @@ button-star {
   outline: none !important;
   -webkit-box-shadow: none !important;
   box-shadow: none !important;
-  background-color: rgb(17, 27, 33) !important;
+  background-color: var(--main-bg) !important;
   color: white !important;
 }
 .show > .btn-success.dropdown-toggle {
@@ -960,7 +976,7 @@ button-star {
   color: white;
 }
 .dropdown-item:hover {
-  background-color: rgb(17, 27, 33);
+  background-color: var(--main-bg);
   color: white;
 }
 .user-table .match_teams {
@@ -995,7 +1011,7 @@ button-star {
   }
 }
 .dropdown-menu.show {
-  background-color: rgb(42, 57, 66);
+  background-color: var(--bg-2);
   min-width: 15rem;
   z-index: 4 !important;
 }
@@ -1006,21 +1022,21 @@ button-star {
 .plus-project {
   width: 20rem;
   height: 15rem;
-  box-shadow: 3px 5px 5px rgb(17, 27, 33);
+  box-shadow: 3px 5px 5px var(--main-bg);
   border-radius: 5px;
-  background-color: rgb(42, 57, 66);
+  background-color: var(--bg-2);
   border: none;
   overflow: hidden;
 }
 .react-datepicker-popper {
-  background-color: rgb(42, 57, 66) !important;
+  background-color: var(--bg-2) !important;
 }
 .my-projects {
   height: 100vh !important;
   overflow: hidden;
 }
 .plus-project:hover {
-  /* border: 1px solid rgb(233, 237, 227); */
+  /* border: 1px solidvar(--textColor); */
   background-color: rgb(25, 35, 40);
 }
 .settings-card:hover.card::after,
@@ -1048,10 +1064,11 @@ button-star {
 }
 .primary-btn {
   width: 7rem;
-  background-color: rgb(17, 27, 33);
+  background-color: var(--main-bg);
   border: none;
   position: relative;
 }
+
 .primary-btn::after,
 .primary-btn::before {
   content: "";
@@ -1061,7 +1078,7 @@ button-star {
     from var(--gradient-angle),
     rgb(18, 186, 227),
     rgb(31, 43, 49),
-    rgb(42, 57, 66),
+    var(--bg-2),
     rgb(31, 43, 49),
     rgb(18, 186, 227)
   ) !important;
@@ -1084,16 +1101,16 @@ button-star {
   /* filter: blur(0.06rem); */
 }
 hr {
-  color: rgb(42, 57, 66);
-  background-color: rgb(32, 44, 51);
+  color: var(--bg-2);
+  background-color: var(--bg-1);
   height: 1px;
 }
 .primary-btn:hover {
   color: white !important;
-  background-color: rgb(17, 27, 33);
+  background-color: var(--main-bg);
 }
 .primary-btn:focus {
-  /* color: rgb(17, 27, 33) !important; */
+  /* color: var(--main-bg) !important; */
   outline: none !important;
   box-shadow: none !important;
 }
@@ -1121,11 +1138,11 @@ hr {
 }
 
 .create-btn {
-  background-color: rgb(17, 27, 33);
+  background-color: var(--main-bg);
   width: 80%;
 }
 .create-btn:focus {
-  background-color: rgb(17, 27, 33);
+  background-color: var(--main-bg);
   outline: none !important;
   box-shadow: none !important;
 }
@@ -1159,14 +1176,14 @@ hr {
   display: none;
 }
 .organizer-account {
-  background-color: rgb(42, 57, 66);
+  background-color: var(--bg-2);
 }
 @media screen and (max-width: 1413px) {
   .plus-project {
     width: 18rem;
     height: 13rem;
     overflow: hidden;
-    box-shadow: 1px 3px 5px rgb(17, 27, 33);
+    box-shadow: 1px 3px 5px var(--main-bg);
     border-radius: 5px;
   }
 }
@@ -1182,7 +1199,7 @@ hr {
     width: 16rem;
     height: 12rem;
     overflow: hidden;
-    box-shadow: 1px 3px 5px rgb(17, 27, 33);
+    box-shadow: 1px 3px 5px var(--main-bg);
     border-radius: 5px;
   }
   .d-sm-none.my-projects.giftcard-preview-nav {
@@ -1194,7 +1211,7 @@ hr {
     width: 100%;
     height: 18rem;
     overflow: hidden;
-    box-shadow: 1px 3px 5px rgb(17, 27, 33);
+    box-shadow: 1px 3px 5px var(--main-bg);
     border-radius: 5px;
   }
   /* .form-wrapper .form {
@@ -1257,7 +1274,7 @@ ul li {
     from var(--gradient-angle),
     rgb(18, 186, 227),
     rgb(31, 43, 49),
-    rgb(42, 57, 66),
+    var(--bg-2),
     rgb(31, 43, 49),
     rgb(18, 186, 227)
   ) !important;
@@ -1301,7 +1318,7 @@ ul li {
   top: 0;
 }
 .form-select {
-  background-color: rgb(32, 44, 51);
+  background-color: var(--bg-1);
   border: none;
   border-radius: 5px;
 }
@@ -1310,7 +1327,7 @@ ul li {
   border: none;
 }
 .nav-link.active {
-  background-color: rgb(32, 44, 51) !important;
+  background-color: var(--bg-1) !important;
   color: white !important;
   border: none;
 }
@@ -1321,17 +1338,17 @@ ul li {
   color: rgb(18, 186, 227);
 }
 select option:hover {
-  background-color: rgb(42, 57, 66) !important;
+  background-color: var(--bg-2) !important;
 }
 input[type="radio"] {
-  background-color: rgb(32, 44, 51) !important;
+  background-color: var(--bg-1) !important;
 }
 input[type="email"].form-control {
-  background-color: rgb(32, 44, 51) !important;
+  background-color: var(--bg-1) !important;
 }
 
 input[type="checkbox"]:not(:checked) {
-  background-color: rgb(32, 44, 51) !important;
+  background-color: var(--bg-1) !important;
 }
 .carousel-indicators {
   margin-top: 3rem !important;
@@ -1369,7 +1386,7 @@ input[type="checkbox"]:not(:checked) {
   margin-left: 3px;
   text-indent: -999px;
   cursor: pointer;
-  background-color: rgb(17, 27, 33);
+  background-color: var(--main-bg);
   background-clip: padding-box;
   border: 0;
   border-top: 10px solid transparent;
@@ -1383,13 +1400,13 @@ input[type="checkbox"]:not(:checked) {
   display: none !important;
 }
 .fixture-container .participant-list:hover {
-  background-color: rgb(17, 27, 33);
+  background-color: var(--main-bg);
 }
 .participant-list:hover {
-  background-color: rgb(17, 27, 33);
+  background-color: var(--main-bg);
 }
 .fixture-container .participant-list {
-  background-color: rgb(42, 57, 66);
+  background-color: var(--bg-2);
   border: none !important;
 }
 
@@ -1397,12 +1414,12 @@ input[type="checkbox"]:not(:checked) {
   border-bottom: 1px solid rgb(206, 197, 197);
 }
 .user-friends:hover {
-  background-color: rgb(17, 27, 33);
+  background-color: var(--main-bg);
 }
 .playerNav {
   position: sticky;
   top: 11.5%;
-  background-color: rgb(17, 27, 33);
+  background-color: var(--main-bg);
   z-index: 2;
 }
 .navigation-tabs.d-flex.justify-content-center.textColor.nav.nav-tabs {
@@ -1421,14 +1438,14 @@ input[type="checkbox"]:not(:checked) {
 }
 
 .registration-forms {
-  background-color: rgb(42, 57, 66);
+  background-color: var(--bg-2);
   padding-bottom: 10px;
 }
 .tournament-preview-img {
   width: 6rem;
 }
 .tournament-list :hover {
-  background-color: rgb(17, 27, 33);
+  background-color: var(--main-bg);
 }
 .span {
   font-size: 0.9em;
@@ -1458,10 +1475,10 @@ input[type="checkbox"]:not(:checked) {
   z-index: 0;
 }
 .user_current-position {
-  background-color: rgb(32, 44, 51) !important;
+  background-color: var(--bg-1) !important;
 }
 .user_current-position:hover {
-  background-color: rgb(17, 27, 33) !important;
+  background-color: var(--main-bg) !important;
 }
 .tournament-info {
   z-index: 3 !important;
@@ -1505,39 +1522,39 @@ tab[title] {
   border-radius: 5px;
 }
 .participant-names:hover {
-  background-color: rgb(17, 27, 33);
+  background-color: var(--main-bg);
 }
 .participant-names {
-  background-color: rgb(32, 44, 51);
+  background-color: var(--bg-1);
   border-radius: 4px;
   border: none !important;
 }
 .container.participants-registered {
-  background-color: rgb(42, 57, 66);
+  background-color: var(--bg-2);
 }
 .player-round-1 {
   position: relative;
   border: 1px solid gray !important;
   border-radius: 5px;
-  background-color: rgb(42, 57, 66) !important;
+  background-color: var(--bg-2) !important;
 }
 .player-round-2 {
   position: relative;
   border: 1px solid gray !important;
   border-radius: 5px;
-  background-color: rgb(42, 57, 66) !important;
+  background-color: var(--bg-2) !important;
 }
 .player-round-3 {
   position: relative;
   border: 1px solid gray !important;
   border-radius: 5px;
-  background-color: rgb(42, 57, 66) !important;
+  background-color: var(--bg-2) !important;
 }
 .player-round-4 {
   position: relative;
   border: 1px solid gray !important;
   border-radius: 5px;
-  background-color: rgb(42, 57, 66) !important;
+  background-color: var(--bg-2) !important;
 }
 .player-round-1::after {
   content: "";
@@ -1751,7 +1768,7 @@ tab[title] {
   .navBackground2.myNav {
     padding-left: 10px !important;
     padding-right: 10px !important;
-    background-color: rgb(17, 27, 33);
+    background-color: var(--main-bg);
     position: fixed;
     top: 0;
     width: 100%;
@@ -1850,7 +1867,7 @@ button.nav-link {
     left: 0;
     right: 0;
     padding-right: 8px;
-    background-color: rgb(17, 27, 33);
+    background-color: var(--main-bg);
     width: 500px !important;
   }
 
@@ -1884,7 +1901,7 @@ button.nav-link {
   .player-name-sticky.player {
     position: sticky;
     left: 15px;
-    background-color: rgb(17, 27, 33);
+    background-color: var(--main-bg);
     z-index: 3;
     width: 188px;
   }
@@ -1901,21 +1918,21 @@ button.nav-link {
   .participant-list .player-name-sticky {
     position: sticky;
     left: 0px;
-    background-color: rgb(42, 57, 66);
+    background-color: var(--bg-2);
   }
   .user_current-position .player-name-sticky {
-    background-color: rgb(32, 44, 51);
+    background-color: var(--bg-1);
   }
   .seasons-list.text-nowrap {
     position: sticky !important;
     left: 0;
     right: 0;
-    background-color: rgb(42, 57, 66);
+    background-color: var(--bg-2);
   }
   .participant-list:hover .player-name-sticky {
     position: sticky;
     left: -15px;
-    background-color: rgb(17, 27, 33);
+    background-color: var(--main-bg);
   }
   .player-name-sticky .text-nowrap {
     width: 140px;
@@ -1929,7 +1946,7 @@ button.nav-link {
     top: 64px;
   }
   .user_current-position {
-    background-color: rgb(32, 44, 51);
+    background-color: var(--bg-1);
   }
   .player-states {
     width: 15px;
@@ -1960,7 +1977,7 @@ button.nav-link {
   }
   .primary-btn {
     width: 6rem;
-    background-color: rgb(17, 27, 33);
+    background-color: var(--main-bg);
     border: none;
     border-radius: 5px;
     position: relative;

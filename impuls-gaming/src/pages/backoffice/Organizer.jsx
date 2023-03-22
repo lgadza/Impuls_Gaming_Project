@@ -3,7 +3,7 @@ import { Col, Row, Button } from "react-bootstrap";
 import * as Icon from "react-bootstrap-icons";
 import { useState, useEffect } from "react";
 import CreateTournament from "./CreateTournament";
-
+import useLocalStorage from "use-local-storage";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { getProjectsImgs, getTournaments } from "../../redux/actions";
@@ -34,10 +34,25 @@ const Organizer = ({ projects }) => {
   // useEffect(() => {
   //   socket.emit("newUser", user.name);
   // }, [socket, user.name]);
+  const defaultDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  const [theme, setTheme] = useLocalStorage(
+    "theme",
+    defaultDark ? "dark" : "light"
+  );
+  const themeSwitcher = () => {
+    const newTheme = theme === "light" ? "dark" : "light";
+    setTheme(newTheme);
+  };
   return (
     <>
-      <>
-        <div className="d-flex mt-5 justify-content-between align-items-center">
+      <div data-theme={theme}>
+        <div className="d-flex justify-content-end mt-3">
+          <span className="theme-switcher p-1">
+            <Icon.MoonFill onClick={themeSwitcher} size={20} color="black" />
+            <Icon.BrightnessHighFill onClick={themeSwitcher} size={20} />
+          </span>
+        </div>
+        <div className="d-flex mt-3 justify-content-between align-items-center">
           {" "}
           <h4 className="d-flex ml-5 mt-4 ">My Projects</h4>
           <Link onClick={handleDeleteItem}>
@@ -114,7 +129,7 @@ const Organizer = ({ projects }) => {
             </Col>
           ))}
         </Row>
-      </>
+      </div>
       <CreateTournament visible={show} onhide={handleClose} />
       <DeleteConfirm
         visible={showDelete}

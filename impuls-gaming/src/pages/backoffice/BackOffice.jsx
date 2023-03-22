@@ -7,6 +7,7 @@ import {
   Navbar,
   Nav,
 } from "react-bootstrap";
+import useLocalStorage from "use-local-storage";
 import * as Icon from "react-bootstrap-icons";
 import logo from "../../img/impuls logo.png";
 import Organizer from "./Organizer";
@@ -22,6 +23,11 @@ import { ListGroup } from "react-bootstrap-v5";
 import ReservationStations from "./ReservationStations";
 
 const BackOffice = () => {
+  const defaultDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  const [theme, setTheme] = useLocalStorage(
+    "theme",
+    defaultDark ? "dark" : "light"
+  );
   const navigate = useNavigate();
   const [profileClicked, setProfileClicked] = useState(false);
   const user = useSelector((state) => state.me.me);
@@ -54,7 +60,10 @@ const BackOffice = () => {
     navigate("/");
   };
   return (
-    <Container fluid>
+    <Container
+      fluid
+      // data-theme={theme}
+    >
       <Row>
         <Col
           md={3}

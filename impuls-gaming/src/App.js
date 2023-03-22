@@ -1,4 +1,5 @@
 import "./App.css";
+
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../src/styling/home.css";
 import NavigationBar from "./components/NavigationBar";
@@ -32,6 +33,8 @@ import EmailVerification from "./pages/registration/EmailVerification";
 import Reservations from "./components/Reservations";
 import FixturesPage from "./pages/fixtures/fixturesPage";
 import Placements from "./pages/backoffice/Placements";
+import { useEffect } from "react";
+import { useState } from "react";
 function App() {
   return (
     <div className="App">

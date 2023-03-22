@@ -46,9 +46,8 @@ const HomeUpdates = () => {
       </Row>
       <h2 className="my-5 d-flex featured-league">Gallery</h2>
 
-      <Row>
-        <HorizontalImageScroll />
-      </Row>
+      <HorizontalImageScroll />
+
       <h2 className="my-5 d-flex featured-league">What's new?</h2>
 
       {/* <Spinner /> */}
