@@ -217,12 +217,12 @@ const UserPage = () => {
               >
                 <Overview tournaments={tournaments.tournaments} />
               </Tab>
-              {/* <Tab
+              <Tab
                 eventKey="matches"
                 title={<Icon.Table className="mx-0" size={20} />}
               >
                 <Table />
-              </Tab> */}
+              </Tab>
               {/* <Tab
                 eventKey="fixture"
                 title={<FontAwesomeIcon icon={faCoffee} size="lg" />}
