@@ -31,7 +31,7 @@ const ReservationList = ({ projects }) => {
     search ? setSearch(false) : setSearch(true);
   };
   const handleCloseReservationDetails = () => setShowReservationDetails(false);
-
+  const [filter, setFilter] = useState("all");
   const handleDeleteItem = () => {
     deleteItem === false ? setDeleteItem(true) : setDeleteItem(false);
   };
@@ -50,6 +50,10 @@ const ReservationList = ({ projects }) => {
     dispatch(getReservations());
     setSelectedReservations([]);
   };
+  const filteredResults = reservationList.filter(
+    (filteredResult, index) => filteredResult.status === filter
+  );
+
   return (
     <>
       <>
@@ -119,28 +123,28 @@ const ReservationList = ({ projects }) => {
                               type="radio"
                               name="status"
                               label="All"
-                              // onClick={handleTrueAutoParticipantPlacement}
+                              onClick={() => setFilter("all")}
                               className="mr-3"
                               defaultChecked
                             />
 
                             <Form.Check
                               type="radio"
-                              // onClick={handleFalseAutoParticipantPlacement}
+                              onClick={() => setFilter("pending")}
                               className="mr-3"
                               name="status"
                               label="pending"
                             />
                             <Form.Check
                               type="radio"
-                              // onClick={handleFalseAutoParticipantPlacement}
+                              onClick={() => setFilter("completed")}
                               name="status"
                               label="completed"
                               className="mr-3"
                             />
                             <Form.Check
                               type="radio"
-                              // onClick={handleFalseAutoParticipantPlacement}
+                              onClick={() => setFilter("rejected")}
                               name="status"
                               label="rejected"
                             />
@@ -205,7 +209,8 @@ const ReservationList = ({ projects }) => {
                     </div>
                   ) : (
                     <div>
-                      {reservationList.length > 0 ? (
+                      {reservationList.length > 0 &&
+                      filteredResults.length === 0 ? (
                         <ul className="pl-0 w-100">
                           {reservationList.map((reservation, index) => {
                             return (
@@ -318,8 +323,123 @@ const ReservationList = ({ projects }) => {
                             );
                           })}
                         </ul>
+                      ) : reservationList.length > 0 &&
+                        filteredResults.length > 0 ? (
+                        <ul className="pl-0 w-100">
+                          {filteredResults.map((filteredResult, index) => {
+                            return (
+                              <li
+                                onClick={() => {
+                                  setUser(filteredResult);
+                                  setShowReservationDetails(true);
+                                }}
+                                className="w-100 py-3 participant-list"
+                                key={index}
+                              >
+                                <div className="d-flex  bd-highlight">
+                                  {/* <div className="d-flex  justify-content-between">
+                    </div> */}
+                                  <span className="flex-grow-1 bd-highlight justify-content-center d-flex">
+                                    {filteredResult.userName}
+                                  </span>
+                                  <span className="flex-grow-1 bd-highlight">
+                                    {filteredResult.email}
+                                  </span>
+                                  <span className=" flex-grow-1 bd-highlight">
+                                    {format(
+                                      new Date(filteredResult.date),
+                                      "EEE dd MMM"
+                                    )}
+                                  </span>
+                                  <span className=" flex-grow-1 bd-highlight">
+                                    {format(
+                                      new Date(filteredResult.date).getTime(),
+                                      "HH:mm"
+                                    )}
+                                  </span>
+                                  {filteredResult.hours ? (
+                                    <span className=" flex-grow-1 bd-highlight">
+                                      {filteredResult.hours}
+                                    </span>
+                                  ) : (
+                                    <span className=" flex-grow-1 bd-highlight">
+                                      <small>N/A</small>
+                                    </span>
+                                  )}
+                                  <span className="flex-grow-1 bd-highlight">
+                                    {filteredResult.station_No}
+                                  </span>
+                                  {filteredResult.status ? (
+                                    <span className="flex-grow-1 bd-highlight">
+                                      <small
+                                        className={`${
+                                          filteredResult.status === "rejected"
+                                            ? "text-danger"
+                                            : filteredResult.status ===
+                                              "completed"
+                                            ? "text-success"
+                                            : ""
+                                        }`}
+                                      >
+                                        {filteredResult.status}
+                                      </small>
+                                    </span>
+                                  ) : (
+                                    <span className="flex-grow-1 bd-highlight">
+                                      <small>pending</small>
+                                    </span>
+                                  )}
+                                  <span className="flex-grow-1 bd-highlight">
+                                    {filteredResult.number}
+                                  </span>
+                                  {/* <span className="flex-grow-1 bd-highlight">
+                                    Select
+                                  </span> */}
+                                  <span className=" d-flex align-items-center justify-content-center flex-grow-1 bd-highlight">
+                                    <input
+                                      onClick={(e) => {
+                                        e.stopPropagation();
+                                        if (
+                                          selectedReservations.includes(
+                                            filteredResult._id
+                                          )
+                                        ) {
+                                          const filteredSelectedReservations =
+                                            selectedReservations.filter(
+                                              (id) => id !== filteredResult._id
+                                            );
+                                          setSelectedReservations(
+                                            filteredSelectedReservations
+                                          );
+                                        } else {
+                                          setSelectedReservations([
+                                            ...selectedReservations,
+                                            filteredResult._id,
+                                          ]);
+                                        }
+                                      }}
+                                      className="mr-1  px-2"
+                                      type="checkbox"
+                                    />
+                                    <Link
+                                      onClick={async (e) => {
+                                        e.stopPropagation();
+                                        await dispatch(
+                                          deleteReservation(filteredResult._id)
+                                        );
+                                        dispatch(getReservations());
+                                      }}
+                                    >
+                                      <Icon.Trash3Fill size={13} color="red" />
+                                    </Link>
+                                  </span>
+                                </div>
+                              </li>
+                            );
+                          })}
+                        </ul>
                       ) : (
-                        <div>
+                        <div className="my-5">
                           <h6>No reservations available</h6>
                         </div>
                       )}

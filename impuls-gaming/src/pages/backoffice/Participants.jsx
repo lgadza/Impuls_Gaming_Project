@@ -21,7 +21,7 @@ import {
 } from "../../redux/actions/index.js";
 import { Spinner } from "react-bootstrap-v5";
 import DeleteConfirm from "../../components/DeleteConfirm";
-
+import Spinners from "../../components/Spinner";
 const Participants = () => {
   const params = useParams();
   const dispatch = useDispatch();
@@ -88,6 +88,13 @@ const Participants = () => {
     dispatch(getTournaments());
     setSelectedParticipant([]);
   };
+
+  const searchResults = users.filter(
+    (user) =>
+      user.name.toUpperCase().includes(searchName.toUpperCase()) &&
+      user.email.toUpperCase().includes(searchEmail.toUpperCase())
+  );
+
   return (
     <Container fluid className="main-container2 textColor">
       <Row>
@@ -318,7 +325,7 @@ const Participants = () => {
                   </div>
 
                   <div>
-                    {users.length > 0 && (
+                    {users.length > 0 && !search && (
                       <ul className="pl-0 w-100">
                         {users.map((participant, index) => (
                           <li
@@ -441,6 +448,129 @@ const Participants = () => {
                       </ul>
                     )}
                   </div>
+                  {search && searchResults.length === 0 ? (
+                    <Spinners />
+                  ) : (
+                    <ul className="pl-0 w-100">
+                      {searchResults.map((result, index) => (
+                        <li
+                          className="w-100 participant-list"
+                          key={index}
+                          id={result._id}
+                        >
+                          <div className="d-flex justify-content-between px-2 py-3 bd-highligh">
+                            {result.checkedIn ? (
+                              <span className=" d-flex align-items-center justify-content-center flex-grow-1 bd-highlight">
+                                <Icon.CheckCircleFill
+                                  size={13}
+                                  color="green"
+                                  className="mx-0 px-0"
+                                />
+                                <span className="text-small text-muted pl-1">
+                                  Checked-in
+                                </span>
+                              </span>
+                            ) : (
+                              <span className=" d-flex align-items-center justify-content-center flex-grow-1 bd-highlight">
+                                <Icon.XCircleFill size={13} color="gray" />
+                                <span className="text-small text-muted">
+                                  Not checked in
+                                </span>
+                              </span>
+                            )}
+
+                            {isLoadingTournament && clicked === true && (
+                              <Spinner animation="grow" size="sm" />
+                            )}
+
+                            <span className="flex-grow-1 bd-highlight text-nowrap">
+                              {result.name} {result.surname}
+                            </span>
+
+                            <div className="flex-grow-1 bd-highlight">
+                              <span className="text-nowrap">
+                                {result.email}{" "}
+                              </span>
+                            </div>
+                            <div className="flex-grow-1 bd-highlight">
+                              <Link
+                                onClick={() => {
+                                  setClicked(true);
+                                }}
+                              >
+                                {result.checkedIn ? (
+                                  <Icon.ToggleOn
+                                    color="green"
+                                    size={20}
+                                    onClick={() =>
+                                      dispatch(
+                                        editOneTournamentParticipant(
+                                          tournament._id,
+                                          result._id,
+                                          { checkedIn: false }
+                                        )
+                                      )
+                                    }
+                                  />
+                                ) : (
+                                  <Icon.ToggleOff
+                                    size={20}
+                                    color="gray"
+                                    onClick={() =>
+                                      dispatch(
+                                        editOneTournamentParticipant(
+                                          tournament._id,
+                                          result._id,
+                                          { checkedIn: true }
+                                        )
+                                      )
+                                    }
+                                  />
+                                )}
+                              </Link>
+                            </div>
+
+                            <div className=" d-flex align-items-center justify-content-center flex-grow-1 bd-highlight">
+                              <input
+                                onClick={(e) => {
+                                  if (
+                                    selectedParticipant.includes(result._id)
+                                  ) {
+                                    const filteredSelectedParticipant =
+                                      selectedParticipant.filter(
+                                        (id) => id !== result._id
+                                      );
+                                    setSelectedParticipant(
+                                      filteredSelectedParticipant
+                                    );
+                                  } else {
+                                    setSelectedParticipant([
+                                      ...selectedParticipant,
+                                      result._id,
+                                    ]);
+                                  }
+                                }}
+                                className="mr-1  px-2"
+                                type="checkbox"
+                              />
+                              <Link
+                                onClick={() => {
+                                  setDeleteParticipantName(
+                                    `${result.name} ${result.surname}`
+                                  );
+                                  setShowDelete(true);
+                                  setDeleteParticipantId(result._id);
+                                }}
+                              >
+                                <Icon.Trash3Fill size={13} color="red" />
+                              </Link>
+                            </div>
+                          </div>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+
                   {users.length === 0 && (
                     <>
                       <hr />

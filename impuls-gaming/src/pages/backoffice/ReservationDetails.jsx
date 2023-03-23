@@ -107,42 +107,42 @@ const ReservationDetails = ({ visible, onhide, user }) => {
                       </Row>
                     )}
                     <Row className="mt-3">
-                      <Col className="d-flex">
+                      <Col className="d-flex align-items-center">
                         <Icon.Stopwatch
                           className="py-0 my-0 pl-0 ml-0"
                           size={15}
                         />
-                        <span className="d-flex">Date:</span>
+                        <small className="d-flex">Date:</small>
                       </Col>
                       <Col className="d-flex  justify-content-end">
-                        <span>
+                        <small>
                           {" "}
                           {format(new Date(user.date), "EEE dd MMM")}
-                        </span>
-                        <span className="ml-1">
+                        </small>
+                        <small className="ml-1">
                           at {format(new Date(user.date).getTime(), "HH:mm")}
-                        </span>
+                        </small>
                       </Col>
                     </Row>
                     <hr />
                     <Row>
-                      <Col className="d-flex ">
+                      <Col className="d-flex align-items-center ">
                         <Icon.People
                           className="py-0 my-0 pl-0 ml-0"
                           size={15}
                         />
-                        <span className="d-flex">How many people?</span>
+                        <small className="d-flex">How many people?</small>
                       </Col>
                       <Col className="d-flex  justify-content-end">
-                        <span>{user.number} people </span>
+                        <small>{user.number} people </small>
                       </Col>
                     </Row>
                     <hr />
 
                     <Row>
-                      <Col className="d-flex ">
+                      <Col className="d-flex align-items-center">
                         <Icon.Tv className="py-0 my-0 pl-0 ml-0" size={15} />
-                        <span className="d-flex">Number Station </span>
+                        <small className="d-flex">Number Station </small>
                       </Col>
                       <Col className="d-flex  justify-content-end">
                         <h6 className="h5-station mr-4 mb-0 d-flex justify-content-center align-items-center ">
@@ -173,12 +173,12 @@ const ReservationDetails = ({ visible, onhide, user }) => {
                     </Row>
                     <hr />
                     <Row>
-                      <Col className="d-flex ">
+                      <Col className="d-flex align-items-center ">
                         <Icon.HourglassSplit
                           className="py-0 my-0 pl-0 ml-0"
                           size={15}
                         />
-                        <span className="d-flex">How many hours? </span>
+                        <small className="d-flex">How many hours? </small>
                       </Col>
                       <Col className="d-flex  justify-content-end">
                         {user.hours ? (
@@ -211,7 +211,7 @@ const ReservationDetails = ({ visible, onhide, user }) => {
                     </Row>
                     <hr />
                     <Row>
-                      <Col className="d-flex ">
+                      <Col className="d-flex align-items-center">
                         {user.status === "completed" ? (
                           <Icon.CheckAll
                             className="py-0 text-success my-0 pl-0 ml-0"
@@ -228,7 +228,7 @@ const ReservationDetails = ({ visible, onhide, user }) => {
                             size={20}
                           />
                         )}
-                        <span className="d-flex">Status </span>
+                        <small className="d-flex">Status </small>
                       </Col>
                       <Col className="d-flex  justify-content-end">
                         {user.status ? (
@@ -267,7 +267,7 @@ const ReservationDetails = ({ visible, onhide, user }) => {
                     <Row>
                       <Col>
                         <div className="mb-2">
-                          <span>Notes:</span>
+                          <small>Notes:</small>
                         </div>
                         {/* <Card>
                           <Card.Header className="px-1">

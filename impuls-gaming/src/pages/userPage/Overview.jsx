@@ -45,7 +45,7 @@ const Overview = ({ socket, tournamentId }) => {
     setUpdate(true);
     socket.emit("sendNotification", { reportData, type });
   };
-  console.log(receiverName);
+
   return (
     <Container fluid className=" textColor px-0 fixture-container">
       <Row>

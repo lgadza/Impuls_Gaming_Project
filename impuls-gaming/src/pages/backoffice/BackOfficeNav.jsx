@@ -20,7 +20,7 @@ const BackOfficeNav = ({ data, page, user }) => {
   // const handleClick = (index) => {
   //   setSelectedElement(index);
   // };
-  console.log(selectedElement, "SELESCT ELEM");
+
   return (
     <Col className=" my-projects giftcard-preview-nav d-flex flex-column">
       <img className=" mt-4 logo-img" src={logo} alt="" />

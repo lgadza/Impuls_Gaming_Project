@@ -899,6 +899,7 @@ button-star {
   height: 2.5rem;
   border-radius: 50%;
 }
+
 .user-profiles {
   max-height: 64vh;
   overflow-y: scroll;
