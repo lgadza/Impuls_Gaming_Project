@@ -9,37 +9,47 @@
   --main-bg: rgb(17, 27, 33);
   --bg-1: rgb(32, 44, 51);
   --bg-2: rgb(42, 57, 66);
+
   --textColor: rgb(233, 237, 227);
   --blackAndWhite: black;
   --bg-gradient: rgb(49, 76, 87);
   --card-bg: rgb(42, 57, 66, 0.7);
   --card-body-bg: rgb(42, 57, 66, 0.96);
-  /* --card-header-bg: */
+  --card-header-bg: rgb(29, 39, 46);
 }
 [data-theme="light"] {
-  --main-bg: rgb(243, 242, 239);
-  --bg-1: rgb(146, 145, 143);
-  --bg-2: rgb(229, 227, 230);
+  /* --main-bg: rgb(243, 242, 239); */
+  --main-bg: rgb(255, 255, 255);
+  /* --bg-1: rgb(146, 145, 143); */
+  --bg-1: rgb(220, 220, 220);
+  --bg-2: rgb(255, 255, 255);
+  /* --bg-2: rgb(229, 227, 230); */
   --textColor: black;
   --blackAndWhite: rgb(230, 210, 203);
   --bg-gradient: rgb(175, 162, 162);
   --card-bg: white;
   --card-body-bg: white;
+  --card-header-bg: rgb(245, 245, 245);
 }
-body#body {
+.body#body {
   margin: 0;
   padding: 0;
   position: relative;
-  background-color: var(--bg-1);
-  color: var(--textColor);
+
   font-size: 0.8rem;
-  background: radial-gradient(
+  /* background: radial-gradient(
     circle,
     lemonchiffon,
     var(--bg-gradient),
     var(--bg-1) 25%
-  );
+  ); */
   height: 100%;
+}
+.App {
+  background-color: var(--bg-1);
+  color: var(--textColor);
+  z-index: -2;
+  font-size: 0.8rem;
 }
 body#body:after {
   content: "";
@@ -79,7 +89,7 @@ body#body:after {
 }
 
 .primary-btn .content {
-  color: white;
+  color: var(--textColor);
   padding: 0;
   margin: 0;
   pointer-events: none;
@@ -102,7 +112,7 @@ body#body:after {
   transform: translate(-50%, -50%);
   border: 0.1rem solid;
   z-index: -2 !important;
-  /* background-color: white; */
+  /* background-color: var(--textColor); */
 }
 
 .primary-btn .particles .particle.bigCircle {
@@ -273,7 +283,7 @@ body#body:after {
 .join-member {
   background-color: red;
   border-radius: 20px;
-  color: white;
+  color: var(--textColor);
 }
 .flex-grow-1.bd-highlight {
   width: 5rem;
@@ -284,7 +294,7 @@ body#body:after {
 }
 .jumbotron {
   position: relative;
-  z-index: -1;
+  z-index: 0;
   width: 100%;
   height: 100vh;
   overflow: hidden;
@@ -368,7 +378,7 @@ body#body:after {
   left: 0;
   right: 0;
   background-color: rgba(0, 0, 0, 0.4);
-  color: white;
+  color: var(--textColor);
   width: 100%;
   height: 100%;
 }
@@ -382,7 +392,7 @@ body#body:after {
   z-index: 3 !important;
 }
 .into-content .h2-join-call {
-  color: white;
+  color: var(--textColor);
   z-index: 3;
 }
 h1 {
@@ -490,7 +500,7 @@ input::-webkit-inner-spin-button {
   border-radius: 2px;
   border: solid red;
   background-color: red;
-  color: white;
+  color: var(--textColor);
   font-weight: bold;
 }
 .datepicker {
@@ -511,7 +521,7 @@ input::-webkit-inner-spin-button {
 .login-content {
   background-color: var(--bg-2);
 
-  color: white;
+  color: var(--textColor);
 }
 .sign-up-btn {
   font-weight: bold;
@@ -570,7 +580,7 @@ svg {
 }
 
 .background {
-  /* background-color: white; */
+  /* background-color: var(--textColor); */
 }
 .profile-img {
   width: 8rem;
@@ -700,19 +710,19 @@ a:hover {
   display: inline-block;
   width: 2rem;
   background-color: red;
-  color: white;
+  color: var(--textColor);
 }
 .win_bar {
   display: inline-block;
   width: 2rem;
   background-color: green;
-  color: white;
+  color: var(--textColor);
 }
 .draw_bar {
   display: inline-block;
   width: 2rem;
   background-color: gray;
-  color: white;
+  color: var(--textColor);
 }
 .results-input::placeholder {
   color: white !important;
@@ -736,7 +746,7 @@ a:hover {
   display: none;
 }
 .featured-games {
-  border: 3px solid;
+  border: 3px solid transparent;
   border-radius: 5px;
 }
 .bg-secondary.text-white {
@@ -838,7 +848,7 @@ a:hover {
 }
 
 .textColor2 {
-  color: white;
+  color: var(--textColor);
 }
 .textColor3 {
   color: #0cc4f2;
@@ -992,11 +1002,11 @@ button-star {
   color: #0cc4f2 !important;
 }
 .dropdown-item {
-  color: white;
+  color: var(--textColor);
 }
 .dropdown-item:hover {
   background-color: var(--main-bg);
-  color: white;
+  color: var(--textColor);
 }
 .user-table .match_teams {
   width: 5rem;
@@ -1044,7 +1054,7 @@ button-star {
   box-shadow: 3px 5px 5px var(--main-bg);
   border-radius: 5px;
   background-color: var(--bg-2);
-  border: none;
+  border: 1.5px solid var(--blackAndWhite);
   overflow: hidden;
 }
 .react-datepicker-popper {
@@ -1055,8 +1065,8 @@ button-star {
   overflow: hidden;
 }
 .plus-project:hover {
-  /* border: 1px solidvar(--textColor); */
-  background-color: rgb(25, 35, 40);
+  background-color: var(--card-header-bg);
+  color: var(--textColor) !important;
 }
 .settings-card:hover.card::after,
 .settings-card:hover.card::before {
@@ -1092,7 +1102,7 @@ button-star {
 .primary-btn::before {
   content: "";
   position: absolute;
-  inset: -0.2rem;
+  inset: -0.05rem;
   background: conic-gradient(
     from var(--gradient-angle),
     rgb(18, 186, 227),
@@ -1288,7 +1298,7 @@ ul li {
 .card::before {
   content: "";
   position: absolute;
-  inset: -0.2rem;
+  inset: -0.11rem;
   background: conic-gradient(
     from var(--gradient-angle),
     rgb(18, 186, 227),
@@ -1313,9 +1323,8 @@ ul li {
   filter: blur(0.1rem);
 }
 .card.featured-games {
-  border: 2.5px solid rgb(129, 123, 16);
+  border: 2.5px solid var(--card-body-bg);
   border-radius: 5px;
-  /* overflow: hidden; */
 }
 .lobby-placement {
   /* height: 9rem; */
@@ -1325,12 +1334,16 @@ ul li {
 .card-body {
   background-color: var(--card-body-bg);
   z-index: 0;
+  /* border-radius: 5px; */
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  /* overflow: hidden; */
 }
 .card-header {
-  background-color: rgb(29, 39, 46);
+  background-color: var(--card-header-bg);
 }
 .card-footer {
-  /* background-color: rgb(29, 39, 46); */
+  /* background-color: var(--card-header-bg); */
 }
 .my-projects.giftcard-preview-nav {
   position: sticky;
@@ -1371,7 +1384,7 @@ input[type="checkbox"]:not(:checked) {
 }
 .carousel-indicators {
   margin-top: 3rem !important;
-  background-color: white;
+  background-color: var(--textColor);
   width: 100%;
   margin-left: auto;
   margin-right: auto;
@@ -1525,7 +1538,7 @@ tab[title] {
   border-left: 2px solid !important;
 }
 .border {
-  background-color: white;
+  background-color: var(--textColor);
 }
 .rounds-robing.nav.nav.nav-tabs {
   border: none;

@@ -5,13 +5,12 @@
   overflow-x: scroll;
   overflow-y: hidden;
   white-space: nowrap;
-  isolation: isolate;
 }
 
 .scroll-animations > .scrollsection > .item {
   display: inline-block;
   position: relative;
-  margin: 0 -30vh 0 3vh;
+  margin: 0 -15vh 0 3vh;
 }
 
 .scroll-animations > .scrollsection > .item::before {

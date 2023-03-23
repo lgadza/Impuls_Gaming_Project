@@ -31,14 +31,7 @@ const Organizer = ({ projects }) => {
   useEffect(() => {
     dispatch(getTournaments());
   }, []);
-  // useEffect(() => {
-  //   socket.emit("newUser", user.name);
-  // }, [socket, user.name]);
-  // const defaultDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-  // const [theme, setTheme] = useLocalStorage(
-  //   "theme",
-  //   defaultDark ? "dark" : "light"
-  // );
+  const themeColorCurrent = useSelector((state) => state.theme.theme);
   const themeColor = useSelector((state) => state.theme.theme);
   const [theme, setTheme] = useState("light");
   const themeSwitcher = async () => {
@@ -48,11 +41,18 @@ const Organizer = ({ projects }) => {
   };
   return (
     <>
-      <div data-theme={themeColor}>
+      <div data-theme={themeColor} className="mb-4">
         <div className="d-flex justify-content-end mt-3">
-          <span className="theme-switcher p-1">
-            <Icon.MoonFill onClick={themeSwitcher} size={20} color="black" />
-            <Icon.BrightnessHighFill onClick={themeSwitcher} size={20} />
+          <span className="theme-switcher px-4 p-1">
+            {themeColorCurrent === "light" ? (
+              <Icon.MoonFill onClick={themeSwitcher} size={20} color="black" />
+            ) : (
+              <Icon.BrightnessHighFill
+                onClick={themeSwitcher}
+                color="white"
+                size={20}
+              />
+            )}
           </span>
         </div>
         <div className="d-flex mt-3 justify-content-between align-items-center">
@@ -78,7 +78,7 @@ const Organizer = ({ projects }) => {
             </Button>
           </div>
         </Row>
-        <Row className="-d-flex  w-100 ml-auto organizer">
+        <Row className="-d-flex w-100 ml-auto organizer">
           <Col
             onClick={handleShow}
             lg={6}
