@@ -33,25 +33,36 @@ const Organizer = ({ projects }) => {
   }, []);
   const themeColorCurrent = useSelector((state) => state.theme.theme);
   const themeColor = useSelector((state) => state.theme.theme);
-  const [theme, setTheme] = useState("light");
-  const themeSwitcher = async () => {
-    const newTheme = (await theme) === "light" ? "dark" : "light";
-    await setTheme(newTheme);
+  const [theme, setTheme] = useState("");
+
+  useEffect(() => {
     dispatch(switcher(theme));
-  };
+  }, [theme]);
   return (
     <>
       <div data-theme={themeColor} className="mb-4">
         <div className="d-flex justify-content-end mt-3">
           <span className="theme-switcher px-4 p-1">
             {themeColorCurrent === "light" ? (
-              <Icon.MoonFill onClick={themeSwitcher} size={20} color="black" />
+              <Link>
+                <Icon.MoonFill
+                  onClick={() => {
+                    setTheme("dark");
+                  }}
+                  size={20}
+                  color="black"
+                />
+              </Link>
             ) : (
-              <Icon.BrightnessHighFill
-                onClick={themeSwitcher}
-                color="white"
-                size={20}
-              />
+              <Link>
+                <Icon.BrightnessHighFill
+                  onClick={() => {
+                    setTheme("light");
+                  }}
+                  color="white"
+                  size={20}
+                />
+              </Link>
             )}
           </span>
         </div>

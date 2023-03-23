@@ -44,9 +44,6 @@ const HomeUpdates = () => {
             </Col>
           ))}
       </Row>
-      <h2 className="my-5 d-flex featured-league">Gallery</h2>
-
-      <HorizontalImageScroll />
 
       <h2 className="my-5 d-flex featured-league">What's new?</h2>
 
@@ -68,6 +65,9 @@ const HomeUpdates = () => {
           </Card>
         </Col>
       </Row>
+      <h2 className="my-5 d-flex featured-league">Gallery</h2>
+
+      <HorizontalImageScroll />
     </Container>
   );
 };
