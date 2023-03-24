@@ -244,7 +244,7 @@ const BackOffice = () => {
               <Spinner />
             </div>
           )}
-          {isError && (
+          {/* {isError && (
             <Alert variant="danger" className="mt-5">
               <Alert.Heading>!You got an error!</Alert.Heading>
               <p>
@@ -252,7 +252,7 @@ const BackOffice = () => {
                 apologies for the inconvenience caused
               </p>
             </Alert>
-          )}
+          )} */}
           {projects.totalTournaments &&
             !organizerAccountClicked &&
             !reservationsClicked &&
