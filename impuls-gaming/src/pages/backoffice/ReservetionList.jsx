@@ -231,12 +231,12 @@ const ReservationList = ({ projects }) => {
                                   <span className="flex-grow-1 bd-highlight">
                                     {reservation.email}
                                   </span>
-                                  <span className=" flex-grow-1 bd-highlight">
+                                  <small className=" flex-grow-1 bd-highlight">
                                     {format(
                                       new Date(reservation.date),
                                       "EEE dd MMM"
                                     )}
-                                  </span>
+                                  </small>
                                   <span className=" flex-grow-1 bd-highlight">
                                     {format(
                                       new Date(reservation.date).getTime(),

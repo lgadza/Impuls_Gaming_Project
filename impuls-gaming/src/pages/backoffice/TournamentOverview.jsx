@@ -35,7 +35,7 @@ const TournamentOverview = () => {
   const user = useSelector((state) => state.me.me);
   useEffect(() => {
     dispatch(getUsers(`${URL}/users?limit=10`));
-    dispatch(getTournaments());
+    // dispatch(getTournaments());
   }, []);
   // const setup = 50;
   let setup = 0;
@@ -61,7 +61,7 @@ const TournamentOverview = () => {
     <Container fluid className="main-container textColor">
       {tournament.name === params.tournamentId && (
         <Row>
-          <Col lg={2} className="px-0">
+          <Col lg={2} className="px-0 sizeable">
             <BackOfficeNav data={tournament} user={user} page={"overview"} />
           </Col>
           <Col lg={10} className="my-5 px-5">

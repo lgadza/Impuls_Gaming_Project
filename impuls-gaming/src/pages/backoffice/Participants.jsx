@@ -56,11 +56,7 @@ const Participants = () => {
   };
   const [clicked, setClicked] = useState(false);
   const users = tournament.tournamentParticipants;
-  useEffect(() => {
-    // const URL = `${process.env.REACT_APP_BE_PROD_URL}/users?limit=10`;
-    // dispatch(getUsers(URL));
-    dispatch(getTournaments());
-  }, []);
+
   const isLoadingTournament = useSelector(
     (state) => state.tournaments.isLoading
   );

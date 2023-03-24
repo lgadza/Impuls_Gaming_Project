@@ -1065,6 +1065,10 @@ button-star {
   height: 100vh !important;
   overflow: hidden;
 }
+/* .sizeable {
+  overflow: auto;
+  resize: horizontal;
+} */
 .plus-project:hover {
   background-color: var(--card-header-bg);
   color: var(--textColor) !important;

@@ -31,6 +31,7 @@ const Placements = () => {
   const [participants, updateParticipants] = useState(
     tournament.tournamentParticipants
   );
+  // const participants = tournament.tournamentParticipants;
   const [filledGroups, setFilledGroups] = useState([]);
 
   const generateContainers = (n) => {
@@ -46,11 +47,7 @@ const Placements = () => {
     return containers;
   };
 
-  const playersList = tournament.tournamentParticipants;
-
   let containerList = generateContainers(filledGroups);
-
-  const [lobby, setLobby] = useState(playersList);
 
   const brackets = tournament.structures.find(
     (group) => group.general.size > 16
@@ -76,11 +73,11 @@ const Placements = () => {
   };
   const handleShuffle = async () => {
     if (tournament.structures.length > 0) {
-      fillGroup(brackets.general.divisions, tournament.tournamentParticipants);
+      fillGroup(brackets.general.divisions, participants);
     }
   };
   useEffect(() => {
-    handleShuffle();
+    // handleShuffle();
   }, []);
 
   const onDragEnd = (result, columns, setColumns) => {
@@ -91,20 +88,16 @@ const Placements = () => {
       const sourceColumn = columns[source.droppableId];
       const destColumn = columns[destination.droppableId];
       const sourceParticipants = [...sourceColumn.participants];
-      const destParticipants = [...destColumn.participants];
-
-      // const [removed] = sourceParticipants.slice(
-      //   source.index,
-      //   source.index + 1
-      // );
-      // destParticipants = [
-      //   ...destParticipants.slice(0, destination.index),
-      //   removed,
-      //   ...destParticipants.slice(destination.index),
-      // ];
+      let destParticipants = [...destColumn.participants];
 
       const [removed] = sourceParticipants.splice(source.index, 1);
       destParticipants.splice(destination.index, 0, removed);
+      // const [removed] = sourceParticipants.find(
+      //   (item, index) => index === source.index
+      // );
+      // const [slicedLastHalf] = destParticipants.slice(destination.index);
+      // const [slicedFirstHalf] = destParticipants.slice(0, destination.index);
+      // destParticipants = slicedFirstHalf.concat(removed).concat(slicedLastHalf);
       setColumns({
         ...columns,
         [source.droppableId]: {
@@ -118,18 +111,18 @@ const Placements = () => {
       });
     } else {
       const column = columns[source.droppableId];
-      const copiedParticipants = [...column.participants];
-      // const [removed] = copiedParticipants.slice(
-      //   source.index,
-      //   source.index + 1
-      // );
-      // copiedParticipants = [
-      //   ...copiedParticipants.slice(0, destination.index),
-      //   removed,
-      //   ...copiedParticipants.slice(destination.index),
-      // ];
+      let copiedParticipants = [...column.participants];
+
       const [removed] = copiedParticipants.splice(source.index, 1);
       copiedParticipants.splice(destination.index, 0, removed);
+      // const [removed] = copiedParticipants.find(
+      //   (item, index) => index === source.index
+      // );
+      // const [slicedLastHalf] = copiedParticipants.slice(destination.index);
+      // const [slicedFirstHalf] = copiedParticipants.slice(0, destination.index);
+      // copiedParticipants = slicedFirstHalf
+      //   .concat(removed)
+      //   .concat(slicedLastHalf);
 
       setColumns({
         ...columns,
@@ -140,31 +133,9 @@ const Placements = () => {
       });
     }
   };
-  // ALTANATIVE
-  // const SortableList=({ items, onSort, children })=> {
-  // const handleDragEnd = (result) => {
-  //   if (!result.destination) {
-  //     return;
-  //   }
-
-  //   const [startIndex, endIndex] = [result.source.index, result.destination.index];
-  //   onSort({ startIndex, endIndex });
-  // };
-
-  // const renderListItem = (item) => (draggableProvided) => {
-  //   const restProps = {
-  //     innerRef: draggableProvided.innerRef,
-  //     ...draggableProvided.draggableProps,
-  //     ...draggableProvided.dragHandleProps,
-  //   };
-
-  //   return children(item, restProps);
-  // };
-  // ALTANATIVE
 
   const [columns, setColumns] = useState(containerList);
-  console.log(Object.entries(columns), "COLUMNS");
-  console.log(containerList, "CONTAINER LIST");
+
   const handleUpdate = () => {
     const groups = Object.entries(columns);
     dispatch(editTournament({ brackets: groups }, tournament._id));
@@ -182,6 +153,7 @@ const Placements = () => {
 
   const handleClick = () => {
     setIsAnimated(true);
+    handleUpdate();
   };
   return (
     <Container fluid className="main-container textColor">
@@ -230,7 +202,8 @@ const Placements = () => {
                         <Button type="submit" className="primary-btn textColor">
                           {!autoFill ? (
                             <small
-                              onClick={() => {
+                              onClick={async () => {
+                                // handleShuffle();
                                 setAutoFill(true);
                                 if (containerList) {
                                   setColumns(containerList);
@@ -261,8 +234,8 @@ const Placements = () => {
                   </div>
 
                   <ul>
-                    {lobby &&
-                      lobby.map((participant, index) => {
+                    {participants &&
+                      participants.map((participant, index) => {
                         participant = participants[index];
                         if (participant && !autoFill) {
                           return (
@@ -306,7 +279,6 @@ const Placements = () => {
                     <Button
                       type="submit"
                       onClick={() => {
-                        handleUpdate();
                         handleClick();
                       }}
                       className={`primary-btn textColor d-flex align-items-center small-text justify-content-center ${

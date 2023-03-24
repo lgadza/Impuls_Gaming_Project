@@ -33,7 +33,7 @@ const Organizer = ({ projects }) => {
   }, []);
   const themeColorCurrent = useSelector((state) => state.theme.theme);
   const themeColor = useSelector((state) => state.theme.theme);
-  const [theme, setTheme] = useState("");
+  const [theme, setTheme] = useState(themeColor);
 
   useEffect(() => {
     dispatch(switcher(theme));
@@ -47,7 +47,7 @@ const Organizer = ({ projects }) => {
               <Link>
                 <Icon.MoonFill
                   onClick={() => {
-                    setTheme("dark");
+                    setTheme("");
                   }}
                   size={20}
                   color="black"
