@@ -1,7 +1,7 @@
 .scroll-animations > .scrollsection {
   /* padding: 10vh 10vh 10vh 10vmax; */
-  min-width: 550vh;
-  height: 60vh;
+  min-width: 500vh;
+  height: 50vh;
   overflow-x: scroll;
   overflow-y: hidden;
   white-space: nowrap;
@@ -10,7 +10,7 @@
 .scroll-animations > .scrollsection > .item {
   display: inline-block;
   position: relative;
-  margin: 0 -15vh 0 3vh;
+  margin: 0 -20vh 0 3vh;
 }
 
 .scroll-animations > .scrollsection > .item::before {
@@ -22,7 +22,7 @@
 
 .scroll-animations > .scrollsection > .item.-big {
   height: 45vh;
-  width: 60vh;
+  width: 50vh;
 }
 
 .scroll-animations > .scrollsection > .item.-big.-horizontal {
@@ -31,14 +31,14 @@
 }
 
 .scroll-animations > .scrollsection > .item.-normal {
-  height: 60vh;
+  height: 50vh;
   width: 45vh;
   z-index: 1;
 }
 
 .scroll-animations > .scrollsection > .item.-normal.-horizontal {
   height: 35vh;
-  width: 60vh;
+  width: 50vh;
 }
 
 .scroll-animations > .scrollsection > .item.-normal:nth-of-type(3n) {
@@ -128,11 +128,12 @@
   object-position: center;
   object-fit: contain;
   inset: 0;
+  margin: auto;
   filter: grayscale(0);
   opacity: 1;
   cursor: pointer;
-  transform: translateX(0) translateY(0) scale(2);
-  z-index: 5;
+  transform: translateX(0) translateY(0) scale(1.5);
+  z-index: 50 !important;
   isolation: isolate;
 }
 @media screen and (max-width: 930px) {
