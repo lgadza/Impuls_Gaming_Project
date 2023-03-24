@@ -15,7 +15,7 @@ import { useState, useEffect } from "react";
 import BackOfficeNav from "./BackOfficeNav";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { editTournament } from "../../redux/actions";
+import { editTournament, editTournamentStructure } from "../../redux/actions";
 
 const Placements = () => {
   const params = useParams();
@@ -78,6 +78,7 @@ const Placements = () => {
   };
   useEffect(() => {
     // handleShuffle();
+    // handleUpdate();
   }, []);
 
   const onDragEnd = (result, columns, setColumns) => {
@@ -138,7 +139,11 @@ const Placements = () => {
 
   const handleUpdate = () => {
     const groups = Object.entries(columns);
-    dispatch(editTournament({ brackets: groups }, tournament._id));
+    dispatch(
+      editTournamentStructure({ brackets: groups }, tournament._id),
+      tournament.structures[0]._id
+    );
+    console.log(groups, "GROUPS DISPATCHED");
   };
   const [isPressed, setIsPressed] = useState(false);
   const [isAnimated, setIsAnimated] = useState(false);
@@ -174,7 +179,7 @@ const Placements = () => {
                   <div className="d-flex ">
                     <h5 className="d-flex my-1">Lobby</h5>
                     <div className="d-flex ml-auto">
-                      <Link className="d-flex justify-content-end my-1 mr-2 link-none-deco">
+                      {/* <Link className="d-flex justify-content-end my-1 mr-2 link-none-deco">
                         <Button
                           type="submit"
                           // onClick={handleUpdate}
@@ -183,12 +188,13 @@ const Placements = () => {
                           <Icon.Plus className="ml-0 pl-0" size={20} />
                           <span className="text-small"> Add</span>
                         </Button>
-                      </Link>
-                      <Link className="d-flex justify-content-end my-1 link-none-deco mr-2">
+                      </Link> */}
+                      <Link className="d-flex justify-content-end my-1 link-none-deco mr-3">
                         <Button
                           type="submit"
-                          onClick={() => {
-                            handleShuffle();
+                          onClick={async () => {
+                            await handleShuffle();
+                            handleUpdate();
                             if (containerList) {
                               setColumns(containerList);
                             }
@@ -199,7 +205,11 @@ const Placements = () => {
                         </Button>
                       </Link>
                       <Link className="d-flex justify-content-end my-1 link-none-deco">
-                        <Button type="submit" className="primary-btn textColor">
+                        <Button
+                          type="submit"
+                          disabled={filledGroups.length === 0}
+                          className="primary-btn textColor"
+                        >
                           {!autoFill ? (
                             <small
                               onClick={async () => {
