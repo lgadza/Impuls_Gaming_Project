@@ -15,7 +15,11 @@ import { useState, useEffect } from "react";
 import BackOfficeNav from "./BackOfficeNav";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { editTournament, editTournamentStructure } from "../../redux/actions";
+import {
+  editTournament,
+  editTournamentStructure,
+  getTournaments,
+} from "../../redux/actions";
 
 const Placements = () => {
   const params = useParams();
@@ -47,7 +51,14 @@ const Placements = () => {
     return containers;
   };
 
-  let containerList = generateContainers(filledGroups);
+  let containerList;
+
+  console.log(Object.entries(tournament.structures[0].brackets[0]), "LIST");
+  if (tournament.structures[0].brackets[0]) {
+    containerList = tournament.structures[0].brackets[0];
+  } else {
+    containerList = generateContainers(filledGroups);
+  }
 
   const brackets = tournament.structures.find(
     (group) => group.general.size > 16
@@ -136,14 +147,19 @@ const Placements = () => {
   };
 
   const [columns, setColumns] = useState(containerList);
-
-  const handleUpdate = () => {
-    const groups = Object.entries(columns);
-    dispatch(
-      editTournamentStructure({ brackets: groups }, tournament._id),
-      tournament.structures[0]._id
+  const handleUpdate = async () => {
+    // const groups = Object.entries(columns);
+    const payLoad = {
+      brackets: columns,
+    };
+    await dispatch(
+      editTournamentStructure(
+        payLoad,
+        tournament._id,
+        tournament.structures[0]._id
+      )
     );
-    console.log(groups, "GROUPS DISPATCHED");
+    dispatch(getTournaments());
   };
   const [isPressed, setIsPressed] = useState(false);
   const [isAnimated, setIsAnimated] = useState(false);
@@ -247,7 +263,11 @@ const Placements = () => {
                     {participants &&
                       participants.map((participant, index) => {
                         participant = participants[index];
-                        if (participant && !autoFill) {
+                        if (
+                          participant &&
+                          !autoFill &&
+                          !tournament.structures[0].brackets[0]
+                        ) {
                           return (
                             <li className="pl-1 text-left">
                               <hr className="my-1 py-0" />
@@ -323,7 +343,106 @@ const Placements = () => {
                 <DragDropContext
                   onDragEnd={(result) => onDragEnd(result, columns, setColumns)}
                 >
-                  {tournament.structures.length > 0 && autoFill ? (
+                  {tournament.structures.length > 0 &&
+                  tournament.structures[0].brackets[0] ? (
+                    <>
+                      {Object.entries(columns).map(
+                        ([groupId, group], index) => {
+                          return (
+                            <Droppable droppableId={groupId} key={index}>
+                              {(provided, snapshot) => {
+                                return (
+                                  <Col md={6} className="mb-4">
+                                    <Card
+                                      className="border-hover textColor"
+                                      style={{ height: "12rem" }}
+                                    >
+                                      <Card.Header>
+                                        Group {index + 1}{" "}
+                                      </Card.Header>
+                                      <Card.Body
+                                        {...provided.droppableProps}
+                                        ref={provided.innerRef}
+                                        style={{
+                                          background: snapshot.isDraggingOver
+                                            ? "lightblue"
+                                            : "",
+                                        }}
+                                        className="d-flex flex-column  justify-content-center"
+                                      >
+                                        <ul className="px-0 mb-0">
+                                          {group.participants.map(
+                                            (participant, index) => {
+                                              return (
+                                                <Draggable
+                                                  key={participant._id}
+                                                  draggableId={participant._id}
+                                                  index={index}
+                                                >
+                                                  {(provided, snapshot) => {
+                                                    return (
+                                                      <li
+                                                        ref={provided.innerRef}
+                                                        {...provided.draggableProps}
+                                                        {...provided.dragHandleProps}
+                                                        className="pl-1 text-left"
+                                                        style={{
+                                                          userSelect: "none",
+
+                                                          backgroundColor:
+                                                            snapshot.isDragging
+                                                              ? "#263B4A"
+                                                              : "",
+
+                                                          ...provided
+                                                            .draggableProps
+                                                            .style,
+                                                        }}
+                                                      >
+                                                        <hr
+                                                          style={{
+                                                            display:
+                                                              snapshot.isDragging
+                                                                ? "none"
+                                                                : "",
+                                                          }}
+                                                          className="my-1 py-0"
+                                                        />
+
+                                                        <span>{index + 1}</span>
+
+                                                        <span
+                                                          className="ml-3 pt-1 text-center"
+                                                          style={{
+                                                            borderRadius:
+                                                              snapshot.isDragging
+                                                                ? "5px"
+                                                                : "",
+                                                          }}
+                                                        >
+                                                          {participant.name}{" "}
+                                                          {participant.surname}
+                                                        </span>
+                                                      </li>
+                                                    );
+                                                  }}
+                                                </Draggable>
+                                              );
+                                            }
+                                          )}
+                                          {provided.placeholder}
+                                        </ul>
+                                      </Card.Body>
+                                    </Card>
+                                  </Col>
+                                );
+                              }}
+                            </Droppable>
+                          );
+                        }
+                      )}
+                    </>
+                  ) : tournament.structures.length > 0 && autoFill ? (
                     <>
                       {Object.entries(columns).map(
                         ([groupId, group], index) => {

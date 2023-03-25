@@ -43,7 +43,12 @@ const GroupStructure = () => {
       fillGroup(groups.general.divisions, tournament.tournamentParticipants);
     }
   }, []);
+  let containerList;
 
+  if (tournament.structures[0].brackets[0]) {
+    containerList = tournament.structures[0].brackets[0];
+  }
+  const [columns, setColumns] = useState(containerList);
   return (
     <Row className="mt-5">
       <Col className="mb-5 ">
@@ -51,9 +56,11 @@ const GroupStructure = () => {
           <Tab eventKey="groups" title="Groups">
             <h5 className="d-flex my-3">Groups</h5>
             <Row>
-              {tournament.structures.length > 0 ? (
+              {tournament.structures.length > 0 &&
+              tournament.structures[0].brackets[0] ? (
                 <>
-                  {filledGroups.map((group, index) => {
+                  {/* {filledGroups.map((group, index) => { */}
+                  {Object.entries(columns).map((group, index) => {
                     return (
                       <Col lg={3} key={index}>
                         <Card className="mt-3 tournament-structure-card">
@@ -61,18 +68,19 @@ const GroupStructure = () => {
                             <strong>Group {index + 1}</strong>
                           </Card.Header>
                           <Card.Body style={{ minWidth: "15rem" }}>
-                            {tournament.tournamentParticipants.length ===
-                            groups.general.size
-                              ? group.map((participant, index) => {
-                                  return (
-                                    <span
-                                      key={index}
-                                      className="d-flex border-bottom py-1"
-                                    >
-                                      {participant.name} {participant.surname}
-                                    </span>
-                                  );
-                                })
+                            {tournament.structures[0].brackets[0]
+                              ? group[1].participants.map(
+                                  (participant, index) => {
+                                    return (
+                                      <span
+                                        key={index}
+                                        className="d-flex border-bottom py-1"
+                                      >
+                                        {participant.name} {participant.surname}
+                                      </span>
+                                    );
+                                  }
+                                )
                               : [...Array(4)].map((placeHolder, index) => {
                                   return (
                                     <span

@@ -35,7 +35,7 @@ const TournamentOverview = () => {
   const user = useSelector((state) => state.me.me);
   useEffect(() => {
     dispatch(getUsers(`${URL}/users?limit=10`));
-    // dispatch(getTournaments());
+    dispatch(getTournaments());
   }, []);
   // const setup = 50;
   let setup = 0;
