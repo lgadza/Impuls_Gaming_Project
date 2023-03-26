@@ -84,13 +84,13 @@ const AboutUsPage = () => {
           </div>
 
           <div class="team">
-            <h4>
+            <h4 className=" mb-3">
               {" "}
               Our Team
               <hr style={{ backgroundColor: "white" }} />
             </h4>
 
-            <Card class="card">
+            <Card class="card settings-card mt-3" style={{ width: "15rem" }}>
               <Card.Header>
                 <Avatar
                   src={
@@ -104,13 +104,13 @@ const AboutUsPage = () => {
                 <h6>Technical Lead</h6>
               </Card.Header>
               <Card.Body>
-                <p className="text-left">
+                <span className="text-left">
                   With a strong background in software engineering, Louis Gadza
                   has a deep understanding of the technical requirements of our
                   gaming systems. He is able to identify and troubleshoot issues
                   quickly, and they work closely with other members of the team
                   to implement new features and improvements.
-                </p>
+                </span>
               </Card.Body>
             </Card>
           </div>
