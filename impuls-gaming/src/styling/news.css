@@ -92,7 +92,11 @@
 .news-card .header::after {
   clear: both;
 }
-
+.news-image {
+  width: 100%;
+  height: 40vh;
+  object-fit: cover;
+}
 .news-card .header {
   color: #fff;
   padding: 1em;

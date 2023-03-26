@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const NewsCard = () => {
+const NewsCard = ({ handleReadMore }) => {
   return (
     <div className="card news settings-card">
       <div className="news-card card-news">
@@ -9,9 +9,9 @@ const NewsCard = () => {
             <div className="date">
               <span>12</span>
               <span className="px-1">Aug</span>
-              <span>2016</span>
+              <span>2023</span>
             </div>
-            <ul className="menu-content">
+            {/* <ul className="menu-content">
               <li>
                 <Link className="fa fa-bookmark-o"></Link>
               </li>
@@ -25,7 +25,7 @@ const NewsCard = () => {
                   <span>3</span>
                 </Link>
               </li>
-            </ul>
+            </ul> */}
           </div>
           <div className="data">
             <div className="content">
@@ -39,7 +39,9 @@ const NewsCard = () => {
                 The antsy bingers of Netflix will eagerly anticipate the digital
                 release of the Survive soundtrack, out today.
               </p>
-              <Link className="button">Read more</Link>
+              <Link className="button" onClick={handleReadMore}>
+                Read more
+              </Link>
             </div>
           </div>
         </div>

@@ -8,6 +8,7 @@ const NavigationBar = () => {
   const [isHidden, setIsHidden] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [active, setActive] = useState("home");
+  console.log(active, "AVTIVE");
   return (
     <>
       <Navbar
