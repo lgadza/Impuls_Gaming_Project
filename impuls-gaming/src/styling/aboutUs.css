@@ -1,6 +1,6 @@
-body {
+/* body {
   position: relative;
-}
+} */
 
 .header {
   width: 100%;
@@ -162,8 +162,5 @@ body {
 @media (max-width: 768px) {
   .team .card {
     width: 100%;
-  }
-  nav {
-    height: 80px;
   }
 }
