@@ -90,8 +90,8 @@ const AboutUsPage = () => {
               <hr style={{ backgroundColor: "white" }} />
             </h4>
 
-            <Card class="card settings-card mt-3" style={{ width: "15rem" }}>
-              <Card.Header>
+            <Card class="card settings-card" style={{ width: "15rem" }}>
+              <Card.Header className="card-header">
                 <Avatar
                   src={
                     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTo6P1b5otuJpQxDMh9qvcraV1gaWRukLMjA&usqp=CAU"

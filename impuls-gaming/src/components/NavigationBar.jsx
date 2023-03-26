@@ -131,11 +131,11 @@ const NavigationBar = () => {
                   <Link to="/fixtures" className=" textColor mb-4 pr-0">
                     Fixtures
                   </Link>
-                  <Link to="" className=" textColor mb-4 pr-0">
+                  <Link to="/news" className=" textColor mb-4 pr-0">
                     News
                   </Link>
                   <Link
-                    to="/news"
+                    to="/about"
                     onClick={() => setActive("about-us")}
                     className={`mr-4 link-btm-bar mb-4 ${
                       active === "about-us" ? "textColor" : "textColor3 "

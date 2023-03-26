@@ -99,9 +99,7 @@
   margin-bottom: 50px;
 }
 .team .card {
-  padding-top: 20px;
   position: relative;
-  min-width: 20%;
   height: auto;
   box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.5);
 }
