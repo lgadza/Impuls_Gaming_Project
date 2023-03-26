@@ -1,20 +1,29 @@
 import { useState } from "react";
 import { Col } from "react-bootstrap";
 import { Card, Container, Row } from "react-bootstrap-v5";
+import { useSelector } from "react-redux";
 import Avatar from "../../components/Avatar";
 import Footer from "../../components/Footer";
 import NavigationBar from "../../components/NavigationBar";
 import NewsCard from "../../components/NewsCard";
 import "../../styling/news.css";
+import * as Icon from "react-bootstrap-icons";
+
 const News = () => {
   const [readMore, setReadMore] = useState(false);
   const handleReadMore = () => {
     setReadMore(true);
   };
+  const allComments = useSelector(
+    (state) => state.reservationsComments.reservationsComments
+  );
   return (
     <div className="home  main-container">
       <NavigationBar />
-      <Container className="mt-5 tournament_page">
+      <Container className="mt-5 tournament_page news-page">
+        <span className="close-readMore">
+          <Icon.XLg size={20} />
+        </span>
         {!readMore && (
           <>
             <Row>
@@ -65,6 +74,34 @@ const News = () => {
                 Call of Duty and their favourite games. We look forward to
                 working with the CMA to resolve any outstanding concerns."
               </div>
+              <h4 className="text-left my-3">Comments</h4>
+              {allComments.length > 0 ? (
+                <div className="my-2">
+                  {allComments.map((comment, index) => {
+                    return (
+                      <div className="d-flex">
+                        <Avatar
+                          src={comment.user.avatar}
+                          className="img-circle img-responsive"
+                          width={20}
+                          height={20}
+                          alt={comment.user.name}
+                        />
+                        <span className="d-flex  ml-3 flex-column">
+                          <small className="text-left ">
+                            {comment.user.name} {comment.user.surname}
+                          </small>
+                          <span className="text-left mb-2 mt-1">
+                            {comment.comment}
+                          </span>
+                        </span>
+                      </div>
+                    );
+                  })}
+                </div>
+              ) : (
+                <div>No comments available</div>
+              )}
             </Col>
             <Col md={3}>
               <Card>
