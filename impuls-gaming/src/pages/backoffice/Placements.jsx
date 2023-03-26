@@ -50,11 +50,10 @@ const Placements = () => {
     }
     return containers;
   };
-
   let containerList;
 
-  if (tournament.structures[0].brackets[0]) {
-    containerList = tournament.structures[0].brackets[0];
+  if (tournament.structures[0].brackets) {
+    containerList = tournament.structures[0].brackets;
   } else {
     containerList = generateContainers(filledGroups);
   }
@@ -175,6 +174,9 @@ const Placements = () => {
     setIsAnimated(true);
     handleUpdate();
   };
+  console.log(tournament.structures[0].brackets, "TEST");
+  console.log(columns, "COLUMN");
+
   return (
     <Container fluid className="main-container textColor">
       <Row>
@@ -265,7 +267,7 @@ const Placements = () => {
                         if (
                           participant &&
                           !autoFill &&
-                          !tournament.structures[0].brackets[0]
+                          !tournament.structures[0].brackets
                         ) {
                           return (
                             <li className="pl-1 text-left">
@@ -343,7 +345,7 @@ const Placements = () => {
                   onDragEnd={(result) => onDragEnd(result, columns, setColumns)}
                 >
                   {tournament.structures.length > 0 &&
-                  tournament.structures[0].brackets[0] ? (
+                  tournament.structures[0].brackets ? (
                     <>
                       {Object.entries(columns).map(
                         ([groupId, group], index) => {

@@ -48,8 +48,8 @@ const GroupStructure = () => {
   let containerList;
 
   if (tournament.structures[0]) {
-    if (tournament.structures[0].brackets[0]) {
-      containerList = tournament.structures[0].brackets[0];
+    if (tournament.structures[0].brackets) {
+      containerList = tournament.structures[0].brackets;
       dispatch(getTournaments());
     }
   }
@@ -62,7 +62,7 @@ const GroupStructure = () => {
             <h5 className="d-flex my-3">Groups</h5>
             <Row>
               {tournament.structures.length > 0 &&
-              tournament.structures[0].brackets[0] ? (
+              tournament.structures[0].brackets ? (
                 <>
                   {/* {filledGroups.map((group, index) => { */}
                   {Object.entries(columns).map((group, index) => {
@@ -73,7 +73,7 @@ const GroupStructure = () => {
                             <strong>Group {index + 1}</strong>
                           </Card.Header>
                           <Card.Body style={{ minWidth: "15rem" }}>
-                            {tournament.structures[0].brackets[0]
+                            {tournament.structures[0].brackets
                               ? group[1].participants.map(
                                   (participant, index) => {
                                     return (

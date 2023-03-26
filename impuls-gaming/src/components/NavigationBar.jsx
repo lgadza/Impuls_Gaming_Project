@@ -62,7 +62,7 @@ const NavigationBar = () => {
                 Fixtures
               </Link>
               <Link
-                to=""
+                to="/news"
                 onClick={() => setActive("news")}
                 className={`mr-4 link-btm-bar ${
                   active === "news" ? "textColor" : "textColor3 "
@@ -134,7 +134,7 @@ const NavigationBar = () => {
                     News
                   </Link>
                   <Link
-                    to=""
+                    to="/news"
                     onClick={() => setActive("about-us")}
                     className={`mr-4 link-btm-bar mb-4 ${
                       active === "about-us" ? "textColor" : "textColor3 "
