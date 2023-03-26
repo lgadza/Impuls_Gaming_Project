@@ -26,46 +26,46 @@ const HomeUpdates = () => {
   };
 
   return (
-    <AnimatedPages>
-      <div className="home  main-container">
-        <NavigationBar />
+    // <AnimatedPages>
+    <div className="home  main-container">
+      <NavigationBar />
 
-        <Container className="textColor mt-5 tournament_page ">
-          <Row className="my-3">
-            <div className="px-3 d-flex justify-content-between w-100 align-items-center">
-              <h2>Tournaments</h2>
-              <Link onClick={handleTournamentTable}>
-                {tournamentTable ? (
-                  <span className="textColor3">Hide Tournament table</span>
-                ) : (
-                  <span className="textColor3">See Tournament table</span>
-                )}
-              </Link>
-            </div>
-          </Row>
-          <Row className="my-3">
-            <Col
-              md={12}
-              className={`px-0 my-3 table-animate ${
-                !tournamentTable ? "d-none" : ""
-              }`}
-            >
-              <Table />
+      <Container className="textColor mt-5 tournament_page ">
+        <Row className="my-3">
+          <div className="px-3 d-flex justify-content-between w-100 align-items-center">
+            <h2>Tournaments</h2>
+            <Link onClick={handleTournamentTable}>
+              {tournamentTable ? (
+                <span className="textColor3">Hide Tournament table</span>
+              ) : (
+                <span className="textColor3">See Tournament table</span>
+              )}
+            </Link>
+          </div>
+        </Row>
+        <Row className="my-3">
+          <Col
+            md={12}
+            className={`px-0 my-3 table-animate ${
+              !tournamentTable ? "d-none" : ""
+            }`}
+          >
+            <Table />
+          </Col>
+          {tournaments.tournaments.map((tournament) => (
+            <Col md={6} lg={4} className="my-3">
+              <IntersectionObserverComponent>
+                <div className="hidden">
+                  <TournamentCard tournament={tournament} />
+                </div>
+              </IntersectionObserverComponent>
             </Col>
-            {tournaments.tournaments.map((tournament) => (
-              <Col md={6} lg={4} className="my-3">
-                <IntersectionObserverComponent>
-                  <div className="hidden">
-                    <TournamentCard tournament={tournament} />
-                  </div>
-                </IntersectionObserverComponent>
-              </Col>
-            ))}
-          </Row>
-        </Container>
-        <Footer />
-      </div>
-    </AnimatedPages>
+          ))}
+        </Row>
+      </Container>
+      <Footer />
+    </div>
+    // </AnimatedPages>
   );
 };
 export default HomeUpdates;

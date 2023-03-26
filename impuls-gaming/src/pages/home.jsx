@@ -6,14 +6,14 @@ import NavigationBar from "../components/NavigationBar";
 
 const Home = () => {
   return (
-    <AnimatedPages>
-      <div className="home  main-container">
-        <NavigationBar />
-        <Jumbotron />
-        <HomeUpdates />
-        <Footer />
-      </div>
-    </AnimatedPages>
+    // <AnimatedPages>
+    <div className="home  main-container">
+      <NavigationBar />
+      <Jumbotron />
+      <HomeUpdates />
+      <Footer />
+    </div>
+    // </AnimatedPages>
   );
 };
 export default Home;

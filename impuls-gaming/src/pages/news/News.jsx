@@ -8,11 +8,16 @@ const News = () => {
   return (
     <div className="home  main-container">
       <NavigationBar />
-      <Container>
+      <Container className="mt-5 tournament_page">
+        <Row>
+          <Col>
+            <h5 className="d-flex mb-3">Trending</h5>
+          </Col>
+        </Row>
         <Row>
           {[...Array(6)].map((newsCard, index) => {
             return (
-              <Col md={4} className="mb-3">
+              <Col md={4} className="mb-5">
                 <NewsCard />
               </Col>
             );
