@@ -33,11 +33,14 @@ const NewsCard = ({ handleReadMore }) => {
                 by Louis Gadza
               </span>
               <h4 className="text-left">
-                Stranger Things: The sound of the Upside Down
+                NEW RELEASE: Call of Duty Modern WareFar 23 Coming out next week
+                Moday
               </h4>
               <p className="text text-left">
-                The antsy bingers of Netflix will eagerly anticipate the digital
-                release of the Survive soundtrack, out today.
+                The UK regulator, the Competition and Markets Authority (CMA),
+                has published an addendum to its provisional findings on
+                Microsoft's Activision Blizzard acquisition and has now narrowed
+                its scope of concerns
               </p>
               <Link className="button" onClick={handleReadMore}>
                 Read more

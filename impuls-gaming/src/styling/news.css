@@ -74,7 +74,7 @@
   transform: translateY(-60px);
 }
 .news-card .wrapper {
-  background: url(https://tvseriescritic.files.wordpress.com/2016/10/stranger-things-bicycle-lights-children.jpg)
+  background: url(https://bnetcmsus-a.akamaihd.net/cms/blog_header/kh/KHDZ1QE7U7EY1666055554463.jpg)
     center / cover no-repeat;
 }
 
@@ -96,7 +96,13 @@
   position: relative;
 }
 .close-readMore {
-  position: sticky;
+  position: sticky !important;
+  top: 20%;
+}
+.close-news-btn {
+  background-color: #2d4e68;
+  padding: 5px;
+  border-radius: 50%;
 }
 .news-image {
   width: 100%;
