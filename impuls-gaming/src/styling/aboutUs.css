@@ -33,6 +33,7 @@ body {
 }
 .about .right img {
   width: 100%;
+  height: 300px;
 }
 
 .about .left p {
@@ -54,13 +55,13 @@ body {
   display: inline-block;
 }
 .mission .left {
-  float: left;
   width: 50%;
 
   display: inline-block;
 }
 .mission .left img {
   width: 100%;
+  height: 300px;
 }
 .mission .right h1 {
   text-align: center;
@@ -69,7 +70,10 @@ body {
 }
 .mission .right hr {
   width: 35%;
-  border-top: 2px solid #000;
+  border-bottom: none;
+}
+.about .left hr {
+  width: 35%;
   border-bottom: none;
 }
 .mission .right p {
@@ -82,7 +86,6 @@ body {
   width: 90%;
   margin: auto;
   padding: 5% 5%;
-  over-flow: hidden;
 }
 .team h1 {
   text-align: center;
@@ -133,24 +136,16 @@ body {
   clear: both;
 }
 
-footer {
-  width: 100%;
-  height: 100px;
-  background-color: #28587c;
-}
-footer p {
-  text-align: center;
-  padding: 0 2%;
-}
-
 @media (max-width: 1200px) {
   .mission .right p {
     font-size: 0.8rem;
     margin: 20px auto;
+    flex-wrap: wrap;
   }
   .about .left p {
     font-size: 0.8rem;
     margin: 20px auto;
+    flex-wrap: wrap;
   }
 }
 

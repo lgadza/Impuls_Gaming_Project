@@ -37,16 +37,7 @@ const AboutUsPage = () => {
                 comfortable and inviting, with state-of-the-art equipment and
                 plenty of room to move around. Our friendly and knowledgeable
                 staff are always on hand to help you choose the perfect game or
-                answer any questions you may have. Whether you're a seasoned
-                gamer or just starting out, we have everything you need to have
-                a great time. Our selection of games is constantly growing, and
-                we regularly host tournaments and events for our customers to
-                participate in. At our gaming zone, we believe that gaming is
-                about more than just playing a game. It's about connecting with
-                others who share your interests, challenging yourself to
-                improve, and having fun. We are proud to be a part of the gaming
-                community, and we look forward to welcoming you to our space
-                soon.
+                answer any questions you may have.
               </p>
             </div>
             <div class="right">
@@ -86,14 +77,7 @@ const AboutUsPage = () => {
                 believe in fostering a sense of community among our customers.
                 We regularly host tournaments and events, giving gamers the
                 opportunity to connect with others who share their interests and
-                build friendships. We also believe in promoting fair play and
-                sportsmanship, and we encourage our customers to treat each
-                other with respect and kindness. Overall, our mission is to be
-                more than just a gaming facility - we want to be a place where
-                our customers can feel at home, connect with others, and have
-                fun. We are dedicated to providing the best possible experience
-                to our customers and to helping them build lasting memories and
-                friendships.
+                build friendships.
               </p>
             </div>
             <div class="clear"></div>
