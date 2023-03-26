@@ -11,21 +11,21 @@ const NewsCard = ({ handleReadMore }) => {
               <span className="px-1">Aug</span>
               <span>2023</span>
             </div>
-            {/* <ul className="menu-content">
+            <ul className="menu-content">
               <li>
                 <Link className="fa fa-bookmark-o"></Link>
               </li>
               <li>
                 <Link className="fa fa-heart-o">
-                  <span>18</span>
+                  <span>1</span>
                 </Link>
               </li>
               <li>
                 <Link className="fa fa-comment-o">
-                  <span>3</span>
+                  <span>6</span>
                 </Link>
               </li>
-            </ul> */}
+            </ul>
           </div>
           <div className="data">
             <div className="content">

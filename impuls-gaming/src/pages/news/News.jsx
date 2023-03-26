@@ -49,11 +49,11 @@ const News = () => {
           <>
             <Row>
               <Col>
-                <h5 className="d-flex mb-3">Trending</h5>
+                <h5 className="d-flex mb-3">News</h5>
               </Col>
             </Row>
             <Row>
-              {[...Array(6)].map((newsCard, index) => {
+              {[...Array(1)].map((newsCard, index) => {
                 return (
                   <Col md={4} className="mb-5">
                     <NewsCard handleReadMore={handleReadMore} />

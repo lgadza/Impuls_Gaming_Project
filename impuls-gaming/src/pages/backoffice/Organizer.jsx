@@ -114,6 +114,7 @@ const Organizer = ({ projects }) => {
               xl={4}
               sm={6}
               xs={12}
+              xxl={3}
               key={index}
             >
               {deleteItem && (

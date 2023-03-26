@@ -47,7 +47,7 @@
 }
 .card-news .wrapper:hover .data {
   transform: translateY(0);
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
 .card-news .data {
@@ -98,6 +98,7 @@
 .close-readMore {
   position: sticky !important;
   top: 20%;
+  isolation: isolate;
 }
 .close-news-btn {
   background-color: #2d4e68;
@@ -113,6 +114,7 @@
   color: #fff;
   padding: 1em;
   z-index: 3;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .news-card .header .date {
