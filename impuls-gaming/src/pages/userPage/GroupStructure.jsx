@@ -6,47 +6,52 @@ import { useNavigate, useParams, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import TournamentBracket from "../../components/TournamentBracket";
+import { getTournaments } from "../../redux/actions";
 
 const GroupStructure = () => {
-  const [participantsPerGroup, setParticipantsPerGroup] = useState(null);
-  const [filledGroups, setFilledGroups] = useState([]);
+  const dispatch = useDispatch();
+  // const [participantsPerGroup, setParticipantsPerGroup] = useState(null);
+  // const [filledGroups, setFilledGroups] = useState([]);
   const params = useParams();
   const tournamentData = useSelector((state) => state.tournaments.tournaments);
   const tournament = tournamentData.tournaments.find(
     (name) => name.name === params.tournamentId
   );
-  const groups = tournament.structures.find((group) => group.general.size > 16);
-  const fillGroup = (numberOfGroups, participantsList) => {
-    const groups = Array.from({ length: numberOfGroups }, () => []);
+  // const groups = tournament.structures.find((group) => group.general.size > 16);
+  // const fillGroup = (numberOfGroups, participantsList) => {
+  //   const groups = Array.from({ length: numberOfGroups }, () => []);
 
-    const shuffledParticipants = participantsList.sort(
-      () => Math.random() - 0.5
-    );
+  //   const shuffledParticipants = participantsList.sort(
+  //     () => Math.random() - 0.5
+  //   );
 
-    for (let i = 0; i < shuffledParticipants.length; i++) {
-      const participant = shuffledParticipants[i];
-      const groupIndex = i % groups.length;
-      groups[groupIndex].push(participant);
-    }
+  //   for (let i = 0; i < shuffledParticipants.length; i++) {
+  //     const participant = shuffledParticipants[i];
+  //     const groupIndex = i % groups.length;
+  //     groups[groupIndex].push(participant);
+  //   }
 
-    setFilledGroups(groups);
-  };
-  useEffect(() => {
-    if (tournament.structures.length > 0) {
-      if (groups.general.participantPerGroup) {
-        setParticipantsPerGroup(groups.general.participantPerGroup);
-      } else {
-        setParticipantsPerGroup(
-          Math.floor(groups.general.size / groups.general.divisions)
-        );
-      }
-      fillGroup(groups.general.divisions, tournament.tournamentParticipants);
-    }
-  }, []);
+  //   setFilledGroups(groups);
+  // };
+  // useEffect(() => {
+  //   if (tournament.structures.length > 0) {
+  //     if (groups.general.participantPerGroup) {
+  //       setParticipantsPerGroup(groups.general.participantPerGroup);
+  //     } else {
+  //       setParticipantsPerGroup(
+  //         Math.floor(groups.general.size / groups.general.divisions)
+  //       );
+  //     }
+  //     fillGroup(groups.general.divisions, tournament.tournamentParticipants);
+  //   }
+  // }, []);
   let containerList;
 
-  if (tournament.structures[0].brackets[0]) {
-    containerList = tournament.structures[0].brackets[0];
+  if (tournament.structures[0]) {
+    if (tournament.structures[0].brackets[0]) {
+      containerList = tournament.structures[0].brackets[0];
+      dispatch(getTournaments());
+    }
   }
   const [columns, setColumns] = useState(containerList);
   return (
@@ -63,7 +68,7 @@ const GroupStructure = () => {
                   {Object.entries(columns).map((group, index) => {
                     return (
                       <Col lg={3} key={index}>
-                        <Card className="mt-3 tournament-structure-card">
+                        <Card className="my-3 tournament-structure-card">
                           <Card.Header>
                             <strong>Group {index + 1}</strong>
                           </Card.Header>

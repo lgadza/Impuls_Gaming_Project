@@ -27,20 +27,121 @@ import TournamentInfo from "./TournamentInfo";
 import Rules from "./Rules";
 import PlayerList from "./PlayerList";
 import { ReactComponent as Swords } from "../img/swords.svg";
+import { Dropdown } from "react-bootstrap-v5";
+import Avatar from "./Avatar";
+import { logout } from "../redux/actions";
 
 const TournamentDetails = () => {
+  const navigate = useNavigate();
   const params = useParams();
   const tournamentData = useSelector((state) => state.tournaments.tournaments);
   const tournament = tournamentData.tournaments.find(
     (name) => name.name === params.tournamentId
   );
   const dispatch = useDispatch();
+  const user = useSelector((state) => state.me.me);
+  const handleLogout = async () => {
+    await dispatch(logout(user._id));
+    navigate("/");
+  };
+
   return (
     <Container
       fluid
       className="main-container textColor tournament-details  px-0 "
     >
-      <NavigationBar />
+      {/* <NavigationBar /> */}
+      <Row className="mb-3 px-5 py-3 d-flex align-items-center justify-content-between position-fixed giftcard-preview-nav ">
+        <div>
+          <Link to="/user-page">Home</Link>
+          <Icon.CaretRightFill color="white" size={10} />
+
+          <Link>
+            {user.name} {user.surname}
+          </Link>
+        </div>
+        <div className="d-flex align-items-center">
+          <div>
+            <Dropdown>
+              <Dropdown.Toggle variant="success" id="dropdown-basic">
+                <span className="textColor notification-bell">
+                  <Icon.BellFill
+                    color="rgb(0, 123, 255)"
+                    size={18}
+                    className="mx-0 px-0 "
+                  />
+                  <span className="notification-message text-primary text-small "></span>
+                </span>
+              </Dropdown.Toggle>
+
+              <Dropdown.Menu>
+                <Dropdown.Item
+                // onClick={() =>
+                //   navigate(
+                //     `/backoffice/projects/${tournament.name}/reports/disputes`
+                //   )
+                // }
+                >
+                  Louis vs Sage
+                </Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+          </div>
+          <Dropdown>
+            <Dropdown.Toggle>
+              {/* <img src={profilePic} className="small-profile-img" alt="" /> */}
+              <Avatar
+                src={user.avatar}
+                alt="Profile Avatar"
+                className="avatar"
+                width={25}
+                height={25}
+              />
+            </Dropdown.Toggle>
+
+            <Dropdown.Menu>
+              <Dropdown.Item>
+                <div className="d-flex align-items-center ml-2 justify-content-between">
+                  <span>
+                    {user.name} {user.surname}
+                  </span>
+                  <img
+                    src={user.avatar}
+                    className="small-profile-img "
+                    alt=""
+                  />
+                </div>
+              </Dropdown.Item>
+              <Dropdown.Item>
+                <Link to="" className="textColor px-2 py-5">
+                  Registrations
+                </Link>
+              </Dropdown.Item>
+              <hr className="my-0 py-0" />
+              <Dropdown.Item>
+                <Link
+                  to=""
+                  onClick={handleLogout}
+                  className="textColor px-2 py-5"
+                >
+                  Log out
+                </Link>
+              </Dropdown.Item>
+              <Dropdown.Item as="div">
+                <Link>
+                  <Button
+                    className="px-3 primary-btn  w-100 d-flex justify-content-center  textColor "
+                    variant="primary"
+                  >
+                    <small>Delete Account</small>
+                  </Button>
+                </Link>
+              </Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
+        </div>
+      </Row>
+
       <div className="tournament-img-cover-container ">
         <Card className="bg-dark text-white   ">
           <Card.Img
@@ -59,7 +160,9 @@ const TournamentDetails = () => {
                       </span>
                       <Link>{tournament.discipline_name}</Link>
                     </div>
-                    <h5 className="d-flex text-nowrap">{tournament.name}</h5>
+                    <h5 className="d-flex my-3 text-nowrap">
+                      {tournament.name}
+                    </h5>
                     <span className="d-flex">
                       {tournament.startDate && tournament.endDate && (
                         <span className="d-flex">

@@ -53,7 +53,6 @@ const Placements = () => {
 
   let containerList;
 
-  console.log(Object.entries(tournament.structures[0].brackets[0]), "LIST");
   if (tournament.structures[0].brackets[0]) {
     containerList = tournament.structures[0].brackets[0];
   } else {

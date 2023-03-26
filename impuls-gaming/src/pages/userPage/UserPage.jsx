@@ -52,7 +52,7 @@ const UserPage = () => {
     <Container fluid className="textColor px-0 user-page main-container ">
       <Row className="mb-3 px-5 py-3 d-flex align-items-center justify-content-between position-fixed giftcard-preview-nav ">
         <div>
-          <Link to="/">Home</Link>
+          <Link to="/user-page">Home</Link>
           <Icon.CaretRightFill color="white" size={10} />
 
           <Link>
