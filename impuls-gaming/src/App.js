@@ -37,6 +37,7 @@ import { AnimatePresence } from "framer-motion";
 
 import { useSelector } from "react-redux";
 import News from "./pages/news/News";
+import AboutUsPage from "./pages/aboutUs/AboutUsPage";
 function App() {
   const theme = useSelector((state) => state.theme.theme);
   // const location = useLocation();
@@ -121,6 +122,7 @@ function App() {
             <Route element={<Reservations />} path={`/reservations`} />
             <Route element={<FixturesPage />} path={`/fixtures`} />
             <Route element={<News />} path={`/news`} />
+            <Route element={<AboutUsPage />} path={`/about`} />
             <Route
               element={<Placements />}
               path={`/backoffice/projects/placements/:tournamentId`}
