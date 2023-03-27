@@ -2,6 +2,7 @@ import { Card, Container } from "react-bootstrap-v5";
 import Avatar from "../../components/Avatar";
 import Footer from "../../components/Footer";
 import NavigationBar from "../../components/NavigationBar";
+import TeamCard from "../../components/TeamCard";
 import "../../styling/aboutUs.css";
 
 const AboutUsPage = () => {
@@ -90,7 +91,7 @@ const AboutUsPage = () => {
               <hr style={{ backgroundColor: "white" }} />
             </h4>
 
-            <Card class="card settings-card" style={{ width: "15rem" }}>
+            {/* <Card class="card settings-card" style={{ width: "15rem" }}>
               <Card.Header className="card-header">
                 <Avatar
                   src={
@@ -112,7 +113,8 @@ const AboutUsPage = () => {
                   to implement new features and improvements.
                 </span>
               </Card.Body>
-            </Card>
+            </Card> */}
+            <TeamCard />
           </div>
         </div>
       </Container>
