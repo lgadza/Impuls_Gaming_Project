@@ -116,7 +116,9 @@ const GroupStructure = () => {
 
             <Row>
               <div className="w-100">
-                <TournamentBracket />
+                <TournamentBracket
+                  players={tournament.tournamentParticipants.slice(0, 16)}
+                />
               </div>
             </Row>
           </Tab>
