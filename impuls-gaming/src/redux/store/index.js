@@ -28,6 +28,7 @@ import getTournamentsStructures from "../reducers/getTournamentsStructures";
 import putMe from "../reducers/putMe";
 import getReservationsComments from "../reducers/getReservationsComments";
 import themeData from "../reducers/themeData";
+import activeNav from "../reducers/activeNav";
 const persistConfig = {
   key: "root",
   storage: localStorage,
@@ -61,6 +62,7 @@ const bigReducer = combineReducers({
   putMe: putMe,
   reservationsComments: getReservationsComments,
   theme: themeData,
+  activeNav: activeNav,
 });
 
 const persistedReducer = persistReducer(persistConfig, bigReducer);

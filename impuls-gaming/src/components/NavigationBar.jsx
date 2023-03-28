@@ -4,11 +4,18 @@ import * as Icon from "react-bootstrap-icons";
 import "../styling/home.css";
 import logo from "../img/impuls logo.png";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { activeNav } from "../redux/actions";
+import { useSelector } from "react-redux";
 const NavigationBar = () => {
+  const dispatch = useDispatch();
   const [isHidden, setIsHidden] = useState(false);
+  const currentNav = useSelector((state) => state.activeNav.nav);
   const [isOpen, setIsOpen] = useState(false);
-  const [active, setActive] = useState("home");
-  console.log(active, "AVTIVE");
+  const [active, setActive] = useState(currentNav);
+  const handleActiveNav = (activeLink) => {
+    dispatch(activeNav(activeLink));
+  };
   return (
     <>
       <Navbar
@@ -36,7 +43,10 @@ const NavigationBar = () => {
             <Nav className="nav-links ">
               <Link
                 to="/"
-                onClick={() => setActive("home")}
+                onClick={() => {
+                  // setActive("home");
+                  handleActiveNav("home");
+                }}
                 className={`mr-4 link-btm-bar ${
                   active === "home" ? "textColor" : "textColor3 "
                 } `}
@@ -45,7 +55,10 @@ const NavigationBar = () => {
               </Link>
               <Link
                 to="/tournaments"
-                onClick={() => setActive("tournaments")}
+                onClick={() => {
+                  // setActive("tournaments");
+                  handleActiveNav("tournaments");
+                }}
                 className={`mr-4 link-btm-bar ${
                   active === "tournaments" ? "textColor" : "textColor3 "
                 } `}
@@ -55,7 +68,10 @@ const NavigationBar = () => {
 
               <Link
                 to="/fixtures"
-                onClick={() => setActive("fixtures")}
+                onClick={() => {
+                  // setActive("fixtures");
+                  handleActiveNav("fixtures");
+                }}
                 className={`mr-4 link-btm-bar ${
                   active === "fixtures" ? "textColor" : "textColor3 "
                 } `}
@@ -64,7 +80,10 @@ const NavigationBar = () => {
               </Link>
               <Link
                 to="/news"
-                onClick={() => setActive("news")}
+                onClick={() => {
+                  // setActive("news");
+                  handleActiveNav("news");
+                }}
                 className={`mr-4 link-btm-bar ${
                   active === "news" ? "textColor" : "textColor3 "
                 } `}
@@ -73,7 +92,10 @@ const NavigationBar = () => {
               </Link>
               <Link
                 to="/about"
-                onClick={() => setActive("about-us")}
+                onClick={() => {
+                  // setActive("about-us");
+                  handleActiveNav("about-us");
+                }}
                 className={`mr-4 link-btm-bar ${
                   active === "about-us" ? "textColor" : "textColor3 "
                 } `}
@@ -118,7 +140,10 @@ const NavigationBar = () => {
                 <div className="d-flex flex-column ">
                   <Link
                     to="/"
-                    onClick={() => setActive("home")}
+                    onClick={() => {
+                      // setActive("home");
+                      handleActiveNav("home");
+                    }}
                     className={`mr-4 link-btm-bar mb-4 ${
                       active === "home" ? "textColor" : "textColor3 "
                     } `}
@@ -136,7 +161,10 @@ const NavigationBar = () => {
                   </Link>
                   <Link
                     to="/about"
-                    onClick={() => setActive("about-us")}
+                    onClick={() => {
+                      // setActive("about-us");
+                      handleActiveNav("about-us");
+                    }}
                     className={`mr-4 link-btm-bar mb-4 ${
                       active === "about-us" ? "textColor" : "textColor3 "
                     } `}

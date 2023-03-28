@@ -141,7 +141,7 @@ const MakeReservation = ({ visible, onhide, tournamentId, stationNo }) => {
     >
       <Modal.Header>
         <Modal.Title className="d-flex justify-content-between w-100">
-          <h6>Choose a station</h6>
+          <h6 className="textColor">Choose a station</h6>
           <Link>
             <Icon.X
               onClick={onhide}
@@ -156,8 +156,12 @@ const MakeReservation = ({ visible, onhide, tournamentId, stationNo }) => {
           <Row>
             <Col className="d-flex justify-content-end">
               <span className="d-flex flex-column">
-                <span>{format(new Date().getTime(), "HH:mm")}</span>
-                <span>{format(new Date(), "EEE dd MMM yyyy")}</span>
+                <small className="textColor">
+                  {format(new Date().getTime(), "HH:mm")}
+                </small>
+                <small className="textColor">
+                  {format(new Date(), "EEE dd MMM yyyy")}
+                </small>
               </span>
               {/* <span className="d-flex flex-column">
                 <span>Station No</span>
@@ -170,7 +174,9 @@ const MakeReservation = ({ visible, onhide, tournamentId, stationNo }) => {
           <Row>
             <Col>
               <Form.Group className="my-3 d-flex flex-column justify-content-start">
-                <Form.Label className="d-flex">Date and Time</Form.Label>
+                <Form.Label className="d-flex">
+                  <small className="textColor">Date and Time</small>
+                </Form.Label>
                 <Form.Group className="">
                   <DatePicker
                     className="datepicker py-2 px-4 w-100"
@@ -198,7 +204,9 @@ const MakeReservation = ({ visible, onhide, tournamentId, stationNo }) => {
             <Col>
               <Form onSubmit={handleSubmit}>
                 <Form.Group className="my-3 d-flex flex-column justify-content-start">
-                  <Form.Label className="d-flex">How many hour?</Form.Label>
+                  <Form.Label className="d-flex">
+                    <small className="textColor">How many hour?</small>
+                  </Form.Label>
                   <Form.Control
                     type="number"
                     placeholder="how many hours?"
@@ -213,7 +221,9 @@ const MakeReservation = ({ visible, onhide, tournamentId, stationNo }) => {
             <Col>
               <Form onSubmit={handleSubmit}>
                 <Form.Group className="my-3 d-flex flex-column justify-content-start">
-                  <Form.Label className="d-flex">Discipline</Form.Label>
+                  <Form.Label className="d-flex">
+                    <small className="textColor">Discipline</small>
+                  </Form.Label>
                   {/* <Form.Control
                     type="number"
                     placeholder="how many hours?"
@@ -224,7 +234,9 @@ const MakeReservation = ({ visible, onhide, tournamentId, stationNo }) => {
                     onChange={(e) => setDiscipline(e.target.value)}
                     className="textColor py-2"
                   >
-                    <option>Select a discipline</option>
+                    <option>
+                      <small>Select a discipline </small>
+                    </option>
                     <option value="Mortal Kombat">Mortal Kombat</option>
                     <option value="Call of Duty: Morden Warfare">
                       Call of Duty: Morden Warfare
@@ -239,7 +251,9 @@ const MakeReservation = ({ visible, onhide, tournamentId, stationNo }) => {
             <Col>
               <Form onSubmit={handleSubmit}>
                 <Form.Group className="my-3 d-flex flex-column justify-content-start">
-                  <Form.Label className="d-flex">username</Form.Label>
+                  <Form.Label className="d-flex">
+                    <small className="textColor">username</small>
+                  </Form.Label>
                   <Form.Control
                     type="text"
                     placeholder="enter username"
@@ -254,7 +268,9 @@ const MakeReservation = ({ visible, onhide, tournamentId, stationNo }) => {
             <Col>
               <Form onSubmit={handleSubmit}>
                 <Form.Group className="my-3 d-flex flex-column justify-content-start">
-                  <Form.Label className="d-flex">email</Form.Label>
+                  <Form.Label className="d-flex">
+                    <small className="textColor">email</small>
+                  </Form.Label>
                   <Form.Control
                     type="email"
                     placeholder="enter email"
@@ -267,7 +283,7 @@ const MakeReservation = ({ visible, onhide, tournamentId, stationNo }) => {
           </Row>
           <Row>
             <Col>
-              <span>How many people</span>
+              <small className="textColor">How many people</small>
               <div className="d-flex mt-2 align-items-center justify-content-between">
                 {[...Array(10)].map((player, index) => {
                   return (
@@ -305,7 +321,7 @@ const MakeReservation = ({ visible, onhide, tournamentId, stationNo }) => {
                 className="d-flex my-2 align-items-center textColor"
               >
                 <Icon.Plus className="mx-0 pl-0" size={15} />
-                <span>Add a notes</span>
+                <small>Add a notes</small>
               </Link>
             </Col>
           </Row>
@@ -313,7 +329,9 @@ const MakeReservation = ({ visible, onhide, tournamentId, stationNo }) => {
             <Row>
               <Col>
                 <Form.Group className="mb-3 d-flex flex-column ">
-                  <Form.Label className="mr-4 d-flex">Notes</Form.Label>
+                  <Form.Label className="mr-4 d-flex">
+                    <small className="textColor">Notes</small>
+                  </Form.Label>
                   <Form.Control
                     as="textarea"
                     rows={2}
@@ -337,7 +355,7 @@ const MakeReservation = ({ visible, onhide, tournamentId, stationNo }) => {
                     onhide();
                   }}
                 >
-                  <span className="text-small">Reserve</span>
+                  <small className="text-small">Reserve</small>
                 </Button>
               </Link>
             </Col>

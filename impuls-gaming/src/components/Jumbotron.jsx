@@ -19,6 +19,11 @@ const Jumbotron = () => {
           <h2 className="h2-join-call py-2">
             AND STAND A CHANCE TO WIN CASH PRIZE{" "}
           </h2>
+          {/* <Link>
+            <Button variant="danger" className="register-btn">
+              Make a reservation
+            </Button>
+          </Link> */}
         </div>
       </div>
       <div className="into mt-5 textColor ">
@@ -27,8 +32,8 @@ const Jumbotron = () => {
           <h1 className="textColor  h2-join-call1">Join Impuls community </h1>
         </div>
       </div>
-      {/* //TODO THIS IS A RESERVATION BARNER */}
-      {/* <div className=" d-none d-lg-block reservation-btn-container w-25">
+
+      <div className=" d-none d-lg-block reservation-btn-container">
         <div className="d-flex giftcard-preview-nav register-card-top  justify-content-between py-1 px-4 ">
           <div className="d-flex py-4 w-100 justify-content-center">
             <h6 className="d-flex textColor reg-border-right pr-4">
@@ -43,8 +48,7 @@ const Jumbotron = () => {
         <div class="arrow">
           <a href=""></a>
         </div>
-      </div> */}
-      {/* //TODO THIS IS A RESERVATION BARNER */}
+      </div>
     </Container>
   );
 };

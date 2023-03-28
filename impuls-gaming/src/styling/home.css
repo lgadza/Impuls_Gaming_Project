@@ -301,9 +301,10 @@ body#body:after {
 }
 .reservation-btn-container {
   position: absolute;
-  right: 5%;
+  right: 13%;
   bottom: 10%;
   z-index: 10 !important;
+  width: 18rem;
 }
 .arrow {
   animation: arr 1.8s infinite;
@@ -317,10 +318,10 @@ body#body:after {
 .arrow a:before {
   content: "";
   position: absolute;
-  width: 30px;
-  height: 30px;
-  border-top: 10px solid rgb(40, 167, 69);
-  border-right: 10px solid rgb(40, 167, 69);
+  width: 15px;
+  height: 15px;
+  border-top: 5px solid rgb(40, 167, 69);
+  border-right: 5px solid rgb(40, 167, 69);
   transform: rotate(135deg);
 }
 .theme-switcher {
@@ -371,7 +372,26 @@ body#body:after {
   height: 100%;
   object-fit: cover;
 }
-.into {
+/* .intor {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  color: var(--textColor);
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+} */
+.h1 {
+  color: #12bae3;
+}
+
+.into-content {
+  color: #12bae3;
+  z-index: 3 !important;
+  background-color: rgba(0, 0, 0, 0.4);
   position: absolute;
   top: 0;
   bottom: 0;
@@ -382,20 +402,12 @@ body#body:after {
   width: 100%;
   height: 100%;
 }
-.h1 {
-  color: #12bae3;
-}
-
-.into-content {
-  margin-top: 18%;
-  color: #12bae3;
-  z-index: 3 !important;
-}
 .into-content .h2-join-call {
   color: var(--textColor);
   z-index: 3;
 }
 h1 {
+  margin-top: 18%;
   font-size: 3em;
 }
 .h6-border {

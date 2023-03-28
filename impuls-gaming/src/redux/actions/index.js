@@ -69,6 +69,8 @@ export const GET_ADMIN_LOGIN_ACCESSTOKEN_ERROR =
 export const POST_TOURNAMENT = " POST_TOURNAMENT";
 export const GET_USERS = "GET_USERS";
 
+export const ACTIVE_NAV = "ACTIVE_NAV";
+
 export const GET_TOURNAMENTS = "GET_TOURNAMENTS";
 export const GET_TOURNAMENTS_LOADING = "GET_TOURNAMENTS_LOADING";
 export const GET_TOURNAMENTS_ERROR = "GET_TOURNAMENTS_ERROR";
@@ -103,6 +105,12 @@ export const switcher = (theme) => {
   return {
     type: THEME_DATA,
     payload: theme,
+  };
+};
+export const activeNav = (nav) => {
+  return {
+    type: ACTIVE_NAV,
+    payload: nav,
   };
 };
 export const registerUser = (userData) => {
