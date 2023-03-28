@@ -66,7 +66,7 @@ const NavigationBar = () => {
                 Tournaments
               </Link>
 
-              <Link
+              {/* <Link
                 to="/fixtures"
                 onClick={() => {
                   // setActive("fixtures");
@@ -77,7 +77,7 @@ const NavigationBar = () => {
                 } `}
               >
                 Fixtures
-              </Link>
+              </Link> */}
               <Link
                 to="/news"
                 onClick={() => {
@@ -153,9 +153,9 @@ const NavigationBar = () => {
                   <Link to="/tournaments" className="textColor mb-4 pr-0  ">
                     Tournaments
                   </Link>
-                  <Link to="/fixtures" className=" textColor mb-4 pr-0">
+                  {/* <Link to="/fixtures" className=" textColor mb-4 pr-0">
                     Fixtures
-                  </Link>
+                  </Link> */}
                   <Link to="/news" className=" textColor mb-4 pr-0">
                     News
                   </Link>
