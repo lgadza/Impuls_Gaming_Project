@@ -28,7 +28,7 @@ const Table = () => {
               <NavDropdown title="March/20-27 " menuVariant="dark">
                 <Dropdown.Item href="#/action-1">April-01-07</Dropdown.Item>
                 <Dropdown.Item href="#/action-2">April-01-07</Dropdown.Item>
-                <Dropdown.Item href="#/action-3">April/01-07</Dropdown.Item>
+                <Dropdown.Item href="#/action-3">April-01-07</Dropdown.Item>
               </NavDropdown>
             </div>
           </div>
