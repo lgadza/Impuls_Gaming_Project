@@ -85,11 +85,11 @@ const AboutUsPage = () => {
           </div>
 
           <div class="team">
-            <h4 className=" mb-3">
+            {/* <h4 className=" mb-3">
               {" "}
               Our Team
               <hr style={{ backgroundColor: "white" }} />
-            </h4>
+            </h4> */}
 
             {/* <Card class="card settings-card" style={{ width: "15rem" }}>
               <Card.Header className="card-header">
@@ -114,7 +114,7 @@ const AboutUsPage = () => {
                 </span>
               </Card.Body>
             </Card> */}
-            <TeamCard />
+            {/* <TeamCard /> */}
           </div>
         </div>
       </Container>

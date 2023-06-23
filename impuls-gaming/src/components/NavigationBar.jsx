@@ -53,7 +53,7 @@ const NavigationBar = () => {
               >
                 Home
               </Link>
-              <Link
+              {/* <Link
                 to="/tournaments"
                 onClick={() => {
                   // setActive("tournaments");
@@ -64,7 +64,7 @@ const NavigationBar = () => {
                 } `}
               >
                 Tournaments
-              </Link>
+              </Link> */}
 
               {/* <Link
                 to="/fixtures"
