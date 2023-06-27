@@ -3,7 +3,7 @@ import * as Icon from "react-bootstrap-icons";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import "font-awesome/css/font-awesome.css";
 
-import Table from "../../components/Table";
+// import Table from "../../components/Table";
 import { useEffect, useState } from "react";
 import Chat from "./Chat";
 import Tab from "react-bootstrap/Tab";
