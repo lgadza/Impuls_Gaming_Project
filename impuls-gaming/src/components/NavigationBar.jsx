@@ -53,7 +53,7 @@ const NavigationBar = () => {
               >
                 Home
               </Link>
-              {/* <Link
+              <Link
                 to="/tournaments"
                 onClick={() => {
                   // setActive("tournaments");
@@ -64,9 +64,9 @@ const NavigationBar = () => {
                 } `}
               >
                 Tournaments
-              </Link> */}
+              </Link>
 
-              {/* <Link
+              <Link
                 to="/fixtures"
                 onClick={() => {
                   // setActive("fixtures");
@@ -77,7 +77,7 @@ const NavigationBar = () => {
                 } `}
               >
                 Fixtures
-              </Link> */}
+              </Link>
               <Link
                 to="/news"
                 onClick={() => {

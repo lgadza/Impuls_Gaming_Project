@@ -44,7 +44,7 @@ const SignIn = () => {
   const handleEmail = (e) => {
     setEmail(e.target.value);
   };
-  console.log(signInCredentials.accessToken);
+
   const handleCheck = (e) => {
     check ? setCheck(false) : setCheck(true);
   };
