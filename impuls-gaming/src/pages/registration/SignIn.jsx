@@ -66,9 +66,7 @@ const SignIn = () => {
   if (signInCredentials.accessToken) {
     dispatch(getMe(signInCredentials.accessToken));
     dispatch(getTournaments());
-    // setTimeout(() => {
-    // navigate("/user-page");
-    // }, 500);
+    
     if (!isGetMeLoading) {
       navigate("/user-page");
     }
