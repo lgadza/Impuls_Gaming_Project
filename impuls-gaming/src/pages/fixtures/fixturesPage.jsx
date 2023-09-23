@@ -32,7 +32,7 @@ const FixturesPage = () => {
           <h2 className="ml-3">Fixtures</h2>
         </Row>
         <Row className="my-3">
-          {isLoading ? (
+          {tournaments ? (
             <div className="d-flex justify-content-center">
               <Spinner />
             </div>
